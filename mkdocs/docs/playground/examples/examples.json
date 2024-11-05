@@ -49,6 +49,15 @@
 				"outputType": "code"
 			},
 			{
+				"id": "psl2csv",
+				"title": "Generate Project CSVs",
+				"language": "pinset",
+				"program": "psl.pinset",
+				"flexmi": "psl.flexmi",
+				"emfatic": "psl.emf",
+				"outputType": "code"
+			},
+			{
 				"id": "epl",
 				"title": "Pattern Match Project Plan",
 				"language": "epl",

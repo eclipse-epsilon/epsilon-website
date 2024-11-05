@@ -8,6 +8,7 @@ import './eml.js';
 import './ecl.js';
 import './egl.js';
 import './egx.js';
+import './pinset.js';
 import './emfatic.js';
 
 const CDN = 'https://cdn.jsdelivr.net/npm/ace-builds@1.14.0/src-min-noconflict';

@@ -1,0 +1,26 @@
+dataset tasks over t : Task {
+    properties [title, start, duration]
+
+    // asuming each person at most provides one effort to a task
+    column num_participants : t.effort.size()
+    column total_effort : t.effort.collect(e | e.percentage).sum()
+}
+
+dataset effort_crosstable over p : Person {
+    properties [name]
+
+    // dinamically create one column for each task, and fill the
+    // value with the person's effort to that task (if any)
+    grid {
+        keys : Task.all
+        header : key.title
+        body {
+            // check if that person provides an effort for that task
+            var effort = key.effort.selectOne(e | e.person.name == p.name);
+            if (effort.isDefined()) {
+                return effort.percentage;
+            }
+            return 0;
+        }
+    }
+}

@@ -76,6 +76,10 @@
     content: url("../images/epl.png");
 }
 
+.mif-pinset::before {
+    content: url("../images/egl.png");
+}
+
 .mif-epl::before {
     content: url("../images/epl.png");
 }

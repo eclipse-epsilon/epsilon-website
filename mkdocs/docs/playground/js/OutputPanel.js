@@ -100,7 +100,7 @@ class OutputPanel extends ModelPanel {
         var root = super.createElement();
         root.setAttribute("style", "padding: 0px");
 
-        if (language == "egx") {
+        if (language == "egx" || language == "pinset") {
             var select = document.createElement("select");
             select.setAttribute("data-role", "select");
             select.setAttribute("data-on-item-select", "outputPanel.generatedFileSelected()");

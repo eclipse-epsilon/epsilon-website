@@ -13,21 +13,27 @@ class ProgramPanel extends Panel {
         this.editor.getSession().setMode("ace/mode/" + language);
         this.createButtons();
         var title = "";
-        
+
         switch (language) {
             case "eol": title = "Program"; break;
             case "etl": title = "Transformation"; break;
             case "emg": title = "Generation"; break;
-            case "flock": title = "Migration"; break;
+            case "flock": title = "Migration (Flock)"; break;
             case "egl": title = "Template"; break;
             case "evl": title = "Constraints"; break;
             case "epl": title = "Patterns"; break;
             case "egx": title = "Template Coordination"; break;
             case "ecl": title = "Match Rules"; break;
             case "eml": title = "Merge Rules"; break;
+            case "pinset": title = "Dataset Rules (Pinset)"; break;
         }
 
-        this.setTitleAndIcon(title + " (" + (language == "flock" ? "Flock" : language.toUpperCase()) + ")", language);
+        // only for acronym language names
+        if (language != "flock" && language != "pinset") {
+            title = title + " (" + language.toUpperCase() + ")";
+        }
+
+        this.setTitleAndIcon(title, language);
     }
 
     fit() {
@@ -76,7 +82,7 @@ class ProgramPanel extends Panel {
         editor.setAttribute("class", "editor");
 
         root.appendChild(editor);
-        
+
         return root;
     }
 }

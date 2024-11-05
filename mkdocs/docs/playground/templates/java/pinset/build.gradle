@@ -1,0 +1,18 @@
+plugins {
+    id 'application'
+}
+
+application {
+    mainClass = 'org.eclipse.epsilon.examples.Example'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("org.eclipse.epsilon:org.eclipse.epsilon.pinset.engine:2.5.0");
+    implementation("org.eclipse.epsilon:org.eclipse.epsilon.emc.emf:2.5.0");
+    implementation("org.eclipse.epsilon:org.eclipse.epsilon.flexmi:2.5.0");
+    implementation("org.eclipse.emfatic:org.eclipse.emfatic.core:1.1.0");
+}

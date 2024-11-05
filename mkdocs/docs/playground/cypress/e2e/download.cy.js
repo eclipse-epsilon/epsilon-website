@@ -23,7 +23,7 @@ const environments = [
         success: "BUILD SUCCESS"
     }
 ]
-const examples = ["eol", "etl", "emg", "evl", "epl", "egl", "egx", "flock", "eml"];
+const examples = ["eol", "etl", "emg", "evl", "epl", "egl", "egx", "flock", "eml", "pinset"];
 
 // This test can be a bit flaky and fail for no particular reason for some examples
 // Before attempting to fix anything, try to run it a few times or against the failing example or environment

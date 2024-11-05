@@ -8,21 +8,21 @@ class Layout {
         root.innerHTML = "";
 
         var splitter;
-        
+
         if (language == "eol") {
             splitter = new Splitter(
                 new Splitter(programPanel, consolePanel, "vertical"),
                 new Splitter(firstModelPanel, firstMetamodelPanel, "vertical")
             );
         }
-        else if (language == "evl" || language == "epl" || language == "egl") {
+        else if (language == "evl" || language == "epl" || language == "egl" || language == "pinset") {
 
             splitter = new Splitter(
                 new Splitter(programPanel, consolePanel, "vertical"),
                 new Splitter(
                     new Splitter(firstModelPanel, firstMetamodelPanel, "vertical"),
                     new Splitter(outputPanel, null)
-                ), 
+                ),
                 "horizontal", "33, 67"
             );
         }
@@ -41,7 +41,7 @@ class Layout {
 
             splitter = new Splitter(
                 new Splitter(programPanel, consolePanel, "vertical"),
-                new Splitter(firstMetamodelPanel, secondModelPanel), 
+                new Splitter(firstMetamodelPanel, secondModelPanel),
                 "horizontal", "33, 67"
             );
         }
