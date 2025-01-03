@@ -75,7 +75,7 @@ mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=X.Y.Z-SNAPS
 mvn -f pom-plain.xml versions:set -DnewVersion=X.Y.Z-SNAPSHOT
 ```
 
-You may also need to manually bump up the version of the `releng/org.eclipse.epsilon.target` project. Specifically, the `META-INF/MANIFEST.MF`, but it's also worth checking the `pom.xml` to make sure they're consistent with each other. Also, in the root `pom.xml` in the repository, there is a property called `epsilon.version`. Also check `org.eclipse.epsilon.test/META-INF/MANIFEST.MF`. The build will fail if anything is inconsistent.
+You may also need to manually bump up the version of the `releng/org.eclipse.epsilon.target` project. Specifically, the `META-INF/MANIFEST.MF`, but it's also worth checking the `pom.xml` to make sure they're consistent with each other. Also check `org.eclipse.epsilon.test/META-INF/MANIFEST.MF`. The build will fail if anything is inconsistent.
 
 ### Announce release on forum
 
