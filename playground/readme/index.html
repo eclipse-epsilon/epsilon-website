@@ -1075,6 +1075,27 @@
   
   
     <li class="md-nav__item">
+      <a href="https://download.eclipse.org/epsilon/2.5.0-javadoc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2.0
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="https://download.eclipse.org/epsilon/2.4.0-javadoc/" class="md-nav__link">
         
   
@@ -1678,13 +1699,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#testing" class="md-nav__link">
+  <a href="#testing-on-the-production-deployment" class="md-nav__link">
     <span class="md-ellipsis">
-      Testing
+      Testing on the production deployment
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Testing">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-on-a-local-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing on a local deployment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing on a local deployment">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1725,7 +1755,7 @@
 <li><code>npx webpack --watch --mode=development</code> for a development build (faster build, larger <code>bundle.js</code>)</li>
 <li><code>npx webpack --mode=production</code> before you push to GitHub (slower build, smaller <code>bundle.js</code>)</li>
 </ul>
-<h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
+<h2 id="testing-on-the-production-deployment">Testing on the production deployment<a class="headerlink" href="#testing-on-the-production-deployment" title="Permanent link">&para;</a></h2>
 <p>We use <a href="https://cypress.io">Cypress</a> for automated testing. Tests are stored under the <code>cypress/e2e</code> folder. To run a single test, you need to use the following command:</p>
 <ul>
 <li><code>npx cypress run --browser firefox --spec "cypress/e2e/eol.cy.js"</code></li>
@@ -1735,6 +1765,12 @@
 <li><code>npx cypress run --browser firefox --spec "cypress/e2e/*.cy.js"</code></li>
 </ul>
 <p>Note: When the browser is not set to <code>firefox</code>, tests in <code>download.cy.js</code> can be flaky.</p>
+<h2 id="testing-on-a-local-deployment">Testing on a local deployment<a class="headerlink" href="#testing-on-a-local-deployment" title="Permanent link">&para;</a></h2>
+<p>To run the Cypress tests on a locally-running Playground, run:</p>
+<div class="highlight"><pre><span></span><code>./run-cypress-local.sh
+</code></pre></div>
+<p>The script will use the <code>standalone-server</code> image of the Playground, and use a local <code>/shorturl</code> service based on local files.</p>
+<p><em>Note</em>: this script still requires a working internet connection, as the playground loads some resources from the internet.</p>
 <h3 id="disable-live-reloading">Disable Live Reloading<a class="headerlink" href="#disable-live-reloading" title="Permanent link">&para;</a></h3>
 <p>To speed up test execution, please disable live reloading by serving the website using the following command.</p>
 <div class="highlight"><pre><span></span><code>./serve-no-livereload.sh

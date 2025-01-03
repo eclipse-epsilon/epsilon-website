@@ -1075,6 +1075,27 @@
   
   
     <li class="md-nav__item">
+      <a href="https://download.eclipse.org/epsilon/2.5.0-javadoc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.2.0
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="https://download.eclipse.org/epsilon/2.4.0-javadoc/" class="md-nav__link">
         
   
@@ -1678,6 +1699,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#checking-licensing-via-the-dash-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking licensing via the Dash tool
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checking-that-the-interim-site-is-installable-from-a-clean-eclipse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking that the interim site is installable from a clean Eclipse
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#getting-the-release-approved-by-eclipse" class="md-nav__link">
     <span class="md-ellipsis">
       Getting the release approved by Eclipse
@@ -1779,15 +1818,24 @@
 <h1 id="releasing-a-new-version-of-epsilon">Releasing a new version of Epsilon<a class="headerlink" href="#releasing-a-new-version-of-epsilon" title="Permanent link">&para;</a></h1>
 <p>There are a number of adiministrative and engineering tasks required to release a new verison of Epsilon.
 It's important to do them in proper order, as described below.</p>
+<h3 id="checking-licensing-via-the-dash-tool">Checking licensing via the Dash tool<a class="headerlink" href="#checking-licensing-via-the-dash-tool" title="Permanent link">&para;</a></h3>
+<p>We use the <a href="https://www.eclipse.org/projects/handbook/#ip-license-tool">Eclipse Dash License</a> tool to check the libraries we use.
+To perform these checks, run the provided script in the root of the repository:</p>
+<div class="highlight"><pre><span></span><code>./dash-license-check.sh
+</code></pre></div>
+<p>The script may mention a number of libraries which show as restricted due to their coordinates not being recorded in IPLab, but are still OK to use as they are on Eclipse Orbit (which has had its own IP review process), or they match a Maven Central dependency which has an approved license.</p>
+<p>If there is a restricted dependency which has not been reviewed in any way, then it needs to be put through the <a href="https://www.eclipse.org/projects/handbook/#ip-request">IPLab</a> process.</p>
+<h3 id="checking-that-the-interim-site-is-installable-from-a-clean-eclipse">Checking that the interim site is installable from a clean Eclipse<a class="headerlink" href="#checking-that-the-interim-site-is-installable-from-a-clean-eclipse" title="Permanent link">&para;</a></h3>
+<p>Before continuing, ensure that the interim side can be installed from a clean installation of the latest release of the Eclipse Modeling Tools.</p>
 <h3 id="getting-the-release-approved-by-eclipse">Getting the release approved by Eclipse<a class="headerlink" href="#getting-the-release-approved-by-eclipse" title="Permanent link">&para;</a></h3>
-<p>Log in to <a href="https://projects.eclipse.org/projects/modeling.epsilon">the PMI</a>. Under the "Releases" section (right hand side under "Committer Tools"), click on "Create a new release" and fill in the fields. Note that we typically have a major.minor naming scheme, so for the release name, make sure it's 2 numbers (i.e. don't add a .0 patch number). If it has been more than one year since the last release, a review is required, so the release date should be set at least 8 days later than today. In this case, you will also need to do "Generate IP log" for the release.</p>
-<p>On the release, go to "Edit". At a minimum, you should ensure "The Basics" section is filled in and correct. For "IP Due Dilligence Type", select Type A if you're unsure. The hit "Save". When you're happy with it, and it has been more than a year since the last release, you need to submit the release for review.</p>
+<p>Log in to <a href="https://projects.eclipse.org/projects/modeling.epsilon">the PMI</a>. Under the "Releases" section (right hand side under "Committer Tools"), click on "Create a new release" and fill in the fields. Note that we typically have a major.minor naming scheme, so for the release name, make sure it's 2 numbers (i.e. don't add a .0 patch number). If it has been more than one year since the last review, a new review is required, so the release date should be set at least 8 days later than today.</p>
+<p>On the release, go to "Edit". At a minimum, you should ensure "The Basics" section is filled in and correct. When you're happy with it, and it has been more than a year since the last review, you need to submit the release for review.</p>
 <h3 id="updating-orbit-repos">Updating Orbit repos<a class="headerlink" href="#updating-orbit-repos" title="Permanent link">&para;</a></h3>
 <p>Before creating the release, it's worth updating links to the Orbit repository used for resolving our dependencies. <a href="https://github.com/eclipse-epsilon/epsilon/commit/1f6f1fac9edf21de7614bc74da9165db53408448">This commit</a> provides an example of the process, showing which files should be updated.</p>
 <h3 id="managing-the-update-sites">Managing the update sites<a class="headerlink" href="#managing-the-update-sites" title="Permanent link">&para;</a></h3>
 <p>When creating a new release, we need to add the update site for this release to the <a href="https://download.eclipse.org/epsilon/updates/">composite</a>. We also need to create a folder containing the javadocs for the release under a directory with the name of the release at the <a href="https://download.eclipse.org/epsilon/">root of the download site</a>. We also need to remove the old release folder (move it to the archive). The new update site for the release is obtained by copying the interim.</p>
-<p>These tasks are automated by a <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/releng/org.eclipse.epsilon.releng/new_version_tasks.sh">shell script</a>. Please check this before the release. The main thing you'll need to check are the <code>OldVersion</code> and <code>NewVersion</code> variables.
-There are two ways this can be run, but in any case, it needs to be run from the CI server. One way is to uncomment the <code>NEW VERSION</code> stage in the Jenkinsfile at the root of the repository, then push to trigger it. The other way is to run the <a href="https://ci.eclipse.org/epsilon/job/release-logistics/">release-logistics</a> Jenkins job. Of course, you should check what is being run first, since if anything is deleted or overwritten, it can't be undone. Login to the CI and then you can check what is being run in <a href="https://ci.eclipse.org/epsilon/job/release-logistics/configure">Configure</a>. Scroll down to Build and check the Execute shell task, making sure it's the same as that in the shell script in the repo (or whichever looks correct).</p>
+<p>These tasks are automated by a <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/releng/org.eclipse.epsilon.releng/new_version_tasks.sh">shell script</a>. Before the release, please check its <code>OldVersion</code> and <code>NewVersion</code> variables: <code>OldVersion</code> should be the current stable release, and <code>NewVersion</code> should be the new stable release that we are about to publish.
+This script needs to be run from the CI server via the <a href="https://ci.eclipse.org/epsilon/job/release-logistics/">release-logistics</a> Jenkins job, which has a copy of the contents of the above script that should be kept up to date with the repo. Of course, you should check what is being run first, since if anything is deleted or overwritten, it can't be undone. Login to the CI and then you can check what is being run in <a href="https://ci.eclipse.org/epsilon/job/release-logistics/configure">Configure</a>. Scroll down to Build and check the Execute shell task, making sure it's the same as that in the shell script in the repo (or whichever looks correct).</p>
 <h3 id="creating-a-new-version-in-the-oomph-installer">Creating a new version in the Oomph installer<a class="headerlink" href="#creating-a-new-version-in-the-oomph-installer" title="Permanent link">&para;</a></h3>
 <p>The <code>releng/org.eclipse.epsilon.releng/epsilonUse.setup</code> should be updated with the new version. You can copy the Interim version and rename it to the release. The ordering of Product Versions should always be the latest release at the top, then Interim, then older versions. Whichever is at the top will be the default when users try to install Epsilon using Oomph.
 Of course, the properties for the new version should be changed to match (e.g. the name, description and update site). Check these carefully. A version of Eclipse should also be hard-coded, rather than relying on the latest update site, so pick whichever is the latest Eclipse release and use that.</p>
@@ -1803,13 +1851,17 @@ Add the new release info to <code>all-versions.md</code>. Copy <code>index.md</c
 <p>Also don't forget to build the static site for changes to take effect.</p>
 <h3 id="bump-up-versions">Bump up versions<a class="headerlink" href="#bump-up-versions" title="Permanent link">&para;</a></h3>
 <p>Run the following commands from the root of the repository, replacing <code>X.Y.Z</code> with the full version number of the release (where Z is the patch, usually 0). Tycho will automatically take care of updating the Maven and PDE projects (<code>MANIFEST.MF</code>, <code>feature.xml</code> etc.). Note that the standalone POMs (i.e. the <code>pom-plain.xml</code> files) are bumped separately using the third command below. Also note the order: run the Tycho one first, then bump <code>epsilon.version</code>, then run the Tycho versions bump again and it should succeed.</p>
-<p><code>mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=X.Y.Z-SNAPSHOT</code>
-<code>mvn versions:set-property -Dproperty=epsilon.version -DnewVersion=X.Y.Z-SNAPSHOT</code>
-<code>mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=X.Y.Z-SNAPSHOT</code>
-<code>mvn -f pom-plain.xml versions:set -DnewVersion=X.Y.Z-SNAPSHOT</code></p>
+<div class="highlight"><pre><span></span><code>mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=X.Y.Z-SNAPSHOT
+
+mvn versions:set-property -Dproperty=epsilon.version -DnewVersion=X.Y.Z-SNAPSHOT
+
+mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=X.Y.Z-SNAPSHOT
+
+mvn -f pom-plain.xml versions:set -DnewVersion=X.Y.Z-SNAPSHOT
+</code></pre></div>
 <p>You may also need to manually bump up the version of the <code>releng/org.eclipse.epsilon.target</code> project. Specifically, the <code>META-INF/MANIFEST.MF</code>, but it's also worth checking the <code>pom.xml</code> to make sure they're consistent with each other. Also, in the root <code>pom.xml</code> in the repository, there is a property called <code>epsilon.version</code>. Also check <code>org.eclipse.epsilon.test/META-INF/MANIFEST.MF</code>. The build will fail if anything is inconsistent.</p>
 <h3 id="announce-release-on-forum">Announce release on forum<a class="headerlink" href="#announce-release-on-forum" title="Permanent link">&para;</a></h3>
-<p>It would be courteous to let users know of the new release, along with the new features, on the <a href="../../../forum">Epsilon Forum</a>.</p>
+<p>It would be courteous to let users know of the new release, along with the new features, on the <a href="../../../forum">forum</a>.</p>
 
 
 
