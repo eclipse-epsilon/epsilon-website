@@ -666,6 +666,12 @@ Since 2.5.0, you can optionally omit the type when referring to enumeration lite
 
 If a reference to an enumeration literal is ambiguous (i.e. there are several enumerations with a literal with the given name), EOL will report a warning and continue executing by assuming it refers to the first match.
 
+### Item Selector (since 2.6.0)
+
+If `x` is a `Collection`, `x[i]` (where `i` is a 0-based index) can be used to retrieve the `i`-th element in the collection (this works for `Set`s as well). An exception will be thrown if `i` is greater or equal to the size of the collection.
+
+If `x` is a `Map`, `x[k]` will return the value associated to the key `k`, or `null` if `k` is not a key in that map.
+
 Statements
 ----------
 
@@ -758,6 +764,15 @@ x.eSet(feature, a);
 StructuralFeature feature = findStructuralFeature(x.refClass(), "y");
 x.refSetValue(feature, a);
 ```
+
+#### Item Selector Assignment (since 2.6.0)
+
+If `x` is a `Sequence` or some other type of Java `List`, `x[i] = y` (where `i` is a 0-based index) can be used to set the `i`-th element in the sequence to the value `y`.
+
+If `x` is a `Map`, `x[k] = y` can be used to associate the key `k` to the value `v`.
+
+`x[i] = y` will fail with an exception if `x` is of any other type.
+For example, it will fail if `x` is a `Set`.
 
 ### Special Assignment Statement
 
