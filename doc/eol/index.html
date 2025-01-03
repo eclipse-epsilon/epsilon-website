@@ -698,6 +698,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#item-selector-since-260" class="md-nav__link">
+    <span class="md-ellipsis">
+      Item Selector (since 2.6.0)
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -769,6 +778,15 @@
   <a href="#model-element-property-assignment" class="md-nav__link">
     <span class="md-ellipsis">
       Model Element Property Assignment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#item-selector-assignment-since-260" class="md-nav__link">
+    <span class="md-ellipsis">
+      Item Selector Assignment (since 2.6.0)
     </span>
   </a>
   
@@ -2335,6 +2353,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#item-selector-since-260" class="md-nav__link">
+    <span class="md-ellipsis">
+      Item Selector (since 2.6.0)
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2406,6 +2433,15 @@
   <a href="#model-element-property-assignment" class="md-nav__link">
     <span class="md-ellipsis">
       Model Element Property Assignment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#item-selector-assignment-since-260" class="md-nav__link">
+    <span class="md-ellipsis">
+      Item Selector Assignment (since 2.6.0)
     </span>
   </a>
   
@@ -3671,6 +3707,9 @@ assert(a == b);</code></pre>
 <li><code>Model!VisibilityEnum#vk_public</code></li>
 </ul>
 <p>If a reference to an enumeration literal is ambiguous (i.e. there are several enumerations with a literal with the given name), EOL will report a warning and continue executing by assuming it refers to the first match.</p>
+<h3 id="item-selector-since-260">Item Selector (since 2.6.0)<a class="headerlink" href="#item-selector-since-260" title="Permanent link">&para;</a></h3>
+<p>If <code>x</code> is a <code>Collection</code>, <code>x[i]</code> (where <code>i</code> is a 0-based index) can be used to retrieve the <code>i</code>-th element in the collection (this works for <code>Set</code>s as well). An exception will be thrown if <code>i</code> is greater or equal to the size of the collection.</p>
+<p>If <code>x</code> is a <code>Map</code>, <code>x[k]</code> will return the value associated to the key <code>k</code>, or <code>null</code> if <code>k</code> is not a key in that map.</p>
 <h2 id="statements">Statements<a class="headerlink" href="#statements" title="Permanent link">&para;</a></h2>
 <h3 id="variable-declaration-statement">Variable Declaration Statement<a class="headerlink" href="#variable-declaration-statement" title="Permanent link">&para;</a></h3>
 <p>A variable declaration statement declares the name and (optionally) the type and initial value of a variable in an EOL program. If no type is explicitly declared, the variable is assumed to be of type <code>Any</code>. For variables of primitive type, declaration automatically creates an instance of the type with the default values presented in the table below. For non-primitive types the user has to explicitly assign the value of the variable either by using the <code>new</code> keyword or by providing an initial value expression. If neither is done the value of the variable is undefined. Variables in EOL are strongly-typed. Therefore a variable can only be assigned values that conform to its type (or a sub-type of it).</p>
@@ -3755,6 +3794,11 @@ b.println();</code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">StructuralFeature</span><span class="w"> </span><span class="n">feature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">findStructuralFeature</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="na">refClass</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;y&quot;</span><span class="p">);</span>
 <span class="n">x</span><span class="p">.</span><span class="na">refSetValue</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
 </code></pre></div>
+<h4 id="item-selector-assignment-since-260">Item Selector Assignment (since 2.6.0)<a class="headerlink" href="#item-selector-assignment-since-260" title="Permanent link">&para;</a></h4>
+<p>If <code>x</code> is a <code>Sequence</code> or some other type of Java <code>List</code>, <code>x[i] = y</code> (where <code>i</code> is a 0-based index) can be used to set the <code>i</code>-th element in the sequence to the value <code>y</code>.</p>
+<p>If <code>x</code> is a <code>Map</code>, <code>x[k] = y</code> can be used to associate the key <code>k</code> to the value <code>v</code>.</p>
+<p><code>x[i] = y</code> will fail with an exception if <code>x</code> is of any other type.
+For example, it will fail if <code>x</code> is a <code>Set</code>.</p>
 <h3 id="special-assignment-statement">Special Assignment Statement<a class="headerlink" href="#special-assignment-statement" title="Permanent link">&para;</a></h3>
 <p>In task-specific languages, an assignment operator with task-specific semantics is often required. Therefore, EOL provides an additional assignment operator. In standalone EOL, the operator has the same semantics with the primary assignment operator discussed above, however task-specific languages can redefine its semantics to implement custom assignment behaviour. For example, consider the simple model-to-model transformation of the listing below where a simple object oriented model is transformed to a simple database model using an ETL transformation.</p>
 <pre class="prettyprint lang-etl"><code>rule Class2Table

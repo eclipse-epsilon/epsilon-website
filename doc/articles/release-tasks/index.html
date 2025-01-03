@@ -1859,7 +1859,7 @@ mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=X.Y.Z-SNAPS
 
 mvn -f pom-plain.xml versions:set -DnewVersion=X.Y.Z-SNAPSHOT
 </code></pre></div>
-<p>You may also need to manually bump up the version of the <code>releng/org.eclipse.epsilon.target</code> project. Specifically, the <code>META-INF/MANIFEST.MF</code>, but it's also worth checking the <code>pom.xml</code> to make sure they're consistent with each other. Also, in the root <code>pom.xml</code> in the repository, there is a property called <code>epsilon.version</code>. Also check <code>org.eclipse.epsilon.test/META-INF/MANIFEST.MF</code>. The build will fail if anything is inconsistent.</p>
+<p>You may also need to manually bump up the version of the <code>releng/org.eclipse.epsilon.target</code> project. Specifically, the <code>META-INF/MANIFEST.MF</code>, but it's also worth checking the <code>pom.xml</code> to make sure they're consistent with each other. Also check <code>org.eclipse.epsilon.test/META-INF/MANIFEST.MF</code>. The build will fail if anything is inconsistent.</p>
 <h3 id="announce-release-on-forum">Announce release on forum<a class="headerlink" href="#announce-release-on-forum" title="Permanent link">&para;</a></h3>
 <p>It would be courteous to let users know of the new release, along with the new features, on the <a href="../../../forum">forum</a>.</p>
 
