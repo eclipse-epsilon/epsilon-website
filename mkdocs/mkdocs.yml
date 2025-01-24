@@ -56,7 +56,7 @@ nav:
       - Who is developing Epsilon?: 'https://projects.eclipse.org/projects/modeling.epsilon/who'
       - Social Media:
         - LinkedIn: 'https://www.linkedin.com/company/eclipse-epsilon'
-        - X: 'https://x.com/eclipseepsilon'
+        - Bluesky: 'https://bsky.app/profile/eclipseepsilon.bsky.social'
         - YouTube: 'https://youtube.com/epsilondevs'
       - Epsilon Labs: 'labs.md'
   - Branding: 'branding/index.md'
@@ -76,8 +76,8 @@ extra:
   social:
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/eclipse-epsilon
-    - icon: fontawesome/brands/x-twitter
-      link: https://x.com/eclipseepsilon
+    - icon: fontawesome/brands/bluesky
+      link: https://bsky.app/profile/eclipseepsilon.bsky.social
     - icon: fontawesome/brands/youtube
       link: https://youtube.com/epsilondevs
 repo_name: 'Epsilon @ GitHub'
