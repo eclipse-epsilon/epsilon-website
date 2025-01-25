@@ -1815,6 +1815,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#expression-evaluation-epsilon-27-and-later" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expression evaluation (Epsilon 2.7 and later)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#stopping-at-every-statement-on-a-line-breakpoint" class="md-nav__link">
     <span class="md-ellipsis">
       Stopping at every statement on a line breakpoint
@@ -1944,6 +1953,18 @@ After hitting a breakpoint, you will be prompted to switch to the Debug perspect
 <p>Currently, debugging from LSP4E does not support conditional breakpoints or inline breakpoints.
 If you need to stop at a statement in the middle of a line, you can enable for now the "Line breakpoints stop at every statement on the line" option in the "Remote Epsilon Program" launch configuration. This option is also available from <a href="#stopping-at-every-statement-on-a-line-breakpoint">VS Code</a>, and the same caveats apply as on Code.</p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Known issues with conditional breakpoints in Epsilon 2.6</p>
+<p>There is a <a href="https://github.com/eclipse-epsilon/epsilon/issues/150">known issue</a> where if the
+condition used for a breakpoint visits a line with a breakpoint, its evaluation will stop at
+that point as well. This issue has been fixed in Epsilon 2.7: breakpoints will not be hit
+while evaluating a conditional breakpoint.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Expression evaluation support is available from Epsilon 2.7</p>
+<p>Support for evaluating expressions at a given breakpoint was added in Epsilon 2.7. Similarly
+to conditions in conditional breakpoints, expressions will not trigger breakpoints.</p>
+</div>
 <h3 id="microsoft-visual-studio-code">Microsoft Visual Studio Code<a class="headerlink" href="#microsoft-visual-studio-code" title="Permanent link">&para;</a></h3>
 <p>Recent versions of the <a href="../vscode/">VS Code</a> support in Epsilon include support for the Epsilon DAP server.
 Epsilon includes an <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.eol.dap/epsilon">example Gradle project</a> with VS Code configuration files that you can use as a starting point.
@@ -1986,6 +2007,12 @@ If you would like to stop at a later location, you can use <a href="https://code
 This is normally done by placing your editing cursor at the location you would like to stop, and pressing <code>Shift + F9</code>.</p>
 <p>For instance, in this EGL example, execution will stop from inside the dynamic region at the middle of the line, instead of the static region at the beginning of the line:</p>
 <p><img alt="Screenshot of VS Code with an inline breakpoint in an EGL program" src="vscode-inline.png" /></p>
+<h4 id="expression-evaluation-epsilon-27-and-later">Expression evaluation (Epsilon 2.7 and later)<a class="headerlink" href="#expression-evaluation-epsilon-27-and-later" title="Permanent link">&para;</a></h4>
+<p>Since version 2.7, the Epsilon debugger supports evaluation of expressions while stopped at a breakpoint.
+From VS Code, you can use the "Watch" section to enter EOL expressions:</p>
+<p><img alt="Screenshot of VS Code Watch section evaluating an expression while at a breakpoint" src="vscode-watch.png" /></p>
+<p>You can also evaluate expressions from the "Debug Console":</p>
+<p><img alt="Screenshot of VS Code Debug Console evaluating an expression" src="vscode-debug-console.png" /></p>
 <h4 id="stopping-at-every-statement-on-a-line-breakpoint">Stopping at every statement on a line breakpoint<a class="headerlink" href="#stopping-at-every-statement-on-a-line-breakpoint" title="Permanent link">&para;</a></h4>
 <p>Instead of using inline breakpoints, you can instruct the debug adapter to stop at every statement on your line breakpoints.
 This can be done by setting the <code>"stop-at-every-statement"</code> to <code>true</code> in your <code>launch.json</code> configuration, like this:</p>
