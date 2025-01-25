@@ -116,6 +116,16 @@ After hitting a breakpoint, you will be prompted to switch to the Debug perspect
     Currently, debugging from LSP4E does not support conditional breakpoints or inline breakpoints.
     If you need to stop at a statement in the middle of a line, you can enable for now the "Line breakpoints stop at every statement on the line" option in the "Remote Epsilon Program" launch configuration. This option is also available from [VS Code](#stopping-at-every-statement-on-a-line-breakpoint), and the same caveats apply as on Code.
 
+!!! warning "Known issues with conditional breakpoints in Epsilon 2.6"
+    There is a [known issue](https://github.com/eclipse-epsilon/epsilon/issues/150) where if the
+    condition used for a breakpoint visits a line with a breakpoint, its evaluation will stop at
+    that point as well. This issue has been fixed in Epsilon 2.7: breakpoints will not be hit
+    while evaluating a conditional breakpoint.
+
+!!! info "Expression evaluation support is available from Epsilon 2.7"
+    Support for evaluating expressions at a given breakpoint was added in Epsilon 2.7. Similarly
+    to conditions in conditional breakpoints, expressions will not trigger breakpoints.
+
 ### Microsoft Visual Studio Code
 
 Recent versions of the [VS Code](./vscode/index.md) support in Epsilon include support for the Epsilon DAP server.
@@ -180,6 +190,17 @@ This is normally done by placing your editing cursor at the location you would l
 For instance, in this EGL example, execution will stop from inside the dynamic region at the middle of the line, instead of the static region at the beginning of the line:
 
 ![Screenshot of VS Code with an inline breakpoint in an EGL program](debugger/vscode-inline.png)
+
+#### Expression evaluation (Epsilon 2.7 and later)
+
+Since version 2.7, the Epsilon debugger supports evaluation of expressions while stopped at a breakpoint.
+From VS Code, you can use the "Watch" section to enter EOL expressions:
+
+![Screenshot of VS Code Watch section evaluating an expression while at a breakpoint](debugger/vscode-watch.png)
+
+You can also evaluate expressions from the "Debug Console":
+
+![Screenshot of VS Code Debug Console evaluating an expression](debugger/vscode-debug-console.png)
 
 #### Stopping at every statement on a line breakpoint
 
