@@ -10,7 +10,7 @@ class ProgramPanel extends Panel {
 
     setLanguage(language) {
         this.language = language;
-        this.editor.getSession().setMode("ace/mode/" + language);
+        // this.editor.getSession().setMode("ace/mode/" + language);
         this.createButtons();
         var title = "";
 
@@ -41,7 +41,7 @@ class ProgramPanel extends Panel {
         if (editorElement != null) {
             editorElement.parentNode.style = "flex-basis: calc(100% - 4px);";
         }
-        this.editor.resize();
+        // this.editor.resize();
     }
 
     getButtons() {

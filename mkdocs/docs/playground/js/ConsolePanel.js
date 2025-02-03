@@ -6,13 +6,13 @@ class ConsolePanel extends Panel {
 
     constructor() {
         super("console");
-        this.editor.setReadOnly(true);
+        // this.editor.setReadOnly(true);
         this.setValue("");
         this.createButtons();
 
-        this.defineHoverlink();
-        this.detectSemanticErrorLinks(this.editor);
-        this.detectSyntacticErrorLinks(this.editor);
+        // this.defineHoverlink();
+        // this.detectSemanticErrorLinks(this.editor);
+        // this.detectSyntacticErrorLinks(this.editor);
         this.setTitleAndIcon("Console", "console");   
     }
 
@@ -26,14 +26,13 @@ class ConsolePanel extends Panel {
 
     setOutput(str) {
         document.getElementById("consoleEditor").style.color = "black";
-        this.editor.getSession().setUseWrapMode(false);
+        this.editor.updateOptions({wordWrap: "off"});
         this.setValue(str);
-
     }
 
     setError(str) {
         document.getElementById("consoleEditor").style.color = "#CD352C";
-        this.editor.getSession().setUseWrapMode(true);
+        this.editor.updateOptions({wordWrap: "on"});
         this.setValue(str);
     }
 
@@ -42,7 +41,6 @@ class ConsolePanel extends Panel {
         if (editorElement != null) {
             editorElement.parentNode.style = "flex-basis: calc(100% - 4px);";
         }
-        this.editor.resize();
     }
 
     createElement() {

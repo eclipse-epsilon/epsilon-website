@@ -45,12 +45,12 @@ class ModelPanel extends Panel {
     }
 
     setupSyntaxHighlighting() {
-        this.editor.getSession().setMode("ace/mode/xml");
-        this.updateSyntaxHighlighting();
-        var self = this;
-        this.editor.getSession().on('change', function () {
-            self.updateSyntaxHighlighting();
-        });
+        // this.editor.getSession().setMode("ace/mode/xml");
+        // this.updateSyntaxHighlighting();
+        // var self = this;
+        // this.editor.getSession().on('change', function () {
+        //     self.updateSyntaxHighlighting();
+        // });
     }
 
     /**
@@ -292,7 +292,7 @@ class ModelPanel extends Panel {
             editorElement.style.height = parentElement.offsetHeight - 42 + "px";
         }
 
-        this.editor.resize();
+        // this.editor.resize();
         
         // Fit the diagram
         var diagramElement = document.getElementById(this.id + "Diagram");

@@ -14,7 +14,7 @@ class OutputPanel extends ModelPanel {
         this.outputLanguage = outputLanguage;
         this.language = language;
         this.createButtons();
-        this.getEditor().getSession().setMode("ace/mode/" + outputLanguage.toLowerCase());
+        // this.getEditor().getSession().setMode("ace/mode/" + outputLanguage.toLowerCase());
         //this.getEditor().getSession().setUseWrapMode(false);
     }
 
@@ -65,7 +65,7 @@ class OutputPanel extends ModelPanel {
                     cls: "js-dialog-close success",
                     onclick: function () {
                         var outputLanguage = document.getElementById("language").value;
-                        self.getEditor().getSession().setMode("ace/mode/" + outputLanguage.toLowerCase());
+                        // self.getEditor().getSession().setMode("ace/mode/" + outputLanguage.toLowerCase());
                     }
                 },
                 {
@@ -82,14 +82,14 @@ class OutputPanel extends ModelPanel {
                 this.setValue(generatedFile.content);
                 // Set the right syntax highlighting for the file extension
                 var modelist = ace.require("ace/ext/modelist");
-                this.getEditor().getSession().setMode(modelist.getModeForPath(path + "").mode);
+                // this.getEditor().getSession().setMode(modelist.getModeForPath(path + "").mode);
                 return;
             }
         }
 
         // If the generated path is invalid, reset the editor
         this.setValue("");
-        this.getEditor().getSession().setMode("ace/mode/text");
+        // this.getEditor().getSession().setMode("ace/mode/text");
     }
 
     generatedFileSelected() {
