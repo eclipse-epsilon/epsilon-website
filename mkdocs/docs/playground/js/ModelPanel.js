@@ -1,5 +1,6 @@
 import { Panel } from "./Panel.js";
 import { Splitter } from "./Splitter.js";
+import * as monaco from 'monaco-editor'
 
 import svgPanZoom from 'svg-pan-zoom';
 
@@ -13,7 +14,7 @@ class ModelPanel extends Panel {
         super(id);
         this.editable = editable;
         this.metamodelPanel = metamodelPanel;
-        this.setupSyntaxHighlighting();
+        
         this.createButtons();
         this.setTitleAndIcon("Model", "flexmi");
     }
@@ -22,6 +23,7 @@ class ModelPanel extends Panel {
         super.init();
         this.setDiagramRefreshButtonVisible(false);
         this.setFitDiagramButtonVisible(!this.editable);
+        this.setupSyntaxHighlighting();
     }
 
     showDiagram() {
@@ -45,6 +47,9 @@ class ModelPanel extends Panel {
     }
 
     setupSyntaxHighlighting() {
+        // this.editor.updateOptions({language: "xml"});
+        //var model = this.editor.getModel();
+        monaco.editor.setModelLanguage(this.editor.getModel(), 'xml');
         // this.editor.getSession().setMode("ace/mode/xml");
         // this.updateSyntaxHighlighting();
         // var self = this;

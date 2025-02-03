@@ -19,6 +19,7 @@ import { Backend } from './Backend.js';
 import { Layout } from './Layout.js';
 import 'metro4';
 import './highlighting/highlighting.js';
+import { SyntaxHighlighter } from './SyntaxHighlighter.js';
 
 export var language = "eol";
 var outputType = "text";
@@ -26,6 +27,8 @@ var outputLanguage = "text";
 var example;
 var url = window.location + "";
 var questionMark = url.indexOf("?");
+
+new SyntaxHighlighter().setup();
 
 export var programPanel = new ProgramPanel();
 export var secondProgramPanel = new ProgramPanel("secondProgram");

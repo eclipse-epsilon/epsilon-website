@@ -1,4 +1,4 @@
-import * as monaco from 'monaco-editor'
+import * as monaco from 'monaco-editor';
 
 class Panel {
 
@@ -16,6 +16,7 @@ class Panel {
 
         this.editor = monaco.editor.create(this.element.querySelector('.editor'), {
             fontSize: 14,
+            language: "eol",
             automaticLayout: true,
             minimap: {
                 enabled: false

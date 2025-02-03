@@ -1,4 +1,5 @@
 import { Panel } from "./Panel.js";
+import * as monaco from 'monaco-editor';
 
 class ProgramPanel extends Panel {
 
@@ -10,6 +11,7 @@ class ProgramPanel extends Panel {
 
     setLanguage(language) {
         this.language = language;
+        monaco.editor.setModelLanguage(this.editor.getModel(), language);
         // this.editor.getSession().setMode("ace/mode/" + language);
         this.createButtons();
         var title = "";
