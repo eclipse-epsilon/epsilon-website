@@ -13,15 +13,30 @@ class Panel {
     constructor(id) {
         this.id = id;
         this.getElement();
-
+        
+        //TODO: Avoid defining the theme multiple times
+        monaco.editor.defineTheme('default', {
+            base: 'vs',
+            inherit: true,
+            rules: [],
+            colors: { "editor.background": "#ffffff" }
+            });
+        
+        monaco.editor.setTheme('default')
+        
         this.editor = monaco.editor.create(this.element.querySelector('.editor'), {
+            //theme: "hc-light",
+            autoDetectHighContrast: "false",
             fontSize: 14,
             language: "eol",
             automaticLayout: true,
             minimap: {
                 enabled: false
             },
-            lineNumbers: "off"
+            lineNumbers: "off",
+            renderLineHighlight: "none",
+            occurrencesHighlight: "off",
+            selectionHighlight: "false"
         });
 
         // Set up the panel's editor

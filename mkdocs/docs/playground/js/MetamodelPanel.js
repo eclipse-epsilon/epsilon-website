@@ -1,4 +1,5 @@
 import { ModelPanel } from './ModelPanel.js';
+import * as monaco from 'monaco-editor';
 
 class MetamodelPanel extends ModelPanel {
     constructor(id) {
@@ -8,7 +9,7 @@ class MetamodelPanel extends ModelPanel {
     }
 
     setupSyntaxHighlighting() {
-        // this.editor.getSession().setMode("ace/mode/emfatic");
+        monaco.editor.setModelLanguage(this.editor.getModel(), "emf");
     }
 
     getButtons() {
