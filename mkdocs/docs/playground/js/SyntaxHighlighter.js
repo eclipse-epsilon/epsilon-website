@@ -140,188 +140,111 @@ class SyntaxHighlighter {
     registerEgl() {
             monaco.languages.register({ id: 'egl' });
             monaco.languages.setMonarchTokensProvider('egl', {
-                    defaultToken: 'type',
+                    defaultToken: 'string',
                     tokenPostfix: '',
-                    // ignoreCase: true,
-                
-                    // The main tokenizer for our languages
+
                     tokenizer: {
                         root: [
-                            [/\[%(=)?/, { token: '@rematch', switchTo: '@phpInSimpleState.root' }],
-                            [/\[\*/, 'comment.html', '@comment'],
-                            /*
-                            [/<!DOCTYPE/, 'metatag.html', '@doctype'],
-                            [/(<)(\w+)(\/>)/, ['delimiter.html', 'tag.html', 'delimiter.html']],
-                            [/(<)(script)/, ['delimiter.html', { token: 'tag.html', next: '@script' }]],
-                            [/(<)(style)/, ['delimiter.html', { token: 'tag.html', next: '@style' }]],
-                            [/(<)([:\w]+)/, ['delimiter.html', { token: 'tag.html', next: '@otherTag' }]],
-                            [/(<\/)(\w+)/, ['delimiter.html', { token: 'tag.html', next: '@otherTag' }]],
-                            [/</, 'delimiter.html'],
-                            [/[^<]+/] // text*/
+                            [/\[%(=)?/, { token: '@rematch', switchTo: '@egl.root' }],
+                            [/\[\*/, 'comment', '@comment'],
                         ],
-                        
-                        /*
-                        doctype: [
-                            [/<\[%(=)?/, { token: '@rematch', switchTo: '@phpInSimpleState.comment' }],
-                            [/[^>]+/, 'metatag.content.html'],
-                            [/>/, 'metatag.html', '@pop']
-                        ],*/
-                        
                         
                         comment: [
-                            //[/\[%(=)?/, { token: '@rematch', switchTo: '@phpInSimpleState.comment' }],
-                            [/\*\]/, 'comment.html', '@pop'],
-                            //[/[^-]+/, 'comment.content.html'],
-                            [/./, 'comment.html']
+                            [/\*\]/, 'comment', '@pop'],
+                            [/./, 'comment']
                         ],
-                        
-                        /*
-                        otherTag: [
-                            [/\[%(=)?/, { token: '@rematch', switchTo: '@phpInSimpleState.otherTag' }],
-                            [/\%\]/, 'delimiter.html', '@pop'],
-                            [/"([^"]*)"/, 'attribute.value'],
-                            [/'([^']*)'/, 'attribute.value'],
-                            [/[\w\-]+/, 'attribute.name'],
-                            [/=/, 'delimiter'],
-                            [/[ \t\r\n]+/] // whitespace
-                        ],*/
 
-                        phpInSimpleState: [
-                            //[/<\[%(=)?/, 'metatag.php'],
+                        egl: [
                             [/%\]/, { token: 'delimiter', switchTo: '@$S2.$S3' }],
-                            { include: 'phpRoot' }
+                            { include: 'eglRoot' }
                         ],
-                        
-                        /*
-                        phpInEmbeddedState: [
-                            [/<\[%(=)?/, 'metatag.php'],
-                            [
-                                /%\]/,
-                                {
-                                    token: 'metatag.php',
-                                    switchTo: '@$S2.$S3',
-                                    nextEmbedded: '$S3'
-                                }
-                            ],
-                            { include: 'phpRoot' }
-                        ],*/
                 
-                        phpRoot: [
+                        eglRoot: [
                             [
                                 /[a-zA-Z_]\w*/,
                                 {
                                     cases: {
-                                        '@phpKeywords': { token: 'keyword.php' },
-                                        '@phpCompileTimeConstants': { token: 'constant.php' },
-                                        '@default': 'identifier.php'
+                                        '@keywords': { token: 'keyword' },
+                                        '@constants': { token: 'constant' },
+                                        '@types': { token: 'type' },
+                                        '@default': 'identifier'
                                     }
                                 }
                             ],
-                            [
-                                /[$a-zA-Z_]\w*/,
-                                {
-                                    cases: {
-                                        '@phpPreDefinedVariables': {
-                                            token: 'variable.predefined.php'
-                                        },
-                                        '@default': 'variable.php'
-                                    }
-                                }
-                            ],
-                
+                            
                             // brackets
-                            [/[{}]/, 'delimiter.bracket.php'],
-                            [/[\[\]]/, 'delimiter.array.php'],
-                            [/[()]/, 'delimiter.parenthesis.php'],
+                            [/[{}]/, 'delimiter.bracket'],
+                            [/[\[\]]/, 'delimiter.array'],
+                            [/[()]/, 'delimiter.parenthesis'],
                 
                             // whitespace
                             [/[ \t\r\n]+/],
                 
                             // comments
-                            [/(#|\/\/)$/, 'comment.php'],
-                            [/(#|\/\/)/, 'comment.php', '@phpLineComment'],
+                            [/(#|\/\/)$/, 'comment'],
+                            [/(#|\/\/)/, 'comment', '@eolLineComment'],
                 
                             // block comments
-                            [/\/\*/, 'comment.php', '@phpComment'],
+                            [/\/\*/, 'comment', '@eolComment'],
                 
                             // strings
-                            [/"/, 'string.php', '@phpDoubleQuoteString'],
-                            [/'/, 'string.php', '@phpSingleQuoteString'],
+                            [/"/, 'string', '@doubleQuoteString'],
+                            [/'/, 'string', '@singleQuoteString'],
                 
                             // delimiters
-                            [/[\+\-\*\%\&\|\^\~\!\=\<\>\/\?\;\:\.\,\@]/, 'delimiter.php'],
+                            [/[\+\-\*\%\&\|\^\~\!\=\<\>\/\?\;\:\.\,\@]/, 'delimiter'],
                 
                             // numbers
-                            [/\d*\d+[eE]([\-+]?\d+)?/, 'number.float.php'],
-                            [/\d*\.\d+([eE][\-+]?\d+)?/, 'number.float.php'],
-                            [/0[xX][0-9a-fA-F']*[0-9a-fA-F]/, 'number.hex.php'],
-                            [/0[0-7']*[0-7]/, 'number.octal.php'],
-                            [/0[bB][0-1']*[0-1]/, 'number.binary.php'],
-                            [/\d[\d']*/, 'number.php'],
-                            [/\d/, 'number.php']
+                            [/\d*\d+[eE]([\-+]?\d+)?/, 'number.float'],
+                            [/\d*\.\d+([eE][\-+]?\d+)?/, 'number.float'],
+                            [/0[xX][0-9a-fA-F']*[0-9a-fA-F]/, 'number.hex'],
+                            [/0[0-7']*[0-7]/, 'number.octal'],
+                            [/0[bB][0-1']*[0-1]/, 'number.binary'],
+                            [/\d[\d']*/, 'number'],
+                            [/\d/, 'number']
                         ],
                 
-                        phpComment: [
-                            [/\*\//, 'comment.php', '@pop'],
-                            [/[^*]+/, 'comment.php'],
-                            [/./, 'comment.php']
+                        eolComment: [
+                            [/\*\//, 'comment', '@pop'],
+                            [/[^*]+/, 'comment'],
+                            [/./, 'comment']
                         ],
                 
-                        phpLineComment: [
+                        eolLineComment: [
                             [/\?>/, { token: '@rematch', next: '@pop' }],
-                            [/.$/, 'comment.php', '@pop'],
-                            [/[^?]+$/, 'comment.php', '@pop'],
-                            [/[^?]+/, 'comment.php'],
-                            [/./, 'comment.php']
+                            [/.$/, 'comment', '@pop'],
+                            [/[^?]+$/, 'comment', '@pop'],
+                            [/[^?]+/, 'comment'],
+                            [/./, 'comment']
                         ],
                 
-                        phpDoubleQuoteString: [
-                            [/[^\\"]+/, 'string.php'],
-                            [/@escapes/, 'string.escape.php'],
-                            [/\\./, 'string.escape.invalid.php'],
-                            [/"/, 'string.php', '@pop']
+                        doubleQuoteString: [
+                            [/[^\\"]+/, 'string'],
+                            [/@escapes/, 'string.escape'],
+                            [/\\./, 'string.escape.invalid'],
+                            [/"/, 'string', '@pop']
                         ],
                 
-                        phpSingleQuoteString: [
-                            [/[^\\']+/, 'string.php'],
-                            [/@escapes/, 'string.escape.php'],
-                            [/\\./, 'string.escape.invalid.php'],
-                            [/'/, 'string.php', '@pop']
+                        singleQuoteString: [
+                            [/[^\\']+/, 'string'],
+                            [/@escapes/, 'string.escape'],
+                            [/\\./, 'string.escape.invalid'],
+                            [/'/, 'string', '@pop']
                         ]
                     },
-                
-                    phpKeywords: [
+                    
+                    keywords: [
                         'import', 'driver', 'alias', 'if', 'switch', 'case', 'default', 'operation', 'function', 'new', 
                         'else', 'for', 'var', 'return', 'async', 'break', 'breakAll', 'and', 'or', 'not', 'xor', 'implies', 
                         'ext', 'in', 'continue', 'while', 'throw', 'delete', 'transaction', 'abort', 'model', 'group', 'as'
                     ],
-                
-                    phpCompileTimeConstants: [
-                        '__CLASS__',
-                        '__DIR__',
-                        '__FILE__',
-                        '__LINE__',
-                        '__NAMESPACE__',
-                        '__METHOD__',
-                        '__FUNCTION__',
-                        '__TRAIT__'
+                    
+                    constants: [
+                        'true', 'false', 'self', 'loopCount', 'hasMore'
                     ],
-                
-                    phpPreDefinedVariables: [
-                        '$GLOBALS',
-                        '$_SERVER',
-                        '$_GET',
-                        '$_POST',
-                        '$_FILES',
-                        '$_REQUEST',
-                        '$_SESSION',
-                        '$_ENV',
-                        '$_COOKIE',
-                        '$php_errormsg',
-                        '$HTTP_RAW_POST_DATA',
-                        '$http_response_header',
-                        '$argc',
-                        '$argv'
+        
+                    types: [
+                        'String', 'Boolean', 'Integer', 'Real', 'Any', 'Map', 'Collection', 'Bag', 'Sequence', 'Set', 'OrderedSet', 'Native', 'List', 'Tuple', 'ConcurrentSet', 'ConcurrentBag', 'ConcurrentMap'
                     ],
                 
                     escapes: /\\(?:[abfnrtv\\"']|x[0-9A-Fa-f]{1,4}|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})/
