@@ -19,6 +19,7 @@ class SyntaxHighlighter {
         ["epl", "emg"].forEach(l => { this.registerEolBasedLanguage(l, ['pre', 'post', 'pattern', 'match', 'guard', 'do', 'onmatch', 'nomatch', 'from', 'no', 'optional', 'active']); });
 
         this.registerEolBasedLanguage("pinset", etlKeywords.concat(['pre', 'post', 'dataset', 'over', 'from', 'guard', 'properties', 'reference', 'column', 'grid', 'keys', 'header', 'body', 'as']));
+        this.registerEgl();
     }
 
     registerEolBasedLanguage(language, extraKeywords = [], extraConstants = []) {
@@ -134,6 +135,197 @@ class SyntaxHighlighter {
                 ],
             },
         });
+    }
+
+    registerEgl() {
+            monaco.languages.register({ id: 'egl' });
+            monaco.languages.setMonarchTokensProvider('egl', {
+                    defaultToken: 'type',
+                    tokenPostfix: '',
+                    // ignoreCase: true,
+                
+                    // The main tokenizer for our languages
+                    tokenizer: {
+                        root: [
+                            [/\[%(=)?/, { token: '@rematch', switchTo: '@phpInSimpleState.root' }],
+                            [/\[\*/, 'comment.html', '@comment'],
+                            /*
+                            [/<!DOCTYPE/, 'metatag.html', '@doctype'],
+                            [/(<)(\w+)(\/>)/, ['delimiter.html', 'tag.html', 'delimiter.html']],
+                            [/(<)(script)/, ['delimiter.html', { token: 'tag.html', next: '@script' }]],
+                            [/(<)(style)/, ['delimiter.html', { token: 'tag.html', next: '@style' }]],
+                            [/(<)([:\w]+)/, ['delimiter.html', { token: 'tag.html', next: '@otherTag' }]],
+                            [/(<\/)(\w+)/, ['delimiter.html', { token: 'tag.html', next: '@otherTag' }]],
+                            [/</, 'delimiter.html'],
+                            [/[^<]+/] // text*/
+                        ],
+                        
+                        /*
+                        doctype: [
+                            [/<\[%(=)?/, { token: '@rematch', switchTo: '@phpInSimpleState.comment' }],
+                            [/[^>]+/, 'metatag.content.html'],
+                            [/>/, 'metatag.html', '@pop']
+                        ],*/
+                        
+                        
+                        comment: [
+                            //[/\[%(=)?/, { token: '@rematch', switchTo: '@phpInSimpleState.comment' }],
+                            [/\*\]/, 'comment.html', '@pop'],
+                            //[/[^-]+/, 'comment.content.html'],
+                            [/./, 'comment.html']
+                        ],
+                        
+                        /*
+                        otherTag: [
+                            [/\[%(=)?/, { token: '@rematch', switchTo: '@phpInSimpleState.otherTag' }],
+                            [/\%\]/, 'delimiter.html', '@pop'],
+                            [/"([^"]*)"/, 'attribute.value'],
+                            [/'([^']*)'/, 'attribute.value'],
+                            [/[\w\-]+/, 'attribute.name'],
+                            [/=/, 'delimiter'],
+                            [/[ \t\r\n]+/] // whitespace
+                        ],*/
+
+                        phpInSimpleState: [
+                            //[/<\[%(=)?/, 'metatag.php'],
+                            [/%\]/, { token: 'delimiter', switchTo: '@$S2.$S3' }],
+                            { include: 'phpRoot' }
+                        ],
+                        
+                        /*
+                        phpInEmbeddedState: [
+                            [/<\[%(=)?/, 'metatag.php'],
+                            [
+                                /%\]/,
+                                {
+                                    token: 'metatag.php',
+                                    switchTo: '@$S2.$S3',
+                                    nextEmbedded: '$S3'
+                                }
+                            ],
+                            { include: 'phpRoot' }
+                        ],*/
+                
+                        phpRoot: [
+                            [
+                                /[a-zA-Z_]\w*/,
+                                {
+                                    cases: {
+                                        '@phpKeywords': { token: 'keyword.php' },
+                                        '@phpCompileTimeConstants': { token: 'constant.php' },
+                                        '@default': 'identifier.php'
+                                    }
+                                }
+                            ],
+                            [
+                                /[$a-zA-Z_]\w*/,
+                                {
+                                    cases: {
+                                        '@phpPreDefinedVariables': {
+                                            token: 'variable.predefined.php'
+                                        },
+                                        '@default': 'variable.php'
+                                    }
+                                }
+                            ],
+                
+                            // brackets
+                            [/[{}]/, 'delimiter.bracket.php'],
+                            [/[\[\]]/, 'delimiter.array.php'],
+                            [/[()]/, 'delimiter.parenthesis.php'],
+                
+                            // whitespace
+                            [/[ \t\r\n]+/],
+                
+                            // comments
+                            [/(#|\/\/)$/, 'comment.php'],
+                            [/(#|\/\/)/, 'comment.php', '@phpLineComment'],
+                
+                            // block comments
+                            [/\/\*/, 'comment.php', '@phpComment'],
+                
+                            // strings
+                            [/"/, 'string.php', '@phpDoubleQuoteString'],
+                            [/'/, 'string.php', '@phpSingleQuoteString'],
+                
+                            // delimiters
+                            [/[\+\-\*\%\&\|\^\~\!\=\<\>\/\?\;\:\.\,\@]/, 'delimiter.php'],
+                
+                            // numbers
+                            [/\d*\d+[eE]([\-+]?\d+)?/, 'number.float.php'],
+                            [/\d*\.\d+([eE][\-+]?\d+)?/, 'number.float.php'],
+                            [/0[xX][0-9a-fA-F']*[0-9a-fA-F]/, 'number.hex.php'],
+                            [/0[0-7']*[0-7]/, 'number.octal.php'],
+                            [/0[bB][0-1']*[0-1]/, 'number.binary.php'],
+                            [/\d[\d']*/, 'number.php'],
+                            [/\d/, 'number.php']
+                        ],
+                
+                        phpComment: [
+                            [/\*\//, 'comment.php', '@pop'],
+                            [/[^*]+/, 'comment.php'],
+                            [/./, 'comment.php']
+                        ],
+                
+                        phpLineComment: [
+                            [/\?>/, { token: '@rematch', next: '@pop' }],
+                            [/.$/, 'comment.php', '@pop'],
+                            [/[^?]+$/, 'comment.php', '@pop'],
+                            [/[^?]+/, 'comment.php'],
+                            [/./, 'comment.php']
+                        ],
+                
+                        phpDoubleQuoteString: [
+                            [/[^\\"]+/, 'string.php'],
+                            [/@escapes/, 'string.escape.php'],
+                            [/\\./, 'string.escape.invalid.php'],
+                            [/"/, 'string.php', '@pop']
+                        ],
+                
+                        phpSingleQuoteString: [
+                            [/[^\\']+/, 'string.php'],
+                            [/@escapes/, 'string.escape.php'],
+                            [/\\./, 'string.escape.invalid.php'],
+                            [/'/, 'string.php', '@pop']
+                        ]
+                    },
+                
+                    phpKeywords: [
+                        'import', 'driver', 'alias', 'if', 'switch', 'case', 'default', 'operation', 'function', 'new', 
+                        'else', 'for', 'var', 'return', 'async', 'break', 'breakAll', 'and', 'or', 'not', 'xor', 'implies', 
+                        'ext', 'in', 'continue', 'while', 'throw', 'delete', 'transaction', 'abort', 'model', 'group', 'as'
+                    ],
+                
+                    phpCompileTimeConstants: [
+                        '__CLASS__',
+                        '__DIR__',
+                        '__FILE__',
+                        '__LINE__',
+                        '__NAMESPACE__',
+                        '__METHOD__',
+                        '__FUNCTION__',
+                        '__TRAIT__'
+                    ],
+                
+                    phpPreDefinedVariables: [
+                        '$GLOBALS',
+                        '$_SERVER',
+                        '$_GET',
+                        '$_POST',
+                        '$_FILES',
+                        '$_REQUEST',
+                        '$_SESSION',
+                        '$_ENV',
+                        '$_COOKIE',
+                        '$php_errormsg',
+                        '$HTTP_RAW_POST_DATA',
+                        '$http_response_header',
+                        '$argc',
+                        '$argv'
+                    ],
+                
+                    escapes: /\\(?:[abfnrtv\\"']|x[0-9A-Fa-f]{1,4}|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})/
+                });
     }
 
     registerEmfatic() {
