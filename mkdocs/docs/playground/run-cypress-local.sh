@@ -18,7 +18,7 @@ wait_for_service() {
 }
 
 cleanup() {
-  git restore .
+  git restore backend.json
   if test -n "$PID_MKDOCS"; then
     echo "Stopping mkdocs at PID $PID_MKDOCS"
     pkill -P "$PID_MKDOCS"
@@ -39,7 +39,7 @@ npx webpack --mode=development
 PID_MKDOCS=$!
 
 # Start backend in the background
-docker run --rm -p 8080:8080 ghcr.io/epsilonlabs/playground-backend:standalone-server &
+docker run --rm -p 8080:8080 ghcr.io/epsilonlabs/playground-backend/standalone-server &
 PID_DOCKER=$!
 
 # Wait for both to finish starting
