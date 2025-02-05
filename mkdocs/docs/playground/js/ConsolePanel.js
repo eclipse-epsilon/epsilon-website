@@ -1,6 +1,4 @@
-import { define } from "ace-builds";
 import { Panel } from "./Panel.js";
-import { language, programPanel, secondProgramPanel } from "./Playground.js";
 
 class ConsolePanel extends Panel {
 
