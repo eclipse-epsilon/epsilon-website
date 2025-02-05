@@ -42,7 +42,6 @@ class MonacoSetup {
                 root: []
             }
         });
-        
     }
 
     registerConsoleErrorLanguage() {
@@ -55,7 +54,7 @@ class MonacoSetup {
         });
         monaco.languages.registerLinkProvider({ language: 'err', exclusive: true }, {
             provideLinks: function(model, token) {
-                const regex = /\b([a-zA-Z0-9_.]+)@(\d+):(\d+)-(\d+):(\d+)\b/g;
+                const regex = /\b([a-zA-Z0-9_]+)\.([a-zA-Z0-9_]+)@(\d+):(\d+)-(\d+):(\d+)\b/g;
                 const text = model.getValue();
                 let match;
                 let links = [];
@@ -67,25 +66,39 @@ class MonacoSetup {
                         model.getPositionAt(match.index + match[0].length).lineNumber,
                         model.getPositionAt(match.index + match[0].length).column
                     );
-        
+                    
                     links.push({
                         range: range,
                         file: match[1],
-                        startLine: parseInt(match[2], 10),
-                        startColumn: parseInt(match[3], 10),
-                        endLine: parseInt(match[4], 10),
-                        endColumn: parseInt(match[5], 10),
-                        tooltip: `Navigate to ${match[1]} from ${match[2]}:${match[3]} to ${match[4]}:${match[5]}`
+                        extension: match[2],
+                        startLine: parseInt(match[3], 10),
+                        startColumn: parseInt(match[4], 10) + 1,
+                        endLine: parseInt(match[5], 10),
+                        endColumn: parseInt(match[6], 10) + 1,
+                        tooltip: `Navigate to ${match[1]}.${match[2]} from ${match[3]}:${match[4]} to ${match[5]}:${match[6]}`
                     });
                 }
         
                 return { links: links };
             },
             resolveLink: function(link) {
-                console.log("Resolved Link:");
-                console.log("File:", link.file);
-                console.log("Start Position:", link.startLine, ":", link.startColumn);
-                console.log("End Position:", link.endLine, ":", link.endColumn);
+
+                var panel = language === "egx" && link.extension === "egl"
+                || language === "eml" && link.extension === "ecl"
+                ? secondProgramPanel
+                : programPanel;
+
+                const editor = panel.getEditor();
+
+                if (editor) {
+                    const selectionRange = new monaco.Range(
+                        link.startLine, link.startColumn,
+                        link.endLine, link.endColumn
+                    );
+
+                    editor.setSelection(selectionRange);
+                    editor.revealRange(selectionRange, monaco.editor.ScrollType.Smooth);
+                }
             }
         });
     }

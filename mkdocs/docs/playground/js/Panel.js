@@ -14,7 +14,6 @@ class Panel {
         this.id = id;
         this.getElement();
         
-        // TODO: Use soft tabs
         this.editor = monaco.editor.create(this.element.querySelector('.editor'), {
             theme: "playground",
             autoDetectHighContrast: "false",
@@ -26,24 +25,10 @@ class Panel {
             lineNumbers: "off",
             renderLineHighlight: "none",
             occurrencesHighlight: "off",
-            selectionHighlight: "false"
+            selectionHighlight: false,
+            insertSpaces: false
         });
-
-        // Set up the panel's editor
-        /*
-        this.editor = ace.edit(this.element.querySelector('.editor'));
-        this.editor.setShowPrintMargin(false);
-        this.editor.setTheme("ace/theme/eclipse");
-        this.editor.renderer.setShowGutter(false);
-        this.editor.setFontSize("1rem");
-        this.editor.setOptions({
-            fontSize: "11pt",
-            useSoftTabs: true
-        });*/
-        // var el = this.element.querySelector('.editor');
-        // console.log(el);
-        // this.editor = monaco.editor.create(el, {value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'), language: 'javascript'});
-
+        
         this.visible = true;
     }
 
