@@ -24,11 +24,10 @@ class Panel {
         
         monaco.editor.setTheme('default')
         
+        // TODO: Use soft tabs
         this.editor = monaco.editor.create(this.element.querySelector('.editor'), {
-            //theme: "hc-light",
             autoDetectHighContrast: "false",
             fontSize: 14,
-            language: "eol",
             automaticLayout: true,
             minimap: {
                 enabled: false
@@ -139,6 +138,10 @@ class Panel {
             }
         }
         this.maximised = !this.maximised;
+    }
+
+    setLanguage(language) {
+        monaco.editor.setModelLanguage(this.editor.getModel(), language);
     }
 
     getEditor() {

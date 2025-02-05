@@ -20,6 +20,28 @@ class SyntaxHighlighter {
 
         this.registerEolBasedLanguage("pinset", etlKeywords.concat(['pre', 'post', 'dataset', 'over', 'from', 'guard', 'properties', 'reference', 'column', 'grid', 'keys', 'header', 'body', 'as']));
         this.registerEgl();
+        this.registerConsoleOutputLanguage();
+        this.registerConsoleErrorLanguage();
+    }
+
+    registerConsoleOutputLanguage() {
+        monaco.languages.register({ id: 'out' });
+        monaco.languages.setMonarchTokensProvider('out', {
+            defaultToken: '',
+            tokenizer: {
+                root: []
+            }
+        });
+    }
+
+    registerConsoleErrorLanguage() {
+        monaco.languages.register({ id: 'err' });
+        monaco.languages.setMonarchTokensProvider('err', {
+            defaultToken: 'constant',
+            tokenizer: {
+                root: []
+            }
+        });
     }
 
     registerEolBasedLanguage(language, extraKeywords = [], extraConstants = []) {

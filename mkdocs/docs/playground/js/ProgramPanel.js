@@ -1,5 +1,4 @@
 import { Panel } from "./Panel.js";
-import * as monaco from 'monaco-editor';
 
 class ProgramPanel extends Panel {
 
@@ -11,8 +10,8 @@ class ProgramPanel extends Panel {
 
     setLanguage(language) {
         this.language = language;
-        monaco.editor.setModelLanguage(this.editor.getModel(), language);
-        // this.editor.getSession().setMode("ace/mode/" + language);
+        super.setLanguage(language);
+
         this.createButtons();
         var title = "";
 
@@ -61,16 +60,6 @@ class ProgramPanel extends Panel {
             });
         }
         return buttons;
-        /*
-        return [{
-            html: this.buttonHtml("help", languageName + " language reference"),
-            cls: "sys-button",
-            onclick: "window.open('https://www.eclipse.org/epsilon/doc/'+language);"
-        }, {
-            html: this.buttonHtml("run", "Run the program (Ctrl/Cmd+S)"),
-            cls: "sys-button",
-            onclick: "runProgram()"
-        }];*/
     }
 
     // TODO: Identical to ConsolePanel.createElement()

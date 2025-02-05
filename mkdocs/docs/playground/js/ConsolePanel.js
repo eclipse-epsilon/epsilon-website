@@ -6,14 +6,14 @@ class ConsolePanel extends Panel {
 
     constructor() {
         super("console");
-        // this.editor.setReadOnly(true);
+        this.editor.updateOptions({ readOnly: true });
         this.setValue("");
         this.createButtons();
 
         // this.defineHoverlink();
         // this.detectSemanticErrorLinks(this.editor);
         // this.detectSyntacticErrorLinks(this.editor);
-        this.setTitleAndIcon("Console", "console");   
+        this.setTitleAndIcon("Console", "console");
     }
 
     getButtons() {
@@ -25,13 +25,13 @@ class ConsolePanel extends Panel {
     }
 
     setOutput(str) {
-        document.getElementById("consoleEditor").style.color = "black";
+        this.setLanguage("out");
         this.editor.updateOptions({wordWrap: "off"});
         this.setValue(str);
     }
 
     setError(str) {
-        document.getElementById("consoleEditor").style.color = "#CD352C";
+        this.setLanguage("err");
         this.editor.updateOptions({wordWrap: "on"});
         this.setValue(str);
     }

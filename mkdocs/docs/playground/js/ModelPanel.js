@@ -1,6 +1,5 @@
 import { Panel } from "./Panel.js";
 import { Splitter } from "./Splitter.js";
-import * as monaco from 'monaco-editor'
 
 import svgPanZoom from 'svg-pan-zoom';
 
@@ -47,15 +46,11 @@ class ModelPanel extends Panel {
     }
 
     setupSyntaxHighlighting() {
-        // this.editor.updateOptions({language: "xml"});
-        //var model = this.editor.getModel();
-        monaco.editor.setModelLanguage(this.editor.getModel(), 'xml');
-        // this.editor.getSession().setMode("ace/mode/xml");
-        // this.updateSyntaxHighlighting();
-        // var self = this;
-        // this.editor.getSession().on('change', function () {
-        //     self.updateSyntaxHighlighting();
-        // });
+        this.updateSyntaxHighlighting();
+        var self = this;
+        this.editor.getModel().onDidChangeContent((event) => {
+            self.updateSyntaxHighlighting();
+        });
     }
 
     /**
@@ -65,12 +60,12 @@ class ModelPanel extends Panel {
      * flavour is assumed
      */
     updateSyntaxHighlighting() {
-        var val = this.editor.getSession().getValue();
+        var val = this.editor.getValue();
         if ((val.trim() + "").startsWith("<")) {
-            this.editor.getSession().setMode("ace/mode/xml");
+            this.setLanguage("xml");
         }
         else {
-            this.editor.getSession().setMode("ace/mode/yaml");
+            this.setLanguage("yaml");
         }
     }
 
