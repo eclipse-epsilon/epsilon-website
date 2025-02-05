@@ -42,6 +42,7 @@ class MonacoSetup {
                 root: []
             }
         });
+        
     }
 
     registerConsoleErrorLanguage() {
@@ -50,6 +51,41 @@ class MonacoSetup {
             defaultToken: 'constant',
             tokenizer: {
                 root: []
+            }
+        });
+        monaco.languages.registerLinkProvider({ language: 'err', exclusive: true }, {
+            provideLinks: function(model, token) {
+                const regex = /\b([a-zA-Z0-9_.]+)@(\d+):(\d+)-(\d+):(\d+)\b/g;
+                const text = model.getValue();
+                let match;
+                let links = [];
+        
+                while ((match = regex.exec(text)) !== null) {
+                    const range = new monaco.Range(
+                        model.getPositionAt(match.index).lineNumber,
+                        model.getPositionAt(match.index).column,
+                        model.getPositionAt(match.index + match[0].length).lineNumber,
+                        model.getPositionAt(match.index + match[0].length).column
+                    );
+        
+                    links.push({
+                        range: range,
+                        file: match[1],
+                        startLine: parseInt(match[2], 10),
+                        startColumn: parseInt(match[3], 10),
+                        endLine: parseInt(match[4], 10),
+                        endColumn: parseInt(match[5], 10),
+                        tooltip: `Navigate to ${match[1]} from ${match[2]}:${match[3]} to ${match[4]}:${match[5]}`
+                    });
+                }
+        
+                return { links: links };
+            },
+            resolveLink: function(link) {
+                console.log("Resolved Link:");
+                console.log("File:", link.file);
+                console.log("Start Position:", link.startLine, ":", link.startColumn);
+                console.log("End Position:", link.endLine, ":", link.endColumn);
             }
         });
     }
