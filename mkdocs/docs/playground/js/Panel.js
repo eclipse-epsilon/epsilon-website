@@ -26,7 +26,14 @@ class Panel {
             renderLineHighlight: "none",
             occurrencesHighlight: "off",
             selectionHighlight: false,
-            insertSpaces: false
+            insertSpaces: false,
+            acceptSuggestionOnEnter: "off",
+            stickyScroll: {
+                enabled: false,
+                maxLineCount: 0
+            },
+            overviewRulerLanes: 0,
+            // folding: false
         });
         
         this.visible = true;

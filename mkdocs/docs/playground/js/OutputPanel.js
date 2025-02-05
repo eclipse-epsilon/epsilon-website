@@ -45,7 +45,7 @@ class OutputPanel extends ModelPanel {
         }
 
         var select = this.getSelect();
-        var previousSelection = select.getSelected();
+        var previousSelection = select.getSelected()[0];
         
         select.data(Object.fromEntries(options));
 
@@ -76,22 +76,23 @@ class OutputPanel extends ModelPanel {
         });
     }
 
+    getLanguageForPath(path) {
+        const ext = path.split('.').pop(); // Extract file extension
+        return monaco.languages.getLanguages().find(lang =>
+            lang.extensions?.includes(`.${ext}`)
+        )?.id || 'plaintext'; // Default to plaintext if unknown
+    }
+
     displayGeneratedFile(path) {
         for (const generatedFile of this.generatedFiles) {
             if (generatedFile.path == path) {
-                const ext = path.split('.').pop(); // Extract file extension
-                const language = monaco.languages.getLanguages().find(lang =>
-                    lang.extensions?.includes(`.${ext}`)
-                )?.id || 'plaintext'; // Default to plaintext if unknown
-
                 // Set the detected language to the editor model
-                monaco.editor.setModelLanguage(this.getEditor().getModel(), language);
+                monaco.editor.setModelLanguage(this.getEditor().getModel(), this.getLanguageForPath(path));
                 this.setValue(generatedFile.content);
-
                 return;
             }
         }
-
+        
         // If the generated path is invalid, reset the editor
         this.setValue("");
         monaco.editor.setModelLanguage(this.getEditor().getModel(), 'plaintext');

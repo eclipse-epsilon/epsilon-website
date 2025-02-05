@@ -142,6 +142,9 @@ class MonacoSetup {
             // The main tokenizer for our languages
             tokenizer: {
                 root: [
+                    // @ and $ annotations.
+                    [/^(@|\$).*$/, 'annotation'],
+
                     // identifiers and keywords
                     [/[a-zA-Z_$][\w$]*/, {
                         cases: {
@@ -165,12 +168,6 @@ class MonacoSetup {
                         }
                     }],
                     
-                    // TODO: Annotations need fixing
-                    // @ annotations.
-                    [/^@.*$/, 'annotation'],
-
-                    //TODO: Not sure why $ annotations don't work
-
                     // numbers
                     [/(@digits)[eE]([\-+]?(@digits))?[fFdD]?/, 'number.float'],
                     [/(@digits)\.(@digits)([eE][\-+]?(@digits))?[fFdD]?/, 'number.float'],
