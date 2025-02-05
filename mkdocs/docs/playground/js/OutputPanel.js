@@ -58,7 +58,7 @@ class OutputPanel extends ModelPanel {
         var self = this;
         Metro.dialog.create({
             title: "Set Generated Text Language",
-            content: "<p>You can set the language of the generated text to any language supported by the Monaco editor. </p><br><input type='text' id='language' data-role='input' value='" + self.outputLanguage + "'>",
+            content: "<p>You can set the language of the generated text to <a href='https://github.com/microsoft/monaco-editor/tree/main/src/basic-languages'>any language</a> supported by the Monaco editor. </p><br><input type='text' id='language' data-role='input' value='" + self.outputLanguage + "'>",
             actions: [
                 {
                     caption: "OK",
@@ -83,11 +83,16 @@ class OutputPanel extends ModelPanel {
         )?.id || 'plaintext'; // Default to plaintext if unknown
     }
 
+    setLanguage(language) {
+        super.setLanguage(language);
+        this.outputLanguage = language;
+    }
+
     displayGeneratedFile(path) {
         for (const generatedFile of this.generatedFiles) {
             if (generatedFile.path == path) {
                 // Set the detected language to the editor model
-                monaco.editor.setModelLanguage(this.getEditor().getModel(), this.getLanguageForPath(path));
+                this.setLanguage(this.getLanguageForPath(path));
                 this.setValue(generatedFile.content);
                 return;
             }
@@ -95,7 +100,7 @@ class OutputPanel extends ModelPanel {
         
         // If the generated path is invalid, reset the editor
         this.setValue("");
-        monaco.editor.setModelLanguage(this.getEditor().getModel(), 'plaintext');
+        this.setLanguage("plaintext");
     }
 
     generatedFileSelected() {
