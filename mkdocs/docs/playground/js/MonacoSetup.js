@@ -1,8 +1,8 @@
 import * as monaco from 'monaco-editor'
 
-class SyntaxHighlighter {
+class MonacoSetup {
 
-    setup() {
+    do() {
         this.registerEmfatic();
         this.registerEolBasedLanguage("eol");
         this.registerEolBasedLanguage("evl", ['context', 'constraint', 'guard', 'pre', 'post', 'assumes', 'critique', 'message', 'title', 'do', 'check', 'fix', 'typeOf', 'kindOf', 'high', 'medium', 'low'], ['constraintTrace', 'extras']);
@@ -22,6 +22,16 @@ class SyntaxHighlighter {
         this.registerEgl();
         this.registerConsoleOutputLanguage();
         this.registerConsoleErrorLanguage();
+        this.registerPlaygroundTheme();
+    }
+
+    registerPlaygroundTheme() {
+        monaco.editor.defineTheme('playground', {
+            base: 'vs',
+            inherit: true,
+            rules: [],
+            colors: { "editor.background": "#ffffff" }
+            });
     }
 
     registerConsoleOutputLanguage() {
@@ -383,4 +393,4 @@ class SyntaxHighlighter {
 
 }
 
-export {SyntaxHighlighter};
+export {MonacoSetup};

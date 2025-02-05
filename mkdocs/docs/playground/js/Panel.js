@@ -14,18 +14,9 @@ class Panel {
         this.id = id;
         this.getElement();
         
-        //TODO: Avoid defining the theme multiple times
-        monaco.editor.defineTheme('default', {
-            base: 'vs',
-            inherit: true,
-            rules: [],
-            colors: { "editor.background": "#ffffff" }
-            });
-        
-        monaco.editor.setTheme('default')
-        
         // TODO: Use soft tabs
         this.editor = monaco.editor.create(this.element.querySelector('.editor'), {
+            theme: "playground",
             autoDetectHighContrast: "false",
             fontSize: 14,
             automaticLayout: true,
