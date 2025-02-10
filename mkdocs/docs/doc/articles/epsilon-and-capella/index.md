@@ -28,6 +28,6 @@ context AbstractFunction {
 
 ![](evl-in-capella.png)
 
-To be able to run Epsilon programs such as the one above from Capella, you need to turn on the `Developers` capability from the `Preferences` dialog as shown below.
+To be able to run Epsilon programs such as the one above from Capella, you need to turn on the `Development` capability from the `Preferences` dialog as shown below.
 
 ![](preferences.png)
