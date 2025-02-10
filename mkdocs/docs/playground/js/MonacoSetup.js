@@ -192,15 +192,12 @@ class MonacoSetup {
         
                 whitespace: [
                     [/[ \t\r\n]+/, ''],
-                    [/\/\*\*(?!\/)/, 'comment.doc'],
                     [/\/\*/, 'comment', '@comment'],
                     [/\/\/.*$/, 'comment'],
                 ],
         
                 comment: [
                     [/[^\/*]+/, 'comment'],
-                    // [/\/\*/, 'comment', '@push' ],    // nested comment not allowed :-(
-                    // [/\/\*/,    'comment.invalid' ],    // this breaks block comments in the shape of /* //*/
                     [/\*\//, 'comment', '@pop'],
                     [/[\/*]/, 'comment']
                 ],
