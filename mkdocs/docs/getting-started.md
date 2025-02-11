@@ -41,4 +41,5 @@ Support for syntax highlighting Epsilon programs, Flexmi models and [Emfatic](ht
 |  |  |
 | ------ | ---------- |
 | [VS Code](../doc/articles/vscode) | ![](../doc/articles/vscode/vscode.png) |
+| [IntelliJ](https://github.com/epsilonlabs/epsilon.tmbundle) | ![](../doc/articles/intellij/intellij.png) |
 | [Sublime](https://github.com/epsilonlabs/sublime) | ![](../doc/articles/sublime/sublime.png) |
