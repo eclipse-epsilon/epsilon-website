@@ -212,17 +212,17 @@ To create a spreadsheet from scratch (e.g. when it is produced by an ETL transfo
     // Create the staff  
     var matthew = new Staff(id="mt506", firstname="Matthew",
       lastname="Thomas", teaches=Sequence{MSD, RQE});
-
+    
     var matthew = new Staff(id="dj503", firstname="Daniel",
       lastname="Jackson", teaches=Sequence{HCI});
-
+    
     // Create the students
     var joe = new Student(id="jt501", firstname="Joe", 
       lastname="Thompson", age="23", supervisor=matthew, modules=Sequence{MSD, RQE});
-
+    
     var jane = new Student(id="js502", firstname="Jane", 
       lastname="Smith", age="22", supervisor=matthew, modules=Sequence{MSD, HCI});
-
+    
     // Create the marks
     new Mark(student=joe, module=MSD, mark=62);
     new Mark(student=jane, module=HCI, mark=74);
@@ -272,6 +272,26 @@ for (w in M.worksheets) {
 }
 ```
 
+## ANT Workflows
+
+You can use Excel spreadsheets in ANT workflows using Epsilon's generic `epsilon.loadModel` task as shown below.
+
+```xml
+<epsilon.loadModel name="M" type="ExcelModel">
+    <parameter name="SPREADSHEET_FILE" file="spreadsheet.xlsx" />
+    <parameter name="CONFIGURATION_FILE" file="mapping.xml" />
+</epsilon.loadModel>
+```
+
+The parameters supported for spreadsheets are listed below.
+
+| Parameter                | Description                                                  | Default Value |
+| ------------------------ | ------------------------------------------------------------ | ------------- |
+| SPREADSHEET_FILE         | The path of the `.xslx` file                                 |               |
+| CONFIGURATION_FILE       | The path of the XML-based [configuration file](#references-and-column-types) |               |
+| PROPERTY_READONLOAD      | Whether the existing contents of the spreadsheet file should be read | true          |
+| PROPERTY_STOREONDISPOSAL | Whether any modifications should be written back to the spreadsheet file | false         |
+
 ## Resources
 
-- [This article](../running-epsilon-ant-tasks-from-command-line#excel) shows how to use Excel spreadsheets in ANT/Gradle/Maven builds.
+- [This article](../running-epsilon-ant-tasks-from-command-line#excel) shows how to use Excel spreadsheets in standalone ANT/Gradle/Maven builds.
