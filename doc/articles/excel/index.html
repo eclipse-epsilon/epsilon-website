@@ -1828,6 +1828,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ant-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      ANT Workflows
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#resources" class="md-nav__link">
     <span class="md-ellipsis">
       Resources
@@ -2123,9 +2132,48 @@ for (w in M.worksheets) {
     r.println("\t");
   }
 }</code></pre>
+<h2 id="ant-workflows">ANT Workflows<a class="headerlink" href="#ant-workflows" title="Permanent link">&para;</a></h2>
+<p>You can use Excel spreadsheets in ANT workflows using Epsilon's generic <code>epsilon.loadModel</code> task as shown below.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;epsilon.loadModel</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;M&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;ExcelModel&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;SPREADSHEET_FILE&quot;</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;spreadsheet.xlsx&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;parameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CONFIGURATION_FILE&quot;</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;mapping.xml&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/epsilon.loadModel&gt;</span>
+</code></pre></div>
+<p>The parameters supported for spreadsheets are listed below.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPREADSHEET_FILE</td>
+<td>The path of the <code>.xslx</code> file</td>
+<td></td>
+</tr>
+<tr>
+<td>CONFIGURATION_FILE</td>
+<td>The path of the XML-based <a href="#references-and-column-types">configuration file</a></td>
+<td></td>
+</tr>
+<tr>
+<td>PROPERTY_READONLOAD</td>
+<td>Whether the existing contents of the spreadsheet file should be read</td>
+<td>true</td>
+</tr>
+<tr>
+<td>PROPERTY_STOREONDISPOSAL</td>
+<td>Whether any modifications should be written back to the spreadsheet file</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
 <h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../running-epsilon-ant-tasks-from-command-line#excel">This article</a> shows how to use Excel spreadsheets in ANT/Gradle/Maven builds.</li>
+<li><a href="../running-epsilon-ant-tasks-from-command-line#excel">This article</a> shows how to use Excel spreadsheets in standalone ANT/Gradle/Maven builds.</li>
 </ul>
 
 
