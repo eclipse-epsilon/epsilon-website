@@ -64,6 +64,23 @@ busCreator.link(scope);
 
 ![](simulink-model.png)
 
+## Using the Simulink Driver from Java
+
+[This example](https://github.com/eclipse-epsilon/epsilon/blob/main/examples/org.eclipse.epsilon.examples.simulink.standalone) demonstrates how to use the Simulink driver from a standalone Java program with Maven.
+
+=== "Example.java"
+
+    ```java
+    {{{ example("org.eclipse.epsilon.examples.simulink.standalone/src/main/java/org/eclipse/epsilon/examples/simulink/standalone/Example.java", true) }}}
+    ```
+
+=== "program.eol"
+
+    ```eol
+    {{{ example("org.eclipse.epsilon.examples.simulink.standalone/program.eol", true) }}}
+    ```
+
+
 ## Updates in Epsilon 2.6
 
 While older versions of Java allowed altering the Java library path at runtime, this is no longer possible. Therefore, we have removed the respective configuration property and UI. Please check the official [Matlab documentation](https://uk.mathworks.com/help/matlab/matlab_external/setup-environment.html) for instructions on setting up OS variables and the Java library path. Epsilon 2.6 also adds support for Apple Silicon.
