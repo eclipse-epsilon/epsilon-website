@@ -1726,6 +1726,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#using-the-simulink-driver-from-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Simulink Driver from Java
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#updates-in-epsilon-26" class="md-nav__link">
     <span class="md-ellipsis">
       Updates in Epsilon 2.6
@@ -1812,6 +1821,75 @@ busCreator.link(scope);</code></pre>
 <li>Launch the Run configuration. Simulink should pop up and you should see the model below (which you can edit/run as normal)</li>
 </ul>
 <p><img alt="" src="simulink-model.png" /></p>
+<h2 id="using-the-simulink-driver-from-java">Using the Simulink Driver from Java<a class="headerlink" href="#using-the-simulink-driver-from-java" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/eclipse-epsilon/epsilon/blob/main/examples/org.eclipse.epsilon.examples.simulink.standalone">This example</a> demonstrates how to use the Simulink driver from a standalone Java program with Maven.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Example.java</label><label for="__tabbed_1_2">program.eol</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.examples.simulink.standalone</span><span class="p">;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.io.File</span><span class="p">;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.emc.simulink.model.SimulinkModel</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.eol.EolModule</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Example</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="c1">// Parse the EOL program</span>
+<span class="w">        </span><span class="n">EolModule</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EolModule</span><span class="p">();</span>
+<span class="w">        </span><span class="n">module</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;program.eol&quot;</span><span class="p">));</span>
+
+<span class="w">        </span><span class="c1">// Set up the Simulink model</span>
+<span class="w">        </span><span class="n">SimulinkModel</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SimulinkModel</span><span class="p">();</span>
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;M&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">setFile</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;model.slx&quot;</span><span class="p">));</span>
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">setReadOnLoad</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">setStoredOnDisposal</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="na">load</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// Make the model available to the program</span>
+<span class="w">        </span><span class="n">module</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">getModelRepository</span><span class="p">().</span><span class="na">addModel</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Execute the EOL program</span>
+<span class="w">        </span><span class="n">module</span><span class="p">.</span><span class="na">execute</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// Dispose of the model</span>
+<span class="w">        </span><span class="n">module</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">getModelRepository</span><span class="p">().</span><span class="na">dispose</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<pre class="prettyprint lang-eol"><code>// Create elements
+var sineWave = new `simulink/Sources/Sine Wave`;
+var gain = new `simulink/Math Operations/Gain`;
+var saturation = new `simulink/Discontinuities/Saturation`;
+var busCreator = new `simulink/Signal Routing/Bus Creator`;
+var scope = new `simulink/Sinks/Scope`;
+
+// Position them on the diagram
+sineWave.position = "[100 100 130 130]";
+gain.position = "[200 100 230 130]";
+saturation.position = "[300 100 330 130]";
+busCreator.position = "[400 70 410 300]";
+scope.position = "[500 175 530 205]";
+
+// Set their properties
+gain.gain = 2;
+busCreator.inputs = 3;
+
+// Link them
+sineWave.link(gain);
+gain.link(saturation);
+saturation.link(busCreator);
+gain.linkTo(busCreator, 2);
+sineWave.linkTo(busCreator, 3);
+busCreator.link(scope);</code></pre>
+</div>
+</div>
+</div>
 <h2 id="updates-in-epsilon-26">Updates in Epsilon 2.6<a class="headerlink" href="#updates-in-epsilon-26" title="Permanent link">&para;</a></h2>
 <p>While older versions of Java allowed altering the Java library path at runtime, this is no longer possible. Therefore, we have removed the respective configuration property and UI. Please check the official <a href="https://uk.mathworks.com/help/matlab/matlab_external/setup-environment.html">Matlab documentation</a> for instructions on setting up OS variables and the Java library path. Epsilon 2.6 also adds support for Apple Silicon.</p>
 
