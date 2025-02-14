@@ -36,15 +36,14 @@ class LiveShareManager {
 
     joinSession(existing) {
         this.sessionId = this.getOrCreateSessionId();
-
-
+        
         this.showLiveShareStatus(true);
-        const ydoc = new Y.Doc();
-        const provider = new WebsocketProvider(backend.getYjsService(), 'epsilon-playground-' + this.sessionId + "-test", ydoc);
-        provider.on('status', event => {
-            console.log(event.status); //console.log(event.status) // logs "connected" or "disconnected"
-        });
-        console.log(provider + ydoc.getText('monaco'));
+        // const ydoc = new Y.Doc();
+        // const provider = new WebsocketProvider(backend.getYjsService(), 'epsilon-playground-' + this.sessionId + "-test", ydoc);
+        // provider.on('status', event => {
+        //     console.log(event.status); //console.log(event.status) // logs "connected" or "disconnected"
+        // });
+        // console.log(provider + ydoc.getText('monaco'));
 
         for (const panel of window.getActivePanels()) {
             if (panel != consolePanel && panel != outputPanel) {
