@@ -2,16 +2,15 @@ import * as Y from 'yjs'
 import { WebsocketProvider } from 'y-websocket'
 import { MonacoBinding } from 'y-monaco'
 import * as monaco from 'monaco-editor'
-import { programPanel } from './Playground';
+import { backend, consolePanel, outputPanel, programPanel } from './Playground';
 
 // TODO: Join session via URL, disconnect, start new session -> the window url is different to the new share URL and this can cause confusion
-// TODO: Exclude the console and output editors from the session
 class LiveShareManager {
 
     sessionId;
     providers = [];
 
-    run() {
+    init() {
         if (this.willJoinSession()) {
             this.sessionId = this.getOrCreateSessionId();
             this.joinSession(true);
@@ -37,18 +36,28 @@ class LiveShareManager {
 
     joinSession(existing) {
         this.sessionId = this.getOrCreateSessionId();
+
+
         this.showLiveShareStatus(true);
+        const ydoc = new Y.Doc();
+        const provider = new WebsocketProvider(backend.getYjsService(), 'epsilon-playground-' + this.sessionId + "-test", ydoc);
+        provider.on('status', event => {
+            console.log(event.status); //console.log(event.status) // logs "connected" or "disconnected"
+        });
+        console.log(provider + ydoc.getText('monaco'));
 
         for (const panel of window.getActivePanels()) {
-            const ydoc = new Y.Doc();
-            // const provider = new WebsocketProvider('wss://demos.yjs.dev/ws', 'epsilon-playground-' + this.sessionId + "-" + panel.getId(), ydoc);
-            const provider = new WebsocketProvider('ws://localhost:1234', 'epsilon-playground-' + this.sessionId + "-" + panel.getId(), ydoc);
-            this.providers.push(provider);
-            const ytext = ydoc.getText('monaco');
-            var editor = panel.getEditor();
-            var value = panel.getEditor().getValue();
-            const monacoBinding = new MonacoBinding(ytext, (editor.getModel()), new Set([editor]), provider.awareness);
-            if (!existing) panel.getEditor().setValue(value);
+            if (panel != consolePanel && panel != outputPanel) {
+                const ydoc = new Y.Doc();
+                // const provider = new WebsocketProvider('wss://demos.yjs.dev/ws', 'epsilon-playground-' + this.sessionId + "-" + panel.getId(), ydoc);
+                const provider = new WebsocketProvider(backend.getYjsService(), 'epsilon-playground-' + this.sessionId + "-" + panel.getId(), ydoc);
+                this.providers.push(provider);
+                const ytext = ydoc.getText('monaco');
+                var editor = panel.getEditor();
+                var value = panel.getEditor().getValue();
+                const monacoBinding = new MonacoBinding(ytext, (editor.getModel()), new Set([editor]), provider.awareness);
+                if (!existing) panel.getEditor().setValue(value);
+            }
         }
     }
 

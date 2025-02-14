@@ -3,6 +3,8 @@
       {"name": "RunEpsilonFunction", "url": "http://localhost:8080/epsilon"},
       {"name": "FlexmiToPlantUMLFunction", "url": "http://localhost:8080/flexmi2plantuml"},
       {"name": "EmfaticToPlantUMLFunction", "url": "http://localhost:8080/emfatic2plantuml"},
-      {"name": "ShortURLFunction", "url": "http://localhost:8080/shorturl"}
+      {"name": "ShortURLFunction", "url": "http://localhost:8080/shorturl"},
+      {"name": "Yjs", "url": "ws://localhost:1234", "alternative": "wss://demos.yjs.dev/ws"},
+      {"name": "Kroki", "url": "https://uk-ac-york-cs-epsilon-kroki.h5rwqzvxy5sr4.eu-west-1.cs.amazonlightsail.com"}      
     ]
   }

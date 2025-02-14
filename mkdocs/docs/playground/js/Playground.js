@@ -326,7 +326,7 @@ function runProgram() {
                             else krokiEndpoint = "graphviz/svg"
 
                             var krokiXhr = new XMLHttpRequest();
-                            krokiXhr.open("POST", "https://uk-ac-york-cs-epsilon-kroki.h5rwqzvxy5sr4.eu-west-1.cs.amazonlightsail.com/" + krokiEndpoint, true);
+                            krokiXhr.open("POST", backend.getKrokiService() + "/" + krokiEndpoint, true);
                             krokiXhr.setRequestHeader("Accept", "image/svg+xml");
                             krokiXhr.setRequestHeader("Content-Type", "text/plain");
                             krokiXhr.onreadystatechange = function () {
@@ -463,4 +463,4 @@ window.copyToClipboard = copyToClipboard;
 window.downloadDialog = downloadDialog;
 window.language = language;
 window.getActivePanels = getActivePanels;
-liveShareManager.run();
+liveShareManager.init();

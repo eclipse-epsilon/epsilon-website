@@ -35,6 +35,14 @@ class Backend {
     getShortURLService() {
         return this.services["ShortURLFunction"];
     }
+
+    getYjsService() {
+        return this.services["Yjs"];
+    }
+
+    getKrokiService() {
+        return this.services["Kroki"];
+    }
 }
 
 export { Backend };
