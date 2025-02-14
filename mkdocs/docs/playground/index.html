@@ -21,11 +21,21 @@
             <ul class="navview-menu">
                 <li class="item-header">Epsilon Playground</li>
                 <li class="item-separator"></li>
+                <li id="liveShareStatus">
+                    <a href="#" onclick="showLiveShare(event)">
+                        <span class="icon"><span class="mif-example-16 mif-liveshare"></span></span>
+                        <span class="caption">Live Sharing</span>
+                    </a>
+                </li>
                 <li class="item-separator" id="examplesEnd"></li>                
                 <li>
                     <a href="#" onclick="copyShortenedLink(event)" id="copyShortened">
                         <span class="icon"><span class="mif-example-16 mif-link"></span></span>
                         <span class="caption">Share</span>
+                    </a>
+                    <a href="#" onclick="showLiveShare(event)" id="liveShare">
+                        <span class="icon"><span class="mif-example-16 mif-liveshare"></span></span>
+                        <span class="caption">Live Share</span>
                     </a>
                     <a href="#" onclick="showDownloadOptions(event)" id="showDownloadOptions">
                         <span class="icon"><span class="mif-example-16 mif-download"></span></span>

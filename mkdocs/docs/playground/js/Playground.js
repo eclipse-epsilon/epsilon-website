@@ -6,11 +6,13 @@ import { ExampleManager } from './ExampleManager.js';
 import { DownloadDialog } from './DownloadDialog.js';
 import { MetamodelPanel } from './MetamodelPanel.js';
 import { SettingsDialog } from './SettingsDialog.js';
+import { LiveShareDialog } from './LiveShareDialog.js';
 import { Preloader } from './Preloader.js';
 import { Backend } from './Backend.js';
 import { Layout } from './Layout.js';
 import 'metro4';
 import { MonacoSetup } from './MonacoSetup.js';
+import { LiveShareManager } from './LiveShareManager.js';
 
 export var language = "eol";
 var outputType = "text";
@@ -34,9 +36,12 @@ export var outputPanel;
 export var consolePanel = new ConsolePanel();
 var downloadDialog = new DownloadDialog();
 var settingsDialog = new SettingsDialog();
+var liveShareDialog = new LiveShareDialog();
 var preloader = new Preloader();
 export var backend = new Backend();
 export var examplesManager = new ExampleManager();
+export var liveShareManager = new LiveShareManager();
+
 var panels = [];
 
 backend.configure();
@@ -68,14 +73,16 @@ function setup() {
     if (language == "egx") secondProgramPanel.setLanguage("egl");
     if (language == "eml") secondProgramPanel.setLanguage("ecl");
 
-    programPanel.setValue(example.program);
-    secondProgramPanel.setValue(example.secondProgram);
-    firstModelPanel.setValue(example.flexmi);
-    firstMetamodelPanel.setValue(example.emfatic);
-    secondModelPanel.setValue(example.secondFlexmi);
-    secondMetamodelPanel.setValue(example.secondEmfatic);
-    thirdModelPanel.setValue(example.thirdFlexmi);
-    thirdMetamodelPanel.setValue(example.thirdEmfatic);
+    if (!liveShareManager.willJoinSession()) {
+        programPanel.setValue(example.program);
+        secondProgramPanel.setValue(example.secondProgram);
+        firstModelPanel.setValue(example.flexmi);
+        firstMetamodelPanel.setValue(example.emfatic);
+        secondModelPanel.setValue(example.secondFlexmi);
+        secondMetamodelPanel.setValue(example.secondEmfatic);
+        thirdModelPanel.setValue(example.thirdFlexmi);
+        thirdMetamodelPanel.setValue(example.thirdEmfatic);
+    }
 
     document.getElementById("navview").style.display = "block";
 
@@ -423,6 +430,10 @@ function showSettings(event) {
     settingsDialog.show(event);
 }
 
+function showLiveShare(event) {
+    liveShareDialog.show(event);
+}
+
 // Some functions and variables are accessed
 // by onclick - or similer - events
 // We need to use window.x = x for this to work
@@ -446,7 +457,10 @@ window.backend = backend;
 window.longNotification = longNotification;
 window.showDownloadOptions = showDownloadOptions;
 window.showSettings = showSettings;
+window.showLiveShare = showLiveShare;
 window.copyShortenedLink = copyShortenedLink;
+window.copyToClipboard = copyToClipboard;
 window.downloadDialog = downloadDialog;
 window.language = language;
 window.getActivePanels = getActivePanels;
+liveShareManager.run();

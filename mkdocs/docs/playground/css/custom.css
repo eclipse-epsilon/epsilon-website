@@ -180,6 +180,10 @@
 	content: url("../images/maximise.png");
 }
 
+.mif-liveshare::before {
+	content: url("../images/liveshare.png");
+}
+
 .active-toggle .icon .mif-folder::before {
 	content: url("../images/open-folder.png");
 }
@@ -297,4 +301,11 @@ body {
 	margin:auto;
 	text-align:center;
 	color: rgb(205, 53, 44);
+}
+
+#liveShareStatus {
+	background-color1: #63BCE9;
+	background-color: #62A92F;
+	color: white;
+	display: none;
 }

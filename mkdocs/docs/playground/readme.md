@@ -36,3 +36,10 @@ To speed up test execution, please disable live reloading by serving the website
 ```
 ./serve-no-livereload.sh
 ```
+
+## Running YJS locally
+
+YJS enables live collaboration in the Playground. To run YJS locally, run:
+
+- `npm i y-websocket`
+- `HOST=localhost PORT=1234 npx y-websocket`
