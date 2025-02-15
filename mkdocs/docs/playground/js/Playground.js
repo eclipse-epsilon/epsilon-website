@@ -37,7 +37,7 @@ export var consolePanel = new ConsolePanel();
 var downloadDialog = new DownloadDialog();
 var settingsDialog = new SettingsDialog();
 var liveShareDialog = new LiveShareDialog();
-var preloader = new Preloader();
+export var preloader = new Preloader();
 export var backend = new Backend();
 export var examplesManager = new ExampleManager();
 export var liveShareManager = new LiveShareManager();
@@ -46,6 +46,7 @@ var panels = [];
 
 backend.configure();
 
+preloader.progress("Fetching programs, models and metamodels");
 example = examplesManager.getSelectedExample();
 setup();
 
@@ -74,14 +75,7 @@ function setup() {
     if (language == "eml") secondProgramPanel.setLanguage("ecl");
 
     if (!liveShareManager.willJoinSession()) {
-        programPanel.setValue(example.program);
-        secondProgramPanel.setValue(example.secondProgram);
-        firstModelPanel.setValue(example.flexmi);
-        firstMetamodelPanel.setValue(example.emfatic);
-        secondModelPanel.setValue(example.secondFlexmi);
-        secondMetamodelPanel.setValue(example.secondEmfatic);
-        thirdModelPanel.setValue(example.thirdFlexmi);
-        thirdMetamodelPanel.setValue(example.thirdEmfatic);
+        initialisePanelValues();
     }
 
     document.getElementById("navview").style.display = "block";
@@ -105,6 +99,16 @@ function setup() {
     fit();
 }
 
+function initialisePanelValues() {
+    programPanel.setValue(example.program);
+    secondProgramPanel.setValue(example.secondProgram);
+    firstModelPanel.setValue(example.flexmi);
+    firstMetamodelPanel.setValue(example.emfatic);
+    secondModelPanel.setValue(example.secondFlexmi);
+    secondMetamodelPanel.setValue(example.secondEmfatic);
+    thirdModelPanel.setValue(example.thirdFlexmi);
+    thirdMetamodelPanel.setValue(example.thirdEmfatic);
+}
 
 function copyShortenedLink(event) {
     event.preventDefault();
@@ -251,7 +255,7 @@ function editorsToJsonObject() {
         "secondEmfatic": secondMetamodelPanel.getValue(),
         "secondFlexmi": secondModelPanel.getValue(),
         "thirdEmfatic": thirdMetamodelPanel.getValue(),
-        "thirdFlexmi": thirdModelPanel.getValue(),
+        "thirdFlexmi": thirdModelPanel.getValue()
     };
 }
 
@@ -266,7 +270,6 @@ function fit() {
     splitter.style.maxHeight = window.innerHeight + "px";
 
     panels.forEach(panel => panel.fit());
-    preloader.hide();
 }
 
 function runProgram() {
@@ -452,12 +455,14 @@ window.secondMetamodelPanel = secondMetamodelPanel;
 window.thirdModelPanel = thirdModelPanel;
 window.thirdMetamodelPanel = thirdMetamodelPanel;
 window.panels = panels;
+window.preloader = preloader;
 
 window.backend = backend;
 window.longNotification = longNotification;
 window.showDownloadOptions = showDownloadOptions;
 window.showSettings = showSettings;
 window.showLiveShare = showLiveShare;
+window.initialisePanelValues = initialisePanelValues;
 window.copyShortenedLink = copyShortenedLink;
 window.copyToClipboard = copyToClipboard;
 window.downloadDialog = downloadDialog;

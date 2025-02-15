@@ -309,3 +309,7 @@ body {
 	color: white;
 	display: none;
 }
+
+#preloader-message {
+	padding: 10px;
+}
