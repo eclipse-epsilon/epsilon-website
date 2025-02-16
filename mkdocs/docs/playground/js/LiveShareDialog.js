@@ -21,7 +21,7 @@ class LiveShareDialog {
                     
                 actions: [
                     {
-                        caption: "Copy URL to Clipboard",
+                        caption: "Copy Link to Clipboard",
                         cls: "js-dialog-close success",
                         onclick: function(){
                             copyToClipboard(liveShareManager.getShareURL());
