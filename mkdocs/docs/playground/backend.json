@@ -4,7 +4,7 @@
     {"name": "FlexmiToPlantUMLFunction", "url": "https://uk-ac-york-cs-epsilon-playground.h5rwqzvxy5sr4.eu-west-1.cs.amazonlightsail.com/flexmi2plantuml"},
     {"name": "EmfaticToPlantUMLFunction", "url": "https://uk-ac-york-cs-epsilon-playground.h5rwqzvxy5sr4.eu-west-1.cs.amazonlightsail.com/emfatic2plantuml"},
     {"name": "ShortURLFunction", "url": "https://l4p4ni4wo4lqtxk4qfedsapbtm0olxqn.lambda-url.eu-west-1.on.aws/"},
-    {"name": "Yjs", "url":"ws://localhost:1234", "alt": "wss://demos.yjs.dev/ws"},
+    {"name": "Yjs", "url":"wss://uk-ac-york-cs-epsilon-yjs.h5rwqzvxy5sr4.eu-west-1.cs.amazonlightsail.com/ws/", "public": "wss://demos.yjs.dev/ws"},
     {"name": "Kroki", "url": "https://uk-ac-york-cs-epsilon-kroki.h5rwqzvxy5sr4.eu-west-1.cs.amazonlightsail.com"}
   ]
 }
