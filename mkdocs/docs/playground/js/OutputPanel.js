@@ -1,5 +1,6 @@
 import { ModelPanel } from "./ModelPanel.js";
 import { language } from "./Playground.js";
+import * as monaco from 'monaco-editor';
 
 class OutputPanel extends ModelPanel {
 
@@ -14,8 +15,7 @@ class OutputPanel extends ModelPanel {
         this.outputLanguage = outputLanguage;
         this.language = language;
         this.createButtons();
-        this.getEditor().getSession().setMode("ace/mode/" + outputLanguage.toLowerCase());
-        //this.getEditor().getSession().setUseWrapMode(false);
+        this.setLanguage(outputLanguage.toLowerCase());
     }
 
     setupSyntaxHighlighting() {}
@@ -45,7 +45,7 @@ class OutputPanel extends ModelPanel {
         }
 
         var select = this.getSelect();
-        var previousSelection = select.getSelected();
+        var previousSelection = select.getSelected()[0];
         
         select.data(Object.fromEntries(options));
 
@@ -58,38 +58,50 @@ class OutputPanel extends ModelPanel {
         var self = this;
         Metro.dialog.create({
             title: "Set Generated Text Language",
-            content: "<p>You can set the language of the generated text to <a href='https://github.com/ajaxorg/ace/tree/master/lib/ace/mode'>any language</a> supported by the <a href='https://ace.c9.io/'>ACE editor</a>. </p><br><input type='text' id='language' data-role='input' value='" + self.outputLanguage + "'>",
+            content: "<p>You can set the language of the generated text to <a href='https://github.com/microsoft/monaco-editor/tree/main/src/basic-languages'>any language</a> supported by the Monaco editor. </p><br><input type='text' id='language' data-role='input' value='" + self.outputLanguage + "'>",
             actions: [
                 {
                     caption: "OK",
                     cls: "js-dialog-close success",
                     onclick: function () {
                         var outputLanguage = document.getElementById("language").value;
-                        self.getEditor().getSession().setMode("ace/mode/" + outputLanguage.toLowerCase());
+                        self.setLanguage(outputLanguage.toLowerCase());
                     }
                 },
                 {
                     caption: "Cancel",
                     cls: "js-dialog-close"
                 }
-            ]
+            ],
+            closeButton: true
         });
+    }
+
+    getLanguageForPath(path) {
+        const ext = path.split('.').pop(); // Extract file extension
+        return monaco.languages.getLanguages().find(lang =>
+            lang.extensions?.includes(`.${ext}`)
+        )?.id || 'plaintext'; // Default to plaintext if unknown
+    }
+
+    setLanguage(language) {
+        super.setLanguage(language);
+        this.outputLanguage = language;
     }
 
     displayGeneratedFile(path) {
         for (const generatedFile of this.generatedFiles) {
             if (generatedFile.path == path) {
+                // Set the detected language to the editor model
+                this.setLanguage(this.getLanguageForPath(path));
                 this.setValue(generatedFile.content);
-                // Set the right syntax highlighting for the file extension
-                var modelist = ace.require("ace/ext/modelist");
-                this.getEditor().getSession().setMode(modelist.getModeForPath(path + "").mode);
                 return;
             }
         }
-
+        
         // If the generated path is invalid, reset the editor
         this.setValue("");
-        this.getEditor().getSession().setMode("ace/mode/text");
+        this.setLanguage("plaintext");
     }
 
     generatedFileSelected() {

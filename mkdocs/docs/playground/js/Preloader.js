@@ -2,6 +2,10 @@ class Preloader {
 
     visible = true;
 
+    progress(message) {
+        document.getElementById("preloader-message").innerHTML = message + "...";
+    }
+
     hide() {
         if (this.visible) {
             var self = this;

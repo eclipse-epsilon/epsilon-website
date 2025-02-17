@@ -13,7 +13,7 @@ class ModelPanel extends Panel {
         super(id);
         this.editable = editable;
         this.metamodelPanel = metamodelPanel;
-        this.setupSyntaxHighlighting();
+        
         this.createButtons();
         this.setTitleAndIcon("Model", "flexmi");
     }
@@ -22,6 +22,7 @@ class ModelPanel extends Panel {
         super.init();
         this.setDiagramRefreshButtonVisible(false);
         this.setFitDiagramButtonVisible(!this.editable);
+        this.setupSyntaxHighlighting();
     }
 
     showDiagram() {
@@ -45,10 +46,9 @@ class ModelPanel extends Panel {
     }
 
     setupSyntaxHighlighting() {
-        this.editor.getSession().setMode("ace/mode/xml");
         this.updateSyntaxHighlighting();
         var self = this;
-        this.editor.getSession().on('change', function () {
+        this.editor.getModel().onDidChangeContent((event) => {
             self.updateSyntaxHighlighting();
         });
     }
@@ -60,12 +60,12 @@ class ModelPanel extends Panel {
      * flavour is assumed
      */
     updateSyntaxHighlighting() {
-        var val = this.editor.getSession().getValue();
+        var val = this.editor.getValue();
         if ((val.trim() + "").startsWith("<")) {
-            this.editor.getSession().setMode("ace/mode/xml");
+            this.setLanguage("xml");
         }
         else {
-            this.editor.getSession().setMode("ace/mode/yaml");
+            this.setLanguage("yaml");
         }
     }
 
@@ -292,7 +292,7 @@ class ModelPanel extends Panel {
             editorElement.style.height = parentElement.offsetHeight - 42 + "px";
         }
 
-        this.editor.resize();
+        // this.editor.resize();
         
         // Fit the diagram
         var diagramElement = document.getElementById(this.id + "Diagram");

@@ -1,3 +1,5 @@
+import * as monaco from 'monaco-editor';
+
 class Panel {
 
     id;
@@ -11,18 +13,29 @@ class Panel {
     constructor(id) {
         this.id = id;
         this.getElement();
-
-        // Set up the panel's editor
-        this.editor = ace.edit(this.element.querySelector('.editor'));
-        this.editor.setShowPrintMargin(false);
-        this.editor.setTheme("ace/theme/eclipse");
-        this.editor.renderer.setShowGutter(false);
-        this.editor.setFontSize("1rem");
-        this.editor.setOptions({
-            fontSize: "11pt",
-            useSoftTabs: true
+        
+        this.editor = monaco.editor.create(this.element.querySelector('.editor'), {
+            theme: "playground",
+            autoDetectHighContrast: "false",
+            fontSize: 14,
+            automaticLayout: true,
+            minimap: {
+                enabled: false
+            },
+            lineNumbers: "off",
+            renderLineHighlight: "none",
+            occurrencesHighlight: "off",
+            selectionHighlight: false,
+            insertSpaces: false,
+            acceptSuggestionOnEnter: "off",
+            stickyScroll: {
+                enabled: false,
+                maxLineCount: 0
+            },
+            overviewRulerLanes: 0,
+            // folding: false
         });
-
+        
         this.visible = true;
     }
 
@@ -110,6 +123,10 @@ class Panel {
         this.maximised = !this.maximised;
     }
 
+    setLanguage(language) {
+        monaco.editor.setModelLanguage(this.editor.getModel(), language);
+    }
+
     getEditor() {
         return this.editor;
     }
@@ -120,9 +137,7 @@ class Panel {
 
     setValue(value) {
         if (value === undefined) value = "";
-        this.editor.setValue((value + ""), 1);
-        // Reset undo manager
-        this.editor.session.getUndoManager().reset(); 
+        this.editor.setValue(value);
     }
 
     buttonHtml(icon, hint, id = null) {

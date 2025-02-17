@@ -46,13 +46,18 @@ class SettingsDialog {
                     caption: "Cancel",
                     cls: "js-dialog-close"
                 }
-            ]
+            ],
+            closeButton: true
         });
     }
 
     updateEditorLineNumbers() {
         this.showEditorLineNumbers = document.getElementById("editorLineNumbers").checked;
-        panels.forEach(p => p.getEditor().renderer.setShowGutter(this.showEditorLineNumbers));
+        panels.forEach(p => {
+            p.getEditor().updateOptions({
+                lineNumbers: this.showEditorLineNumbers ? 'on' : 'off'
+            });
+        });
     }
 
     createEditorLineNumbersCheckbox() {

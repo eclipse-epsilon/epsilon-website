@@ -111,7 +111,8 @@ class DownloadDialog {
                     caption: "Cancel",
                     cls: "js-dialog-close"
                 }
-            ]
+            ],
+            closeButton: true
         });
     }
 
