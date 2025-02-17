@@ -88,7 +88,9 @@ produces the monochrome diagram below.
 
 ## Save and share your work
 
-To share your work, click the `Share` button. This will create a short link that you can copy to your clipboard. Please note that the contents of the editors **will be stored in the back-end of the Epsilon Playground** so that they can be retrieved when you visit that link again later.
+To share a snapshot of your work, click the `Share Snapshot` button. This will create a short link that you can copy to your clipboard. Please note that the contents of the editors **will be stored in the back-end of the Epsilon Playground** so that they can be retrieved when you visit that link again later.
+
+To start a live sharing session, click the `Live Share` button. This will create a link that you can share with others to collaborate with them in real-time. 
 
 ## Download your work
 
