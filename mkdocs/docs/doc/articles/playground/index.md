@@ -93,7 +93,7 @@ To share a snapshot of your work, click the `Share Snapshot` button. This will c
 To start a live sharing session, click the `Live Share` button. This will create a link that you can share with others to collaborate with them in real-time. 
 
 !!! warning "No long-term availability guarantees"
-    Snapshots are stored in an AWS bucket. While there is no expiration policy, we <b>cannot guarantee</b> their long-term availability. Live sharing sessions are <b>memory-based and are lost</b> every time the Playgroung's [collaboration server](https://github.com/epsilonlabs/yjs-websocket-nginx-docker) restarts. Thefore live sharing should be used <b>for ephemeral collaboration only</b>. For long-term storage, please download a copy of your work as discussed below.
+    Snapshots are stored in an AWS bucket. While there is no expiration policy, we <b>cannot guarantee</b> their long-term availability. Live sharing sessions are <b>memory-based and are lost</b> every time the Playground's [collaboration server](https://github.com/epsilonlabs/yjs-websocket-nginx-docker) restarts. Therefore live sharing should be used <b>for ephemeral collaboration only</b>. For long-term storage, please download a copy of your work as discussed below.
 
 ## Download your work
 
