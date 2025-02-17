@@ -384,7 +384,7 @@ function getActivePanels() {
 }
 
 function longNotification(title, cls="light") {
-    Metro.notify.create("<b>" + title + "...</b><br>This may take a few seconds to complete if the back end is not warmed up.", null, {keepOpen: true, cls: cls, width: 300});
+    Metro.notify.create("<b>" + title + "...</b><br>This may take a few seconds to complete.", null, {keepOpen: true, cls: cls, width: 300});
 }
 
 function updateGutterVisibility() {

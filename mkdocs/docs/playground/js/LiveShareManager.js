@@ -35,23 +35,27 @@ class LiveShareManager {
     }
 
     attempt(onServiceAvailable, onServiceUnavailable = () => {}, notify = true) {
-        console.log("attempting" + backend.getYjsService());
         const ws = new WebSocket(backend.getYjsService());
         ws.onopen = () => {
             onServiceAvailable();
+            ws.close();
         };
         ws.onerror = () => {
             onServiceUnavailable();
             if (notify) {
-                Metro.notify.create("Live sharing is not available at the moment.", null, {keepOpen: false, cls: "alert", width: 300});
+                Metro.notify.create("<b>Connection Error</b><br>Live sharing is not available at the moment.", null, {keepOpen: false, cls: "warning", width: 300});
+                ws.close();
             }
         };
     }
 
     showLiveShareStatus(status) {
+        var liveShareBadges = document.getElementById("liveShareBadges");
+        if (status) liveShareBadges.style.display = "block";
+        else liveShareBadges.style.display = "none";
+
         var liveShareStatus = document.getElementById("liveShareStatus");
-        if (status) liveShareStatus.style.display = "block";
-        else liveShareStatus.style.display = "none";
+        liveShareStatus.style.display = liveShareBadges.style.display;
     }
 
     startSession() {
@@ -92,7 +96,7 @@ class LiveShareManager {
 
     getOrCreateSessionId() {
         if (this.sessionId != undefined) return this.sessionId;
-        else return this.generateUUID();
+        else return this.createSessionId();
     }
 
     willJoinSession() {
@@ -107,20 +111,16 @@ class LiveShareManager {
         return url.toString();
     }
 
-    generateUUID() { // Public Domain/MIT
-        var d = new Date().getTime();//Timestamp
-        var d2 = (performance && performance.now && (performance.now()*1000)) || 0;//Time in microseconds since page-load or 0 if unsupported
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-            var r = Math.random() * 16;//random number between 0 and 16
-            if(d > 0){//Use timestamp until depleted
-                r = (d + r)%16 | 0;
-                d = Math.floor(d/16);
-            } else {//Use microseconds since page-load if supported
-                r = (d2 + r)%16 | 0;
-                d2 = Math.floor(d2/16);
-            }
-            return (c==='x' ? r : (r&0x3|0x8)).toString(16);
-        });
+    createSessionId() { 
+        let result = '';
+        const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+        const charactersLength = characters.length;
+        let counter = 0;
+        while (counter < 6) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            counter += 1;
+        }
+        return result;
     }
 
 }

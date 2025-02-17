@@ -15,9 +15,9 @@ class LiveShareDialog {
 
             Metro.dialog.create({
                 title: "Live Sharing",
-                content: "<p>You can invite others to join this session by sharing the link below with them.</p><br/>" + 
-                    "<input style='width:100%' value='" + liveShareManager.getShareURL() + "'>",
-                    //"<a href='" + liveShareManager.getShareURL() + "'>" + liveShareManager.getShareURL() + "</a>",
+                content: "<p>You can invite others to join this session by sharing " + 
+                    //"<input style='width:100%' value='" + liveShareManager.getShareURL() + "'>",
+                    "<a href='" + liveShareManager.getShareURL() + "'>this link</a> with them." ,
                     
                 actions: [
                     {

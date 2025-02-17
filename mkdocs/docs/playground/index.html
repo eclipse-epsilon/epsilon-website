@@ -13,6 +13,7 @@
 
 <body class="h-100" onresize="fit()" onload="fit();updateGutterVisibility();">
     <div id="preloader"><img src="images/preloader.gif" width="100px"><div id="preloader-message"></div></div>
+    <!-- <div id="liveShareBar" style="position:absolute;top:0px;left:60px;padding:4px;width:100px;height:30px;background-color:#41A030;color:white;z-index: 1000">Live Sharing</div> -->
     <div id="navview" data-role="navview" style="display:none">
         <div class="navview-pane">
             <button class="pull-button">
@@ -29,13 +30,16 @@
                 </li>
                 <li class="item-separator" id="examplesEnd"></li>                
                 <li>
-                    <a href="#" onclick="copyShortenedLink(event)" id="copyShortened">
-                        <span class="icon"><span class="mif-example-16 mif-link"></span></span>
-                        <span class="caption">Share</span>
-                    </a>
                     <a href="#" onclick="showLiveShare(event)" id="liveShare">
                         <span class="icon"><span class="mif-example-16 mif-liveshare"></span></span>
                         <span class="caption">Live Share</span>
+                        <div class="badges" id="liveShareBadges" style="display:none">
+                            <div class="badge inline" style="background-color:#41A030;color:white">ON</div>
+                        </div>
+                    </a>
+                    <a href="#" onclick="copyShortenedLink(event)" id="copyShortened">
+                        <span class="icon"><span class="mif-example-16 mif-link"></span></span>
+                        <span class="caption">Share Snapshot</span>
                     </a>
                     <a href="#" onclick="showDownloadOptions(event)" id="showDownloadOptions">
                         <span class="icon"><span class="mif-example-16 mif-download"></span></span>
@@ -52,6 +56,7 @@
                 </li>
             </ul>
         </div>
+        
         <div class="navview-content" id="navview-content"/>
     </div>
     
