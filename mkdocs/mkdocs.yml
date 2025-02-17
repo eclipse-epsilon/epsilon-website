@@ -36,7 +36,7 @@ nav:
     - Javadoc:
       - Stable: 'https://download.eclipse.org/epsilon/stable-javadoc/'
       - Interim: 'https://download.eclipse.org/epsilon/interim-javadoc/'
-      - '2.2.0': 'https://download.eclipse.org/epsilon/2.5.0-javadoc/'
+      - '2.5.0': 'https://download.eclipse.org/epsilon/2.5.0-javadoc/'
       - '2.4.0': 'https://download.eclipse.org/epsilon/2.4.0-javadoc/'
       - '2.3.0': 'https://download.eclipse.org/epsilon/2.3.0-javadoc/'
       - '2.2.0': 'https://download.eclipse.org/epsilon/2.2.0-javadoc/'
