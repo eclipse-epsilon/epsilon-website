@@ -39,7 +39,8 @@ class LiveShareDialog {
                         cls: "js-dialog-close"
                     }
                     
-                ]
+                ],
+                closeButton: true
             });
         });
     }

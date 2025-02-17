@@ -140,7 +140,8 @@ function copyShortenedLink(event) {
                         onclick: function(){
                             copyToClipboard(baseUrl + "?" + json.shortened);
                         }
-                    }]
+                    }],
+                    closeButton: true
                 });
             }
             Metro.notify.killAll();

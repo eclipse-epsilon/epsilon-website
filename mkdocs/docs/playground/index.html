@@ -13,21 +13,18 @@
 
 <body class="h-100" onresize="fit()" onload="fit();updateGutterVisibility();">
     <div id="preloader"><img src="images/preloader.gif" width="100px"><div id="preloader-message"></div></div>
-    <!-- <div id="liveShareBar" style="position:absolute;top:0px;left:60px;padding:4px;width:100px;height:30px;background-color:#41A030;color:white;z-index: 1000">Live Sharing</div> -->
     <div id="navview" data-role="navview" style="display:none">
         <div class="navview-pane">
             <button class="pull-button">
                 <span class="default-icon-menu" id="toggleNavViewPane"></span>
             </button>
             <ul class="navview-menu">
-                <li class="item-header">Epsilon Playground</li>
-                <li class="item-separator"></li>
-                <li id="liveShareStatus">
-                    <a href="#" onclick="showLiveShare(event)">
-                        <span class="icon"><span class="mif-example-16 mif-liveshare"></span></span>
-                        <span class="caption">Live Sharing</span>
-                    </a>
+                <li class="item-header">Epsilon Playground
+                    <span class="badges" style="display:none;float:right;position:relative;top:-2px" id="liveShareTitleBadges">
+                        <span class="badge inline" style="font-size:12px; background-color:#41A030;color:white">LIVE</span>
+                    </span>
                 </li>
+                <li class="item-separator"></li>
                 <li class="item-separator" id="examplesEnd"></li>                
                 <li>
                     <a href="#" onclick="showLiveShare(event)" id="liveShare">

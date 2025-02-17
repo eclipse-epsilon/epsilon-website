@@ -72,7 +72,8 @@ class OutputPanel extends ModelPanel {
                     caption: "Cancel",
                     cls: "js-dialog-close"
                 }
-            ]
+            ],
+            closeButton: true
         });
     }
 

@@ -46,7 +46,8 @@ class SettingsDialog {
                     caption: "Cancel",
                     cls: "js-dialog-close"
                 }
-            ]
+            ],
+            closeButton: true
         });
     }
 

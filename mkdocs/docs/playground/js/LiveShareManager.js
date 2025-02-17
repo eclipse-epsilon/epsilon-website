@@ -51,11 +51,16 @@ class LiveShareManager {
 
     showLiveShareStatus(status) {
         var liveShareBadges = document.getElementById("liveShareBadges");
-        if (status) liveShareBadges.style.display = "block";
-        else liveShareBadges.style.display = "none";
-
-        var liveShareStatus = document.getElementById("liveShareStatus");
-        liveShareStatus.style.display = liveShareBadges.style.display;
+        var liveShareTitleBadges = document.getElementById("liveShareTitleBadges");
+        
+        if (status) {
+            liveShareBadges.style.display = "block";
+            liveShareTitleBadges.style.display = "inline";
+        }
+        else {
+            liveShareBadges.style.display = "none";
+            liveShareTitleBadges.style.display = "none";
+        }
     }
 
     startSession() {
