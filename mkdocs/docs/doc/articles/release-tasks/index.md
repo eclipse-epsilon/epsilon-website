@@ -18,7 +18,7 @@ If there is a restricted dependency which has not been reviewed in any way, then
 
 ### Checking that the interim site is installable from a clean Eclipse
 
-Before continuing, ensure that the interim side can be installed from a clean installation of the latest release of the Eclipse Modeling Tools.
+Before continuing, ensure that the interim site can be installed from a clean installation of the latest release of the Eclipse Modeling Tools.
 
 ### Getting the release approved by Eclipse
 
