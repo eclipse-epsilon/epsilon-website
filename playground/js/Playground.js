@@ -1,11 +1,3 @@
-import 'ace-builds/src-min-noconflict/ace';
-import 'ace-builds/src-min-noconflict/theme-eclipse';
-import 'ace-builds/src-min-noconflict/mode-xml';
-import 'ace-builds/src-min-noconflict/mode-yaml';
-import 'ace-builds/src-min-noconflict/mode-java';
-import 'ace-builds/src-min-noconflict/mode-html';
-import 'ace-builds/src-min-noconflict/ext-modelist';
-
 import { ModelPanel } from './ModelPanel.js';
 import { ConsolePanel } from "./ConsolePanel.js";
 import { ProgramPanel } from "./ProgramPanel.js";
@@ -14,11 +6,13 @@ import { ExampleManager } from './ExampleManager.js';
 import { DownloadDialog } from './DownloadDialog.js';
 import { MetamodelPanel } from './MetamodelPanel.js';
 import { SettingsDialog } from './SettingsDialog.js';
+import { LiveShareDialog } from './LiveShareDialog.js';
 import { Preloader } from './Preloader.js';
 import { Backend } from './Backend.js';
 import { Layout } from './Layout.js';
 import 'metro4';
-import './highlighting/highlighting.js';
+import { MonacoSetup } from './MonacoSetup.js';
+import { LiveShareManager } from './LiveShareManager.js';
 
 export var language = "eol";
 var outputType = "text";
@@ -26,6 +20,8 @@ var outputLanguage = "text";
 var example;
 var url = window.location + "";
 var questionMark = url.indexOf("?");
+
+new MonacoSetup().do();
 
 export var programPanel = new ProgramPanel();
 export var secondProgramPanel = new ProgramPanel("secondProgram");
@@ -40,13 +36,17 @@ export var outputPanel;
 export var consolePanel = new ConsolePanel();
 var downloadDialog = new DownloadDialog();
 var settingsDialog = new SettingsDialog();
-var preloader = new Preloader();
+var liveShareDialog = new LiveShareDialog();
+export var preloader = new Preloader();
 export var backend = new Backend();
 export var examplesManager = new ExampleManager();
+export var liveShareManager = new LiveShareManager();
+
 var panels = [];
 
 backend.configure();
 
+preloader.progress("Fetching programs, models and metamodels");
 example = examplesManager.getSelectedExample();
 setup();
 
@@ -74,14 +74,9 @@ function setup() {
     if (language == "egx") secondProgramPanel.setLanguage("egl");
     if (language == "eml") secondProgramPanel.setLanguage("ecl");
 
-    programPanel.setValue(example.program);
-    secondProgramPanel.setValue(example.secondProgram);
-    firstModelPanel.setValue(example.flexmi);
-    firstMetamodelPanel.setValue(example.emfatic);
-    secondModelPanel.setValue(example.secondFlexmi);
-    secondMetamodelPanel.setValue(example.secondEmfatic);
-    thirdModelPanel.setValue(example.thirdFlexmi);
-    thirdMetamodelPanel.setValue(example.thirdEmfatic);
+    if (!liveShareManager.willJoinSession()) {
+        initialisePanelValues();
+    }
 
     document.getElementById("navview").style.display = "block";
 
@@ -104,6 +99,16 @@ function setup() {
     fit();
 }
 
+function initialisePanelValues() {
+    programPanel.setValue(example.program);
+    secondProgramPanel.setValue(example.secondProgram);
+    firstModelPanel.setValue(example.flexmi);
+    firstMetamodelPanel.setValue(example.emfatic);
+    secondModelPanel.setValue(example.secondFlexmi);
+    secondMetamodelPanel.setValue(example.secondEmfatic);
+    thirdModelPanel.setValue(example.thirdFlexmi);
+    thirdMetamodelPanel.setValue(example.thirdEmfatic);
+}
 
 function copyShortenedLink(event) {
     event.preventDefault();
@@ -135,7 +140,8 @@ function copyShortenedLink(event) {
                         onclick: function(){
                             copyToClipboard(baseUrl + "?" + json.shortened);
                         }
-                    }]
+                    }],
+                    closeButton: true
                 });
             }
             Metro.notify.killAll();
@@ -250,7 +256,7 @@ function editorsToJsonObject() {
         "secondEmfatic": secondMetamodelPanel.getValue(),
         "secondFlexmi": secondModelPanel.getValue(),
         "thirdEmfatic": thirdMetamodelPanel.getValue(),
-        "thirdFlexmi": thirdModelPanel.getValue(),
+        "thirdFlexmi": thirdModelPanel.getValue()
     };
 }
 
@@ -265,7 +271,6 @@ function fit() {
     splitter.style.maxHeight = window.innerHeight + "px";
 
     panels.forEach(panel => panel.fit());
-    preloader.hide();
 }
 
 function runProgram() {
@@ -325,7 +330,7 @@ function runProgram() {
                             else krokiEndpoint = "graphviz/svg"
 
                             var krokiXhr = new XMLHttpRequest();
-                            krokiXhr.open("POST", "https://uk-ac-york-cs-epsilon-kroki.h5rwqzvxy5sr4.eu-west-1.cs.amazonlightsail.com/" + krokiEndpoint, true);
+                            krokiXhr.open("POST", backend.getKrokiService() + "/" + krokiEndpoint, true);
                             krokiXhr.setRequestHeader("Accept", "image/svg+xml");
                             krokiXhr.setRequestHeader("Content-Type", "text/plain");
                             krokiXhr.onreadystatechange = function () {
@@ -380,7 +385,7 @@ function getActivePanels() {
 }
 
 function longNotification(title, cls="light") {
-    Metro.notify.create("<b>" + title + "...</b><br>This may take a few seconds to complete if the back end is not warmed up.", null, {keepOpen: true, cls: cls, width: 300});
+    Metro.notify.create("<b>" + title + "...</b><br>This may take a few seconds to complete.", null, {keepOpen: true, cls: cls, width: 300});
 }
 
 function updateGutterVisibility() {
@@ -429,6 +434,10 @@ function showSettings(event) {
     settingsDialog.show(event);
 }
 
+function showLiveShare(event) {
+    liveShareDialog.show(event);
+}
+
 // Some functions and variables are accessed
 // by onclick - or similer - events
 // We need to use window.x = x for this to work
@@ -447,12 +456,17 @@ window.secondMetamodelPanel = secondMetamodelPanel;
 window.thirdModelPanel = thirdModelPanel;
 window.thirdMetamodelPanel = thirdMetamodelPanel;
 window.panels = panels;
+window.preloader = preloader;
 
 window.backend = backend;
 window.longNotification = longNotification;
 window.showDownloadOptions = showDownloadOptions;
 window.showSettings = showSettings;
+window.showLiveShare = showLiveShare;
+window.initialisePanelValues = initialisePanelValues;
 window.copyShortenedLink = copyShortenedLink;
+window.copyToClipboard = copyToClipboard;
 window.downloadDialog = downloadDialog;
 window.language = language;
 window.getActivePanels = getActivePanels;
+liveShareManager.init();

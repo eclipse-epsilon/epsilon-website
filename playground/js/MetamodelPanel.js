@@ -8,7 +8,7 @@ class MetamodelPanel extends ModelPanel {
     }
 
     setupSyntaxHighlighting() {
-        this.editor.getSession().setMode("ace/mode/emfatic");
+        this.setLanguage("emf");
     }
 
     getButtons() {

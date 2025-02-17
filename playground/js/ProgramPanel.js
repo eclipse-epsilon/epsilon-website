@@ -10,7 +10,8 @@ class ProgramPanel extends Panel {
 
     setLanguage(language) {
         this.language = language;
-        this.editor.getSession().setMode("ace/mode/" + language);
+        super.setLanguage(language);
+
         this.createButtons();
         var title = "";
 
@@ -41,7 +42,7 @@ class ProgramPanel extends Panel {
         if (editorElement != null) {
             editorElement.parentNode.style = "flex-basis: calc(100% - 4px);";
         }
-        this.editor.resize();
+        // this.editor.resize();
     }
 
     getButtons() {
@@ -59,16 +60,6 @@ class ProgramPanel extends Panel {
             });
         }
         return buttons;
-        /*
-        return [{
-            html: this.buttonHtml("help", languageName + " language reference"),
-            cls: "sys-button",
-            onclick: "window.open('https://www.eclipse.org/epsilon/doc/'+language);"
-        }, {
-            html: this.buttonHtml("run", "Run the program (Ctrl/Cmd+S)"),
-            cls: "sys-button",
-            onclick: "runProgram()"
-        }];*/
     }
 
     // TODO: Identical to ConsolePanel.createElement()
