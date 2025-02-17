@@ -131,7 +131,7 @@ function copyShortenedLink(event) {
                 Metro.notify.killAll();
                 Metro.dialog.create({
                     title: "Share link",
-                    content: "<p>The link below contains a snapshot of the contents of all the editors in the playground. Anyone who visits this link should be able to view and run your example.</p><br/> <input style='width:100%' value='" + baseUrl + "?" + json.shortened + "'>",
+                    content: "<p>The link below contains a snapshot of the contents of all the editors in the playground. Anyone who visits this link <a href='https://eclipse.dev/epsilon/doc/articles/playground/#save-and-share-your-work' target='_blank'>should be able</a> to view and run your example. </p><br/> <input style='width:100%' value='" + baseUrl + "?" + json.shortened + "'>",
                     closeButton: true,
                     actions: [
                     {
