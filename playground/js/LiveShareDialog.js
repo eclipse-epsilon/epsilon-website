@@ -17,8 +17,8 @@ class LiveShareDialog {
                 title: "Live Sharing",
                 content: "<p>You can invite others to join this session by sharing " + 
                     //"<input style='width:100%' value='" + liveShareManager.getShareURL() + "'>",
-                    "<a href='" + liveShareManager.getShareURL() + "'>this link</a> with them." ,
-                    
+                    "<a href='" + liveShareManager.getShareURL() + "'>this link</a> with them. " +
+                    "Please note that live sharing should be used for <a href='https://eclipse.dev/epsilon/doc/articles/playground/#save-and-share-your-work' target='_blank'>ephemeral collaboration only</a>.",
                 actions: [
                     {
                         caption: "Copy Link to Clipboard",

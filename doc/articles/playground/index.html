@@ -1858,6 +1858,10 @@ package ptl;</code></pre>
 <h2 id="save-and-share-your-work">Save and share your work<a class="headerlink" href="#save-and-share-your-work" title="Permanent link">&para;</a></h2>
 <p>To share a snapshot of your work, click the <code>Share Snapshot</code> button. This will create a short link that you can copy to your clipboard. Please note that the contents of the editors <strong>will be stored in the back-end of the Epsilon Playground</strong> so that they can be retrieved when you visit that link again later.</p>
 <p>To start a live sharing session, click the <code>Live Share</code> button. This will create a link that you can share with others to collaborate with them in real-time. </p>
+<div class="admonition warning">
+<p class="admonition-title">No long-term availability guarantees</p>
+<p>Snapshots are stored in an AWS bucket. While there is no expiration policy, we <b>cannot guarantee</b> their long-term availability. Live sharing sessions are <b>memory-based and are lost</b> every time the Playgroung's <a href="https://github.com/epsilonlabs/yjs-websocket-nginx-docker">collaboration server</a> restarts. Thefore live sharing should be used <b>for ephemeral collaboration only</b>. For long-term storage, please download a copy of your work as discussed below.</p>
+</div>
 <h2 id="download-your-work">Download your work<a class="headerlink" href="#download-your-work" title="Permanent link">&para;</a></h2>
 <p>To download a zipped archive of your work, click the <code>Download</code> button. Depending on your selection, the zipped archived will contain the model management program(s), the models and metamodels of the example, a <code>readme.md</code> file with instructions as well as:</p>
 <ul>
