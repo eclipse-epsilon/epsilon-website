@@ -114,7 +114,7 @@ markdown_extensions:
   - pymdownx.smartsymbols
   - meta
   - footnotes
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.details
   - pymdownx.highlight:
