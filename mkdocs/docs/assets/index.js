@@ -10,7 +10,7 @@ hljs.registerLanguage('xml', xml);
 hljs.registerLanguage('yaml', yaml);
 
 // TODO: Add built-in types to EOL
-hljs.registerLanguage('eol', function(hljs) {
+var eol = function(hljs) {
     return {
       case_insensitive: false,
       contains: [
@@ -58,7 +58,11 @@ hljs.registerLanguage('eol', function(hljs) {
         }
       ]
     };
-});
+};
+
+//TODO: Add EWL (not currently supported on the website)
+hljs.registerLanguage('eol', eol);
+hljs.registerLanguage('eunit', eol);
 
 hljs.registerLanguage('egl', function(hljs) {
     return {
