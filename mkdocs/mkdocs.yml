@@ -110,47 +110,11 @@ markdown_extensions:
         - name: mermaid-30
           class: mermaid mermaid-30
           format: !!python/name:pymdownx.superfences.fence_div_format
-        # - name: eol
-        #   class: prettyprint lang-eol
-        #   format: !!python/name:pymdownx.superfences.fence_code_format
-        # - name: etl
-        #   class: prettyprint lang-etl
-        #   format: !!python/name:pymdownx.superfences.fence_code_format
-        # - name: ecl
-        #   class: prettyprint lang-ecl
-        #   format: !!python/name:pymdownx.superfences.fence_code_format
-        # - name: eml
-        #   class: prettyprint lang-eml
-        #   format: !!python/name:pymdownx.superfences.fence_code_format
-        # - name: epl
-        #   class: prettyprint lang-epl
-        #   format: !!python/name:pymdownx.superfences.fence_code_format
-        # - name: evl
-        #   class: prettyprint lang-evl
-        #   format: !!python/name:pymdownx.superfences.fence_code_format
-        # - name: mig
-        #   class: prettyprint lang-mig
-        #   format: !!python/name:pymdownx.superfences.fence_code_format
-        # - name: eunit
-        #   class: prettyprint lang-eol
-        #   format: !!python/name:pymdownx.superfences.fence_code_format
-        # - name: egx
-        #   class: prettyprint lang-egx
-        #   format: !!python/name:pymdownx.superfences.fence_code_format
-        # - name: egl
-        #   class: prettyprint lang-egl
-        #   format: !!python/name:pymdownx.superfences.fence_code_format
-        # - name: emf
-        #   class: prettyprint lang-emf
-        #   format: !!python/name:pymdownx.superfences.fence_code_format
-        # - name: pinset
-        #   class: prettyprint lang-pinset
-        #   format: !!python/name:pymdownx.superfences.fence_code_format
   - admonition
   - pymdownx.smartsymbols
   - meta
   - footnotes
-  - pymdownx.tabbed:
+  - pymdownx.tabbed
       alternate_style: true
   - pymdownx.details
   - pymdownx.highlight:
@@ -189,22 +153,10 @@ plugins:
 copyright: 'Copyright © <a href="https://www.eclipse.org">Eclipse Foundation, Inc.</a> All Rights Reserved <br/> <a href="https://www.eclipse.org/legal/privacy.php">Privacy Policy</a> &centerdot; <a href="https://www.eclipse.org/legal/termsofuse.php">Terms of Use</a> &centerdot; <a href="https://www.eclipse.org/legal/copyright.php">Copyright Agent</a>  &centerdot; <a href="https://www.eclipse.org/legal/">Legal</a><p><img src="https://eclipse.dev/epsilon/assets/images/eclipse-foundation-logo.svg"/></p>'
 extra_css:
   - 'assets/stylesheets/mermaid.css'
-  # - 'assets/javascript/google-code-prettify/prettify.css'
-  # - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css
-  # - https://unpkg.com/mermaid@8.5.1/dist/mermaid.css
-  # - 'assets/stylesheets/slick.css'
-  # - 'assets/stylesheets/slick-theme.css'
   - 'assets/stylesheets/extra.css'
 
 extra_javascript:
   - 'assets/dist/bundle.js'
-  #- 'assets/javascript/jquery.js'
-  #- 'assets/javascript/slick.min.js'
-  #- 'assets/javascript/google-code-prettify/prettify.js'
-  #- 'assets/javascript/google-code-prettify/lang-emfatic.js'
-  #- 'assets/javascript/google-code-prettify/lang-epsilon.js'
-  #- 'assets/javascript/google-code-prettify/prettyprint.js'
-  # - 'assets/javascript/extra.js'
 google_analytics:
   - UA-184785655-1
   - auto
