@@ -416,8 +416,7 @@ Outdentation also works with `if`, `switch`, `while` statements etc. More exampl
 
 EGL also provides a traceability API, as a debugging aid, to support auditing of the M2T transformation process, and to facilitate change propagation. This API facilitates exploration of the templates executed, files affected and protected regions processed during a transformation. The figure below shows sample output from the traceability API after execution of an EGL M2T transformation to generate Java code from an instance of an OO metamodel. The view shown is accessed via the \... menu in Eclipse. Traceability information can also be accessed programmatically, as demonstrated in the listing below.
 
-![Sample output from the traceability
-API.](images/TraceView.png)
+![Sample output from the traceability API.](images/TraceView.png)
 
 ```java
 EglTemplateFactoryModuleAdapter module = new EglTemplateFactoryModuleAdapter(new EglTemplateFactory());

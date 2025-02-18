@@ -1,5 +1,3 @@
-import mermaid from 'mermaid';
-import 'highlight.js/styles/nnfx-light.css';
 import hljs from 'highlight.js';
 import java from 'highlight.js/lib/languages/java';
 import xml from 'highlight.js/lib/languages/xml';
@@ -9,7 +7,6 @@ hljs.registerLanguage('java', java);
 hljs.registerLanguage('xml', xml);
 hljs.registerLanguage('yaml', yaml);
 
-// TODO: Add built-in types to EOL
 var eol = function(hljs) {
     return {
       case_insensitive: false,
@@ -37,6 +34,10 @@ var eol = function(hljs) {
           begin: '\\b(true|false|self|loopCount|hasMore)\\b'
         },
         {
+          className: 'type',
+          begin: '\\b(String|Boolean|Integer|Real|Any|Map|Collection|Bag|Sequence|Set|OrderedSet|Native|List|Tuple|ConcurrentSet|ConcurrentBag|ConcurrentMap|EolSelf|EolSelfContentType|EolSelfExpressionType|EolSelfCollectionType)\\b'
+        },
+        {
           className: 'number',
           begin: '\\b\\d+(\\.\\d+)?\\b'
         },
@@ -60,7 +61,6 @@ var eol = function(hljs) {
     };
 };
 
-//TODO: Add EWL (not currently supported on the website)
 hljs.registerLanguage('eol', eol);
 hljs.registerLanguage('eunit', eol);
 
@@ -91,6 +91,16 @@ hljs.registerLanguage('egx', function(hljs) {
         keyword: 'transform rule guard pre post target extends parameters template overwrite protectRegions merge append patch'
       }
     });
+});
+
+hljs.registerLanguage('ewl', function(hljs) {
+  var eol = hljs.getLanguage('eol');
+
+  return hljs.inherit(eol, {
+    keywords: {
+      keyword: 'wizard guard do title'
+    }
+  });
 });
 
 hljs.registerLanguage('etl', function(hljs) {
@@ -193,7 +203,7 @@ hljs.registerLanguage('emf', function(hljs) {
           begin: '//', end: '$'
         },
         {
-            className: 'comment',
+            className: 'doctag',
             begin: '@\\w+', end: '(?=\\()|$'
           },
         {
@@ -221,7 +231,5 @@ hljs.registerLanguage('emf', function(hljs) {
 });
 
 document$.subscribe(() => {
-    console.log("Highlighting!");
-    hljs.highlightAll();
-    mermaid.initialize();
-})
+  hljs.highlightAll();
+});

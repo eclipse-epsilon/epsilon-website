@@ -46,7 +46,7 @@ class ExecutableAnnotation {
 class SimpleAnnotation {
 	+values: String[*]
 }
-EolModule -- ImportStatement: *
+EolModule -- ImportStatement: importStatements *
 EolModule -- Operation: operations *
 Operation -- Annotation: annotations *
 Operation -- StatementBlock: body
