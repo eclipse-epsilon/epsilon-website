@@ -2,9 +2,33 @@
 
 Epsilon is a family of scripting languages and tools for automating common model-based software engineering tasks such as [code generation](doc/egl), [model-to-model transformation](doc/etl), [model validation](doc/evl) and [model visualisation](doc/picto), that work out of the box with EMF (including [Xtext](https://www.eclipse.org/Xtext) and [Sirius](https://www.eclipse.org/sirius)), UML (including Cameo/MagicDraw), Simulink, XML and [other types of models](doc/emc).
 
-Epsilon can be used as a [standard Java library](getting-started/#using-epsilon-as-a-java-library), and also provides [Apache Ant](doc/workflow) tasks that can be embedded in [Maven/Gradle builds](getting-started/#epsilon-in-mavengradle-builds). Editing support for Epsilon programs is available in [Eclipse](download), [VS Code](doc/articles/vscode) and [Sublime](https://github.com/epsilonlabs/sublime).
+Epsilon can be used as a [standard Java library](getting-started/#using-epsilon-as-a-java-library), and also provides [Apache Ant](doc/workflow) tasks that can be embedded in [Maven/Gradle builds](getting-started/#epsilon-in-mavengradle-builds). Editing support for Epsilon programs is available in [Eclipse](download), [VS Code](doc/articles/vscode), [Intellij](https://github.com/epsilonlabs/epsilon.tmbundle?tab=readme-ov-file#importing-in-intellij), [TextMate](https://github.com/epsilonlabs/epsilon.tmbundle?tab=readme-ov-file#importing-in-textmate) and [Sublime](https://github.com/epsilonlabs/sublime).
 
-<div class="carousel">
+=== "Running from Java"
+
+    ```java
+    --8<-- "docs/playground/templates/java/egx/src/main/java/org/eclipse/epsilon/examples/Example.java"
+    ```
+
+=== "Code Generation (EGL)"
+
+    ```egl
+    --8<-- "docs/playground/examples/psl.egl"
+    ```
+
+=== "Model Validation (EVL)"
+
+    ```evl
+    --8<-- "docs/playground/examples/psl.evl"
+    ```
+
+=== "Model Transformation (ETL)"
+
+    ```etl
+    --8<-- "docs/playground/examples/psl2pdl.etl"
+    ```
+
+<!--div class="carousel">
   <div><img src="doc/articles/eol-interpreter-view/eol-interpreter.gif"/></div>
   <div><img data-lazy="doc/articles/vscode/vscode.png"/></div>
   <div><img data-lazy="doc/articles/sublime/sublime.png"/></div>
@@ -13,17 +37,19 @@ Epsilon can be used as a [standard Java library](getting-started/#using-epsilon-
   <div><img data-lazy="doc/articles/simulink/epsilon-simulink.png"/></div>
   <div><img data-lazy="doc/picto/picto-eclassifier.png"/></div>
   <div><img data-lazy="doc/picto/picto-minisd.png"/></div>
-</div>
+</div-->
 
 !!! info "Online Playground"
 
 	If you prefer not to download/install anything just quite yet, you can fiddle with EMF models and metamodels, and with some of the Epsilon languages in the online [Epsilon Playground](playground).
 
+<!--
 ## Installation
 
 Download the [Eclipse Installer](https://wiki.eclipse.org/Eclipse_Installer) and select Epsilon, as shown below. Note that you will need a Java Runtime Environment installed on your system. More options for downloading Epsilon (update sites, Maven) are [available here](download).
 
 ![Epsilon in Eclipse Installer](assets/images/eclipse-installer.png)
+-->
 
 ## Why Epsilon?
 
