@@ -16,7 +16,7 @@ EGL is a *template-based* language (i.e. EGL programs resemble the text that the
 The figure below shows the abstract syntax of EGL's core functionality.
 
 !!! info
-    As with most languages in Epsilon, EGL uses [EOL](../eol) as its expression language. This page only documents the additional syntax and semantics that EGL provides on top of EOL.
+    As with most languages in Epsilon, EGL uses [EOL](eol.md) as its expression language. This page only documents the additional syntax and semantics that EGL provides on top of EOL.
 
 ```mermaid
 classDiagram
@@ -153,7 +153,7 @@ Given these concerns, EGL provides a co-ordination engine that provides mechanis
 
 3.  **Separation of concerns**: the co-ordination engine ensures that the logic for controlling the text that is generated (i.e. the content) and the logic for controlling the way in which text is emitted (i.e. the destination) are kept separate.
 
-There is also the [EGX language](../egx/), which was introduced after this documentation was initially written, but provides a fully-fledged rule-based execution engine for paramterising EGL templates.
+There is also the [EGX language](egx.md), which was introduced after this documentation was initially written, but provides a fully-fledged rule-based execution engine for parameterising EGL templates.
 
 ### The Template type
 
@@ -272,7 +272,7 @@ public class CountingTemplateFactory extends EglFileGeneratingTemplateFactory {
 
 #### Using a custom TemplateFactory
 
-When invoking an EGL program, the user may select a custom *TemplateFactory*. For example, the EGL development tools provide an Eclipse launch configuration that provides a tab named "Generated Text."On this tab, users can select a *TemplateFactory* (under the group called "Type of Template Factory"). Note that a *TemplateFactory* only appears on the launch configuration tab if it has been registered with EGL via an Eclipse extension. Similarly, the [workflow language](../workflow) provided by Epsilon allows the specification of custom types of *TemplateFactory* via the `templateFactoryType` parameter.
+When invoking an EGL program, the user may select a custom *TemplateFactory*. For example, the EGL development tools provide an Eclipse launch configuration that provides a tab named "Generated Text."On this tab, users can select a *TemplateFactory* (under the group called "Type of Template Factory"). Note that a *TemplateFactory* only appears on the launch configuration tab if it has been registered with EGL via an Eclipse extension. Similarly, the [workflow language](workflow.md) provided by Epsilon allows the specification of custom types of *TemplateFactory* via the `templateFactoryType` parameter.
 
 ### Summary
 
@@ -350,7 +350,7 @@ t.generate("formatted.xml");
 
 To facilitate the re-use of a formatter with many templates, the *TemplateFactory* object provides the `setDefaultFormatter` and `setDefaultFormatters` operations. Templates that are loaded or prepared after a call to `setDefaultFormatter` or `setDefaultFormatters` will, by default, use the formatter(s) specified for the *TemplateFactory*. Note that setting the formatter on a template overwrite any formatter that may have been set on that template by the *TemplateFactory*.
 
-The default formatters for an EGL program can also be set when invoking the program. For example, the EGL development tools provide an Eclipse launch configuration that provides a tab named "Generated Text." On this tab, users can configure one or more formatters which will be used as the default formatters for this EGL program. Note that custom formatters only appear on the launch configuration tab if they have been registered with EGL via an Eclipse extension. Similarly, the [workflow language](../workflow) provided by Epsilon provides a `formatter` nested element that can be used to specify one or more default formatters.
+The default formatters for an EGL program can also be set when invoking the program. For example, the EGL development tools provide an Eclipse launch configuration that provides a tab named "Generated Text." On this tab, users can configure one or more formatters which will be used as the default formatters for this EGL program. Note that custom formatters only appear on the launch configuration tab if they have been registered with EGL via an Eclipse extension. Similarly, the [workflow language](workflow.md) provided by Epsilon provides a `formatter` nested element that can be used to specify one or more default formatters.
 
 ### Implementing a Custom Formatter
 
@@ -428,7 +428,7 @@ if (parsed && module.getParseProblems().isEmpty()) {
 
     Template base = module.getContext().getBaseTemplate();
     
-    // traverse the template hierachy
+    // traverse the template hierarchy
     // display data 
     
 } else {
@@ -438,4 +438,4 @@ if (parsed && module.getParseProblems().isEmpty()) {
 
 ## Additional Resources
 
-Additional resources about EGL/EGX are available [here](../articles/#epsilon-generation-language).
+Additional resources about EGL/EGX are available [here](articles/index.md/#epsilon-generation-language).
