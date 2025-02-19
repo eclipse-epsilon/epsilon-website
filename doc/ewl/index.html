@@ -48,15 +48,11 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -92,10 +88,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -147,7 +145,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -2021,7 +2055,7 @@
 <p>In Epsilon, mapping transformations can be specified using <a href="../etl">ETL</a>, and update transformations in the large can be implemented either using the model modification features of EOL or using an ETL transformation in which the source and target models are the same model. By contrast, update transformations in the small cannot be effectively addressed by any of the languages presented so far.</p>
 <p>The following section discusses the importance of update transformations in the small and motivates the definition of a task-specific language (Epsilon Wizard Language (EWL)) that provides tailored and effective support for defining and executing update transformations on models of diverse metamodels.</p>
 <h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link">&para;</a></h2>
-<p>Constructing and refactoring models is undoubtedly a mentally intensive process. However, during modelling, recurring patterns of model update activities typically appear. As an example, when renaming a class in a UML class diagram, the user also needs to manually update the names of association ends that link to the renamed class. Thus, when renaming a class from <em>Chapter</em> to <em>Section</em>, all associations ends that point to the class and are named <em>chapter</em> or <em>chapters</em> should be also renamed to <em>section</em> and <em>sections</em> respectively. As another example, when a modeller needs to refactor a UML class into a singleton [@Larman], they need to go through a number of well-defined, but trivial, steps such as attaching a stereotype (<code>&lt;&lt;singleton&gt;&gt;</code>), defining a static <em>instance</em> attribute and adding a static <em>getInstance()</em> method that returns the unique instance of the singleton.</p>
+<p>Constructing and refactoring models is undoubtedly a mentally intensive process. However, during modelling, recurring patterns of model update activities typically appear. As an example, when renaming a class in a UML class diagram, the user also needs to manually update the names of association ends that link to the renamed class. Thus, when renaming a class from <em>Chapter</em> to <em>Section</em>, all associations ends that point to the class and are named <em>chapter</em> or <em>chapters</em> should be also renamed to <em>section</em> and <em>sections</em> respectively. As another example, when a modeller needs to refactor a UML class into a singleton, they need to go through a number of well-defined, but trivial, steps such as attaching a stereotype (<code>&lt;&lt;singleton&gt;&gt;</code>), defining a static <em>instance</em> attribute and adding a static <em>getInstance()</em> method that returns the unique instance of the singleton.</p>
 <p>It is generally accepted that performing repetitive tasks manually is both counter-productive and error-prone. On the other hand, failing to complete such tasks correctly and precisely compromises the consistency, and thus the quality, of the models. In Model Driven Engineering, this is particularly important since models are increasingly used to automatically produce (parts of) working systems.</p>
 <h3 id="automating-the-construction-and-refactoring-process">Automating the Construction and Refactoring Process<a class="headerlink" href="#automating-the-construction-and-refactoring-process" title="Permanent link">&para;</a></h3>
 <p>Contemporary modelling tools provide built-in transformations (<em>wizards</em>) for automating common repetitive tasks. However, according to the architecture of the designed system and the specific problem domain, additional repetitive tasks typically appear, which cannot be addressed by the pre-conceived built-in wizards of a modelling tool. To address the automation problem in its general case, users must be able to easily define update transformations (wizards) that are tailored to their specific needs.</p>
@@ -2031,34 +2065,30 @@
 <p>Update transformations are actions that automatically create, update or delete model elements based on a selection of existing elements in the model and information obtained otherwise (e.g. through user input), in a user-driven fashion. In this section, such actions are referred to as <em>wizards</em> instead of <em>rules</em> to reduce confusion between them and rules of mapping transformation languages. In the following sections, the desirable characteristics of wizards are elaborated informally.</p>
 <h3 id="structure-of-wizards">Structure of Wizards<a class="headerlink" href="#structure-of-wizards" title="Permanent link">&para;</a></h3>
 <p>In its simplest form, a wizard only needs to define the actions it will perform when it is applied to a selection of model elements. The structure of such a wizard that transforms a UML class into a <em>singleton</em> is shown using pseudo-code in the listing below.</p>
-<div class="highlight"><pre><span></span><code>do :
+<pre class="highlight"><code>do :
     attach the singleton stereotype
     create the instance attribute
-    create the getInstance method
-</code></pre></div>
+    create the getInstance method</code></pre>
 <p>Since not all wizards apply to all types of elements in the model, each wizard needs to specify the types of elements to which it applies. For example, the wizard of the listing above, which automatically transforms a class into a singleton, applies only when the selected model element is a class. The simplest approach to ensuring that the wizard will only be applied on classes is to enclose its body in an <em>if</em> condition as shown in the listing below.</p>
-<div class="highlight"><pre><span></span><code>do : 
+<pre class="highlight"><code>do : 
     if (selected element is a class) {
         attach the singleton stereotype
         create the instance attribute
         create the getInstance method
-    }
-</code></pre></div>
+    }</code></pre>
 <p>A more modular approach is to separate this condition from the body of the wizard. This is shown in the listing below where the condition of the wizard is specified as a separate <em>guard</em> stating that the wizard applies only to elements of type Class. The latter is preferable since it enables filtering out wizards that are not applicable to the current selection of elements by evaluating only their <em>guard</em> parts and rejecting those that return <em>false</em>. Thus, at any time, the user can be provided with only the wizards that are applicable to the current selection of elements. Filtering out irrelevant wizards reduces confusion and enhances usability, particularly as the list of specified wizards grows.</p>
-<div class="highlight"><pre><span></span><code>guard : selected element is a class
+<pre class="highlight"><code class="language-ewl">guard : selected element is a class
 do : 
     attach the singleton stereotype
     create the instance attribute
-    create the getInstance method
-</code></pre></div>
+    create the getInstance method</code></pre>
 <p>To enhance usability, a wizard also needs to define a short human-readable description of its functionality. To achieve this, another field named <em>title</em> has been added. There are two options for defining the title of a wizard: the first is to use a static string and the second to use a dynamic expression. The latter is preferable since it enables definition of context-aware titles.</p>
-<div class="highlight"><pre><span></span><code>guard : selected element is a class
+<pre class="highlight"><code class="language-ewl">guard : selected element is a class
 title : Convert class &lt;class-name&gt; into a singleton
 do : 
     attach the singleton stereotype
     create the instance attribute
-    create the getInstance method
-</code></pre></div>
+    create the getInstance method</code></pre>
 <h3 id="capabilities-of-wizards">Capabilities of Wizards<a class="headerlink" href="#capabilities-of-wizards" title="Permanent link">&para;</a></h3>
 <p>The <em>guard</em> and <em>title</em> parts of a wizard need to be expressed using a language that provides model querying and navigation facilities. Moreover, the <em>do</em> part also requires model modification capabilities to implement the transformation. To achieve complex transformations, it is essential that the user can provide additional information. For instance, to implement a wizard that addresses the class renaming scenario, the information provided by the selected class does not suffice; the user must also provide the new name of the class. Therefore, EWL must also provide mechanisms for capturing user input.</p>
 <h2 id="abstract-syntax">Abstract Syntax<a class="headerlink" href="#abstract-syntax" title="Permanent link">&para;</a></h2>
@@ -2068,14 +2098,13 @@ do :
 Syntax" src="../images/EwlAbstractSyntax.png" /></p>
 <h2 id="concrete-syntax">Concrete Syntax<a class="headerlink" href="#concrete-syntax" title="Permanent link">&para;</a></h2>
 <p>The following listing presents the concrete syntax of EWL wizards.</p>
-<div class="highlight"><pre><span></span><code>wizard &lt;name&gt; {
+<pre class="highlight"><code>wizard &lt;name&gt; {
     (guard (:expression)|({statementBlock}))?
     (title (:expression)|({statementBlock}))? 
     do {
         statementBlock
     } 
-}
-</code></pre></div>
+}</code></pre>
 <h2 id="execution-semantics">Execution Semantics<a class="headerlink" href="#execution-semantics" title="Permanent link">&para;</a></h2>
 <p>The process of executing EWL wizards is inherently user-driven and as such it depends on the environment in which they are used. In general, each time the selection of model elements changes (i.e. the user selects or deselects a model element in the modelling tool), the guards of all wizards are evaluated. If the guard of a wizard is satisfied, the <em>title</em> part is also evaluated and the wizard is added to a list of <em>applicable</em> wizards. Then, the user can select a wizard and execute its <em>do</em> part to perform the intended transformation.</p>
 <p>In EWL, variables defined and initialized in the <em>guard</em> part of the wizard can be accessed both by the <em>title</em> and the <em>do</em> parts. In this way, results of calculations performed in the <em>guard</em> part can be re-used, instead of re-calculated in the subsequent parts. The practicality of this approach is discussed in more detail in the examples that follow. Also, the execution of the <em>do</em> part of each wizard is performed in a transactional mode by exploiting the transaction capabilities of the underlying model connectivity framework, so that possible logical errors in the <em>do</em> part of a wizard do not leave the edited model in an inconsistent state.</p>
@@ -2083,18 +2112,18 @@ Syntax" src="../images/EwlAbstractSyntax.png" /></p>
 <p>This section presents three concrete examples of EWL wizards for refactoring UML 1.4 models. The aim of this section is not to provide complete implementations that address all the sub-cases of each scenario but to provide enhanced understanding of the concrete syntax, the features and the capabilities of EWL to the reader. Moreover, it should be stressed again that although the examples in this section are based on UML models, by building on Epsilon, EWL can be used to capture wizards for diverse modelling languages and technologies.</p>
 <h3 id="converting-a-class-into-a-singleton">Converting a Class into a Singleton<a class="headerlink" href="#converting-a-class-into-a-singleton" title="Permanent link">&para;</a></h3>
 <p>The singleton pattern is applied when there is a class for which only one instance can exist at a time. In terms of UML, a singleton is a class stereotyped with the <code>&lt;&lt;singleton&gt;&gt;</code> stereotype, and it defines a static attribute named <code>instance</code> which holds the value of the unique instance. It also defines a static <code>getInstance()</code> operation that returns that unique instance. Wizard <code>ClassToSingleton</code>, presented below, simplifies the process of converting a class into a singleton by adding the proper stereotype, attribute and operation to it automatically.</p>
-<div class="highlight"><pre><span></span><code>wizard ClassToSingleton {
+<pre class="highlight"><code class="language-ewl">wizard ClassToSingleton {
 
     // The wizard applies when a class is selected
     guard : self.isTypeOf(Class)
 
-    title : &quot;Convert &quot; + self.name + &quot; to a singleton&quot;
+    title : "Convert " + self.name + " to a singleton"
 
     do {
         // Create the getInstance() operation 
         var gi : new Operation; 
         gi.owner = self; 
-        gi.name = &quot;getInstance&quot;; 
+        gi.name = "getInstance"; 
         gi.visibility = VisibilityKind#vk_public; 
         gi.ownerScope = ScopeKind#sk_classifier; 
 
@@ -2106,14 +2135,14 @@ Syntax" src="../images/EwlAbstractSyntax.png" /></p>
 
         // Create the instance field 
         var ins : new Attribute; 
-        ins.name = &quot;instance&quot;; 
+        ins.name = "instance"; 
         ins.type = self; 
         ins.visibility = VisibilityKind#vk_private; 
         ins.ownerScope = ScopeKind#sk_classifier; 
         ins.owner = self; 
 
         // Attach the &lt;&lt;singleton&gt;&gt; stereotype 
-        self.attachStereotype(&quot;singleton&quot;);
+        self.attachStereotype("singleton");
     }
 }
 
@@ -2135,8 +2164,7 @@ operation ModelElement attachStereotype(name : String) {
 
         // Attach the stereotype to the model element
         self.stereotype.add(stereotype);
-}
-</code></pre></div>
+}</code></pre>
 <p>The <code>guard</code> part of the wizard specifies that it is only applicable when the selection is a single UML class. The <code>title</code> part specifies a context-aware title that informs the user of the functionality of the wizard and the <code>do</code> part implements the functionality by adding the <code>getInstance</code> operation (lines 10-14), the <code>instance</code> attribute (lines 23-28) and the <code>&lt;&lt;singleton&gt;&gt;</code> stereotype (line 31). </p>
 <p>The stereotype is added via a call to the <code>attachStereotype()</code> operation. Attaching a stereotype is a very common action when refactoring UML models, particularly where UML profiles are involved, and therefore to avoid duplication, this reusable operation that checks for an existing stereotype, creates it if it does not already exists, and attaches it to the model element on which it is invoked has been specified.</p>
 <p>An extended version of this wizard could also check for existing association ends that link to the class and for which the upper-bound of their multiplicity is greater than one and either disallow the wizard from executing on such classes (in the <code>guard</code> part) or update the upper-bound of their multiplicities to one (in the <code>do</code> part). However, the aim of this section is not to implement complete wizards that address all sub-cases but to provide a better  understanding of the concrete syntax and the features of EWL. This principle also applies to the examples presented in the sequel.</p>
@@ -2152,18 +2180,18 @@ and association ends of this type and update their names (i.e. from
 <code>chapter</code> or <code>bookChapter</code> to <code>section</code> and <code>bookSection</code> respectively).
 This can be a daunting process especially in the context of large
 models. Wizard <code>RenameClass</code> presented in the listing below automates this process.</p>
-<div class="highlight"><pre><span></span><code>wizard RenameClass {
+<pre class="highlight"><code>wizard RenameClass {
 
     // The wizard applies when a Class is selected
     guard : self.isKindOf(Class)
 
-    title : &quot;Rename class &quot; + self.name
+    title : "Rename class " + self.name
 
     do {
         var newName : String;
 
         // Prompt the user for the new name of the class
-        newName = UserInput.prompt(&quot;New name for class &quot; + self.name);
+        newName = UserInput.prompt("New name for class " + self.name);
         if (newName.isDefined()) {
             var affectedElements : Sequence;
 
@@ -2202,18 +2230,17 @@ operation ModelElement replaceInName
 
         // Prompt the user for confirmation of the rename
         if (UserInput.confirm
-            (&quot;Rename &quot; + self.name + &quot; to &quot; + newName + &quot;?&quot;)) {
+            ("Rename " + self.name + " to " + newName + "?")) {
             // Perform the rename
             self.name = newName;
         }
     }
-}
-</code></pre></div>
+}</code></pre>
 <p>As with the <code>ClassToSingleton</code> wizard, the <code>guard</code> part of <code>RenameClass</code> specifies that the wizard is applicable only when the selection is a simple class and the <em>title</em> provides a context-aware description of the functionality of the wizard.</p>
 <p>The information provided by the selected class itself does not suffice in the case of renaming since the new name of the class is not specified anywhere in the existing model. In EWL, and in all languages that build on EOL, user input can be obtained using the built-in <code>UserInput</code> facility. Thus, in line 12 the user is prompted for the new name of the class using the <code>UserInput.prompt()</code> operation. Then, all the association ends and attributes that refer to the class are collected in the <code>affectedElements</code> sequence (lines 14-21). Using the <code>replaceInName</code> operation (lines 31 and 32), the name of each one is examined for a substring of the upper-case or the lower-case version of the old name of the class. In case the check returns true, the user is prompted to confirm (line 48) that the feature needs to be renamed. This further highlights the importance of user input for implementing update transformations with fine-grained user control.</p>
 <h3 id="moving-model-elements-into-a-different-package">Moving Model Elements into a Different Package<a class="headerlink" href="#moving-model-elements-into-a-different-package" title="Permanent link">&para;</a></h3>
 <p>A common refactoring when modelling in UML is to move model elements, particularly Classes, between different packages. When moving a pair of classes from one package to another, the associations that connect them must also be moved to the target package. To automate this process, the listing below presents the <code>MoveToPackage</code> wizard.</p>
-<div class="highlight"><pre><span></span><code>wizard MoveToPackage {
+<pre class="highlight"><code>wizard MoveToPackage {
 
     // The wizard applies when a Collection of
     // elements, including at least one Package
@@ -2226,7 +2253,7 @@ operation ModelElement replaceInName
         return moveTo.isDefined();
     }
 
-    title : &quot;Move &quot; + (self.size()-1) + &quot; elements to &quot; + moveTo.name
+    title : "Move " + (self.size()-1) + " elements to " + moveTo.name
 
     do {
         // Move the selected Model Elements to the
@@ -2244,8 +2271,7 @@ operation ModelElement replaceInName
         }
     }
 
-}
-</code></pre></div>
+}</code></pre>
 <p>The wizard applies when more than one element is selected and at least one of the elements is a <em>Package</em>. If more than one package is selected, the last one is considered as the target package to which the rest of the selected elements will be moved. This is specified in the <em>guard</em> part of the wizard.</p>
 <p>To reduce user confusion in identifying the package to which the elements will be moved, the name of the target package appears in the title of the wizard. This example shows the importance of the decision to express the title as a dynamically calculated expression (as opposed to a static string). It is worth noting that in the <em>title</em> part of the wizard (line 14), the <em>moveTo</em> variable declared in the <em>guard</em> (line 7) is referenced. Through experimenting with a number of wizards, it has been noticed that in complex wizards repeated calculations need to be performed in the <em>guard</em>, <em>title</em> and <em>do</em> parts of the wizard. To eliminate this duplication, the scope of variables defined in the <em>guard</em> part has been extended so that they are also accessible from the <em>title</em> and <em>do</em> part of the wizard.</p>
 
@@ -2382,25 +2408,7 @@ operation ModelElement replaceInName
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

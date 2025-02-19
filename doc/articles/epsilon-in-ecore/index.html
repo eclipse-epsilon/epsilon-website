@@ -44,15 +44,11 @@
     
       <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,10 +84,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -143,7 +141,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1897,20 +1931,18 @@
 <p>The provided EOL/EVL implementations become active when the appropriate delegate functionality is registered for a given EPackage. In practice, all three delegations should be registered.</p>
 <h3 id="setting-delegate">Setting Delegate<a class="headerlink" href="#setting-delegate" title="Permanent link">&para;</a></h3>
 <p>The setting delegate is specified by adding an EAnnotation to the EPackage with the following values:</p>
-<div class="highlight"><pre><span></span><code>source = &quot;http://www.eclipse.org/emf/2002/Ecore&quot;
-key = &quot;settingDelegates&quot;
-value = &quot;http://eclipse.dev/epsilon/ecore/EOL&quot;
-</code></pre></div>
+<pre class="highlight"><code>source = "http://www.eclipse.org/emf/2002/Ecore"
+key = "settingDelegates"
+value = "http://eclipse.dev/epsilon/ecore/EOL"</code></pre>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>When generating the java classes from your genmodel, remember to set the genmodel option <code>root-&gt;Model-&gt;'Feature Delegation'</code> to something other than <code>None</code> (the specific type depends on your needs).</p>
 </div>
 <h3 id="invocation-delegate">Invocation Delegate<a class="headerlink" href="#invocation-delegate" title="Permanent link">&para;</a></h3>
 <p>The invocation delegate is specified by an EPackage EAnnotation with:</p>
-<div class="highlight"><pre><span></span><code>source = &quot;http://www.eclipse.org/emf/2002/Ecore&quot;
-key = &quot;invocationDelegates&quot;
-value = &quot;http://eclipse.dev/epsilon/ecore/EOL&quot;
-</code></pre></div>
+<pre class="highlight"><code>source = "http://www.eclipse.org/emf/2002/Ecore"
+key = "invocationDelegates"
+value = "http://eclipse.dev/epsilon/ecore/EOL"</code></pre>
 <p>The delegate value matches an org.eclipse.emf.ecore.invocation_delegate extension point usage in the org.eclipse.ocl.ecore plug-in that provides the delegate functionality. Multiple comma-separated delegates may be specified.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1918,10 +1950,9 @@ value = &quot;http://eclipse.dev/epsilon/ecore/EOL&quot;
 </div>
 <h3 id="validation-delegate">Validation Delegate<a class="headerlink" href="#validation-delegate" title="Permanent link">&para;</a></h3>
 <p>The validation delegate is specified by an EPackage EAnnotation with:</p>
-<div class="highlight"><pre><span></span><code>source = &quot;http://www.eclipse.org/emf/2002/Ecore&quot;
-key = &quot;validationDelegates&quot;
-value = &quot;http://eclipse.dev/epsilon/ecore/EVL&quot;
-</code></pre></div>
+<pre class="highlight"><code>source = "http://www.eclipse.org/emf/2002/Ecore"
+key = "validationDelegates"
+value = "http://eclipse.dev/epsilon/ecore/EVL"</code></pre>
 <h2 id="eol-setting-delegation">EOL Setting Delegation<a class="headerlink" href="#eol-setting-delegation" title="Permanent link">&para;</a></h2>
 <p>A setting delegate is invoked to provide the derived value of an EStructuralFeature. Folowing the guidelines of the Eclipse Modeling Framework book, EOL Setting Delegation will only work for derived EStructuralFeature that are volatile, transient and non-changeable.</p>
 <div class="admonition warning">
@@ -1930,17 +1961,15 @@ value = &quot;http://eclipse.dev/epsilon/ecore/EVL&quot;
 </div>
 <h3 id="implementing-derived-features-with-eol">Implementing Derived features with EOL<a class="headerlink" href="#implementing-derived-features-with-eol" title="Permanent link">&para;</a></h3>
 <p>The setting delegate is provided by an EAnnotation on the EStructuralFeature:</p>
-<div class="highlight"><pre><span></span><code>source = &quot;http://eclipse.dev/epsilon/ecore/EOL&quot;
+<pre class="highlight"><code>source = "http://eclipse.dev/epsilon/ecore/EOL"
 key = derivation
-value = EOL expression
-</code></pre></div>
+value = EOL expression</code></pre>
 <p>The EOL expression is evaluated to provide the EStructuralFeature value with the containing EClassifier instance (EObject) assigned to the special variable <code>self</code>. The EOL expression must be a valid EOL expression (i.e., no syntax errors) and the runtime result type of the EOL expression must conform to the type of the EStructuralFeature.</p>
 <h2 id="eol-invocation-delegation">EOL Invocation Delegation<a class="headerlink" href="#eol-invocation-delegation" title="Permanent link">&para;</a></h2>
 <p>The invocation delegate is provided by an EAnnotation on the EOperation:</p>
-<div class="highlight"><pre><span></span><code>source = &quot;http://eclipse.dev/epsilon/ecore/EOL&quot;
+<pre class="highlight"><code>source = "http://eclipse.dev/epsilon/ecore/EOL"
 key = body
-value = body EOL expression
-</code></pre></div>
+value = body EOL expression</code></pre>
 <p>The body EOL expression is evaluated to provide the EOperation value with the containing EClassifier  instance (EObject) assigned to the special variable <code>self</code> and one variable for each EParameters. The body EOL expression of the contraint must be a valid EOL operation body, i.e., no syntax errors, and have a <code>return</code> statement. The runtime result type of the return statement must be <code>boolean</code>.</p>
 <h2 id="evl-validation-delegation">EVL Validation Delegation<a class="headerlink" href="#evl-validation-delegation" title="Permanent link">&para;</a></h2>
 <p>Validation delegation allows to specify contraints for an EClassifier and consists of two parts:</p>
@@ -1954,32 +1983,29 @@ value = body EOL expression
 </div>
 <h3 id="specifying-constraints">Specifying Constraints<a class="headerlink" href="#specifying-constraints" title="Permanent link">&para;</a></h3>
 <p>All Ecore constraints must be listed in an EAnnotation on the EClassifier</p>
-<div class="highlight"><pre><span></span><code>source = http://www.eclipse.org/emf/2002/Ecore
+<pre class="highlight"><code>source = http://www.eclipse.org/emf/2002/Ecore
 key = constraints
-value = constraintName_1 constraintName_2 ... constraintName_n
-</code></pre></div>
+value = constraintName_1 constraintName_2 ... constraintName_n</code></pre>
 <h3 id="implementing-constraints-with-evl">Implementing Constraints with EVL<a class="headerlink" href="#implementing-constraints-with-evl" title="Permanent link">&para;</a></h3>
 <p>The validation delegate for each Ecore constraint is provided by either a further EAnnotation on the EClassifier or an EOperation in the EClassifier.</p>
 <h4 id="via-eannotation">Via EAnnotation<a class="headerlink" href="#via-eannotation" title="Permanent link">&para;</a></h4>
 <p>The EVL constraint body (<em>check</em>) is specified by an EAnnotation on the EClassifier</p>
-<div class="highlight"><pre><span></span><code>source = &quot;http://eclipse.dev/epsilon/ecore/EVL&quot;
-key = &quot;constraintName_1&quot;
-value = EOL expression
-</code></pre></div>
+<pre class="highlight"><code>source = "http://eclipse.dev/epsilon/ecore/EVL"
+key = "constraintName_1"
+value = EOL expression</code></pre>
 <p>The EOL expression is evaluated to validate the EClassifier instance (EObject) with the instance assigned to the special variable <code>self</code>. The EOL expression must be a valid EOL expression and the runtime result type of the EOL expression must be <code>boolean</code>.</p>
 <h4 id="via-eoperation">Via EOperation<a class="headerlink" href="#via-eoperation" title="Permanent link">&para;</a></h4>
 <p>The EVL constraint can be defined by adding an EOperation to the EClassifier with the following signature:</p>
 <p><code>EBoolean constraintName (DiagnosticChain diagnostics, EMap&lt;EJavaObject, EJavaObject&gt; context)</code></p>
 <p>The EVL constraint body (<em>check</em>) is specified by an EAnnotation on the EOperation</p>
-<div class="highlight"><pre><span></span><code>source = &quot;http://eclipse.dev/epsilon/ecore/EVL&quot;
-key = &quot;body&quot;
-value = body EOL expression
-</code></pre></div>
+<pre class="highlight"><code>source = "http://eclipse.dev/epsilon/ecore/EVL"
+key = "body"
+value = body EOL expression</code></pre>
 <p>The body EOL expression is evaluated to validate the EClassifier instance (EObject) with the instance assigned to the special variable <code>self</code>. The body EOL expression of the contraint must be a valid EOL operation body, i.e., no syntax errors, and have a <code>return</code> statement. The runtime result type of the return statement must be <code>boolean</code>.</p>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
 <p>The following annotated EMF metamodel (expressed using <a href="https://eclipse.dev/emfatic/">Emfatic</a> shows how to use the Epsilon delegates:</p>
 <p>First, we register the delegates in the EPacakge:</p>
-<pre class="prettyprint lang-emf"><code>@Ecore(
+<pre class="highlight"><code class="language-emf">@Ecore(
     validationDelegates="http://eclipse.dev/epsilon/ecore/EVL",
     invocationDelegates="http://eclipse.dev/epsilon/ecore/EOL",
     settingDelegates="http://eclipse.dev/epsilon/ecore/EOL")
@@ -1995,7 +2021,7 @@ class Company {
 }
 ...</code></pre>
 <p>For the <em>Department</em> EClass, we defined three constraints implemented via EAnnotations, and the feature <em>directReports</em> as derived:</p>
-<pre class="prettyprint lang-emf"><code>...
+<pre class="highlight"><code class="language-emf">...
 
 @Ecore(constraints="deptHasEmployees positiveID validName")
 @"http://eclipse.dev/epsilon/ecore/EVL"(
@@ -2018,7 +2044,7 @@ class Department {
 }
 ...</code></pre>
 <p>For the <em>Employee</em> EClass, we defined the <em>validName</em> constraint implemented via EOperation. The features <em>isManager</em> and <em>department</em> are derived. Last, the operations <em>allReports</em>, <em>reportinChain</em> and <em>reportsTo</em> are implemented with EOL.</p>
-<pre class="prettyprint lang-emf"><code>...
+<pre class="highlight"><code class="language-emf">...
 @Ecore(constraints="positiveID validName")
 @"http://eclipse.dev/epsilon/ecore/EVL"(
     positiveID="self.empID &gt; 0")
@@ -2161,25 +2187,7 @@ class Employee {
     
       <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

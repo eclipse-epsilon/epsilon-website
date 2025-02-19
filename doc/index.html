@@ -48,15 +48,11 @@
     
       <link rel="stylesheet" href="../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -92,10 +88,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -147,7 +145,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1915,9 +1949,9 @@
 <h1 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h1>
 <p>Epsilon is a family of languages and tools implemented in Java, for automating common model-based software engineering tasks.</p>
 <h2 id="languages">Languages<a class="headerlink" href="#languages" title="Permanent link">&para;</a></h2>
-<p>At the core of Epsilon is the <a href="eol">Epsilon Object Language (EOL)</a>, a scripting language that combines the imperative style of languages like Java/JavaScript with the powerful functional model querying capabilities of <a href="">OCL</a>. On top of EOL, Epsilon provides a number of interoperable task-specific languages for tasks such as code generation, model-to-model transformation and model validation.</p>
-<p>Epsilon languages are underpinnd by a <a href="emc">model connectivity layer</a> that shields them from the specifics of individual modeling technologies and allows them to query and modify models that conform to different technologies in a uniform way (e.g. transform an EMF model into Simulink, cross-validate an XML document and a UML model).</p>
-<div class="mermaid mermaid-100">graph TD
+<p>At the core of Epsilon is the <a href="eol/">Epsilon Object Language (EOL)</a>, a scripting language that combines the imperative style of languages like Java/JavaScript with the powerful functional model querying capabilities of <a href="">OCL</a>. On top of EOL, Epsilon provides a number of interoperable task-specific languages for tasks such as code generation, model-to-model transformation and model validation.</p>
+<p>Epsilon languages are underpinned by a <a href="emc/">model connectivity layer</a> that shields them from the specifics of individual modelling technologies and allows them to query and modify models that conform to different technologies in a uniform way (e.g. transform an EMF model into Simulink, cross-validate an XML document and a UML model).</p>
+<pre class="mermaid mermaid-100"><code>graph TD
     ECL["Model&lt;br/&gt;comparison&lt;br/&gt;(ECL)"]
     Flock["Model&lt;br/&gt;migration&lt;br/&gt;(Flock)"]
     EGL["Code&lt;br/&gt;generation&lt;br/&gt;(EGL)"]
@@ -1959,43 +1993,43 @@
     classDef language fill:#ffffff;
     class ETL,Flock,EGL,EVL,ECL,EPL,EML,Pinset language;
     classDef driver fill:#E8E8E8;
-    class EMF,XML,CSV,Simulink,Excel,PTC,Dots driver;</div>
+    class EMF,XML,CSV,Simulink,Excel,PTC,Dots driver;</code></pre>
 <h3 id="task-specific-languages">Task-Specific Languages<a class="headerlink" href="#task-specific-languages" title="Permanent link">&para;</a></h3>
 <p>Epsilon provides the following task-specific languages, which use EOL as their core expression language. Each task-specific language provides constructs and syntax that are tailored to the specific task it targets:</p>
 <ul>
-<li><a href="egl">Epsilon Generation Language (EGL)</a>: A template-based model-to-text language for generating code, documentation and other textual artefacts from models. EGL supports content-destination decoupling, protected regions for mixing generated with hand-written code. EGL also provides a rule-based coordination language (<a href="egx">EGX</a>), that allows specific EGL templates to be executed for a specific model element type, with the ability to guard rule execution and specify generation target location by type/element.</li>
-<li><a href="etl">Epsilon Transformation Language (ETL)</a>: A rule-based model-to-model transformation language that supports transforming many input to many output models, rule inheritance, lazy and greedy rules, and the ability to query and modify both input and output models.</li>
-<li><a href="evl">Epsilon Validation Language (EVL)</a>: A model validation language that supports both intra and inter-model consistency checking, constraint dependency management and specifying fixes that users can invoke to repair identified inconsistencies. EVL is integrated with EMF/GMF and as such, EVL constraints can be evaluated from within EMF/GMF editors and generate error markers for failed constraints.</li>
-<li><a href="ewl">Epsilon Wizard Language (EWL)</a>: A language tailored to interactive in-place model transformations on model elements selected by the user. EWL is integrated with EMF/GMF and as such, wizards can be executed from within EMF and GMF editors.</li>
-<li><a href="ecl">Epsilon Comparison Language (ECL)</a>: A rule-based language for discovering correspondences (matches) between elements of models of diverse metamodels.</li>
-<li><a href="eml">Epsilon Merging Language (EML)</a>: A rule-based language for merging models of diverse metamodels, after first identifying their correspondences with <a href="ecl">ECL</a> (or otherwise).</li>
-<li><a href="epl">Epsilon Pattern Language (EPL)</a>: A pattern language for matching model elements based on element relations and characteristics.</li>
-<li><a href="emg">Epsilon Model Generation Language (EMG)</a>: A language for semi-automated model generation.</li>
-<li><a href="flock">Epsilon Flock</a>: A rule-based transformation language for updating models in response to metamodel changes.</li>
-<li><a href="eunit">EUnit</a>: EUnit is a unit testing framework specialized on testing model management tasks, such as model-to-model transformations, model-to-text transformations or model validation. It is based on Epsilon, but it can be used for model technologies external to Epsilon. Tests are written by combining an EOL script and an <a href="workflow">ANT</a> buildfile.</li>
-<li><a href="pinset">Pinset</a>: A rule-based domain-specific transformation language that allows extracting tabular datasets (i.e. CSVs) from input models.</li>
+<li><a href="egl/">Epsilon Generation Language (EGL)</a>: A template-based model-to-text language for generating code, documentation and other textual artefacts from models. EGL supports content-destination decoupling, protected regions for mixing generated with hand-written code. EGL also provides a rule-based coordination language (<a href="egx">EGX</a>), that allows specific EGL templates to be executed for a specific model element type, with the ability to guard rule execution and specify generation target location by type/element.</li>
+<li><a href="etl/">Epsilon Transformation Language (ETL)</a>: A rule-based model-to-model transformation language that supports transforming many input to many output models, rule inheritance, lazy and greedy rules, and the ability to query and modify both input and output models.</li>
+<li><a href="evl/">Epsilon Validation Language (EVL)</a>: A model validation language that supports both intra and inter-model consistency checking, constraint dependency management and specifying fixes that users can invoke to repair identified inconsistencies. EVL is integrated with EMF/GMF and as such, EVL constraints can be evaluated from within EMF/GMF editors and generate error markers for failed constraints.</li>
+<li><a href="ewl/">Epsilon Wizard Language (EWL)</a>: A language tailored to interactive in-place model transformations on model elements selected by the user. EWL is integrated with EMF/GMF and as such, wizards can be executed from within EMF and GMF editors.</li>
+<li><a href="ecl/">Epsilon Comparison Language (ECL)</a>: A rule-based language for discovering correspondences (matches) between elements of models of diverse metamodels.</li>
+<li><a href="eml/">Epsilon Merging Language (EML)</a>: A rule-based language for merging models of diverse metamodels, after first identifying their correspondences with <a href="ecl">ECL</a> (or otherwise).</li>
+<li><a href="epl/">Epsilon Pattern Language (EPL)</a>: A pattern language for matching model elements based on element relations and characteristics.</li>
+<li><a href="emg/">Epsilon Model Generation Language (EMG)</a>: A language for semi-automated model generation.</li>
+<li>[Epsilon Flock](flock.md: A rule-based transformation language for updating models in response to metamodel changes.</li>
+<li><a href="eunit/">EUnit</a>: EUnit is a unit testing framework specialized on testing model management tasks, such as model-to-model transformations, model-to-text transformations or model validation. It is based on Epsilon, but it can be used for model technologies external to Epsilon. Tests are written by combining an EOL script and an <a href="workflow">ANT</a> buildfile.</li>
+<li><a href="pinset/">Pinset</a>: A rule-based domain-specific transformation language that allows extracting tabular datasets (i.e. CSVs) from input models.</li>
 </ul>
 <h2 id="tools">Tools<a class="headerlink" href="#tools" title="Permanent link">&para;</a></h2>
 <p>In addition to the languages above, Epsilon also provides several tools
 and utilities for working with models.</p>
 <h3 id="graphical-modelling">Graphical Modelling<a class="headerlink" href="#graphical-modelling" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="picto">Picto</a>: Picto is an Eclipse view for visualising models via model-to-text transformation to SVG/HTML. Compared to existing graphical modelling frameworks such as Sirius and GMF, the main appeal of Picto is that model visualisation takes place in an embedded browser and therefore you can leverage any HTML/SVG/JavaScript-based technology such as D3.js, mxGraph and JointJS. Picto also provides built-in support for the powerful Graphviz and PlantUML textual syntaxes (which are transformed to SVG via the respective tools). A distinguishing feature of Picto is does not require running multiple Eclipse instances as the metamodels, models and visualisation transformations can all reside in the same workspace.</li>
-<li><a href="eugenia">Eugenia</a>: Eugenia is a front-end for GMF. Its aim is to speed up the process of developing a GMF editor and lower the entrance barrier for new developers. To this end, Eugenia enables developers to generate a fully-functional GMF editor only by specifying a few high-level annotations in the Ecore metamodel.</li>
+<li><a href="picto/">Picto</a>: Picto is an Eclipse view for visualising models via model-to-text transformation to SVG/HTML. Compared to existing graphical modelling frameworks such as Sirius and GMF, the main appeal of Picto is that model visualisation takes place in an embedded browser and therefore you can leverage any HTML/SVG/JavaScript-based technology such as D3.js, mxGraph and JointJS. Picto also provides built-in support for the powerful Graphviz and PlantUML textual syntaxes (which are transformed to SVG via the respective tools). A distinguishing feature of Picto is does not require running multiple Eclipse instances as the metamodels, models and visualisation transformations can all reside in the same workspace.</li>
+<li><a href="eugenia/">Eugenia</a>: Eugenia is a front-end for GMF. Its aim is to speed up the process of developing a GMF editor and lower the entrance barrier for new developers. To this end, Eugenia enables developers to generate a fully-functional GMF editor only by specifying a few high-level annotations in the Ecore metamodel.</li>
 </ul>
 <h3 id="textual-modelling">Textual Modelling<a class="headerlink" href="#textual-modelling" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="flexmi">Flexmi</a>: Flexmi is a flexible, reflective textual syntax for creating models conforming to Ecore (EMF) metamodels. Flexmi is XML-based and offers features such as fuzzy matching of XML tags and attributes to Ecore class/feature names, support for embedding EOL expressions in models and for defining and instantiating model element templates.</li>
-<li><a href="hutn">Human Usable Textual Notation</a>: An implementation of the OMG standard for representing models in a human understandable format. HUTN allows models to be written using a text editor in a C-like syntax.</li>
+<li><a href="flexmi/">Flexmi</a>: Flexmi is a flexible, reflective textual syntax for creating models conforming to Ecore (EMF) metamodels. Flexmi is XML-based and offers features such as fuzzy matching of XML tags and attributes to Ecore class/feature names, support for embedding EOL expressions in models and for defining and instantiating model element templates.</li>
+<li><a href="hutn/">Human Usable Textual Notation</a>: An implementation of the OMG standard for representing models in a human understandable format. HUTN allows models to be written using a text editor in a C-like syntax.</li>
 </ul>
 <h3 id="emf-utilities">EMF Utilities<a class="headerlink" href="#emf-utilities" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="exeed">Exeed</a>: Exeed is an enhanced version of the built-in EMF reflective tree-based editor that enables developers to customize the labels and icons of model elements simply by attaching a few simple annotations to the respective EClasses in the Ecore metamodel. Exeed also supports setting the values of references using drag-and-drop instead of using the combo boxes in the properties view.</li>
-<li><a href="modelink">ModeLink</a>: ModeLink is an editor consisting of 2-3 side-by-side EMF tree-based editors, and is very convenient for establishing (weaving) links between different models using drag-and-drop.</li>
+<li><a href="exeed/">Exeed</a>: Exeed is an enhanced version of the built-in EMF reflective tree-based editor that enables developers to customize the labels and icons of model elements simply by attaching a few simple annotations to the respective EClasses in the Ecore metamodel. Exeed also supports setting the values of references using drag-and-drop instead of using the combo boxes in the properties view.</li>
+<li><a href="modelink/">ModeLink</a>: ModeLink is an editor consisting of 2-3 side-by-side EMF tree-based editors, and is very convenient for establishing (weaving) links between different models using drag-and-drop.</li>
 </ul>
 <h3 id="workflow">Workflow<a class="headerlink" href="#workflow" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="workflow">Workflow</a>: Epsilon provides a set of ANT tasks to enable developers assemble complex workflows that involve both MDE and non-MDE tasks.</li>
+<li><a href="workflow/">Workflow</a>: Epsilon provides a set of ANT tasks to enable developers assemble complex workflows that involve both MDE and non-MDE tasks.</li>
 </ul>
 
 
@@ -2131,25 +2165,7 @@ and utilities for working with models.</p>
     
       <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../assets/javascript/mermaid.js"></script>
-      
-        <script src="../assets/javascript/jquery.js"></script>
-      
-        <script src="../assets/javascript/slick.min.js"></script>
-      
-        <script src="../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../assets/dist/bundle.js"></script>
       
     
   </body>

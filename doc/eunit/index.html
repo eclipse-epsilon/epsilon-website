@@ -48,15 +48,11 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -92,10 +88,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -147,7 +145,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -2211,7 +2245,7 @@
 <p>Data bindings repeat all test cases with different values in one or more variables. They can implement parametric testing, as in JUnit 4. EUnit can nest several data bindings, running all test cases once for each combination.</p>
 <p>Model bindings are specific to EUnit: they allow developers to repeat a single test case with different subsets of models. Data and model bindings can be combined. One interesting approach is to set the names of the models to be used in the model binding from the data binding, as a quick way to try several test cases with the same subsets of models.</p>
 <p>The figure below shows an example of an EUnit test tree: nodes with data bindings are marked with <code>data</code>, and nodes with model bindings are marked with <code>model</code>.</p>
-<div class="mermaid mermaid-90">graph TD
+<pre class="mermaid mermaid-90"><code>graph TD
     data1[data&lt;br/&gt;x=1]
     data2[data&lt;br/&gt;x=2]
     testa1[test A]
@@ -2231,7 +2265,7 @@
     testa1 --&gt; modelx1
     testa1 --&gt; modely1
     testa2 --&gt; modelx2
-    testa2 --&gt; modely2</div>
+    testa2 --&gt; modely2</code></pre>
 <p>EUnit will perform a preorder traversal of this tree, running the following tests:</p>
 <ol>
 <li>
@@ -2255,7 +2289,7 @@
 </ol>
 <p>Optionally, EUnit can filter tests by name, running only <code>A</code> or <code>B</code>. Similarly to JUnit, EUnit logs start and finish times for each node in the tree, so the most expensive test cases can be quickly detected. However, EUnit logs CPU time<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> in addition to the usual wallclock time.</p>
 <p>Parametric testing is not to be confused with <em>theories</em>: both repeat a test case with different values, but results are reported quite differently. While parametric testing produces separate test cases with independent results, theories produce aggregated tests which only pass if the original test case passes for every data point. The figures below illustrate these differences. EUnit does not support theories yet: however, they can be approximated with data bindings.</p>
-<p><div class="mermaid mermaid-50">graph TD
+<p><pre class="mermaid mermaid-50"><code>graph TD
     data1[data 1]
     data2[data 2]
     testa1[test 1]
@@ -2267,9 +2301,9 @@
     data1 --&gt; testa1
     data1 --&gt; testb1
     data2 --&gt; testa2
-    data2 --&gt; testb2</div>
+    data2 --&gt; testb2</code></pre>
 Parametric Testing</p>
-<p><div class="mermaid mermaid-50">graph TD
+<p><pre class="mermaid mermaid-50"><code>graph TD
     data1[test 1]
     data2[test 2]
     testa1[data 1]
@@ -2281,7 +2315,7 @@ Parametric Testing</p>
     data1 --&gt; testa1
     data1 --&gt; testb1
     data2 --&gt; testa2
-    data2 --&gt; testb2</div>
+    data2 --&gt; testb2</code></pre>
 Theories</p>
 <h3 id="test-cases">Test Cases<a class="headerlink" href="#test-cases" title="Permanent link">&para;</a></h3>
 <p>The execution of a test case is divided into the following steps:</p>
@@ -2318,19 +2352,18 @@ Theories</p>
 <p>EUnit uses standard Ant buildfiles: running EUnit is as simple as using its Ant task. Users may run EUnit more than once in a single Ant launch: the graphical user interface will automatically aggregate the results of all test suites.</p>
 <h4 id="eunit-invocations">EUnit Invocations<a class="headerlink" href="#eunit-invocations" title="Permanent link">&para;</a></h4>
 <p>An example invocation of the EUnit Ant task using the most common features is shown in the listing below. Users will normally only use some of these features at a time, though. Optional attributes have been listed between brackets. Some nested elements can be repeated 0+ times (<code>*</code>) or 0-1 times (<code>?</code>). Valid alternatives for an attribute are separated with <code>|</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;epsilon.eunit</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;...&quot;</span>
-<span class="w">    </span><span class="err">[</span><span class="na">failOnErrors=</span><span class="s">&quot;...&quot;</span><span class="err">]</span>
-<span class="w">    </span><span class="err">[</span><span class="na">package=</span><span class="s">&quot;..&quot;</span><span class="err">]</span>
-<span class="w">    </span><span class="err">[</span><span class="na">toDir=</span><span class="s">&quot;...&quot;</span><span class="err">]</span>
-<span class="w">    </span><span class="err">[</span><span class="na">report=</span><span class="s">&quot;yes|no&quot;</span><span class="err">]</span>
-<span class="w">    </span><span class="err">[</span><span class="na">saveModelDeltas=</span><span class="s">&quot;yes|no&quot;</span><span class="err">]</span><span class="nt">&gt;</span>
-<span class="w">  </span>(<span class="nt">&lt;model</span><span class="w">     </span><span class="na">ref=</span><span class="s">&quot;OldName&quot;</span><span class="w"> </span><span class="err">[</span><span class="na">as=</span><span class="s">&quot;NewName&quot;</span><span class="err">]</span><span class="nt">/&gt;</span>)*
-<span class="w">  </span>(<span class="nt">&lt;uses</span><span class="w">      </span><span class="na">ref=</span><span class="s">&quot;x&quot;</span><span class="w"> </span><span class="err">[</span><span class="na">as=</span><span class="s">&quot;y&quot;</span><span class="err">]</span><span class="w"> </span><span class="nt">/&gt;</span>)*
-<span class="w">  </span>(<span class="nt">&lt;exports</span><span class="w">   </span><span class="na">ref=</span><span class="s">&quot;z&quot;</span><span class="w"> </span><span class="err">[</span><span class="na">as=</span><span class="s">&quot;w&quot;</span><span class="err">]</span><span class="w"> </span><span class="nt">/&gt;</span>)*
-<span class="w">  </span>(<span class="nt">&lt;parameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;myparam&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;myvalue&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>)*
-<span class="w">  </span>(<span class="nt">&lt;modelTasks&gt;</span><span class="cm">&lt;!-- Zero or more Ant tasks --&gt;</span><span class="nt">&lt;/modelTasks&gt;</span>)?
-<span class="nt">&lt;/epsilon.eunit&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-xml">&lt;epsilon.eunit src="..."
+    [failOnErrors="..."]
+    [package=".."]
+    [toDir="..."]
+    [report="yes|no"]
+    [saveModelDeltas="yes|no"]&gt;
+  (&lt;model     ref="OldName" [as="NewName"]/&gt;)*
+  (&lt;uses      ref="x" [as="y"] /&gt;)*
+  (&lt;exports   ref="z" [as="w"] /&gt;)*
+  (&lt;parameter name="myparam" value="myvalue" /&gt;)*
+  (&lt;modelTasks&gt;&lt;!-- Zero or more Ant tasks --&gt;&lt;/modelTasks&gt;)?
+&lt;/epsilon.eunit&gt;</code></pre>
 <p>The EUnit Ant task is based on the Epsilon abstract executable module task, inheriting some useful features. The attribute <code>src</code> points to the path of the EOL file, and the optional attribute <code>failOnErrors</code> can be set to false to prevent EUnit from aborting the Ant launch if a test case fails. EUnit also inherits support for importing and exporting global variables through the <code>&lt;uses&gt;</code> and <code>&lt;exports&gt;</code> elements: the original name is set in <code>ref</code>, and the optional <code>as</code> attribute allows for using a different name. For receiving parameters as name-value piars, the <code>&lt;parameter&gt;</code> element can be used.</p>
 <p>Model references (using the <code>&lt;model&gt;</code> nested element) are also inherited from the Epsilon abstract executable module task. These allow model management tasks to refer by name to models previously loaded in the Ant buildfile. However, EUnit implicitly reloads the models after each test case. This ensures that test cases are isolated from each other.</p>
 <p>The optional <code>&lt;modelTasks&gt;</code> nested element contains a sequence of Ant tasks which will be run after reloading the model references and before running the model setup sections in the EOL file. This allows users to run workflows more advanced than simply reloading model references.</p>
@@ -2343,7 +2376,7 @@ Theories</p>
 <p>The Epsilon Object Language script is the second half of the EUnit test suite. EOL annotations are used to tag some of the operations as data binding definitions (<code>@data</code> or <code>@Data</code>), additional model setup sections (<code>@model</code>/<code>@Model</code>), test setup and teardown sections (<code>@setup</code>/<code>@Before</code> and <code>@teardown</code>/<code>@After</code>), and test cases (<code>@test</code>/<code>@Test</code>). Suite setup and teardown sections can also be defined with <code>@suitesetup</code>/<code>@BeforeClass</code> and <code>@suiteteardown</code>/<code>@AfterClass</code> annotations: these operations will be run before and after all tests, respectively.</p>
 <h4 id="data-bindings">Data bindings<a class="headerlink" href="#data-bindings" title="Permanent link">&para;</a></h4>
 <p>Data bindings repeat all test cases with different values in some variables. To define a data binding, users must define an operation which returns a sequence of elements and is marked with @data variable. All test cases will be repeated once for each element of the returned sequence, setting the specified variable to the corresponding element. Listing 15.2 shows two nested data bindings and a test case which will be run four times: with x=1 and y=5, x=1 and y=6, x=2 and y=5 and finally x=2 and y=6. The example shows how x and y could be used by the setup section to generate an input model for the test. This can be useful if the intent of the test is ensuring that a certain property holds in a class of models, rather than a single model.</p>
-<pre class="prettyprint lang-eol"><code>@data x
+<pre class="highlight"><code class="language-eunit">@data x
 operation firstLevel()  { return 1.to(2); }
 
 @data y
@@ -2355,7 +2388,7 @@ operation generateModel() { /* generate model using x and y */ }
 @test
 operation mytest() { /* test with the generated model */ }</code></pre>
 <p>Alternatively, if both x and y were to use the same sets of values, we could add two @data annotations to the same operation. For instance, the listing below shows how we could test with 4 cases: x=1 and y=1, x=1 and y=2, x=2 and y=1 and x=2 and y=2.</p>
-<pre class="prettyprint lang-eol"><code>@data x
+<pre class="highlight"><code class="language-eunit">@data x
 @data y
 operation levels()  { return 1.to(2); }
 
@@ -2367,7 +2400,7 @@ operation mytest() { /* test with the generated model */ }</code></pre>
 <h4 id="model-bindings">Model bindings<a class="headerlink" href="#model-bindings" title="Permanent link">&para;</a></h4>
 <p>Model bindings repeat a test case with different subsets of models. They can be defined by annotating a test case with <code>$with map</code> or <code>$onlyWith map</code> one or more times, where map is an EOL expression that produces a <code>MAP</code>. For each key-value pair <code>key = value</code>, EUnit will rename the model named <code>value</code> to <code>key</code>. The difference between <code>$with</code> and <code>$onlyWith</code> is how they handle the models not mentioned in the <code>MAP</code>: <code>$with</code> will preserve them as is, and <code>$onlyWith</code> will make them unavailable during the test. <code>$onlyWith</code> is useful for tightly restricting the set of available models in a test and for avoiding ambiguous type references when handling multiple models using the same metamodel.</p>
 <p>The listing below shows two tests which will be each run twice. The first test uses <code>$with</code>, which preserves models not mentioned in the MAP: the first time, model "A" will be the default model and model "B" will be the "Other" model, and the second time, model "B" will be the default model and model "A" will be the "Other" model. The second test uses two <code>$onlyWith</code> annotations: on the first run, "A" will be available as "Model" and "B" will not unavailable, and on the second run, only "B" will be available as "Model" and "A" will be unavailable.</p>
-<pre class="prettyprint lang-eol"><code>$with Map {"" = "A", "Other" = "B"}
+<pre class="highlight"><code class="language-eunit">$with Map {"" = "A", "Other" = "B"}
 $with Map {"" = "B", "Other" = "A"}
 @test
 operation mytest() {
@@ -2535,35 +2568,34 @@ the table below.</p>
 <h3 id="models-and-tasks-in-the-buildfile">Models and Tasks in the Buildfile<a class="headerlink" href="#models-and-tasks-in-the-buildfile" title="Permanent link">&para;</a></h3>
 <p>After describing the basic syntax, we will show how to use EUnit to test an ETL transformation.</p>
 <p>The Ant buildfile is shown in the listing below. It has two targets: <code>run-tests</code> (lines 2-19) invokes the EUnit suite, and <code>tree2graph</code> (lines 23-28) is a helper target which transforms model <code>Tree</code> into model <code>Graph</code> using ETL. The <code>&lt;modelTasks&gt;</code> nested element is used to load the input, expected output and output EMF models. <code>Graph</code> is loaded with <code>read</code> set to <code>false</code>: the model will be initially empty, and will be populated by the ETL transformation.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;project&gt;</span>
-<span class="w">  </span><span class="nt">&lt;target</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;run-tests&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;epsilon.eunit</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;test-external.eunit&quot;</span><span class="nt">&gt;</span>
-<span class="w">      </span><span class="nt">&lt;modelTasks&gt;</span>
-<span class="w">        </span><span class="nt">&lt;epsilon.emf.loadModel</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Tree&quot;</span>
-<span class="w">            </span><span class="na">modelfile=</span><span class="s">&quot;tree.model&quot;</span>
-<span class="w">            </span><span class="na">metamodelfile=</span><span class="s">&quot;tree.ecore&quot;</span>
-<span class="w">            </span><span class="na">read=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="na">store=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;epsilon.emf.loadModel</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;GraphExpected&quot;</span>
-<span class="w">            </span><span class="na">modelfile=</span><span class="s">&quot;graph.model&quot;</span>
-<span class="w">            </span><span class="na">metamodelfile=</span><span class="s">&quot;graph.ecore&quot;</span>
-<span class="w">            </span><span class="na">read=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="na">store=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;epsilon.emf.loadModel</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Graph&quot;</span>
-<span class="w">            </span><span class="na">modelfile=</span><span class="s">&quot;transformed.model&quot;</span>
-<span class="w">            </span><span class="na">metamodelfile=</span><span class="s">&quot;graph.ecore&quot;</span>
-<span class="w">            </span><span class="na">read=</span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="na">store=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
-<span class="w">      </span><span class="nt">&lt;/modelTasks&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/epsilon.eunit&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/target&gt;</span>
-<span class="w">  </span><span class="nt">&lt;target</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tree2graph&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;epsilon.etl</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;${basedir}/resources/Tree2Graph.etl&quot;</span><span class="nt">&gt;</span>
-<span class="w">      </span><span class="nt">&lt;model</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;Tree&quot;</span><span class="nt">/&gt;</span>
-<span class="w">      </span><span class="nt">&lt;model</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;Graph&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/epsilon.etl&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/target&gt;</span>
-<span class="nt">&lt;/project&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-xml">&lt;project&gt;
+  &lt;target name="run-tests"&gt;
+    &lt;epsilon.eunit src="test-external.eunit"&gt;
+      &lt;modelTasks&gt;
+        &lt;epsilon.emf.loadModel name="Tree"
+            modelfile="tree.model"
+            metamodelfile="tree.ecore"
+            read="true" store="false"/&gt;
+        &lt;epsilon.emf.loadModel name="GraphExpected"
+            modelfile="graph.model"
+            metamodelfile="graph.ecore"
+            read="true" store="false"/&gt;
+        &lt;epsilon.emf.loadModel name="Graph"
+            modelfile="transformed.model"
+            metamodelfile="graph.ecore"
+            read="false" store="false"/&gt;
+      &lt;/modelTasks&gt;
+    &lt;/epsilon.eunit&gt;
+  &lt;/target&gt;
+  &lt;target name="tree2graph"&gt;
+    &lt;epsilon.etl src="${basedir}/resources/Tree2Graph.etl"&gt;
+      &lt;model ref="Tree"/&gt;
+      &lt;model ref="Graph"/&gt;
+    &lt;/epsilon.etl&gt;
+  &lt;/target&gt;
+&lt;/project&gt;</code></pre>
 <p>The EOL script is shown in the listing below: it invokes the helper task (line 3) and checks that the obtained model is equal to the expected model (line 4). Internally, EMC will perform the comparison using EMF Compare.</p>
-<pre class="prettyprint lang-eol"><code>@test
+<pre class="highlight"><code class="language-eol">@test
 operation transformationWorksAsExpected() {
   runTarget("tree2graph");
   assertEqualModels("GraphExpected", "Graph");
@@ -2571,16 +2603,15 @@ operation transformationWorksAsExpected() {
 <h3 id="models-and-tasks-in-the-eol-script">Models and Tasks in the EOL Script<a class="headerlink" href="#models-and-tasks-in-the-eol-script" title="Permanent link">&para;</a></h3>
 <p>In the previous section, the EOL file is kept very concise because the model setup and model management tasks under test were specified in the Ant buildfile. In this section, we will inline the models and the tasks into the EOL script instead.</p>
 <p>The Ant buildfile is shown in the listing below. It is now very simple: all it needs to do is run the EOL script. However, since we will parse HUTN in the EOL script, we must make sure the s of the metamodels are registered.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;project&gt;</span>
-<span class="w">  </span><span class="nt">&lt;target</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;run-tests&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;epsilon.emf.register</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;tree.ecore&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;epsilon.emf.register</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;graph.ecore&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;epsilon.eunit</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;test-inlined.eunit&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/target&gt;</span>
-<span class="nt">&lt;/project&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-xml">&lt;project&gt;
+  &lt;target name="run-tests"&gt;
+    &lt;epsilon.emf.register file="tree.ecore"/&gt;
+    &lt;epsilon.emf.register file="graph.ecore"/&gt;
+    &lt;epsilon.eunit src="test-inlined.eunit"/&gt;
+  &lt;/target&gt;
+&lt;/project&gt;</code></pre>
 <p>The EOL script used is shown below. Instead of loading models through the Ant tasks, the <code>loadHutn</code> operation has been used to load the models. The test itself is almost the same, but instead of running a helper target, it invokes an operation which creates and runs the ETL Ant task through the <code>antProject</code> variable provided by EUnit, taking advantage of the support in EOL for invoking Java code through reflection.</p>
-<pre class="prettyprint lang-eol"><code>@model
+<pre class="highlight"><code class="language-eunit">@model
 operation loadModels() {
   loadHutn("Tree", '@Spec {Metamodel {nsUri: "Tree" }}
 Model {
@@ -2633,46 +2664,45 @@ operation runETL() {
 <li>Load it into the EMC model repository with <code>&lt;epsilon.emf.loadModel&gt;</code>.</li>
 </ol>
 <p>The listing below shows the Ant buildfile which would be required for running these steps, showing that while EUnit can use the existing ATL tasks as-is, the required helper task is quite longer than the one shown above. Ideally, Ant tasks should be adapted or wrapped to use models directly from the EMC model repository.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;project&gt;</span>
-<span class="w">  </span><span class="cm">&lt;!-- ... omitted ... --&gt;</span>
-<span class="w">  </span><span class="nt">&lt;target</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;atl&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="cm">&lt;!-- Create temporary files for input and output models --&gt;</span>
-<span class="w">    </span><span class="nt">&lt;tempfile</span><span class="w"> </span><span class="na">property=</span><span class="s">&quot;atl.temp.srcfile&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;tempfile</span><span class="w"> </span><span class="na">property=</span><span class="s">&quot;atl.temp.dstfile&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<pre class="highlight"><code class="language-xml">&lt;project&gt;
+  &lt;!-- ... omitted ... --&gt;
+  &lt;target name="atl"&gt;
+    &lt;!-- Create temporary files for input and output models --&gt;
+    &lt;tempfile property="atl.temp.srcfile" /&gt;
+    &lt;tempfile property="atl.temp.dstfile" /&gt;
 
-<span class="w">    </span><span class="cm">&lt;!-- Save input model to a file --&gt;</span>
-<span class="w">    </span><span class="nt">&lt;epsilon.storeModel</span><span class="w"> </span><span class="na">model=</span><span class="s">&quot;Tree&quot;</span>
-<span class="w">      </span><span class="na">target=</span><span class="s">&quot;${atl.temp.srcfile}&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+    &lt;!-- Save input model to a file --&gt;
+    &lt;epsilon.storeModel model="Tree"
+      target="${atl.temp.srcfile}" /&gt;
 
-<span class="w">    </span><span class="cm">&lt;!-- Load the metamodels and the source model --&gt;</span>
-<span class="w">    </span><span class="nt">&lt;atl.loadModel</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;TreeMM&quot;</span><span class="w"> </span><span class="na">metamodel=</span><span class="s">&quot;MOF&quot;</span>
-<span class="w">      </span><span class="na">path=</span><span class="s">&quot;metamodels/tree.ecore&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;atl.loadModel</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;GraphMM&quot;</span><span class="w"> </span><span class="na">metamodel=</span><span class="s">&quot;MOF&quot;</span>
-<span class="w">      </span><span class="na">path=</span><span class="s">&quot;metamodels/graph.ecore&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;atl.loadModel</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Tree&quot;</span><span class="w"> </span><span class="na">metamodel=</span><span class="s">&quot;TreeMM&quot;</span>
-<span class="w">      </span><span class="na">path=</span><span class="s">&quot;${atl.temp.srcfile}&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+    &lt;!-- Load the metamodels and the source model --&gt;
+    &lt;atl.loadModel name="TreeMM" metamodel="MOF"
+      path="metamodels/tree.ecore" /&gt;
+    &lt;atl.loadModel name="GraphMM" metamodel="MOF"
+      path="metamodels/graph.ecore" /&gt;
+    &lt;atl.loadModel name="Tree" metamodel="TreeMM"
+      path="${atl.temp.srcfile}" /&gt;
 
-<span class="w">    </span><span class="cm">&lt;!-- Run ATL and save the model --&gt;</span>
-<span class="w">    </span><span class="nt">&lt;atl.launch</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;transformation/tree2graph.atl&quot;</span><span class="nt">&gt;</span>
-<span class="w">      </span><span class="nt">&lt;inmodel</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;IN&quot;</span><span class="w">   </span><span class="na">model=</span><span class="s">&quot;Tree&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">      </span><span class="nt">&lt;outmodel</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;OUT&quot;</span><span class="w"> </span><span class="na">model=</span><span class="s">&quot;Graph&quot;</span><span class="w"> </span><span class="na">metamodel=</span><span class="s">&quot;GraphMM&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/atl.launch&gt;</span>
-<span class="w">    </span><span class="nt">&lt;atl.saveModel</span><span class="w"> </span><span class="na">model=</span><span class="s">&quot;Graph&quot;</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;${atl.temp.dstfile}&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+    &lt;!-- Run ATL and save the model --&gt;
+    &lt;atl.launch path="transformation/tree2graph.atl"&gt;
+      &lt;inmodel name="IN"   model="Tree" /&gt;
+      &lt;outmodel name="OUT" model="Graph" metamodel="GraphMM" /&gt;
+    &lt;/atl.launch&gt;
+    &lt;atl.saveModel model="Graph" path="${atl.temp.dstfile}" /&gt;
 
-<span class="w">    </span><span class="cm">&lt;!-- Load it back into the EUnit suite --&gt;</span>
-<span class="w">    </span><span class="nt">&lt;epsilon.emf.loadModel</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Graph&quot;</span>
-<span class="w">      </span><span class="na">modelfile=</span><span class="s">&quot;${atl.temp.dstfile}&quot;</span>
-<span class="w">      </span><span class="na">metamodeluri=</span><span class="s">&quot;Graph&quot;</span>
-<span class="w">      </span><span class="na">read=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="na">store=</span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+    &lt;!-- Load it back into the EUnit suite --&gt;
+    &lt;epsilon.emf.loadModel name="Graph"
+      modelfile="${atl.temp.dstfile}"
+      metamodeluri="Graph"
+      read="true" store="false" /&gt;
 
-<span class="w">    </span><span class="cm">&lt;!-- Delete temporary files --&gt;</span>
-<span class="w">    </span><span class="nt">&lt;delete</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;${atl.temp.srcfile}&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;delete</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;${atl.temp.dstfile}&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/target&gt;</span>
-<span class="nt">&lt;/project&gt;</span>
-</code></pre></div>
+    &lt;!-- Delete temporary files --&gt;
+    &lt;delete file="${atl.temp.srcfile}" /&gt;
+    &lt;delete file="${atl.temp.dstfile}" /&gt;
+  &lt;/target&gt;
+&lt;/project&gt;</code></pre>
 <p>Another advantage in making model management tasks EMC-aware is that they can easily “export” their results as models, making them easier to test. For instance, the EVL Ant task allows for exporting its results as a model by setting the attribute <code>exportAsModel</code> to <code>true</code>. This way, EOL can query the results as any regular model. This is simpler than transforming the validated model to a problem metamodel. The example in the listing below checks that a single warning was produced due to the expected rule (<code>LabelsStartWithT</code>) and the expected model element.</p>
-<pre class="prettyprint lang-eol"><code>@test
+<pre class="highlight"><code class="language-eunit">@test
 operation valid() {
   var tree := new Tree!Tree;
   tree.label := '1n';
@@ -2832,25 +2862,7 @@ operation valid() {
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

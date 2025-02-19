@@ -44,15 +44,11 @@
     
       <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,10 +84,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -143,7 +141,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1890,26 +1924,25 @@
 
 <h2 id="querying-a-yaml-document">Querying a YAML document<a class="headerlink" href="#querying-a-yaml-document" title="Permanent link">&para;</a></h2>
 <p>We use the following <code>employees.yaml</code> as a base for demonstrating the EOL syntax for querying YAML documents.</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">employeeId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14623</span>
-<span class="w">  </span><span class="nt">address</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">country</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">England</span>
-<span class="w">    </span><span class="nt">resident</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">postcode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">M1 1AG</span>
-<span class="w">  </span><span class="nt">fullname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Michael Davidson</span>
-<span class="w">  </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Consultant</span>
-<span class="w">  </span><span class="nt">industry</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">IoT</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">smart factories</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">signal analytics</span><span class="p p-Indicator">]</span>
-<span class="w">  </span><span class="nt">projects</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">SmartAutomation</span><span class="p p-Indicator">,</span><span class="nt"> budget</span><span class="p">:</span><span class="w"> </span><span class="nv">25000</span><span class="p p-Indicator">}</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">FactoryAnalytics</span><span class="p p-Indicator">,</span><span class="nt"> budget</span><span class="p">:</span><span class="w"> </span><span class="nv">20000</span><span class="p p-Indicator">}</span>
+<pre class="highlight"><code class="language-yaml">- employeeId: 14623
+  address:
+    country: England
+    resident: true
+    postcode: M1 1AG
+  fullname: Michael Davidson
+  role: Consultant
+  industry: [IoT, smart factories, signal analytics]
+  projects:
+    - {name: SmartAutomation, budget: 25000}
+    - {name: FactoryAnalytics, budget: 20000}
 
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">employeeId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16431</span>
-<span class="w">  </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">country</span><span class="p">:</span><span class="w"> </span><span class="nv">Germany</span><span class="p p-Indicator">}</span>
-<span class="w">  </span><span class="nt">fullname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Arnold Wagner</span>
-<span class="w">  </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HR</span>
-<span class="w">  </span><span class="nt">skills</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">communication</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coaching</span>
-</code></pre></div>
+- employeeId: 16431
+  address: {country: Germany}
+  fullname: Arnold Wagner
+  role: HR
+  skills:
+    - communication
+    - coaching</code></pre>
 <h2 id="queryingmodifying-yaml-documents-in-eol">Querying/modifying YAML documents in EOL<a class="headerlink" href="#queryingmodifying-yaml-documents-in-eol" title="Permanent link">&para;</a></h2>
 <p>The YAML driver uses predefined naming conventions to allow developers to programmatically access and modify YAML documents in a concise way. A type of YAML node must be specified when accessing YAML nodes via the YAML driver. There are 3 types of nodes in YAML:</p>
 <ul>
@@ -1920,7 +1953,7 @@
 <p>This section outlines the supported conventions in the form of questions and answers followed by relevant examples.</p>
 <h3 id="how-can-i-access-all-node-elements">How can I access all node elements?<a class="headerlink" href="#how-can-i-access-all-node-elements" title="Permanent link">&para;</a></h3>
 <p>Retrieving all nodes, regardless of their type, is performed by using the keyword <code>Node</code>, followed by the property <code>all</code>. One can access all nodes of a specific type, by using the keyword <code>ScalarNode</code> for scalar nodes, <code>MappingNode</code> for mapping nodes, and <code>ListNode</code> for list nodes.</p>
-<pre class="prettyprint lang-eol"><code>// Get and print all nodes
+<pre class="highlight"><code class="language-eol">// Get and print all nodes
 Node.all.println();
 
 // Get and print all scalar nodes
@@ -1933,7 +1966,7 @@ MappingNode.all.println();
 ListNode.all.println();</code></pre>
 <h3 id="how-can-i-access-nodes-by-name">How can I access nodes by name?<a class="headerlink" href="#how-can-i-access-nodes-by-name" title="Permanent link">&para;</a></h3>
 <p>The <code>s_</code> prefix followed by the name of the node is used to access all scalar nodes with the specified name. Similarly, the <code>m_</code> prefix is used for accessing mapping nodes, and the <code>l_</code> prefix for list nodes. For instance, <code>s_role.all</code> can be used to get all scalar nodes named <code>role</code>, <code>m_address.all</code> can be used to get all mapping nodes named <code>address</code>, and <code>l_industry.all</code> can be used to get all list nodes named <code>industry</code>.</p>
-<pre class="prettyprint lang-eol"><code>// Get all scalar nodes with the name "role" and print the first one
+<pre class="highlight"><code class="language-eol">// Get all scalar nodes with the name "role" and print the first one
 s_role.all.first().println();
 
 // Get all mapping nodes with the name "address" and print the first one
@@ -1943,7 +1976,7 @@ m_address.all.first().println();
 l_industry.all.first().println();</code></pre>
 <h3 id="how-can-i-retrieve-nodes-as-a-sequence-of-elements-or-as-a-single-element">How can I retrieve nodes as a sequence of elements or as a single element?<a class="headerlink" href="#how-can-i-retrieve-nodes-as-a-sequence-of-elements-or-as-a-single-element" title="Permanent link">&para;</a></h3>
 <p>One can specify how nodes can be retrieved, either as a sequence or as a single element. After the prefix of the node type (i.e., <code>s</code> for scalar node, <code>m</code> for mapping node, <code>l</code> for list node), one can use an additional prefix <code>c_</code> to specify that nodes should be retrieved as a sequence, or can use <code>e_</code> to specify that a single node should be retrieved. For instance, <code>se_country</code> specifies that a single scalar node named <code>country</code> should be retrieved, whereas <code>sc_country</code> specifies that the node named <code>country</code> should be retrieved in a sequence. Using the additional prefix <code>e_</code> can eliminate the need for using further accessor functions (e.g., <code>first</code>, <code>last</code>, <code>at</code>).</p>
-<pre class="prettyprint lang-eol"><code>// Get the first "address" mapping node
+<pre class="highlight"><code class="language-eol">// Get the first "address" mapping node
 var address = m_address.all.first();
 
 // Get and print the "country" scalar node in a sequence (c_)
@@ -1953,14 +1986,14 @@ address.sc_country.println();
 address.se_country.println();</code></pre>
 <h3 id="how-can-i-access-the-name-of-a-node">How can I access the name of a node?<a class="headerlink" href="#how-can-i-access-the-name-of-a-node" title="Permanent link">&para;</a></h3>
 <p>One may be interested in verifying the name of a node for debugging programs, and for this purpose, the <code>name</code> property can be used.</p>
-<pre class="prettyprint lang-eol"><code>// Get the first "industry" list node
+<pre class="highlight"><code class="language-eol">// Get the first "industry" list node
 var industry = l_industry.all.first();
 
 // Get and print the name of the node
 industry.name.println();</code></pre>
 <h3 id="how-can-i-access-the-type-of-a-node">How can I access the type of a node?<a class="headerlink" href="#how-can-i-access-the-type-of-a-node" title="Permanent link">&para;</a></h3>
 <p>One may be interested in verifying the type of a node for debugging programs, and for this purpose, the <code>type</code> property can be used.</p>
-<pre class="prettyprint lang-eol"><code>// Get the first "role" scalar node
+<pre class="highlight"><code class="language-eol">// Get the first "role" scalar node
 var role = s_role.all.first();
 
 // Get and print the type of the node
@@ -1974,7 +2007,7 @@ role.type.println(); // ScalarNode</code></pre>
 <li><code>f_</code> for floats</li>
 <li><code>b_</code> for booleans</li>
 </ul>
-<pre class="prettyprint lang-eol"><code>var employeeVal = s_employeeId.all.first().value; // 14623
+<pre class="highlight"><code class="language-eol">var employeeVal = s_employeeId.all.first().value; // 14623
 var s_employeeVal = s_employeeId.all.first().s_value + 1; // 146231
 var i_employeeVal = s_employeeId.all.first().i_value + 1; // 14624
 var d_employeeVal = s_employeeId.all.first().d_value + 1; // 14624.0
@@ -1982,7 +2015,7 @@ var f_employeeVal = s_employeeId.all.first().f_value + 1; // 14624.0
 var b_residentVal = s_resident.all.first().b_value; // true</code></pre>
 <h3 id="how-can-i-create-a-node">How can I create a node?<a class="headerlink" href="#how-can-i-create-a-node" title="Permanent link">&para;</a></h3>
 <p>To create a new node, you can use the <code>new</code> operator followed by the type of node (i.e., <code>ScalarNode</code>, <code>MappingNode</code>, <code>ListNode</code>). Alternatively, the convention for accessing nodes can be used for creating nodes. For instance, one can use the <code>new</code> operator followed by <code>s_role</code> to create a scalar node named <code>role</code>.</p>
-<pre class="prettyprint lang-eol"><code>// scalar node named "city" with the value "Berlin"
+<pre class="highlight"><code class="language-eol">// scalar node named "city" with the value "Berlin"
 var cityNode1 = new ScalarNode("city", "Berlin"); // city=Berlin
 var cityNode2 = new s_city("Berlin"); // city=Berlin
 
@@ -1995,7 +2028,7 @@ var booksNode1 = new ListNode("books", 5); // books=[{}, {}, {}, {}, {}]
 var booksNode2 = new l_books(5); // books=[{}, {}, {}, {}, {}]</code></pre>
 <h3 id="how-do-i-set-the-value-of-a-node">How do I set the value of a node?<a class="headerlink" href="#how-do-i-set-the-value-of-a-node" title="Permanent link">&para;</a></h3>
 <p>For setting or changing the value of a node, the <code>value</code> property can be used, followed by the assignment operator (“=”) and a value or a node. If a node is specified after the assignment operator, then the name of that node will be ignored, and the value of that node will become the new value after the assignment operation. The function <code>set(position, value)</code> can be used for modifying the items of a list node.</p>
-<pre class="prettyprint lang-eol"><code>// changes the value of the first "fullname" scalar node to "Jack"
+<pre class="highlight"><code class="language-eol">// changes the value of the first "fullname" scalar node to "Jack"
 s_fullname.all.at(0).value = "Jack";
 
 // changes the value of the first "role" scalar node to "Developer"
@@ -2017,7 +2050,7 @@ s_employeeId.all.last().value = new ListNode("newNode", 3);
 l_skills.all.first().value.set(1, "databases");</code></pre>
 <h3 id="how-do-i-add-entries-to-a-list-node">How do I add entries to a list node?<a class="headerlink" href="#how-do-i-add-entries-to-a-list-node" title="Permanent link">&para;</a></h3>
 <p>The function <code>add(value)</code> can be used for adding an item to a list node that contains scalar values. The functions <code>addRow()</code> and <code>addRows(size)</code> can be used for adding empty entries to a list node that contains nodes.</p>
-<pre class="prettyprint lang-eol"><code>// add an item to the "skills" list node
+<pre class="highlight"><code class="language-eol">// add an item to the "skills" list node
 l_skills.all.first().value.add("analytics");
 
 // add 1 empty entry to the "projects" list node
@@ -2027,13 +2060,13 @@ l_projects.all.first().value.addRow();
 l_projects.all.first().value.addRows(3);</code></pre>
 <h3 id="how-do-i-add-nodes-to-a-mapping-node">How do I add nodes to a mapping node?<a class="headerlink" href="#how-do-i-add-nodes-to-a-mapping-node" title="Permanent link">&para;</a></h3>
 <p>The <code>appendNode(node)</code> function can be used for adding new nodes into a mapping node.</p>
-<pre class="prettyprint lang-eol"><code>var address = m_address.all.last();
+<pre class="highlight"><code class="language-eol">var address = m_address.all.last();
 
 // add a new scalar node with the name "city" and value "Berlin"
 address.value.appendNode(new ScalarNode("city", "Berlin"));</code></pre>
 <h3 id="how-do-i-set-the-root-node-of-a-yaml-document">How do I set the root node of a YAML document?<a class="headerlink" href="#how-do-i-set-the-root-node-of-a-yaml-document" title="Permanent link">&para;</a></h3>
 <p>The <code>root</code> property can be used for setting the root node of a YAML document. The root node of a YAML document can either be a mapping node or a list node. The <code>setRootAsMap()</code> function can be used for setting the root node into a mapping node. The <code>setRootAsList()</code> function can be used for setting the root node into a list node.</p>
-<pre class="prettyprint lang-eol"><code>// Set the root node into a mapping node
+<pre class="highlight"><code class="language-eol">// Set the root node into a mapping node
 YAMLDoc.setRootAsMap();
 
 // Set the root node into a list node
@@ -2046,7 +2079,7 @@ YAMLDoc.root.value = new MappingNode();
 YAMLDoc.root.value = new ListNode("", 3);</code></pre>
 <h3 id="how-can-i-create-a-yaml-document-from-scratch">How can I create a YAML document from scratch?<a class="headerlink" href="#how-can-i-create-a-yaml-document-from-scratch" title="Permanent link">&para;</a></h3>
 <p>The following code can be used for creating the <code>employees.yaml</code> file programmatically.</p>
-<pre class="prettyprint lang-eol"><code>YAMLDoc.setRootAsList();
+<pre class="highlight"><code class="language-eol">YAMLDoc.setRootAsList();
 var root = YAMLDoc.getRoot();
 root.value.addRows(2);
 var rootFirstRow = root.value.at(0);
@@ -2102,7 +2135,7 @@ rootSecondRow.appendNode(roleNode2);
 rootSecondRow.appendNode(skillsNode);</code></pre>
 <h3 id="how-can-i-delete-nodes">How can I delete nodes?<a class="headerlink" href="#how-can-i-delete-nodes" title="Permanent link">&para;</a></h3>
 <p>To delete nodes, you can use the <code>delete</code> operator followed by the node(s) to be deleted.</p>
-<pre class="prettyprint lang-eol"><code>// delete all scalar nodes named "role"
+<pre class="highlight"><code class="language-eol">// delete all scalar nodes named "role"
 delete s_role.all;
 
 // delete the first mapping node named "address"
@@ -2117,18 +2150,17 @@ delete l_skills.all;</code></pre>
 <p><img alt="" src="configure.png" /></p>
 <h2 id="loading-a-yaml-document-through-java-code">Loading a YAML document through Java code<a class="headerlink" href="#loading-a-yaml-document-through-java-code" title="Permanent link">&para;</a></h2>
 <p>The following excerpt demonstrates using YAML models using Epsilon's Java API.</p>
-<div class="highlight"><pre><span></span><code><span class="n">EolModule</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EolModule</span><span class="p">();</span>
-<span class="n">module</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;...&quot;</span><span class="p">));</span>
+<pre class="highlight"><code class="language-java">EolModule module = new EolModule();
+module.parse(new File("..."));
 
-<span class="n">YamlModel</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">YamlModel</span><span class="p">();</span>
-<span class="n">model</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;YAMLDoc&quot;</span><span class="p">);</span>
-<span class="n">model</span><span class="p">.</span><span class="na">setFile</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;...&quot;</span><span class="p">));</span>
-<span class="n">model</span><span class="p">.</span><span class="na">load</span><span class="p">();</span>
+YamlModel model = new YamlModel();
+model.setName("YAMLDoc");
+model.setFile(new File("..."));
+model.load();
 
-<span class="n">module</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">getModelRepository</span><span class="p">().</span><span class="na">addModel</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
-<span class="n">module</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">setModule</span><span class="p">(</span><span class="n">module</span><span class="p">);</span>
-<span class="n">module</span><span class="p">.</span><span class="na">execute</span><span class="p">();</span>
-</code></pre></div>
+module.getContext().getModelRepository().addModel(model);
+module.getContext().setModule(module);
+module.execute();</code></pre>
 <h2 id="additional-resources">Additional resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://community.mde-network.org/courses/4609253/content">MDENet Community</a>: Additional learning resources about MDE with the Epsilon Framework.</li>
@@ -2229,25 +2261,7 @@ delete l_skills.all;</code></pre>
     
       <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

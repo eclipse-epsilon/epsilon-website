@@ -44,15 +44,11 @@
     
       <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,10 +84,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -143,7 +141,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1730,130 +1764,128 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">EOLExample.java</label><label for="__tabbed_1_2">Project.java</label><label for="__tabbed_1_3">Task.java</label><label for="__tabbed_1_4">pom.xml</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.examples.pojos</span><span class="p">;</span>
+<pre class="highlight"><code class="language-java">package org.eclipse.epsilon.examples.pojos;
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.eol.EolModule</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.eol.execute.context.Variable</span><span class="p">;</span>
+import org.eclipse.epsilon.eol.EolModule;
+import org.eclipse.epsilon.eol.execute.context.Variable;
 
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EOLExample</span><span class="w"> </span><span class="p">{</span>
+public class EOLExample {
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+    public static void main(String[] args) throws Exception {
 
-<span class="w">        </span><span class="c1">// Set up the project POJO (plain-old Java object)</span>
-<span class="w">        </span><span class="n">Project</span><span class="w"> </span><span class="n">project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Project</span><span class="p">();</span>
+        // Set up the project POJO (plain-old Java object)
+        Project project = new Project();
 
-<span class="w">        </span><span class="n">Task</span><span class="w"> </span><span class="n">analysis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Task</span><span class="p">();</span>
-<span class="w">        </span><span class="n">analysis</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;Analysis&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">analysis</span><span class="p">.</span><span class="na">setDuration</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<span class="w">        </span><span class="n">project</span><span class="p">.</span><span class="na">getTasks</span><span class="p">().</span><span class="na">add</span><span class="p">(</span><span class="n">analysis</span><span class="p">);</span>
+        Task analysis = new Task();
+        analysis.setName("Analysis");
+        analysis.setDuration(3);
+        project.getTasks().add(analysis);
 
-<span class="w">        </span><span class="n">Task</span><span class="w"> </span><span class="n">design</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Task</span><span class="p">();</span>
-<span class="w">        </span><span class="n">design</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;Design&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">design</span><span class="p">.</span><span class="na">setDuration</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-<span class="w">        </span><span class="n">project</span><span class="p">.</span><span class="na">getTasks</span><span class="p">().</span><span class="na">add</span><span class="p">(</span><span class="n">design</span><span class="p">);</span>
+        Task design = new Task();
+        design.setName("Design");
+        design.setDuration(6);
+        project.getTasks().add(design);
 
-<span class="w">        </span><span class="c1">// Parse the EOL program to run on the POJO</span>
-<span class="w">        </span><span class="n">EolModule</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EolModule</span><span class="p">();</span>
-<span class="w">        </span><span class="n">module</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;return project.tasks.size();&quot;</span><span class="p">);</span>
+        // Parse the EOL program to run on the POJO
+        EolModule module = new EolModule();
+        module.parse("return project.tasks.size();");
 
-<span class="w">        </span><span class="c1">// Make the POJO available to the EOL program</span>
-<span class="w">        </span><span class="n">module</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">getFrameStack</span><span class="p">().</span><span class="na">put</span><span class="p">(</span><span class="n">Variable</span><span class="p">.</span><span class="na">createReadOnlyVariable</span><span class="p">(</span><span class="s">&quot;project&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">project</span><span class="p">));</span>
+        // Make the POJO available to the EOL program
+        module.getContext().getFrameStack().put(Variable.createReadOnlyVariable("project", project));
 
-<span class="w">        </span><span class="c1">// Execute the EOL program and print its output</span>
-<span class="w">        </span><span class="n">Object</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">module</span><span class="p">.</span><span class="na">execute</span><span class="p">();</span>
+        // Execute the EOL program and print its output
+        Object result = module.execute();
 
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Result: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">result</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+        System.out.println("Result: " + result);
+    }
+}</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.examples.pojos</span><span class="p">;</span>
+<pre class="highlight"><code class="language-java">package org.eclipse.epsilon.examples.pojos;
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+import java.util.ArrayList;
+import java.util.List;
 
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Project</span><span class="w"> </span><span class="p">{</span>
+public class Project {
 
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Task</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tasks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+    protected String name;
+    protected List&lt;Task&gt; tasks = new ArrayList&lt;&gt;();
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Task</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getTasks</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">tasks</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+    public List&lt;Task&gt; getTasks() {
+        return tasks;
+    }
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getName</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+    public String getName() {
+        return name;
+    }
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setName</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.examples.pojos</span><span class="p">;</span>
+<pre class="highlight"><code class="language-java">package org.eclipse.epsilon.examples.pojos;
 
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Task</span><span class="w"> </span><span class="p">{</span>
+public class Task {
 
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">duration</span><span class="p">;</span>
+    protected String name;
+    protected int duration;
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getName</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+    public String getName() {
+        return name;
+    }
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setName</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+    public void setName(String name) {
+        this.name = name;
+    }
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getDuration</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">duration</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+    public int getDuration() {
+        return duration;
+    }
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setDuration</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">duration</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">duration</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+}
+</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="nt">&lt;project</span>
-<span class="w">    </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>
-<span class="w">    </span><span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span>
-<span class="w">    </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+<pre class="highlight"><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
 
-<span class="w">    </span><span class="nt">&lt;groupId&gt;</span>org.eclipse.epsilon<span class="nt">&lt;/groupId&gt;</span>
-<span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>examples.pojos<span class="nt">&lt;/artifactId&gt;</span>
-<span class="w">    </span><span class="nt">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+    &lt;groupId&gt;org.eclipse.epsilon&lt;/groupId&gt;
+    &lt;artifactId&gt;examples.pojos&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
 
-<span class="w">    </span><span class="nt">&lt;properties&gt;</span>
-<span class="w">        </span><span class="nt">&lt;epsilon.version&gt;</span>2.5.0<span class="nt">&lt;/epsilon.version&gt;</span>
-<span class="w">        </span><span class="nt">&lt;epsilon.scope&gt;</span>compile<span class="nt">&lt;/epsilon.scope&gt;</span>
-<span class="w">        </span><span class="nt">&lt;maven.compiler.source&gt;</span>17<span class="nt">&lt;/maven.compiler.source&gt;</span>
-<span class="w">        </span><span class="nt">&lt;maven.compiler.target&gt;</span>17<span class="nt">&lt;/maven.compiler.target&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/properties&gt;</span>
+    &lt;properties&gt;
+        &lt;epsilon.version&gt;2.5.0&lt;/epsilon.version&gt;
+        &lt;epsilon.scope&gt;compile&lt;/epsilon.scope&gt;
+        &lt;maven.compiler.source&gt;17&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;17&lt;/maven.compiler.target&gt;
+    &lt;/properties&gt;
 
-<span class="w">    </span><span class="nt">&lt;dependencies&gt;</span>
-<span class="w">        </span><span class="nt">&lt;dependency&gt;</span>
-<span class="w">            </span><span class="nt">&lt;groupId&gt;</span>org.eclipse.epsilon<span class="nt">&lt;/groupId&gt;</span>
-<span class="w">            </span><span class="nt">&lt;artifactId&gt;</span>org.eclipse.epsilon.eol.engine<span class="nt">&lt;/artifactId&gt;</span>
-<span class="w">            </span><span class="nt">&lt;version&gt;</span>${epsilon.version}<span class="nt">&lt;/version&gt;</span>
-<span class="w">            </span><span class="nt">&lt;scope&gt;</span>${epsilon.scope}<span class="nt">&lt;/scope&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/dependency&gt;</span>
-<span class="w">        </span><span class="nt">&lt;dependency&gt;</span>
-<span class="w">            </span><span class="nt">&lt;groupId&gt;</span>org.eclipse.epsilon<span class="nt">&lt;/groupId&gt;</span>
-<span class="w">            </span><span class="nt">&lt;artifactId&gt;</span>org.eclipse.epsilon.egl.engine<span class="nt">&lt;/artifactId&gt;</span>
-<span class="w">            </span><span class="nt">&lt;version&gt;</span>${epsilon.version}<span class="nt">&lt;/version&gt;</span>
-<span class="w">            </span><span class="nt">&lt;scope&gt;</span>${epsilon.scope}<span class="nt">&lt;/scope&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/dependency&gt;</span><span class="w">       </span>
-<span class="w">    </span><span class="nt">&lt;/dependencies&gt;</span>
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.eclipse.epsilon&lt;/groupId&gt;
+            &lt;artifactId&gt;org.eclipse.epsilon.eol.engine&lt;/artifactId&gt;
+            &lt;version&gt;${epsilon.version}&lt;/version&gt;
+            &lt;scope&gt;${epsilon.scope}&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.eclipse.epsilon&lt;/groupId&gt;
+            &lt;artifactId&gt;org.eclipse.epsilon.egl.engine&lt;/artifactId&gt;
+            &lt;version&gt;${epsilon.version}&lt;/version&gt;
+            &lt;scope&gt;${epsilon.scope}&lt;/scope&gt;
+        &lt;/dependency&gt;       
+    &lt;/dependencies&gt;
 
-<span class="nt">&lt;/project&gt;</span>
-</code></pre></div>
+&lt;/project&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -1862,134 +1894,133 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">EGLExample.java</label><label for="__tabbed_2_2">Project.java</label><label for="__tabbed_2_3">Task.java</label><label for="__tabbed_2_4">pom.xml</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.examples.pojos</span><span class="p">;</span>
+<pre class="highlight"><code class="language-java">package org.eclipse.epsilon.examples.pojos;
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.egl.EglModule</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.eol.execute.context.Variable</span><span class="p">;</span>
+import org.eclipse.epsilon.egl.EglModule;
+import org.eclipse.epsilon.eol.execute.context.Variable;
 
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EGLExample</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+public class EGLExample {
+    public static void main(String[] args) throws Exception {
 
-<span class="w">        </span><span class="c1">// Set up the project POJO (plain-old Java object)</span>
-<span class="w">        </span><span class="n">Project</span><span class="w"> </span><span class="n">project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Project</span><span class="p">();</span>
+        // Set up the project POJO (plain-old Java object)
+        Project project = new Project();
 
-<span class="w">        </span><span class="n">Task</span><span class="w"> </span><span class="n">analysis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Task</span><span class="p">();</span>
-<span class="w">        </span><span class="n">analysis</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;Analysis&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">analysis</span><span class="p">.</span><span class="na">setDuration</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<span class="w">        </span><span class="n">project</span><span class="p">.</span><span class="na">getTasks</span><span class="p">().</span><span class="na">add</span><span class="p">(</span><span class="n">analysis</span><span class="p">);</span>
+        Task analysis = new Task();
+        analysis.setName("Analysis");
+        analysis.setDuration(3);
+        project.getTasks().add(analysis);
 
-<span class="w">        </span><span class="n">Task</span><span class="w"> </span><span class="n">design</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Task</span><span class="p">();</span>
-<span class="w">        </span><span class="n">design</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;Design&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">design</span><span class="p">.</span><span class="na">setDuration</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-<span class="w">        </span><span class="n">project</span><span class="p">.</span><span class="na">getTasks</span><span class="p">().</span><span class="na">add</span><span class="p">(</span><span class="n">design</span><span class="p">);</span>
+        Task design = new Task();
+        design.setName("Design");
+        design.setDuration(6);
+        project.getTasks().add(design);
 
-<span class="w">        </span><span class="c1">// Parse the EGL template to run on the POJO</span>
-<span class="w">        </span><span class="n">EglModule</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EglModule</span><span class="p">();</span>
-<span class="w">        </span><span class="n">module</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span>
-<span class="w">            </span><span class="s">&quot;[%for (task in project.tasks){%]\n&quot;</span><span class="w"> </span><span class="o">+</span>
-<span class="w">            </span><span class="s">&quot;- Task: [%=task.name%] ([%=task.duration%] months)\n&quot;</span><span class="w"> </span><span class="o">+</span>
-<span class="w">            </span><span class="s">&quot;[%}%]&quot;</span>
-<span class="w">        </span><span class="p">);</span>
+        // Parse the EGL template to run on the POJO
+        EglModule module = new EglModule();
+        module.parse(
+            "[%for (task in project.tasks){%]\n" +
+            "- Task: [%=task.name%] ([%=task.duration%] months)\n" +
+            "[%}%]"
+        );
 
-<span class="w">        </span><span class="c1">// Make the project POJO available to the EGL template</span>
-<span class="w">        </span><span class="n">module</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">getFrameStack</span><span class="p">().</span><span class="na">put</span><span class="p">(</span><span class="n">Variable</span><span class="p">.</span><span class="na">createReadOnlyVariable</span><span class="p">(</span><span class="s">&quot;project&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">project</span><span class="p">));</span>
+        // Make the project POJO available to the EGL template
+        module.getContext().getFrameStack().put(Variable.createReadOnlyVariable("project", project));
 
-<span class="w">        </span><span class="c1">// Execute the EGL template and print its output</span>
-<span class="w">        </span><span class="n">Object</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">module</span><span class="p">.</span><span class="na">execute</span><span class="p">();</span>
+        // Execute the EGL template and print its output
+        Object result = module.execute();
 
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Result&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+        System.out.println("Result");
+        System.out.println(result);
+    }
+}
+</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.examples.pojos</span><span class="p">;</span>
+<pre class="highlight"><code class="language-java">package org.eclipse.epsilon.examples.pojos;
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+import java.util.ArrayList;
+import java.util.List;
 
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Project</span><span class="w"> </span><span class="p">{</span>
+public class Project {
 
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Task</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tasks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+    protected String name;
+    protected List&lt;Task&gt; tasks = new ArrayList&lt;&gt;();
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Task</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getTasks</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">tasks</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+    public List&lt;Task&gt; getTasks() {
+        return tasks;
+    }
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getName</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+    public String getName() {
+        return name;
+    }
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setName</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.examples.pojos</span><span class="p">;</span>
+<pre class="highlight"><code class="language-java">package org.eclipse.epsilon.examples.pojos;
 
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Task</span><span class="w"> </span><span class="p">{</span>
+public class Task {
 
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">duration</span><span class="p">;</span>
+    protected String name;
+    protected int duration;
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getName</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+    public String getName() {
+        return name;
+    }
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setName</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+    public void setName(String name) {
+        this.name = name;
+    }
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getDuration</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">duration</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+    public int getDuration() {
+        return duration;
+    }
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setDuration</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">duration</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">duration</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+}
+</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="nt">&lt;project</span>
-<span class="w">    </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>
-<span class="w">    </span><span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span>
-<span class="w">    </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+<pre class="highlight"><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
 
-<span class="w">    </span><span class="nt">&lt;groupId&gt;</span>org.eclipse.epsilon<span class="nt">&lt;/groupId&gt;</span>
-<span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>examples.pojos<span class="nt">&lt;/artifactId&gt;</span>
-<span class="w">    </span><span class="nt">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+    &lt;groupId&gt;org.eclipse.epsilon&lt;/groupId&gt;
+    &lt;artifactId&gt;examples.pojos&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
 
-<span class="w">    </span><span class="nt">&lt;properties&gt;</span>
-<span class="w">        </span><span class="nt">&lt;epsilon.version&gt;</span>2.5.0<span class="nt">&lt;/epsilon.version&gt;</span>
-<span class="w">        </span><span class="nt">&lt;epsilon.scope&gt;</span>compile<span class="nt">&lt;/epsilon.scope&gt;</span>
-<span class="w">        </span><span class="nt">&lt;maven.compiler.source&gt;</span>17<span class="nt">&lt;/maven.compiler.source&gt;</span>
-<span class="w">        </span><span class="nt">&lt;maven.compiler.target&gt;</span>17<span class="nt">&lt;/maven.compiler.target&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/properties&gt;</span>
+    &lt;properties&gt;
+        &lt;epsilon.version&gt;2.5.0&lt;/epsilon.version&gt;
+        &lt;epsilon.scope&gt;compile&lt;/epsilon.scope&gt;
+        &lt;maven.compiler.source&gt;17&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;17&lt;/maven.compiler.target&gt;
+    &lt;/properties&gt;
 
-<span class="w">    </span><span class="nt">&lt;dependencies&gt;</span>
-<span class="w">        </span><span class="nt">&lt;dependency&gt;</span>
-<span class="w">            </span><span class="nt">&lt;groupId&gt;</span>org.eclipse.epsilon<span class="nt">&lt;/groupId&gt;</span>
-<span class="w">            </span><span class="nt">&lt;artifactId&gt;</span>org.eclipse.epsilon.eol.engine<span class="nt">&lt;/artifactId&gt;</span>
-<span class="w">            </span><span class="nt">&lt;version&gt;</span>${epsilon.version}<span class="nt">&lt;/version&gt;</span>
-<span class="w">            </span><span class="nt">&lt;scope&gt;</span>${epsilon.scope}<span class="nt">&lt;/scope&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/dependency&gt;</span>
-<span class="w">        </span><span class="nt">&lt;dependency&gt;</span>
-<span class="w">            </span><span class="nt">&lt;groupId&gt;</span>org.eclipse.epsilon<span class="nt">&lt;/groupId&gt;</span>
-<span class="w">            </span><span class="nt">&lt;artifactId&gt;</span>org.eclipse.epsilon.egl.engine<span class="nt">&lt;/artifactId&gt;</span>
-<span class="w">            </span><span class="nt">&lt;version&gt;</span>${epsilon.version}<span class="nt">&lt;/version&gt;</span>
-<span class="w">            </span><span class="nt">&lt;scope&gt;</span>${epsilon.scope}<span class="nt">&lt;/scope&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/dependency&gt;</span><span class="w">       </span>
-<span class="w">    </span><span class="nt">&lt;/dependencies&gt;</span>
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.eclipse.epsilon&lt;/groupId&gt;
+            &lt;artifactId&gt;org.eclipse.epsilon.eol.engine&lt;/artifactId&gt;
+            &lt;version&gt;${epsilon.version}&lt;/version&gt;
+            &lt;scope&gt;${epsilon.scope}&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.eclipse.epsilon&lt;/groupId&gt;
+            &lt;artifactId&gt;org.eclipse.epsilon.egl.engine&lt;/artifactId&gt;
+            &lt;version&gt;${epsilon.version}&lt;/version&gt;
+            &lt;scope&gt;${epsilon.scope}&lt;/scope&gt;
+        &lt;/dependency&gt;       
+    &lt;/dependencies&gt;
 
-<span class="nt">&lt;/project&gt;</span>
-</code></pre></div>
+&lt;/project&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -2090,25 +2121,7 @@
     
       <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

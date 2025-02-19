@@ -48,15 +48,11 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -92,10 +88,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -147,7 +145,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1977,7 +2011,7 @@
 <h2 id="abstract-syntax">Abstract Syntax<a class="headerlink" href="#abstract-syntax" title="Permanent link">&para;</a></h2>
 <p>As illustrated in the figure below, ETL transformations are organized in modules (<code>EtlModule</code>). A module can contain a number of transformation rules (<code>TransformRule</code>). Each rule has a unique name (in the context of the module) and also specifies one <code>source</code> and many <code>target</code> parameters. A transformation rule can also <code>extend</code> a number of other transformation rules and be declared as <code>abstract</code>, <code>primary</code> and/or <code>lazy</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. To limit its applicability to a subset of elements that conform to the type of the <code>source</code> parameter, a rule can optionally define a guard which is either an EOL expression or a block of EOL statements. Finally, each rule defines a block of EOL statements (<code>body</code>) where the logic for populating the property values of the target model elements is specified.</p>
 <p>Besides transformation rules, an ETL module can also optionally contain a number of <code>pre</code> and <code>post</code> named blocks of EOL statements which, as discussed later, are executed before and after the transformation rules respectively. These should not be confused with the pre-/post-condition annotations available for EOL user-defined operations.</p>
-<div class="mermaid mermaid-100">classDiagram
+<pre class="mermaid mermaid-100"><code>classDiagram
 class TransformRule {
     -name: String
     -abstract: Boolean
@@ -2005,10 +2039,10 @@ ErlModule -- Post: post *
 EtlModule -- TransformRule: rules *
 TransformRule -- Parameter: source
 TransformRule -- Parameter: targets *
-TransformRule -- TransformRule: extends *</div>
+TransformRule -- TransformRule: extends *</code></pre>
 <h2 id="concrete-syntax">Concrete Syntax<a class="headerlink" href="#concrete-syntax" title="Permanent link">&para;</a></h2>
 <p>The concrete syntax of a transformation rule is displayed in the listing below. The optional <code>abstract</code>, <code>lazy</code> and <code>primary</code> attributes of the rule are specified using respective annotations. The name of the rule follows the <code>rule</code> keyword and the <code>source</code> and <code>target</code> parameters are defined after the <code>transform</code> and <code>to</code> keywords. Also, the rule can define an optional comma-separated list of rules it extends after the <code>extends</code> keyword. Inside the curly braces ({}), the rule can optionally specify its <code>guard</code> either as an EOL expression following a colon (:) (for simple guards) or as a block of statements in curly braces (for more complex guards). Finally, the <code>body</code> of the rule is specified as a sequence of EOL statements.</p>
-<div class="highlight"><pre><span></span><code>(@abstract)?
+<pre class="highlight"><code>(@abstract)?
 (@lazy)?
 (@primary)?
 rule &lt;name&gt;
@@ -2020,13 +2054,11 @@ rule &lt;name&gt;
     (guard (:expression)|({statementBlock}))?
 
     statement+
-}
-</code></pre></div>
+}</code></pre>
 <p><code>Pre</code> and <code>post</code> blocks have a simple syntax that, as presented the listing below, consists of the identifier (<code>pre</code> or <code>post</code>), an optional name and the set of statements to be executed enclosed in curly braces.</p>
-<div class="highlight"><pre><span></span><code>(pre|post) &lt;name&gt; {
+<pre class="highlight"><code>(pre|post) &lt;name&gt; {
     statement+
-}
-</code></pre></div>
+}</code></pre>
 <h2 id="execution-semantics">Execution Semantics<a class="headerlink" href="#execution-semantics" title="Permanent link">&para;</a></h2>
 <h3 id="rule-and-block-overriding">Rule and Block Overriding<a class="headerlink" href="#rule-and-block-overriding" title="Permanent link">&para;</a></h3>
 <p>Similarly to EOL, an ETL module can import a number of other ETL modules. In this case, the importing ETL module inherits all the rules and pre/post blocks specified in the modules it imports (recursively). If the module specifies a rule or a pre/post block with the same name, the local rule/block overrides the imported one respectively.</p>
@@ -2047,7 +2079,7 @@ rule &lt;name&gt;
 </ul>
 <p>The <code>equivalents()</code> operation can be also invoked with an arbitrary number of rule names as parameters, to invoke and return only the equivalents created by specific rules. Unlike the main execution scheduling scheme discussed above, the <code>equivalents()</code> operation invokes both lazy and non-lazy rules. It is worth noting that lazy rules are computationally expensive and should be used with caution as they can significantly degrade the performance of the overall transformation.</p>
 <p>With regard to the ordering of the results of the <code>equivalents()</code> operations, the returned elements appear in the respective order of the rules that have created them. An exception to this occurs when one of the rules is declared as <code>primary</code>, in which case its results precede the results of all other rules.</p>
-<div class="mermaid mermaid-80">classDiagram
+<pre class="mermaid mermaid-80"><code>classDiagram
 
 class Transformation {
     -source: Object
@@ -2062,7 +2094,7 @@ EolContext &lt;|-- EtlContext
 EtlContext -- TransformationTrace
 EtlContext -- ITransformationStrategy: strategy
 TransformationTrace -- Transformation: transformations *
-Transformation -- TransformRule: rule</div>
+Transformation -- TransformRule: rule</code></pre>
 <p>ETL also provides the convenient <code>equivalent()</code> operation:</p>
 <ul>
 <li>When applied to a single element, <code>equivalent()</code> returns only the first element of the respective result that would have been returned by the <code>equivalents()</code> operation discussed above.</li>
@@ -2070,7 +2102,7 @@ Transformation -- TransformRule: rule</div>
 </ul>
 <p>As with the <code>equivalents()</code> operation, the <code>equivalent()</code> operation can also be invoked with or without parameters.</p>
 <p>The semantics of the <code>equivalent()</code> operation are further illustrated through a simple example. In this example, we need to transform a model that conforms to the Tree metamodel displayed below into a model that conforms to the Graph metamodel, also displayed below.</p>
-<div class="mermaid mermaid-70">classDiagram
+<pre class="mermaid mermaid-70"><code>classDiagram
 class Node {
     +label: String
     +incoming: Edge[*]
@@ -2087,9 +2119,9 @@ class Tree {
 }
 Tree -- Tree
 Node -- Edge
-Edge -- Node</div>
+Edge -- Node</code></pre>
 <p>More specifically, we need to transform each <code>Tree</code> element to a <code>Node</code>, and an <code>Edge</code> that connects it with the <code>Node</code> that is equivalent to the tree's <code>parent</code>. This is achieved using the rule below.</p>
-<pre class="prettyprint lang-etl"><code>rule Tree2Node
+<pre class="highlight"><code class="language-etl">rule Tree2Node
     transform t : Tree!Tree
     to n : Graph!Node {
 
@@ -2107,11 +2139,10 @@ Edge -- Node</div>
 <p>ETL does not provide built-in support for persisting the transformation trace, however, you can access it through <code>System.context.transformationTrace</code> and persist (parts of) it in a format of your choice (e.g. in a <code>post</code> block of your transformation).</p>
 <h3 id="overriding-the-semantics-of-the-eol-special-assignment-operator">Overriding the semantics of the EOL Special Assignment Operator<a class="headerlink" href="#overriding-the-semantics-of-the-eol-special-assignment-operator" title="Permanent link">&para;</a></h3>
 <p>As discussed above, resolving the equivalent(s) or source model elements in the target model is a recurring task in model transformation. Furthermore, in most cases resolving the equivalent of a model element is immediately followed by assigning/adding the obtained target model elements to the value(s) of a property of another target model element. For example, in line 10 of the listing above, the <code>equivalent</code> obtained is immediately assigned to the <code>target</code> property of the generated <code>Edge</code>. To make transformation specifications more readable, ETL overrides the semantics of the <code>SpecialAssignmentStatement</code> (<code>::=</code> in terms of concrete syntax), to set its left-hand side, not to the element its right-hand side evaluates to, but to its <code>equivalent</code> as calculated using the <code>equivalent()</code> operation discussed above. Using this feature, line 10 of the <code>Tree2Node</code> rule can be rewritten as shown below.</p>
-<div class="highlight"><pre><span></span><code>edge.target ::= t.parent;
-</code></pre></div>
+<pre class="highlight"><code>edge.target ::= t.parent;</code></pre>
 <h3 id="interactive-transformations">Interactive Transformations<a class="headerlink" href="#interactive-transformations" title="Permanent link">&para;</a></h3>
 <p>Using the user interaction facilities of EOL, an ETL transformation can become interactive by prompting the user for input during its execution. For example in the listing below, we modify the <code>Tree2Node</code> rule by adding a <code>guard</code> part that uses the user-input facilities of EOL (more specifically the <code>UserInput.confirm(String,Boolean)</code> operation) to enable the user select manually at runtime which of the Tree elements need to be transformed to respective Node elements in the target model and which not.</p>
-<pre class="prettyprint lang-etl"><code>rule Tree2Node
+<pre class="highlight"><code class="language-etl">rule Tree2Node
     transform t : Tree!Tree
     to n : Graph!Node {
 
@@ -2270,25 +2301,7 @@ Edge -- Node</div>
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

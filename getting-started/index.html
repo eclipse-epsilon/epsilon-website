@@ -48,15 +48,11 @@
     
       <link rel="stylesheet" href="../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -92,10 +88,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -147,7 +145,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1851,18 +1885,18 @@
 
 
 <h1 id="getting-started-with-epsilon">Getting Started with Epsilon<a class="headerlink" href="#getting-started-with-epsilon" title="Permanent link">&para;</a></h1>
-<p>Epsilon provides a set of languages and tools for tasks such as <a href="../doc/egl">model-to-text transformation</a>, <a href="../doc/etl">model-to-model transformation</a>, <a href="../doc/evl">model validation</a> (all of which extend <a href="../doc/eol">the same core language</a>), <a href="../doc/flexmi">model editing</a>, <a href="../doc/modelink">weaving</a> and <a href="../doc/picto">visualisation</a>. While some Epsilon tools are <a href="#epsilon-in-eclipse">Eclipse IDE plugins</a>, most of Epsilon does not depend on the Eclipse IDE and can be used from standard Java applications and from Maven/Gradle builds.</p>
+<p>Epsilon provides a set of languages and tools for tasks such as <a href="../doc/egl/">model-to-text transformation</a>, <a href="../doc/etl/">model-to-model transformation</a>, <a href="../doc/evl/">model validation</a> (all of which extend <a href="../doc/eol/">the same core language</a>), <a href="../doc/flexmi/">model editing</a>, <a href="../doc/modelink/">weaving</a> and <a href="../doc/picto/">visualisation</a>. While some Epsilon tools are <a href="#epsilon-in-eclipse">Eclipse IDE plugins</a>, most of Epsilon does not depend on the Eclipse IDE and can be used from standard Java applications and from Maven/Gradle builds.</p>
 <div class="admonition info">
 <p class="admonition-title">New to Model-Based Software Engineering?</p>
 <p>If you are a newcomer to model-based software engineering and the Eclipse modelling ecosystem, you may find <a href="https://www.youtube.com/playlist?list=PLRwHao6Ue0YUecg7vEUQTrtySIWwrd_mI">this series of lectures</a> useful.</p>
 </div>
 <h2 id="trying-epsilon-in-the-playground">Trying Epsilon in the Playground<a class="headerlink" href="#trying-epsilon-in-the-playground" title="Permanent link">&para;</a></h2>
-<p>You can try most Epsilon languages in the online <a href="../playground">Epsilon Playground</a>, without needing to download or install anything.</p>
+<p>You can try most Epsilon languages in the online <a href="../playground/">Epsilon Playground</a>, without needing to download or install anything.</p>
 <p><img alt="Screenshot of the Epsilon Playground" src="../doc/articles/playground/playground.png" /></p>
 <h2 id="using-epsilon-as-a-java-library">Using Epsilon as a Java library<a class="headerlink" href="#using-epsilon-as-a-java-library" title="Permanent link">&para;</a></h2>
-<p>The execution engines of Epsilon's languages, the <a href="../doc/flexmi">Flexmi</a> parser, and drivers for <a href="../doc/articles/#epsilon-and-emf-models">EMF</a>, <a href="../doc/articles/profiled-uml-models">UML</a>, <a href="../doc/articles/plain-xml">XML</a> and <a href="../doc/articles/excel">Excel</a> are available as standard Java libraries through <a href="https://central.sonatype.com/namespace/org.eclipse.epsilon">Maven Central</a>. To get started with parsing and executing Epsilon programs from your Java application:</p>
+<p>The execution engines of Epsilon's languages, the <a href="../doc/flexmi/">Flexmi</a> parser, and drivers for <a href="../doc/articles/#epsilon-and-emf-models">EMF</a>, <a href="../doc/articles/profiled-uml-models">UML</a>, <a href="../doc/articles/plain-xml/">XML</a> and <a href="../doc/articles/excel/">Excel</a> are available as standard Java libraries through <a href="https://central.sonatype.com/namespace/org.eclipse.epsilon">Maven Central</a>. To get started with parsing and executing Epsilon programs from your Java application:</p>
 <ul>
-<li>Go to the <a href="../playground">Epsilon Playground</a> and select one of the examples;</li>
+<li>Go to the <a href="../playground/">Epsilon Playground</a> and select one of the examples;</li>
 <li>Click the <code>Download</code> button and select <code>Java (Maven)</code> or <code>Java (Gradle)</code> from the window that pops up to download a zipped copy of the example. The downloaded zip file includes an <code>Example</code> Java class as well as a <code>pom.xml</code>/<code>build.gradle</code> file with all the Epsilon dependencies;</li>
 <li>Import the example in your favourite Java IDE (e.g. Eclipse, IntelliJ, VS Code) and run the <code>Example</code> class;</li>
 <li>Alternatively, follow the instructions in the <code>readme.txt</code> to run the example from command line (you only need to have Java and Maven/Gradle installed);</li>
@@ -1871,12 +1905,12 @@
 <h2 id="epsilon-in-mavengradle-builds">Epsilon in Maven/Gradle Builds<a class="headerlink" href="#epsilon-in-mavengradle-builds" title="Permanent link">&para;</a></h2>
 <p>On some occasions you may need to include model management tasks in your build/CI pipeline (e.g. to validate a model and generate code from it). For such scenarios, Epsilon provides Ant tasks that can be used in the context of Maven and Gradle builds. To get started with running Epsilon from Maven/Gradle builds:</p>
 <ul>
-<li>Go to the <a href="../playground">Epsilon Playground</a> and select one of the examples;</li>
+<li>Go to the <a href="../playground/">Epsilon Playground</a> and select one of the examples;</li>
 <li>Click the <code>Download</code> button and select <code>Maven</code> or <code>Gradle</code> from the window that pops up to download a zipped copy of the example. The downloaded zip file includes a <code>pom.xml</code>/<code>build.gradle</code> file with all the Epsilon dependencies and the respective Epsilon Ant tasks;</li>
 <li>Follow the instructions in the <code>readme.txt</code> to run the example from command line (you only need to have Java and Maven/Gradle installed).</li>
 </ul>
 <h2 id="epsilon-in-eclipse">Epsilon in Eclipse<a class="headerlink" href="#epsilon-in-eclipse" title="Permanent link">&para;</a></h2>
-<p>Epsilon provides a rich set of Eclipse plugins for editing, running, <a href="../doc/articles/profiling">profiling</a> and <a href="../doc/articles/debugger">debugging</a> model management programs. It also includes tools for <a href="../doc/flexmi">editing</a>, <a href="../doc/modelink">weaving</a> and <a href="../doc/picto">visualising</a> models. You can <a href="../download">install these tools</a> through Epsilon's update site or through the Eclipse Installer.</p>
+<p>Epsilon provides a rich set of Eclipse plugins for editing, running, <a href="../doc/articles/profiling/">profiling</a> and <a href="../doc/articles/debugger/">debugging</a> model management programs. It also includes tools for <a href="../doc/flexmi/">editing</a>, <a href="../doc/modelink/">weaving</a> and <a href="../doc/picto/">visualising</a> models. You can <a href="../download/">install these tools</a> through Epsilon's update site or through the Eclipse Installer.</p>
 <h2 id="epsilon-in-other-ideseditors">Epsilon in other IDEs/Editors<a class="headerlink" href="#epsilon-in-other-ideseditors" title="Permanent link">&para;</a></h2>
 <p>Support for syntax highlighting Epsilon programs, Flexmi models and <a href="https://eclipse.org/emfatic">Emfatic</a> metamodels is available for the following IDEs and editors, beyond Eclipse.</p>
 <table>
@@ -1888,7 +1922,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../doc/articles/vscode">VS Code</a></td>
+<td><a href="../doc/articles/vscode/">VS Code</a></td>
 <td><img alt="" src="../doc/articles/vscode/vscode.png" /></td>
 </tr>
 <tr>
@@ -2039,25 +2073,7 @@
     
       <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../assets/javascript/mermaid.js"></script>
-      
-        <script src="../assets/javascript/jquery.js"></script>
-      
-        <script src="../assets/javascript/slick.min.js"></script>
-      
-        <script src="../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../assets/dist/bundle.js"></script>
       
     
   </body>

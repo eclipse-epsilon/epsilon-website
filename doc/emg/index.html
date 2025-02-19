@@ -48,15 +48,11 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -92,10 +88,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -147,7 +145,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -2122,7 +2156,7 @@
 </tr>
 <tr>
 <td>nextURI() : String</td>
-<td>Generates a random URI that complies to: <code>scheme:[//[user:password]host[:port]][/]path [?query][#fragment]</code>. The port, path, query and fragment are added randomly. The scheme is randomly selected from: http, ssh and ftp. For ssh and ftp, a user and pasword are randomly generated. The host is generated from a random string and uses a top-level domain. The number of paths and queries are random between 1 and 4.</td>
+<td>Generates a random URI that complies to: <code>scheme:[//[user:password]host[:port]][/]path [?query][#fragment]</code>. The port, path, query and fragment are added randomly. The scheme is randomly selected from: http, ssh and ftp. For ssh and ftp, a user and password are randomly generated. The host is generated from a random string and uses a top-level domain. The number of paths and queries are random between 1 and 4.</td>
 </tr>
 <tr>
 <td>nextURI(addPort : Boolean, addPath : Boolean, addQuery : Boolean, addFragment : Boolean) : String</td>
@@ -2202,7 +2236,7 @@ defined as follows:</p>
 <h2 id="creating-model-elements">Creating Model Elements<a class="headerlink" href="#creating-model-elements" title="Permanent link">&para;</a></h2>
 <p>The EMG engine will search for EOL operations that follow a particular signature in order to determine what elements to create in the generated model. The signature is: <code>create &lt;OutputType&gt; () { ... }</code>. That is, the operation must be named <em>create</em>, the operation's context type defines the type of the created instance and no parameters should be passed. By default the create operation only creates one instance. Hence, the provided annotations can be used to tailor the behaviour of the operation.</p>
 <p>Consider the case of the PetriNet metamodel in the figure below. </p>
-<div class="mermaid mermaid-100">classDiagram
+<pre class="mermaid mermaid-100"><code>classDiagram
 class Element {
     +name: String
 }
@@ -2234,9 +2268,9 @@ PetriNet *-- Arc
 PetriNet *-- Place
 PetriNet *-- Transition
 Arc &lt;|-- TransToPlaceArc
-Arc &lt;|-- PlaceToTransArc</div>
+Arc &lt;|-- PlaceToTransArc</code></pre>
 <p>The code excerpt displayed below creates a PetriNet and then adds some places and transitions to it. Note that the instances annotation is executable and hence you can use absolute values, variables or expressions. The <code>list</code> annotation in the PetriNet creation will result in all PetriNet instances to be stored in a sequence called <em>net</em>. The list name is then used in the Place and Transition create operations to add the places and transitions to a random (<em>nextFromList</em>) PetriNet. In this example there is only one, but we could easily create more PetriNet instances and hence have them contain random number of Places and Transitions. The name of the elements is generated using the random string generation facilities.</p>
-<pre class="prettyprint lang-epl"><code>pre {
+<pre class="highlight"><code class="language-epl">pre {
     var num_p = 10
 }
 
@@ -2260,7 +2294,7 @@ operation Transition create() {
 <h2 id="creating-model-links">Creating Model Links<a class="headerlink" href="#creating-model-links" title="Permanent link">&para;</a></h2>
 <p>In the previous section, the <em>places</em> and <em>transitions</em> references of the PetriNet were defined during the creation of the Place and Transition elements. For more complex reference patterns, EMG leverages the use of EPL patterns. For example, Arcs can have complex constraints in order to determine the source and target transition/place, and possibly even having separate rules for each type of Arc.</p>
 <p>The EPL pattern in the listing below creates two arcs in order to connect a source and a target Place via a Transition. The pattern matches all transitions in a given PetriNet. The pattern body selects a random Place for the source and a random Place for the target (the while loops are used to pick places that have the lowest incoming/outgoing arcs possible). The weight of the arc is generated randomly from 0 to 10 (<em>nextInt(10)</em>). The pattern has been annotated with the <code>@probability</code> annotation which will effectively only use 70% of the transitions to create arcs (i.e. of all the possible PetriNet-Transition matches, the code of the pattern will only be executed with a probability of 0.70).</p>
-<pre class="prettyprint lang-epl"><code>@probability 0.7
+<pre class="highlight"><code class="language-epl">@probability 0.7
 pattern Transition
 net:PetriNet,
 tra:Transition
@@ -2299,7 +2333,7 @@ from: net.transitions {
 <h3 id="values-as-a-parameter">Values as a parameter<a class="headerlink" href="#values-as-a-parameter" title="Permanent link">&para;</a></h3>
 <p>The <em>nextFromList()</em> operation will first look for a list with that name, if it can't find it will look for a parameter (from the run configuration) with that name. The value of the parameter can be either an absolute path to a file or a comma separated list of values.</p>
 <p>If it is a comma separated list of values, then the individual values will be loaded as a Collection. For example, if we added the parameter <code>names: John, Rose, Juan, Xiang, Joe</code> to the run configuration, the listing below shows how to use that information to define the instance attributes.</p>
-<pre class="prettyprint lang-eol"><code>$instances num_p
+<pre class="highlight"><code class="language-eol">$instances num_p
 operation Place create() {
     self.name = nextFromList("name");
     nextFromList("net").transitions.add(self);
@@ -2307,7 +2341,7 @@ operation Place create() {
 <p>If it is a file path, then each line of the file will be loaded as an item to the Collection. Note that the distinction between paths and comma separated values is the assumption that paths don't contain commas.</p>
 <h3 id="values-as-a-model">Values as a model<a class="headerlink" href="#values-as-a-model" title="Permanent link">&para;</a></h3>
 <p>A more powerful approach would be to use an existing model to serve as the source for attribute values. Given that there are several websites<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> to generate random data in the form of CSV files, we recommend the use of a CSV model to serve as an attribute value source. A CSV file with <em>name</em>, <em>lastName</em>, and <em>email</em> can be easily generated and loaded as a second model in the EMG script. Then, a Row of data can be picked randomly to set an element's attributes. The listing below shows this approach.</p>
-<pre class="prettyprint lang-eol"><code>$instances num_p
+<pre class="highlight"><code class="language-eol">$instances num_p
 operation Person create() {
     var p = nextFromCollection(dataModel.Row.all());
     self.name = p.name;
@@ -2458,25 +2492,7 @@ www.freedatagenerator.com/, etc.&#160;<a class="footnote-backref" href="#fnref:1
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

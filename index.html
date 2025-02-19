@@ -46,15 +46,11 @@
     
       <link rel="stylesheet" href="assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -90,10 +86,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -145,7 +143,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -297,15 +331,6 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installation
-    </span>
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#why-epsilon" class="md-nav__link">
@@ -1786,15 +1811,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#why-epsilon" class="md-nav__link">
     <span class="md-ellipsis">
       Why Epsilon?
@@ -1849,40 +1865,227 @@
 
 
 <h1 id="eclipse-epsilon">Eclipse Epsilon <a href="forum"><img src="assets/images/forum-badge.svg" style="float:right;position:relative;top:8px"></a><a class="headerlink" href="#eclipse-epsilon" title="Permanent link">&para;</a></h1>
-<p>Epsilon is a family of scripting languages and tools for automating common model-based software engineering tasks such as <a href="doc/egl">code generation</a>, <a href="doc/etl">model-to-model transformation</a>, <a href="doc/evl">model validation</a> and <a href="doc/picto">model visualisation</a>, that work out of the box with EMF (including <a href="https://www.eclipse.org/Xtext">Xtext</a> and <a href="https://www.eclipse.org/sirius">Sirius</a>), UML (including Cameo/MagicDraw), Simulink, XML and <a href="doc/emc">other types of models</a>.</p>
-<p>Epsilon can be used as a <a href="getting-started/#using-epsilon-as-a-java-library">standard Java library</a>, and also provides <a href="doc/workflow">Apache Ant</a> tasks that can be embedded in <a href="getting-started/#epsilon-in-mavengradle-builds">Maven/Gradle builds</a>. Editing support for Epsilon programs is available in <a href="download">Eclipse</a>, <a href="doc/articles/vscode">VS Code</a> and <a href="https://github.com/epsilonlabs/sublime">Sublime</a>.</p>
-<div class="carousel">
-  <div><img src="doc/articles/eol-interpreter-view/eol-interpreter.gif"/></div>
-  <div><img data-lazy="doc/articles/vscode/vscode.png"/></div>
-  <div><img data-lazy="doc/articles/sublime/sublime.png"/></div>
-  <div><img data-lazy="doc/flexmi/screenshot.png"/></div>
-  <div><img data-lazy="doc/picto/picto-eclipse.png"/></div>
-  <div><img data-lazy="doc/articles/simulink/epsilon-simulink.png"/></div>
-  <div><img data-lazy="doc/picto/picto-eclassifier.png"/></div>
-  <div><img data-lazy="doc/picto/picto-minisd.png"/></div>
-</div>
-
-<div class="admonition info">
+<p>Epsilon is a family of scripting languages and tools for automating common model-based software engineering tasks such as <a href="doc/egl/">code generation</a>, <a href="doc/etl/">model-to-model transformation</a>, <a href="doc/evl/">model validation</a> and <a href="doc/picto/">model visualisation</a>, that work out of the box with EMF (including <a href="https://www.eclipse.org/Xtext">Xtext</a> and <a href="https://www.eclipse.org/sirius">Sirius</a>), UML (including Cameo/MagicDraw), Simulink, XML and <a href="doc/emc/">other types of models</a>.</p>
+<p>Epsilon can be used as a <a href="getting-started/#using-epsilon-as-a-java-library">standard Java library</a>, and also provides <a href="doc/workflow/">Apache Ant</a> tasks that can be <a href="getting-started/#epsilon-in-mavengradle-builds">embedded in Maven/Gradle</a> build files. Editing support for Epsilon programs is available in <a href="download/">Eclipse</a>, <a href="doc/articles/vscode/">VS Code</a>, <a href="https://github.com/epsilonlabs/epsilon.tmbundle?tab=readme-ov-file#importing-in-intellij">Intellij</a>, <a href="https://github.com/epsilonlabs/epsilon.tmbundle?tab=readme-ov-file#importing-in-textmate">TextMate</a> and <a href="https://github.com/epsilonlabs/sublime">Sublime</a>.</p>
+<div class="admonition example">
 <p class="admonition-title">Online Playground</p>
-<p>If you prefer not to download/install anything just quite yet, you can fiddle with EMF models and metamodels, and with some of the Epsilon languages in the online <a href="playground">Epsilon Playground</a>.</p>
+<p>You can try out the examples below from your browser in the online <a href="playground">Epsilon Playground</a>.  No installation required!</p>
 </div>
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<p>Download the <a href="https://wiki.eclipse.org/Eclipse_Installer">Eclipse Installer</a> and select Epsilon, as shown below. Note that you will need a Java Runtime Environment installed on your system. More options for downloading Epsilon (update sites, Maven) are <a href="download">available here</a>.</p>
-<p><img alt="Epsilon in Eclipse Installer" src="assets/images/eclipse-installer.png" /></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:6"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Code Generation Template (EGL)</label><label for="__tabbed_1_2">Validation Constraints (EVL)</label><label for="__tabbed_1_3">Model Transformation (ETL)</label><label for="__tabbed_1_4">Metamodel (Emfatic)</label><label for="__tabbed_1_5">Model (Flexmi)</label><label for="__tabbed_1_6">Running from Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<pre class="highlight"><code class="language-egl">[*For every person*]
+[%for (p in Person.all){%]
+
+[*Generate a &lt;h1&gt; with the name of the person*]
+&lt;h1&gt;[%=p.name%]'s Tasks&lt;/h1&gt;
+
+[*Generate a table for the person's tasks*]
+&lt;table&gt;
+[*For every task*]
+[%for (t in p.getTasks()){%]
+    [*Generate a row with the title of the task*]
+    &lt;tr&gt;
+        &lt;td&gt;[%=t.title%]&lt;/td&gt;
+    &lt;/tr&gt;
+[%}%]
+&lt;/table&gt;
+
+[%}%]
+
+[%
+// Returns the tasks of a person
+operation Person getTasks() {
+    return Task.all.select(
+        t|t.effort.exists(e|e.person = self));
+}
+%]</code></pre>
+</div>
+<div class="tabbed-block">
+<pre class="highlight"><code class="language-evl">// For every task
+context Task {
+
+    // Check that the start month is positive
+    constraint ValidStart {
+        check: self.start &gt; 0
+        message: "The start month of a task must be positive"
+    }
+
+    // Check that the duration is positive
+    constraint ValidDuration {
+        check: self.duration &gt; 0
+        message: "The duration of a task must be positive"
+    }
+
+    // Check that the duration is no more than 12 months
+    constraint TaskNotTooLong {
+        check: self.duration &lt;= 12
+        message: "The duration of a task must not exceed 12 months"
+    }
+
+}
+
+// For every person
+context Person {
+
+    // Check that the person is involved
+    // in at least one task
+    critique IsInvolvedInATask {
+        check: Effort.all.
+            exists(e|e.person = self)
+
+        message: self.name + 
+            " is not involved in the project"
+    }
+
+}</code></pre>
+</div>
+<div class="tabbed-block">
+<pre class="highlight"><code class="language-etl">rule Project2Project
+    transform s : Source!Project
+    to t : Target!Project {
+
+    t.title = s.title;
+
+    // Transform the tasks of the source
+    // project using the Task2Deliverable
+    // rule and assign the result to
+    // t.deliverables
+    t.deliverables ::= s.tasks;
+}
+
+// Transform each task to a deliverable
+// to be submitted at the end of the task
+rule Task2Deliverable
+    transform t : Source!Task
+    to d : Target!Deliverable {
+
+    d.title = t.title + " Report";
+    d.due = t.start + t.duration;
+
+    // The lead of the deliverable
+    // is the person with the highest
+    // effort in the task
+    d.lead ::= t.effort.sortBy(e|-e.percentage).
+        first()?.person;
+}
+
+// @lazy means that persons will be transformed 
+// only upon request. As such, Charlie will not 
+// appear in the target model because he leads
+// no deliverables
+@lazy
+rule Person2Person
+    transform s : Source!Person
+    to t : Target!Person {
+
+    t.name = s.name;
+}</code></pre>
+</div>
+<div class="tabbed-block">
+<pre class="highlight"><code class="language-emf">@namespace(uri="psl")
+package psl;
+
+class Project {
+    attr String title;
+    attr String description;
+    val Task[*] tasks;
+    val Person[*] people;
+}
+
+class Task {
+    attr String title;
+    attr int start;
+    attr int duration;
+    val Effort[*] effort;
+}
+
+class Person {
+    attr String name;
+}
+
+class Effort {
+    ref Person person;
+    attr int percentage = 100;
+}</code></pre>
+</div>
+<div class="tabbed-block">
+<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
+&lt;project title="ACME"&gt;
+    &lt;person name="Alice"/&gt;
+    &lt;person name="Bob"/&gt;
+    &lt;task title="Analysis" start="1" dur="3"&gt;
+        &lt;effort person="Alice"/&gt;
+    &lt;/task&gt;
+    &lt;task title="Design" start="4" dur="6"&gt;
+        &lt;effort person="Bob"/&gt;
+    &lt;/task&gt;
+    &lt;task title="Implementation" start="7" dur="3"&gt;
+        &lt;effort person="Bob" perc="50"/&gt;
+        &lt;effort person="Alice" perc="50"/&gt;
+    &lt;/task&gt;
+&lt;/project&gt;</code></pre>
+</div>
+<div class="tabbed-block">
+<pre class="highlight"><code class="language-java">package org.eclipse.epsilon.examples;
+
+import java.io.File;
+
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.emfatic.core.EmfaticResourceFactory;
+import org.eclipse.epsilon.egl.EgxModule;
+import org.eclipse.epsilon.emc.emf.EmfModel;
+import org.eclipse.epsilon.flexmi.FlexmiResourceFactory;
+
+public class Example {
+
+    public static void main(String[] args) throws Exception {
+
+        // Register the Flexmi and Emfatic parsers with EMF
+        Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("flexmi", new FlexmiResourceFactory());
+        Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("emf", new EmfaticResourceFactory());
+
+        // Parse the EGX transformation and configure it to produce
+        // its output files in the root directory of the project
+        EgxModule module = new EgxModule(new File(".").getAbsolutePath());
+        module.parse(new File("program.egx"));
+
+        // Load the model from model.flexmi using metamodel.emf as its metamodel
+        EmfModel model = new EmfModel();
+        model.setName("M");
+        model.setModelFile(new File("model.flexmi").getAbsolutePath());
+        model.setMetamodelFile(new File("metamodel.emf").getAbsolutePath());
+        model.setReadOnLoad(true);
+        model.setStoredOnDisposal(false);
+        model.load();
+
+        // Make the model available to the transformation
+        module.getContext().getModelRepository().addModel(model);
+
+        // Execute the EGX transformation
+        module.execute();
+
+        // Dispose of the model
+        module.getContext().getModelRepository().dispose();
+    }
+}</code></pre>
+</div>
+</div>
+</div>
 <h2 id="why-epsilon">Why Epsilon?<a class="headerlink" href="#why-epsilon" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>One syntax to rule them all:</strong> All languages in Epsilon build on top of a <a href="doc/eol">common expression language</a> which means that you can reuse code across your model-to-model transformations, code generators, validation constraints etc.</li>
+<li><strong>One syntax to rule them all:</strong> All languages in Epsilon build on top of a <a href="doc/eol/">common expression language</a> which means that you can reuse code across your model-to-model transformations, code generators, validation constraints etc.</li>
 <li><strong>Integrated development tools:</strong>  All languages in Epsilon are supported by editors providing syntax and error highlighting, code templates, and graphical tools for configuring, running, debugging and profiling Epsilon programs. </li>
-<li><strong>Documentation, Documentation, Documentation:</strong> More than <a href="doc/articles">80 articles</a>, <a href="doc/screencasts">15 screencasts</a> and <a href="examples">40 examples</a> are available to help you get from novice to expert.</li>
-<li><strong>Strong support for EMF:</strong> Epsilon supports all flavours of EMF, including reflective, generated and non-XMI (textual) models such as these specified using Xtext or EMFText-based DSLs.</li>
-<li><strong>No EMF? No problem:</strong> While Epsilon provides strong support for EMF, it is not bound to EMF at all. In fact, support for EMF is implemented as a driver for the model connectivity layer of Epsilon. Other drivers provide support for XML, CSV, Simulink and you can even roll out your own driver!</li>
-<li><strong>No Eclipse? No problem either:</strong> While Epsilon provides strong support for Eclipse, we also provide <a href="download/#maven">standalone JARs through Maven Central</a> that you can use to <a href="doc/articles/run-epsilon-from-java">embed Epsilon in your plain Java</a> or Android application.</li>
+<li><strong>Documentation, Documentation, Documentation:</strong> More than <a href="doc/articles/">80 articles</a>, <a href="doc/screencasts">15 screencasts</a> and <a href="examples/">40 examples</a> are available to help you get from novice to expert.</li>
+<li><strong>Strong support for EMF:</strong> Epsilon supports all flavours of EMF, including reflective, generated and non-XMI (textual) models such as these specified using Xtext-based DSLs.</li>
+<li><strong>No EMF? No problem:</strong> While Epsilon provides strong support for EMF, it is not bound to EMF at all. In fact, support for EMF is implemented as a driver for the model connectivity layer of Epsilon. Other drivers provide support for XML, CSV, Excel, Simulink and you can even roll out your own driver!</li>
+<li><strong>No Eclipse? No problem:</strong> While Epsilon provides strong support for Eclipse, we also provide <a href="download/">standalone JARs through Maven Central</a> that you can use to <a href="doc/articles/run-epsilon-from-java/">embed Epsilon in your plain Java</a> or Android application.</li>
 <li><strong>Mix and match:</strong> Epsilon poses no constraints on the number/type of models you can use in the same program. For example, you can write a transformation that transforms an XML-based and an EMF-based model into a Simulink model and also modifies the source EMF model.</li>
-<li><strong>Plumbing included:</strong> You can use the <a href="doc/workflow">ANT Epsilon tasks</a> to compose Epsilon programs into complex workflows. Programs executed in the same workflow can share models and even pass parameters to each other.</li>
-<li><strong>Extensible:</strong> Almost every aspect of Epsilon is extensible. You can add support for your <a href="doc/articles/developing-a-new-emc-driver">own type of models</a>, extend the Eclipse-based development tools, add a new method to the String type, or even implement <a href="doc/articles/developing-a-new-language">your own model management language</a> on top of EOL.</li>
+<li><strong>Plumbing included:</strong> You can use the <a href="doc/workflow/">ANT Epsilon tasks</a> to compose Epsilon programs into complex workflows. Programs executed in the same workflow can share models and even pass parameters to each other.</li>
+<li><strong>Extensible:</strong> Almost every aspect of Epsilon is extensible. You can add support for your <a href="doc/articles/developing-a-new-emc-driver">own type of models</a>, extend the Eclipse-based development tools, add a new method to the String type, or even implement <a href="doc/articles/developing-a-new-language/">your own model management language</a> on top of EOL.</li>
 <li><strong>Java is your friend:</strong> You can call methods of Java classes from all Epsilon programs to reuse code you have already written or to perform tasks that Epsilon languages do not support natively.</li>
 <li><strong>Parallel execution:</strong> Since 2.0, Epsilon is multi-threaded, which includes first-order operations and some of the rule-based languages, making it faster than other interpreted tools.</li>
-<li><strong>All questions answered:</strong> The <a href="forum">Epsilon forum</a> contains more than 9,500 posts and we're proud that no question has ever gone unanswered.</li>
+<li><strong>All questions answered:</strong> The <a href="forum">Epsilon forum</a> contains more than 10K posts and we're proud that no question has ever gone unanswered.<!--TODO: Check for mentions of the "forum"--></li>
 <li><strong>We're working on it:</strong> Epsilon has been an Eclipse project since 2006 and it's not going away any time soon.</li>
 </ul>
 <h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
@@ -2010,25 +2213,7 @@
     
       <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="assets/javascript/mermaid.js"></script>
-      
-        <script src="assets/javascript/jquery.js"></script>
-      
-        <script src="assets/javascript/slick.min.js"></script>
-      
-        <script src="assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="assets/dist/bundle.js"></script>
       
     
   </body>

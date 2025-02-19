@@ -48,15 +48,11 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -92,10 +88,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -147,7 +145,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -2188,9 +2222,9 @@
 <p>The figure below shows the abstract syntax of EGL's core functionality.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>As with most languages in Epsilon, EGL uses <a href="../eol">EOL</a> as its expression language. This page only documents the additional syntax and semantics that EGL provides on top of EOL.</p>
+<p>As with most languages in Epsilon, EGL uses <a href="../eol/">EOL</a> as its expression language. This page only documents the additional syntax and semantics that EGL provides on top of EOL.</p>
 </div>
-<div class="mermaid mermaid-100">classDiagram
+<pre class="mermaid mermaid-100"><code>classDiagram
 class EglSection {
     +getChildren(): List
     +getText(): String
@@ -2206,24 +2240,23 @@ class EglShortcutSection {
 }
 EglSection &lt;|-- EglDynamicSection
 EglSection &lt;|-- EglStaticSection
-EglSection &lt;|-- EglShortcutSection</div>
+EglSection &lt;|-- EglShortcutSection</code></pre>
 <p>Conceptually, an EGL program comprises one or more <em>sections</em>. The contents of static sections are emitted verbatim and appear directly in the generated text. The contents of dynamic sections are executed and are used to control the text that is generated.</p>
 <p>In its dynamic sections, EGL re-uses EOL's syntax for structuring program control flow, performing model inspection and navigation, and defining custom operations. In addition, EGL provides an EOL object, <code>out</code>, which is used in dynamic sections to perform operations on the generated text, such as appending and removing strings; and specifying the type of text to be generated.</p>
 <p>EGL also provides syntax for defining <em>dynamic output</em> sections, which provide a convenient shorthand for outputting text from within dynamic sections. Similar syntax is often provided by template-based code generators.</p>
 <h2 id="concrete-syntax">Concrete Syntax<a class="headerlink" href="#concrete-syntax" title="Permanent link">&para;</a></h2>
 <p>The concrete syntax of EGL closely resembles the style of other template-based code generation languages, such as PHP. The tag pair <em>[% %]</em> is used to delimit a dynamic section. Any text not enclosed in such a tag pair is contained in a static section. The listing below illustrates the use of dynamic and static sections to form a basic EGL template.</p>
-<pre class="prettyprint lang-egl"><code>[% for (i in Sequence{1..5}) { %]
+<pre class="highlight"><code class="language-egl">[% for (i in Sequence{1..5}) { %]
 i is [%=i%]
 [% } %]</code></pre>
 <p>Executing the EGL template above would produce the generated text below. The <em>[%=expr%]</em> construct (line 2) is shorthand for <em>[% out.print(expr); %]</em>, which appends <em>expr</em> to the output generated by the transformation.</p>
-<div class="highlight"><pre><span></span><code>i is 1
+<pre class="highlight"><code>i is 1
 i is 2
 i is 3
 i is 4
-i is 5
-</code></pre></div>
+i is 5</code></pre>
 <p>Any EOL statement can be contained in the dynamic sections of an EGL template. For example, the EGL template shown below generates text from a model that conforms to a metamodel that describes an object-oriented system.</p>
-<pre class="prettyprint lang-egl"><code>[% for (c in Class.all) { %]
+<pre class="highlight"><code class="language-egl">[% for (c in Class.all) { %]
 [%=c.name%]
 [% } %]</code></pre>
 <h3 id="comments-and-markers">Comments and Markers<a class="headerlink" href="#comments-and-markers" title="Permanent link">&para;</a></h3>
@@ -2231,13 +2264,13 @@ i is 5
 <h3 id="user-defined-operations">User-Defined Operations<a class="headerlink" href="#user-defined-operations" title="Permanent link">&para;</a></h3>
 <p>Like EOL, EGL permits users to define re-usable units of code via
 operations.</p>
-<pre class="prettyprint lang-egl"><code>[% c.declaration(); %]
+<pre class="highlight"><code class="language-egl">[% c.declaration(); %]
 [% operation Class declaration() { %]
 [%=self.visibility%] class [%=self.name%] {}
 [% } %]</code></pre>
 <p>In EGL, user-defined operations are defined in dynamic sections, but may mix static and dynamic sections in their bodies. Consider, for example, the EGL code in the listing above, which emits a declaration for a Java class (e.g. <code>public class Foo {}</code>). Lines 2-4 declare the operation. Note that the start and the end of the operation's declaration (on lines 2 and 4, respectively) are contained in dynamic sections. The body of the operation (line 3), however, mixes static and dynamic output sections. Finally, note that the operation is invoked from a dynamic section (line 1). It is worth noting that any loose (i.e. not contained in other operations) dynamic or static sections below the first operation of a template will be ignored at runtime.</p>
 <p>When a user-defined operation is invoked, any static or dynamic sections contained in the body of the operation are immediately appended to the generated text. Sometimes, however, it is desirable to manipulate the text produced by an operation before it is appended to the generated text. To this end, EGL defines the <code>@template</code> annotation which can applied to operations to indicate that any text generated by the operation must be returned from the operation and not appended to the generated text. For example, the EGL program in the listing above could be rewritten using a <code>@template</code> annotation, as demonstrated below.</p>
-<pre class="prettyprint lang-egl"><code>[%=c.declaration()%]
+<pre class="highlight"><code class="language-egl">[%=c.declaration()%]
 [% @template
    operation Class declaration() { %]
 [%=self.visibility%] class [%=self.name%] {}
@@ -2245,7 +2278,7 @@ operations.</p>
 <p>There is a subtle difference between the way in which standard (i.e. unannotated) operations and <code>@template</code> operations are invoked. Compare the first line of the two listings above. The former uses a dynamic section, because invoking the operation causes the evaluation of its body to be appended to the text generated by this program. By contrast, the latter uses a dynamic output section to append the result returned by the <code>@template</code> operation to the text generated by this program.</p>
 <p>In general, <code>@template</code> operations afford more flexibility than standard operations. For example, line 1 of the listing above could perform some manipulation of the text returned by the <code>declaration()</code> operation before the text is outputted. Therefore, <code>@template</code> operations provide a mechanism for re-using common pieces of a code generator, without sacrificing the flexibility to slightly alter text before it is emitted. Standard (unannotated) operations also permit re-use, but in a less flexible manner.</p>
 <p>Finally, it is worth noting that user-defined operations in EGL do not have to generate text. For example, the following listing illustrates two operations defined in an EGL program that do not generate any text. The former is a query that returns a Boolean value, while the latter alters the model, and does not return a value.</p>
-<pre class="prettyprint lang-egl"><code>[%
+<pre class="highlight"><code class="language-egl">[%
 operation Class isAnonymous() : Boolean {
     return self.name.isUndefined();
 }
@@ -2329,11 +2362,11 @@ operation removeOneClass() {
 <p><strong>Separation of concerns</strong>: the co-ordination engine ensures that the logic for controlling the text that is generated (i.e. the content) and the logic for controlling the way in which text is emitted (i.e. the destination) are kept separate.</p>
 </li>
 </ol>
-<p>There is also the <a href="../egx/">EGX language</a>, which was introduced after this documentation was initially written, but provides a fully-fledged rule-based execution engine for paramterising EGL templates.</p>
+<p>There is also the <a href="../egx/">EGX language</a>, which was introduced after this documentation was initially written, but provides a fully-fledged rule-based execution engine for parameterising EGL templates.</p>
 <h3 id="the-template-type">The Template type<a class="headerlink" href="#the-template-type" title="Permanent link">&para;</a></h3>
 <p>Central to the co-ordination engine is the <em>Template</em> type, which EGL provides in addition to the default EOL types. Via the <em>Template</em> type, EGL fulfils the three requirements identified above. Firstly, a <em>Template</em> can invoke other <em>Templates</em>, and hence can be shared and re-used between EGL programs. Secondly, the <em>Template</em> type has been implemented in an extensible manner: users can define their own types of <em>Template</em> that generate text to any destination (e.g. a database or a network socket), as described in the <a href="#customising-the-co-ordination-engine">custom coordination section</a>. Finally, the <em>Template</em> type provides a set of operations that are used to control the destination of generated text. Users typically define a "driver" template that does not generate text, but rather controls the destination of text that is generated by other templates.</p>
 <p>For example, consider the EGL program in the listing below. This template generates no text (as it contains only a single dynamic section), but is used instead to control the destination of text generated by another template. Line 1 defines a variable, <code>t</code>, of type <em>Template</em>. Note that, unlike the EOL types, instances of <em>Template</em> are not created with the <code>new</code> keyword. Instead, the <em>TemplateFactory</em> built-in object is used to load templates from, for example, a file system path. On line 3, the <em>generate</em> operation of the <em>Template</em> type invokes the EGL template stored in the file "ClassNames.egl" and emits the generated text to "Output.txt".</p>
-<pre class="prettyprint lang-egl"><code>[%
+<pre class="highlight"><code class="language-egl">[%
 var t : Template = TemplateFactory.load("ClassNames.egl");
 t.generate("Output.txt");
 %]</code></pre>
@@ -2412,7 +2445,7 @@ t.generate("Output.txt");
 </table>
 <h3 id="an-example-of-co-ordination-with-egl">An Example of Co-ordination with EGL<a class="headerlink" href="#an-example-of-co-ordination-with-egl" title="Permanent link">&para;</a></h3>
 <p>The operations provided by the <em>TemplateFactory</em> object and <em>Template</em> type are demonstrated by the EGL program in the listing below. Lines 2-3 use operations on <em>TemplateFactory</em> to change the paths from which templates will be loaded (line 2) and to which generated files will be created (line 3). Line 5 demonstrates the use of the <code>prepare</code> operation for creating a template from EGL code. When the <code>interface</code> template is invoked, the EGL code passed to the <code>prepare</code> operation will be executed. Finally, line 9 (and line 12) illustrates the way in which the <code>populate</code> operation can be used to pass a value to a template before invoking it. Specifically, the interface and implementation templates can use a variable called <em>root</em>, which is populated by the driver template before invoking them.</p>
-<pre class="prettyprint lang-egl"><code>[%
+<pre class="highlight"><code class="language-egl">[%
 TemplateFactory.setTemplateRoot("/usr/franz/templates");
 TemplateFactory.setOutputRoot("/tmp/output");
 
@@ -2447,53 +2480,52 @@ for (c in Class.all) {
 <h4 id="implementing-a-custom-templatefactory">Implementing a custom TemplateFactory<a class="headerlink" href="#implementing-a-custom-templatefactory" title="Permanent link">&para;</a></h4>
 <p>A custom <em>TemplateFactory</em> is a subclass of <code>EglTemplateFactory</code>. Typically, a custom <em>TemplateFactory</em> is implemented by overriding one of the methods of <code>EglTemplateFactory</code>. For example, the <code>createTemplate</code> method is overriden to specify that a custom type of <em>Template</em> should be created by the <em>TemplateFactory</em>. Likewise, the <code>load</code> and <code>prepare</code> methods can be overriden to change the location from which <em>Template</em>s are constructed.</p>
 <p>A custom <em>Template</em> is a subclass of <code>EglTemplate</code> or, most often, a subclass of <code>EglPersistentTemplate</code>. Again, customisation is typically achieved by overriding methods in the superclass, or by adding new methods. For example, to perform auditing activities whenever a template is used to generate text, the <code>doGenerate</code> method of <code>EglPersistentTemplate</code> is overriden.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.egl.EglFileGeneratingTemplateFactory</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.egl.EglTemplate</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.egl.EglPersistentTemplate</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.egl.exceptions.EglRuntimeException</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.egl.execute.context.IEglContext</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.egl.spec.EglTemplateSpecification</span><span class="p">;</span>
+<pre class="highlight"><code class="language-java">import org.eclipse.epsilon.egl.EglFileGeneratingTemplateFactory;
+import org.eclipse.epsilon.egl.EglTemplate;
+import org.eclipse.epsilon.egl.EglPersistentTemplate;
+import org.eclipse.epsilon.egl.exceptions.EglRuntimeException;
+import org.eclipse.epsilon.egl.execute.context.IEglContext;
+import org.eclipse.epsilon.egl.spec.EglTemplateSpecification;
 
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CountingTemplateFactory</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">EglFileGeneratingTemplateFactory</span><span class="w"> </span><span class="p">{</span>
+public class CountingTemplateFactory extends EglFileGeneratingTemplateFactory {
 
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">EglTemplate</span><span class="w"> </span><span class="nf">createTemplate</span><span class="p">(</span><span class="n">EglTemplateSpecification</span><span class="w"> </span><span class="n">spec</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CountingTemplate</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">getOutputRootOrRoot</span><span class="p">(),</span><span class="w"> </span><span class="n">outputRootPath</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span><span class="w">   </span>
+    @Override
+    protected EglTemplate createTemplate(EglTemplateSpecification spec) throws Exception {
+        return new CountingTemplate(spec, context, getOutputRootOrRoot(), outputRootPath);
+    }   
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CountingTemplate</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">EglPersistentTemplate</span><span class="w"> </span><span class="p">{</span>
+    public class CountingTemplate extends EglPersistentTemplate {
 
-<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numberOfCallsToGenerate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+        public static int numberOfCallsToGenerate = 0;
 
-<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="nf">CountingTemplate</span><span class="p">(</span><span class="n">EglTemplateSpecification</span><span class="w"> </span><span class="n">spec</span><span class="p">,</span><span class="w"> </span><span class="n">IEglContext</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">URI</span><span class="w"> </span><span class="n">outputRoot</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">outputRootPath</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kd">super</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span><span class="w"> </span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">outputRoot</span><span class="p">,</span><span class="w"> </span><span class="n">outputRootPath</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
+        public CountingTemplate(EglTemplateSpecification spec, IEglContext context, URI outputRoot, String outputRootPath) throws Exception {
+            super(spec, context, outputRoot, outputRootPath);
+        }
 
-<span class="w">        </span><span class="nd">@Override</span>
-<span class="w">        </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">doGenerate</span><span class="p">(</span><span class="n">File</span><span class="w"> </span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">targetName</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">overwrite</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">protectRegions</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">EglRuntimeException</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">numberOfCallsToGenerate</span><span class="o">++</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+        @Override
+        protected void doGenerate(File file, String targetName, boolean overwrite, boolean protectRegions) throws EglRuntimeException {
+            numberOfCallsToGenerate++;
+        }
+    }
+}</code></pre>
 <h4 id="using-a-custom-templatefactory">Using a custom TemplateFactory<a class="headerlink" href="#using-a-custom-templatefactory" title="Permanent link">&para;</a></h4>
-<p>When invoking an EGL program, the user may select a custom <em>TemplateFactory</em>. For example, the EGL development tools provide an Eclipse launch configuration that provides a tab named "Generated Text."On this tab, users can select a <em>TemplateFactory</em> (under the group called "Type of Template Factory"). Note that a <em>TemplateFactory</em> only appears on the launch configuration tab if it has been registered with EGL via an Eclipse extension. Similarly, the <a href="../workflow">workflow language</a> provided by Epsilon allows the specification of custom types of <em>TemplateFactory</em> via the <code>templateFactoryType</code> parameter.</p>
+<p>When invoking an EGL program, the user may select a custom <em>TemplateFactory</em>. For example, the EGL development tools provide an Eclipse launch configuration that provides a tab named "Generated Text."On this tab, users can select a <em>TemplateFactory</em> (under the group called "Type of Template Factory"). Note that a <em>TemplateFactory</em> only appears on the launch configuration tab if it has been registered with EGL via an Eclipse extension. Similarly, the <a href="../workflow/">workflow language</a> provided by Epsilon allows the specification of custom types of <em>TemplateFactory</em> via the <code>templateFactoryType</code> parameter.</p>
 <h3 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h3>
 <p>The co-ordination engine provided by EGL facilitates the construction of modular and re-usable M2T transformations and can be used to generate text to various types of destination. Furthermore, the logic for specifying the contents of generated text is kept separate from the logic for specifying the destination of generated text.</p>
 <h2 id="merge-engine">Merge Engine<a class="headerlink" href="#merge-engine" title="Permanent link">&para;</a></h2>
 <p>EGL provides language constructs that allow M2T transformations to designate regions of generated text as <em>protected</em>. Whenever an EGL program attempts to generate text, any protected regions that are encountered in the specified destination are preserved.</p>
 <p>Within an EGL program, protected regions are specified with the <em>preserve(String, String, String, Boolean, String)</em> method on the <code>out</code> keyword. The first two parameters define the comment delimiters of the target language. The other parameters provide the name, enable-state and content of the protected region, as illustrated in the listing below.</p>
-<pre class="prettyprint lang-egl"><code>[%=out.preserve("/*", "*/", "anId", true, "System.out.println(foo);")%]</code></pre>
+<pre class="highlight"><code class="language-egl">[%=out.preserve("/*", "*/", "anId", true, "System.out.println(foo);")%]</code></pre>
 <p>A protected region declaration may have many lines, and use many EGL variables in the contents definition. To enhance readability, EGL provides two additional methods on the <code>out</code> keyword: <em>startPreserve(String, String, String, Boolean)</em> and <code>stopPreserve</code>. The listing below uses these to generate a protected region.</p>
-<pre class="prettyprint lang-egl"><code>[%=out.startPreserve("/*", "*/", "anId", true)%]
+<pre class="highlight"><code class="language-egl">[%=out.startPreserve("/*", "*/", "anId", true)%]
 System.out.println(foo);
 [%=out.stopPreserve()%]</code></pre>
 <p>Because an EGL template may contain many protected regions, EGL also provides a separate method to set the target language generated by the current template, <em>setContentType(String)</em>. By default, EGL recognises Java, HTML, Perl and EGL as valid content types. An alternative configuration file can be used to specify further content types. Following a call to <code>setContentType</code>, the first two arguments to the <code>preserve</code> and <code>startPreserve</code> methods can be omitted, as shown in the listing below.</p>
-<pre class="prettyprint lang-egl"><code>[% out.setContentType("Java"); %]
+<pre class="highlight"><code class="language-egl">[% out.setContentType("Java"); %]
 [%=out.preserve("anId", true, "System.out.println(foo);")%]</code></pre>
 <p>Because some languages define more than one style of comment delimiter, EGL allows mixed use of the styles for <code>preserve</code> and <code>startPreserve</code> methods.</p>
 <p>Once a content type has been specified, a protected region may also be declared entirely from a static section, using the syntax in the listing below.</p>
-<pre class="prettyprint lang-egl"><code>[% out.setContentType("Java"); %]
+<pre class="highlight"><code class="language-egl">[% out.setContentType("Java"); %]
 // protected region anId [on|off] begin
 System.out.println(foo);
 // protected region anId end</code></pre>
@@ -2555,26 +2587,25 @@ System.out.println(foo);
 <p>Conscientious developers apply various <em>conventions</em> to produce readable code. EGL encourages template developers to prioritise the readability of templates over the readability of generated text when writing EGL templates. For formatting generated text, EGL provides an extensible set of <em>formatters</em> that can be invoked during a model-to-text transformation.</p>
 <h3 id="using-a-formatter">Using a Formatter<a class="headerlink" href="#using-a-formatter" title="Permanent link">&para;</a></h3>
 <p>EGL provides several built-in formatters. Users can implement additional formatters. To use a formatter, invoke the <code>setFormatter</code> or <code>setFormatters</code> operation on an instance of the <em>Template</em> type. A formatter is a Java class that implements EGL's Formatter interface. From within an EGL program, formatters can be created using a Native (i.e. Java) type. The listing below demonstrates the use of a built-in formatter (XmlFormatter).</p>
-<pre class="prettyprint lang-egl"><code>[%
+<pre class="highlight"><code class="language-egl">[%
 var f = new Native("org.eclipse.epsilon.egl.formatter.language.XmlFormatter");
 var t = TemplateFactory.load("generate_some_xml.egl");
 t.setFormatter(f);
 t.generate("formatted.xml");
 %]</code></pre>
 <p>To facilitate the re-use of a formatter with many templates, the <em>TemplateFactory</em> object provides the <code>setDefaultFormatter</code> and <code>setDefaultFormatters</code> operations. Templates that are loaded or prepared after a call to <code>setDefaultFormatter</code> or <code>setDefaultFormatters</code> will, by default, use the formatter(s) specified for the <em>TemplateFactory</em>. Note that setting the formatter on a template overwrite any formatter that may have been set on that template by the <em>TemplateFactory</em>.</p>
-<p>The default formatters for an EGL program can also be set when invoking the program. For example, the EGL development tools provide an Eclipse launch configuration that provides a tab named "Generated Text." On this tab, users can configure one or more formatters which will be used as the default formatters for this EGL program. Note that custom formatters only appear on the launch configuration tab if they have been registered with EGL via an Eclipse extension. Similarly, the <a href="../workflow">workflow language</a> provided by Epsilon provides a <code>formatter</code> nested element that can be used to specify one or more default formatters.</p>
+<p>The default formatters for an EGL program can also be set when invoking the program. For example, the EGL development tools provide an Eclipse launch configuration that provides a tab named "Generated Text." On this tab, users can configure one or more formatters which will be used as the default formatters for this EGL program. Note that custom formatters only appear on the launch configuration tab if they have been registered with EGL via an Eclipse extension. Similarly, the <a href="../workflow/">workflow language</a> provided by Epsilon provides a <code>formatter</code> nested element that can be used to specify one or more default formatters.</p>
 <h3 id="implementing-a-custom-formatter">Implementing a Custom Formatter<a class="headerlink" href="#implementing-a-custom-formatter" title="Permanent link">&para;</a></h3>
 <p>Providing a user-defined formatter involves implementing the <code>Formatter</code> interface (in <code>org.eclipse.epsilon.egl.formatter</code>). For example, the listing below demonstrates a simple formatter that transforms all generated text to uppercase.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.egl.formatter.Formatter</span><span class="p">;</span>
+<pre class="highlight"><code class="language-java">import org.eclipse.epsilon.egl.formatter.Formatter;
 
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UppercaseFormatter</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Formatter</span><span class="w"> </span><span class="p">{</span>
+public class UppercaseFormatter implements Formatter {
 
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">format</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">text</span><span class="p">.</span><span class="na">toUpperCase</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+    @Override
+    public String format(String text) {
+        return text.toUpperCase();
+    }
+}</code></pre>
 <p>The set of built-in formatters provided by EGL includes some partial implementations of the <code>Formatter</code> interface that can be re-used to simplify the implementation of custom formatters. For instance, the <code>LanguageFormatter</code> class can correct the indentation of a program written in most languages, when given a start and end regular expression.</p>
 <p>Finally, an Eclipse extension point is provided for custom formatters. Providing an extension that conforms to the custom formatter extension point allows EGL to display the custom formatter in the launch configuration tabs of the EGL development tools.</p>
 <h2 id="outdentation">Outdentation<a class="headerlink" href="#outdentation" title="Permanent link">&para;</a></h2>
@@ -2583,20 +2614,19 @@ t.generate("formatted.xml");
 <p>The current implementation of outdentation <a href="https://github.com/eclipse-epsilon/epsilon/issues/128">doesn't work well</a> with EGL's <a href="#traceability">fine-grained traceability</a> feature.</p>
 </div>
 <p>A common issue encountered when writing EGL templates is that the ideal indentation for the template code itself and the output it produces may be different. For example, consider the template below, which produces a Graphviz graph from a state machine model.</p>
-<pre class="prettyprint lang-egl"><code>digraph G {
+<pre class="highlight"><code class="language-egl">digraph G {
     [%for (t in Transition.all){%]
     [%=t.from.name%] -&gt; [%=t.to.name%]
     [%}%]
 }</code></pre>
 <p>The output of the template for a minimal state machine model is shown below.</p>
-<div class="highlight"><pre><span></span><code><span class="k">digraph</span><span class="w"> </span><span class="nt">G</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">A</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">B</span>
-<span class="w">    </span><span class="nt">B</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">C</span>
-<span class="w">    </span><span class="nt">C</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">A</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-dot">digraph G {
+    A -&gt; B
+    B -&gt; C
+    C -&gt; A
+}</code></pre>
 <p>Note that in order to indent lines 2-4 of the output with one tab, we had to "pull" line 3 of the template at the same indentation level as its container <code>for</code> loop, which is not ideal. To format both the template and its output properly in this case, since Epsilon 2.4, we can use <code>-%]</code> instead of <code>%]</code> to close the <code>for</code> loop statement in line 2. This will instruct a built-in EGL formatter to remove one indentation character (see the <code>setIndenters</code> method above) from each of the lines of the content produced within the <code>for</code> loop. The template below uses this feature to produce the same output as the template above.</p>
-<pre class="prettyprint lang-egl"><code>digraph G {
+<pre class="highlight"><code class="language-egl">digraph G {
     [%for (t in Transition.all){-%]
         [%=t.from.name%] -&gt; [%=t.to.name%]
     [%}%]
@@ -2608,24 +2638,22 @@ t.generate("formatted.xml");
 <p>Outdentation also works with <code>if</code>, <code>switch</code>, <code>while</code> statements etc. More examples are available in the <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/tests/org.eclipse.epsilon.egl.engine.test.acceptance/src/org/eclipse/epsilon/egl/test/acceptance/outdentation">unit tests folder of this feature</a>.</p>
 <h2 id="traceability">Traceability<a class="headerlink" href="#traceability" title="Permanent link">&para;</a></h2>
 <p>EGL also provides a traceability API, as a debugging aid, to support auditing of the M2T transformation process, and to facilitate change propagation. This API facilitates exploration of the templates executed, files affected and protected regions processed during a transformation. The figure below shows sample output from the traceability API after execution of an EGL M2T transformation to generate Java code from an instance of an OO metamodel. The view shown is accessed via the ... menu in Eclipse. Traceability information can also be accessed programmatically, as demonstrated in the listing below.</p>
-<p><img alt="Sample output from the traceability
-API." src="../images/TraceView.png" /></p>
-<div class="highlight"><pre><span></span><code><span class="n">EglTemplateFactoryModuleAdapter</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EglTemplateFactoryModuleAdapter</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">EglTemplateFactory</span><span class="p">());</span>
+<p><img alt="Sample output from the traceability API." src="../images/TraceView.png" /></p>
+<pre class="highlight"><code class="language-java">EglTemplateFactoryModuleAdapter module = new EglTemplateFactoryModuleAdapter(new EglTemplateFactory());
 
-<span class="kt">boolean</span><span class="w"> </span><span class="n">parsed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">module</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;myTemplate.egl&quot;</span><span class="p">));</span>
+boolean parsed = module.parse(new File("myTemplate.egl"));
 
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">parsed</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">module</span><span class="p">.</span><span class="na">getParseProblems</span><span class="p">().</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">module</span><span class="p">.</span><span class="na">execute</span><span class="p">();</span>
+if (parsed &amp;&amp; module.getParseProblems().isEmpty()) {
+    module.execute();
 
-<span class="w">    </span><span class="n">Template</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">module</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">getBaseTemplate</span><span class="p">();</span>
+    Template base = module.getContext().getBaseTemplate();
 
-<span class="w">    </span><span class="c1">// traverse the template hierachy</span>
-<span class="w">    </span><span class="c1">// display data </span>
+    // traverse the template hierarchy
+    // display data 
 
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// error handling</span>
-<span class="p">}</span>
-</code></pre></div>
+} else {
+    // error handling
+}</code></pre>
 <h2 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
 <p>Additional resources about EGL/EGX are available <a href="../articles/#epsilon-generation-language">here</a>.</p>
 
@@ -2762,25 +2790,7 @@ API." src="../images/TraceView.png" /></p>
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

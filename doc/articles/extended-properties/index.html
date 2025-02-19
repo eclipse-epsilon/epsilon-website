@@ -44,15 +44,11 @@
     
       <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,10 +84,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -143,7 +141,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1710,7 +1744,7 @@
 
 <h1 id="extended-properties">Extended Properties<a class="headerlink" href="#extended-properties" title="Permanent link">&para;</a></h1>
 <p>This article demonstrates the extended properties mechanism in EOL (and by inheritance, in all languages in Epsilon). We present the rationale and semantics of extended properties using the following simple metamodel (in Emfatic):</p>
-<pre class="prettyprint lang-emf"><code>package SimpleTree;
+<pre class="highlight"><code class="language-emf">package SimpleTree;
 
 class Tree {
   attr String name;
@@ -1718,7 +1752,7 @@ class Tree {
   val Tree[*]#parent children;
 }</code></pre>
 <p>Now, what we want to do is to traverse a model that conforms to this metamodel and calculate and print the depth of each Tree in it. We can do this using this simple EOL program:</p>
-<pre class="prettyprint lang-eol"><code>var depths = new Map;
+<pre class="highlight"><code class="language-eol">var depths = new Map;
 
 for (n in Tree.allInstances.select(t|not t.parent.isDefined())) {
   n.setDepth(0);
@@ -1737,7 +1771,7 @@ operation Tree setDepth(depth : Integer) {
 <p>Because the <code>Tree</code> <code>EClass</code> doesn't have a depth property, we have to use the <code>depths Map</code> to store the calculated depth of each <code>Tree</code>. Another solution would be to add a depth property to the <code>Tree</code> <code>EClass</code> so that its instances can store such information; but following this approach will soon pollute our metamodel with information of secondary importance.</p>
 <p>We've often come across similar situations where we needed to attach some kind of information (that is not supported by the metamodel) to particular model elements during model management operations (validation, transformation etc.). Until now, we've been using <code>Maps</code> to achieve this (similarly to what we've done above). However, now, EOL (and all languages built atop it) support non-invasive extended properties which provide a more elegant solution to this recurring problem.</p>
 <p>An extended property is a property that starts with the <code>~</code> character. Its semantics are quite straightforward: the first time a value is assigned to an extended property of an object (e.g. <code>x.~a := b;</code>), the property is created and associated to the object and the value is assigned to it. Similarly, <code>x.~a</code> returns the value of the property or undefined if the property has not been set on the particular object yet. Using extended properties, we can rewrite the above code (without needing to use a <code>Map</code>) as follows:</p>
-<pre class="prettyprint lang-eol"><code>for (n in Tree.allInstances.select(t|not t.parent.isDefined())) {
+<pre class="highlight"><code class="language-eol">for (n in Tree.allInstances.select(t|not t.parent.isDefined())) {
   n.setDepth(0);
 }
 
@@ -1847,25 +1881,7 @@ operation Tree setDepth(depth : Integer) {
     
       <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

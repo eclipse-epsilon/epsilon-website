@@ -44,15 +44,11 @@
     
       <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,10 +84,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -143,7 +141,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1736,31 +1770,30 @@
 
 <h1 id="code-generation-tutorial-with-egl">Code Generation Tutorial with EGL<a class="headerlink" href="#code-generation-tutorial-with-egl" title="Permanent link">&para;</a></h1>
 <p>EGL is a template-based language that can be used to generate code (or any other kind of text) from different types of models supported by Epsilon (e.g. EMF, UML, XML). This example demonstrates using EGL to generate HTML code from the XML document below.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;library&gt;</span>
-<span class="w">  </span><span class="nt">&lt;book</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;EMF Eclipse Modeling Framework&quot;</span><span class="w"> </span><span class="na">pages=</span><span class="s">&quot;744&quot;</span><span class="w"> </span><span class="na">public=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;id&gt;</span>EMFBook<span class="nt">&lt;/id&gt;</span>
-<span class="w">    </span><span class="nt">&lt;author&gt;</span>Dave<span class="w"> </span>Steinberg<span class="nt">&lt;/author&gt;</span>
-<span class="w">    </span><span class="nt">&lt;author&gt;</span>Frank<span class="w"> </span>Budinsky<span class="nt">&lt;/author&gt;</span>
-<span class="w">    </span><span class="nt">&lt;author&gt;</span>Marcelo<span class="w"> </span>Paternostro<span class="nt">&lt;/author&gt;</span>
-<span class="w">    </span><span class="nt">&lt;author&gt;</span>Ed<span class="w"> </span>Merks<span class="nt">&lt;/author&gt;</span>
-<span class="w">    </span><span class="nt">&lt;published&gt;</span>2009<span class="nt">&lt;/published&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/book&gt;</span>
-<span class="w">  </span><span class="nt">&lt;book</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Eclipse Modeling Project: A Domain-Specific Language (DSL) Toolkit&quot;</span><span class="w"> </span>
-<span class="w">    </span><span class="na">pages=</span><span class="s">&quot;736&quot;</span><span class="w"> </span><span class="na">public=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;id&gt;</span>EMPBook<span class="nt">&lt;/id&gt;</span>
-<span class="w">    </span><span class="nt">&lt;author&gt;</span>Richard<span class="w"> </span>Gronback<span class="nt">&lt;/author&gt;</span>
-<span class="w">    </span><span class="nt">&lt;published&gt;</span>2009<span class="nt">&lt;/published&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/book&gt;</span>
-<span class="w">  </span><span class="nt">&lt;book</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Official Eclipse 3.0 FAQs&quot;</span><span class="w"> </span><span class="na">pages=</span><span class="s">&quot;432&quot;</span><span class="w"> </span><span class="na">public=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;id&gt;</span>Eclipse3FAQs<span class="nt">&lt;/id&gt;</span>
-<span class="w">    </span><span class="nt">&lt;author&gt;</span>John<span class="w"> </span>Arthorne<span class="nt">&lt;/author&gt;</span>
-<span class="w">    </span><span class="nt">&lt;author&gt;</span>Chris<span class="w"> </span>Laffra<span class="nt">&lt;/author&gt;</span>
-<span class="w">    </span><span class="nt">&lt;published&gt;</span>2004<span class="nt">&lt;/published&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/book&gt;</span>
-<span class="nt">&lt;/library&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-xml">&lt;library&gt;
+  &lt;book title="EMF Eclipse Modeling Framework" pages="744" public="true"&gt;
+    &lt;id&gt;EMFBook&lt;/id&gt;
+    &lt;author&gt;Dave Steinberg&lt;/author&gt;
+    &lt;author&gt;Frank Budinsky&lt;/author&gt;
+    &lt;author&gt;Marcelo Paternostro&lt;/author&gt;
+    &lt;author&gt;Ed Merks&lt;/author&gt;
+    &lt;published&gt;2009&lt;/published&gt;
+  &lt;/book&gt;
+  &lt;book title="Eclipse Modeling Project: A Domain-Specific Language (DSL) Toolkit" 
+    pages="736" public="true"&gt;
+    &lt;id&gt;EMPBook&lt;/id&gt;
+    &lt;author&gt;Richard Gronback&lt;/author&gt;
+    &lt;published&gt;2009&lt;/published&gt;
+  &lt;/book&gt;
+  &lt;book title="Official Eclipse 3.0 FAQs" pages="432" public="false"&gt;
+    &lt;id&gt;Eclipse3FAQs&lt;/id&gt;
+    &lt;author&gt;John Arthorne&lt;/author&gt;
+    &lt;author&gt;Chris Laffra&lt;/author&gt;
+    &lt;published&gt;2004&lt;/published&gt;
+  &lt;/book&gt;
+&lt;/library&gt;</code></pre>
 <p>More specifically, we will generate one HTML file for each <code>&lt;book&gt;</code> element that has a <code>public</code> attribute set to <code>true</code>. Below is an EGL template (<code>book2page.egl</code>) that can generate an HTML file from a single <code>&lt;book&gt;</code> element. For more details on using EGL's expression language to navigate and query XML documents, please refer to <a href="../plain-xml">this article</a>.</p>
-<pre class="prettyprint lang-egl"><code>&lt;h1&gt;Book [%=index%]: [%=book.a_title%]&lt;/h1&gt;
+<pre class="highlight"><code class="language-egl">&lt;h1&gt;Book [%=index%]: [%=book.a_title%]&lt;/h1&gt;
 
 &lt;h2&gt;Authors&lt;/h2&gt;
 &lt;ul&gt;
@@ -1769,7 +1802,7 @@
 [%}%]
 &lt;/ul&gt;</code></pre>
 <p>The template above can generate one HTML file from one <code>&lt;book&gt;</code> element. To run this template against '''all''' <code>&lt;book&gt;</code> elements anywhere in the XML document, and generate appropriately-named HTML files, we need to use an EGX co-ordination program such as the one illustrated below (<code>main.egx</code>). The <code>Book2Page</code> rule of the EGX program will <code>transform</code> every <code>&lt;book&gt;</code> element (<code>t_book</code>) that satisfies the declared <code>guard</code> (has a <code>public</code> attribute set to <code>true</code>), into a <code>target</code> file, using the specified <code>template</code> (<code>book2page.egl</code>). In addition, the EGX program specifies a <code>Library2Page</code> rule, that generates an HTML (index) file for each <code>&lt;library&gt;</code> element in the document.</p>
-<pre class="prettyprint lang-egx"><code>rule Book2Page 
+<pre class="highlight"><code class="language-egx">rule Book2Page 
   transform book : t_book {
 
   // We only want to generate pages
@@ -1801,7 +1834,7 @@ rule Library2Page
   target : "gen/index.html"
 }</code></pre>
 <p>For completeness, the source code of the <code>library2page.egl</code> template appears below.</p>
-<pre class="prettyprint lang-egl"><code>&lt;h1&gt;Books&lt;/h1&gt;
+<pre class="highlight"><code class="language-egl">&lt;h1&gt;Books&lt;/h1&gt;
 
 &lt;ul&gt;
 [%for (book in library.c_book.select(b|b.b_public)) { %]
@@ -1815,39 +1848,38 @@ rule Library2Page
 <p><img alt="" src="run-configuration-model.png" /></p>
 <h2 id="running-the-code-generator-from-java">Running the Code Generator from Java<a class="headerlink" href="#running-the-code-generator-from-java" title="Permanent link">&para;</a></h2>
 <p>The following snippet demonstrates using Epsilon's Java API to parse the XML document and execute the EGX program. The complete source for this example is available <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.egl.library">here</a> (please read <code>lib/readme.txt</code> for instructions on how to obtain the missing Epsilon JAR). </p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.File</span><span class="p">;</span>
+<pre class="highlight"><code class="language-java">import java.io.File;
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.egl.EglFileGeneratingTemplateFactory</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.egl.EgxModule</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.emc.plainxml.PlainXmlModel</span><span class="p">;</span>
+import org.eclipse.epsilon.egl.EglFileGeneratingTemplateFactory;
+import org.eclipse.epsilon.egl.EgxModule;
+import org.eclipse.epsilon.emc.plainxml.PlainXmlModel;
 
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">App</span><span class="w"> </span><span class="p">{</span>
+public class App {
 
-<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+  public static void main(String[] args) throws Exception {
 
-<span class="w">    </span><span class="c1">// Parse main.egx</span>
-<span class="w">    </span><span class="n">EgxModule</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EgxModule</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">EglFileGeneratingTemplateFactory</span><span class="p">());</span>
-<span class="w">    </span><span class="n">module</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;main.egx&quot;</span><span class="p">).</span><span class="na">getAbsoluteFile</span><span class="p">());</span>
+    // Parse main.egx
+    EgxModule module = new EgxModule(new EglFileGeneratingTemplateFactory());
+    module.parse(new File("main.egx").getAbsoluteFile());
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">module</span><span class="p">.</span><span class="na">getParseProblems</span><span class="p">().</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Syntax errors found. Exiting.&quot;</span><span class="p">);</span>
-<span class="w">      </span><span class="k">return</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+    if (!module.getParseProblems().isEmpty()) {
+      System.out.println("Syntax errors found. Exiting.");
+      return;
+    }
 
-<span class="w">    </span><span class="c1">// Load the XML document</span>
-<span class="w">    </span><span class="n">PlainXmlModel</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PlainXmlModel</span><span class="p">();</span>
-<span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="na">setFile</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;library.xml&quot;</span><span class="p">));</span>
-<span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;L&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="na">load</span><span class="p">();</span>
+    // Load the XML document
+    PlainXmlModel model = new PlainXmlModel();
+    model.setFile(new File("library.xml"));
+    model.setName("L");
+    model.load();
 
-<span class="w">    </span><span class="c1">// Make the document visible to the EGX program</span>
-<span class="w">    </span><span class="n">module</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">getModelRepository</span><span class="p">().</span><span class="na">addModel</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
-<span class="w">    </span><span class="c1">// ... and execute</span>
-<span class="w">    </span><span class="n">module</span><span class="p">.</span><span class="na">execute</span><span class="p">();</span>
-<span class="w">  </span><span class="p">}</span>
+    // Make the document visible to the EGX program
+    module.getContext().getModelRepository().addModel(model);
+    // ... and execute
+    module.execute();
+  }
 
-<span class="p">}</span><span class="w">  </span>
-</code></pre></div>
+}  </code></pre>
 
 
 
@@ -1944,25 +1976,7 @@ rule Library2Page
     
       <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

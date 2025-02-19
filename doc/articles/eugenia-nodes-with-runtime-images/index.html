@@ -44,15 +44,11 @@
     
       <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,10 +84,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -143,7 +141,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1776,211 +1810,205 @@
 <p>First we need to create an <code>imagePath</code> attribute that will store the path of the image for each component.</p>
 <h2 id="set-the-figure-of-component-to-a-custom-componentfigure">Set the figure of Component to a custom ComponentFigure<a class="headerlink" href="#set-the-figure-of-component-to-a-custom-componentfigure" title="Permanent link">&para;</a></h2>
 <p>The next step is to set the figure of Component in Eugenia to a custom figure. After those two steps, our definition of Component looks like this:</p>
-<pre class="prettyprint lang-emf"><code>@gmf.node(label="name", figure="ccdl.diagram.figures.ComponentFigure", label.placement="external")
+<pre class="highlight"><code class="language-emf">@gmf.node(label="name", figure="ccdl.diagram.figures.ComponentFigure", label.placement="external")
 class Component {
   attr String name;
   attr String imagePath;
 }</code></pre>
 <p>Once we generate the diagram code, we'll get an error because <code>ComponentFigure</code> has not been found. We need to create the <code>ComponentFigure</code> class and set its code to the following:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.File</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">java.util.HashMap</span><span class="p">;</span>
+<pre class="highlight"><code class="language-java">import java.io.File;
+import java.util.HashMap;
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.core.resources.IFile</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.core.resources.ResourcesPlugin</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.core.runtime.FileLocator</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.core.runtime.Path</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.core.runtime.Platform</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.draw2d.ImageFigure</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.jface.resource.ImageDescriptor</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.swt.graphics.Image</span><span class="p">;</span>
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.draw2d.ImageFigure;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.swt.graphics.Image;
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">ccdl.diagram.part.CcdlDiagramEditorPlugin</span><span class="p">;</span>
+import ccdl.diagram.part.CcdlDiagramEditorPlugin;
 
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ComponentFigure</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ImageFigure</span><span class="w">  </span><span class="p">{</span>
+public class ComponentFigure extends ImageFigure  {
 
-<span class="w">  </span><span class="kd">static</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="n">unspecified</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+  static Image unspecified = null;
 
-<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="nf">ComponentFigure</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">unspecified</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">unspecified</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImageDescriptor</span><span class="p">.</span><span class="na">createFromURL</span><span class="p">(</span>
-<span class="w">               </span><span class="n">FileLocator</span><span class="p">.</span><span class="na">find</span><span class="p">(</span>
-<span class="w">                       </span><span class="n">Platform</span><span class="p">.</span><span class="na">getBundle</span><span class="p">(</span><span class="n">CcdlDiagramEditorPlugin</span><span class="p">.</span><span class="na">ID</span><span class="p">),</span>
-<span class="w">                       </span><span class="k">new</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="s">&quot;icons/ComponentDefault.png&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="p">()))</span>
-<span class="w">                                             </span><span class="p">.</span><span class="na">createImage</span><span class="p">();</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
+  public ComponentFigure() {
+      if (unspecified == null) {
+      unspecified = ImageDescriptor.createFromURL(
+               FileLocator.find(
+                       Platform.getBundle(CcdlDiagramEditorPlugin.ID),
+                       new Path("icons/ComponentDefault.png"), new HashMap()))
+                                             .createImage();
+      }
+  }
 
-<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="nf">createImage</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">imagePath</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="n">IFile</span><span class="w"> </span><span class="n">res</span><span class="o">=</span><span class="p">(</span><span class="n">IFile</span><span class="p">)</span><span class="n">ResourcesPlugin</span><span class="p">.</span><span class="na">getWorkspace</span><span class="p">().</span><span class="na">getRoot</span><span class="p">().</span>
-<span class="w">                               </span><span class="n">findMember</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="n">imagePath</span><span class="p">));</span>
-<span class="w">          </span><span class="n">File</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="na">getRawLocation</span><span class="p">().</span><span class="na">toOSString</span><span class="p">());</span>
-<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="n">ImageDescriptor</span><span class="p">.</span><span class="na">createFromURL</span><span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="na">toURI</span><span class="p">().</span><span class="na">toURL</span><span class="p">()).</span><span class="na">createImage</span><span class="p">();</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">      </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="n">unspecified</span><span class="p">;</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
+  public static Image createImage(String imagePath) {
+      try {
+          IFile res=(IFile)ResourcesPlugin.getWorkspace().getRoot().
+                               findMember(new Path(imagePath));
+          File file = new File(res.getRawLocation().toOSString());
+          return ImageDescriptor.createFromURL(file.toURI().toURL()).createImage();
+      }
+      catch (Exception ex) {
+          return unspecified;
+      }
+  }
 
-<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setImagePath</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">imagePath</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+  public void setImagePath(String imagePath) {
 
-<span class="w">      </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+      try {
 
-<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">getImage</span><span class="p">()</span><span class="o">!=</span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">getImage</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="n">unspecified</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="n">getImage</span><span class="p">().</span><span class="na">dispose</span><span class="p">();</span>
-<span class="w">          </span><span class="p">}</span>
+          if (getImage()!=null &amp;&amp; getImage() !=unspecified) {
+              getImage().dispose();
+          }
 
-<span class="w">          </span><span class="k">this</span><span class="p">.</span><span class="na">setImage</span><span class="p">(</span><span class="n">createImage</span><span class="p">(</span><span class="n">imagePath</span><span class="p">));</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">      </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="n">ex</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
+          this.setImage(createImage(imagePath));
+      }
+      catch (Exception ex) {
+          ex.printStackTrace();
+      }
+  }
 
-<span class="p">}</span>
-</code></pre></div>
+}</code></pre>
 <h2 id="create-the-image-path-property-descriptor">Create the image path property descriptor<a class="headerlink" href="#create-the-image-path-property-descriptor" title="Permanent link">&para;</a></h2>
 <p>The next step is to create the property descriptor for the image path so that we can eventually get a nice browse button in the properties view. To do this we need to create a new class named <code>ComponentImagePathPropertyDescriptor</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.emf.ecore.EAttribute</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.emf.edit.provider.IItemPropertyDescriptor</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.gmf.runtime.emf.ui.properties.descriptors.EMFCompositeSourcePropertyDescriptor</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.jface.viewers.CellEditor</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.swt.widgets.Composite</span><span class="p">;</span>
+<pre class="highlight"><code class="language-java">import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.gmf.runtime.emf.ui.properties.descriptors.EMFCompositeSourcePropertyDescriptor;
+import org.eclipse.jface.viewers.CellEditor;
+import org.eclipse.swt.widgets.Composite;
 
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ComponentImagePathPropertyDescriptor</span><span class="w">  </span><span class="kd">extends</span>
-<span class="w">        </span><span class="n">EMFCompositeSourcePropertyDescriptor</span><span class="w"> </span><span class="p">{</span>
+public class ComponentImagePathPropertyDescriptor  extends
+        EMFCompositeSourcePropertyDescriptor {
 
-<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="nf">ComponentImagePathPropertyDescriptor</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">object</span><span class="p">,</span>
-<span class="w">          </span><span class="n">IItemPropertyDescriptor</span><span class="w"> </span><span class="n">itemPropertyDescriptor</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">category</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">super</span><span class="p">(</span><span class="n">object</span><span class="p">,</span><span class="w"> </span><span class="n">itemPropertyDescriptor</span><span class="p">,</span><span class="w"> </span><span class="n">category</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
+  public ComponentImagePathPropertyDescriptor(Object object,
+          IItemPropertyDescriptor itemPropertyDescriptor, String category) {
+      super(object, itemPropertyDescriptor, category);
+  }
 
-<span class="w">  </span><span class="kd">protected</span><span class="w"> </span><span class="n">CellEditor</span><span class="w"> </span><span class="nf">doCreateEditor</span><span class="p">(</span><span class="n">Composite</span><span class="w"> </span><span class="n">composite</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(((</span><span class="n">EAttribute</span><span class="p">)</span><span class="w"> </span><span class="n">getFeature</span><span class="p">()).</span><span class="na">getName</span><span class="p">().</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;imagePath&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ComponentImagePathCellEditor</span><span class="p">(</span><span class="n">composite</span><span class="p">);</span>
-<span class="w">          </span><span class="p">}</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">      </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">ex</span><span class="p">){}</span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kd">super</span><span class="p">.</span><span class="na">doCreateEditor</span><span class="p">(</span><span class="n">composite</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+  protected CellEditor doCreateEditor(Composite composite) {
+      try {
+          if (((EAttribute) getFeature()).getName().equals("imagePath")) {
+              return new ComponentImagePathCellEditor(composite);
+          }
+      }
+      catch (Exception ex){}
+      return super.doCreateEditor(composite);
+  }
+}</code></pre>
 <h2 id="create-the-image-path-property-cell-editor">Create the image path property cell editor<a class="headerlink" href="#create-the-image-path-property-cell-editor" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.core.resources.IFile</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.core.resources.IResource</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.core.resources.ResourcesPlugin</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.jface.viewers.DialogCellEditor</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.jface.window.Window</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.swt.widgets.Composite</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.swt.widgets.Control</span><span class="p">;</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.ui.dialogs.ResourceListSelectionDialog</span><span class="p">;</span>
+<pre class="highlight"><code class="language-java">import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.jface.viewers.DialogCellEditor;
+import org.eclipse.jface.window.Window;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.ui.dialogs.ResourceListSelectionDialog;
 
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ComponentImagePathCellEditor</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">DialogCellEditor</span><span class="w">  </span><span class="p">{</span>
+public class ComponentImagePathCellEditor extends DialogCellEditor  {
 
-<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="nf">ComponentImagePathCellEditor</span><span class="p">(</span><span class="n">Composite</span><span class="w"> </span><span class="n">parent</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">super</span><span class="p">(</span><span class="n">parent</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
+  public ComponentImagePathCellEditor(Composite parent) {
+      super(parent);
+  }
 
-<span class="w">  </span><span class="kd">protected</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="nf">openDialogBox</span><span class="p">(</span><span class="n">Control</span><span class="w"> </span><span class="n">cellEditorWindow</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+  protected Object openDialogBox(Control cellEditorWindow) {
 
-<span class="w">      </span><span class="n">ResourceListSelectionDialog</span><span class="w"> </span><span class="n">elementSelector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ResourceListSelectionDialog</span><span class="p">(</span>
-<span class="w">                  </span><span class="n">cellEditorWindow</span><span class="p">.</span><span class="na">getShell</span><span class="p">(),</span><span class="w"> </span><span class="n">ResourcesPlugin</span><span class="p">.</span><span class="na">getWorkspace</span><span class="p">().</span><span class="na">getRoot</span><span class="p">(),</span>
-<span class="w">                  </span><span class="n">IResource</span><span class="p">.</span><span class="na">DEPTH_INFINITE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">IResource</span><span class="p">.</span><span class="na">FILE</span><span class="w"> </span><span class="p">);</span>
-<span class="w">      </span><span class="n">elementSelector</span><span class="p">.</span><span class="na">setTitle</span><span class="p">(</span><span class="s">&quot;Image&quot;</span><span class="p">);</span>
-<span class="w">      </span><span class="n">elementSelector</span><span class="p">.</span><span class="na">setMessage</span><span class="p">(</span><span class="s">&quot;Please select an image&quot;</span><span class="p">);</span>
-<span class="w">      </span><span class="n">elementSelector</span><span class="p">.</span><span class="na">open</span><span class="p">();</span>
+      ResourceListSelectionDialog elementSelector = new ResourceListSelectionDialog(
+                  cellEditorWindow.getShell(), ResourcesPlugin.getWorkspace().getRoot(),
+                  IResource.DEPTH_INFINITE | IResource.FILE );
+      elementSelector.setTitle("Image");
+      elementSelector.setMessage("Please select an image");
+      elementSelector.open();
 
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">elementSelector</span><span class="p">.</span><span class="na">getReturnCode</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Window</span><span class="p">.</span><span class="na">OK</span><span class="p">){</span>
-<span class="w">          </span><span class="n">IFile</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">IFile</span><span class="p">)</span><span class="w"> </span><span class="n">elementSelector</span><span class="p">.</span><span class="na">getResult</span><span class="p">()</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
-<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="na">getFullPath</span><span class="p">().</span><span class="na">toString</span><span class="p">();</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<span class="w">      </span><span class="p">}</span>
+      if (elementSelector.getReturnCode() == Window.OK){
+          IFile f = (IFile) elementSelector.getResult()[0];
+          return f.getFullPath().toString();
+      }
+      else {
+          return null;
+      }
 
 
-<span class="w">  </span><span class="p">}</span>
+  }
 
-<span class="p">}</span>
-</code></pre></div>
+}</code></pre>
 <h2 id="update-the-xxxpropertysection-under-xxxdiagramsheet">Update the XXXPropertySection under xxx.diagram.sheet<a class="headerlink" href="#update-the-xxxpropertysection-under-xxxdiagramsheet" title="Permanent link">&para;</a></h2>
 <p>Update the <code>getPropertySource</code> method as follows:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">IPropertySource</span><span class="w"> </span><span class="nf">getPropertySource</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">object</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">object</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">IPropertySource</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">IPropertySource</span><span class="p">)</span><span class="w"> </span><span class="n">object</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="n">AdapterFactory</span><span class="w"> </span><span class="n">af</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getAdapterFactory</span><span class="p">(</span><span class="n">object</span><span class="p">);</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">af</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">IItemPropertySource</span><span class="w"> </span><span class="n">ips</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">IItemPropertySource</span><span class="p">)</span><span class="w"> </span><span class="n">af</span><span class="p">.</span><span class="na">adapt</span><span class="p">(</span><span class="n">object</span><span class="p">,</span>
-<span class="w">        </span><span class="n">IItemPropertySource</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<pre class="highlight"><code class="language-java">public IPropertySource getPropertySource(Object object) {
+  if (object instanceof IPropertySource) {
+    return (IPropertySource) object;
+  }
+  AdapterFactory af = getAdapterFactory(object);
+  if (af != null) {
+    IItemPropertySource ips = (IItemPropertySource) af.adapt(object,
+        IItemPropertySource.class);
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ips</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+    if (ips != null) {
 
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">object</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">Component</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PropertySource</span><span class="p">(</span><span class="n">object</span><span class="p">,</span><span class="w"> </span><span class="n">ips</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="kd">protected</span><span class="w"> </span><span class="n">IPropertyDescriptor</span><span class="w"> </span><span class="nf">createPropertyDescriptor</span><span class="p">(</span>
-<span class="w">              </span><span class="n">IItemPropertyDescriptor</span><span class="w"> </span><span class="n">itemPropertyDescriptor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+      if (object instanceof Component) {
+        return new PropertySource(object, ips) {
+          protected IPropertyDescriptor createPropertyDescriptor(
+              IItemPropertyDescriptor itemPropertyDescriptor) {
 
-<span class="w">            </span><span class="n">EStructuralFeature</span><span class="w"> </span><span class="n">feature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EStructuralFeature</span><span class="p">)</span><span class="w"> </span><span class="n">itemPropertyDescriptor</span><span class="p">.</span><span class="na">getFeature</span><span class="p">(</span><span class="n">object</span><span class="p">);</span>
+            EStructuralFeature feature = (EStructuralFeature) itemPropertyDescriptor.getFeature(object);
 
-<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">feature</span><span class="p">.</span><span class="na">getName</span><span class="p">().</span><span class="na">equalsIgnoreCase</span><span class="p">(</span><span class="s">&quot;imagePath&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+            if(feature.getName().equalsIgnoreCase("imagePath")) {
 
-<span class="w">              </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ComponentImagePathPropertyDescriptor</span><span class="p">(</span>
-<span class="w">                  </span><span class="n">object</span><span class="p">,</span><span class="w"> </span><span class="n">itemPropertyDescriptor</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Misc&quot;</span><span class="p">);</span>
+              return new ComponentImagePathPropertyDescriptor(
+                  object, itemPropertyDescriptor, "Misc");
 
 
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EMFCompositeSourcePropertyDescriptor</span><span class="p">(</span><span class="n">object</span><span class="p">,</span><span class="w"> </span><span class="n">itemPropertyDescriptor</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Misc&quot;</span><span class="p">);</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">          </span><span class="p">}</span>
-<span class="w">        </span><span class="p">};</span>
-<span class="w">      </span><span class="p">}</span>
+            }
+            else {
+              return new EMFCompositeSourcePropertyDescriptor(object, itemPropertyDescriptor, "Misc");
+            }
+          }
+        };
+      }
 
-<span class="w">      </span><span class="c1">//return new PropertySource(object, ips);</span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EMFCompositePropertySource</span><span class="p">(</span><span class="n">object</span><span class="p">,</span><span class="w"> </span><span class="n">ips</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Misc&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">object</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">IAdaptable</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">IPropertySource</span><span class="p">)</span><span class="w"> </span><span class="p">((</span><span class="n">IAdaptable</span><span class="p">)</span><span class="w"> </span><span class="n">object</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">getAdapter</span><span class="p">(</span><span class="n">IPropertySource</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-</code></pre></div>
+      //return new PropertySource(object, ips);
+      return new EMFCompositePropertySource(object, ips, "Misc");
+    }
+  }
+  if (object instanceof IAdaptable) {
+    return (IPropertySource) ((IAdaptable) object)
+        .getAdapter(IPropertySource.class);
+  }
+  return null;
+  }</code></pre>
 <h2 id="modify-the-edit-part">Modify the edit part<a class="headerlink" href="#modify-the-edit-part" title="Permanent link">&para;</a></h2>
 <p>Modify the <code>handleNotificationEvent</code> method so that the figure is updated every time the value of <code>imagePath</code> changes</p>
-<div class="highlight"><pre><span></span><code><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">handleNotificationEvent</span><span class="p">(</span><span class="n">Notification</span><span class="w"> </span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="na">getNotifier</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">getModel</span><span class="p">()</span>
-<span class="w">      </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">EcorePackage</span><span class="p">.</span><span class="na">eINSTANCE</span><span class="p">.</span><span class="na">getEModelElement_EAnnotations</span><span class="p">()</span>
-<span class="w">          </span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="na">getFeature</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">handleMajorSemanticChange</span><span class="p">();</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<pre class="highlight"><code class="language-java">protected void handleNotificationEvent(Notification event) {
+  if (event.getNotifier() == getModel()
+      &amp;&amp; EcorePackage.eINSTANCE.getEModelElement_EAnnotations()
+          .equals(event.getFeature())) {
+    handleMajorSemanticChange();
+  } else {
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="na">getFeature</span><span class="p">()</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">EAttribute</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">EAttribute</span><span class="w"> </span><span class="n">eAttribute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EAttribute</span><span class="p">)</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="na">getFeature</span><span class="p">();</span>
+    if (event.getFeature() instanceof EAttribute) {
+      EAttribute eAttribute = (EAttribute) event.getFeature();
 
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">eAttribute</span><span class="p">.</span><span class="na">getName</span><span class="p">().</span><span class="na">equalsIgnoreCase</span><span class="p">(</span><span class="s">&quot;imagePath&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">ComponentFigure</span><span class="w"> </span><span class="n">figure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ComponentFigure</span><span class="p">)</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">getPrimaryShape</span><span class="p">();</span>
-<span class="w">        </span><span class="n">figure</span><span class="p">.</span><span class="na">setImagePath</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="na">getNewStringValue</span><span class="p">());</span>
-<span class="w">      </span><span class="p">}</span>
+      if (eAttribute.getName().equalsIgnoreCase("imagePath")) {
+        ComponentFigure figure = (ComponentFigure) this.getPrimaryShape();
+        figure.setImagePath(event.getNewStringValue());
+      }
 
-<span class="w">    </span><span class="p">}</span>
+    }
 
 
-<span class="w">    </span><span class="kd">super</span><span class="p">.</span><span class="na">handleNotificationEvent</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+    super.handleNotificationEvent(event);
+  }
+}</code></pre>
 <p>Modify the <code>createNodeShape</code> method so that the figure is initialized from the existing <code>imagePath</code> the first time.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">protected</span><span class="w"> </span><span class="n">IFigure</span><span class="w"> </span><span class="nf">createNodeShape</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">primaryShape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ComponentFigure</span><span class="p">();</span>
-<span class="w">  </span><span class="n">Component</span><span class="w"> </span><span class="n">component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Component</span><span class="p">)</span><span class="w"> </span><span class="p">((</span><span class="n">Node</span><span class="p">)</span><span class="n">getNotationView</span><span class="p">()).</span><span class="na">getElement</span><span class="p">();</span>
-<span class="w">  </span><span class="p">((</span><span class="n">ComponentFigure</span><span class="p">)</span><span class="w"> </span><span class="n">primaryShape</span><span class="p">).</span><span class="na">setImagePath</span><span class="p">(</span><span class="n">component</span><span class="p">.</span><span class="na">getImagePath</span><span class="p">());</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">primaryShape</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-java">protected IFigure createNodeShape() {
+  primaryShape = new ComponentFigure();
+  Component component = (Component) ((Node)getNotationView()).getElement();
+  ((ComponentFigure) primaryShape).setImagePath(component.getImagePath());
+  return primaryShape;
+}</code></pre>
 
 
 
@@ -2077,25 +2105,7 @@ class Component {
     
       <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

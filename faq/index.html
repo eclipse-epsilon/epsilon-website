@@ -48,15 +48,11 @@
     
       <link rel="stylesheet" href="../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -92,10 +88,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -147,7 +145,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1985,19 +2019,19 @@
 <h2 id="is-epsilon-a-model-transformation-language">Is Epsilon a model transformation language?<a class="headerlink" href="#is-epsilon-a-model-transformation-language" title="Permanent link">&para;</a></h2>
 <p>No. Epsilon is a family of languages, <strong>one of which</strong> targets model-to-model transformation (ETL).</p>
 <h2 id="who-is-using-epsilon">Who is using Epsilon?<a class="headerlink" href="#who-is-using-epsilon" title="Permanent link">&para;</a></h2>
-<p>With <strong>more than 9,000 posts</strong> in the <a href="../forum">Epsilon forum</a>, it appears that quite a few people are currently using different parts of Epsilon. A list of companies and open-source projects that use Epsilon is available <a href="../users">here</a>.</p>
+<p>With <strong>more than 10,000 posts</strong> in the <a href="../support/">Epsilon forum</a>, it appears that quite a few people are currently using different parts of Epsilon. A list of companies and open-source projects that use Epsilon is available <a href="../users/">here</a>.</p>
 <h2 id="how-do-i-get-help">How do I get help?<a class="headerlink" href="#how-do-i-get-help" title="Permanent link">&para;</a></h2>
-<p>Epsilon has a dedicated <a href="../forum">forum</a> where you can ask questions about the tools and languages it provides. Whenever possible, please use the forum instead of direct email. We're monitoring the forum very closely and there is practically no difference in terms of response time. Also, answered questions in the forum form a knowledge base, which other users can consult in case they face similar issues in the future, and an active forum is an indication of a healthy and actively maintained project (properties that the Eclipse Foundation takes very seriously). When posting messages to the forum we recommend that you use your full (or at least a realistic) name instead of a nickname (e.g. "ABC", "SomeGuy") as the latter can lead to pretty awkward sentences.</p>
+<p>Epsilon has a dedicated <a href="../support/">forum</a> where you can ask questions about the tools and languages it provides. Whenever possible, please use the forum instead of direct email. We're monitoring the forum very closely and there is practically no difference in terms of response time. Also, answered questions in the forum form a knowledge base, which other users can consult in case they face similar issues in the future, and an active forum is an indication of a healthy and actively maintained project (properties that the Eclipse Foundation takes very seriously). When posting messages to the forum we recommend that you use your full (or at least a realistic) name instead of a nickname (e.g. "ABC", "SomeGuy") as the latter can lead to pretty awkward sentences.</p>
 <h2 id="how-do-i-get-notified-when-a-new-version-of-epsilon-becomes-available">How do I get notified when a new version of Epsilon becomes available?<a class="headerlink" href="#how-do-i-get-notified-when-a-new-version-of-epsilon-becomes-available" title="Permanent link">&para;</a></h2>
 <p>To get notified when a new version of Epsilon becomes available you can configure Eclipse to check for updates automatically by going to <code>Window</code> &rarr; <code>Preferences</code> &rarr; <code>Install/Update/Automatic Updates</code> and checking the <code>Automatically find new updates and notify me</code> option.</p>
 <h2 id="can-i-use-epsilon-in-a-non-eclipse-based-standalone-java-application">Can I use Epsilon in a non-Eclipse-based standalone Java application?<a class="headerlink" href="#can-i-use-epsilon-in-a-non-eclipse-based-standalone-java-application" title="Permanent link">&para;</a></h2>
-<p>Yes. There are several examples of doing just that in the <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.standalone/src/org/eclipse/epsilon/examples/standalone">examples/org.eclipse.epsilon.examples.standalone</a> project in the Git repository. Just grab your JARs through <a href="../download">Maven Central</a>.</p>
+<p>Yes. There are several examples of doing just that in the <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.standalone/src/org/eclipse/epsilon/examples/standalone">examples/org.eclipse.epsilon.examples.standalone</a> project in the Git repository. Just grab your JARs through <a href="../download/">Maven Central</a>.</p>
 <h2 id="how-does-epsilon-compare-to-the-omg-family-of-languages">How does Epsilon compare to the OMG family of languages?<a class="headerlink" href="#how-does-epsilon-compare-to-the-omg-family-of-languages" title="Permanent link">&para;</a></h2>
 <p>There are two main differences:</p>
 <p>First, QVT, OCL and MTL are standards while languages in Epsilon are not. While having standards is arguably <em>a good thing</em>, by not having to conform to standardized specifications, Epsilon provides the agility to explore interesting new features and extensions of model management languages, and contribute to advancing the state of the art in the field. Examples of such interesting and novel features in Epsilon include <a href="http://epsilonblog.wordpress.com/2007/12/17/interactive-model-transformation-with-etl/">interactive transformation</a>, <a href="http://epsilonblog.wordpress.com/2007/12/16/using-java-objects-in-eol/">tight Java integration</a>, <a href="http://epsilonblog.wordpress.com/2008/01/30/extended-properties-in-eol/">extended properties</a>, and support for <a href="http://portal.acm.org/citation.cfm?id=1370748">transactions</a>.</p>
 <p>Second, Epsilon provides specialized languages for tasks that are currently not explicitly targeted by the OMG standards. Examples of such tasks include interactive in-place model transformation, model comparison, and model merging.</p>
 <h2 id="what-is-the-difference-between-el-and-language-x">What is the difference between E*L and language X?<a class="headerlink" href="#what-is-the-difference-between-el-and-language-x" title="Permanent link">&para;</a></h2>
-<p>If the available <a href="../doc/">documentation</a> doesn't provide enough information for figuring this out, please feel free to ask in the <a href="../forum">Epsilon forum</a>.</p>
+<p>If the available <a href="../doc/">documentation</a> doesn't provide enough information for figuring this out, please feel free to ask in the <a href="../support/">Epsilon forum</a>.</p>
 <h2 id="are-epsilon-languages-compiled-or-interpreted">Are Epsilon languages compiled or interpreted?<a class="headerlink" href="#are-epsilon-languages-compiled-or-interpreted" title="Permanent link">&para;</a></h2>
 <p>All Epsilon languages are interpreted. With the exception of EGL templates which are transformed into EOL before execution, all other languages are supported by bespoke interpreters.</p>
 <h2 id="how-can-i-contribute-to-epsilon">How can I contribute to Epsilon?<a class="headerlink" href="#how-can-i-contribute-to-epsilon" title="Permanent link">&para;</a></h2>
@@ -2140,25 +2174,7 @@
     
       <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../assets/javascript/mermaid.js"></script>
-      
-        <script src="../assets/javascript/jquery.js"></script>
-      
-        <script src="../assets/javascript/slick.min.js"></script>
-      
-        <script src="../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../assets/dist/bundle.js"></script>
       
     
   </body>

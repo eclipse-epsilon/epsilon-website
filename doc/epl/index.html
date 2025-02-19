@@ -48,15 +48,11 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -92,10 +88,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -147,7 +145,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1905,7 +1939,7 @@
 <h1 id="the-epsilon-pattern-language-epl">The Epsilon Pattern Language (EPL)<a class="headerlink" href="#the-epsilon-pattern-language-epl" title="Permanent link">&para;</a></h1>
 <p>The aim of EPL is to contribute <em>pattern matching</em> capabilities to Epsilon. This chapter discusses the abstract and concrete syntax of EPL as well as its execution semantics. To aid understanding, the discussion of the syntax and the semantics of the language revolves around an exemplar pattern which is developed incrementally throughout the chapter. The exemplar pattern is matched against models extracted from Java source code using tooling provided by the MoDisco project. MoDisco is an Eclipse project that provides a fine-grained Ecore-based metamodel of the Java language as well as tooling for extracting models that conform to this Java metamodel from Java source code. A simplified view of the relevant part of the MoDisco Java metamodel used in this running example is presented below.</p>
 <p>The aim of the pattern developed here (which we will call <em>PublicField</em>) is to identify quartets of <code>&lt;ClassDeclaration, FieldDeclaration, MethodDeclaration, MethodDeclaration&gt;</code>, each representing a field of a Java class for which appropriately named accessor/getter (getX/isX) and mutator/setter (setX) methods are defined by the class.</p>
-<div class="mermaid mermaid-100">classDiagram
+<pre class="mermaid mermaid-100"><code>classDiagram
 class ClassDeclaration {
     +name: String
     +bodyDeclarations: BodyDeclaration[*]
@@ -1943,11 +1977,11 @@ BodyDeclaration &lt;|-- FieldDeclaration
 MethodDeclaration --|&gt; BodyDeclaration
 FieldDeclaration -- VariableDeclarationFragment: fragments *
 FieldDeclaration -- TypeAccess: type
-MethodDeclaration -- TypeAccess: returnType</div>
+MethodDeclaration -- TypeAccess: returnType</code></pre>
 <h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
 <p>The syntax of EPL is an extension of the syntax of the <a href="../eol">EOL language</a>, which is the core language of Epsilon. As such, any references to <em>expression</em> and <em>statement block</em> in this chapter, refer to EOL expressions and blocks of EOL statements respectively. It is also worth noting that EOL expressions and statements can produce side-effects on models, and therefore, it is the responsibility of the developer to decide which expressions used in the context of EPL patterns should be side-effect free and which not.</p>
 <p>As illustrated in the figure below, EPL patterns are organised in <em>modules</em>. Each module contains a number of named <em>patterns</em> and optionally, <em>pre</em> and <em>post</em> statement blocks that are executed before and after the pattern matching process, and helper EOL operations. EPL modules can import other EPL and EOL modules to facilitate reuse and modularity.</p>
-<div class="mermaid mermaid-100">classDiagram
+<pre class="mermaid mermaid-100"><code>classDiagram
 class EplModule {
     -iterative: Boolean
     -maxLoops: Integer
@@ -1982,9 +2016,9 @@ Pattern -- Role: roles *
 Role -- Domain: domain
 Domain &lt;|-- StaticDomain
 Domain &lt;|-- DynamicDomain
-Role -- Cardinality: cardinality</div>
+Role -- Cardinality: cardinality</code></pre>
 <p>In its simplest form a <em>pattern</em> consists of a number of named and typed <em>roles</em> and a <em>match</em> condition. For example, in lines 2-3, the <em>PublicField</em> pattern below, defines four roles (<em>class</em>, <em>field</em>, <em>setter</em> and <em>getter</em>). The <em>match</em> condition of the pattern specifies that for a quartet to be a valid match, the field, setter and getter must all belong to the class (lines 5-7, and that the setter and getter methods must be appropriately named<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
-<pre class="prettyprint lang-epl"><code>pattern PublicField
+<pre class="highlight"><code class="language-epl">pattern PublicField
     class : ClassDeclaration, field : FieldDeclaration, 
     setter : MethodDeclaration, getter : MethodDeclaration {
 
@@ -2002,7 +2036,7 @@ operation FieldDeclaration getName() {
 }</code></pre>
 <p>The implementation of the PublicField pattern above is fully functional but not particularly efficient as the <em>match</em> condition needs to be evaluated <code>#ClassDefinition * #FieldDeclaration * #MethodDeclaration^2</code> times. To enable pattern developers to reduce the search space, each <em>role</em> in an EPL pattern can specify a <em>domain</em> which is an EOL expression that returns a collection of model elements from which the role will draw values.</p>
 <p>There are two types of domains in EPL: static domains which are computed once for all applications of the pattern, and which <strong>are not</strong> dependent on the bindings of other roles of the pattern (denoted using the <em>in</em> keyword in terms of the concrete syntax), and dynamic domains which are recomputed every time the candidate values of the role are iterated, and which <strong>are</strong> dependent on the bindings of other roles (denoted using the <em>from</em> keyword). Beyond a domain, each role can also specify a <em>guard</em> expression that further prunes unnecessary evaluations of the match condition. Using dynamic domains and guards, the <em>PublicField</em> pattern can be expressed in a more efficient way, as illustrated below. To further illustrate the difference between dynamic and static domains, changing <em>from</em> to <em>in</em> in line 4 would trigger a runtime exception as the domain would become static and therefore not able to access bindings of other roles (i.e. <em>class</em>).</p>
-<pre class="prettyprint lang-epl"><code>pattern PublicField
+<pre class="highlight"><code class="language-epl">pattern PublicField
     class : ClassDeclaration,
     field : FieldDeclaration
         from: class.bodyDeclarations,
@@ -2019,7 +2053,7 @@ the number of name comparisons of candidate <em>setter</em> and <em>getter</em>
 methods. To achieve this we can employ memoisation: we create a hash map
 of method names and methods once before pattern matching (line 2), and use it to identify candidate setters and
 getters (lines 9 and 12-13).</p>
-<pre class="prettyprint lang-epl"><code>pre {
+<pre class="highlight"><code class="language-epl">pre {
     var methodMap = MethodDeclaration.all.mapBy(m|m.name);
 }
 pattern PublicField
@@ -2045,7 +2079,7 @@ operation getMethods(name : String) : Sequence(MethodDeclaration) {
 <p>Pattern roles can be negated using the <em>no</em> keyword. For instance, by adding the <em>no</em> keyword before the setter role in line 8 of the listing above, the pattern will match fields that have getters but no setters (i.e. read-only fields).</p>
 <h3 id="optional-and-active-roles">Optional and Active Roles<a class="headerlink" href="#optional-and-active-roles" title="Permanent link">&para;</a></h3>
 <p>Pattern roles can be designated as optional using the <em>optional</em> EOL expression. For example, adding <code>optional: true</code> to the setter role would also match all fields that only have a getter. By adding <code>optional: true</code> to the setter role and <code>optional: setter.isDefined()</code> to the getter role, the pattern would match fields that have at least a setter or a getter. Roles can be completely deactivated depending on the bindings of other roles through the <em>active</em> construct. For example, if the pattern developer prefers to specify separate roles for <em>getX</em> and <em>isX</em> getters, with a preference over getX getters, the pattern can be formulated as illustrated in the listing below so that if a <em>getX</em> getter is found, no attempt is even made to match an <em>isX</em> getter.</p>
-<pre class="prettyprint lang-epl"><code>pattern PublicField
+<pre class="highlight"><code class="language-epl">pattern PublicField
     class : ClassDeclaration,
     field : FieldDeclaration ...,
     setter : MethodDeclaration ...,
@@ -2064,7 +2098,7 @@ The listing below demonstrates the <em>ClassAndPrivateFields</em>
 pattern that detects instances of classes and all their private fields.
 If the cardinality of the field role in line 3 was [1..3] instead of [*], the
 pattern would only detect classes that own 1 to 3 private fields.</p>
-<pre class="prettyprint lang-epl"><code>pattern ClassAndPrivateFields
+<pre class="highlight"><code class="language-epl">pattern ClassAndPrivateFields
     class : ClassDeclaration,
     field : FieldDeclaration[*]
         from: class.bodyDeclarations
@@ -2094,43 +2128,42 @@ operation FieldDeclaration getVisibility() {
 <p>An EPL module can be executed in a one-off or iterative mode. In the one-off mode, patterns are only evaluated once, while in the iterative mode, the process is repeated until no more matches have been found or until the maximum number of iterations (specified by the developer) has been reached. The iterative mode is particularly suitable for patterns that perform reduction of the models they are evaluated against.</p>
 <h2 id="pattern-matching-output">Pattern Matching Output<a class="headerlink" href="#pattern-matching-output" title="Permanent link">&para;</a></h2>
 <p>The output of the execution of an EPL module on a set of models is a collection of matches encapsulated in a <em>PatternMatchModel</em>, as illustrated in the figure below. As <em>PatternMatchModel</em> implements the <em>IModel</em> <a href="../emc">EMC</a> interface, its instances can be accessed from other programs expressed in languages of the Epsilon family.</p>
-<div class="mermaid mermaid-60">classDiagram
+<pre class="mermaid mermaid-60"><code>classDiagram
 class Match {
     +bindings: Map&lt;String, Object&gt;
 }
 IModel --|&gt; PatternMatchModel
 PatternMatchModel -- Pattern: patterns *
-PatternMatchModel -- Match: matches *</div>
+PatternMatchModel -- Match: matches *</code></pre>
 <p>A <em>PatternMatchModel</em> introduces one model element type for each pattern and one type for each field of each pattern (the name of these types are derived by concatenating the name of the pattern with a camel-case version of the name of the field). Instances of the prior are the matches of the pattern while instances of the latter are elements that have been matched in this particular role. For example, after executing the EPL module above, the produced <em>PatternMatchModel</em> contains 5 types: <em>PublicField</em>, instances of which are all the identified matches of the <em>PublicField</em> pattern, <em>PublicFieldClass</em>, instances of which are all the classes in the input model which have been matched to the <em>class</em> role in instances of the <em>PublicField</em> pattern, and similarly <em>PublicFieldField</em>, <em>PublicFieldSetter</em> and <em>PublicFieldGetter</em>.</p>
 <h2 id="interoperability-with-other-model-management-tasks">Interoperability with Other Model Management Tasks<a class="headerlink" href="#interoperability-with-other-model-management-tasks" title="Permanent link">&para;</a></h2>
 <p>As a <em>PatternMatchModel</em> is an instance of <em>IModel</em>, after its computation it can be manipulated by other Epsilon programs. For example, the listing below demonstrates running the EPL module and passing its output to the EVL constraints that follow and, if validation is successful, to an ETL transformation where it is used to guide the generation of a UML model.</p>
 <p>In lines 4-7, the Java model is loaded and is assigned the name <code>Java</code>. Then, in line 9, the Java model is passed on to <code>publicfield.epl</code> for pattern matching. The result of pattern matching, which is an instance of the <code>PatternMatchModel</code> class (and therefore also an instance of <code>IModel</code>) is exported to the global context under the name <code>Patterns</code>. Then, in line 13, both the <code>Patterns</code> and the <code>Java</code> models are passed on to the EVL model validation task which performs validation of the identified pattern matches.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;project</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;main&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;target</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;main&quot;</span><span class="nt">&gt;</span>
+<pre class="highlight"><code class="language-xml">&lt;project default="main"&gt;
+    &lt;target name="main"&gt;
 
-<span class="w">        </span><span class="nt">&lt;epsilon.emf.loadModel</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Java&quot;</span>
-<span class="w">            </span><span class="na">modelfile=</span><span class="s">&quot;org.eclipse.epsilon.eol.engine_java.xmi&quot;</span><span class="w"> </span>
-<span class="w">            </span><span class="na">metamodeluri=</span><span class="s">&quot;...MoDisco/Java/0.2.incubation/java&quot;</span>
-<span class="w">            </span><span class="na">read=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="na">store=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+        &lt;epsilon.emf.loadModel name="Java"
+            modelfile="org.eclipse.epsilon.eol.engine_java.xmi" 
+            metamodeluri="...MoDisco/Java/0.2.incubation/java"
+            read="true" store="false"/&gt;
 
-<span class="w">        </span><span class="nt">&lt;epsilon.epl</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;publicfield.epl&quot;</span><span class="w"> </span><span class="na">exportAs=</span><span class="s">&quot;Patterns&quot;</span><span class="nt">&gt;</span>
-<span class="w">            </span><span class="nt">&lt;model</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;Java&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/epsilon.epl&gt;</span><span class="w"> </span>
+        &lt;epsilon.epl src="publicfield.epl" exportAs="Patterns"&gt;
+            &lt;model ref="Java"/&gt;
+        &lt;/epsilon.epl&gt; 
 
-<span class="w">        </span><span class="nt">&lt;epsilon.evl</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;constraints.evl&quot;</span><span class="nt">&gt;</span><span class="w"> </span>
-<span class="w">            </span><span class="nt">&lt;model</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;Patterns&quot;</span><span class="nt">/&gt;</span>
-<span class="w">            </span><span class="nt">&lt;model</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;Java&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/epsilon.evl&gt;</span><span class="w"> </span>
+        &lt;epsilon.evl src="constraints.evl"&gt; 
+            &lt;model ref="Patterns"/&gt;
+            &lt;model ref="Java"/&gt;
+        &lt;/epsilon.evl&gt; 
 
-<span class="w">        </span><span class="nt">&lt;epsilon.etl</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;java2uml.etl&quot;</span><span class="nt">&gt;</span><span class="w"> </span>
-<span class="w">            </span><span class="nt">&lt;model</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;Patterns&quot;</span><span class="nt">/&gt;</span>
-<span class="w">            </span><span class="nt">&lt;model</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;Java&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/epsilon.etl&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/target&gt;</span>
-<span class="nt">&lt;/project&gt;</span>
-</code></pre></div>
+        &lt;epsilon.etl src="java2uml.etl"&gt; 
+            &lt;model ref="Patterns"/&gt;
+            &lt;model ref="Java"/&gt;
+        &lt;/epsilon.etl&gt;
+    &lt;/target&gt;
+&lt;/project&gt;</code></pre>
 <p>Line 1 below defines a set of constraints that will be applied to instances of the <em>PublicField</em> type from the <em>Patterns</em> model. As discussed above, these are all matched instances of the <em>PublicField</em> pattern. Line 4, specifies the condition that needs to be satisfied by instances of the pattern. Notice the <em>self.getter</em> and <em>self.field</em> expressions which return the <em>MethodDeclaration</em> and <em>FieldDeclaration</em> bound to the instance of the pattern. Then, line 5 defines the message that should be produced for instances of <em>PublicField</em> that do not satisfy this constraint.</p>
-<pre class="prettyprint lang-evl"><code>context Patterns!PublicField {
+<pre class="highlight"><code class="language-evl">context Patterns!PublicField {
     guard: self.field.type.isDefined()
     constraint GetterAndFieldSameType { 
         check : self.getter.returnType.type = self.field.type.type
@@ -2140,7 +2173,7 @@ PatternMatchModel -- Match: matches *</div>
     }
 }</code></pre>
 <p>If validation is successful, both the <em>Java</em> and the <em>Patterns</em> model are passed on to an ETL transformation that transforms the <em>Java</em> model to a UML model, a fragment of which is presented below. The transformation encodes <code>&lt;field, setter, getter&gt;</code> triplets in the <em>Java</em> model as public properties in the UML model. As such, in line 6 of the transformation, the <em>Patterns</em> model is used to check whether field <em>s</em> has been matched under the <em>PublicField</em> pattern, and if so, the next line ignores the field's declared visibility and sets the visibility of the respective UML property to <em>public</em>.</p>
-<pre class="prettyprint lang-etl"><code>rule FieldDeclaration2Property
+<pre class="highlight"><code class="language-etl">rule FieldDeclaration2Property
     transform s: Java!FieldDeclaration
     to t: Uml!Property {
 
@@ -2296,25 +2329,7 @@ PatternMatchModel -- Match: matches *</div>
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

@@ -48,15 +48,11 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -92,10 +88,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -147,7 +145,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1924,7 +1958,7 @@
 <p>The aim of EML is to contribute model merging capabilities to Epsilon. More specifically, EML can be used to merge an arbitrary number of input models of potentially diverse metamodels and modelling technologies. This section provides a discussion on the abstract and concrete syntax of EML, as well as its execution semantics. It also provides two examples of merging homogeneous and heterogeneous models.</p>
 <h2 id="abstract-syntax">Abstract Syntax<a class="headerlink" href="#abstract-syntax" title="Permanent link">&para;</a></h2>
 <p>In EML, merging specifications are organized in modules (<em>EmlModule</em>). As displayed below, <em>EmlModule</em> inherits from <em>EtlModule</em>.</p>
-<div class="mermaid mermaid-90">classDiagram
+<pre class="mermaid mermaid-90"><code>classDiagram
 class MergeRule {
     -name: String
     -abstract: Boolean
@@ -1954,12 +1988,12 @@ EmlModule -- MergeRule: rules *
 MergeRule -- Parameter: left
 MergeRule -- Parameter: right
 MergeRule -- Parameter: target
-MergeRule -- MergeRule: extends *</div>
+MergeRule -- MergeRule: extends *</code></pre>
 <p>By extending <em>EtlModule</em>, an EML module can contain a number of transformation rules and user-defined operations. An EML module can also contain one or more merge rules as well as a set of <em>pre</em> and <em>post</em> named EOL statement blocks. As usual, <em>pre</em> and <em>post</em> blocks will be run before and after all rules, respectively.</p>
 <p>Each merge rule defines a name, a left, a right, and one or more target parameters. It can also extend one or more other merge rules and be defined as having one or more of the following properties: abstract, greedy, lazy and primary.</p>
 <h2 id="concrete-syntax">Concrete Syntax<a class="headerlink" href="#concrete-syntax" title="Permanent link">&para;</a></h2>
 <p>The listing below demonstrates the concrete syntax of EML merge-rules.</p>
-<div class="highlight"><pre><span></span><code>(@abstract)?
+<pre class="highlight"><code>(@abstract)?
 (@lazy)?
 (@primary)? (@greedy)? 
 rule &lt;name&gt;
@@ -1970,13 +2004,11 @@ rule &lt;name&gt;
 
     statementBlock
 
-}
-</code></pre></div>
+}</code></pre>
 <p><em>Pre</em> and <em>post</em> blocks have a simple syntax that consists of the identifier (<em>pre</em> or <em>post</em>), an optional name and the set of statements to be executed enclosed in curly braces.</p>
-<div class="highlight"><pre><span></span><code>(pre|post) &lt;name&gt; {
+<pre class="highlight"><code>(pre|post) &lt;name&gt; {
     statement+
-}
-</code></pre></div>
+}</code></pre>
 <h2 id="execution-semantics">Execution Semantics<a class="headerlink" href="#execution-semantics" title="Permanent link">&para;</a></h2>
 <h3 id="rule-and-block-overriding">Rule and Block Overriding<a class="headerlink" href="#rule-and-block-overriding" title="Permanent link">&para;</a></h3>
 <p>An EML module can import a number of other EML and ETL modules. In this case, the importing EML module inherits all the rules and pre/post blocks specified in the modules it imports (recursively). If the module specifies a rule or a pre/post block with the same name, the local rule/block overrides the imported one respectively.</p>
@@ -1989,7 +2021,7 @@ rule &lt;name&gt;
 <h3 id="source-elements-resolution">Source Elements Resolution<a class="headerlink" href="#source-elements-resolution" title="Permanent link">&para;</a></h3>
 <p>As with model transformation, in model merging it is often required to resolve the counterparts of an element of a source model into the target models. In EML, this is achieved by overloading the semantics of the <em>equivalents()</em> and <em>equivalent()</em> operations defined by ETL. In EML, in addition to inspecting the transformation trace and invoking any applicable transformation rules, the <em>equivalents()</em> operation also examines the <em>mergeTrace</em> (displayed in the figure below) that stores the results of the application of merge-rules and invokes any applicable (both lazy and non-lazy) rules.</p>
 <p>Similarly to ETL, the order of the results of the <em>equivalents()</em> operation respects the order of the (merge or transform) rules that have produced them. An exception to that occurs if one of the rules has been declared as primary, in which case its results are prepended to the list of elements returned by equivalent.</p>
-<div class="mermaid mermaid-60">classDiagram
+<pre class="mermaid mermaid-60"><code>classDiagram
 class Merge {
     -left: Object
     -right: Object
@@ -1999,10 +2031,10 @@ EtlContext &lt;|-- EmlContext
 EmlContext -- MatchTrace: matchTrace
 MergeTrace -- EmlContext: mergeTrace
 MergeTrace -- Merge: merges *
-Merge -- MergeRule</div>
+Merge -- MergeRule</code></pre>
 <h2 id="homogeneous-model-merging-example">Homogeneous Model Merging Example<a class="headerlink" href="#homogeneous-model-merging-example" title="Permanent link">&para;</a></h2>
 <p>In this scenario, two models conforming to the Graph metamodel need to be merged. The first step is to compare the two graphs using the ECL module below.</p>
-<pre class="prettyprint lang-ecl"><code>rule MatchNodes
+<pre class="highlight"><code class="language-ecl">rule MatchNodes
     match l : Left!Node
     with r : Right!Node {
 
@@ -2025,7 +2057,7 @@ rule MatchGraphs
 }</code></pre>
 <p>The <em>MatchNodes</em> rule in line 1 defines that two nodes match if they have the same label. The <em>MatchEdges</em> rule in line 8 specifies that two edges match if both their source and target nodes match (regardless of whether the labels of the edges match or not as it is assumed that there can not be two distinct edges between the same nodes). Finally, since only one instance of Graph is expected to be in each model, the <em>MatchGraphs</em> rule in line 16 returns <em>true</em> for any pair of Graphs.</p>
 <p>Having established the necessary correspondences between matching elements of the two models, the EML specification below performs the merge.</p>
-<pre class="prettyprint lang-eml"><code>import "Graphs.etl";
+<pre class="highlight"><code class="language-eml">import "Graphs.etl";
 
 rule MergeGraphs
     merge l : Left!Graph
@@ -2068,7 +2100,7 @@ rule MergeEdges
 <p>In line 3, the <em>MergeGraphs</em> merge rule specifies that two matching Graphs (<em>l</em> and <em>r</em>) are to be merged into one Graph <em>t</em> in the target model that has as a label, the concatenation of the labels of the two input graphs separated using 'and'. The <em>mergeNodes</em> rule In line 22 specifies that two matching Nodes are merged into a single Node in the target model. The label of the merged node is derived by concatenating the c (for common) static string with the label of the source Node from the left model. Similarly, the <em>MergeEdges</em> rule specifies that two matching Edges are merged into a single Edge in the target model. The source and target nodes of the merged Edge are set to the equivalents (::=) of the source and target nodes of the edge from the left model.</p>
 <p>To reduce duplication, the <em>MergeNodes</em> and <em>MergeEdges</em> rules extend the abstract <em>MergeGraphElements</em> rule specified in line 13 which assigns the <em>graph</em> property of the graph element to the equivalent of the left graph.</p>
 <p>The rules displayed above address only the matching elements of the two models. To also copy the elements for which no equivalent has been found in the opposite model, the EML module imports the ETL module below.</p>
-<pre class="prettyprint lang-etl"><code>rule TransformGraph 
+<pre class="highlight"><code class="language-etl">rule TransformGraph 
     transform s : Source!Graph
     to t : Target!Graph {
 
@@ -2107,19 +2139,19 @@ in the two input models will be transformed into nodes in the target
 model the labels of which will be a concatenation of their input graph
 and the label of their counterparts in the input models.</p>
 <p>Executing the ECL and EML modules on the exemplar models displayed in the following two figures creates the target model of the final figure.</p>
-<p><div class="mermaid mermaid-40">graph LR
+<p><pre class="mermaid mermaid-40"><code>graph LR
     n1 --&gt; n2
     n1 --&gt; n3
     n3 --&gt; n5
-    n2 --&gt; n4</div>
+    n2 --&gt; n4</code></pre>
 Left model</p>
-<p><div class="mermaid mermaid-50">graph LR
+<p><pre class="mermaid mermaid-50"><code>graph LR
     n1 --&gt; n8
     n1 --&gt; n6
     n8 --&gt; n6
-    n6 --&gt; n3</div>
+    n6 --&gt; n3</code></pre>
 Right model</p>
-<p><div class="mermaid mermaid-90">graph LR
+<p><pre class="mermaid mermaid-90"><code>graph LR
     c_n1 --&gt; g1_n2
     g1_n2 --&gt; c_n4
     c_n1 --&gt; g2_n8
@@ -2127,7 +2159,7 @@ Right model</p>
     c_n1 --&gt; g2_n6
     c_n1 --&gt; c_n3
     c_n3 --&gt; g1_n5
-    g2_n6 --&gt; c_n3</div>
+    g2_n6 --&gt; c_n3</code></pre>
 Merged model</p>
 
 
@@ -2263,25 +2295,7 @@ Merged model</p>
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

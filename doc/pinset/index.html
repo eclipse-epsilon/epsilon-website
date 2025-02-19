@@ -48,15 +48,11 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -92,10 +88,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -147,7 +145,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1979,7 +2013,7 @@
 <h2 id="model-example">Model example<a class="headerlink" href="#model-example" title="Permanent link">&para;</a></h2>
 <p>We use as running example a course model, which contains the enrolled students along with their grades. All models and Pinset scripts shown in this documentation can be found in an <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.pinset.grades">example project</a> in the Epsilon repository.</p>
 <p>All Pinset scripts query the following metamodel:</p>
-<div class="mermaid mermaid-70">classDiagram
+<pre class="mermaid mermaid-70"><code>classDiagram
 class Course {
     name: String
 }
@@ -2003,45 +2037,44 @@ Course *--&gt; Student: students *
 Course *--&gt; EvaluationItem: items *
 Student *--&gt; ContactDetails: contact
 Student *--&gt; Grade: grades *
-Grade --&gt; EvaluationItem: item</div>
+Grade --&gt; EvaluationItem: item</code></pre>
 <p>As for the data shown as a result of the Pinset scripts, we use the following <a href="../flexmi">Flexmi</a> model, which conforms to the metamodel above:</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?nsuri grades?&gt;</span>
-<span class="nt">&lt;course</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Model-Driven Engineering&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;item</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Lab 1&quot;</span><span class="w"> </span><span class="na">perc=</span><span class="s">&quot;15&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;item</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Lab 2&quot;</span><span class="w"> </span><span class="na">perc=</span><span class="s">&quot;15&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;item</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Partial Test&quot;</span><span class="w"> </span><span class="na">perc=</span><span class="s">&quot;20&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;item</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Final Exam&quot;</span><span class="w"> </span><span class="na">perc=</span><span class="s">&quot;50&quot;</span><span class="nt">/&gt;</span>
+<pre class="highlight"><code class="language-xml">&lt;?nsuri grades?&gt;
+&lt;course name="Model-Driven Engineering"&gt;
+    &lt;item name="Lab 1" perc="15"/&gt;
+    &lt;item name="Lab 2" perc="15"/&gt;
+    &lt;item name="Partial Test" perc="20"/&gt;
+    &lt;item name="Final Exam" perc="50"/&gt;
 
-<span class="w">    </span><span class="nt">&lt;student</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;S1&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;contact</span><span class="w"> </span><span class="na">email=</span><span class="s">&quot;alice@university.com&quot;</span><span class="w"> </span><span class="na">phone=</span><span class="s">&quot;+44 101&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Lab 1&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;60&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Lab 2&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;90&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Partial Test&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;80&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Final Exam&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;85&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/student&gt;</span>
-<span class="w">    </span><span class="nt">&lt;student</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;S2&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Bob&quot;</span><span class="w"> </span><span class="na">remote=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;contact</span><span class="w"> </span><span class="na">email=</span><span class="s">&quot;bob@university.com&quot;</span><span class="w"> </span><span class="na">phone=</span><span class="s">&quot;+44 654&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Lab 1&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;60&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Final Exam&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;100&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/student&gt;</span>
-<span class="w">    </span><span class="nt">&lt;student</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;S3&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Charlie&quot;</span><span class="w"> </span><span class="na">remote=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;contact</span><span class="w"> </span><span class="na">email=</span><span class="s">&quot;charlie@university.com&quot;</span><span class="w"> </span><span class="na">phone=</span><span class="s">&quot;+44 333&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Lab 1&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;50&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Lab 2&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;35&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Partial Test&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;20&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/student&gt;</span>
-<span class="w">    </span><span class="nt">&lt;student</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;S4&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Dana&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;contact</span><span class="w"> </span><span class="na">email=</span><span class="s">&quot;dana@university.com&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Lab 1&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;100&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Lab 2&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;90&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Partial Test&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;70&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Final Exam&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;95&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/student&gt;</span>
-<span class="nt">&lt;/course&gt;</span>
-</code></pre></div>
+    &lt;student id="S1" name="Alice"&gt;
+        &lt;contact email="alice@university.com" phone="+44 101"/&gt;
+        &lt;grade item="Lab 1" points="60"/&gt;
+        &lt;grade item="Lab 2" points="90"/&gt;
+        &lt;grade item="Partial Test" points="80"/&gt;
+        &lt;grade item="Final Exam" points="85"/&gt;
+    &lt;/student&gt;
+    &lt;student id="S2" name="Bob" remote="true"&gt;
+        &lt;contact email="bob@university.com" phone="+44 654"/&gt;
+        &lt;grade item="Lab 1" points="60"/&gt;
+        &lt;grade item="Final Exam" points="100"/&gt;
+    &lt;/student&gt;
+    &lt;student id="S3" name="Charlie" remote="true"&gt;
+        &lt;contact email="charlie@university.com" phone="+44 333"/&gt;
+        &lt;grade item="Lab 1" points="50"/&gt;
+        &lt;grade item="Lab 2" points="35"/&gt;
+        &lt;grade item="Partial Test" points="20"/&gt;
+    &lt;/student&gt;
+    &lt;student id="S4" name="Dana"&gt;
+        &lt;contact email="dana@university.com"/&gt;
+        &lt;grade item="Lab 1" points="100"/&gt;
+        &lt;grade item="Lab 2" points="90"/&gt;
+        &lt;grade item="Partial Test" points="70"/&gt;
+        &lt;grade item="Final Exam" points="95"/&gt;
+    &lt;/student&gt;
+&lt;/course&gt;</code></pre>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>This first Pinset example defines a dataset from students data, containing some basic information such as name and student ID, contact details, the number of completed evaluation items, and the final grade for the course:</p>
-<pre class="prettyprint lang-pinset"><code>dataset studentsSummary over s : Student {
+<pre class="highlight"><code class="language-pinset">dataset studentsSummary over s : Student {
     column id: s.ID
     column name: s.name
     column phone: s.contact.phone
@@ -2131,7 +2164,7 @@ In addition, external operations can be invoked in the column expressions, such 
 <p>After this overview, next sections describe extra column generators, as well as on other functionalities offered by Pinset for an easier dataset extraction specification.</p>
 <h2 id="properties-accessors">Properties accessors<a class="headerlink" href="#properties-accessors" title="Permanent link">&para;</a></h2>
 <p>As a way to facilitate the definition of columns that simply hold element properties, Pinset offers some column generators to access these properties:</p>
-<pre class="prettyprint lang-pinset"><code>dataset studentsContact over s : Student {
+<pre class="highlight"><code class="language-pinset">dataset studentsContact over s : Student {
     properties [ID as StudentId, name]
     reference contact[email, phone]
 }</code></pre>
@@ -2178,7 +2211,7 @@ In addition, external operations can be invoked in the column expressions, such 
 <h2 id="row-filtering">Row filtering<a class="headerlink" href="#row-filtering" title="Permanent link">&para;</a></h2>
 <p>By default, all elements of the selected type are processed into rows.
 As this might sometimes not be desired, Pinset offers some ways to filter out rows from the resulting dataset:</p>
-<pre class="prettyprint lang-pinset"><code>dataset remoteStudents over s : Student {
+<pre class="highlight"><code class="language-pinset">dataset remoteStudents over s : Student {
     guard: s.isRemote
 
     properties[ID, name]
@@ -2261,7 +2294,7 @@ dataset finalExamAssistants over s : Student
 <li><code>body</code>: used to calculate the value of each cell of the column. Generally, both the row element and the grid <code>key</code> intervene here.</li>
 </ul>
 <p>This generator is used in the following dataset rule, which generates the grades table depicted above:</p>
-<pre class="prettyprint lang-pinset"><code>dataset studentGrades over s : Student {
+<pre class="highlight"><code class="language-pinset">dataset studentGrades over s : Student {
     properties[ID, name]
 
     grid {
@@ -2276,7 +2309,7 @@ dataset finalExamAssistants over s : Student
 <h2 id="typeless-dataset-rules">Typeless dataset rules<a class="headerlink" href="#typeless-dataset-rules" title="Permanent link">&para;</a></h2>
 <p>The <code>from</code> expression presented above to filter rows during the generation can be also used to define datasets where the row elements are not instances coming from an input model. This can be useful to perform data aggregations, or to generate synthetic tables starting from a custom collection of values.</p>
 <p>The following dataset rule generates a basic table using a sequence of numbers as row elements and different column generators:</p>
-<pre class="prettyprint lang-pinset"><code>dataset numbers over n from : 1.to(5) {
+<pre class="highlight"><code class="language-pinset">dataset numbers over n from : 1.to(5) {
     column number : n
     column squared : n * n
 
@@ -2342,7 +2375,7 @@ dataset finalExamAssistants over s : Student
 </table>
 <h2 id="nested-column-generators">Nested column generators<a class="headerlink" href="#nested-column-generators" title="Permanent link">&para;</a></h2>
 <p>When certain intermediate value has to be used in several column calculations, Pinset offers a nested, composite column generator. This generator is defined by a <code>from</code> expression that calculates a value, followed by a block containing column generators that can use that value:</p>
-<pre class="prettyprint lang-pinset"><code>dataset gradesDetails over g : Grade {
+<pre class="highlight"><code class="language-pinset">dataset gradesDetails over g : Grade {
     properties[points]
     reference item[name]
     from student : g.eContainer {
@@ -2460,7 +2493,7 @@ dataset finalExamAssistants over s : Student
 <h2 id="column-post-processing">Column post-processing<a class="headerlink" href="#column-post-processing" title="Permanent link">&para;</a></h2>
 <p>Pinset offers some column post-processing operations that are frequently used to prepare a dataset for an analysis.
 These operations are invoked by annotating the column generators.</p>
-<pre class="prettyprint lang-pinset"><code>dataset studentGradesPostProcessed over s : Student {
+<pre class="highlight"><code class="language-pinset">dataset studentGradesPostProcessed over s : Student {
     properties[ID]
 
     @fillNulls 0
@@ -2667,25 +2700,7 @@ These operations are invoked by annotating the column generators.</p>
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

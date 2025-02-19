@@ -44,15 +44,11 @@
     
       <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,10 +84,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -143,7 +141,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1821,8 +1855,7 @@ It's important to do them in proper order, as described below.</p>
 <h3 id="checking-licensing-via-the-dash-tool">Checking licensing via the Dash tool<a class="headerlink" href="#checking-licensing-via-the-dash-tool" title="Permanent link">&para;</a></h3>
 <p>We use the <a href="https://www.eclipse.org/projects/handbook/#ip-license-tool">Eclipse Dash License</a> tool to check the libraries we use.
 To perform these checks, run the provided script in the root of the repository:</p>
-<div class="highlight"><pre><span></span><code>./dash-license-check.sh
-</code></pre></div>
+<pre class="highlight"><code class="language-shell">./dash-license-check.sh</code></pre>
 <p>The script may mention a number of libraries which show as restricted due to their coordinates not being recorded in IPLab, but are still OK to use as they are on Eclipse Orbit (which has had its own IP review process), or they match a Maven Central dependency which has an approved license.</p>
 <p>If there is a restricted dependency which has not been reviewed in any way, then it needs to be put through the <a href="https://www.eclipse.org/projects/handbook/#ip-request">IPLab</a> process.</p>
 <h3 id="checking-that-the-interim-site-is-installable-from-a-clean-eclipse">Checking that the interim site is installable from a clean Eclipse<a class="headerlink" href="#checking-that-the-interim-site-is-installable-from-a-clean-eclipse" title="Permanent link">&para;</a></h3>
@@ -1851,14 +1884,13 @@ Add the new release info to <code>all-versions.md</code>. Copy <code>index.md</c
 <p>Also don't forget to build the static site for changes to take effect.</p>
 <h3 id="bump-up-versions">Bump up versions<a class="headerlink" href="#bump-up-versions" title="Permanent link">&para;</a></h3>
 <p>Run the following commands from the root of the repository, replacing <code>X.Y.Z</code> with the full version number of the release (where Z is the patch, usually 0). Tycho will automatically take care of updating the Maven and PDE projects (<code>MANIFEST.MF</code>, <code>feature.xml</code> etc.). Note that the standalone POMs (i.e. the <code>pom-plain.xml</code> files) are bumped separately using the third command below. Also note the order: run the Tycho one first, then bump <code>epsilon.version</code>, then run the Tycho versions bump again and it should succeed.</p>
-<div class="highlight"><pre><span></span><code>mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=X.Y.Z-SNAPSHOT
+<pre class="highlight"><code>mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=X.Y.Z-SNAPSHOT
 
 mvn versions:set-property -Dproperty=epsilon.version -DnewVersion=X.Y.Z-SNAPSHOT
 
 mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=X.Y.Z-SNAPSHOT
 
-mvn -f pom-plain.xml versions:set -DnewVersion=X.Y.Z-SNAPSHOT
-</code></pre></div>
+mvn -f pom-plain.xml versions:set -DnewVersion=X.Y.Z-SNAPSHOT</code></pre>
 <p>You may also need to manually bump up the version of the <code>releng/org.eclipse.epsilon.target</code> project. Specifically, the <code>META-INF/MANIFEST.MF</code>, but it's also worth checking the <code>pom.xml</code> to make sure they're consistent with each other. Also check <code>org.eclipse.epsilon.test/META-INF/MANIFEST.MF</code>. The build will fail if anything is inconsistent.</p>
 <h3 id="announce-release-on-forum">Announce release on forum<a class="headerlink" href="#announce-release-on-forum" title="Permanent link">&para;</a></h3>
 <p>It would be courteous to let users know of the new release, along with the new features, on the <a href="../../../forum">forum</a>.</p>
@@ -1958,25 +1990,7 @@ mvn -f pom-plain.xml versions:set -DnewVersion=X.Y.Z-SNAPSHOT
     
       <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

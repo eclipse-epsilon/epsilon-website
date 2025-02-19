@@ -44,15 +44,11 @@
     
       <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,10 +84,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -143,7 +141,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1829,34 +1863,33 @@
 <p>For this first example, we will query the <a href="https://docs.github.com/en/rest">GitHub REST API</a> via HTTP, asking it about the <a href="https://api.github.com/repos/eclipse/epsilon">Eclipse Epsilon project</a>, parse its JSON response, and produce a short text report in Markdown.
 This example is available from the <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.emc.json.example">Epsilon GitHub repository</a>.</p>
 <p>Here is an excerpt of the JSON document (omitted parts are in <code>...</code>):</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="err">...</span>
-<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Epsilon is a family of Java-based scripting languages for automating common model-based software engineering tasks, such as code generation, model-to-model transformation and model validation, that work out of the box with EMF (including Xtext and Sirius), UML (including Cameo/MagicDraw), Simulink, XML and other types of models.&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="err">...</span>
-<span class="w">  </span><span class="nt">&quot;ssh_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;git@github.com:eclipse/epsilon.git&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;clone_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/eclipse-epsilon/epsilon.git&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="err">...</span>
-<span class="w">  </span><span class="nt">&quot;stargazers_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;watchers_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span>
-<span class="w">  </span><span class="err">...</span>
-<span class="w">  </span><span class="nt">&quot;forks_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
-<span class="w">  </span><span class="err">...</span>
-<span class="w">  </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;epl-2.0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Eclipse Public License 2.0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;spdx_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EPL-2.0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.github.com/licenses/epl-2.0&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;node_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MDc6TGljZW5zZTMy&quot;</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="err">...</span>
-<span class="w">  </span><span class="nt">&quot;topics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;domain-specific-languages&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;model-based-software-engineering&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;model-driven-engineering&quot;</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="err">...</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-json">{
+  ...
+  "description": "Epsilon is a family of Java-based scripting languages for automating common model-based software engineering tasks, such as code generation, model-to-model transformation and model validation, that work out of the box with EMF (including Xtext and Sirius), UML (including Cameo/MagicDraw), Simulink, XML and other types of models.",
+  ...
+  "ssh_url": "git@github.com:eclipse/epsilon.git",
+  "clone_url": "https://github.com/eclipse-epsilon/epsilon.git",
+  ...
+  "stargazers_count": 27,
+  "watchers_count": 27,
+  ...
+  "forks_count": 8,
+  ...
+  "license": {
+    "key": "epl-2.0",
+    "name": "Eclipse Public License 2.0",
+    "spdx_id": "EPL-2.0",
+    "url": "https://api.github.com/licenses/epl-2.0",
+    "node_id": "MDc6TGljZW5zZTMy"
+  },
+  ...
+  "topics": [
+    "domain-specific-languages",
+    "model-based-software-engineering",
+    "model-driven-engineering"
+  ],
+  ...
+}</code></pre>
 <h3 id="basic-types-in-json-based-models">Basic types in JSON-based models<a class="headerlink" href="#basic-types-in-json-based-models" title="Permanent link">&para;</a></h3>
 <p>The JSON driver implements two types for its models: <code>JSONObject</code>s and <code>JSONArray</code>s.
 A <code>JSONObject</code> is a Java <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html">Map</a>, and a <code>JSONArray</code> is a Java <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html">List</a>.
@@ -1874,7 +1907,7 @@ If the name of the model is <code>M</code>, its root element can be accessed via
 </ul>
 <h3 id="example-egl-template">Example EGL template<a class="headerlink" href="#example-egl-template" title="Permanent link">&para;</a></h3>
 <p>Suppose we have this EGL template:</p>
-<pre class="prettyprint lang-egl"><code># Eclipse Epsilon
+<pre class="highlight"><code class="language-egl"># Eclipse Epsilon
 
 ([%=M.root.stargazers_count%] stars, [%=M.root.watchers_count%] watchers, [%=M.root.forks_count%] forks)
 
@@ -1893,7 +1926,7 @@ Epsilon is licensed under the [[%=M.root.license.name%]]([%=M.root.license.url%]
 * [%=topic.ftuc()%]
 [% } %]</code></pre>
 <p>With the above JSON document, it will produce this output:</p>
-<div class="highlight"><pre><span></span><code># Eclipse Epsilon
+<pre class="highlight"><code># Eclipse Epsilon
 
 (27 stars, 27 watchers, 8 forks)
 
@@ -1910,40 +1943,37 @@ Epsilon is licensed under the [Eclipse Public License 2.0](https://api.github.co
 
 * Domain-specific-languages
 * Model-based-software-engineering
-* Model-driven-engineering
-</code></pre></div>
+* Model-driven-engineering</code></pre>
 <h3 id="disambiguation-between-java-methods-and-json-properties">Disambiguation between Java methods and JSON properties<a class="headerlink" href="#disambiguation-between-java-methods-and-json-properties" title="Permanent link">&para;</a></h3>
 <p>In some cases, the name of the property may clash with one of the Java <code>Map</code> / <code>List</code> methods.
 For instance, consider this JSON document:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;keySet&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-json">{"keySet": [1, 2, 3]}</code></pre>
 <p>In this case, <code>Model.root.keySet()</code> would invoke the Map <code>keySet</code> method (returning a set containing the <code>"keySet"</code> string), rather than refer to the value of the <code>keySet</code> property in the root object.</p>
 <p>To resolve such clashes, the JSON driver supports adding a <code>p_</code> prefix to refer to the original JSON property: <code>Model.root.p_keySet</code> would return the <code>JSONArray</code> containing the three integers shown in the document (1, 2, and 3).</p>
 <h2 id="creating-and-modifying-json-documents">Creating and modifying JSON documents<a class="headerlink" href="#creating-and-modifying-json-documents" title="Permanent link">&para;</a></h2>
 <p>Modifying the contents of a JSON model can be done through regular assignments in EOL, using <code>Model.root</code> and <code>object.property</code> as usual.</p>
 <h3 id="initial-example-author-json-document">Initial example: author JSON document<a class="headerlink" href="#initial-example-author-json-document" title="Permanent link">&para;</a></h3>
 <p>For instance, suppose we run this EOL script with a JSON model called <code>M</code>:</p>
-<pre class="prettyprint lang-eol"><code>M.root = new JSONObject;
+<pre class="highlight"><code class="language-eol">M.root = new JSONObject;
 M.root.name = 'Author Name';
 M.root.email = 'author@example.com';
 M.root.id = 1234;
 
 M.root.accounts = Sequence { 123, 456 };</code></pre>
 <p>This will produce the following JSON document:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Author Name&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;author@example.com&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;accounts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">123</span><span class="p">,</span><span class="w"> </span><span class="mi">456</span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-json">{
+  "name": "Author Name",
+  "email": "author@example.com",
+  "id": 1234,
+  "accounts": [123, 456]
+}</code></pre>
 <p>The first line set up the root object of the JSON document, and the remaining lines set various fields on the object.
 The last line assigned a <code>Sequence</code> to the accounts of the root object: this is OK because it did not contain any JSON arrays or objects.
 Otherwise, we would need to use a <code>JSONArray</code> instead, because the JSON driver needs to keep track of the JSON model that owns each <code>JSONArray</code> and <code>JSONObject</code>, and only <code>JSONArray</code> and <code>JSONObject</code> instances can track this information.</p>
 <h3 id="author-json-document-with-detailed-accounts">Author JSON document with detailed accounts<a class="headerlink" href="#author-json-document-with-detailed-accounts" title="Permanent link">&para;</a></h3>
 <p>Suppose that we want <code>M.root.accounts</code> to contain not just account IDs, but rather entire objects with their own fields.
 In that case, we need to use a <code>JSONArray</code> as mentioned before:</p>
-<pre class="prettyprint lang-eol"><code>M.root = new JSONObject;
+<pre class="highlight"><code class="language-eol">M.root = new JSONObject;
 M.root.name = 'Author Name';
 M.root.email = 'author@example.com';
 M.root.id = 1234;
@@ -1961,53 +1991,49 @@ secondAccount.followers = 20;
 M.root.accounts.add(firstAccount);
 M.root.accounts.add(secondAccount);</code></pre>
 <p>The above EOL program would produce this JSON document:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Author Name&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;author@example.com&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;accounts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;followers&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;followers&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">}</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-json">{
+  "name": "Author Name",
+  "email": "author@example.com",
+  "id": 1234,
+  "accounts": [
+    {"id": 123, "followers": 10},
+    {"id": 456, "followers": 20}
+  ]
+}</code></pre>
 <p>As noted above, the only difference for JSON documents is that we need to create <code>JSONArray</code>s when we want to store a collection of JSON arrays or objects.</p>
 <h3 id="reuse-of-objects-in-json-documents">Reuse of objects in JSON documents<a class="headerlink" href="#reuse-of-objects-in-json-documents" title="Permanent link">&para;</a></h3>
 <p>One important detail when creating JSON documents is that the same JSON object or array could be referenced from multiple locations.
 Changing that object or array would affect every location in the JSON document which references it.</p>
 <p>As an example, consider this EOL script:</p>
-<pre class="prettyprint lang-eol"><code>M.root = new JSONObject;
+<pre class="highlight"><code class="language-eol">M.root = new JSONObject;
 M.root.x = new JSONObject;
 M.root.y = M.root.x;
 
 // This new key will also be visible from M.root.y.a
 M.root.x.a = 1;</code></pre>
 <p>The above EOL script will produce this JSON document:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;a&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;a&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-json">{
+  "x": {"a": 1},
+  "y": {"a": 1}
+}</code></pre>
 <p>Since both <code>M.root.x</code> and <code>M.root.y</code> referenced the same JSON object, the last line of the EOL script affected both locations in the produced JSON file.</p>
 <p>If this is undesirable, JSON models provide a <code>deepClone</code> method which can produce a standalone clone of any <code>JSONObject</code> or <code>JSONArray</code>.
 As an example, here is an EOL script which sets <code>M.root.y</code> to a deep clone of <code>M.root.x</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="err">M.roo</span><span class="kc">t</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="kc">ne</span><span class="err">w</span><span class="w"> </span><span class="err">JSONObjec</span><span class="kc">t</span><span class="err">;</span>
-<span class="err">M.roo</span><span class="kc">t</span><span class="err">.x</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="kc">ne</span><span class="err">w</span><span class="w"> </span><span class="err">JSONObjec</span><span class="kc">t</span><span class="err">;</span>
-<span class="err">M.roo</span><span class="kc">t</span><span class="err">.y</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">M.deepClo</span><span class="kc">ne</span><span class="err">(M.roo</span><span class="kc">t</span><span class="err">.x);</span>
+<pre class="highlight"><code class="language-json">M.root = new JSONObject;
+M.root.x = new JSONObject;
+M.root.y = M.deepClone(M.root.x);
 
-<span class="c1">// This new key will NOT be visible from M.root.y</span>
-<span class="err">M.roo</span><span class="kc">t</span><span class="err">.x.a</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">1</span><span class="err">;</span>
-</code></pre></div>
+// This new key will NOT be visible from M.root.y
+M.root.x.a = 1;</code></pre>
 <p>Since <code>M.root.y</code> is not the same object anymore, the last line only affects <code>M.root.x</code>, and the script produces this JSON document:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;a&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-json">{
+  "x": {"a": 1},
+  "y": {}
+}</code></pre>
 <h3 id="managing-the-model-root-in-declarative-epsilon-scripts">Managing the model root in declarative Epsilon scripts<a class="headerlink" href="#managing-the-model-root-in-declarative-epsilon-scripts" title="Permanent link">&para;</a></h3>
 <p>When writing Epsilon scripts that create JSON objects and arrays using declarative strategies (e.g. ETL), it will be necessary to set the root of the JSON model in a <code>post</code> block. This is because in a JSON model, creating a <code>JSONObject</code> or a <code>JSONArray</code> will not automatically add it to the contents of the model.</p>
 <p>As an example, here is an ETL script which transforms EMF models that conform to a <code>Tree</code> metamodel into JSON documents:</p>
-<pre class="prettyprint lang-etl"><code>post {
+<pre class="highlight"><code class="language-etl">post {
   var sourceRoots = Source.getResource().contents; 
   Target.root = sourceRoots.get(0).equivalent();
 }
@@ -2115,25 +2141,7 @@ rule TreeToObject transform t: Source!Tree to o: Target!JSONObject {
     
       <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

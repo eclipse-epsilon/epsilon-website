@@ -44,15 +44,11 @@
     
       <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,10 +84,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -143,7 +141,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1825,62 +1859,55 @@
 </table>
 <h2 id="extra-object-shorthand">Extra Object Shorthand<a class="headerlink" href="#extra-object-shorthand" title="Permanent link">&para;</a></h2>
 <p>Epsilon HUTN allows classes with no body to be terminated with a semi-colon rather than with a pair of empty brackets, for example the following are equivalent in Epsilon HUTN:</p>
-<div class="highlight"><pre><span></span><code>Family &quot;The Smiths&quot; {}
-Family &quot;The Smiths&quot;;
-</code></pre></div>
+<pre class="highlight"><code>Family "The Smiths" {}
+Family "The Smiths";</code></pre>
 <p>This form appears in Figure 6.5 of the HUTN specification, but oddly is not supported in the grammar provided by the HUTN specification.</p>
 <h2 id="parametric-attributes">Parametric Attributes<a class="headerlink" href="#parametric-attributes" title="Permanent link">&para;</a></h2>
 <p>The HUTN specification allows classes to be instantiated with arguments, for example:</p>
-<div class="highlight"><pre><span></span><code>Coordinate (3.5, 7.3) {}
-</code></pre></div>
+<pre class="highlight"><code>Coordinate (3.5, 7.3) {}</code></pre>
 <p>The above code assumes that configuration rules have been specified for the parameters of Coordinate.</p>
 <p>Epsilon HUTN does not currently support this form. Instead, the following code can be used:</p>
-<div class="highlight"><pre><span></span><code>Coordinate { 
+<pre class="highlight"><code>Coordinate { 
   x: 3.5
   y: 7.3 
-}
-</code></pre></div>
+}</code></pre>
 <h2 id="enumeration-adjectives">Enumeration Adjectives<a class="headerlink" href="#enumeration-adjectives" title="Permanent link">&para;</a></h2>
 <p>The HUTN specification allows objects to be prefixed with enumeration values as adjectives, for example:</p>
-<div class="highlight"><pre><span></span><code>poodle Dog {}
-</code></pre></div>
+<pre class="highlight"><code>poodle Dog {}</code></pre>
 <p>The above code assumes that configuration rules have been specified to configure Dog to accept a feature, "breed," as an enumeration adjective.</p>
 <p>Epsilon HUTN does not currently support this form. Instead, the following code can be used:</p>
-<div class="highlight"><pre><span></span><code>Dog { 
+<pre class="highlight"><code>Dog { 
   breed: poodle 
-}
-</code></pre></div>
+}</code></pre>
 <h2 id="potential-error-in-the-omg-hutn-specification">Potential error in the OMG HUTN Specification<a class="headerlink" href="#potential-error-in-the-omg-hutn-specification" title="Permanent link">&para;</a></h2>
 <p>Section 6.4 of the OMG HUTN specification appears to contain an error. Grammar rule [20] implies that AttributeName is optional in specifying a KeywordAttribute. However, the semantics of an empty KeywordAttribute or a single tilde as a KeywordAttribute are not defined.</p>
 <p>Epsilon HUTN ensures that an AttributeName is specified for every
 KeywordAttribute.</p>
 <h2 id="absolute-references">Absolute References<a class="headerlink" href="#absolute-references" title="Permanent link">&para;</a></h2>
 <p>The HUTN specification allows relative referencing for non-containment references. For example:</p>
-<div class="highlight"><pre><span></span><code>ShapePackage &quot;triangles&quot; {
-  Polygon &quot;my_triangle&quot; {
+<pre class="highlight"><code>ShapePackage "triangles" {
+  Polygon "my_triangle" {
     Coordinate (3.6, 7.3) {}
     Coordinate (5.2, 7.6) {}
     Coordinate (9.4, 13) {}
   }
 }
 
-ShapePackage &quot;lines&quot; {
-  Polygon &quot;my_line&quot; {
+ShapePackage "lines" {
+  Polygon "my_line" {
      Coordinate (4.6, 78.3) {}
      Coordinate (10.4, 1.5) {}
   }
 
-  Diagram &quot;my_diagram&quot; {
-    shapes: &quot;//triangles/my_triangle&quot;, &quot;/my_line&quot;
+  Diagram "my_diagram" {
+    shapes: "//triangles/my_triangle", "/my_line"
   }
-}
-</code></pre></div>
+}</code></pre>
 <p>The Diagram object references two Polygons: "my_triangle" and "my line". The first is referenced with respect to the root of the document ("//"), while the second is referenced with respect to the current package ("/").</p>
 <p>Epsilon HUTN does not support relative referencing, and all references are resolved with respect to the diagram root. The "//" prefix is omitted:</p>
-<div class="highlight"><pre><span></span><code>Diagram &quot;my_diagram&quot; {
-  shapes: &quot;my_triangle&quot;, &quot;my_line&quot;
-}
-</code></pre></div>
+<pre class="highlight"><code>Diagram "my_diagram" {
+  shapes: "my_triangle", "my_line"
+}</code></pre>
 
 
 
@@ -1977,25 +2004,7 @@ ShapePackage &quot;lines&quot; {
     
       <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

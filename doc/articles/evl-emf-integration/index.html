@@ -44,15 +44,11 @@
     
       <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,10 +84,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -143,7 +141,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1809,45 +1843,43 @@
 <h3 id="programmatically">Programmatically<a class="headerlink" href="#programmatically" title="Permanent link">&para;</a></h3>
 <p>For this you need to create a new instance of an <code>EvlValidator</code> and then add it to the <code>EValidatorRegistry</code>. Note that if there are existing validators registered for the metamodel, you should not remove/overwrite them; instead you should combine them in a <code>CompositeEValidator</code>.</p>
 <p>The following snippet outlines the general idea (you need to make your own provisions if you need to validate multiple <code>EPackages</code> with the same validator (e.g. use the <code>EvlValidator#addAdditionalPackage</code> method)).</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Assuming you have generated the metamodel code</span>
-<span class="n">EPackage</span><span class="w"> </span><span class="n">ePackage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">YourPackage</span><span class="p">.</span><span class="na">eINSTANCE</span><span class="p">;</span>
+<pre class="highlight"><code class="language-java">// Assuming you have generated the metamodel code
+EPackage ePackage = YourPackage.eINSTANCE;
 
-<span class="c1">// Pass a model name if your script uses it</span>
-<span class="c1">// Pass a valid bundle ID as it used for reporting (if not in a plugin use your project name or similar)</span>
-<span class="n">EvlValidator</span><span class="w"> </span><span class="n">evlValidator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EvlValidator</span><span class="p">(</span>
-<span class="w">    </span><span class="n">evlScriptURI</span><span class="p">,</span><span class="w"> </span><span class="n">modelName</span><span class="p">,</span><span class="w"> </span><span class="n">ePackage</span><span class="p">.</span><span class="na">nsUri</span><span class="p">(),</span><span class="w"> </span><span class="n">bundleId</span><span class="p">);</span>
+// Pass a model name if your script uses it
+// Pass a valid bundle ID as it used for reporting (if not in a plugin use your project name or similar)
+EvlValidator evlValidator = new EvlValidator(
+    evlScriptURI, modelName, ePackage.nsUri(), bundleId);
 
-<span class="n">EValidator</span><span class="w"> </span><span class="n">existingValidator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EValidator</span><span class="p">.</span><span class="na">Registry</span><span class="p">.</span><span class="na">INSTANCE</span><span class="p">.</span><span class="na">getEValidator</span><span class="p">(</span><span class="n">ePackage</span><span class="p">);</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">existingValidator</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">CompositeEValidator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="p">((</span><span class="n">CompositeEValidator</span><span class="p">)</span><span class="w"> </span><span class="n">existingValidator</span><span class="p">).</span><span class="na">getDelegates</span><span class="p">().</span><span class="na">add</span><span class="p">(</span><span class="n">evlValidator</span><span class="p">);</span>
-<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">existingValidator</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">existingValidator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EObjectValidator</span><span class="p">.</span><span class="na">INSTANCE</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">CompositeEValidator</span><span class="w"> </span><span class="n">newValidator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CompositeEValidator</span><span class="p">();</span>
-<span class="w">    </span><span class="n">newValidator</span><span class="p">.</span><span class="na">getDelegates</span><span class="p">().</span><span class="na">add</span><span class="p">(</span><span class="n">existingValidator</span><span class="p">);</span>
-<span class="w">    </span><span class="n">newValidator</span><span class="p">.</span><span class="na">getDelegates</span><span class="p">().</span><span class="na">add</span><span class="p">(</span><span class="n">evlValidator</span><span class="p">);</span>
-<span class="w">    </span><span class="n">EValidator</span><span class="p">.</span><span class="na">Registry</span><span class="p">.</span><span class="na">INSTANCE</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">ePackage</span><span class="p">,</span><span class="w"> </span><span class="n">newValidator</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
+EValidator existingValidator = EValidator.Registry.INSTANCE.getEValidator(ePackage);
+if (existingValidator instanceof CompositeEValidator) {
+    ((CompositeEValidator) existingValidator).getDelegates().add(evlValidator);
+} else {
+    if (existingValidator == null) {
+        existingValidator = EObjectValidator.INSTANCE;
+    }
+    CompositeEValidator newValidator = new CompositeEValidator();
+    newValidator.getDelegates().add(existingValidator);
+    newValidator.getDelegates().add(evlValidator);
+    EValidator.Registry.INSTANCE.put(ePackage, newValidator);
+}</code></pre>
 <h3 id="via-the-extension-point">Via the Extension Point<a class="headerlink" href="#via-the-extension-point" title="Permanent link">&para;</a></h3>
 <p>Epsilon provides the <code>org.eclipse.epsilon.evl.emf.validation</code> extension point for registering EVL constraints against <code>EPackages</code> in Eclipse. The extension point will handle the <code>EvlValidator</code> instantiation and registration for you.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;plugin&gt;</span>
-<span class="w">   </span>...
-<span class="w">   </span><span class="nt">&lt;extension</span>
-<span class="w">         </span><span class="na">point=</span><span class="s">&quot;org.eclipse.epsilon.evl.emf.validation&quot;</span><span class="nt">&gt;</span>
-<span class="w">      </span><span class="nt">&lt;constraintsBinding</span>
-<span class="w">            </span><span class="na">compose=</span><span class="s">&quot;true&quot;</span>
-<span class="w">            </span><span class="na">constraints=</span><span class="s">&quot;src/test.evl&quot;</span>
-<span class="w">            </span><span class="na">namespaceURI=</span><span class="s">&quot;http://your.package.uri&quot;</span>
-<span class="w">            </span><span class="na">validator=</span><span class="s">&quot;my.project.evl.EvlExtendedValidator&quot;</span><span class="nt">&gt;</span>
-<span class="w">            </span><span class="nt">&lt;additionalNamespaceURI</span>
-<span class="w">               </span><span class="na">namespaceURI=</span><span class="s">&quot;http://some.other.pacakge.uri&quot;</span><span class="nt">&gt;</span>
-<span class="w">         </span><span class="nt">&lt;/additionalNamespaceURI&gt;</span>
-<span class="w">      </span><span class="nt">&lt;/constraintsBinding&gt;</span>
-<span class="w">   </span><span class="nt">&lt;/extension&gt;</span>
-<span class="nt">&lt;/plugin&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-xml">&lt;plugin&gt;
+   ...
+   &lt;extension
+         point="org.eclipse.epsilon.evl.emf.validation"&gt;
+      &lt;constraintsBinding
+            compose="true"
+            constraints="src/test.evl"
+            namespaceURI="http://your.package.uri"
+            validator="my.project.evl.EvlExtendedValidator"&gt;
+            &lt;additionalNamespaceURI
+               namespaceURI="http://some.other.pacakge.uri"&gt;
+         &lt;/additionalNamespaceURI&gt;
+      &lt;/constraintsBinding&gt;
+   &lt;/extension&gt;
+&lt;/plugin&gt;</code></pre>
 <p>We recommend setting the <code>compose</code> attribute to <code>true</code>, else you will overwrite existing validators. You can also specify additional metamodels to be accessed by this validator using the <code>additionalNamespaceURI</code> entries. Note that you can also provide your own validator implementation. If omitted, the default <code>EvlValidator</code> will be used (should be sufficient for most cases).</p>
 <h2 id="runtime-adjustments">Runtime Adjustments<a class="headerlink" href="#runtime-adjustments" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
@@ -1865,72 +1897,69 @@
 </div>
 <h3 id="validation-progress-and-cancellation">Validation progress and cancellation<a class="headerlink" href="#validation-progress-and-cancellation" title="Permanent link">&para;</a></h3>
 <p>Within Eclipse it is important to allow uses to cancel a running validation. To do so, we need to pass an <code>IProgressMonitor</code> to the EvlValidator. For this, you need to provide your own <a href="https://download.eclipse.org/modeling/emf/emf/javadoc/2.4.3/org/eclipse/emf/ecore/util/Diagnostician.html">Diagnostician</a>.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyDiagnostician</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Diagnostician</span><span class="w"> </span><span class="p">{</span>
+<pre class="highlight"><code class="language-java">public class MyDiagnostician extends Diagnostician {
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Diagnostic</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="n">EObject</span><span class="w"> </span><span class="n">eObject</span><span class="p">,</span><span class="w"> </span><span class="n">IProgressMonitor</span><span class="w"> </span><span class="n">monitor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">BasicDiagnostic</span><span class="w"> </span><span class="n">diagnostics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createDefaultDiagnostic</span><span class="p">(</span><span class="n">eObject</span><span class="p">);</span>
-<span class="w">        </span><span class="n">validate</span><span class="p">(</span><span class="n">eObject</span><span class="p">,</span><span class="w"> </span><span class="n">diagnostics</span><span class="p">,</span><span class="w"> </span><span class="n">createDefaultContext</span><span class="p">(</span><span class="n">monitor</span><span class="p">),</span><span class="w"> </span><span class="n">monitor</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">diagnostics</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+    public Diagnostic validate(EObject eObject, IProgressMonitor monitor) {
+        BasicDiagnostic diagnostics = createDefaultDiagnostic(eObject);
+        validate(eObject, diagnostics, createDefaultContext(monitor), monitor);
+        return diagnostics;
+    }
 
-<span class="w">    </span><span class="c1">// Overload the Diagnostician implementation to inject the monitor into the context</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Object</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">createDefaultContext</span><span class="p">(</span><span class="n">IProgressMonitor</span><span class="w"> </span><span class="n">monitor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Object</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">defaultContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">super</span><span class="p">.</span><span class="na">createDefaultContext</span><span class="p">();</span>
-<span class="w">        </span><span class="n">defaultContext</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">EvlValidator</span><span class="p">.</span><span class="na">VALIDATION_MONITOR</span><span class="p">,</span><span class="w"> </span><span class="n">monitor</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">defaultContext</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+    // Overload the Diagnostician implementation to inject the monitor into the context
+    public Map&lt;Object, Object&gt; createDefaultContext(IProgressMonitor monitor) {
+        final Map&lt;Object, Object&gt; defaultContext = super.createDefaultContext();
+        defaultContext.put(EvlValidator.VALIDATION_MONITOR, monitor);
+        return defaultContext;
+    }
+}</code></pre>
 <p>And then in your code (e.g. command handler):</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@Override</span>
-<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="n">IProgressMonitor</span><span class="w"> </span><span class="n">monitor</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">CoreException</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">myDgnstc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MyDiagnostician</span><span class="p">();</span>
-<span class="w">    </span><span class="n">Diagnostic</span><span class="w"> </span><span class="n">dgnstc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rnblDgnstc</span><span class="p">.</span><span class="na">validate</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="na">getContents</span><span class="p">().</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">monitor</span><span class="p">);</span>
-<span class="w">    </span><span class="p">...</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-java">@Override
+public void run(IProgressMonitor monitor) throws CoreException {
+    myDgnstc = new MyDiagnostician();
+    Diagnostic dgnstc = rnblDgnstc.validate(model.getContents().get(0), monitor);
+    ...</code></pre>
 <p>The extended diagnostician can also be used to configure any <code>EvlValidators</code> provided via extension points, e.g. to disable logging or dialogs. In this case we assume that all <code>EvlValidators</code> are within <code>CompositeEValidators</code> (adjust if not using them). This implementation uses a <em>brute force</em> approach; ideally you should search for a specific <code>EPackage</code> instead.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyDiagnostician</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Diagnostician</span><span class="w"> </span><span class="p">{</span>
+<pre class="highlight"><code class="language-java">public class MyDiagnostician extends Diagnostician {
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">MyDiagnostician</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">super</span><span class="p">();</span>
-<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">validator</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">eValidatorRegistry</span><span class="p">.</span><span class="na">values</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">validator</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">CompositeEValidator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="n">CompositeEValidator</span><span class="w"> </span><span class="n">cmpsVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">CompositeEValidator</span><span class="p">)</span><span class="w"> </span><span class="n">validator</span><span class="p">;</span>
-<span class="w">                </span><span class="n">findEvlValidators</span><span class="p">(</span><span class="n">cmpsVal</span><span class="p">);</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
+    public MyDiagnostician() {
+        super();
+        for(Object validator : eValidatorRegistry.values()) {
+            if (validator instanceof CompositeEValidator) {
+                CompositeEValidator cmpsVal = (CompositeEValidator) validator;
+                findEvlValidators(cmpsVal);
+            }
+        }
+    }
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Diagnostic</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="n">EObject</span><span class="w"> </span><span class="n">eObject</span><span class="p">,</span><span class="w"> </span><span class="n">IProgressMonitor</span><span class="w"> </span><span class="n">monitor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">BasicDiagnostic</span><span class="w"> </span><span class="n">diagnostics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createDefaultDiagnostic</span><span class="p">(</span><span class="n">eObject</span><span class="p">);</span>
-<span class="w">        </span><span class="n">validate</span><span class="p">(</span><span class="n">eObject</span><span class="p">,</span><span class="w"> </span><span class="n">diagnostics</span><span class="p">,</span><span class="w"> </span><span class="n">createDefaultContext</span><span class="p">(</span><span class="n">monitor</span><span class="p">),</span><span class="w"> </span><span class="n">monitor</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">diagnostics</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+    public Diagnostic validate(EObject eObject, IProgressMonitor monitor) {
+        BasicDiagnostic diagnostics = createDefaultDiagnostic(eObject);
+        validate(eObject, diagnostics, createDefaultContext(monitor), monitor);
+        return diagnostics;
+    }
 
-<span class="w">    </span><span class="c1">// Overload the Diagnostician implementation to inject the monitor into the context</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Object</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">createDefaultContext</span><span class="p">(</span><span class="n">IProgressMonitor</span><span class="w"> </span><span class="n">monitor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Object</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">defaultContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">super</span><span class="p">.</span><span class="na">createDefaultContext</span><span class="p">();</span>
-<span class="w">        </span><span class="n">defaultContext</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">EvlValidator</span><span class="p">.</span><span class="na">VALIDATION_MONITOR</span><span class="p">,</span><span class="w"> </span><span class="n">monitor</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">defaultContext</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+    // Overload the Diagnostician implementation to inject the monitor into the context
+    public Map&lt;Object, Object&gt; createDefaultContext(IProgressMonitor monitor) {
+        final Map&lt;Object, Object&gt; defaultContext = super.createDefaultContext();
+        defaultContext.put(EvlValidator.VALIDATION_MONITOR, monitor);
+        return defaultContext;
+    }
 
-<span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * Find all {@link EVlValidator}s and configure them.</span>
-<span class="cm">     * @param cmpsVal</span>
-<span class="cm">     * @return</span>
-<span class="cm">     */</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">findEvlValidators</span><span class="p">(</span><span class="n">CompositeEValidator</span><span class="w"> </span><span class="n">cmpsVal</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">EValidator</span><span class="w"> </span><span class="n">nstdVal</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">cmpsVal</span><span class="p">.</span><span class="na">getDelegates</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nstdVal</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">EVlValidator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="n">EVlValidator</span><span class="w"> </span><span class="n">evlVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EVlValidator</span><span class="p">)</span><span class="w"> </span><span class="n">nstdVal</span><span class="p">;</span>
-<span class="w">                </span><span class="n">evlVal</span><span class="p">.</span><span class="na">setShowErrorDialog</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
-<span class="w">                </span><span class="c1">// Other settings or hook error listeners</span>
-<span class="w">                </span><span class="c1">// evlVal.addValidationProblemListener(this);</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+    /**
+     * Find all {@link EVlValidator}s and configure them.
+     * @param cmpsVal
+     * @return
+     */
+    private void findEvlValidators(CompositeEValidator cmpsVal) {
+        for (EValidator nstdVal : cmpsVal.getDelegates()) {
+            if (nstdVal instanceof EVlValidator) {
+                EVlValidator evlVal = (EVlValidator) nstdVal;
+                evlVal.setShowErrorDialog(false);
+                // Other settings or hook error listeners
+                // evlVal.addValidationProblemListener(this);
+            }
+        }
+    }
+}</code></pre>
 
 
 
@@ -2027,25 +2056,7 @@
     
       <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

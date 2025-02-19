@@ -44,15 +44,11 @@
     
       <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,10 +84,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -143,7 +141,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1818,18 +1852,17 @@
 <li>Open <code>web.xml</code> in the <code>conf</code> directory of Tomcat and add the following
 snippet</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;servlet&gt;</span>
-<span class="w">  </span><span class="nt">&lt;servlet-name&gt;</span>egl<span class="nt">&lt;/servlet-name&gt;</span>
-<span class="w">  </span><span class="nt">&lt;servlet-class&gt;</span>
-<span class="w">    </span>org.eclipse.epsilon.egl.servlet.EglServlet
-<span class="w">  </span><span class="nt">&lt;/servlet-class&gt;</span>
-<span class="w">  </span><span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
-<span class="nt">&lt;/servlet&gt;</span>
-<span class="nt">&lt;servlet-mapping&gt;</span>
-<span class="w">  </span><span class="nt">&lt;servlet-name&gt;</span>egl<span class="nt">&lt;/servlet-name&gt;</span>
-<span class="w">  </span><span class="nt">&lt;url-pattern&gt;</span>*.egl<span class="nt">&lt;/url-pattern&gt;</span>
-<span class="nt">&lt;/servlet-mapping&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-xml">&lt;servlet&gt;
+  &lt;servlet-name&gt;egl&lt;/servlet-name&gt;
+  &lt;servlet-class&gt;
+    org.eclipse.epsilon.egl.servlet.EglServlet
+  &lt;/servlet-class&gt;
+  &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt;
+  &lt;servlet-name&gt;egl&lt;/servlet-name&gt;
+  &lt;url-pattern&gt;*.egl&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;</code></pre>
 <ul>
 <li>Make sure that there is an environment variable called <code>JRE_HOME</code> and it's pointing to your JRE installation directory (the root, not the <code>bin</code>). In Windows, you can create this variable from <code>System Properties</code> &rarr; <code>Advanced</code> &rarr; <code>Environment Variables</code> &rarr; <code>System Variables</code> &rarr; <code>New...</code></li>
 </ul>
@@ -1843,7 +1876,7 @@ snippet</li>
 <p>Inside <code>helloworld</code>, create a new file called <code>index.egl</code> and add to it the following code</p>
 </li>
 </ul>
-<pre class="prettyprint lang-egl"><code>[%="Hello World"%]</code></pre>
+<pre class="highlight"><code class="language-egl">[%="Hello World"%]</code></pre>
 <ul>
 <li>Start Tomcat using <code>bin/startup.bat</code> (or <code>startup.sh</code> in Linux/MacOS)</li>
 <li>Open your browser and go to <a href="http://localhost:8080/helloworld/index.egl">http://localhost:8080/helloworld/index.egl</a></li>
@@ -1851,7 +1884,7 @@ snippet</li>
 </ul>
 <h2 id="accessing-parameters-from-the-url">Accessing parameters from the URL<a class="headerlink" href="#accessing-parameters-from-the-url" title="Permanent link">&para;</a></h2>
 <p>To access parameters from the URL (or fields of a submitted form) you can use the <code>request.getParameter('parameter-name')</code> method. For example, by modifying the source code of <code>index.egl</code> to the following</p>
-<pre class="prettyprint lang-egl"><code>[%="Hello "+request.getParameter("visitor")%]</code></pre>
+<pre class="highlight"><code class="language-egl">[%="Hello "+request.getParameter("visitor")%]</code></pre>
 <p>and navigating to <a href="http://localhost:8080/helloworld/index.egl?visitor=John">http://localhost:8080/helloworld/index.egl?visitor=John</a>, you should get a page reading <code>Hello John</code> as a result.</p>
 <h2 id="other-built-in-objects">Other built-in objects<a class="headerlink" href="#other-built-in-objects" title="Permanent link">&para;</a></h2>
 <p>EGL provides the following built-in objects which (should) function
@@ -1867,28 +1900,26 @@ exactly like they do in JSP</p>
 <h2 id="caching">Caching<a class="headerlink" href="#caching" title="Permanent link">&para;</a></h2>
 <p>EGL provides the built-in <code>cache</code> object to facilitate two types of caching. Page caching can be used to ensure that repeated requests to the same URL do not result in the execution of EGL templates. Fragment caching can be used to share the text generated by a template between requests for different URLs.</p>
 <p>For example, the following code is used to ensure that repeated requests for pages matching the regular expression <code>index.*</code> are served from the page cache:</p>
-<pre class="prettyprint lang-egl"><code>[% cache.pages("index.*"); %]</code></pre>
+<pre class="highlight"><code class="language-egl">[% cache.pages("index.*"); %]</code></pre>
 <p>The page cache can be expired programmatically, as shown below, or by restarting the Tomcat server.</p>
-<pre class="prettyprint lang-egl"><code>[% cache.expirePages("index.*"); %]</code></pre>
+<pre class="highlight"><code class="language-egl">[% cache.expirePages("index.*"); %]</code></pre>
 <p>In addition to page caching, EGL supports fragment caching which allows the contents of a sub-template to be cached. For example, the following code processes <code>sidebar.egl</code> only the first time that the template is executed:</p>
-<pre class="prettyprint lang-egl"><code>[% var sidebarTemplate = TemplateFactory.load("Sidebar.egl"); %]
+<pre class="highlight"><code class="language-egl">[% var sidebarTemplate = TemplateFactory.load("Sidebar.egl"); %]
 [%=cache.fragment(sidebarTemplate) %]</code></pre>
 <p>Note that the <code>fragment</code> method should be used in a dynamic output section. Like pages, fragments can be expired programmatically (or by restarting the Tomcat server):</p>
-<pre class="prettyprint lang-egl"><code>[% cache.expireFragment(sidebarTemplate); %]</code></pre>
+<pre class="highlight"><code class="language-egl">[% cache.expireFragment(sidebarTemplate); %]</code></pre>
 <p>A simple caching strategy is to populate the page and fragment caches from your main EGL templates, and to provide a <code>ClearCache.egl</code> template in a sub-directory that only administrators that can access.</p>
 <h2 id="loading-emf-models-in-egl-pages">Loading EMF models in EGL pages<a class="headerlink" href="#loading-emf-models-in-egl-pages" title="Permanent link">&para;</a></h2>
 <p>The main motivation for turning EGL into a server-side scripting language is its ability to work well with EMF models. EGL provides the <code>modelManager</code> built-in object to let you load EMF models that reside in the web application.</p>
 <p>To experiment with <code>modelManager</code>, download the <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/serverside/org.eclipse.epsilon.egl.servlet/Graph.ecore">Graph.ecore</a> and <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/serverside/org.eclipse.epsilon.egl.servlet/Ecore.ecore">Ecore.ecore</a> models and place them in your helloworld directory. Then, change your <code>index.egl</code> to look like this</p>
-<pre class="prettyprint lang-egl"><code>[%
+<pre class="highlight"><code class="language-egl">[%
 modelManager.registerMetamodel("Ecore.ecore");
 modelManager.loadModel("Sample", "Graph.ecore", "http://www.eclipse.org/emf/2002/Ecore");
 %]
 
 The metamodel has [%=EClass.all.size()%] classes</code></pre>
 <p>Refresh the page in your browser and it should now read:</p>
-<div class="codehilite"><pre><span></span><code>The metamodel has 3 classes
-</code></pre></div>
-
+<pre class="highlight"><code>The metamodel has 3 classes</code></pre>
 <h2 id="the-model-manager">The Model Manager<a class="headerlink" href="#the-model-manager" title="Permanent link">&para;</a></h2>
 <p>The <code>modelManager</code> built-in object provides the following methods:</p>
 <ul>
@@ -1901,12 +1932,12 @@ The metamodel has [%=EClass.all.size()%] classes</code></pre>
 </ul>
 <h2 id="sharing-models-between-templates">Sharing models between templates<a class="headerlink" href="#sharing-models-between-templates" title="Permanent link">&para;</a></h2>
 <p>Currently, each model is only loaded once (the first time the <code>loadModel()</code> or <code>loadModelByFile()</code> is called). If multiple pages need to access the same model, add the model loading logic in an operation in a separate <code>models.eol</code> file:</p>
-<pre class="prettyprint lang-eol"><code>operation loadModels() {
+<pre class="highlight"><code class="language-eol">operation loadModels() {
   modelManager.registerMetamodel("Ecore.ecore");
   modelManager.loadModel("Sample", "Graph.ecore", "http://www.eclipse.org/emf/2002/Ecore");
 }</code></pre>
 <p>and then import and call it from each one of your pages:</p>
-<pre class="prettyprint lang-egl"><code>[%
+<pre class="highlight"><code class="language-egl">[%
 import "models.eol";
 loadModels();
 %]
@@ -1914,19 +1945,14 @@ loadModels();
 // Page code here</code></pre>
 <h2 id="running-egl-on-google-app-engine">Running EGL on Google App Engine<a class="headerlink" href="#running-egl-on-google-app-engine" title="Permanent link">&para;</a></h2>
 <p>By default App Engine will treat EGL files as static content and serve their source code instead of executing them. To work around this, add the following snippet under the root element of the <code>appengine-web.xml</code> configuration file of your App Engine application.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;static-files&gt;</span>
-<span class="w">  </span><span class="nt">&lt;exclude</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;*.egl&quot;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;/static-files&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-xml">&lt;static-files&gt;
+  &lt;exclude path="*.egl"/&gt;
+&lt;/static-files&gt;</code></pre>
 <h2 id="working-with-big-models">Working with big models<a class="headerlink" href="#working-with-big-models" title="Permanent link">&para;</a></h2>
 <p>If you encounter a Java <code>OutOfMemoryError</code> while querying a big model you'll need to start Tomcat with more memory than the default 256 MB. To do this, go to <code>bin/catalina.bat</code> (on Windows -- if you're on Linux you should modify <code>catalina.sh</code> accordingly) and change line</p>
-<div class="codehilite"><pre><span></span><code>set JAVA_OPTS=%JAVA_OPTS% %LOGGING_MANAGER%
-</code></pre></div>
-
+<pre class="highlight"><code>set JAVA_OPTS=%JAVA_OPTS% %LOGGING_MANAGER%</code></pre>
 <p>to</p>
-<div class="codehilite"><pre><span></span><code>set JAVA_OPTS=%JAVA_OPTS% %LOGGING_MANAGER% -Xms1024m -Xmx1024m -XX:MaxPermSize=128m
-</code></pre></div>
-
+<pre class="highlight"><code>set JAVA_OPTS=%JAVA_OPTS% %LOGGING_MANAGER% -Xms1024m -Xmx1024m -XX:MaxPermSize=128m</code></pre>
 <p>If you keep getting out of memory errors, you may find <a href="https://github.com/psi-probe/psi-probe">PSI Probe</a> useful for figuring out what's going wrong.</p>
 
 
@@ -2024,25 +2050,7 @@ loadModels();
     
       <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

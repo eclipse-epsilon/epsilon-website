@@ -48,15 +48,11 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -92,10 +88,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -147,7 +145,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1962,7 +1996,7 @@
 <h2 id="abstract-syntax">Abstract Syntax<a class="headerlink" href="#abstract-syntax" title="Permanent link">&para;</a></h2>
 <p>In ECL, comparison specifications are organized in modules (<em>EcLModule</em>). As illustrated below, <em>EclModule</em> (indirectly) extends <em>EolModule</em> which means that it can contain user-defined operations and import other library modules and ECL modules. Apart from operations, an ECL module contains a set of match-rules (<em>MatchRule</em>) and a set of <em>pre</em> and <em>post</em> blocks than run before and after all comparisons, respectively.</p>
 <p><em>MatchRules</em> enable users to perform comparison of model elements at a high level of abstraction. Each match-rule declares a name, and two parameters (<em>leftParameter</em> and <em>rightParameter</em>) that specify the types of elements it can compare. It also optionally defines a number of rules it inherits (<em>extends</em>) and if it is <em>abstract</em>, <em>lazy</em> and/or <em>greedy</em>. The semantics of the latter are discussed shortly.</p>
-<div class="mermaid mermaid-90">classDiagram
+<pre class="mermaid mermaid-90"><code>classDiagram
 class MatchRule {
     -name: String
     -abstract: Boolean
@@ -1990,12 +2024,12 @@ ErlModule -- Post: post *
 EclModule -- MatchRule: rules *
 MatchRule -- Parameter: left
 MatchRule -- Parameter: right
-MatchRule -- MatchRule: extends *</div>
+MatchRule -- MatchRule: extends *</code></pre>
 <p>A match rule has three parts. The <em>guard</em> part is an EOL expression or statement block that further limits the applicability of the rule to an even narrower range of elements than that specified by the <em>left</em> and <em>right</em> parameters. The <em>compare</em> part is an EOL expression or statement block that is responsible for comparing a pair of elements and deciding if they match or not. Finally, the <em>do</em> part is an EOL expression or block that is executed if the <em>compare</em> part returns true to perform any additional actions required.</p>
 <p><em>Pre</em> and <em>post</em> blocks are named blocks of EOL statements which as discussed in the sequel are executed before and after the match-rules have been executed respectively.</p>
 <h2 id="concrete-syntax">Concrete Syntax<a class="headerlink" href="#concrete-syntax" title="Permanent link">&para;</a></h2>
 <p>The concrete syntax of a match-rule is displayed below.</p>
-<div class="highlight"><pre><span></span><code>(@lazy)?
+<pre class="highlight"><code>(@lazy)?
 (@greedy)?
 (@abstract)?
 rule &lt;name&gt;
@@ -2006,19 +2040,17 @@ rule &lt;name&gt;
     (guard (:expression)|({statementBlock}))?
     compare (:expression)|({statementBlock})
     (do {statementBlock})?
-}
-</code></pre></div>
+}</code></pre>
 <p><em>Pre</em> and <em>post</em> blocks have a simple syntax that, as shown below, consists of the identifier (<em>pre</em> or <em>post</em>), an optional name and the set of statements to be executed enclosed in curly braces.</p>
-<div class="highlight"><pre><span></span><code>(pre|post) &lt;name&gt; {
+<pre class="highlight"><code>(pre|post) &lt;name&gt; {
     statement+
-}
-</code></pre></div>
+}</code></pre>
 <h2 id="execution-semantics">Execution Semantics<a class="headerlink" href="#execution-semantics" title="Permanent link">&para;</a></h2>
 <h3 id="rule-and-block-overriding">Rule and Block Overriding<a class="headerlink" href="#rule-and-block-overriding" title="Permanent link">&para;</a></h3>
 <p>An ECL module can import a number of other ECL modules. In such a case, the importing ECL module inherits all the rules and pre/post blocks specified in the modules it imports (recursively). If the module specifies a rule or a pre/post block with the same name, the local rule/block overrides the imported one respectively.</p>
 <h3 id="comparison-outcome">Comparison Outcome<a class="headerlink" href="#comparison-outcome" title="Permanent link">&para;</a></h3>
 <p>As illustrated below, the result of comparing two models with ECL is a trace (<em>MatchTrace</em>) that consists of a number of matches (<em>Match</em>). Each match holds a reference to the objects from the two models that have been compared (<em>left</em> and <em>right</em>), a boolean value that indicates if they have been found to be <em>matching</em> or not, a reference to the <em>rule</em> that has made the decision, and a Map (<em>info</em>) that is used to hold any additional information required by the user (accessible at runtime through the <em>matchInfo</em> implicit variable). During the matching process, a second, temporary, match trace is also used to detect and resolve cyclic invocation of match-rules as discussed in the sequel.</p>
-<div class="mermaid mermaid-80">classDiagram
+<pre class="mermaid mermaid-80"><code>classDiagram
 class Match {
     -left: Object
     -right: Object
@@ -2032,7 +2064,7 @@ MatchRule -- Match: rule
 MatchTrace -- Match: matches *
 EclContext --|&gt; EolContext
 EclContext -- MatchTrace
-Map -- Match: info</div>
+Map -- Match: info</code></pre>
 <h3 id="rule-execution-scheduling">Rule Execution Scheduling<a class="headerlink" href="#rule-execution-scheduling" title="Permanent link">&para;</a></h3>
 <p>Non-abstract, non-lazy match-rules are evaluated automatically by the execution engine in a top-down fashion - with respect to their order of appearance - in two passes. In the first pass, each rule is evaluated for all the pairs of instances in the two models that have a type-of relationship with the types specified by the <em>leftParameter</em> and <em>rightParameter</em> of the rule. In the second pass, each rule that is marked as <em>greedy</em> is executed for all pairs that have not been compared in the first pass, and which have a kind-of relationship with the types specified by the rule. In both passes, to evaluate the compare part of the rule, the guard must be satisfied.</p>
 <p>Before the compare part of a rule is executed, the compare parts of all of the rules it extends (super-rules) must be executed (recursively). Before executing the compare part of a super-rule, the engine verifies that the super-rule is actually applicable to the elements under comparison by checking for type conformance and evaluating the guard part of the super-rule.</p>
@@ -2043,14 +2075,14 @@ Map -- Match: info</div>
 <h3 id="cyclic-invocation-of-matches">Cyclic invocation of <em>matches()</em><a class="headerlink" href="#cyclic-invocation-of-matches" title="Permanent link">&para;</a></h3>
 <p>Providing the built-in <em>matches</em> operation significantly simplifies comparison specifications. It also enhances decoupling between match-rules from each other as when a rule needs to compare two elements that are outside its scope, it does not need to know/specify which other rule can compare those elements explicitly.</p>
 <p>On the other hand, it is possible - and quite common indeed - for two rules to implicitly invoke each other. For example consider the match rule below that attempts to match nodes of the simple Tree metamodel.</p>
-<div class="mermaid mermaid-40">classDiagram
+<pre class="mermaid mermaid-40"><code>classDiagram
 class Tree {
     +label: String
     +parent: Tree
     +children: Tree[*]
 }
-Tree -- Tree</div>
-<pre class="prettyprint lang-ecl"><code>rule Tree2Tree 
+Tree -- Tree</code></pre>
+<pre class="highlight"><code class="language-ecl">rule Tree2Tree 
     match l : T1!Tree
     with r : T2!Tree {
 
@@ -2063,7 +2095,7 @@ Tree -- Tree</div>
 <h2 id="fuzzy-and-dictionary-based-string-matching">Fuzzy and Dictionary-based String Matching<a class="headerlink" href="#fuzzy-and-dictionary-based-string-matching" title="Permanent link">&para;</a></h2>
 <p>In the example above, the rule specifies that to match, two trees must - among other criteria - have the same label. However, there are cases when a less-strict approach to matching string properties of model elements is desired. For instance, when comparing two UML models originating from different organizations, it is common to encounter ontologically equivalent classes which however have different names (e.g. Client and Customer). In this case, to achieve a more sound matching, the use of a dictionary or a lexical database (e.g. WordNet) is necessary. Alternatively, fuzzy string matching algorithms can be used.</p>
 <p>As several such tools and algorithms have been implemented in various programming languages, it is a sensible approach to reuse them instead of re-implementing them. For example, in the listing below a wrapper for the Simmetrics fuzzy string comparison tool is used to compare the labels of the trees using the Levenshtein algorithm. To achieve this, line 11 invokes the <em>fuzzyMatch()</em> operation defined in lines 16-18 which uses the simmterics native tool (instantiated in lines 2-4) to match the two labels using their Levenshtein distance with a threshold of 0.5.</p>
-<pre class="prettyprint lang-ecl"><code>pre {
+<pre class="highlight"><code class="language-ecl">pre {
     var simmetrics = 
         new Native("org.epsilon.ecl.tools.
             textcomparison.simmetrics.SimMetricsTool"); 
@@ -2221,25 +2253,7 @@ operation String fuzzyMatch(other : String) : Boolean {
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

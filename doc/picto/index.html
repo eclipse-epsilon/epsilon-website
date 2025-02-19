@@ -48,15 +48,11 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -92,10 +88,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -147,7 +145,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -2048,7 +2082,7 @@
 <p><img alt="" src="picto-eclipse.png" /></p>
 <h2 id="metamodel">Metamodel<a class="headerlink" href="#metamodel" title="Permanent link">&para;</a></h2>
 <p>We start with the metamodel of our social network DSL expressed in <a href="https://www.eclipse.org/emfatic/">Emfatic</a> (the <code>.ecore</code> version of the metamodel is also provided in the repository). The DSL allows modelling people in a network and likes/dislikes relationships between them.</p>
-<pre class="prettyprint lang-emf"><code>@namespace(uri="socialnetwork", prefix="")
+<pre class="highlight"><code class="language-emf">@namespace(uri="socialnetwork", prefix="")
 package socialnetwork;
 
 class SocialNetwork {
@@ -2062,21 +2096,20 @@ class Person {
 }</code></pre>
 <h2 id="model">Model<a class="headerlink" href="#model" title="Permanent link">&para;</a></h2>
 <p>Below is a model that conforms to the social network metamodel. The model is defined for convenience in <a href="../flexmi">Flexmi</a>, however Picto also works with XMI-based models (see below).</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?nsuri socialnetwork?&gt;</span>
-<span class="cp">&lt;?render-egx picto/socialnetwork.egx?&gt;</span>
-<span class="nt">&lt;socialnetwork&gt;</span>
-<span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="w"> </span><span class="na">likes=</span><span class="s">&quot;Bob, Charlie&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Bob&quot;</span><span class="w"> </span><span class="na">likes=</span><span class="s">&quot;Enid, Alice&quot;</span><span class="w"> </span><span class="na">dislikes=</span><span class="s">&quot;Fred, Charlie&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Charlie&quot;</span><span class="w"> </span><span class="na">likes=</span><span class="s">&quot;Fred, Alice&quot;</span><span class="w"> </span><span class="na">dislikes=</span><span class="s">&quot;Dawn, Enid&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Dawn&quot;</span><span class="w"> </span><span class="na">likes=</span><span class="s">&quot;Bob&quot;</span><span class="w"> </span><span class="na">dislikes=</span><span class="s">&quot;Fred&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Enid&quot;</span><span class="w"> </span><span class="na">likes=</span><span class="s">&quot;Charlie&quot;</span><span class="w"> </span><span class="na">dislikes=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Fred&quot;</span><span class="w"> </span><span class="na">dislikes=</span><span class="s">&quot;Bob&quot;</span><span class="w"> </span><span class="na">likes=</span><span class="s">&quot;Enid, Alice&quot;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;/socialnetwork&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-xml">&lt;?nsuri socialnetwork?&gt;
+&lt;?render-egx picto/socialnetwork.egx?&gt;
+&lt;socialnetwork&gt;
+    &lt;person name="Alice" likes="Bob, Charlie"/&gt;
+    &lt;person name="Bob" likes="Enid, Alice" dislikes="Fred, Charlie"/&gt;
+    &lt;person name="Charlie" likes="Fred, Alice" dislikes="Dawn, Enid"/&gt;
+    &lt;person name="Dawn" likes="Bob" dislikes="Fred"/&gt;
+    &lt;person name="Enid" likes="Charlie" dislikes="Alice"/&gt;
+    &lt;person name="Fred" dislikes="Bob" likes="Enid, Alice"/&gt;
+&lt;/socialnetwork&gt;</code></pre>
 <p>In line 2 of the model, notice the <code>render-egx</code> processing instruction, which specifies a model-to-text transformation written in <a href="../egx/">EGX/EGL</a>, that Picto should use to visualise this model.</p>
 <h2 id="model-to-text-transformation">Model-to-Text Transformation<a class="headerlink" href="#model-to-text-transformation" title="Permanent link">&para;</a></h2>
 <p>The <code>socialnetwork.egx</code> EGX model-to-text transformation is as follows:</p>
-<pre class="prettyprint lang-egx"><code>rule Network2Graphviz
+<pre class="highlight"><code class="language-egx">rule Network2Graphviz
     transform n : socialnetwork::SocialNetwork {
 
     template : "socialnetwork2graphviz.egl"
@@ -2124,7 +2157,7 @@ rule Person2Graphviz
 <li><code>layers</code>: A sequence of maps, each of which represents a layer of the view. Each layer needs to define an <code>id</code>, a <code>title</code> and (optionally), whether it is <code>active</code> by default</li>
 </ul>
 <p>The EGL template <code>socialnetwork2graphviz.egl</code> is as follows:</p>
-<pre class="prettyprint lang-egl"><code>digraph G {
+<pre class="highlight"><code class="language-egl">digraph G {
     node[shape=rectangle, fontname=Tahoma, fontsize=10, style="filled",
         gradientangle="270", fillcolor="bisque"]
 
@@ -2173,7 +2206,7 @@ operation isLayerActive(id : String) {
 <p>When targeting Graphviz or PlantUML it is also advisable to keep your generated diagrams relatively small as auto-layout is computationally expensive (particularly routing edges) and rendering your views can take a long time. For example, generating the Graphviz representation of the full UML metamodel class diagram (260+ classes/650+ references) is instantaneous but getting Graphviz's dot program to render it takes hours. In any event, such a diagram would have been unreadable, and hence pointless (see the 20-class/50-references diagram of Ecore.ecore below, which is generated and rendered instantaneously).</p>
 <p><img alt="" src="picto-all-ecore.png" /></p>
 <p>To "protect" your visualisation rules from input that is bound to generate meaningless output you can use guards as shown below.</p>
-<pre class="prettyprint lang-egx"><code>rule ClassDiagram {
+<pre class="highlight"><code class="language-egx">rule ClassDiagram {
 
     guard : EClass.all.size() &lt; 30
 
@@ -2254,15 +2287,14 @@ operation isLayerActive(id : String) {
 <p>Please see this <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/plugins/org.eclipse.epsilon.picto/plugin.xml">plugin.xml</a>, which shows how some of these extension points were used to integrate Picto with different technologies, such as <a href="https://plantuml.com/">PlantUML</a> or <a href="https://github.com/mermaid-js/mermaid">Mermaid</a>.</p>
 <h2 id="using-picto-in-standalone-mode-with-many-models">Using Picto in standalone mode / with many models<a class="headerlink" href="#using-picto-in-standalone-mode-with-many-models" title="Permanent link">&para;</a></h2>
 <p>Picto also suports a standalone mode, where the details of the models to be visualised are provided within the <code>.picto</code> file itself. An example of visualising <code>socialnetwork.model</code> in standalone mode (without the model being open in a tree editor) is below and in <code>socialnetwork-standalone.picto</code> in the example folder.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?nsuri picto?&gt;</span>
-<span class="nt">&lt;picto</span><span class="w"> </span><span class="na">format=</span><span class="s">&quot;egx&quot;</span><span class="w"> </span><span class="na">transformation=</span><span class="s">&quot;picto/socialnetwork.egx&quot;</span><span class="w"> </span><span class="na">standalone=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;model</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;EMF&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;parameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;M&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;parameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;metamodelUri&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;socialnetwork&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;parameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;modelFile&quot;</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;socialnetwork.model&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/model&gt;</span>
-<span class="nt">&lt;/picto&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-xml">&lt;?nsuri picto?&gt;
+&lt;picto format="egx" transformation="picto/socialnetwork.egx" standalone="true"&gt;
+    &lt;model type="EMF"&gt;
+        &lt;parameter name="name" value="M"/&gt;
+        &lt;parameter name="metamodelUri" value="socialnetwork"/&gt;
+        &lt;parameter name="modelFile" file="socialnetwork.model"/&gt;
+    &lt;/model&gt;
+&lt;/picto&gt;</code></pre>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <ul>
 <li>If you can't find the Picto view, you will need to upgrade to a version of Epsilon &gt;= 2.0.</li>
@@ -2422,25 +2454,7 @@ operation isLayerActive(id : String) {
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

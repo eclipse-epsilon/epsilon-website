@@ -44,15 +44,11 @@
     
       <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,10 +84,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -143,7 +141,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1881,31 +1915,30 @@
 
 <h2 id="querying-an-xml-document">Querying an XML document<a class="headerlink" href="#querying-an-xml-document" title="Permanent link">&para;</a></h2>
 <p>We use the following <code>library.xml</code> as a base for demonstrating the EOL syntax for querying XML documents.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span>
-<span class="nt">&lt;library&gt;</span>
-<span class="w">    </span><span class="nt">&lt;book</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;EMF Eclipse Modeling Framework&quot;</span><span class="w"> </span><span class="na">pages=</span><span class="s">&quot;744&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;author&gt;</span>Dave<span class="w"> </span>Steinberg<span class="nt">&lt;/author&gt;</span>
-<span class="w">        </span><span class="nt">&lt;author&gt;</span>Frank<span class="w"> </span>Budinsky<span class="nt">&lt;/author&gt;</span>
-<span class="w">        </span><span class="nt">&lt;author&gt;</span>Marcelo<span class="w"> </span>Paternostro<span class="nt">&lt;/author&gt;</span>
-<span class="w">        </span><span class="nt">&lt;author&gt;</span>Ed<span class="w"> </span>Merks<span class="nt">&lt;/author&gt;</span>
-<span class="w">        </span><span class="nt">&lt;published&gt;</span>2009<span class="nt">&lt;/published&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/book&gt;</span>
-<span class="w">    </span><span class="nt">&lt;book</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Eclipse Modeling Project: A Domain-Specific Language (DSL) Toolkit&quot;</span><span class="w"> </span><span class="na">pages=</span><span class="s">&quot;736&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;author&gt;</span>Richard<span class="w"> </span>Gronback<span class="nt">&lt;/author&gt;</span>
-<span class="w">        </span><span class="nt">&lt;published&gt;</span>2009<span class="nt">&lt;/published&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/book&gt;</span>
-<span class="w">    </span><span class="nt">&lt;book</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Official Eclipse 3.0 FAQs&quot;</span><span class="w"> </span><span class="na">pages=</span><span class="s">&quot;432&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;author&gt;</span>John<span class="w"> </span>Arthorne<span class="nt">&lt;/author&gt;</span>
-<span class="w">        </span><span class="nt">&lt;author&gt;</span>Chris<span class="w"> </span>Laffra<span class="nt">&lt;/author&gt;</span>
-<span class="w">        </span><span class="nt">&lt;published&gt;</span>2004<span class="nt">&lt;/published&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/book&gt;</span>
-<span class="nt">&lt;/library&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+&lt;library&gt;
+    &lt;book title="EMF Eclipse Modeling Framework" pages="744"&gt;
+        &lt;author&gt;Dave Steinberg&lt;/author&gt;
+        &lt;author&gt;Frank Budinsky&lt;/author&gt;
+        &lt;author&gt;Marcelo Paternostro&lt;/author&gt;
+        &lt;author&gt;Ed Merks&lt;/author&gt;
+        &lt;published&gt;2009&lt;/published&gt;
+    &lt;/book&gt;
+    &lt;book title="Eclipse Modeling Project: A Domain-Specific Language (DSL) Toolkit" pages="736"&gt;
+        &lt;author&gt;Richard Gronback&lt;/author&gt;
+        &lt;published&gt;2009&lt;/published&gt;
+    &lt;/book&gt;
+    &lt;book title="Official Eclipse 3.0 FAQs" pages="432"&gt;
+        &lt;author&gt;John Arthorne&lt;/author&gt;
+        &lt;author&gt;Chris Laffra&lt;/author&gt;
+        &lt;published&gt;2004&lt;/published&gt;
+    &lt;/book&gt;
+&lt;/library&gt;</code></pre>
 <h2 id="queryingmodifying-xml-documents-in-eol">Querying/modifying XML documents in EOL<a class="headerlink" href="#queryingmodifying-xml-documents-in-eol" title="Permanent link">&para;</a></h2>
 <p>The PlainXML driver uses predefined naming conventions to allow developers to programmatically access and modify XML documents in a concise way. This section outlines the supported conventions in the form of questions and answers followed by relevant examples.</p>
 <h3 id="how-can-i-access-elements-by-tag-name">How can I access elements by tag name?<a class="headerlink" href="#how-can-i-access-elements-by-tag-name" title="Permanent link">&para;</a></h3>
 <p>The <code>t_</code> prefix in front of the name of the tag is used to represent a type, instances of which are all the elements with that tag. For instance, <code>t_book.all</code> can be used to get all elements tagged as <code>&lt;book&gt;</code> in the document, <code>t_author.all</code> to retrieve all <code>&lt;author&gt;</code> elements etc. Also, if <code>b</code> is an element with a <code>&lt;book&gt;</code> tag, then <code>b.isTypeOf(t_book)</code> shall return true. If the tag name contains hyphens, underscores, and/or periods, you must escape the complete type name inside back ticks: <code>`t_first-name`</code> </p>
-<pre class="prettyprint lang-eol"><code>// Get all &lt;book&gt; elements
+<pre class="highlight"><code class="language-eol">// Get all &lt;book&gt; elements
 var books = t_book.all;
 
 // Get a random book
@@ -1920,7 +1953,7 @@ b.isTypeOf(t_book).println();
 b.isTypeOf(t_library).println();</code></pre>
 <h3 id="how-can-i-get-the-tag-name-of-an-element">How can I get the tag name of an element?<a class="headerlink" href="#how-can-i-get-the-tag-name-of-an-element" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>.name</code> property for this purpose. For instance, if <code>b</code> is an element tagged as <code>&lt;book&gt;</code>, <code>b.name</code> shall return <code>book</code>. The <code>name</code> property is read-only.</p>
-<pre class="prettyprint lang-eol"><code>// Get a random &lt;book&gt; element
+<pre class="highlight"><code class="language-eol">// Get a random &lt;book&gt; element
 var b = t_book.all.random();
 
 // Print its tag
@@ -1933,7 +1966,7 @@ b.name.println();</code></pre>
 <h3 id="how-can-i-getset-the-attributes-of-an-element">How can I get/set the attributes of an element?<a class="headerlink" href="#how-can-i-getset-the-attributes-of-an-element" title="Permanent link">&para;</a></h3>
 <p>You can use the attribute name as a property of the element object, prefixed by <code>a_</code>. For example, if <code>b</code> is the first book of <code>library.xml</code>, <code>b.a_title</code> will return <code>EMF Eclipse Modeling Framework</code>. Attribute properties are read/write.</p>
 <p>In this example, <code>b.a_pages</code> will return <code>744</code> as a string. For <code>744</code> to be returned as an integer instead, the <code>i_</code> prefix should be used instead (i.e. <code>b.i_pages</code>. The driver also supports the following prefixes: <code>b_</code> for boolean, <code>s_</code> for string (alias of <code>a_</code>) and <code>r_</code> for real values. </p>
-<pre class="prettyprint lang-eol"><code>// Print all the titles of the books in the library
+<pre class="highlight"><code class="language-eol">// Print all the titles of the books in the library
 for (b in t_book.all) {
     b.a_title.println();
 }
@@ -1950,12 +1983,12 @@ total.print();
 t_book.all.collect(b|b.i_pages).sum();</code></pre>
 <h3 id="how-can-i-getset-the-text-of-an-element">How can I get/set the text of an element?<a class="headerlink" href="#how-can-i-getset-the-text-of-an-element" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>.text</code> read-write property for this.</p>
-<pre class="prettyprint lang-eol"><code>for (author in t_author.all) {
+<pre class="highlight"><code class="language-eol">for (author in t_author.all) {
     author.text.println();
 }</code></pre>
 <h3 id="how-do-i-get-the-parent-of-an-element">How do I get the parent of an element?<a class="headerlink" href="#how-do-i-get-the-parent-of-an-element" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>.parentNode</code> read-only property for this.</p>
-<pre class="prettyprint lang-eol"><code>// Get a random book
+<pre class="highlight"><code class="language-eol">// Get a random book
 var b = t_book.all.random();
 
 // Print the tag of its parent node
@@ -1963,7 +1996,7 @@ var b = t_book.all.random();
 b.parentNode.name.println();</code></pre>
 <h3 id="how-do-i-get-the-children-of-an-element">How do I get the children of an element?<a class="headerlink" href="#how-do-i-get-the-children-of-an-element" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>.children</code> read-only property for this.</p>
-<pre class="prettyprint lang-eol"><code>// Get the &lt;library&gt; element
+<pre class="highlight"><code class="language-eol">// Get the &lt;library&gt; element
 var lib = t_library.all.first();
 
 // Iterate through its children
@@ -1973,7 +2006,7 @@ for (b in lib.children) {
 }</code></pre>
 <h3 id="how-do-i-get-child-elements-with-a-specific-tag-name">How do I get child elements with a specific tag name?<a class="headerlink" href="#how-do-i-get-child-elements-with-a-specific-tag-name" title="Permanent link">&para;</a></h3>
 <p>Using what you've learned so far, you can do this using a combination of the <code>.children</code> property and the <code>select()</code>/<code>selectOne()</code> operations. However, the driver also supports <code>e_</code> and <code>c_</code>-prefixed shorthand properties for accessing one or a collection of elements with the specified name respectively. <code>e_</code> and <code>c_</code> properties are read-only.</p>
-<pre class="prettyprint lang-eol"><code>// Get a random book
+<pre class="highlight"><code class="language-eol">// Get a random book
 var b = t_book.all.random();
 
 // Get its &lt;author&gt; children using the 
@@ -1995,7 +2028,7 @@ b.children.selectOne(p|p.name = "published").text.println();
 b.e_published.text.println();</code></pre>
 <h3 id="how-do-i-create-an-element">How do I create an element?<a class="headerlink" href="#how-do-i-create-an-element" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>new</code> operator for this. </p>
-<pre class="prettyprint lang-eol"><code>// Check how many &lt;books&gt; are in the library
+<pre class="highlight"><code class="language-eol">// Check how many &lt;books&gt; are in the library
 // Prints '3'
 t_book.all.size().println();
 
@@ -2007,7 +2040,7 @@ var b = new t_book;
 t_book.all.size().println();</code></pre>
 <h3 id="how-can-i-add-a-child-to-an-existing-element">How can I add a child to an existing element?<a class="headerlink" href="#how-can-i-add-a-child-to-an-existing-element" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>.appendChild(child)</code> operation for this.</p>
-<pre class="prettyprint lang-eol"><code>// Create a new book
+<pre class="highlight"><code class="language-eol">// Create a new book
 var b = new t_book;
 
 // Get the library element
@@ -2017,11 +2050,11 @@ var lib = t_library.all.first();
 lib.appendChild(b);</code></pre>
 <h3 id="how-can-i-set-the-root-element-of-an-xml-document">How can I set the root element of an XML document?<a class="headerlink" href="#how-can-i-set-the-root-element-of-an-xml-document" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>.root</code> property for this.</p>
-<pre class="prettyprint lang-eol"><code>XMLDoc.root = new t_library;</code></pre>
+<pre class="highlight"><code class="language-eol">XMLDoc.root = new t_library;</code></pre>
 <div class="admonition warning">
 <p class="admonition-title">Root element is required</p>
 <p>When writing scripts that create new XML documents, e.g. ETL, the root element must be set on the output model. This can be done in a <code>pre</code> block (e.g. if the root is not created by a transformation rule) or in a rule/operation/other. For the Library example above (where <code>lib</code> is the model name): 
-<pre class="prettyprint lang-etl"><code>pre {
+<pre class="highlight"><code class="language-etl">pre {
     var root = new t_library;
     lib.root = root;
 }</code></pre>
@@ -2029,35 +2062,34 @@ If a root element is not assigned, then the output file will be empty.</p>
 </div>
 <h3 id="using-xml-attributes-as-references">Using XML attributes as references<a class="headerlink" href="#using-xml-attributes-as-references" title="Permanent link">&para;</a></h3>
 <p>The XML model type allows XML attributes to be used as references by using the attribute value as a "key" of another element. For example, we could extend the library example to include an author and editor reference on each book, and move authors to the root:</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span>
-<span class="nt">&lt;library&gt;</span>
-<span class="w">    </span><span class="nt">&lt;book</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;EMF Eclipse Modeling Framework&quot;</span><span class="w"> </span><span class="na">pages=</span><span class="s">&quot;744&quot;</span><span class="w"> </span><span class="na">authors=</span><span class="s">&quot;DS,FB,MP,EM&quot;</span><span class="w"> </span><span class="na">editor=</span><span class="s">&quot;EG&quot;</span><span class="nt">&gt;</span>
+<pre class="highlight"><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+&lt;library&gt;
+    &lt;book title="EMF Eclipse Modeling Framework" pages="744" authors="DS,FB,MP,EM" editor="EG"&gt;
 
-<span class="w">        </span><span class="nt">&lt;published&gt;</span>2009<span class="nt">&lt;/published&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/book&gt;</span>
-<span class="w">    </span><span class="nt">&lt;book</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Eclipse Modeling Project: A Domain-Specific Language (DSL) Toolkit&quot;</span><span class="w"> </span><span class="na">pages=</span><span class="s">&quot;736&quot;</span><span class="w"> </span><span class="na">authors=</span><span class="s">&quot;RG&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;published&gt;</span>2009<span class="nt">&lt;/published&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/book&gt;</span>
-<span class="w">    </span><span class="nt">&lt;book</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Official Eclipse 3.0 FAQs&quot;</span><span class="w"> </span><span class="na">pages=</span><span class="s">&quot;432&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;author&gt;</span>John<span class="w"> </span>Arthorne<span class="nt">&lt;/author&gt;</span>
-<span class="w">        </span><span class="nt">&lt;author&gt;</span>Chris<span class="w"> </span>Laffra<span class="nt">&lt;/author&gt;</span>
-<span class="w">        </span><span class="nt">&lt;published&gt;</span>2004<span class="nt">&lt;/published&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/book&gt;</span>
-<span class="w">    </span><span class="nt">&lt;author</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;DS&quot;</span><span class="nt">&gt;</span>Dave<span class="w"> </span>Steinberg<span class="nt">&lt;/author&gt;</span>
-<span class="w">    </span><span class="nt">&lt;author</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;FB&quot;</span><span class="nt">&gt;</span>Frank<span class="w"> </span>Budinsky<span class="nt">&lt;/author&gt;</span>
-<span class="w">    </span><span class="nt">&lt;author</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;MP&quot;</span><span class="nt">&gt;</span>Marcelo<span class="w"> </span>Paternostro<span class="nt">&lt;/author&gt;</span>
-<span class="w">    </span><span class="nt">&lt;author</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;EM&quot;</span><span class="nt">&gt;</span>Ed<span class="w"> </span>Merks<span class="nt">&lt;/author&gt;</span>
-<span class="w">    </span><span class="nt">&lt;author</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;RG&quot;</span><span class="nt">&gt;</span>Richard<span class="w"> </span>Gronback<span class="nt">&lt;/author&gt;</span>
-<span class="w">    </span><span class="nt">&lt;editor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;EG&quot;</span><span class="nt">&gt;</span>Erich<span class="w"> </span>Gamma<span class="nt">&lt;/editor&gt;</span>
-<span class="nt">&lt;/library&gt;</span>
-</code></pre></div>
+        &lt;published&gt;2009&lt;/published&gt;
+    &lt;/book&gt;
+    &lt;book title="Eclipse Modeling Project: A Domain-Specific Language (DSL) Toolkit" pages="736" authors="RG"&gt;
+        &lt;published&gt;2009&lt;/published&gt;
+    &lt;/book&gt;
+    &lt;book title="Official Eclipse 3.0 FAQs" pages="432"&gt;
+        &lt;author&gt;John Arthorne&lt;/author&gt;
+        &lt;author&gt;Chris Laffra&lt;/author&gt;
+        &lt;published&gt;2004&lt;/published&gt;
+    &lt;/book&gt;
+    &lt;author id="DS"&gt;Dave Steinberg&lt;/author&gt;
+    &lt;author id="FB"&gt;Frank Budinsky&lt;/author&gt;
+    &lt;author id="MP"&gt;Marcelo Paternostro&lt;/author&gt;
+    &lt;author id="EM"&gt;Ed Merks&lt;/author&gt;
+    &lt;author id="RG"&gt;Richard Gronback&lt;/author&gt;
+    &lt;editor id="EG"&gt;Erich Gamma&lt;/editor&gt;
+&lt;/library&gt;</code></pre>
 <p>Note that the attributes used for references must be a comma-separated list of "keys".</p>
 <p>For enabling the references, we need to add the desired bindings to the model. The <code>bind</code> method has the following signature: <code>bind(String sourceTag, String sourceAttribute, String targetTag, String targetAttribute, boolean many)</code>. Thus, for the library example, in EOL this can be done like this:</p>
-<pre class="prettyprint lang-eol"><code>model.bind("book", "authors", "author", "id", true);
+<pre class="highlight"><code class="language-eol">model.bind("book", "authors", "author", "id", true);
 model.bind("book", "editor", "editor", "name", false);</code></pre>
 <p>where <code>model</code> is the name of the model (as specified in the run configuration). These statements should be at the top of the EOL file so the bindings are added before any other code executes. For rule-based languages, this could be done in a <code>pre</code> block. If invoking from <a href="#loading-an-xml-document-through-java-code">java</a>) the bind method can be called on the model variable.</p>
 <p>After the bindings are in place, we can use them:</p>
-<pre class="prettyprint lang-eol"><code>var lib = t_library.all.first();
+<pre class="highlight"><code class="language-eol">var lib = t_library.all.first();
 // Prints 4
 lib.c_book.first().authors.size().println();
 // Prints Frank Budinsky
@@ -2069,34 +2101,32 @@ lib.c_book.first().authors.second().text.println();</code></pre>
 <p><img alt="" src="configure.png" /></p>
 <h2 id="loading-an-xml-document-in-your-ant-buildfile">Loading an XML document in your ANT buildfile<a class="headerlink" href="#loading-an-xml-document-in-your-ant-buildfile" title="Permanent link">&para;</a></h2>
 <p>The following ANT build file demonstrates how you can use ANT to load/store and process XML documents with Epsilon.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;project</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;main&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;target</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;main&quot;</span><span class="nt">&gt;</span>
+<pre class="highlight"><code class="language-xml">&lt;project default="main"&gt;
+    &lt;target name="main"&gt;
 
-<span class="w">        </span><span class="nt">&lt;epsilon.xml.loadModel</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;XMLDoc&quot;</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;library.xml&quot;</span>
-<span class="w">            </span><span class="na">read=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="na">store=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/epsilon.xml.loadModel&gt;</span>
+        &lt;epsilon.xml.loadModel name="XMLDoc" file="library.xml"
+            read="true" store="false"/&gt;
+        &lt;/epsilon.xml.loadModel&gt;
 
-<span class="w">        </span><span class="nt">&lt;epsilon.eol</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;my.eol&quot;</span><span class="nt">&gt;</span>
-<span class="w">            </span><span class="nt">&lt;model</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;XMLDoc&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/epsilon.eol&gt;</span>
+        &lt;epsilon.eol src="my.eol"&gt;
+            &lt;model ref="XMLDoc"/&gt;
+        &lt;/epsilon.eol&gt;
 
-<span class="w">    </span><span class="nt">&lt;/target&gt;</span>
-<span class="nt">&lt;/project&gt;</span>
-</code></pre></div>
+    &lt;/target&gt;
+&lt;/project&gt;</code></pre>
 <h2 id="loading-an-xml-document-through-java-code">Loading an XML document through Java code<a class="headerlink" href="#loading-an-xml-document-through-java-code" title="Permanent link">&para;</a></h2>
 <p>The following excerpt demonstrates using XML models using Epsilon's Java API.</p>
-<div class="highlight"><pre><span></span><code><span class="n">EolModule</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EolModule</span><span class="p">();</span>
-<span class="n">module</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;...&quot;</span><span class="p">));</span>
+<pre class="highlight"><code class="language-java">EolModule module = new EolModule();
+module.parse(new File("..."));
 
-<span class="n">PlainXmlModel</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PlainXmlModel</span><span class="p">();</span>
-<span class="n">model</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;M&quot;</span><span class="p">);</span>
-<span class="n">model</span><span class="p">.</span><span class="na">setFile</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;...&quot;</span><span class="p">));</span>
-<span class="n">model</span><span class="p">.</span><span class="na">load</span><span class="p">();</span>
+PlainXmlModel model = new PlainXmlModel();
+model.setName("M");
+model.setFile(new File("..."));
+model.load();
 
-<span class="n">module</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">getModelRepository</span><span class="p">().</span><span class="na">addModel</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
-<span class="n">module</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">setModule</span><span class="p">(</span><span class="n">module</span><span class="p">);</span>
-<span class="n">module</span><span class="p">.</span><span class="na">execute</span><span class="p">();</span>
-</code></pre></div>
+module.getContext().getModelRepository().addModel(model);
+module.getContext().setModule(module);
+module.execute();</code></pre>
 <h2 id="additional-resources">Additional resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="http://java.sun.com/javase/6/docs/api/org/w3c/dom/Element.html">http://java.sun.com/javase/6/docs/api/org/w3c/dom/Element.html</a>: Complete list of the operations that are applicable to XML elements</li>
@@ -2197,25 +2227,7 @@ lib.c_book.first().authors.second().text.println();</code></pre>
     
       <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

@@ -48,15 +48,11 @@
     
       <link rel="stylesheet" href="../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -92,10 +88,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -147,7 +145,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -361,6 +395,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#development-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Development Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#update-sites" class="md-nav__link">
     <span class="md-ellipsis">
       Update Sites
@@ -383,8 +427,8 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#eclipse-marketplace" class="md-nav__link">
     <span class="md-ellipsis">
       Eclipse Marketplace
@@ -392,20 +436,16 @@
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#source-code" class="md-nav__link">
     <span class="md-ellipsis">
       Source Code 
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#maven" class="md-nav__link">
-    <span class="md-ellipsis">
-      Maven
     </span>
   </a>
   
@@ -1812,6 +1852,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#development-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Development Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#update-sites" class="md-nav__link">
     <span class="md-ellipsis">
       Update Sites
@@ -1834,8 +1884,8 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#eclipse-marketplace" class="md-nav__link">
     <span class="md-ellipsis">
       Eclipse Marketplace
@@ -1843,20 +1893,16 @@
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#source-code" class="md-nav__link">
     <span class="md-ellipsis">
       Source Code 
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#maven" class="md-nav__link">
-    <span class="md-ellipsis">
-      Maven
     </span>
   </a>
   
@@ -1899,7 +1945,39 @@
 
 
 <h1 id="download">Download<a class="headerlink" href="#download" title="Permanent link">&para;</a></h1>
-<p>The simplest way to get a copy of Eclipse with Epsilon 2.7 and all its dependencies installed, is to download the <a href="https://wiki.eclipse.org/Eclipse_Installer">Eclipse Installer</a> and select Epsilon.</p>
+<div class="admonition warning">
+<p class="admonition-title">Memory leak in Epsilon 2.7</p>
+<p>Unfortunately, version 2.7 of Epsilon contains <a href="https://github.com/eclipse-epsilon/epsilon/issues/158">a memory leak</a> that can affect applications which parse many Epsilon programs in the same JVM instance. The issue has been resolved, and a new version will be released soon. In the meantime, we recommend using version 2.5.</p>
+</div>
+<p>Epsilon's stable versions are available on <a href="https://mvnrepository.com/artifact/org.eclipse.epsilon">Maven Central</a>. For example, to use version 2.5 of the <a href="../doc/eol/">EOL</a> engine from your Maven project, you should add the following dependency to your <code>pom.xml</code>.</p>
+<pre class="highlight"><code class="language-xml">&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.eclipse.epsilon&lt;/groupId&gt;
+        &lt;artifactId&gt;org.eclipse.epsilon.eol.engine&lt;/artifactId&gt;
+        &lt;version&gt;2.5.0&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre>
+<div class="admonition example">
+<p class="admonition-title">Where can I find examples of using these Maven dependencies?</p>
+<p>See our <a href="../getting-started/#using-epsilon-as-a-java-library">Getting Started</a> page for instructions on how to download and run Maven/Gradle-based examples from the <a href="../playground/">Epsilon Playground</a>.</p>
+</div>
+<p>To use the latest SNAPSHOT (interim) version of Epsilon, you should add the Sonatype snapshots repository to your <code>pom.xml</code> and set the version of the Epsilon libraries to <code>2.8.0-SNAPSHOT</code> as shown below.</p>
+<pre class="highlight"><code class="language-xml">&lt;repositories&gt;
+    &lt;repository&gt;
+        &lt;id&gt;ossrh&lt;/id&gt;
+        &lt;url&gt;https://oss.sonatype.org/content/repositories/snapshots&lt;/url&gt;
+    &lt;/repository&gt;
+&lt;/repositories&gt;
+
+&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.eclipse.epsilon&lt;/groupId&gt;
+        &lt;artifactId&gt;org.eclipse.epsilon.eol.engine&lt;/artifactId&gt;
+        &lt;version&gt;2.8.0-SNAPSHOT&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre>
+<h2 id="development-tools">Development Tools<a class="headerlink" href="#development-tools" title="Permanent link">&para;</a></h2>
+<p>The simplest way to get a copy of Eclipse with Epsilon 2.5 and all its development tools and dependencies installed, is to download the <a href="https://wiki.eclipse.org/Eclipse_Installer">Eclipse Installer</a> and select Epsilon.</p>
 <p><img alt="Epsilon in Eclipse Installer" src="../assets/images/eclipse-installer.png" /></p>
 <table>
 <thead>
@@ -1945,7 +2023,7 @@
 <p class="admonition-title">Warning</p>
 <p>Please do not select the Epsilon project on the second page of the installer in Advanced Mode. This is for Epsilon developers only and may cause issues during installation of the Epsilon product.</p>
 </div>
-<h2 id="update-sites">Update Sites<a class="headerlink" href="#update-sites" title="Permanent link">&para;</a></h2>
+<h3 id="update-sites">Update Sites<a class="headerlink" href="#update-sites" title="Permanent link">&para;</a></h3>
 <p>Alternatively, you can use the following update sites through the <code>Help</code> &rarr; <code>Install new software</code> menu in Eclipse to install (parts of) Epsilon.</p>
 <table>
 <thead>
@@ -1957,7 +2035,7 @@
 <tbody>
 <tr>
 <td>Stable</td>
-<td><code>http://download.eclipse.org/epsilon/updates/2.7/</code></td>
+<td><code>http://download.eclipse.org/epsilon/updates/2.5/</code></td>
 </tr>
 <tr>
 <td>Interim</td>
@@ -1974,7 +2052,7 @@
 <p class="admonition-title">How often is the interim update site rebuilt?</p>
 <p>The interim update site is rebuilt automatically with every push to the main branch of the Epsilon repo. Bugs fixed in the interim version (compared to the latest stable version) are listed <a href="https://bugs.eclipse.org/bugs/buglist.cgi?bug_status=RESOLVED&amp;list_id=17694438&amp;product=epsilon&amp;query_format=advanced">here</a></p>
 </div>
-<h3 id="archived-update-sites">Archived Update Sites<a class="headerlink" href="#archived-update-sites" title="Permanent link">&para;</a></h3>
+<h4 id="archived-update-sites">Archived Update Sites<a class="headerlink" href="#archived-update-sites" title="Permanent link">&para;</a></h4>
 <p>Below are also links to compressed versions of the Epsilon update sites for long-term archival and to support users who are behind corporate firewalls.</p>
 <table>
 <thead>
@@ -1986,7 +2064,7 @@
 <tbody>
 <tr>
 <td>Stable</td>
-<td><a href="https://www.eclipse.org/downloads/download.php?file=/epsilon/updates/2.7/epsilon-2.7-site.zip">https://www.eclipse.org/downloads/download.php?file=/epsilon/updates/2.7/epsilon-2.7-site.zip</a></td>
+<td><a href="https://www.eclipse.org/downloads/download.php?file=/epsilon/updates/2.5/epsilon-2.5-site.zip">https://www.eclipse.org/downloads/download.php?file=/epsilon/updates/2.5/epsilon-2.5-site.zip</a></td>
 </tr>
 <tr>
 <td>Interim</td>
@@ -1994,7 +2072,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="eclipse-marketplace">Eclipse Marketplace<a class="headerlink" href="#eclipse-marketplace" title="Permanent link">&para;</a></h2>
+<h3 id="eclipse-marketplace">Eclipse Marketplace<a class="headerlink" href="#eclipse-marketplace" title="Permanent link">&para;</a></h3>
 <p>If you prefer to install Epsilon through the Eclipse Marketplace, you can drag and drop <a style="position:relative;top:8px" href="https://marketplace.eclipse.org/marketplace-client-intro?mpc_install=400" title="install"><img src="https://marketplace.eclipse.org/sites/all/modules/custom/marketplace/images/installbutton.png"/></a> into a running instance of Eclipse.</p>
 <h2 id="source-code">Source Code <a href="https://ci.eclipse.org/epsilon/job/interim-kubernetes/job/main/lastBuild/"><img src="https://ci.eclipse.org/epsilon/job/interim-kubernetes/job/main/badge/icon" style="float:right;position:relative;top:7px"></a><a class="headerlink" href="#source-code" title="Permanent link">&para;</a></h2>
 <p>The source code of Epsilon is in the following Git repository.</p>
@@ -2012,38 +2090,11 @@
 </tr>
 <tr>
 <td>Release tag</td>
-<td><code>https://github.com/eclipse-epsilon/epsilon/releases/tag/2.7</code></td>
+<td><code>https://github.com/eclipse-epsilon/epsilon/releases/tag/2.5</code></td>
 </tr>
 </tbody>
 </table>
 <p>Additional projects which are experimental or have dependencies which are incompatible with the Eclipse Public License are available in <a href="https://github.com/epsilonlabs">Epsilon Labs</a>.</p>
-<h2 id="maven">Maven<a class="headerlink" href="#maven" title="Permanent link">&para;</a></h2>
-<p>Epsilon JARs are available from <a href="https://mvnrepository.com/artifact/org.eclipse.epsilon">Maven Central</a>. For
-instance, to use the <code>EOL engine</code> JAR from your <code>pom.xml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependencies&gt;</span>
-<span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
-<span class="w">        </span><span class="nt">&lt;groupId&gt;</span>org.eclipse.epsilon<span class="nt">&lt;/groupId&gt;</span>
-<span class="w">        </span><span class="nt">&lt;artifactId&gt;</span>org.eclipse.epsilon.eol.engine<span class="nt">&lt;/artifactId&gt;</span>
-<span class="w">        </span><span class="nt">&lt;version&gt;</span>2.7.0<span class="nt">&lt;/version&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
-<span class="nt">&lt;/dependencies&gt;</span>
-</code></pre></div>
-<p>To use the latest SNAPSHOT (interim) version of Epsilon, you should add the Sonatype snapshots repository to your <code>pom.xml</code> and set the version of the Epsilon libraries to <code>2.7.0-SNAPSHOT</code> as shown below.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;repositories&gt;</span>
-<span class="w">    </span><span class="nt">&lt;repository&gt;</span>
-<span class="w">        </span><span class="nt">&lt;id&gt;</span>ossrh<span class="nt">&lt;/id&gt;</span>
-<span class="w">        </span><span class="nt">&lt;url&gt;</span>https://oss.sonatype.org/content/repositories/snapshots<span class="nt">&lt;/url&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/repository&gt;</span>
-<span class="nt">&lt;/repositories&gt;</span>
-
-<span class="nt">&lt;dependencies&gt;</span>
-<span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
-<span class="w">        </span><span class="nt">&lt;groupId&gt;</span>org.eclipse.epsilon<span class="nt">&lt;/groupId&gt;</span>
-<span class="w">        </span><span class="nt">&lt;artifactId&gt;</span>org.eclipse.epsilon.eol.engine<span class="nt">&lt;/artifactId&gt;</span>
-<span class="w">        </span><span class="nt">&lt;version&gt;</span>2.7.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
-<span class="nt">&lt;/dependencies&gt;</span>
-</code></pre></div>
 <h2 id="older-versions">Older versions<a class="headerlink" href="#older-versions" title="Permanent link">&para;</a></h2>
 <p>Previous stable versions of Epsilon are available <a href="all-versions">here</a>.</p>
 <h2 id="this-website">This website<a class="headerlink" href="#this-website" title="Permanent link">&para;</a></h2>
@@ -2182,25 +2233,7 @@ instance, to use the <code>EOL engine</code> JAR from your <code>pom.xml</code>:
     
       <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../assets/javascript/mermaid.js"></script>
-      
-        <script src="../assets/javascript/jquery.js"></script>
-      
-        <script src="../assets/javascript/slick.min.js"></script>
-      
-        <script src="../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../assets/dist/bundle.js"></script>
       
     
   </body>

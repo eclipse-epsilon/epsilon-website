@@ -48,15 +48,11 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -92,10 +88,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -147,7 +145,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -2180,24 +2214,23 @@
 
 <h1 id="flexmi">Flexmi<a class="headerlink" href="#flexmi" title="Permanent link">&para;</a></h1>
 <p>Flexmi (pronounced <em>flex-em-eye</em>) is a <strong>reflective textual syntax for EMF models</strong>. Flexmi supports an XML-based and a <a href="#yaml-flavour">YAML-based</a> flavour and offers features such as fuzzy matching of tags and attributes against Ecore class/feature names, support for embedding EOL expressions in models and for defining and instantiating model element templates. For example, the following XML document (<code>acme.flexmi</code>):</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?nsuri psl?&gt;</span>
-<span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="nt">&gt;</span>
-<span class="w">  </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Bob&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Analysis&quot;</span><span class="w"> </span><span class="na">start=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/task&gt;</span>
-<span class="w">  </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Design&quot;</span><span class="w"> </span><span class="na">start=</span><span class="s">&quot;4&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;6&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Bob&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/task&gt;</span>
-<span class="w">  </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Implementation&quot;</span><span class="w"> </span><span class="na">start=</span><span class="s">&quot;7&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Bob&quot;</span><span class="w"> </span><span class="na">perc=</span><span class="s">&quot;50&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Alice&quot;</span><span class="w"> </span><span class="na">perc=</span><span class="s">&quot;50&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/task&gt;</span>
-<span class="nt">&lt;/project&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
+&lt;project title="ACME"&gt;
+  &lt;person name="Alice"/&gt;
+  &lt;person name="Bob"/&gt;
+  &lt;task title="Analysis" start="1" dur="3"&gt;
+    &lt;effort person="Alice"/&gt;
+  &lt;/task&gt;
+  &lt;task title="Design" start="4" dur="6"&gt;
+    &lt;effort person="Bob"/&gt;
+  &lt;/task&gt;
+  &lt;task title="Implementation" start="7" dur="3"&gt;
+    &lt;effort person="Bob" perc="50"/&gt;
+    &lt;effort person="Alice" perc="50"/&gt;
+  &lt;/task&gt;
+&lt;/project&gt;</code></pre>
 <p>is a valid instance of the Ecore metamodel (in Emfatic) below (<code>psl</code> stands for Project Scheduling Language):</p>
-<pre class="prettyprint lang-emf"><code>@namespace(uri="psl", prefix="")
+<pre class="highlight"><code class="language-emf">@namespace(uri="psl", prefix="")
 package psl;
 
 class Project {
@@ -2239,102 +2272,94 @@ class Skill {
 <p><img alt="" src="screenshot.png" /></p>
 <h2 id="fuzzy-parsing">Fuzzy Parsing<a class="headerlink" href="#fuzzy-parsing" title="Permanent link">&para;</a></h2>
 <p>The Flexmi parser uses fuzzy matching to map the tags in the XML document to instances of EClasses in the target metamodel. In Flexmi, attributes and non-containment references are captured using XML attributes. Multiple values can be captured in a single XML attribute as comma-delimited strings as shown below.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?nsuri psl?&gt;</span>
-<span class="nt">&lt;_&gt;</span>
-<span class="w">  </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="w"> </span><span class="na">skills=</span><span class="s">&quot;Java, HTML&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;skill</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Java&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;skill</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;HTML&quot;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;/_&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
+&lt;_&gt;
+  &lt;person name="Alice" skills="Java, HTML"/&gt;
+  &lt;skill name="Java"/&gt;
+  &lt;skill name="HTML"/&gt;
+&lt;/_&gt;</code></pre>
 <p>Containment references are captured using XML element containment. If an XML element has attributes, the Flexmi parser will compare its tag against EClass/EReference names expected in the context and choose the best match. For example, when it encounters the <code>&lt;person&gt;</code> element below, knowing that it is already in the context of <code>Project</code> it will match the name <code>person</code> against the names of the containment references of <code>Project</code> (<code>tasks</code>, <code>people</code>) and (all the sub-types of) their types (<code>Person</code>, <code>Task</code>) and will decide that the best match for it is <code>Person</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?nsuri psl?&gt;</span>
-<span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="nt">&gt;</span>
-<span class="w">  </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span>...
-<span class="nt">&lt;/project&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
+&lt;project title="ACME"&gt;
+  &lt;person name="Alice"/&gt;
+  ...
+&lt;/project&gt;</code></pre>
 <p>As such, it will create an instance of <code>Person</code> and will then try to find a suitable containment reference for it (<code>people</code>). If there were multiple containment references of type <code>Person</code> in class <code>Project</code>, we could help the Flexmi parser by either using the name of the target reference instead or <code>person</code>, or by using an empty container element as follows.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?nsuri psl?&gt;</span>
-<span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="nt">&gt;</span>
-<span class="w">  </span><span class="nt">&lt;people&gt;</span>
-<span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/people&gt;</span>
-<span class="nt">&lt;/project&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
+&lt;project title="ACME"&gt;
+  &lt;people&gt;
+    &lt;person name="Alice"/&gt;
+  &lt;/people&gt;
+&lt;/project&gt;</code></pre>
 <h3 id="non-containment-reference-resolution">Non-Containment Reference Resolution<a class="headerlink" href="#non-containment-reference-resolution" title="Permanent link">&para;</a></h3>
 <p>To resolve non-containment references, Flexmi needs target elements to have some kind of ID. If a class has an EAttribute marked as <code>id</code>, Flexmi will use that to identify its instances, otherwise, it will use the value of the <code>name</code> attribute, if present. Fully-qualified ID paths, separated by <code>.</code> are also supported.</p>
 <h3 id="long-attribute-values">Long Attribute Values<a class="headerlink" href="#long-attribute-values" title="Permanent link">&para;</a></h3>
 <p>XML elements can also be used instead of XML attributes to capture long/multiline EAttributes. For example, we can use a <code>&lt;description&gt;</code> nested element instead of an attribute as below.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?nsuri psl?&gt;</span>
-<span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="nt">&gt;</span>
-<span class="w">  </span><span class="nt">&lt;description&gt;</span>
-<span class="w">    </span>Lorem<span class="w"> </span>ipsum<span class="w"> </span>dolor<span class="w"> </span>sit<span class="w"> </span>amet,
-<span class="w">    </span>consectetur<span class="w"> </span>adipiscing<span class="w"> </span>elit,
-<span class="w">    </span>sed<span class="w"> </span>do<span class="w"> </span>eiusmod<span class="w"> </span>tempor<span class="w"> </span>incididunt
-<span class="w">    </span>ut<span class="w"> </span>labore<span class="w"> </span>et<span class="w"> </span>dolore<span class="w"> </span>magna<span class="w"> </span>aliqua.
-<span class="w">  </span><span class="nt">&lt;/description&gt;</span>
-<span class="nt">&lt;/project&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
+&lt;project title="ACME"&gt;
+  &lt;description&gt;
+    Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit,
+    sed do eiusmod tempor incididunt
+    ut labore et dolore magna aliqua.
+  &lt;/description&gt;
+&lt;/project&gt;</code></pre>
 <p>To keep very long values out of Flexmi models altogether, appending an <code>_</code> to the name of an attribute will instruct the Flexmi parser to look for a file with that name and parse its content as the value of the attribute as shown below.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?nsuri psl?&gt;</span>
-<span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="w"> </span><span class="na">description_=</span><span class="s">&quot;readme.txt&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/project&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
+&lt;project title="ACME" description_="readme.txt"&gt;
+&lt;/project&gt;</code></pre>
 <h3 id="attribute-assignment">Attribute Assignment<a class="headerlink" href="#attribute-assignment" title="Permanent link">&para;</a></h3>
 <p>The Flexmi parser uses an implementation of the <a href="https://en.wikipedia.org/wiki/Hungarian_algorithm">Hungarian algorithm</a> to decide the best match of XML attribute names to EAttribute and non-containment EReference names.
 Containment EReference names are currently ignored during matching.</p>
 <h2 id="executable-attributes">Executable Attributes<a class="headerlink" href="#executable-attributes" title="Permanent link">&para;</a></h2>
 <p>Prepending <code>:</code> to the name of an attribute instructs the Flexmi parser to interpret its value as an executable <a href="../eol">EOL</a> expression instead of a literal value. Also, Flexmi supports attaching a <code>:var</code> or a <code>:global</code> attribute to XML elements, to declare local/global variables that can be used in EOL expressions. The scope of local variables includes siblings of the element, and their descendants, while global variables can be accessed from anywhere in the model.</p>
 <p>For example, in the Flexmi model below, the <code>Design</code> task is assigned to a local variable named <code>design</code>, which is then used to compute the value of the <code>start</code> time of the implementation task.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?nsuri psl?&gt;</span>
-<span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="nt">&gt;</span>
-<span class="w">  </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Bob&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Analysis&quot;</span><span class="w"> </span><span class="na">start=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/task&gt;</span>
-<span class="w">  </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Design&quot;</span><span class="w"> </span><span class="na">start=</span><span class="s">&quot;4&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;6&quot;</span><span class="w"> </span><span class="na">:var=</span><span class="s">&quot;design&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Bob&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/task&gt;</span>
-<span class="w">  </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Implementation&quot;</span><span class="w"> </span><span class="na">:start=</span><span class="s">&quot;design.start + design.duration + 1&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Bob&quot;</span><span class="w"> </span><span class="na">perc=</span><span class="s">&quot;50&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Alice&quot;</span><span class="w"> </span><span class="na">perc=</span><span class="s">&quot;50&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/task&gt;</span>
-<span class="nt">&lt;/project&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
+&lt;project title="ACME"&gt;
+  &lt;person name="Alice"/&gt;
+  &lt;person name="Bob"/&gt;
+  &lt;task title="Analysis" start="1" dur="3"&gt;
+    &lt;effort person="Alice"/&gt;
+  &lt;/task&gt;
+  &lt;task title="Design" start="4" dur="6" :var="design"&gt;
+    &lt;effort person="Bob"/&gt;
+  &lt;/task&gt;
+  &lt;task title="Implementation" :start="design.start + design.duration + 1" dur="3"&gt;
+    &lt;effort person="Bob" perc="50"/&gt;
+    &lt;effort person="Alice" perc="50"/&gt;
+  &lt;/task&gt;
+&lt;/project&gt;</code></pre>
 <p>You can also use <code>:var</code>/<code>:global</code> and EOL attributes to refer to model elements without using names/ids as identifiers. For example, in the version, below, <code>Alice</code> is attached to the local variable name <code>alice</code>, which is then used in the <code>:person</code> reference of the second effort of the <code>Implementation</code> task.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?nsuri psl?&gt;</span>
-<span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="nt">&gt;</span>
-<span class="w">  </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="w"> </span><span class="na">:var=</span><span class="s">&quot;alice&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Bob&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Analysis&quot;</span><span class="w"> </span><span class="na">start=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/task&gt;</span>
-<span class="w">  </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Design&quot;</span><span class="w"> </span><span class="na">start=</span><span class="s">&quot;4&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;6&quot;</span><span class="w"> </span><span class="na">:var=</span><span class="s">&quot;design&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Bob&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/task&gt;</span>
-<span class="w">  </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Implementation&quot;</span><span class="w"> </span><span class="na">:start=</span><span class="s">&quot;design.start+design.duration+1&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Bob&quot;</span><span class="w"> </span><span class="na">perc=</span><span class="s">&quot;50&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">:person=</span><span class="s">&quot;alice&quot;</span><span class="w"> </span><span class="na">perc=</span><span class="s">&quot;50&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/task&gt;</span>
-<span class="nt">&lt;/project&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
+&lt;project title="ACME"&gt;
+  &lt;person name="Alice" :var="alice"/&gt;
+  &lt;person name="Bob"/&gt;
+  &lt;task title="Analysis" start="1" dur="3"&gt;
+    &lt;effort person="Alice"/&gt;
+  &lt;/task&gt;
+  &lt;task title="Design" start="4" dur="6" :var="design"&gt;
+    &lt;effort person="Bob"/&gt;
+  &lt;/task&gt;
+  &lt;task title="Implementation" :start="design.start+design.duration+1" dur="3"&gt;
+    &lt;effort person="Bob" perc="50"/&gt;
+    &lt;effort :person="alice" perc="50"/&gt;
+  &lt;/task&gt;
+&lt;/project&gt;</code></pre>
 <h2 id="object-initialization">Object Initialization<a class="headerlink" href="#object-initialization" title="Permanent link">&para;</a></h2>
 <p>An XML element representing an object can have an <code>:init</code> child with complex EOL-based initialization logic.
 For example, this would initialize the "Analysis" task to have an Effort child pointing to the first Person in the model:</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?nsuri psl?&gt;</span>
-<span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="nt">&gt;</span>
-<span class="w">  </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Bob&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Analysis&quot;</span><span class="w"> </span><span class="na">start=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;:init&gt;</span>
-<span class="w">      </span>var<span class="w"> </span>effort<span class="w"> </span>=<span class="w"> </span>new<span class="w"> </span>Effort();
-<span class="w">      </span>self.effort.add(effort);
-<span class="w">      </span>effort.person<span class="w"> </span>=<span class="w"> </span>Person.all.first();
-<span class="w">    </span><span class="nt">&lt;/:init&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/task&gt;</span>
-<span class="nt">&lt;/project&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
+&lt;project title="ACME"&gt;
+  &lt;person name="Alice"/&gt;
+  &lt;person name="Bob"/&gt;
+  &lt;task title="Analysis" start="1" dur="3"&gt;
+    &lt;:init&gt;
+      var effort = new Effort();
+      self.effort.add(effort);
+      effort.person = Person.all.first();
+    &lt;/:init&gt;
+  &lt;/task&gt;
+&lt;/project&gt;</code></pre>
 <div class="admonition warning">
 <p class="admonition-title">ITool instances not available</p>
 <p>Since Flexmi is designed to work from outside Eclipse, <a href="../articles/call-java-from-epsilon/">Eclipse extension point-based tools</a> are not available from Flexmi EOL code.</p>
@@ -2347,78 +2372,74 @@ For example, this would initialize the "Analysis" task to have an Effort child p
 <p>If you need to have multiple top-level elements in your model, you can add them under a <code>&lt;_&gt;</code> root element, which has no other semantics.</p>
 <h2 id="reusable-templates">Reusable Templates<a class="headerlink" href="#reusable-templates" title="Permanent link">&para;</a></h2>
 <p>Flexmi supports defining reusable templates through the reserved <code>&lt;:template&gt;</code> XML tag. For example, when designing one-person projects where all tasks take place in sequence, we can omit all the repetitive <code>&lt;effort&gt;</code> elements that refer to the same person, and we can automate the calculation of the start date of each task using a <code>simpletask</code> template, as shown below.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?nsuri psl?&gt;</span>
-<span class="nt">&lt;_&gt;</span>
-<span class="w">  </span><span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;simpletask</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Analysis&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;3&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;simpletask</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Design&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;3&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;simpletask</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Implementation&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;6&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/project&gt;</span>
+<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
+&lt;_&gt;
+  &lt;project title="ACME"&gt;
+    &lt;person name="Alice"/&gt;
+    &lt;simpletask title="Analysis" dur="3"/&gt;
+    &lt;simpletask title="Design" dur="3"/&gt;
+    &lt;simpletask title="Implementation" dur="6"/&gt;
+  &lt;/project&gt;
 
-<span class="w">  </span><span class="nt">&lt;:template</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;simpletask&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;content&gt;</span>
-<span class="w">      </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">:start=</span><span class="s">&quot;Task.all.indexOf(self).asVar(&#39;index&#39;) == 0 ? 1 : Task.all.get(index-1).asVar(&#39;previous&#39;).start + previous.duration&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">:person=</span><span class="s">&quot;Person.all.first()&quot;</span><span class="nt">/&gt;</span>
-<span class="w">      </span><span class="nt">&lt;/task&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/content&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/:template&gt;</span>
-<span class="nt">&lt;/_&gt;</span>
-</code></pre></div>
+  &lt;:template name="simpletask"&gt;
+    &lt;content&gt;
+      &lt;task :start="Task.all.indexOf(self).asVar('index') == 0 ? 1 : Task.all.get(index-1).asVar('previous').start + previous.duration"&gt;
+        &lt;effort :person="Person.all.first()"/&gt;
+      &lt;/task&gt;
+    &lt;/content&gt;
+  &lt;/:template&gt;
+&lt;/_&gt;</code></pre>
 <h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
 <p>Flexmi templates also support parameters, which can be used to configure the content they produce when they are invoked. An example is shown below:</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?nsuri psl?&gt;</span>
-<span class="nt">&lt;_&gt;</span>
-<span class="w">  </span><span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;design</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;3&quot;</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/project&gt;</span>
+<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
+&lt;_&gt;
+  &lt;project title="ACME"&gt;
+    &lt;person name="Alice"/&gt;
+    &lt;design dur="3" person="Alice"/&gt;
+  &lt;/project&gt;
 
-<span class="w">  </span><span class="nt">&lt;:template</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;design&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;parameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;person&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;content&gt;</span>
-<span class="w">      </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Design&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;${person}&quot;</span><span class="nt">/&gt;</span>
-<span class="w">      </span><span class="nt">&lt;/task&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/content&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/:template&gt;</span>
-<span class="nt">&lt;/_&gt;</span>
-</code></pre></div>
+  &lt;:template name="design"&gt;
+    &lt;parameter name="person"/&gt;
+    &lt;content&gt;
+      &lt;task name="Design"&gt;
+        &lt;effort person="${person}"/&gt;
+      &lt;/task&gt;
+    &lt;/content&gt;
+  &lt;/:template&gt;
+&lt;/_&gt;</code></pre>
 <h3 id="dynamic-templates-and-slots">Dynamic Templates and Slots<a class="headerlink" href="#dynamic-templates-and-slots" title="Permanent link">&para;</a></h3>
 <p>To further customise the content that Flexmi templates produce, one can use an <a href="../egl">EGL</a> template that produces XML as the value of the <code>&lt;content&gt;</code> element of the template, by setting it's language to EGL as shown below. Also Flexmi supports a <code>&lt;:slot&gt;</code> element in the content of templates, which specifies where any nested elements of the caller should be placed in the produced XML as shown below.</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?nsuri psl?&gt;</span>
-<span class="nt">&lt;_&gt;</span>
-<span class="w">  </span><span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;longtask</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Implementation&quot;</span><span class="w"> </span><span class="na">years=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
-<span class="w">      </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/longtask&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/project&gt;</span>
+<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
+&lt;_&gt;
+  &lt;project title="ACME"&gt;
+    &lt;person name="Alice"/&gt;
+    &lt;longtask title="Implementation" years="2"&gt;
+      &lt;effort person="Alice"/&gt;
+    &lt;/longtask&gt;
+  &lt;/project&gt;
 
-<span class="w">  </span><span class="nt">&lt;:template</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;longtask&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;parameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;years&quot;</span><span class="nt">/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;content</span><span class="w"> </span><span class="na">language=</span><span class="s">&quot;EGL&quot;</span><span class="nt">&gt;</span>
-<span class="w">      </span><span class="cp">&lt;![CDATA[</span>
-<span class="cp">      &lt;task duration=&quot;[%=years.asInteger()*12%]&quot;&gt;</span>
-<span class="cp">        &lt;:slot/&gt;</span>
-<span class="cp">      &lt;/task&gt;</span>
-<span class="cp">      ]]&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/content&gt;</span>
-<span class="w">  </span><span class="nt">&lt;/:template&gt;</span>
-<span class="nt">&lt;/_&gt;</span>
-</code></pre></div>
+  &lt;:template name="longtask"&gt;
+    &lt;parameter name="years"/&gt;
+    &lt;content language="EGL"&gt;
+      &lt;![CDATA[
+      &lt;task duration="[%=years.asInteger()*12%]"&gt;
+        &lt;:slot/&gt;
+      &lt;/task&gt;
+      ]]&gt;
+    &lt;/content&gt;
+  &lt;/:template&gt;
+&lt;/_&gt;</code></pre>
 <h3 id="reusing-templates-in-different-flexmi-models">Reusing Templates in Different Flexmi Models<a class="headerlink" href="#reusing-templates-in-different-flexmi-models" title="Permanent link">&para;</a></h3>
 <p>Templates can be stored in separate Flexmi files and be imported from different models using Flexmi's <code>&lt;?include ?&gt;</code> processing instruction.</p>
 <h2 id="use-in-epsilon-and-java">Use in Epsilon and Java<a class="headerlink" href="#use-in-epsilon-and-java" title="Permanent link">&para;</a></h2>
 <p>Flexmi offers and registers an implementation of <a href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.4.3/org/eclipse/emf/ecore/resource/Resource.html">EMF's Resource interface</a> (<code>FlexmiResource</code>), and can be used like any other EMF resource implementation. For example, you can add <code>.flexmi</code> models as regular EMF models to the run configuration of your Epsilon program. An example of using Flexmi from Java follows.</p>
-<div class="highlight"><pre><span></span><code><span class="n">ResourceSet</span><span class="w"> </span><span class="n">resourceSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ResourceSetImpl</span><span class="p">();</span>
-<span class="n">resourceSet</span><span class="p">.</span><span class="na">getResourceFactoryRegistry</span><span class="p">().</span>
-<span class="w">  </span><span class="n">getExtensionToFactoryMap</span><span class="p">().</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;flexmi&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">FlexmiResourceFactory</span><span class="p">());</span>
-<span class="n">Resource</span><span class="w"> </span><span class="n">resource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">resourceSet</span><span class="p">.</span><span class="na">createResource</span>
-<span class="w">  </span><span class="p">(</span><span class="n">URI</span><span class="p">.</span><span class="na">createFileURI</span><span class="p">(</span><span class="s">&quot;/../acme.flexmi&quot;</span><span class="p">));</span>
-<span class="n">resource</span><span class="p">.</span><span class="na">load</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-java">ResourceSet resourceSet = new ResourceSetImpl();
+resourceSet.getResourceFactoryRegistry().
+  getExtensionToFactoryMap().put("flexmi",
+    new FlexmiResourceFactory());
+Resource resource = resourceSet.createResource
+  (URI.createFileURI("/../acme.flexmi"));
+resource.load(null);</code></pre>
 <h2 id="converting-to-xmi">Converting to XMI<a class="headerlink" href="#converting-to-xmi" title="Permanent link">&para;</a></h2>
 <p>You can convert a Flexmi model to standard XMI (with no templates, executable attributes etc.) by right-clicking on it in the Project Explorer view and selecting <code>Generate XMI</code>.</p>
 <p>Converting an XMI model to Flexmi on the other hand is not supported as there's no unique mapping in this direction.</p>
@@ -2431,72 +2452,69 @@ For example, this would initialize the "Analysis" task to have an Effort child p
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Indentation-based</label><label for="__tabbed_1_2">Curly brackets-based</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">?nsuri</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">psl</span>
-<span class="nt">project</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ACME</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">Alice</span><span class="p p-Indicator">}</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">Bob</span><span class="p p-Indicator">}</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">dur</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">effort</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="nv">Alice</span><span class="p p-Indicator">}</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Design</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">dur</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">effort</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="nv">Bob</span><span class="p p-Indicator">}</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Implementation</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">dur</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">effort</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="nv">Bob</span><span class="p p-Indicator">,</span><span class="nt"> perc</span><span class="p">:</span><span class="w"> </span><span class="nv">50</span><span class="p p-Indicator">}</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">effort</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="nv">Alice</span><span class="p p-Indicator">,</span><span class="nt"> perc</span><span class="p">:</span><span class="w"> </span><span class="nv">50</span><span class="p p-Indicator">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-yaml">?nsuri: psl
+project:
+- name: ACME
+- person: {name: Alice}
+- person: {name: Bob}
+- task:
+  - title: Analysis
+  - start: 1
+  - dur: 3
+  - effort: {person: Alice}
+- task:
+  - title: Design
+  - start: 4
+  - dur: 6
+  - effort: {person: Bob}
+- task:
+  - title: Implementation
+  - start: 7
+  - dur: 3
+  - effort: {person: Bob, perc: 50}
+  - effort: {person: Alice, perc: 50}</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">?nsuri</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">psl</span>
-<span class="nt">project</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="nt">  name</span><span class="p">:</span><span class="w"> </span><span class="nv">ACME</span><span class="p p-Indicator">,</span>
-<span class="nt">  person</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">Alice</span><span class="p p-Indicator">},</span>
-<span class="nt">  person</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">Bob</span><span class="p p-Indicator">},</span>
-<span class="nt">  task</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="nt">    title</span><span class="p">:</span><span class="w"> </span><span class="nv">Analysis</span><span class="p p-Indicator">,</span>
-<span class="nt">    start</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
-<span class="nt">    dur</span><span class="p">:</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span>
-<span class="nt">    effort</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="nv">Alice</span><span class="p p-Indicator">}</span>
-<span class="w">  </span><span class="p p-Indicator">},</span>
-<span class="nt">  task</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="nt">    title</span><span class="p">:</span><span class="w"> </span><span class="nv">Design</span><span class="p p-Indicator">,</span>
-<span class="nt">    start</span><span class="p">:</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span>
-<span class="nt">    dur</span><span class="p">:</span><span class="w"> </span><span class="nv">6</span><span class="p p-Indicator">,</span>
-<span class="nt">    effort</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="nv">Bob</span><span class="p p-Indicator">}</span>
-<span class="w">  </span><span class="p p-Indicator">},</span>
-<span class="nt">  task</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="nt">    title</span><span class="p">:</span><span class="w"> </span><span class="nv">Implementation</span><span class="p p-Indicator">,</span>
-<span class="nt">    start</span><span class="p">:</span><span class="w"> </span><span class="nv">7</span><span class="p p-Indicator">,</span>
-<span class="nt">    dur</span><span class="p">:</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span>
-<span class="nt">    effort</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="nv">Bob</span><span class="p p-Indicator">,</span><span class="nt"> perc</span><span class="p">:</span><span class="w"> </span><span class="nv">50</span><span class="p p-Indicator">},</span>
-<span class="nt">    effort</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="nv">Alice</span><span class="p p-Indicator">,</span><span class="nt"> perc</span><span class="p">:</span><span class="w"> </span><span class="nv">50</span><span class="p p-Indicator">}</span>
-<span class="w">  </span><span class="p p-Indicator">}</span>
-<span class="p p-Indicator">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-yaml">?nsuri: psl
+project: {
+  name: ACME,
+  person: {name: Alice},
+  person: {name: Bob},
+  task: {
+    title: Analysis,
+    start: 1,
+    dur: 3,
+    effort: {person: Alice}
+  },
+  task: {
+    title: Design,
+    start: 4,
+    dur: 6,
+    effort: {person: Bob}
+  },
+  task: {
+    title: Implementation,
+    start: 7,
+    dur: 3,
+    effort: {person: Bob, perc: 50},
+    effort: {person: Alice, perc: 50}
+  }
+}</code></pre>
 </div>
 </div>
 </div>
 <p>For multi-valued attributes and non-containment references, comma-separated values, or lists of scalars can be used as shown below.</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">?nsuri</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">psl</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">person</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alice</span><span class="w"> </span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">skills</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Java, HTML</span><span class="w"> </span><span class="c1"># Comma-separated</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">person</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bob</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">skills</span><span class="p">:</span><span class="w"> </span><span class="c1"># List of scalars</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Java</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTML</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">skill</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">Java</span><span class="p p-Indicator">}</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">skill</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">HTML</span><span class="p p-Indicator">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-yaml">- ?nsuri: psl
+- person:
+  - name: Alice 
+  - skills: Java, HTML # Comma-separated
+- person:
+  - name: Bob
+  - skills: # List of scalars
+      - Java
+      - HTML
+- skill: {name: Java}
+- skill: {name: HTML}</code></pre>
 <div class="admonition tip">
 <p class="admonition-title">Tabs vs. Spaces</p>
 <p>If your YAML-flavoured Flexmi model doesn't parse (i.e. the outline view of the Flexmi editor is empty), you may want to check that you have not accidentally used tabs instead of spaces for indentation.</p>
@@ -2504,29 +2522,28 @@ For example, this would initialize the "Analysis" task to have an Effort child p
 <p>The Flexmi parser auto-detects whether a file is XML-based or YAML-based and parses it accordingly. As such, you should be able to edit YAML-flavoured <code>*.flexmi</code> files in the Flexmi editor. Additional examples of YAML-flavoured Flexmi models are available in this <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/tests/org.eclipse.epsilon.flexmi.test/src/org/eclipse/epsilon/flexmi/test/models">test project</a> (look for <code>*.yaml</code> files).</p>
 <h3 id="dynamic-templates-in-yaml">Dynamic Templates in YAML<a class="headerlink" href="#dynamic-templates-in-yaml" title="Permanent link">&para;</a></h3>
 <p>The YAML flavour requires a <code>script</code> attribute in the <code>content</code> of dynamic templates, that holds the EGL script used to dynamically produce the YAML content. The YAML equivalent of the XML-based dynamic template <a href="#dynamic-templates-and-slots">shown above</a> is as follows.</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">?nsuri</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">psl</span>
+<pre class="highlight"><code class="language-yaml">- ?nsuri: psl
 
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">project</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ACME</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">person</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alice</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">longtask</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Implementation</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">years</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">effort</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alice</span>
+- project:
+  - title: ACME
+  - person:
+    - name: Alice
+  - longtask:
+    - title: Implementation
+    - years: 2
+    - effort:
+      - person: Alice
 
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">:template</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">longtask</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">parameter</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">years</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">content</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EGL</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span><span class="w"> </span><span class="c1"># Multi-line EGL script</span>
-<span class="w">       </span><span class="no">- task:</span>
-<span class="w">         </span><span class="no">- duration: [%=years.asInteger()*12%]</span>
-<span class="w">         </span><span class="no">- :slot</span>
-</code></pre></div>
+- :template:
+  - name: longtask
+  - parameter:
+    - name: years
+  - content:
+    - language: EGL
+    - script: |- # Multi-line EGL script
+       - task:
+         - duration: [%=years.asInteger()*12%]
+         - :slot</code></pre>
 <h2 id="philosophy">Philosophy<a class="headerlink" href="#philosophy" title="Permanent link">&para;</a></h2>
 <p>Flexmi was originally developed as a quick and dirty way to type in EMF models without having to define an Xtext grammar or adhere to the rigid naming rules of XMI or HUTN. The name is a combination of the word "flexible" and the "XMI" acronym.</p>
 <h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
@@ -2679,25 +2696,7 @@ For example, this would initialize the "Analysis" task to have an Effort child p
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

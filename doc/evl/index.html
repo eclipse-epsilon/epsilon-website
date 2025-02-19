@@ -48,15 +48,11 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -92,10 +88,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -147,7 +145,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -2088,7 +2122,7 @@
 <p class="admonition-title">Info</p>
 <p>As with most languages in Epsilon, EVL uses <a href="../eol">EOL</a> as its expression language. This page only documents the additional syntax and semantics that EVL provides on top of EOL.</p>
 </div>
-<div class="mermaid mermaid-80">classDiagram
+<pre class="mermaid mermaid-80"><code>classDiagram
 class Constraint {
     -name: String
     -guard: ExecutableBlock&lt;Boolean&gt;
@@ -2118,7 +2152,7 @@ ErlModule -- Post: post *
 EvlModule -- ConstraintContext: contexts *
 ConstraintContext -- Constraint: constraints *
 Constraint -- Fix: fixes *
-</div>
+</code></pre>
 <h3 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h3>
 <p>A context specifies the kind of instances on which the contained constraints will be evaluated. Each context can optionally define a guard which limits its applicability to a narrower subset of instances of its specified type. Thus, if the guard fails for a specific instance of the type, none of its contained constraints are evaluated.</p>
 <h3 id="constraint">Constraint<a class="headerlink" href="#constraint" title="Permanent link">&para;</a></h3>
@@ -2132,8 +2166,8 @@ Constraint -- Fix: fixes *
 <h3 id="pre-and-post">Pre and Post<a class="headerlink" href="#pre-and-post" title="Permanent link">&para;</a></h3>
 <p>An EVL module can define a number of named <em>pre</em> and a <em>post</em> blocks that contain EOL statements which are executed before and after evaluating the constraints respectively. These should not be confused with the pre-/post-condition annotations available for EOL user-defined operations.</p>
 <h2 id="concrete-syntax">Concrete Syntax<a class="headerlink" href="#concrete-syntax" title="Permanent link">&para;</a></h2>
-<p>The following listing demonstrates the concrete sytnax of the <em>context</em>, <em>constraint</em> and <em>fix</em> abstract syntax constructs discussed above.</p>
-<div class="highlight"><pre><span></span><code>(@lazy)?
+<p>The following listing demonstrates the concrete syntax of the <em>context</em>, <em>constraint</em> and <em>fix</em> abstract syntax constructs discussed above.</p>
+<pre class="highlight"><code>(@lazy)?
 context &lt;name&gt; {
     (guard (:expression)|({statementBlock}))?
     (constraint)* 
@@ -2153,13 +2187,11 @@ fix {
     do {
         statementBlock
     } 
-}
-</code></pre></div>
+}</code></pre>
 <p><em>Pre</em> and <em>post</em> blocks have a simple syntax that, as presented in the listing below, consists of the identifier (<em>pre</em> or <em>post</em>), an optional name and the set of statements to be executed enclosed in curly braces.</p>
-<div class="highlight"><pre><span></span><code>(pre|post) &lt;name&gt; {
+<pre class="highlight"><code>(pre|post) &lt;name&gt; {
     statement+
-}
-</code></pre></div>
+}</code></pre>
 <h2 id="execution-semantics">Execution Semantics<a class="headerlink" href="#execution-semantics" title="Permanent link">&para;</a></h2>
 <p>Having discussed the abstract and concrete syntaxes of EVL, this section provides an informal discussion of the execution semantics of the language. The execution of an EVL module is separated into four phases:</p>
 <h3 id="phase-1">Phase 1<a class="headerlink" href="#phase-1" title="Permanent link">&para;</a></h3>
@@ -2177,7 +2209,7 @@ fix {
 <p>When one of these operations is invoked, if the required <em>constraints</em> (either lazy or non-lazy) have been evaluated for the instances on which the operation is invoked, the engine will return their cached results; otherwise it will evaluate them and return their results.</p>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
 <p>The following is an EVL program demonstrating some of the language features, which validates models confirming to the Movies metamodel shown below. Execution begins from the <em>pre</em> block, which simply computes the average number of actors per Movie and stores it into a global variable, which can be accessed at any point. The <em>ValidActors</em> constraint checks that for every instance of <em>Movie</em> which has more than the average number of actors, all of the actors have valid names. This is achieved through a dependency on the <em>HashValidName</em> invariant declared in the context of <em>Person</em> type. This constraint is marked as lazy, which means it is only executed when invoked by <em>satisfies</em>, so avoiding unnecessary or duplicate invocations. The <em>HasValidName</em> constraint makes use of a helper operation (<em>isPlain()</em>) on Strings. Once all Movie instances have been checked, the execution engine then proceeds to validate all <em>Person</em> instances, which consists of only one non-lazy constraint <em>ValidMovieYears</em>. This checks that all of the movies the actor has played in were released at least 3 years after the actor was born. Finally, the <em>post</em> block is executed, which in this case simply prints some basic information about the model.</p>
-<div class="mermaid mermaid-30">classDiagram
+<pre class="mermaid mermaid-30"><code>classDiagram
 class Movie {
     -title: String
     -rating: Double
@@ -2188,8 +2220,8 @@ class Person {
     -birthYear: Int
 }
 
-Movie -- Person: movies * / persons *</div>
-<pre class="prettyprint lang-evl"><code>pre {
+Movie -- Person: movies * / persons *</code></pre>
+<pre class="highlight"><code class="language-evl">pre {
   var numMovies = Movie.all.size();
   var numActors = Person.all.size();
   var apm = numActors / numMovies;
@@ -2360,25 +2392,7 @@ post {
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

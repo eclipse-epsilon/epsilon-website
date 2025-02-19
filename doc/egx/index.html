@@ -48,15 +48,11 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -92,10 +88,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -147,7 +145,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1889,7 +1923,7 @@
 <h2 id="epsilon-generation-language">Epsilon Generation Language<a class="headerlink" href="#epsilon-generation-language" title="Permanent link">&para;</a></h2>
 <p><a href="../egl/">EGL</a> is Epsilon's model-to-text transformation language. EGL in principle is similar in purpose to server-side scripting languages like PHP (and can indeed be used for such purposes, as demonstrated <a href="../articles/egl-server-side/">in this article</a>). To recap, a template is a text file which has both static and dynamic regions. As the name implies, a static region is where text appears as-is in the output, whereas a dynamic region uses code to generate the output, often relying on data which is only available at runtime (hence, "dynamic"). Dynamic regions are expressed using <a href="../eol">EOL</a>. One can think of an EGL template as a regular text file with some EOL embedded in it, or as an EOL program with the added convenience of verbatim text generation. Indeed, it is possible to use EGL without any static regions, relying on the output buffer variable to write the output text. In EGL, the output variable is called "out" and the markers for the start and end of dynamic regions are <code>[%</code> and <code>%]</code> respectively. For convenience, <code>[%=</code> outputs the string value of the expression which follows. EGL has many advanced features, such as recording traceability information, post-process formatting (to ensure consistent style in the final output) and protected regions, which allow certain parts of the text to be preserved if modified by hand, rather than being overwritten on each invocation of the template. EGL can handle merges, and also supports outputting text to any output stream.</p>
 <p>As an example, consider a simple Library metamodel (shown below). Suppose each model may have multiple Libraries, and each Library has a name, multiple Books and Authors. Similarly, each Book has one or more Authors, and each Author has multiple Books, similar to the relation between Actors and Movies in the IMDb metamodel used in previous chapters. Now suppose we have a single monolithic model and want to transform this into multiple structured files, such as web pages (HTML) or XML documents. One possible decomposition of this is to generate a page for each Library in the model.</p>
-<div class="mermaid mermaid-30">classDiagram
+<pre class="mermaid mermaid-30"><code>classDiagram
 class Library{
     name: EString
     id: ELong
@@ -1909,8 +1943,8 @@ class Author{
 }
 
 Library -- Book: books *
-Book -- Author: books * / authors *</div>
-<pre class="prettyprint lang-egl"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+Book -- Author: books * / authors *</code></pre>
+<pre class="highlight"><code class="language-egl">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;library id=[%=lib.id%] name="[%=name%]"&gt;
 [% for (book in books) {%]
   &lt;book&gt;
@@ -1943,14 +1977,14 @@ Book -- Author: books * / authors *</div>
 <li><strong>parameters</strong>: Key-value pairs mapping variable names to values, which will be passed to the template. That is, the template will be populated with variable names (the keys) and values based on the provided Map.</li>
 <li><strong>target</strong>: The path of the file to which the output of the template should be written.</li>
 <li><strong>formatter</strong>: The <code>Formatter</code> implementation to post-process the output with. See the <a href="../egl/#formatters">documentation on formatters</a> for more details.</li>
-<li><strong>post</strong>: Arbitrarily code block for post-processing. In addition to having access to all variable declared in previous blocks, a new variable called <code>generated</code> is also available, which is usually a reference to the generated file so the user can call any methods available on <code>java.io.File</code>. If the EGL execution engine has not been configured to output to files, or the <code>target</code> is ommitted, then this variable will be the output of the template as a String instead.</li>
+<li><strong>post</strong>: Arbitrarily code block for post-processing. In addition to having access to all variable declared in previous blocks, a new variable called <code>generated</code> is also available, which is usually a reference to the generated file so the user can call any methods available on <code>java.io.File</code>. If the EGL execution engine has not been configured to output to files, or the <code>target</code> is omitted, then this variable will be the output of the template as a String instead.</li>
 </ul>
 <p>The only other noteworthy aspect of EGX's execution algorithm is that it keeps a cache of templates which have been loaded, to avoid re-parsing and re-initialising them every time. Of course, the variables for the template are reset and rebound every time, as they may be different. The purpose of the cache is only to avoid the potentially expensive process of parsing EGL templates.</p>
 <h3 id="parallel-execution">Parallel Execution<a class="headerlink" href="#parallel-execution" title="Permanent link">&para;</a></h3>
 <p>Owing to its rule-based declarative nature, EGX can execute rules independently, and even if you only have a single rule, it can be invoked on a per-element basis by separate threads. You can declare a rule to be executed in parallel using the <code>@parallel</code> annotation, or by using the automatic parallelisation execution engine.</p>
 <h2 id="example-programs">Example Programs<a class="headerlink" href="#example-programs" title="Permanent link">&para;</a></h2>
 <p>Returning to our example, we can orchestrate the generation of Libraries as shown below, which demonstrates most of the features of EGX. Here we see how it is possible to screen eligible Library instances for generation, populate the template with the necessary parameters, invoke a different version of the template, format the output, and direct the output to the desired file, all based on arbitrary user-defined criteria expressed declaratively using EOL. We can also compute aggregate metadata thanks to the pre and post blocks available both globally and on a per-rule basis. In this example, we simply compute the size of each file and print them once all transformations have taken place. Furthermore, we demonstrate that not all rules need to transform a specific model element: EGX can be used for convenience to invoke EGL templates with parameters, as shown by the <code>AuthorsAndBooks</code> rule. Here we only want to generate a single file from the Authors and Books in the model, where the logic for doing this is in a single EGL template. Although it wouldn't make much sense to use EGX purely for invoking single templates without parameters, the reader can perhaps appreciate that in large and complex models, there may be many different templates - e.g. one for each type - so all of the co-ordination in invoking them can be centralised to a single declarative file. EGX can thus be used as a workflow language in directing model-to-text transformations and is suitable for various use cases of almost any complexity.</p>
-<pre class="prettyprint lang-egx"><code>operation Book isValid() : Boolean {
+<pre class="highlight"><code class="language-egx">operation Book isValid() : Boolean {
   return self.isbn.isDefined() and self.isbn.length() == 13;
 }
 
@@ -2007,7 +2041,7 @@ post {
     ("Total: "+libFileSizes.values().sum()).println();
 }</code></pre>
 <p>The previous example demonstrated the use of model-to-text transformations over Library model elements. However, there may be scenarios in which one would like to use model-to-text transformations over the items of a list. This is particularly useful when the list has been populated by other model-to-text transformations. The following example will generate a text file for each item in the <code>files</code> list, and the content of each file is specified by the <code>data</code> map.</p>
-<pre class="prettyprint lang-egx"><code>pre {
+<pre class="highlight"><code class="language-egx">pre {
   var files = Sequence{"file1", "file2", "file3"};
   var data = Map {
     "file1" = "Content of the first file",
@@ -2157,25 +2191,7 @@ rule ItemToFile transform file: String in: files {
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

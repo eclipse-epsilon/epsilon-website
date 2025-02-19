@@ -44,15 +44,11 @@
     
       <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,10 +84,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -143,7 +141,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1879,37 +1913,36 @@
 <p>In this article we demonstrate how you can create, query and modify HTML documents in Epsilon programs using the HTML driver. All the examples in this article demonstrate using EOL to script HTML documents. However, it's worth stressing that HTML documents are supported throughout Epsilon. Therefore, you can use Epsilon to (cross-)validate, transform (to other models or to text), compare and merge your HTML documents.</p>
 <h2 id="querying-a-html-document">Querying a HTML document<a class="headerlink" href="#querying-a-html-document" title="Permanent link">&para;</a></h2>
 <p>We use the following <code>sales.html</code> as a base for demonstrating the EOL syntax for querying HTML documents.</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">table</span> <span class="na">border</span><span class="o">=</span><span class="s">&quot;1&quot;</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">thead</span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Product id<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Unit price<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Quantity<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
-                <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-            <span class="p">&lt;/</span><span class="nt">thead</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>P1<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>10<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>15<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-                <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>P2<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>8<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-                    <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>12<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-                <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-            <span class="p">&lt;/</span><span class="nt">tbody</span><span class="p">&gt;</span>
-        <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-html">&lt;html&gt;
+    &lt;body&gt;
+        &lt;table border="1"&gt;
+            &lt;thead&gt;
+                &lt;tr&gt;
+                    &lt;th&gt;Product id&lt;/th&gt;
+                    &lt;th&gt;Unit price&lt;/th&gt;
+                    &lt;th&gt;Quantity&lt;/th&gt;
+                &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;P1&lt;/td&gt;
+                    &lt;td&gt;10&lt;/td&gt;
+                    &lt;td&gt;15&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;P2&lt;/td&gt;
+                    &lt;td&gt;8&lt;/td&gt;
+                    &lt;td&gt;12&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
 <h2 id="queryingmodifying-html-documents-in-eol">Querying/modifying HTML documents in EOL<a class="headerlink" href="#queryingmodifying-html-documents-in-eol" title="Permanent link">&para;</a></h2>
 <p>The HTML driver uses predefined naming conventions to allow developers to programmatically access and modify HTML documents in a concise way. This section outlines the supported conventions in the form of questions and answers followed by relevant examples.</p>
 <h2 id="how-can-i-access-elements-by-tag-name">How can I access elements by tag name?<a class="headerlink" href="#how-can-i-access-elements-by-tag-name" title="Permanent link">&para;</a></h2>
 <p>The <code>t_</code> prefix in front of the name of the tag is used to represent a type, instances of which are all the elements with that tag. For instance, <code>t_td.all</code> can be used to get all elements tagged as <code>&lt;td&gt;</code> (table cells) in the document, <code>t_tr.all</code> to retrieve all <code>&lt;tr&gt;</code> elements (table rows) etc. Also, if <code>cell</code> is an element with a <code>&lt;td&gt;</code> tag, then <code>cell.isTypeOf(t_td)</code> shall return true.</p>
-<pre class="prettyprint lang-eol"><code>// Get all &lt;td&gt; elements
+<pre class="highlight"><code class="language-eol">// Get all &lt;td&gt; elements
 var cells = t_td.all;
 
 // Get a random table cell
@@ -1924,7 +1957,7 @@ cell.isTypeOf(t_td).println();
 cell.isTypeOf(t_tr).println();</code></pre>
 <h3 id="how-can-i-get-the-tag-name-of-an-element">How can I get the tag name of an element?<a class="headerlink" href="#how-can-i-get-the-tag-name-of-an-element" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>.tagName</code> property for this purpose. For instance, if <code>cell</code> is an element tagged as <code>&lt;td&gt;</code>, <code>cell.tagName</code> shall return <code>td</code>. The <code>tagName</code> property is read-only.</p>
-<pre class="prettyprint lang-eol"><code>// Get a random &lt;td&gt; element
+<pre class="highlight"><code class="language-eol">// Get a random &lt;td&gt; element
 var cell = t_td.all.random();
 
 // Print its tag
@@ -1933,7 +1966,7 @@ cell.tagName.println();</code></pre>
 <h3 id="how-can-i-getset-the-attributes-of-an-element">How can I get/set the attributes of an element?<a class="headerlink" href="#how-can-i-getset-the-attributes-of-an-element" title="Permanent link">&para;</a></h3>
 <p>You can use the attribute name as a property of the element object, prefixed by <code>a_</code>. For example, if <code>t</code> is the first table of <code>sales.html</code>, <code>t.a_border</code> will return <code>1</code>. Attribute properties are read/write.</p>
 <p>In this example, <code>t.a_border</code> will return <code>1</code> as a string. For <code>1</code> to be returned as an integer instead, the <code>i_</code> prefix should be used instead (i.e. <code>t.i_border</code>. The driver also supports the following preffixes: <code>b_</code> for boolean, <code>s_</code> for string (alias of <code>a_</code>) and <code>r_</code> for real values. </p>
-<pre class="prettyprint lang-eol"><code>// Get the one and only table in the document
+<pre class="highlight"><code class="language-eol">// Get the one and only table in the document
 var table = t_table.all.first();
 
 // Prints 11 (the border attribute is retrieved as string)
@@ -1943,12 +1976,12 @@ var table = t_table.all.first();
 (table.i_border + 1).println();</code></pre>
 <h3 id="how-can-i-getset-the-text-of-an-element">How can I get/set the text of an element?<a class="headerlink" href="#how-can-i-getset-the-text-of-an-element" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>.text</code> read-write property for this.</p>
-<pre class="prettyprint lang-eol"><code>for (cell in t_td.all) {
+<pre class="highlight"><code class="language-eol">for (cell in t_td.all) {
     cell.text.println();
 }</code></pre>
 <h3 id="how-do-i-get-the-parent-of-an-element">How do I get the parent of an element?<a class="headerlink" href="#how-do-i-get-the-parent-of-an-element" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>.parentNode</code> read-only property to retrieve the element's immediate parent and the <code>.parents.</code> read-only property to retrieve all the ancestors of the element.</p>
-<pre class="prettyprint lang-eol"><code>// Get a random cell
+<pre class="highlight"><code class="language-eol">// Get a random cell
 var cell = t_td.all.random();
 
 // Print the tag of its parent node
@@ -1960,7 +1993,7 @@ cell.parentNode.tagName.println();
 cell.parents.tagName.println();</code></pre>
 <h3 id="how-do-i-get-the-children-of-an-element">How do I get the children of an element?<a class="headerlink" href="#how-do-i-get-the-children-of-an-element" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>.children</code> read-only property for this.</p>
-<pre class="prettyprint lang-eol"><code>// Get the &lt;tbody&gt; element
+<pre class="highlight"><code class="language-eol">// Get the &lt;tbody&gt; element
 var tbody = t_tbody.all.first();
 
 // Iterate through its children
@@ -1970,7 +2003,7 @@ for (tr in tbody.children) {
 }</code></pre>
 <h3 id="how-do-i-get-child-elements-with-a-specific-tag-name">How do I get child elements with a specific tag name?<a class="headerlink" href="#how-do-i-get-child-elements-with-a-specific-tag-name" title="Permanent link">&para;</a></h3>
 <p>Using what you've learned so far, you can do this using a combination of the <code>.children</code> property and the select/selectOne() operations. However, the driver also supports <code>e_</code> and <code>c_</code>-prefixed shorthand properties for accessing one or a collection of elements with the specified name respectively. <code>e_</code> and <code>c_</code> properties are read-only.</p>
-<pre class="prettyprint lang-eol"><code>// Get a random tr
+<pre class="highlight"><code class="language-eol">// Get a random tr
 var row = t_tr.all.random();
 
 // Get its &lt;td&gt; children using the 
@@ -1984,7 +2017,7 @@ cells = row.c_td;
 row.e_td.text.println();</code></pre>
 <h3 id="how-do-i-create-an-element">How do I create an element?<a class="headerlink" href="#how-do-i-create-an-element" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>new</code> operator for this. </p>
-<pre class="prettyprint lang-eol"><code>// Check how many &lt;tr&gt; are in the document
+<pre class="highlight"><code class="language-eol">// Check how many &lt;tr&gt; are in the document
 // Prints '3'
 t_tr.all.size().println();
 
@@ -1996,7 +2029,7 @@ var row = new t_tr;
 t_tr.all.size().println();</code></pre>
 <h3 id="how-can-i-add-a-child-to-an-existing-element">How can I add a child to an existing element?<a class="headerlink" href="#how-can-i-add-a-child-to-an-existing-element" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>.appendChild(child)</code> operation for this.</p>
-<pre class="prettyprint lang-eol"><code>// Create a new row
+<pre class="highlight"><code class="language-eol">// Create a new row
 var row = new t_tr;
 
 // Get the tbody element
@@ -2006,7 +2039,7 @@ var tbody = t_tbody.all.first();
 tbody.appendChild(row);</code></pre>
 <h3 id="bringing-it-all-together">Bringing it all together<a class="headerlink" href="#bringing-it-all-together" title="Permanent link">&para;</a></h3>
 <p>The following snippet computes and prints the total sales revenue.</p>
-<pre class="prettyprint lang-eol"><code>var table = t_table.all.first();
+<pre class="highlight"><code class="language-eol">var table = t_table.all.first();
 
 var sum : Real;
 
@@ -2030,79 +2063,76 @@ operation t_td getRealValue() {
 <p><img alt="" src="configure.png" /></p>
 <h2 id="loading-a-html-document-in-your-ant-buildfile">Loading a HTML document in your ANT buildfile<a class="headerlink" href="#loading-a-html-document-in-your-ant-buildfile" title="Permanent link">&para;</a></h2>
 <p>The following ANT build file demonstrates how you can use ANT to load/store and process HTML documents with Epsilon.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;project</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;main&quot;</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;target</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;main&quot;</span><span class="nt">&gt;</span>
+<pre class="highlight"><code class="language-xml">&lt;project default="main"&gt;
+    &lt;target name="main"&gt;
 
-<span class="w">        </span><span class="nt">&lt;epsilon.loadModel</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;M&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;HTML&quot;</span><span class="nt">&gt;</span>
-<span class="w">            </span><span class="nt">&lt;parameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;readOnLoad&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
-<span class="w">            </span><span class="nt">&lt;parameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;storeOnDisposal&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
-<span class="w">            </span><span class="nt">&lt;parameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;file&quot;</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;sales.html&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/epsilon.loadModel&gt;</span>
+        &lt;epsilon.loadModel name="M" type="HTML"&gt;
+            &lt;parameter name="readOnLoad" value="true"/&gt;
+            &lt;parameter name="storeOnDisposal" value="false"/&gt;
+            &lt;parameter name="file" file="sales.html"/&gt;
+        &lt;/epsilon.loadModel&gt;
 
-<span class="w">        </span><span class="nt">&lt;epsilon.eol</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;sales.eol&quot;</span><span class="nt">&gt;</span>
-<span class="w">            </span><span class="nt">&lt;model</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;M&quot;</span><span class="nt">/&gt;</span>
-<span class="w">        </span><span class="nt">&lt;/epsilon.eol&gt;</span>
+        &lt;epsilon.eol src="sales.eol"&gt;
+            &lt;model ref="M"/&gt;
+        &lt;/epsilon.eol&gt;
 
-<span class="w">    </span><span class="nt">&lt;/target&gt;</span>
-<span class="nt">&lt;/project&gt;</span>
-</code></pre></div>
+    &lt;/target&gt;
+&lt;/project&gt;</code></pre>
 <h2 id="loading-a-html-document-through-java-code">Loading a HTML document through Java code<a class="headerlink" href="#loading-a-html-document-through-java-code" title="Permanent link">&para;</a></h2>
 <p>The following excerpt demonstrates using HTML models using Epsilon's Java API.</p>
-<div class="highlight"><pre><span></span><code><span class="n">EolModule</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EolModule</span><span class="p">();</span>
-<span class="n">module</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;...&quot;</span><span class="p">));</span>
+<pre class="highlight"><code class="language-java">EolModule module = new EolModule();
+module.parse(new File("..."));
 
-<span class="n">HtmlModel</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HtmlModel</span><span class="p">();</span>
-<span class="n">model</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;M&quot;</span><span class="p">);</span>
-<span class="n">model</span><span class="p">.</span><span class="na">setFile</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;...&quot;</span><span class="p">));</span>
-<span class="n">model</span><span class="p">.</span><span class="na">load</span><span class="p">();</span>
+HtmlModel model = new HtmlModel();
+model.setName("M");
+model.setFile(new File("..."));
+model.load();
 
-<span class="n">module</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">getModelRepository</span><span class="p">().</span><span class="na">addModel</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
-<span class="n">module</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">setModule</span><span class="p">(</span><span class="n">module</span><span class="p">);</span>
-<span class="n">module</span><span class="p">.</span><span class="na">execute</span><span class="p">();</span>
-</code></pre></div>
+module.getContext().getModelRepository().addModel(model);
+module.getContext().setModule(module);
+module.execute();</code></pre>
 <h2 id="loading-a-remote-html-document-in-gradle">Loading a remote HTML document in Gradle<a class="headerlink" href="#loading-a-remote-html-document-in-gradle" title="Permanent link">&para;</a></h2>
 <p>The example below shows a standalone Gradle file (<code>build.gradle</code>) that runs a set of EOL queries (<code>queries.eol</code>) against the HTML behind the Epsilon homepage.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">build.gradle</label><label for="__tabbed_1_2">queries.eol</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">configurations</span><span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="n">epsilon</span>
-<span class="o">}</span>
+<pre class="highlight"><code class="language-groovy">configurations {
+    epsilon
+}
 
-<span class="n">repositories</span><span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="n">maven</span><span class="w"> </span><span class="o">{</span>
-<span class="w">        </span><span class="n">url</span><span class="w"> </span><span class="s2">&quot;https://oss.sonatype.org/content/repositories/snapshots&quot;</span>
-<span class="w">    </span><span class="o">}</span>
-<span class="w">    </span><span class="n">mavenCentral</span><span class="o">()</span>
-<span class="o">}</span>
+repositories {
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots"
+    }
+    mavenCentral()
+}
 
-<span class="n">dependencies</span><span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="n">epsilon</span><span class="w"> </span><span class="s1">&#39;org.eclipse.epsilon:org.eclipse.epsilon.workflow:2.3.0-SNAPSHOT&#39;</span>
-<span class="w">    </span><span class="n">epsilon</span><span class="w"> </span><span class="s1">&#39;org.eclipse.epsilon:org.eclipse.epsilon.emc.html:2.3.0-SNAPSHOT&#39;</span>
-<span class="o">}</span>
+dependencies {
+    epsilon 'org.eclipse.epsilon:org.eclipse.epsilon.workflow:2.3.0-SNAPSHOT'
+    epsilon 'org.eclipse.epsilon:org.eclipse.epsilon.emc.html:2.3.0-SNAPSHOT'
+}
 
-<span class="n">task</span><span class="w"> </span><span class="n">setupEpsilonTasks</span><span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="c1">// Set up the core Epsilon tasks</span>
-<span class="w">    </span><span class="n">ant</span><span class="o">.</span><span class="na">taskdef</span><span class="o">(</span><span class="nl">resource:</span><span class="w"> </span><span class="s1">&#39;org/eclipse/epsilon/workflow/tasks/tasks.xml&#39;</span><span class="o">,</span><span class="w"> </span>
-<span class="w">        </span><span class="nl">classpath:</span><span class="w"> </span><span class="n">configurations</span><span class="o">.</span><span class="na">epsilon</span><span class="o">.</span><span class="na">asPath</span><span class="o">,</span><span class="w"> </span><span class="nl">loaderref:</span><span class="w"> </span><span class="s1">&#39;epsilon&#39;</span><span class="o">)</span>
-<span class="w">    </span><span class="c1">// Set logging level to info so that EOL&#39;s println() is not suppressed</span>
-<span class="w">    </span><span class="n">ant</span><span class="o">.</span><span class="na">lifecycleLogLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;INFO&#39;</span>
-<span class="o">}</span>
+task setupEpsilonTasks {
+    // Set up the core Epsilon tasks
+    ant.taskdef(resource: 'org/eclipse/epsilon/workflow/tasks/tasks.xml', 
+        classpath: configurations.epsilon.asPath, loaderref: 'epsilon')
+    // Set logging level to info so that EOL's println() is not suppressed
+    ant.lifecycleLogLevel = 'INFO'
+}
 
-<span class="n">task</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="n">dependsOn</span><span class="w"> </span><span class="n">tasks</span><span class="o">.</span><span class="na">setupEpsilonTasks</span>
-<span class="w">    </span><span class="c1">// Load the eclipse.org/epsilon webpage as a HTML model</span>
-<span class="w">    </span><span class="n">ant</span><span class="o">.</span><span class="s1">&#39;epsilon.loadModel&#39;</span><span class="o">(</span><span class="nl">name:</span><span class="w"> </span><span class="s1">&#39;HTML&#39;</span><span class="o">,</span><span class="w"> </span><span class="nl">type:</span><span class="w"> </span><span class="s1">&#39;HTML&#39;</span><span class="o">,</span><span class="w">  </span>
-<span class="w">        </span><span class="nl">impl:</span><span class="w"> </span><span class="s1">&#39;org.eclipse.epsilon.emc.html.HtmlModel&#39;</span><span class="o">,)</span>
-<span class="w">        </span><span class="o">{</span><span class="w"> </span><span class="n">parameter</span><span class="o">(</span><span class="nl">name:</span><span class="w"> </span><span class="s1">&#39;uri&#39;</span><span class="o">,</span><span class="w"> </span><span class="nl">value:</span><span class="w"> </span><span class="s1">&#39;https://www.eclipse.org/epsilon/&#39;</span><span class="o">)</span><span class="w"> </span><span class="o">}</span>
+task run {
+    dependsOn tasks.setupEpsilonTasks
+    // Load the eclipse.org/epsilon webpage as a HTML model
+    ant.'epsilon.loadModel'(name: 'HTML', type: 'HTML',  
+        impl: 'org.eclipse.epsilon.emc.html.HtmlModel',)
+        { parameter(name: 'uri', value: 'https://www.eclipse.org/epsilon/') }
 
-<span class="w">    </span><span class="c1">// Run query.eol against it</span>
-<span class="w">    </span><span class="n">ant</span><span class="o">.</span><span class="s1">&#39;epsilon.eol&#39;</span><span class="o">(</span><span class="nl">src:</span><span class="w"> </span><span class="s1">&#39;queries.eol&#39;</span><span class="o">){</span><span class="w"> </span><span class="n">model</span><span class="o">(</span><span class="nl">ref:</span><span class="w"> </span><span class="s1">&#39;HTML&#39;</span><span class="o">)</span><span class="w"> </span><span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
+    // Run query.eol against it
+    ant.'epsilon.eol'(src: 'queries.eol'){ model(ref: 'HTML') }
+}</code></pre>
 </div>
 <div class="tabbed-block">
-<pre class="prettyprint lang-eol"><code>// Print the text of all &lt;strong&gt; elements
+<pre class="highlight"><code class="language-eol">// Print the text of all &lt;strong&gt; elements
 for (s in t_strong.all) {
     s.text().println();
 }
@@ -2223,25 +2253,7 @@ for (li in ul.c_li) {
     
       <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

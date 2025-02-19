@@ -44,15 +44,11 @@
     
       <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,10 +84,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -143,7 +141,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1789,109 +1823,102 @@
 
 
 <h1 id="running-epsilon-from-java">Running Epsilon from Java<a class="headerlink" href="#running-epsilon-from-java" title="Permanent link">&para;</a></h1>
-<p>While Epsilon's development tools are based on Eclipse, its runtime is not, and can be used from any (headless) Java application. For example, the back-end of the <a href="../../../playground">Epsilon Playground</a> is a headless, server-less Java application that runs on Google's Cloud Platform.</p>
+<p>While Epsilon's development tools are based on Eclipse, its runtime is not, and can be used from any (headless) Java application. For example, the back-end of the <a href="../../../playground/">Epsilon Playground</a> is a headless, server-less Java application that runs on Google's Cloud Platform.</p>
 <div class="admonition info">
 <p class="admonition-title">Did you know that ...</p>
 <p>Contrary to popular belief, EMF is <strong>not</strong> tightly coupled to the Eclipse IDE either, and can also be embedded in any Java application by importing a couple of dependencies from <a href="https://mvnrepository.com/artifact/org.eclipse.emf">Maven Central</a>.</p>
 </div>
 <h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
-<p>Epsilon libraries are available on <a href="https://mvnrepository.com/artifact/org.eclipse.epsilon">MavenCentral</a>. Below is a fragment of a Maven <code>pom.xml</code> file, where we declare dependencies to the execution engine of Epsilon's <a href="../../eol">core expression language</a> and on Epsilon's driver for EMF-based models. As the EMF driver has a dependency on EMF, we don't need to declare a dependency to the EMF libraries on MavenCentral; Maven will fetch these automatically for us.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependencies&gt;</span>
-<span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
-<span class="w">        </span><span class="nt">&lt;groupId&gt;</span>org.eclipse.epsilon<span class="nt">&lt;/groupId&gt;</span>
-<span class="w">        </span><span class="nt">&lt;artifactId&gt;</span>org.eclipse.epsilon.emc.emf<span class="nt">&lt;/artifactId&gt;</span>
-<span class="w">        </span><span class="nt">&lt;version&gt;</span>2.2.0<span class="nt">&lt;/version&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
-<span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
-<span class="w">        </span><span class="nt">&lt;groupId&gt;</span>org.eclipse.epsilon<span class="nt">&lt;/groupId&gt;</span>
-<span class="w">        </span><span class="nt">&lt;artifactId&gt;</span>org.eclipse.epsilon.eol.engine<span class="nt">&lt;/artifactId&gt;</span>
-<span class="w">        </span><span class="nt">&lt;version&gt;</span>2.2.0<span class="nt">&lt;/version&gt;</span>
-<span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
-<span class="w">    </span>...
-<span class="nt">&lt;/dependencies&gt;</span>
-</code></pre></div>
+<p>Epsilon libraries are available on <a href="https://mvnrepository.com/artifact/org.eclipse.epsilon">MavenCentral</a>. Below is a fragment of a Maven <code>pom.xml</code> file, where we declare dependencies to the execution engine of Epsilon's <a href="../../eol/">core expression language</a> and on Epsilon's driver for EMF-based models. As the EMF driver has a dependency on EMF, we don't need to declare a dependency to the EMF libraries on MavenCentral; Maven will fetch these automatically for us.</p>
+<pre class="highlight"><code class="language-xml">&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.eclipse.epsilon&lt;/groupId&gt;
+        &lt;artifactId&gt;org.eclipse.epsilon.emc.emf&lt;/artifactId&gt;
+        &lt;version&gt;2.2.0&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.eclipse.epsilon&lt;/groupId&gt;
+        &lt;artifactId&gt;org.eclipse.epsilon.eol.engine&lt;/artifactId&gt;
+        &lt;version&gt;2.2.0&lt;/version&gt;
+    &lt;/dependency&gt;
+    ...
+&lt;/dependencies&gt;</code></pre>
 <h2 id="parsing-and-executing-epsilon-programs">Parsing and Executing Epsilon Programs<a class="headerlink" href="#parsing-and-executing-epsilon-programs" title="Permanent link">&para;</a></h2>
 <p>Having declared a dependency to the EOL engine, parsing and executing an EOL program is as simple as that.</p>
-<div class="highlight"><pre><span></span><code><span class="n">EolModule</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EolModule</span><span class="p">();</span>
-<span class="n">module</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;program.eol&quot;</span><span class="p">));</span>
-<span class="n">module</span><span class="p">.</span><span class="na">execute</span><span class="p">();</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-java">EolModule module = new EolModule();
+module.parse(new File("program.eol"));
+module.execute();</code></pre>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>By replacing <code>EolModule</code> with <code>EtlModule</code>, <code>EvlModule</code> etc. you can parse and execute <a href="../../etl">ETL transformations</a>, <a href="../../evl">EVL validation constraints</a> etc. <a href="../../egl">EGL</a> deviates from this pattern and if you wish to execute a single template you should use the <code>EglTemplateFactoryModuleAdapter</code> class.</p>
+<p>By replacing <code>EolModule</code> with <code>EtlModule</code>, <code>EvlModule</code> etc. you can parse and execute <a href="../../etl/">ETL transformations</a>, <a href="../../evl/">EVL validation constraints</a> etc. <a href="../../egl/">EGL</a> deviates from this pattern and if you wish to execute a single template you should use the <code>EglTemplateFactoryModuleAdapter</code> class.</p>
 </div>
 <h2 id="loading-models">Loading Models<a class="headerlink" href="#loading-models" title="Permanent link">&para;</a></h2>
 <p>Most of your Epsilon programs will need to run against models of some sort. To run an EOL program against a model (<code>model.xmi</code>) that conforms to a file-based Ecore metamodel (<code>metamodel.ecore</code>), you can extend the code above as follows.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Loads the EMF model</span>
-<span class="n">EmfModel</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EmfModel</span><span class="p">();</span>
-<span class="n">model</span><span class="p">.</span><span class="na">setMetamodelFile</span><span class="p">(</span><span class="s">&quot;metamodel.ecore&quot;</span><span class="p">);</span>
-<span class="n">model</span><span class="p">.</span><span class="na">setModelFile</span><span class="p">(</span><span class="s">&quot;model.xmi&quot;</span><span class="p">);</span>
-<span class="c1">// Set the name by which the model will be</span>
-<span class="c1">// referred to in the program. Useful if</span>
-<span class="c1">// the program manages more than one models</span>
-<span class="n">model</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;M&quot;</span><span class="p">);</span>
-<span class="c1">// Read the contents of the model from disk</span>
-<span class="c1">// when the model is loaded. Set to false</span>
-<span class="c1">// to ignore existing model contents (e.g.</span>
-<span class="c1">// if the model is the target of a </span>
-<span class="c1">// model-to-text transformation)</span>
-<span class="n">model</span><span class="p">.</span><span class="na">setReadOnLoad</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-<span class="c1">// Save any changes made to the model</span>
-<span class="c1">// when it is disposed</span>
-<span class="n">model</span><span class="p">.</span><span class="na">setStoredOnDisposal</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-<span class="n">model</span><span class="p">.</span><span class="na">load</span><span class="p">();</span>
+<pre class="highlight"><code class="language-java">// Loads the EMF model
+EmfModel model = new EmfModel();
+model.setMetamodelFile("metamodel.ecore");
+model.setModelFile("model.xmi");
+// Set the name by which the model will be
+// referred to in the program. Useful if
+// the program manages more than one models
+model.setName("M");
+// Read the contents of the model from disk
+// when the model is loaded. Set to false
+// to ignore existing model contents (e.g.
+// if the model is the target of a 
+// model-to-text transformation)
+model.setReadOnLoad(true);
+// Save any changes made to the model
+// when it is disposed
+model.setStoredOnDisposal(true);
+model.load();
 
-<span class="c1">// Parses and executes the EOL program</span>
-<span class="n">EolModule</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EolModule</span><span class="p">();</span>
-<span class="n">module</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;program.eol&quot;</span><span class="p">));</span>
-<span class="c1">// Makes the model accessible from the program</span>
-<span class="n">module</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">getModelRepository</span><span class="p">().</span><span class="na">addModel</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
-<span class="n">module</span><span class="p">.</span><span class="na">execute</span><span class="p">();</span>
+// Parses and executes the EOL program
+EolModule module = new EolModule();
+module.parse(new File("program.eol"));
+// Makes the model accessible from the program
+module.getContext().getModelRepository().addModel(model);
+module.execute();
 
-<span class="c1">// Saves any changes to the model</span>
-<span class="c1">// and unloads it from memory</span>
-<span class="c1">// Use model.getContext().</span>
-<span class="c1">//   getModelRepository().dispose() </span>
-<span class="c1">// instead if multiple models are involved</span>
-<span class="n">model</span><span class="p">.</span><span class="na">dispose</span><span class="p">();</span>
-</code></pre></div>
+// Saves any changes to the model
+// and unloads it from memory
+// Use model.getContext().
+//   getModelRepository().dispose() 
+// instead if multiple models are involved
+model.dispose();</code></pre>
 <h2 id="adding-variables">Adding Variables<a class="headerlink" href="#adding-variables" title="Permanent link">&para;</a></h2>
 <p>You can add variables to your Epsilon program and provide their values from Java as shown below.</p>
-<div class="highlight"><pre><span></span><code><span class="n">EolModule</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EolModule</span><span class="p">();</span>
-<span class="n">module</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;s.println();&quot;</span><span class="p">);</span>
-<span class="n">module</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">getFrameStack</span><span class="p">().</span><span class="na">put</span><span class="p">(</span><span class="n">Variable</span><span class="p">.</span>
-<span class="w">    </span><span class="nf">createReadOnlyVariable</span><span class="p">(</span><span class="s">&quot;s&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello World&quot;</span><span class="p">));</span>
-<span class="n">module</span><span class="p">.</span><span class="na">execute</span><span class="p">();</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-java">EolModule module = new EolModule();
+module.parse("s.println();");
+module.getContext().getFrameStack().put(Variable.
+    createReadOnlyVariable("s", "Hello World"));
+module.execute();</code></pre>
 <h2 id="using-tools-contributed-by-plugins">Using Tools Contributed by Plugins<a class="headerlink" href="#using-tools-contributed-by-plugins" title="Permanent link">&para;</a></h2>
 <p>To use <a href="../call-java-from-epsilon/">tools</a> contributed by other plugins in a standalone Java setup within Eclipse you'll need to add the following line of code.</p>
-<div class="highlight"><pre><span></span><code><span class="n">context</span><span class="p">.</span><span class="na">getNativeTypeDelegates</span><span class="p">().</span>
-<span class="w">  </span><span class="n">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ExtensionPointToolNativeTypeDelegate</span><span class="p">());</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-java">context.getNativeTypeDelegates().
+  add(new ExtensionPointToolNativeTypeDelegate());</code></pre>
 <h2 id="analysing-epsilon-programs">Analysing Epsilon Programs<a class="headerlink" href="#analysing-epsilon-programs" title="Permanent link">&para;</a></h2>
 <p>Epsilon programs do not have an Ecore-based metamodel, but you can query and analyse them through Epsilon's Java API as shown below.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Parse an ETL transformation</span>
-<span class="n">EtlModule</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EtlModule</span><span class="p">();</span>
-<span class="n">m</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;rule A2B transform a : In!A to b : Out!B { b.name = a.name; }&quot;</span><span class="p">);</span>
+<pre class="highlight"><code class="language-java">// Parse an ETL transformation
+EtlModule m = new EtlModule();
+m.parse("rule A2B transform a : In!A to b : Out!B { b.name = a.name; }");
 
-<span class="c1">// Get the first rule of the transformation</span>
-<span class="n">TransformationRule</span><span class="w"> </span><span class="n">a2b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="na">getTransformationRules</span><span class="p">().</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="c1">// Print its name</span>
-<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a2b</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+// Get the first rule of the transformation
+TransformationRule a2b = m.getTransformationRules().get(0);
+// Print its name
+System.out.println(a2b.getName());
 
-<span class="c1">// Get the body of the A2B rule</span>
-<span class="n">StatementBlock</span><span class="w"> </span><span class="n">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">StatementBlock</span><span class="p">)</span><span class="w"> </span><span class="n">a2b</span><span class="p">.</span><span class="na">getBody</span><span class="p">().</span><span class="na">getBody</span><span class="p">();</span>
-<span class="c1">// Print the number of statements it contains</span>
-<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">body</span><span class="p">.</span><span class="na">getStatements</span><span class="p">().</span><span class="na">size</span><span class="p">());</span>
-</code></pre></div>
+// Get the body of the A2B rule
+StatementBlock body = (StatementBlock) a2b.getBody().getBody();
+// Print the number of statements it contains
+System.out.println(body.getStatements().size());</code></pre>
 <p>As of version 2.3, Epsilon programs can also be analysed using <a href="https://en.wikipedia.org/wiki/Visitor_pattern">visitors</a>. As an example, see the <code>EolUnparser</code> class which recursively visits the contents of an <code>EolModule</code> and pretty-prints it. To implement your own analyser, you will need to implement the <code>IEolVisitor</code> interface for EOL, or the respective <code>IE*lVisitor</code> interfaces for other Epsilon-based languages. Using a combination of <code>E*lUnparser</code> and your custom visitor, you can easily rewrite Epsilon programs too.</p>
-<div class="highlight"><pre><span></span><code><span class="n">EolModule</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EolModule</span><span class="p">();</span>
-<span class="n">module</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">&quot;&#39;Hello world&#39;.println();&quot;</span><span class="p">);</span>
+<pre class="highlight"><code class="language-java">EolModule module = new EolModule();
+module.parse("'Hello world'.println();");
 
-<span class="n">EolUnparser</span><span class="w"> </span><span class="n">unparser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EolUnparser</span><span class="p">();</span>
-<span class="c1">// Prints &quot;Hello world&quot;.println();</span>
-<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">unparser</span><span class="p">.</span><span class="na">unparse</span><span class="p">(</span><span class="n">module</span><span class="p">));</span>
-</code></pre></div>
+EolUnparser unparser = new EolUnparser();
+// Prints "Hello world".println();
+System.out.println(unparser.unparse(module));</code></pre>
 <h2 id="debugging-epsilon-programs">Debugging Epsilon Programs<a class="headerlink" href="#debugging-epsilon-programs" title="Permanent link">&para;</a></h2>
 <p>To debug Epsilon programs being executed from a Java program, read <a href="../debugger/#debugging-epsilon-scripts-embedded-in-java-programs">these instructions</a>.</p>
 <h2 id="more-examples">More Examples<a class="headerlink" href="#more-examples" title="Permanent link">&para;</a></h2>
@@ -1992,25 +2019,7 @@
     
       <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

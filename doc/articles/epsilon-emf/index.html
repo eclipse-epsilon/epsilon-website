@@ -44,15 +44,11 @@
     
       <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,10 +84,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -143,7 +141,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1783,7 +1817,7 @@
 <p>Below are some frequently-asked questions related to querying and modifying EMF-based models with Epsilon.</p>
 <h2 id="what-is-the-difference-between-containment-and-non-containment-references-in-emf">What is the difference between containment and non-containment references in EMF?<a class="headerlink" href="#what-is-the-difference-between-containment-and-non-containment-references-in-emf" title="Permanent link">&para;</a></h2>
 <p>Briefly, a model element can belong to as most one containment reference at a time. Containment references also demonstrate a cascade-delete behaviour. For example, consider the following Ecore metamodel (captured in Emfatic).</p>
-<pre class="prettyprint lang-emf"><code>package cars;
+<pre class="highlight"><code class="language-emf">package cars;
 
 class Person {
   ref Person[*] friends; //non-containment reference
@@ -1792,7 +1826,7 @@ class Person {
 
 class Car { }</code></pre>
 <p>Now consider the following EOL code which demonstrates the similarities/differences of containment and non-containment references.</p>
-<pre class="prettyprint lang-eol"><code>// Set up a few model elements to play with
+<pre class="highlight"><code class="language-eol">// Set up a few model elements to play with
 var c1 = new Car;
 var c2 = new Car;
 var p1 = new Person;
@@ -1843,25 +1877,23 @@ Car.all.println();</code></pre>
 <p>You can use the <code>getResource()</code> method of <code>AbstractEmfModel</code> for this.</p>
 <h2 id="how-can-i-use-custom-loadsave-options-for-my-emf-model">How can I use custom load/save options for my EMF model?<a class="headerlink" href="#how-can-i-use-custom-loadsave-options-for-my-emf-model" title="Permanent link">&para;</a></h2>
 <p>You need to un-tick the "Read on load"/"Store on disposal" options in your model configuration dialog and use the underlying EMF resource's load/save methods directly from your EOL code. For example, to turn off the OPTION_DEFER_IDREF_RESOLUTION option, which is on by default in Epsilon's EMF driver and has been reported to <a href="https://www.eclipse.org/forums/index.php/m/1754026/#msg_1754026">slow down loading of models that use "id" attributes</a>, you can use the following EOL statement.</p>
-<div class="highlight"><pre><span></span><code><span class="n">M</span><span class="p">.</span><span class="na">resource</span><span class="p">.</span><span class="na">load</span><span class="p">(</span><span class="n">Map</span><span class="p">{</span><span class="s">&quot;DEFER_IDREF_RESOLUTION&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">});</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-java">M.resource.load(Map{"DEFER_IDREF_RESOLUTION" = false});</code></pre>
 <h2 id="how-do-i-load-an-ecore-metamodel">How do I load an Ecore metamodel?<a class="headerlink" href="#how-do-i-load-an-ecore-metamodel" title="Permanent link">&para;</a></h2>
 <p>If you're developing a standalone application, before you can load an EMF model, you will need to put its metamodel (<code>EPackage</code>) in the global EMF EPackage registry, or in the local package registry of the model resource. The following snippet shows how you can parse an Ecore metamodel from a file (<code>my.ecore</code>) and put its root EPackage in the global EMF registry.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Parse the metamodel file into an EMF resource</span>
-<span class="n">ResourceSet</span><span class="w"> </span><span class="n">ecoreResourceSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ResourceSetImpl</span><span class="p">();</span>
-<span class="n">ecoreResourceSet</span><span class="p">.</span><span class="na">getResourceFactoryRegistry</span><span class="p">().</span>
-<span class="w">    </span><span class="n">getExtensionToFactoryMap</span><span class="p">().</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;ecore&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XMIResourceFactoryImpl</span><span class="p">());</span>
-<span class="n">ecoreResourceSet</span><span class="p">.</span><span class="na">getPackageRegistry</span><span class="p">().</span>
-<span class="w">    </span><span class="n">put</span><span class="p">(</span><span class="n">EcorePackage</span><span class="p">.</span><span class="na">eINSTANCE</span><span class="p">.</span><span class="na">getNsURI</span><span class="p">(),</span><span class="w"> </span><span class="n">EcorePackage</span><span class="p">.</span><span class="na">eINSTANCE</span><span class="p">);</span><span class="w"> </span>
-<span class="n">Resource</span><span class="w"> </span><span class="n">ecoreResource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ecoreResourceSet</span><span class="p">.</span><span class="na">createResource</span><span class="p">(</span>
-<span class="w">    </span><span class="n">URI</span><span class="p">.</span><span class="na">createFileURI</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;my.ecore&quot;</span><span class="p">).</span><span class="na">getAbsolutePath</span><span class="p">()));</span>
-<span class="n">ecoreResource</span><span class="p">.</span><span class="na">load</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<pre class="highlight"><code class="language-java">// Parse the metamodel file into an EMF resource
+ResourceSet ecoreResourceSet = new ResourceSetImpl();
+ecoreResourceSet.getResourceFactoryRegistry().
+    getExtensionToFactoryMap().put("ecore", new XMIResourceFactoryImpl());
+ecoreResourceSet.getPackageRegistry().
+    put(EcorePackage.eINSTANCE.getNsURI(), EcorePackage.eINSTANCE); 
+Resource ecoreResource = ecoreResourceSet.createResource(
+    URI.createFileURI(new File("my.ecore").getAbsolutePath()));
+ecoreResource.load(null);
 
-<span class="c1">// Ecore files usually contain one EPackage</span>
-<span class="n">EPackage</span><span class="w"> </span><span class="n">ePackage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EPackage</span><span class="p">)</span><span class="w"> </span><span class="n">ecoreResource</span><span class="p">.</span><span class="na">getContents</span><span class="p">().</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="c1">// Put the EPackage in the global EMF EPackage registry</span>
-<span class="n">EPackage</span><span class="p">.</span><span class="na">Registry</span><span class="p">.</span><span class="na">INSTANCE</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">ePackage</span><span class="p">.</span><span class="na">getNsURI</span><span class="p">(),</span><span class="w"> </span><span class="n">ePackage</span><span class="p">);</span>
-</code></pre></div>
+// Ecore files usually contain one EPackage
+EPackage ePackage = (EPackage) ecoreResource.getContents().get(0);
+// Put the EPackage in the global EMF EPackage registry
+EPackage.Registry.INSTANCE.put(ePackage.getNsURI(), ePackage);</code></pre>
 
 
 
@@ -1958,25 +1990,7 @@ Car.all.println();</code></pre>
     
       <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

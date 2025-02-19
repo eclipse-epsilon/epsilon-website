@@ -44,15 +44,11 @@
     
       <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../../assets/javascript/google-code-prettify/prettify.css">
-    
-      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/slick-theme.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -88,10 +84,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -143,7 +141,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1758,29 +1792,27 @@
 <p>Throughout this article, we'll use the following metamodel:</p>
 <p><img alt="" src="families.png" /></p>
 <p>Suppose we've already constructed a Families model using the following HUTN source:</p>
-<div class="codehilite"><pre><span></span><code>@Spec {
-  metamodel &quot;families&quot; {
-    nsUri: &quot;families&quot;
+<pre class="highlight"><code>@Spec {
+  metamodel "families" {
+    nsUri: "families"
   }
 }
 families {
   Family {
-    name: &quot;The Smiths&quot;
-    familyFriends: Family &quot;does&quot;, Family &quot;bloggs&quot;
+    name: "The Smiths"
+    familyFriends: Family "does", Family "bloggs"
   }
 
-  Family &quot;does&quot; {
-    name: &quot;The Does&quot;
+  Family "does" {
+    name: "The Does"
     migrant: true
   }
 
-  Family &quot;bloggs&quot; {
-    name: &quot;The Bloggs&quot;
+  Family "bloggs" {
+    name: "The Bloggs"
     migrant: true
   }
-}
-</code></pre></div>
-
+}</code></pre>
 <p>There is some duplication in the HUTN document above. Firstly, the identifiers used to reference Family objects are very similar to the families' names. Secondly, the migrant property is set to true in two of the three Families.</p>
 <p>A HUTN configuration model can be used to customise the document and reduce the duplication. A HUTN configuration model comprises rules, which customise the HUTN document. The remainder of this article describes how to create and use a configuration model to specify default values for properties and inferred values for identifiers.</p>
 <h2 id="creating-a-hutn-configuration-model">Creating a HUTN configuration model<a class="headerlink" href="#creating-a-hutn-configuration-model" title="Permanent link">&para;</a></h2>
@@ -1794,28 +1826,24 @@ families {
 <p><img alt="" src="identifier_rule_properties.png" /></p>
 <h2 id="using-a-hutn-configuration-model">Using a HUTN configuration model<a class="headerlink" href="#using-a-hutn-configuration-model" title="Permanent link">&para;</a></h2>
 <p>To make use of the configuration model, the preamble of the HUTN document must be changed to the following:</p>
-<div class="codehilite"><pre><span></span><code>@Spec {
-  metamodel &quot;families&quot; {
-    nsUri: &quot;families&quot;
-    configFile: &quot;FamiliesConfig.model&quot;
+<pre class="highlight"><code>@Spec {
+  metamodel "families" {
+    nsUri: "families"
+    configFile: "FamiliesConfig.model"
   }
-}
-</code></pre></div>
-
+}</code></pre>
 <p>Note the extra line that references the configuration model. The value of the configFile attribute is a path relative to the HUTN document.</p>
 <p>The body of the HUTN document shown at the start of the article can now be rewritten as follows:</p>
-<div class="codehilite"><pre><span></span><code>families {
+<pre class="highlight"><code>families {
   Family {
-    name: &quot;The Smiths&quot;
-    familyFriends: Family &quot;The Does&quot;, Family &quot;The Bloggs&quot;
+    name: "The Smiths"
+    familyFriends: Family "The Does", Family "The Bloggs"
     migrant: false
   }
 
-  Family &quot;The Does&quot; {}
-  Family &quot;The Bloggs&quot; {}
-}
-</code></pre></div>
-
+  Family "The Does" {}
+  Family "The Bloggs" {}
+}</code></pre>
 <p>The identifiers specified for the last two families also specify the value of their name attribute, and so there's no need to explicitly set the name attribute in the body of the Family element. Conversely, the first Family specifies a name (The Smiths), and no identifier. A reference to the first family can use The Smiths as an identifier.</p>
 <p>Notice also that the migrant attribute values have been removed from the The Does and The Bloggs, as the default value is now true. However, The Smiths must now explicitly state that its migrant value should be false.</p>
 <h2 id="additional-resources">Additional resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
@@ -1918,25 +1946,7 @@ families {
     
       <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
-      
-        <script src="../../../assets/javascript/mermaid.js"></script>
-      
-        <script src="../../../assets/javascript/jquery.js"></script>
-      
-        <script src="../../../assets/javascript/slick.min.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettify.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-emfatic.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/lang-epsilon.js"></script>
-      
-        <script src="../../../assets/javascript/google-code-prettify/prettyprint.js"></script>
-      
-        <script src="../../../assets/javascript/extra.js"></script>
-      
-        <script src="https://w.appzi.io/w.js?token=jlv6W"></script>
+        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>
