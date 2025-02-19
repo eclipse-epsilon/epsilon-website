@@ -3,7 +3,7 @@
 !!! warning "Memory leak in Epsilon 2.7"
 	Unfortunately, version 2.7 of Epsilon contains [a memory leak](https://github.com/eclipse-epsilon/epsilon/issues/158) that can affect applications which parse many Epsilon programs in the same JVM instance. The issue has been resolved, and a new version will be released soon. In the meantime, we recommend using version 2.5.
 
-Epsilon's stable versions are available on [Maven Central](https://mvnrepository.com/artifact/org.eclipse.epsilon). For example, to use version 2.5 of the [EOL](../doc/eol.md) engine from your Maven project, you should add the following dependency to your `pom.xml`:
+Epsilon's stable versions are available on [Maven Central](https://mvnrepository.com/artifact/org.eclipse.epsilon). For example, to use version 2.5 of the [EOL](../doc/eol.md) engine from your Maven project, you should add the following dependency to your `pom.xml`.
 
 ```xml
 <dependencies>
