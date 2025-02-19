@@ -1,0 +1,104 @@
+body[data-md-color-scheme="slate"] pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em
+}
+body[data-md-color-scheme="slate"] code.hljs {
+  padding: 3px 5px
+}
+/*!
+  Theme: nnfx dark
+  Description: a theme inspired by Netscape Navigator/Firefox
+  Author: (c) 2020-2021 Jim Mason <jmason@ibinx.com>
+  Maintainer: @RocketMan
+  License: https://creativecommons.org/licenses/by-sa/4.0  CC BY-SA 4.0
+  Updated: 2021-05-17
+
+  @version 1.1.0
+*/
+body[data-md-color-scheme="slate"] .hljs {
+  background: #333;
+  color: #fff
+}
+body[data-md-color-scheme="slate"] .language-xml .hljs-meta,
+body[data-md-color-scheme="slate"] .language-xml .hljs-meta-string {
+  font-weight: bold;
+  font-style: italic;
+  color: #69f
+}
+body[data-md-color-scheme="slate"] .hljs-comment,
+body[data-md-color-scheme="slate"] .hljs-quote {
+  font-style: italic;
+  color: #9c6
+}
+body[data-md-color-scheme="slate"] .hljs-name,
+body[data-md-color-scheme="slate"] .hljs-keyword,
+body[data-md-color-scheme="slate"] .hljs-built_in {
+  color: #a7a
+}
+body[data-md-color-scheme="slate"] .hljs-name,
+body[data-md-color-scheme="slate"] .hljs-attr {
+  font-weight: bold
+}
+body[data-md-color-scheme="slate"] .hljs-string {
+  font-weight: normal
+}
+body[data-md-color-scheme="slate"] .hljs-code,
+body[data-md-color-scheme="slate"] .hljs-string,
+body[data-md-color-scheme="slate"] .hljs-meta .hljs-string,
+body[data-md-color-scheme="slate"] .hljs-number,
+body[data-md-color-scheme="slate"] .hljs-regexp,
+body[data-md-color-scheme="slate"] .hljs-link {
+  color: #bce
+}
+body[data-md-color-scheme="slate"] .hljs-title,
+body[data-md-color-scheme="slate"] .hljs-symbol,
+body[data-md-color-scheme="slate"] .hljs-bullet,
+body[data-md-color-scheme="slate"] .hljs-variable,
+body[data-md-color-scheme="slate"] .hljs-template-variable {
+  color: #d40
+}
+body[data-md-color-scheme="slate"] .hljs-title.class_,
+body[data-md-color-scheme="slate"] .hljs-class .hljs-title,
+body[data-md-color-scheme="slate"] .hljs-type {
+  font-weight: bold;
+  color: #96c
+}
+body[data-md-color-scheme="slate"] .hljs-title.function_,
+body[data-md-color-scheme="slate"] .hljs-function .hljs-title,
+body[data-md-color-scheme="slate"] .hljs-attr,
+body[data-md-color-scheme="slate"] .hljs-subst,
+body[data-md-color-scheme="slate"] .hljs-tag {
+  color: #fff
+}
+body[data-md-color-scheme="slate"] .hljs-formula {
+  background-color: #eee;
+  font-style: italic
+}
+body[data-md-color-scheme="slate"] .hljs-addition {
+  background-color: #797
+}
+body[data-md-color-scheme="slate"] .hljs-deletion {
+  background-color: #c99
+}
+body[data-md-color-scheme="slate"] .hljs-meta {
+  color: #69f
+}
+body[data-md-color-scheme="slate"] .hljs-section,
+body[data-md-color-scheme="slate"] .hljs-selector-id,
+body[data-md-color-scheme="slate"] .hljs-selector-class,
+body[data-md-color-scheme="slate"] .hljs-selector-pseudo,
+body[data-md-color-scheme="slate"] .hljs-selector-tag {
+  font-weight: bold;
+  color: #69f
+}
+body[data-md-color-scheme="slate"] .hljs-selector-pseudo {
+  font-style: italic
+}
+body[data-md-color-scheme="slate"] .hljs-doctag,
+body[data-md-color-scheme="slate"] .hljs-strong {
+  font-weight: bold
+}
+body[data-md-color-scheme="slate"] .hljs-emphasis {
+  font-style: italic
+}

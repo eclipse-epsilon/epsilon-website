@@ -1,13 +1,13 @@
 # Running Epsilon from Java
 
-While Epsilon's development tools are based on Eclipse, its runtime is not, and can be used from any (headless) Java application. For example, the back-end of the [Epsilon Playground](../../../playground) is a headless, server-less Java application that runs on Google's Cloud Platform.
+While Epsilon's development tools are based on Eclipse, its runtime is not, and can be used from any (headless) Java application. For example, the back-end of the [Epsilon Playground](../../playground/index.html) is a headless, server-less Java application that runs on Google's Cloud Platform.
 
 !!! info "Did you know that ..."
     Contrary to popular belief, EMF is **not** tightly coupled to the Eclipse IDE either, and can also be embedded in any Java application by importing a couple of dependencies from [Maven Central](https://mvnrepository.com/artifact/org.eclipse.emf).
 
 ## Dependencies
 
-Epsilon libraries are available on [MavenCentral](https://mvnrepository.com/artifact/org.eclipse.epsilon). Below is a fragment of a Maven `pom.xml` file, where we declare dependencies to the execution engine of Epsilon's [core expression language](../../eol) and on Epsilon's driver for EMF-based models. As the EMF driver has a dependency on EMF, we don't need to declare a dependency to the EMF libraries on MavenCentral; Maven will fetch these automatically for us.
+Epsilon libraries are available on [MavenCentral](https://mvnrepository.com/artifact/org.eclipse.epsilon). Below is a fragment of a Maven `pom.xml` file, where we declare dependencies to the execution engine of Epsilon's [core expression language](../eol.md) and on Epsilon's driver for EMF-based models. As the EMF driver has a dependency on EMF, we don't need to declare a dependency to the EMF libraries on MavenCentral; Maven will fetch these automatically for us.
 
 ```xml
 <dependencies>
@@ -36,7 +36,7 @@ module.execute();
 ```
 
 !!! tip
-    By replacing `EolModule` with `EtlModule`, `EvlModule` etc. you can parse and execute [ETL transformations](../../etl), [EVL validation constraints](../../evl) etc. [EGL](../../egl) deviates from this pattern and if you wish to execute a single template you should use the `EglTemplateFactoryModuleAdapter` class.
+    By replacing `EolModule` with `EtlModule`, `EvlModule` etc. you can parse and execute [ETL transformations](../etl.md), [EVL validation constraints](../evl.md) etc. [EGL](../egl.md) deviates from this pattern and if you wish to execute a single template you should use the `EglTemplateFactoryModuleAdapter` class.
 
 ## Loading Models
 
@@ -91,7 +91,7 @@ module.execute();
 
 ## Using Tools Contributed by Plugins
 
-To use [tools](../call-java-from-epsilon/) contributed by other plugins in a standalone Java setup within Eclipse you'll need to add the following line of code.
+To use [tools](call-java-from-epsilon/index.md) contributed by other plugins in a standalone Java setup within Eclipse you'll need to add the following line of code.
 
 ```java
 context.getNativeTypeDelegates().
@@ -132,7 +132,7 @@ System.out.println(unparser.unparse(module));
 
 ## Debugging Epsilon Programs
 
-To debug Epsilon programs being executed from a Java program, read [these instructions](./debugger.md#debugging-epsilon-scripts-embedded-in-java-programs).
+To debug Epsilon programs being executed from a Java program, read [these instructions](debugger.md#debugging-epsilon-scripts-embedded-in-java-programs).
 
 ## More Examples
 

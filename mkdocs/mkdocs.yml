@@ -62,6 +62,26 @@ nav:
   - Branding: 'branding/index.md'
 theme:
   name: material
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: 'black'
+      accent: 'orange'
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: 'black'
+      accent: 'orange'
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
   custom_dir: custom_theme
   features:
     - content.code.copy
@@ -69,9 +89,6 @@ theme:
     - navigation.footer
   logo: 'assets/images/epsilon-white-background.png'
   favicon: 'assets/images/favicon.png'
-  palette:
-    primary: 'black'
-    accent: 'orange'
 extra:
   social:
     - icon: fontawesome/brands/linkedin
@@ -88,63 +105,27 @@ markdown_extensions:
       custom_fences:
         - name: mermaid
           class: mermaid mermaid-100
-          format: !!python/name:pymdownx.superfences.fence_div_format
+          format: !!python/name:pymdownx.superfences.fence_code_format
         - name: mermaid-90
           class: mermaid mermaid-90
-          format: !!python/name:pymdownx.superfences.fence_div_format
+          format: !!python/name:pymdownx.superfences.fence_code_format
         - name: mermaid-80
           class: mermaid mermaid-80
-          format: !!python/name:pymdownx.superfences.fence_div_format
+          format: !!python/name:pymdownx.superfences.fence_code_format
         - name: mermaid-70
           class: mermaid mermaid-70
-          format: !!python/name:pymdownx.superfences.fence_div_format
+          format: !!python/name:pymdownx.superfences.fence_code_format
         - name: mermaid-60
           class: mermaid mermaid-60
-          format: !!python/name:pymdownx.superfences.fence_div_format
+          format: !!python/name:pymdownx.superfences.fence_code_format
         - name: mermaid-50
           class: mermaid mermaid-50
-          format: !!python/name:pymdownx.superfences.fence_div_format
+          format: !!python/name:pymdownx.superfences.fence_code_format
         - name: mermaid-40
           class: mermaid mermaid-40
-          format: !!python/name:pymdownx.superfences.fence_div_format
+          format: !!python/name:pymdownx.superfences.fence_code_format
         - name: mermaid-30
           class: mermaid mermaid-30
-          format: !!python/name:pymdownx.superfences.fence_div_format
-        - name: eol
-          class: prettyprint lang-eol
-          format: !!python/name:pymdownx.superfences.fence_code_format
-        - name: etl
-          class: prettyprint lang-etl
-          format: !!python/name:pymdownx.superfences.fence_code_format
-        - name: ecl
-          class: prettyprint lang-ecl
-          format: !!python/name:pymdownx.superfences.fence_code_format
-        - name: eml
-          class: prettyprint lang-eml
-          format: !!python/name:pymdownx.superfences.fence_code_format
-        - name: epl
-          class: prettyprint lang-epl
-          format: !!python/name:pymdownx.superfences.fence_code_format
-        - name: evl
-          class: prettyprint lang-evl
-          format: !!python/name:pymdownx.superfences.fence_code_format
-        - name: mig
-          class: prettyprint lang-mig
-          format: !!python/name:pymdownx.superfences.fence_code_format
-        - name: eunit
-          class: prettyprint lang-eol
-          format: !!python/name:pymdownx.superfences.fence_code_format
-        - name: egx
-          class: prettyprint lang-egx
-          format: !!python/name:pymdownx.superfences.fence_code_format
-        - name: egl
-          class: prettyprint lang-egl
-          format: !!python/name:pymdownx.superfences.fence_code_format
-        - name: emf
-          class: prettyprint lang-emf
-          format: !!python/name:pymdownx.superfences.fence_code_format
-        - name: pinset
-          class: prettyprint lang-pinset
           format: !!python/name:pymdownx.superfences.fence_code_format
   - admonition
   - pymdownx.smartsymbols
@@ -153,14 +134,18 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.details
-  - codehilite:
-      guess_lang: false
-      linenums: false
+  - pymdownx.highlight:
+      use_pygments: false
   - toc:
       permalink: true
+  - pymdownx.snippets
 plugins:
     - exclude:
         glob:
+          - assets/node_modules/*
+          - assets/package-lock.json
+          - assets/webpack.config.js
+          - assets/package.json
           - playground/cypress/*
           - playground/node_modules/*
           - playground/package-lock.json
@@ -188,24 +173,11 @@ plugins:
 copyright: 'Copyright © <a href="https://www.eclipse.org">Eclipse Foundation, Inc.</a> All Rights Reserved <br/> <a href="https://www.eclipse.org/legal/privacy.php">Privacy Policy</a> &centerdot; <a href="https://www.eclipse.org/legal/termsofuse.php">Terms of Use</a> &centerdot; <a href="https://www.eclipse.org/legal/copyright.php">Copyright Agent</a>  &centerdot; <a href="https://www.eclipse.org/legal/">Legal</a><p><img src="https://eclipse.dev/epsilon/assets/images/eclipse-foundation-logo.svg"/></p>'
 extra_css:
   - 'assets/stylesheets/mermaid.css'
-  - 'assets/javascript/google-code-prettify/prettify.css'
-  #- 'assets/stylesheets/tabbed.css'
-  - https://unpkg.com/mermaid@8.5.1/dist/mermaid.css
-  - 'assets/stylesheets/slick.css'
-  - 'assets/stylesheets/slick-theme.css'
   - 'assets/stylesheets/extra.css'
-
+  - 'assets/stylesheets/nnfx-light.css'
+  - 'assets/stylesheets/nnfx-dark.css'
 extra_javascript:
-  - https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js
-  - 'assets/javascript/mermaid.js'
-  - 'assets/javascript/jquery.js'
-  - 'assets/javascript/slick.min.js'
-  - 'assets/javascript/google-code-prettify/prettify.js'
-  - 'assets/javascript/google-code-prettify/lang-emfatic.js'
-  - 'assets/javascript/google-code-prettify/lang-epsilon.js'
-  - 'assets/javascript/google-code-prettify/prettyprint.js'
-  - 'assets/javascript/extra.js'
-  - https://w.appzi.io/w.js?token=jlv6W
+  - 'assets/dist/bundle.js'
 google_analytics:
   - UA-184785655-1
   - auto

@@ -22,7 +22,6 @@ class Connector {
     +to: Port
 }
 Component *-- Connector: connectors *
-Component *-- Component
 Component *-- Port: ports *
 Connector -- Port: from
 Port -- Connector: to
@@ -52,7 +51,6 @@ class OutputPort {
     +connector: Connector
 }
 Component *-- Connector: connectors *
-Component *-- Component
 Component *-- Port: ports *
 InputPort --|> Port: in
 OutputPort --|> Port: out

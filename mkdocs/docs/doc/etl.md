@@ -3,7 +3,7 @@
 The aim of ETL is to contribute model-to-model transformation capabilities to Epsilon. More specifically, ETL can be used to transform an arbitrary number of input models into an arbitrary number of output models of different modelling languages and technologies in a rule-based and modular manner.
 
 !!! tip "Try ETL online"
-    You can run and fiddle with an ETL transformation that transforms a tree model to a graph model in the [online Epsilon Playground](../../playground/?etl).
+    You can run and fiddle with an ETL transformation that transforms a tree model to a graph model in the [online Epsilon Playground](../playground/index.html?etl).
 
 ## Abstract Syntax
 

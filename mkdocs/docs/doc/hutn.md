@@ -19,7 +19,7 @@ consistency of HUTN models.
 
 ## Examples
 
--   [Article: Using the Human-Usable Textual Notation (HUTN) in Epsilon](../articles/hutn-basic/)
+-   [Article: Using the Human-Usable Textual Notation (HUTN) in Epsilon](articles/hutn-basic/index.md)
 -   [Article: Using HUTN for T2M transformation](http://epsilonblog.wordpress.com/2008/01/16/using-hutn-for-t2m-transformation/) -   [Article: New in HUTN 0.7.1](http://epsilonblog.wordpress.com/2008/09/15/new-in-hutn-071/)
 -   [Article: Managing Inconsistent Models with HUTN](http://epsilonblog.wordpress.com/2009/04/27/managing-inconsistent-models-with-hutn/)
 

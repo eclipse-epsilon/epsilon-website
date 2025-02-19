@@ -1,6 +1,46 @@
 # Download
 
-The simplest way to get a copy of Eclipse with Epsilon 2.7 and all its dependencies installed, is to download the [Eclipse Installer](https://wiki.eclipse.org/Eclipse_Installer) and select Epsilon.
+!!! warning "Memory leak in Epsilon 2.7"
+	Unfortunately, version 2.7 of Epsilon contains [a memory leak](https://github.com/eclipse-epsilon/epsilon/issues/158) that can affect applications which parse many Epsilon programs in the same JVM instance. The issue has been resolved, and a new version will be released soon. In the meantime, we recommend using version 2.5.
+
+Epsilon's stable versions are available on [Maven Central](https://mvnrepository.com/artifact/org.eclipse.epsilon). For example, to use version 2.5 of the [EOL](../doc/eol.md) engine from your Maven project, you should add the following dependency to your `pom.xml`.
+
+```xml
+<dependencies>
+	<dependency>
+	    <groupId>org.eclipse.epsilon</groupId>
+	    <artifactId>org.eclipse.epsilon.eol.engine</artifactId>
+	    <version>2.5.0</version>
+	</dependency>
+</dependencies>
+```
+
+!!! example "Where can I find examples of using these Maven dependencies?"
+
+	See our [Getting Started](../getting-started.md#using-epsilon-as-a-java-library) page for instructions on how to download and run Maven/Gradle-based examples from the [Epsilon Playground](../playground/).
+
+To use the latest SNAPSHOT (interim) version of Epsilon, you should add the Sonatype snapshots repository to your `pom.xml` and set the version of the Epsilon libraries to `2.8.0-SNAPSHOT` as shown below.
+
+```xml
+<repositories>
+	<repository>
+		<id>ossrh</id>
+		<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+	</repository>
+</repositories>
+
+<dependencies>
+  	<dependency>
+  		<groupId>org.eclipse.epsilon</groupId>
+  		<artifactId>org.eclipse.epsilon.eol.engine</artifactId>
+	    <version>2.8.0-SNAPSHOT</version>
+  	</dependency>
+</dependencies>
+```
+
+## Development Tools
+
+The simplest way to get a copy of Eclipse with Epsilon 2.5 and all its development tools and dependencies installed, is to download the [Eclipse Installer](https://wiki.eclipse.org/Eclipse_Installer) and select Epsilon.
 
 ![Epsilon in Eclipse Installer](../assets/images/eclipse-installer.png)
 
@@ -19,13 +59,13 @@ The simplest way to get a copy of Eclipse with Epsilon 2.7 and all its dependenc
 !!! warning
 	Please do not select the Epsilon project on the second page of the installer in Advanced Mode. This is for Epsilon developers only and may cause issues during installation of the Epsilon product.
 
-## Update Sites
+### Update Sites
 
 Alternatively, you can use the following update sites through the `Help` --> `Install new software` menu in Eclipse to install (parts of) Epsilon.
 
 | Site | Location |
 | - | - |
-| Stable | `http://download.eclipse.org/epsilon/updates/2.7/`|
+| Stable | `http://download.eclipse.org/epsilon/updates/2.5/`|
 | Interim | `http://download.eclipse.org/epsilon/interim/`|
 
 !!! warning "Eclipse failing to find dependencies?"
@@ -36,16 +76,16 @@ Alternatively, you can use the following update sites through the `Help` --> `In
 !!! info "How often is the interim update site rebuilt?"
     The interim update site is rebuilt automatically with every push to the main branch of the Epsilon repo. Bugs fixed in the interim version (compared to the latest stable version) are listed [here](https://bugs.eclipse.org/bugs/buglist.cgi?bug_status=RESOLVED&list_id=17694438&product=epsilon&query_format=advanced)
 
-### Archived Update Sites
+#### Archived Update Sites
 
 Below are also links to compressed versions of the Epsilon update sites for long-term archival and to support users who are behind corporate firewalls.
 
 | Site | Zip Archive |
 | - | - |
-| Stable | <https://www.eclipse.org/downloads/download.php?file=/epsilon/updates/2.7/epsilon-2.7-site.zip> |
+| Stable | <https://www.eclipse.org/downloads/download.php?file=/epsilon/updates/2.5/epsilon-2.5-site.zip> |
 | Interim | <https://www.eclipse.org/downloads/download.php?file=/epsilon/interim/epsilon-interim-site.zip> |
 
-## Eclipse Marketplace
+### Eclipse Marketplace
 
 If you prefer to install Epsilon through the Eclipse Marketplace, you can drag and drop <a style="position:relative;top:8px" href="https://marketplace.eclipse.org/marketplace-client-intro?mpc_install=400" title="install"><img src="https://marketplace.eclipse.org/sites/all/modules/custom/marketplace/images/installbutton.png"/></a> into a running instance of Eclipse.
 
@@ -56,43 +96,9 @@ The source code of Epsilon is in the following Git repository.
 | Type | Location |
 | - | - |
 | Repository | `https://github.com/eclipse-epsilon/epsilon`|
-| Release tag | `https://github.com/eclipse-epsilon/epsilon/releases/tag/2.7`|
+| Release tag | `https://github.com/eclipse-epsilon/epsilon/releases/tag/2.5`|
 
 Additional projects which are experimental or have dependencies which are incompatible with the Eclipse Public License are available in [Epsilon Labs](https://github.com/epsilonlabs).
-
-## Maven
-
-Epsilon JARs are available from [Maven Central](https://mvnrepository.com/artifact/org.eclipse.epsilon). For
-instance, to use the `EOL engine` JAR from your `pom.xml`:
-
-```xml
-<dependencies>
-	<dependency>
-	    <groupId>org.eclipse.epsilon</groupId>
-	    <artifactId>org.eclipse.epsilon.eol.engine</artifactId>
-	    <version>2.7.0</version>
-	</dependency>
-</dependencies>
-```
-
-To use the latest SNAPSHOT (interim) version of Epsilon, you should add the Sonatype snapshots repository to your `pom.xml` and set the version of the Epsilon libraries to `2.7.0-SNAPSHOT` as shown below.
-
-```xml
-<repositories>
-	<repository>
-		<id>ossrh</id>
-		<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-	</repository>
-</repositories>
-
-<dependencies>
-  	<dependency>
-  		<groupId>org.eclipse.epsilon</groupId>
-  		<artifactId>org.eclipse.epsilon.eol.engine</artifactId>
-	    <version>2.7.0-SNAPSHOT</version>
-  	</dependency>
-</dependencies>
-```
 
 ## Older versions
 

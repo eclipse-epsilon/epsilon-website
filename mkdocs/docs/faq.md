@@ -12,11 +12,11 @@ No. Epsilon is a family of languages, **one of which** targets model-to-model tr
 
 ## Who is using Epsilon?
 
-With **more than 9,000 posts** in the [Epsilon forum](../forum), it appears that quite a few people are currently using different parts of Epsilon. A list of companies and open-source projects that use Epsilon is available [here](../users).
+With **more than 10,000 posts** in the [Epsilon forum](support.md), it appears that quite a few people are currently using different parts of Epsilon. A list of companies and open-source projects that use Epsilon is available [here](users/index.md).
 
 ## How do I get help?
 
-Epsilon has a dedicated [forum](../forum) where you can ask questions about the tools and languages it provides. Whenever possible, please use the forum instead of direct email. We're monitoring the forum very closely and there is practically no difference in terms of response time. Also, answered questions in the forum form a knowledge base, which other users can consult in case they face similar issues in the future, and an active forum is an indication of a healthy and actively maintained project (properties that the Eclipse Foundation takes very seriously). When posting messages to the forum we recommend that you use your full (or at least a realistic) name instead of a nickname (e.g. "ABC", "SomeGuy") as the latter can lead to pretty awkward sentences.
+Epsilon has a dedicated [forum](support.md) where you can ask questions about the tools and languages it provides. Whenever possible, please use the forum instead of direct email. We're monitoring the forum very closely and there is practically no difference in terms of response time. Also, answered questions in the forum form a knowledge base, which other users can consult in case they face similar issues in the future, and an active forum is an indication of a healthy and actively maintained project (properties that the Eclipse Foundation takes very seriously). When posting messages to the forum we recommend that you use your full (or at least a realistic) name instead of a nickname (e.g. "ABC", "SomeGuy") as the latter can lead to pretty awkward sentences.
 
 ## How do I get notified when a new version of Epsilon becomes available?
 
@@ -24,7 +24,7 @@ To get notified when a new version of Epsilon becomes available you can configur
 
 ## Can I use Epsilon in a non-Eclipse-based standalone Java application?
 
-Yes. There are several examples of doing just that in the [examples/org.eclipse.epsilon.examples.standalone](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.standalone/src/org/eclipse/epsilon/examples/standalone) project in the Git repository. Just grab your JARs through [Maven Central](../download).
+Yes. There are several examples of doing just that in the [examples/org.eclipse.epsilon.examples.standalone](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.standalone/src/org/eclipse/epsilon/examples/standalone) project in the Git repository. Just grab your JARs through [Maven Central](download/index.md).
 
 ## How does Epsilon compare to the OMG family of languages?
 
@@ -36,7 +36,7 @@ Second, Epsilon provides specialized languages for tasks that are currently not 
 
 ## What is the difference between E\*L and language X?
 
-If the available [documentation](../doc/) doesn't provide enough information for figuring this out, please feel free to ask in the [Epsilon forum](../forum).
+If the available [documentation](doc/index.md) doesn't provide enough information for figuring this out, please feel free to ask in the [Epsilon forum](support.md).
 
 ## Are Epsilon languages compiled or interpreted?
 

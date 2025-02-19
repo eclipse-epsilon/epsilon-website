@@ -72,7 +72,7 @@ An EVL module can define a number of named *pre* and a *post* blocks that contai
 
 ## Concrete Syntax
 
-The following listing demonstrates the concrete sytnax of the *context*, *constraint* and *fix* abstract syntax constructs discussed above.
+The following listing demonstrates the concrete syntax of the *context*, *constraint* and *fix* abstract syntax constructs discussed above.
 
 ```
 (@lazy)?

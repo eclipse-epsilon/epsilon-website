@@ -1,6 +1,6 @@
 # Orchestration Workflow
 
-In practice, model management activities are seldom carried out in isolation; instead, they are often combined together to form complex workflows. Therefore, in addition to task-specific languages for individual activities (model-to-text transformatino, model validation etc), Epsilon provides a set of Apache ANT tasks for assembling multi-step automated build processes.
+In practice, model management activities are seldom carried out in isolation; instead, they are often combined together to form complex workflows. Therefore, in addition to task-specific languages for individual activities (model-to-text transformation, model validation etc), Epsilon provides a set of Apache ANT tasks for assembling multi-step automated build processes.
 
 !!! tip "Running Epsilon's ANT tasks"
     Epsilon's ANT tasks can run both [within Eclipse](https://www.vogella.com/tutorials/ApacheAnt/article.html) and [headless](../articles/running-epsilon-ant-tasks-from-command-line), and from [Maven](../articles/running-epsilon-ant-tasks-from-command-line/#maven) and [Gradle](../articles/running-epsilon-ant-tasks-from-command-line/#gradle) builds too. When running an ANT workflow that involves Epsilon tasks in Eclipse, please make sure you select the `Run in the same JRE as the workspace` option under the `JRE` tab of your launch configuration.
@@ -315,7 +315,7 @@ EolTask --|> ExecutableModuleTask
 
 ### The Abstract Executable Module Task
 
-This task is the base of all the model management tasks presented in the following section. Its aim is to encapsulate the commonalities of Epsilon tasks in order to reduce duplication among them. As already discussed, in Epsilon, specifications of model management tasks are organized in executable modules. While modules can be stored anywhere, in the case of the workflow it is assumed that they are either stored as separate files in the file-system or they are provided inline within the worfklow. Thus, this abstract task defines an `src` attribute that specifies the path of the source file in which the Epsilon module is stored, but also supports inline specification of the source of the module. The two alternatives are demonstrated in the listings below.
+This task is the base of all the model management tasks presented in the following section. Its aim is to encapsulate the commonalities of Epsilon tasks in order to reduce duplication among them. As already discussed, in Epsilon, specifications of model management tasks are organized in executable modules. While modules can be stored anywhere, in the case of the workflow it is assumed that they are either stored as separate files in the file-system or they are provided inline within the workflow. Thus, this abstract task defines an `src` attribute that specifies the path of the source file in which the Epsilon module is stored, but also supports inline specification of the source of the module. The two alternatives are demonstrated in the listings below.
 
 ```xml
 <project default="main">

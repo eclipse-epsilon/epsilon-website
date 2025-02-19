@@ -1,9 +1,9 @@
 # The Epsilon Object Language (EOL)
 
-EOL is the core expression language of Epsilon, and the foundation for task-specific languages for tasks such as [model-validation](../evl), [model-to-text transformation](../egl), [model-to-model transformation](../etl) and [model migration](../flock). EOL can also be used as a general-purpose standalone model management language for automating tasks that do not fall into the patterns targeted by task-specific languages.
+EOL is the core expression language of Epsilon, and the foundation for task-specific languages for tasks such as [model-validation](evl.md), [model-to-text transformation](egl.md), [model-to-model transformation](etl.md) and [model migration](flock.md). EOL can also be used as a general-purpose standalone model management language for automating tasks that do not fall into the patterns targeted by task-specific languages.
 
 !!! tip "Try EOL online"
-    You can run and fiddle with an EOL program that queries a project scheduling model in the [online Epsilon Playground](../../playground/?eol).
+    You can run and fiddle with an EOL program that queries a project scheduling model in the [online Epsilon Playground](../playground/index.html?eol).
 
 ## Syntax
 
@@ -46,7 +46,7 @@ class ExecutableAnnotation {
 class SimpleAnnotation {
 	+values: String[*]
 }
-EolModule -- ImportStatement: *
+EolModule -- ImportStatement: importStatements *
 EolModule -- Operation: operations *
 Operation -- Annotation: annotations *
 Operation -- StatementBlock: body
@@ -471,7 +471,7 @@ var Collectors = Native("java.util.stream.Collectors");
 A model element type represents a meta-level classifier for model elements. Epsilon intentionally refrains from defining more details about the meaning of a model element type, to be able to support diverse modelling technologies where a type has different semantics. For instance an Ecore EClass, an XSD complex type and a Java class can all be regarded as model element types according to the implementation of the underlying modelling framework.
 
 !!! info
-    As EOL is decoupled from modelling technologies (e.g. EMF, Simulink), through [Epsilon's Model Connectivity Layer](../emc), we refrain from referring to specific modelling technologies in this section as much as possible.
+    As EOL is decoupled from modelling technologies (e.g. EMF, Simulink), through [Epsilon's Model Connectivity Layer](emc.md), we refrain from referring to specific modelling technologies in this section as much as possible.
 
 In case of multiple models, as well as the name of the type, the name of the model is also required to resolve a particular type since different models may contain elements of homonymous but different model element types. In case a model defines more than one type with the same name (e.g. in different packages), a fully qualified type name must be provided.
 
@@ -753,7 +753,7 @@ When the left hand side of the assignment is a property of a native object, deci
 
 ##### Model Element Property Assignment
 
-When the left hand side of the assignment is a property of a model element, the model that owns the particular model element (accessible using the `ModelRepository.getOwningModel()` operation) is responsible for implementing the semantics of the assignment using its [associated](../emc) `propertyGetter`. For example, if x is a model element, the statement `x.y = a` may be interpreted using the Java code of the first listing below if x belongs to an EMF-based model or using the Java code of the second listing if it belongs to an MDR-based model.
+When the left hand side of the assignment is a property of a model element, the model that owns the particular model element (accessible using the `ModelRepository.getOwningModel()` operation) is responsible for implementing the semantics of the assignment using its [associated](emc.md) `propertyGetter`. For example, if x is a model element, the statement `x.y = a` may be interpreted using the Java code of the first listing below if x belongs to an EMF-based model or using the Java code of the second listing if it belongs to an MDR-based model.
 
 ```java
 EStructuralFeature feature = x.eClass().getEStructuralFeature("y");
@@ -796,7 +796,7 @@ rule Attribute2Column
 }
 ```
 
-The `Class2Table` rule transforms a `Class` of the OO model into a `Table` in the DB model and sets the name of the table to be the same as the name of the class. Rule `Atribute2Column` transforms an `Attribute` from the OO model into a `Column` in the DB model. Except for setting its name (line 12), it also needs to define that the column belongs to the table which corresponds to the class that defines the source attribute. The commented-out assignment statement of line 13 cannot be used for this purpose since it would illegally attempt to assign the owningTable feature of the column to a model element of an inappropriate type (`OO!Class`). However, the special assignment operator in ETL has [language-specific semantics](../etl/#overriding-the-semantics-of-the-eol-specialassignmentoperator), and thus in line 14 it assigns to the `owningTable` feature not the class that owns the attribute but its corresponding table (calculated using the `Class2Table` rule) in the DB model.
+The `Class2Table` rule transforms a `Class` of the OO model into a `Table` in the DB model and sets the name of the table to be the same as the name of the class. Rule `Atribute2Column` transforms an `Attribute` from the OO model into a `Column` in the DB model. Except for setting its name (line 12), it also needs to define that the column belongs to the table which corresponds to the class that defines the source attribute. The commented-out assignment statement of line 13 cannot be used for this purpose since it would illegally attempt to assign the owningTable feature of the column to a model element of an inappropriate type (`OO!Class`). However, the special assignment operator in ETL has [language-specific semantics](etl.md#overriding-the-semantics-of-the-eol-specialassignmentoperator), and thus in line 14 it assigns to the `owningTable` feature not the class that owns the attribute but its corresponding table (calculated using the `Class2Table` rule) in the DB model.
 
 ### If Statement
 
@@ -890,7 +890,7 @@ throw "Error!";
 
 ### Transaction Statement
 
-The underlying [EMC layer](../emc) provides support for transactions in models. To utilize this feature EOL provides the transaction statement. A transaction statement (optionally) defines the models that participate in the transaction. If no models are defined, it is assumed that all the models that are accessible from the enclosing program participate. When the statement is executed, a transaction is started on each participating model. If no errors are raised during the execution of the contained statements, any changes made to model elements are committed. On the other hand, if an error is raised the transaction is rolled back and any changes made to the models in the context of the transaction are undone. The user can also use the abort statement to explicitly exit a transaction and roll-back any changes done in its context. In the listing below, an example of using this feature in a simulation problem is illustrated.
+The underlying [EMC layer](emc.md) provides support for transactions in models. To utilize this feature EOL provides the transaction statement. A transaction statement (optionally) defines the models that participate in the transaction. If no models are defined, it is assumed that all the models that are accessible from the enclosing program participate. When the statement is executed, a transaction is started on each participating model. If no errors are raised during the execution of the contained statements, any changes made to model elements are committed. On the other hand, if an error is raised the transaction is rolled back and any changes made to the models in the context of the transaction are undone. The user can also use the abort statement to explicitly exit a transaction and roll-back any changes done in its context. In the listing below, an example of using this feature in a simulation problem is illustrated.
 
 ```eol
 var system : System.allInstances.first();
@@ -1016,7 +1016,7 @@ User-input facilities have been found to be particularly useful in all model man
 
 ## Additional Resources
 
-Additional resources about EOL are available [here](../articles/#epsilon-object-language).
+Additional resources about EOL are available [here](articles/index.md#epsilon-object-language).
 
 [^1]: Parameters within square brackets are optional
 
