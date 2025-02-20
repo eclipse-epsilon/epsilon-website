@@ -28,8 +28,7 @@ Note that in most cases, if you installed MATLAB in the default location for you
 
 - Create a new General project
 - Create an empty Simulink model in the project (e.g. `empty.slx`)
-- Create a new EOL file (e.g. `demo.eol`) and add the content below to
-    it:
+- Create a new EOL file (e.g. `demo.eol`) and add the content below to it:
 
 ```eol
 // Create elements
@@ -80,6 +79,11 @@ busCreator.link(scope);
     {{{ example("org.eclipse.epsilon.examples.simulink.standalone/program.eol", true) }}}
     ```
 
+## Inspecting Simulink Blocks
+
+To find out which properties each block supports, you can use Simulink's property inspector as shown below.
+
+![Screenshot of Simulink's Property Inspector](property-inspector.png)
 
 ## Updates in Epsilon 2.6
 
