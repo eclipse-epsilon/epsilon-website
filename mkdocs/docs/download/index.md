@@ -16,7 +16,7 @@ Epsilon's stable versions are available on [Maven Central](https://mvnrepository
 
 	See our [Getting Started](../getting-started.md#using-epsilon-as-a-java-library) page for instructions on how to download and run Maven/Gradle-based examples from the [Epsilon Playground](../playground/).
 
-To use the latest SNAPSHOT (interim) version of Epsilon, you should add the Sonatype snapshots repository to your `pom.xml` and set the version of the Epsilon libraries to `2.8.0-SNAPSHOT` as shown below.
+To use the latest SNAPSHOT (interim) version of Epsilon, you should add the Sonatype snapshots repository to your `pom.xml` and set the version of the Epsilon libraries to `2.9.0-SNAPSHOT` as shown below.
 
 ```xml
 <repositories>
@@ -30,7 +30,7 @@ To use the latest SNAPSHOT (interim) version of Epsilon, you should add the Sona
   	<dependency>
   		<groupId>org.eclipse.epsilon</groupId>
   		<artifactId>org.eclipse.epsilon.eol.engine</artifactId>
-	    <version>2.8.0-SNAPSHOT</version>
+	    <version>2.9.0-SNAPSHOT</version>
   	</dependency>
 </dependencies>
 ```
