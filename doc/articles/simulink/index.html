@@ -1769,6 +1769,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#inspecting-simulink-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inspecting Simulink Blocks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#updates-in-epsilon-26" class="md-nav__link">
     <span class="md-ellipsis">
       Updates in Epsilon 2.6
@@ -1822,8 +1831,7 @@
 <ul>
 <li>Create a new General project</li>
 <li>Create an empty Simulink model in the project (e.g. <code>empty.slx</code>)</li>
-<li>Create a new EOL file (e.g. <code>demo.eol</code>) and add the content below to
-    it:</li>
+<li>Create a new EOL file (e.g. <code>demo.eol</code>) and add the content below to it:</li>
 </ul>
 <pre class="highlight"><code class="language-eol">// Create elements
 var sineWave = new `simulink/Sources/Sine Wave`;
@@ -1923,6 +1931,9 @@ busCreator.link(scope);</code></pre>
 </div>
 </div>
 </div>
+<h2 id="inspecting-simulink-blocks">Inspecting Simulink Blocks<a class="headerlink" href="#inspecting-simulink-blocks" title="Permanent link">&para;</a></h2>
+<p>To find out which properties each block supports, you can use Simulink's property inspector as shown below.</p>
+<p><img alt="Screenshot of Simulink's Property Inspector" src="property-inspector.png" /></p>
 <h2 id="updates-in-epsilon-26">Updates in Epsilon 2.6<a class="headerlink" href="#updates-in-epsilon-26" title="Permanent link">&para;</a></h2>
 <p>While older versions of Java allowed altering the Java library path at runtime, this is no longer possible. Therefore, we have removed the respective configuration property and UI. Please check the official <a href="https://uk.mathworks.com/help/matlab/matlab_external/setup-environment.html">Matlab documentation</a> for instructions on setting up OS variables and the Java library path. Epsilon 2.6 also adds support for Apple Silicon.</p>
 
