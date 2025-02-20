@@ -1,16 +1,13 @@
 # Download
 
-!!! warning "Memory leak in Epsilon 2.7"
-	Unfortunately, version 2.7 of Epsilon contains [a memory leak](https://github.com/eclipse-epsilon/epsilon/issues/158) that can affect applications which parse many Epsilon programs in the same JVM instance. The issue has been resolved, and a new version will be released soon. In the meantime, we recommend using version 2.5.
-
-Epsilon's stable versions are available on [Maven Central](https://mvnrepository.com/artifact/org.eclipse.epsilon). For example, to use version 2.5 of the [EOL](../doc/eol.md) engine from your Maven project, you should add the following dependency to your `pom.xml`.
+Epsilon's stable versions are available on [Maven Central](https://mvnrepository.com/artifact/org.eclipse.epsilon). For example, to use version 2.8 of the [EOL](../doc/eol.md) engine from your Maven project, you should add the following dependency to your `pom.xml`.
 
 ```xml
 <dependencies>
 	<dependency>
 	    <groupId>org.eclipse.epsilon</groupId>
 	    <artifactId>org.eclipse.epsilon.eol.engine</artifactId>
-	    <version>2.5.0</version>
+	    <version>2.8.0</version>
 	</dependency>
 </dependencies>
 ```
@@ -40,7 +37,7 @@ To use the latest SNAPSHOT (interim) version of Epsilon, you should add the Sona
 
 ## Development Tools
 
-The simplest way to get a copy of Eclipse with Epsilon 2.5 and all its development tools and dependencies installed, is to download the [Eclipse Installer](https://wiki.eclipse.org/Eclipse_Installer) and select Epsilon.
+The simplest way to get a copy of Eclipse with Epsilon 2.8 and all its development tools and dependencies installed, is to download the [Eclipse Installer](https://wiki.eclipse.org/Eclipse_Installer) and select Epsilon.
 
 ![Epsilon in Eclipse Installer](../assets/images/eclipse-installer.png)
 
@@ -65,7 +62,7 @@ Alternatively, you can use the following update sites through the `Help` --> `In
 
 | Site | Location |
 | - | - |
-| Stable | `http://download.eclipse.org/epsilon/updates/2.5/`|
+| Stable | `http://download.eclipse.org/epsilon/updates/2.8/`|
 | Interim | `http://download.eclipse.org/epsilon/interim/`|
 
 !!! warning "Eclipse failing to find dependencies?"
@@ -82,7 +79,7 @@ Below are also links to compressed versions of the Epsilon update sites for long
 
 | Site | Zip Archive |
 | - | - |
-| Stable | <https://www.eclipse.org/downloads/download.php?file=/epsilon/updates/2.5/epsilon-2.5-site.zip> |
+| Stable | <https://www.eclipse.org/downloads/download.php?file=/epsilon/updates/2.8/epsilon-2.8-site.zip> |
 | Interim | <https://www.eclipse.org/downloads/download.php?file=/epsilon/interim/epsilon-interim-site.zip> |
 
 ### Eclipse Marketplace
@@ -96,7 +93,7 @@ The source code of Epsilon is in the following Git repository.
 | Type | Location |
 | - | - |
 | Repository | `https://github.com/eclipse-epsilon/epsilon`|
-| Release tag | `https://github.com/eclipse-epsilon/epsilon/releases/tag/2.5`|
+| Release tag | `https://github.com/eclipse-epsilon/epsilon/releases/tag/2.8`|
 
 Additional projects which are experimental or have dependencies which are incompatible with the Eclipse Public License are available in [Epsilon Labs](https://github.com/epsilonlabs).
 
