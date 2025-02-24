@@ -1,8 +1,12 @@
 import * as monaco from 'monaco-editor'
+import { MonacoIssue199477Workaround } from './MonacoIssue199477Workaround.js';
 
 class MonacoSetup {
 
     do() {
+
+        new MonacoIssue199477Workaround().apply();
+
         this.registerEmfatic();
         this.registerEolBasedLanguage("eol");
         this.registerEolBasedLanguage("evl", ['context', 'constraint', 'guard', 'pre', 'post', 'assumes', 'critique', 'message', 'title', 'do', 'check', 'fix', 'typeOf', 'kindOf', 'high', 'medium', 'low'], ['constraintTrace', 'extras']);
