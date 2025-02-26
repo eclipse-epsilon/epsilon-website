@@ -35,6 +35,8 @@ class Panel {
             overviewRulerLanes: 0,
             // folding: false
         });
+
+        this.editor.getModel().setEOL(monaco.editor.EndOfLineSequence.LF);
         
         this.visible = true;
     }
