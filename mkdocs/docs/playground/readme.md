@@ -43,3 +43,7 @@ YJS enables live collaboration in the Playground. To run YJS locally, run:
 
 - `npm i y-websocket`
 - `HOST=localhost PORT=1234 npx y-websocket`
+
+## y-monaco
+
+`y-monaco.js` is a local copy of a [forked version](https://github.com/kolovos/y-monaco/blob/master/src/y-monaco.js) of the `y-monaco` package. The original package suffers from two issues ([#1](https://github.com/yjs/y-monaco/issues/6#issuecomment-2163299125) and [#2](https://github.com/yjs/y-monaco/pull/23)) that have been fixed in the fork. The fixes have been proposed by others to the package maintainer however, they have not been accepted yet. Once the fixes are accepted by the package maintainer, we can use the npm package again.

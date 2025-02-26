@@ -1,6 +1,6 @@
 import * as Y from 'yjs'
 import { WebsocketProvider } from 'y-websocket'
-import { MonacoBinding } from 'y-monaco'
+import { MonacoBinding } from './y-monaco.js'
 import * as monaco from 'monaco-editor'
 import { backend, consolePanel, outputPanel, preloader } from './Playground';
 import 'metro4';
