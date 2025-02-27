@@ -119,7 +119,7 @@ If you hide the program panel, you can still run the program it contains using t
 
 ## Docker container
 
-If the Playground is a critical dependency for you (e.g. to support a training course), you may want to run your own instance through a [Docker container](https://github.com/epsilonlabs/playground-docker). Despite using [automated testing with Cypress](https://github.com/eclipse-epsilon/epsilon-website/tree/master/mkdocs/docs/playground/cypress/e2e), as we are evolving the Playground, we may indadvertedly introduce regressions that break the Playground and make (parts of it) unusable for a period of time.
+If the Playground is a critical dependency for you (e.g. to support a training course), you may want to run your own instance through a [Docker container](https://github.com/epsilonlabs/playground-backend). Despite using [automated testing with Cypress](https://github.com/eclipse-epsilon/epsilon-website/tree/master/mkdocs/docs/playground/cypress/e2e), as we are evolving the Playground, we may inadvertently introduce regressions that break the Playground and make (parts of it) unusable for a period of time.
 
 ## Fair usage policy
 
