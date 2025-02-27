@@ -46,4 +46,4 @@ YJS enables live collaboration in the Playground. To run YJS locally, run:
 
 ## y-monaco
 
-`y-monaco.js` is a local copy of a [forked version](https://github.com/kolovos/y-monaco/blob/master/src/y-monaco.js) of the `y-monaco` package. The original package suffers from two issues ([#1](https://github.com/yjs/y-monaco/issues/6#issuecomment-2163299125) and [#2](https://github.com/yjs/y-monaco/pull/23)) that have been fixed in the fork. The fixes have been proposed by others to the package maintainer however, they have not been accepted yet. Once the fixes are accepted by the package maintainer, we can use the npm package again.
+`y-monaco.js` is a local copy of a [forked version](https://github.com/kolovos/y-monaco/blob/master/src/y-monaco.js) of the `y-monaco` npm package. The original package suffers from [an issue](https://github.com/yjs/y-monaco/pull/23)) that has been fixed in the fork. The fix has been proposed by others to the package maintainer however, it has not been accepted yet. Once the fix is accepted, we can use the npm package again.

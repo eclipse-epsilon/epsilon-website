@@ -36,6 +36,8 @@ class Panel {
             // folding: false
         });
 
+        // Fix the editor's end-of-line character to avoid issues with live
+        // sharing across different operating systems
         this.editor.getModel().setEOL(monaco.editor.EndOfLineSequence.LF);
         
         this.visible = true;
