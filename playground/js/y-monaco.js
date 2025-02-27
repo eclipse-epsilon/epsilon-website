@@ -166,9 +166,7 @@ export class MonacoBinding {
     {
       const ytextValue = ytext.toString()
       if (monacoModel.getValue() !== ytextValue) {
-        const eol = monacoModel.getEndOfLineSequence();
         monacoModel.setValue(ytextValue)
-        monacoModel.setEOL(eol);
       }
     }
     this._monacoChangeHandler = monacoModel.onDidChangeContent(event => {
