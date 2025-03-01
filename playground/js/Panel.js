@@ -26,7 +26,8 @@ class Panel {
             renderLineHighlight: "none",
             occurrencesHighlight: "off",
             selectionHighlight: false,
-            insertSpaces: false,
+            insertSpaces: true,
+            tabSize: 4,
             acceptSuggestionOnEnter: "off",
             stickyScroll: {
                 enabled: false,
