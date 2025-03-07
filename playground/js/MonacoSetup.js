@@ -109,6 +109,14 @@ class MonacoSetup {
 
     registerEolBasedLanguage(language, extraKeywords = [], extraConstants = []) {
         monaco.languages.register({ id: language });
+
+        monaco.languages.setLanguageConfiguration(language, {
+            comments: {
+                lineComment: '//',
+                blockComment: ['/*', '*/']
+            }
+        });
+
         monaco.languages.setMonarchTokensProvider(language, {
             defaultToken: '',
             tokenPostfix: '.' + language,
@@ -332,6 +340,14 @@ class MonacoSetup {
 
     registerEmfatic() {
         monaco.languages.register({ id: "emf" });
+
+        monaco.languages.setLanguageConfiguration("emf", {
+            comments: {
+                lineComment: '//',
+                blockComment: ['/*', '*/']
+            }
+        });
+
         monaco.languages.setMonarchTokensProvider("emf", {
             defaultToken: '',
             tokenPostfix: '.emf',
