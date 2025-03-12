@@ -1733,13 +1733,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#debugging-epsilon-scripts-embedded-in-java-programs" class="md-nav__link">
+  <a href="#debugging-epsilon-programs-embedded-in-java-programs" class="md-nav__link">
     <span class="md-ellipsis">
-      Debugging Epsilon scripts embedded in Java programs
+      Debugging Epsilon programs embedded in Java programs
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Debugging Epsilon scripts embedded in Java programs">
+    <nav class="md-nav" aria-label="Debugging Epsilon programs embedded in Java programs">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1769,15 +1769,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#mapping-plugin-resource-uris-to-your-ide-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mapping plugin resource URIs to your IDE files
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#debugging-epsilon-scripts-running-from-ant-workflows" class="md-nav__link">
+  <a href="#debugging-epsilon-programs-running-from-ant-workflows" class="md-nav__link">
     <span class="md-ellipsis">
-      Debugging Epsilon scripts running from Ant workflows
+      Debugging Epsilon programs running from Ant workflows
     </span>
   </a>
   
@@ -1908,10 +1917,10 @@
 The debugger for the Epsilon Object Language is demonstrated in the screencast below.</p>
 <iframe width="90%" height="494" src="https://www.youtube.com/embed/gZPHoW-DaiU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<p>Since 2.6.0, you can debug Epsilon scripts which run from outside an Eclipse launch configuration (e.g. <a href="../run-epsilon-from-java/">embedded in a Java program</a> or <a href="../running-epsilon-ant-tasks-from-command-line/">executed from the command line</a>), using the Epsilon <a href="https://microsoft.github.io/debug-adapter-protocol/">Debug Adapter Protocol</a> server and a <a href="#debug-adapter-protocol-clients-tested-with-epsilon">DAP client</a>.</p>
+<p>Since 2.6.0, you can debug Epsilon programs which run from outside an Eclipse launch configuration (e.g. <a href="../run-epsilon-from-java/">embedded in a Java program</a> or <a href="../running-epsilon-ant-tasks-from-command-line/">executed from the command line</a>), using the Epsilon <a href="https://microsoft.github.io/debug-adapter-protocol/">Debug Adapter Protocol</a> server and a <a href="#debug-adapter-protocol-clients-tested-with-epsilon">DAP client</a>.</p>
 <p>The <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.eol.dap"><code>examples.eol.dap</code></a> project on GitHub shows several examples of how to do this, and further information on various use cases is listed below.</p>
-<h2 id="debugging-epsilon-scripts-embedded-in-java-programs">Debugging Epsilon scripts embedded in Java programs<a class="headerlink" href="#debugging-epsilon-scripts-embedded-in-java-programs" title="Permanent link">&para;</a></h2>
-<p>If you are running your Epsilon script from a Java program, you can wrap your module in an <code>EpsilonDebugServer</code> class provided by Epsilon and debug it through a DAP client of your choice.
+<h2 id="debugging-epsilon-programs-embedded-in-java-programs">Debugging Epsilon programs embedded in Java programs<a class="headerlink" href="#debugging-epsilon-programs-embedded-in-java-programs" title="Permanent link">&para;</a></h2>
+<p>If you are running your Epsilon program from a Java program, you can wrap your module in an <code>EpsilonDebugServer</code> class provided by Epsilon and debug it through a DAP client of your choice.
 The video below gives an overview of the Debug Adapter Protocol, and explains the design and general use of the debug adapter for Epsilon.</p>
 <iframe width="90%" height="494" src="https://www.youtube.com/embed/QWtVbm1rVfY?si=BWcpvmA6Ryi6uQnk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -1929,14 +1938,14 @@ server.run();
 Object result = server.getResult().get();</code></pre>
 <ul>
 <li>The first line wraps the module with Epsilon's DAP server and indicates that it will listen on a certain port (it can be a port of your choosing, or 0 to pick any available port).</li>
-<li>The second line starts the server and blocks until the script has completed its execution: the server will automatically shut down once the script has completed its execution.</li>
+<li>The second line starts the server and blocks until the program has completed its execution: the server will automatically shut down once the program has completed its execution.</li>
 <li>The third line retrieves the result of <code>module.execute()</code>: it will also rethrow any exceptions produced by <code>module.execute()</code>.</li>
 </ul>
-<p>The script will not start its execution until a DAP client connects to it, to allow you to set any necessary breakpoints.</p>
+<p>The program will not start its execution until a DAP client connects to it, to allow you to set any necessary breakpoints.</p>
 <p>The next step is to connect to the DAP server with your DAP client of choice.
 Several options are discussed in the <a href="#debug-adapter-protocol-clients-tested-with-epsilon">DAP client</a> section.</p>
 <h3 id="mapping-module-uris-to-your-ide-files">Mapping module URIs to your IDE files<a class="headerlink" href="#mapping-module-uris-to-your-ide-files" title="Permanent link">&para;</a></h3>
-<p>If your Epsilon scripts are being loaded from URIs rather than regular files, you will need to tell the <code>EpsilonDebugServer</code> how to map those module URIs to the files with your breakpoints.
+<p>If your Epsilon programs are being loaded from URIs rather than regular files, you will need to tell the <code>EpsilonDebugServer</code> how to map those module URIs to the files with your breakpoints.
 Here is a simplified excerpt from the <code>DebugClasspathBasedEOL</code> example, which shows how to do this:</p>
 <pre class="highlight"><code class="language-java">EolModule module = new EolModule();
 URI classpathUri = DebugClasspathBasedEOL.class.getResource("your.eol").toURI();
@@ -1951,20 +1960,39 @@ server.run();</code></pre>
 <p>A debugging session would work like this:</p>
 <ul>
 <li>From your DAP client, you would set some breakpoints in <code>your.eol</code>.</li>
-<li>Run the above code, leaving the script waiting for a DAP connection.</li>
+<li>Run the above code, leaving the program waiting for a DAP connection.</li>
 <li>Connect with your DAP client, which will send the breakpoints in <code>src/path/to/your.eol</code> file.</li>
 <li>The DAP server will map the <code>src/path/to/your.eol</code> breakpoints to your parsed module.</li>
-<li>The DAP server will start the execution of your script.</li>
-<li>The script will reach one of the breakpoints and stop execution.</li>
+<li>The DAP server will start the execution of your program.</li>
+<li>The program will reach one of the breakpoints and stop execution.</li>
 <li>The server will map the location that we stopped in to <code>src/path/to/your.eol</code> file and report it to your DAP client.</li>
 <li>Your DAP client will then highlight the relevant line and allow you to inspect variables and control execution.</li>
 </ul>
-<h2 id="debugging-epsilon-scripts-running-from-ant-workflows">Debugging Epsilon scripts running from Ant workflows<a class="headerlink" href="#debugging-epsilon-scripts-running-from-ant-workflows" title="Permanent link">&para;</a></h2>
-<p>If you need to debug your Epsilon script that you are <a href="../running-epsilon-ant-tasks-from-command-line/">running from the command line</a> (e.g. Ant or Gradle), you will need to use the Debug Adapter Protocol support available from Epsilon 2.6.0.
+<h3 id="mapping-plugin-resource-uris-to-your-ide-files">Mapping plugin resource URIs to your IDE files<a class="headerlink" href="#mapping-plugin-resource-uris-to-your-ide-files" title="Permanent link">&para;</a></h3>
+<p>In the specific case where your Epsilon program is embedded into an Eclipse plugin, it is likely that you are loading it as a plugin resource (i.e. through a <code>bundleentry://</code> URL).
+If you are debugging such a plugin through a nested Eclipse workbench, you can debug the Epsilon program via breakpoints on the main Eclipse workbench by using the <code>FileLocator</code> API to compute the relevant mappings.</p>
+<p>For example, suppose you were running the EOL script in <code>epsilon/main.eol</code> within your plugin.
+You would obtain its <code>bundleentry://</code> URL with this code, assuming you had created the <a href="https://help.eclipse.org/latest/topic/org.eclipse.pde.doc.user/guide/tools/project_wizards/plugin_content.htm">relevant <code>Activator</code></a> for your plugin:</p>
+<pre class="highlight"><code class="language-java">URL scriptUrl = FileLocator.find(
+  Activator.getDefault().getBundle(),
+  new Path("epsilon/main.eol")
+);</code></pre>
+<p>You could then turn it into a <code>java.nio.file.Path</code> with:</p>
+<pre class="highlight"><code class="language-java">java.nio.file.Path mappedPath = Paths.get(
+  FileLocator.toFileURL(scriptUrl).toURI()
+);</code></pre>
+<p>This would allow you to map the <code>bundleentry://</code> URL to the relevant file in your main Eclipse workbench with:</p>
+<pre class="highlight"><code class="language-java">EpsilonDebugServer server = /* ... create instance as usual ... */;
+server.getDebugAdapter()
+  .getUriToPathMappings()
+  .put(scriptUrl.toURI(), mappedPath);</code></pre>
+<p>For a fully worked-out example of this idea, you can check <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.eol.dap.bundleprogram">this example project</a> on Github.</p>
+<h2 id="debugging-epsilon-programs-running-from-ant-workflows">Debugging Epsilon programs running from Ant workflows<a class="headerlink" href="#debugging-epsilon-programs-running-from-ant-workflows" title="Permanent link">&para;</a></h2>
+<p>If you need to debug your Epsilon program that you are <a href="../running-epsilon-ant-tasks-from-command-line/">running from the command line</a> (e.g. Ant or Gradle), you will need to use the Debug Adapter Protocol support available from Epsilon 2.6.0.
 To do so, set the <code>debug</code> and <code>debugPort</code> attributes in your Ant task, like this:</p>
 <pre class="highlight"><code class="language-xml">&lt;epsilon.eol ... debug="true" debugPort="4040"/&gt;</code></pre>
 <p>When executed, this task will start a DAP server listening on TCP port 4040.
-It wait for a connection from a <a href="#debug-adapter-protocol-clients-tested-with-epsilon">DAP client</a>, and then start the script.</p>
+It wait for a connection from a <a href="#debug-adapter-protocol-clients-tested-with-epsilon">DAP client</a>, and then start the program.</p>
 <p>Epsilon includes an <a href="https://github.com/eclipse-epsilon/epsilon/blob/main/examples/org.eclipse.epsilon.examples.eol.dap/build.xml">example</a> of an Ant buildfile that uses DAP for debugging.
 There is also an <a href="https://github.com/eclipse-epsilon/epsilon/blob/main/examples/org.eclipse.epsilon.examples.eol.dap/epsilon/build.gradle">example of a Gradle script</a>.</p>
 <h2 id="debug-adapter-protocol-clients-tested-with-epsilon">Debug Adapter Protocol clients tested with Epsilon<a class="headerlink" href="#debug-adapter-protocol-clients-tested-with-epsilon" title="Permanent link">&para;</a></h2>
@@ -1975,25 +2003,13 @@ This section details two DAP clients that have been tested with the Epsilon DAP 
 You will need the "Debug Adapter client for Eclipse IDE" feature.</p>
 <p>Set your breakpoints as usual. Once the DAP server is running and waiting for connections (as shown in the terminal with the "Started Epsilon debug server" text), start a "Remote Epsilon Program" debug configuration that attaches to the relevant port in <code>localhost</code>:</p>
 <p><img alt="Remote Epsilon Program debug configuration attaching to port 4040" src="lsp4e-configuration.png" /></p>
-<p>Once LSP4E connects to the DAP server, the script will start running.
+<p>Once LSP4E connects to the DAP server, the program will start running.
 After hitting a breakpoint, you will be prompted to switch to the Debug perspective, as usual:</p>
 <p><img alt="LSP4E debugger stopped on an EOL breakpoint" src="lsp4e-debugger.png" /></p>
 <div class="admonition warning">
 <p class="admonition-title">LSP4E does not support conditional or inline breakpoints</p>
 <p>Currently, debugging from LSP4E does not support conditional breakpoints or inline breakpoints.
 If you need to stop at a statement in the middle of a line, you can enable for now the "Line breakpoints stop at every statement on the line" option in the "Remote Epsilon Program" launch configuration. This option is also available from <a href="#stopping-at-every-statement-on-a-line-breakpoint">VS Code</a>, and the same caveats apply as on Code.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Known issues with conditional breakpoints in Epsilon 2.6</p>
-<p>There is a <a href="https://github.com/eclipse-epsilon/epsilon/issues/150">known issue</a> where if the
-condition used for a breakpoint visits a line with a breakpoint, its evaluation will stop at
-that point as well. This issue has been fixed in Epsilon 2.7: breakpoints will not be hit
-while evaluating a conditional breakpoint.</p>
-</div>
-<div class="admonition info">
-<p class="admonition-title">Expression evaluation support is available from Epsilon 2.7</p>
-<p>Support for evaluating expressions at a given breakpoint was added in Epsilon 2.7. Similarly
-to conditions in conditional breakpoints, expressions will not trigger breakpoints.</p>
 </div>
 <h3 id="microsoft-visual-studio-code">Microsoft Visual Studio Code<a class="headerlink" href="#microsoft-visual-studio-code" title="Permanent link">&para;</a></h3>
 <p>Recent versions of the <a href="../vscode/">VS Code</a> support in Epsilon include support for the Epsilon DAP server.
