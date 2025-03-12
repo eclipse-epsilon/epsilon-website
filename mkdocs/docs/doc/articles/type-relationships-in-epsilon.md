@@ -73,7 +73,7 @@ alice.isTypeOf(Employee).println();
 
 ## User-Defined Operation Call Dispatch
 
-As discussed in [EOL's documentation page](../eol.md#user-defined-operations), the language supports adding user-defined operations to existing types. For example, we can define a `getRole()` method for `Employee` and `Manager` that returns a string representation of the element's role as shown below.
+As discussed in [EOL's documentation page](../eol.md#user-defined-operations), the language supports adding user-defined operations to existing types. For example, we can define `getRole()` methods for `Employee` and `Manager` that return a string representation of the element's role as shown below.
 
 ```
 var alice = Employee.all.first();
@@ -97,12 +97,12 @@ operation Manager getRole() {
 }
 ```
 
-As the EOL interpreter dispatches calls to these operations at runtime only, the fact that we have not declared the types of the `alice` and `charlie` variables is inconsequential. To determine which operation to call, the interpreter works in two phases:
+As the EOL interpreter dispatches calls to these operations at runtime, the fact that we have not declared the types of the `alice` and `charlie` variables is inconsequential. To determine which operation to call, the interpreter works in two phases:
 
 - In the first phase it will try to dispatch the call to an operation where both its context type and its parameter types have `type-of` relationships with the object and parameters on which it is called.
 - If no such operation is found, it will dispatch the call the **first** operation where its context type and parameter types have `kind-of` relationships with the objects and parameters on which it is called.
 
-As EOL is only aware of `type-of` and `kind-of` relationships between types and elements, it does not take into account more complex type hierarchies that the underlying modelling framework may support. For example, consider the following program.
+As EOL is only aware of `type-of` and `kind-of` relationships between types and objects, it does not take into account more complex type hierarchies that the underlying modelling framework may support. For example, consider the following program.
 
 ```eol
 var charlie = Manager.all.first();
@@ -119,7 +119,7 @@ operation Employee getRole() {
 }
 ```
 
-Coming from a language like Java, one would expect `charlie.getRole()` to be dispatched to the `Employee.getRole()` user-defined method as `Employee` is a closer super-type of `Manager` than `Person`. However, according to the dispatch algorithm described above, since there is no version of `getRole()` that applies specifically to managers, the EOL interpreter will choose the first operation if finds with matching `kind-of` types. To make the program behave as expected, one would need to swap the order of the two operations as shown below.
+Coming from a language like Java, one would expect `charlie.getRole()` to be dispatched to `Employee.getRole()` as `Employee` is a *closer* super-type of `Manager` than `Person`. However, according to the dispatch algorithm described above, since there is no version of `getRole()` that applies specifically to managers, the EOL interpreter will choose the first operation with matching `kind-of` types that it finds to dispatch the call. For `Employee.getRole()` to be called in this case, we would need to swap the order of the two operations as shown below.
 
 ```
 var charlie = Manager.all.first();
@@ -136,4 +136,4 @@ operation Person getRole() {
 }
 ```
 
-To avoid unexpected behaviour for developers with a background in mainstream object-oriented languages, it is advisable to place definitions of operations that apply on more abstract types below their overloaded counterparts for more concrete types in Epsilon programs.
+To avoid unexpected behaviour for developers with a background in mainstream object-oriented languages, it is advisable to place user-defined operations that apply on more abstract types below their overloaded counterparts for more concrete types in Epsilon programs.
