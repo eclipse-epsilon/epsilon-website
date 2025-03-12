@@ -236,6 +236,7 @@ asFloat() : Float                       | Returns a Java Float based on the stri
 asSequence() : Sequence                 | Returns a new Sequence containing the object
 asSet() : Set                           | Returns a new Set containing the object
 asString() : String                     | Returns a string representation of the object
+asDate(format : String) : java.util.Date | Parses the string representation of the object using the [provided format](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html) and returns a date object
 asVar(name : String) : Any              | Creates a new variable with the specified name out of the object, and returns the object
 err(\[prefix : String\]) : Any          | Prints a string representation of the object on which it is invoked to the error stream prefixed with the optional `prefix` string and returns the object on which it was invoked. In this way, the `err` operation can be used for debugging purposes in a non-invasive manner
 errln(\[prefix : String\]) : Any        | Has the same effects as the `err` operation but also produces a new line in the output stream.
