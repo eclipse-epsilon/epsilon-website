@@ -13,6 +13,7 @@ This page links to more than **80 articles** on various aspects of Epsilon. Shou
 - [Profiling Epsilon Programs](profiling/index.md): This article demonstrates how to profile Epsilon programs using the platform's built-in profiling tools.
 - [EOL Interpreter View](eol-interpreter-view/index.md): This article demonstrates an Eclipse view for running EOL scripts against selected model elements in EMF-based editors.
 - [Epsilon Debugger](debugger.md): Demonstrates how to use the Eclipse-based step-by-step debugging support in the Epsilon languages.
+- [Type Relationships in Epsilon](type-relationships-in-epsilon.md): Discusses the `kind-of` and `type-of` relationships between objects and types in Epsilon programs.
 
 ## Epsilon Validation Language
 

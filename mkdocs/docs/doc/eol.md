@@ -88,7 +88,7 @@ operation add2(base : Integer) : Integer {
 }
 ```
 
-EOL supports polymorphic operations using a runtime dispatch mechanism. Multiple operations with the same name and parameters can be defined, each defining a distinct context type. For example, in the listing below, the statement in line 1 invokes the test operation defined in line 4, while the statement in line 2 invokes the test operation defined in line 8.
+EOL supports polymorphic operations using a [runtime dispatch mechanism](articles/type-relationships-in-epsilon.md#user-defined-operation-call-dispatch). Multiple operations with the same name and parameters can be defined, each defining a distinct context type. For example, in the listing below, the statement in line 1 invokes the test operation defined in line 4, while the statement in line 2 invokes the test operation defined in line 8.
 
 ```eol
 "1".test();
