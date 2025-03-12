@@ -75,7 +75,7 @@ alice.isTypeOf(Employee).println();
 
 As discussed in [EOL's documentation page](../eol.md#user-defined-operations), the language supports adding user-defined operations to existing types. For example, we can define `getRole()` methods for `Employee` and `Manager` that return a string representation of the element's role as shown below.
 
-```
+```eol
 var alice = Employee.all.first();
 var charlie = Manager.all.first();
 
@@ -121,7 +121,7 @@ operation Employee getRole() {
 
 Coming from a language like Java, one would expect `charlie.getRole()` to be dispatched to `Employee.getRole()` as `Employee` is a *closer* super-type of `Manager` than `Person`. However, according to the dispatch algorithm described above, since there is no version of `getRole()` that applies specifically to managers, the EOL interpreter will choose the first operation with matching `kind-of` types that it finds to dispatch the call. For `Employee.getRole()` to be called in this case, we would need to swap the order of the two operations as shown below.
 
-```
+```eol
 var charlie = Manager.all.first();
 
 // Prints employee
