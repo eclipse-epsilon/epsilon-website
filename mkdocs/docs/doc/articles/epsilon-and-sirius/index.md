@@ -39,7 +39,7 @@ The semantic model (`example.callcentre`) can be read and written by Epsilon pro
     }
     ```
 
-=== "decicion2java.egl"
+=== "decision2java.egl"
 
     ```egl
     package [%=m.name.toLowerCase()%];
