@@ -41,6 +41,7 @@ This page links to more than **80 articles** on various aspects of Epsilon. Shou
 - [Reflective EMF tutorial](reflective-emf-tutorial/index.md): This tutorial demonstrates how to create an EMF Ecore metamodel and a sample model that conforms to it reflectively (i.e. without generating any code).
 - [Epsilon and EMF](epsilon-emf/index.md): Frequently-asked questions related to querying and modifying EMF-based models with Epsilon.
 - [Epsilon and Capella](epsilon-and-capella/index.md): This article demonstrates how to use Epsilon to query, validate and transform models in the Capella workbench.
+- [Epsilon and Sirius](epsilon-and-sirius/index.md): This article discusses how to use Epsilon with models developed using Sirius-based graphical editors.
 - [The EMF EPackage Registry View](epackage-registry-view/index.md): This article demonstrates the EPackage Registry view which allows developers to inspect the contents of the registered EMF EPackages.
 - [Exeed annotation reference](../exeed/index.md): This article lists the annotations you can use on your metamodels to customize the look of the Exeed model editor.
 - [Inspecting EMF models with Exeed](inspect-models-exeed/index.md): This article demonstrates how you can use Exeed to inspect the structure of your EMF models.
