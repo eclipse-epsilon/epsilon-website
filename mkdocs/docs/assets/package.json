@@ -12,7 +12,7 @@
     "highlight.js": "^11.11.1"
   },
   "devDependencies": {
-    "webpack": "5.75.0",
+    "webpack": "5.76.0",
     "webpack-cli": "^5.1.4"
   }
 }
