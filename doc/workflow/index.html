@@ -1127,6 +1127,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#the-startdebugserver-and-stopdebugserver-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      The StartDebugServer and StopDebugServer Tasks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#the-abstract-executable-module-task" class="md-nav__link">
     <span class="md-ellipsis">
       The Abstract Executable Module Task
@@ -2278,6 +2287,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#the-startdebugserver-and-stopdebugserver-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      The StartDebugServer and StopDebugServer Tasks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#the-abstract-executable-module-task" class="md-nav__link">
     <span class="md-ellipsis">
       The Abstract Executable Module Task
@@ -2625,6 +2643,9 @@ class CommitTransactionTask {
 class RollbackTransactionTask {
   -name: String
 }
+class StartDebugServerTask {
+  -port: int
+}
 EpsilonTask &lt;|-- CommitTransactionTask
 EpsilonTask &lt;|-- StartTransactionTask
 RollbackTransactionTask --|&gt; EpsilonTask
@@ -2632,6 +2653,8 @@ EpsilonTask &lt;|-- LoadModelTask
 StoreModelTask --|&gt; EpsilonTask
 DisposeModelTask --|&gt; EpsilonTask
 DisposeModelsTask --|&gt; EpsilonTask
+StartDebugServerTask --|&gt; EpsilonTask
+StopDebugServerTask --|&gt; EpsilonTask
 LoadModelTask *-- ParameterNestedElement: parameters *</code></pre>
 <h3 id="the-epsilontask-task">The EpsilonTask task<a class="headerlink" href="#the-epsilontask-task" title="Permanent link">&para;</a></h3>
 <p>An ANT task can access the project in which it is contained by invoking the <code>Task.getProject()</code> method. To facilitate sharing of arbitrary information between tasks, ANT projects provide two convenience methods, namely <code>addReference(String key, Object ref)</code> and <code>getReference(String key) : Object</code>. The former is used to add key-value pairs, which are then accessible using the latter from other tasks of the project.</p>
@@ -2738,6 +2761,21 @@ ExecutableModuleTask &lt;|-- EglTask
 EmlTask --|&gt; ExecutableModuleTask
 EtlTask --|&gt; ExecutableModuleTask
 EolTask --|&gt; ExecutableModuleTask</code></pre>
+<h3 id="the-startdebugserver-and-stopdebugserver-tasks">The StartDebugServer and StopDebugServer Tasks<a class="headerlink" href="#the-startdebugserver-and-stopdebugserver-tasks" title="Permanent link">&para;</a></h3>
+<p>These tasks allow for starting a debug server that runs separately from specific Epsilon programs, so that a single DAP connection can be used to debug all the Epsilon programs run from the script.</p>
+<p>The <code>StartDebugServerTask</code> takes an optional <code>port</code> attribute to customize the port on which the server will listen.
+Note that the task assumes that a given Ant build will only have at most one running debug server.
+If it is not specified or if it is set to 0, an available port in the ephemeral range will be automatically selected.
+If Ant is being used from outside Eclipse, the user will need to note the port that was allocated and configure their DAP client to connect to that port.
+These two options are shown below:</p>
+<pre class="highlight"><code class="language-xml">&lt;!-- Automatically uses an available port in the ephemeral range --&gt;
+&lt;epsilon.startDebugServer /&gt;
+
+&lt;!-- Manually specifies the port to listen at --&gt;
+&lt;epsilon.startDebugServer port="4040" /&gt;</code></pre>
+<p>The <code>StopDebugServerTask</code> will stop the running debug server.
+It does not take any attributes:</p>
+<pre class="highlight"><code class="language-xml">&lt;epsilon.stopDebugServer /&gt;</code></pre>
 <h3 id="the-abstract-executable-module-task">The Abstract Executable Module Task<a class="headerlink" href="#the-abstract-executable-module-task" title="Permanent link">&para;</a></h3>
 <p>This task is the base of all the model management tasks presented in the following section. Its aim is to encapsulate the commonalities of Epsilon tasks in order to reduce duplication among them. As already discussed, in Epsilon, specifications of model management tasks are organized in executable modules. While modules can be stored anywhere, in the case of the workflow it is assumed that they are either stored as separate files in the file-system or they are provided inline within the workflow. Thus, this abstract task defines an <code>src</code> attribute that specifies the path of the source file in which the Epsilon module is stored, but also supports inline specification of the source of the module. The two alternatives are demonstrated in the listings below.</p>
 <pre class="highlight"><code class="language-xml">&lt;project default="main"&gt;
