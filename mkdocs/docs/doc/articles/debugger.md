@@ -112,11 +112,56 @@ server.getDebugAdapter()
 
 For a fully worked-out example of this idea, you can check [this example project](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.eol.dap.bundleprogram) on Github.
 
+### Debugging across multiple Epsilon programs
+
+Since Epsilon 2.9.0, it is possible to reuse the same debugging session across multiple programs.
+To do so, you will need to use an `ExecutionQueueModule` on which you will enqueue the execution of your programs.
+
+First, you will need to create the queue module and wrap it with a debug server:
+
+```java
+var queueModule = new ExecutionQueueModule();
+var server = new EpsilonDebugServer(queueModule, port);
+// ... set up server as usual (e.g. URI to path mappings ...)
+```
+
+Next, you will have to run the server on its own thread and wait until it has fully started:
+
+```java
+var serverThread = new Thread(server::run, "Epsilon Debug Server Thread");
+var latch = new CountDownLatch(1);
+server.setOnStart(latch::countDown);
+serverThread.start();
+latch.await();
+```
+
+You can now enqueue modules to be executed and debugged by using the special `.enqueue()` method in the `ExecutionQueueModule`:
+
+```java
+var module = new EolModule();
+// ... set up module ...
+var futureResult = queueModule.enqueue(module);
+// ... do other things while the module runs in the server thread ...
+// wait for the module to finish executing and obtain its result
+var moduleResult = futureResult.get();
+```
+
+The debug server will wait until a DAP connection is made, and then it will start to run the programs in its queue.
+Once all programs have been run, it will wait indefinitely for the next program to be queued until shut down.
+To shut it down, send a `terminate` request to the debug adapter, and enqueue an empty module so the queue module terminates:
+
+```java
+server.getDebugAdapter().terminate(new TerminateArguments());
+queueModule.enqueue(new EolModule()).get();
+```
 
 ## Debugging Epsilon programs running from Ant workflows
 
 If you need to debug your Epsilon program that you are [running from the command line](./running-epsilon-ant-tasks-from-command-line/index.md) (e.g. Ant or Gradle), you will need to use the Debug Adapter Protocol support available from Epsilon 2.6.0.
-To do so, set the `debug` and `debugPort` attributes in your Ant task, like this:
+
+### Debugging a single Epsilon program
+
+To debug a single Epsilon program, set the `debug` and `debugPort` attributes in your Ant task, like this:
 
 ```xml
 <epsilon.eol ... debug="true" debugPort="4040"/>
@@ -124,9 +169,25 @@ To do so, set the `debug` and `debugPort` attributes in your Ant task, like this
 
 When executed, this task will start a DAP server listening on TCP port 4040.
 It wait for a connection from a [DAP client](#debug-adapter-protocol-clients-tested-with-epsilon), and then start the program.
+The server will be automatically shut down after the program terminates.
 
 Epsilon includes an [example](https://github.com/eclipse-epsilon/epsilon/blob/main/examples/org.eclipse.epsilon.examples.eol.dap/build.xml) of an Ant buildfile that uses DAP for debugging.
 There is also an [example of a Gradle script](https://github.com/eclipse-epsilon/epsilon/blob/main/examples/org.eclipse.epsilon.examples.eol.dap/epsilon/build.gradle).
+
+### Debugging across several Epsilon programs
+
+If you need to run multiple Epsilon programs in your Ant buildfile, you may want to debug some of them without having to repeatedly connect to each of the DAP servers they start.
+Since Epsilon 2.9.0, you can use the Ant tasks that start and stop an independent server that can be reused across programs.
+For example:
+
+```xml
+<epsilon.startDebugServer debugPort="4040" />
+<epsilon.eol ... debug="true" />
+<epsilon.eol ... debug="true" />
+<epsilon.stopDebugServer />
+```
+
+The [example build file](https://github.com/eclipse-epsilon/epsilon/blob/main/examples/org.eclipse.epsilon.examples.eol.dap/build.xml) includes a `multiple-server-debug` target that uses this feature.
 
 ## Debug Adapter Protocol clients tested with Epsilon
 
