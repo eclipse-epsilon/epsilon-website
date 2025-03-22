@@ -171,6 +171,9 @@ class CommitTransactionTask {
 class RollbackTransactionTask {
   -name: String
 }
+class StartDebugServerTask {
+  -port: int
+}
 EpsilonTask <|-- CommitTransactionTask
 EpsilonTask <|-- StartTransactionTask
 RollbackTransactionTask --|> EpsilonTask
@@ -178,6 +181,8 @@ EpsilonTask <|-- LoadModelTask
 StoreModelTask --|> EpsilonTask
 DisposeModelTask --|> EpsilonTask
 DisposeModelsTask --|> EpsilonTask
+StartDebugServerTask --|> EpsilonTask
+StopDebugServerTask --|> EpsilonTask
 LoadModelTask *-- ParameterNestedElement: parameters *
 ```
 
@@ -311,6 +316,31 @@ ExecutableModuleTask <|-- EglTask
 EmlTask --|> ExecutableModuleTask
 EtlTask --|> ExecutableModuleTask
 EolTask --|> ExecutableModuleTask
+```
+
+### The StartDebugServer and StopDebugServer Tasks
+
+These tasks allow for starting a debug server that runs separately from specific Epsilon programs, so that a single DAP connection can be used to debug all the Epsilon programs run from the script.
+
+The `StartDebugServerTask` takes an optional `port` attribute to customize the port on which the server will listen.
+Note that the task assumes that a given Ant build will only have at most one running debug server.
+If it is not specified or if it is set to 0, an available port in the ephemeral range will be automatically selected.
+If Ant is being used from outside Eclipse, the user will need to note the port that was allocated and configure their DAP client to connect to that port.
+These two options are shown below:
+
+```xml
+<!-- Automatically uses an available port in the ephemeral range -->
+<epsilon.startDebugServer />
+
+<!-- Manually specifies the port to listen at -->
+<epsilon.startDebugServer port="4040" />
+```
+
+The `StopDebugServerTask` will stop the running debug server.
+It does not take any attributes:
+
+```xml
+<epsilon.stopDebugServer />
 ```
 
 ### The Abstract Executable Module Task
