@@ -1838,6 +1838,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#debugging-across-multiple-epsilon-programs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging across multiple Epsilon programs
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1849,6 +1858,30 @@
       Debugging Epsilon programs running from Ant workflows
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Debugging Epsilon programs running from Ant workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#debugging-a-single-epsilon-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging a single Epsilon program
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-across-several-epsilon-programs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging across several Epsilon programs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2048,14 +2081,50 @@ server.getDebugAdapter()
   .getUriToPathMappings()
   .put(scriptUrl.toURI(), mappedPath);</code></pre>
 <p>For a fully worked-out example of this idea, you can check <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.eol.dap.bundleprogram">this example project</a> on Github.</p>
+<h3 id="debugging-across-multiple-epsilon-programs">Debugging across multiple Epsilon programs<a class="headerlink" href="#debugging-across-multiple-epsilon-programs" title="Permanent link">&para;</a></h3>
+<p>Since Epsilon 2.9.0, it is possible to reuse the same debugging session across multiple programs.
+To do so, you will need to use an <code>ExecutionQueueModule</code> on which you will enqueue the execution of your programs.</p>
+<p>First, you will need to create the queue module and wrap it with a debug server:</p>
+<pre class="highlight"><code class="language-java">var queueModule = new ExecutionQueueModule();
+var server = new EpsilonDebugServer(queueModule, port);
+// ... set up server as usual (e.g. URI to path mappings ...)</code></pre>
+<p>Next, you will have to run the server on its own thread and wait until it has fully started:</p>
+<pre class="highlight"><code class="language-java">var serverThread = new Thread(server::run, "Epsilon Debug Server Thread");
+var latch = new CountDownLatch(1);
+server.setOnStart(latch::countDown);
+serverThread.start();
+latch.await();</code></pre>
+<p>You can now enqueue modules to be executed and debugged by using the special <code>.enqueue()</code> method in the <code>ExecutionQueueModule</code>:</p>
+<pre class="highlight"><code class="language-java">var module = new EolModule();
+// ... set up module ...
+var futureResult = queueModule.enqueue(module);
+// ... do other things while the module runs in the server thread ...
+// wait for the module to finish executing and obtain its result
+var moduleResult = futureResult.get();</code></pre>
+<p>The debug server will wait until a DAP connection is made, and then it will start to run the programs in its queue.
+Once all programs have been run, it will wait indefinitely for the next program to be queued until shut down.
+To shut it down, send a <code>terminate</code> request to the debug adapter, and enqueue an empty module so the queue module terminates:</p>
+<pre class="highlight"><code class="language-java">server.getDebugAdapter().terminate(new TerminateArguments());
+queueModule.enqueue(new EolModule()).get();</code></pre>
 <h2 id="debugging-epsilon-programs-running-from-ant-workflows">Debugging Epsilon programs running from Ant workflows<a class="headerlink" href="#debugging-epsilon-programs-running-from-ant-workflows" title="Permanent link">&para;</a></h2>
-<p>If you need to debug your Epsilon program that you are <a href="../running-epsilon-ant-tasks-from-command-line/">running from the command line</a> (e.g. Ant or Gradle), you will need to use the Debug Adapter Protocol support available from Epsilon 2.6.0.
-To do so, set the <code>debug</code> and <code>debugPort</code> attributes in your Ant task, like this:</p>
+<p>If you need to debug your Epsilon program that you are <a href="../running-epsilon-ant-tasks-from-command-line/">running from the command line</a> (e.g. Ant or Gradle), you will need to use the Debug Adapter Protocol support available from Epsilon 2.6.0.</p>
+<h3 id="debugging-a-single-epsilon-program">Debugging a single Epsilon program<a class="headerlink" href="#debugging-a-single-epsilon-program" title="Permanent link">&para;</a></h3>
+<p>To debug a single Epsilon program, set the <code>debug</code> and <code>debugPort</code> attributes in your Ant task, like this:</p>
 <pre class="highlight"><code class="language-xml">&lt;epsilon.eol ... debug="true" debugPort="4040"/&gt;</code></pre>
 <p>When executed, this task will start a DAP server listening on TCP port 4040.
-It wait for a connection from a <a href="#debug-adapter-protocol-clients-tested-with-epsilon">DAP client</a>, and then start the program.</p>
+It wait for a connection from a <a href="#debug-adapter-protocol-clients-tested-with-epsilon">DAP client</a>, and then start the program.
+The server will be automatically shut down after the program terminates.</p>
 <p>Epsilon includes an <a href="https://github.com/eclipse-epsilon/epsilon/blob/main/examples/org.eclipse.epsilon.examples.eol.dap/build.xml">example</a> of an Ant buildfile that uses DAP for debugging.
 There is also an <a href="https://github.com/eclipse-epsilon/epsilon/blob/main/examples/org.eclipse.epsilon.examples.eol.dap/epsilon/build.gradle">example of a Gradle script</a>.</p>
+<h3 id="debugging-across-several-epsilon-programs">Debugging across several Epsilon programs<a class="headerlink" href="#debugging-across-several-epsilon-programs" title="Permanent link">&para;</a></h3>
+<p>If you need to run multiple Epsilon programs in your Ant buildfile, you may want to debug some of them without having to repeatedly connect to each of the DAP servers they start.
+Since Epsilon 2.9.0, you can use the Ant tasks that start and stop an independent server that can be reused across programs.
+For example:</p>
+<pre class="highlight"><code class="language-xml">&lt;epsilon.startDebugServer debugPort="4040" /&gt;
+&lt;epsilon.eol ... debug="true" /&gt;
+&lt;epsilon.eol ... debug="true" /&gt;
+&lt;epsilon.stopDebugServer /&gt;</code></pre>
+<p>The <a href="https://github.com/eclipse-epsilon/epsilon/blob/main/examples/org.eclipse.epsilon.examples.eol.dap/build.xml">example build file</a> includes a <code>multiple-server-debug</code> target that uses this feature.</p>
 <h2 id="debug-adapter-protocol-clients-tested-with-epsilon">Debug Adapter Protocol clients tested with Epsilon<a class="headerlink" href="#debug-adapter-protocol-clients-tested-with-epsilon" title="Permanent link">&para;</a></h2>
 <p>After the <code>EpsilonDebugServer</code> has started and is waiting for a DAP connection, you should be able to connect to it with a DAP client of your choice.
 This section details two DAP clients that have been tested with the Epsilon DAP server.</p>
