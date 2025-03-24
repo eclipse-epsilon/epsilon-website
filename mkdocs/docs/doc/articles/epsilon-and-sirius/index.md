@@ -99,3 +99,9 @@ The semantic model (`example.callcentre`) can be read and written by Epsilon pro
         }
     }
     ```
+
+## Integrated Model Validation
+
+Sirius reuses EMF's validation framework, with which EVL integrates. Therefore, as shown [here](https://github.com/uoy-cs-eng2/psl-sirius/?tab=readme-ov-file#model-validation), you can use EVL to define validation constraints for your language and run them to produce error/warning markers on your Sirius diagrams with [minimal configuration](https://github.com/uoy-cs-eng2/psl-sirius/blob/main/psl.validation/plugin.xml).
+
+![Screenshot of validation markers in Sirius](validation-markers.png)
