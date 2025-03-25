@@ -324,9 +324,13 @@ These tasks allow for starting a debug server that runs separately from specific
 
 The `StartDebugServerTask` takes an optional `port` attribute to customize the port on which the server will listen.
 Note that the task assumes that a given Ant build will only have at most one running debug server.
-If it is not specified or if it is set to 0, an available port in the ephemeral range will be automatically selected.
+If the port is not specified or if it is set to 0, an available port in the ephemeral range will be automatically selected.
 If Ant is being used from outside Eclipse, the user will need to note the port that was allocated and configure their DAP client to connect to that port.
-These two options are shown below:
+
+The `StartDebugServerTask` also takes an optional `host` attribute to customize the IP addresses / hostnames on which the server will listen.
+If unspecified, the server will listen on all local addresses.
+
+These options are shown below:
 
 ```xml
 <!-- Automatically uses an available port in the ephemeral range -->
@@ -334,6 +338,9 @@ These two options are shown below:
 
 <!-- Manually specifies the port to listen at -->
 <epsilon.startDebugServer port="4040" />
+
+<!-- Manually specifies the IP and port to listen at -->
+<epsilon.startDebugServer host="192.168.0.123" port="1234" />
 ```
 
 The `StopDebugServerTask` will stop the running debug server.
