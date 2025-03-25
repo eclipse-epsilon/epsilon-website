@@ -2765,14 +2765,19 @@ EolTask --|&gt; ExecutableModuleTask</code></pre>
 <p>These tasks allow for starting a debug server that runs separately from specific Epsilon programs, so that a single DAP connection can be used to debug all the Epsilon programs run from the script.</p>
 <p>The <code>StartDebugServerTask</code> takes an optional <code>port</code> attribute to customize the port on which the server will listen.
 Note that the task assumes that a given Ant build will only have at most one running debug server.
-If it is not specified or if it is set to 0, an available port in the ephemeral range will be automatically selected.
-If Ant is being used from outside Eclipse, the user will need to note the port that was allocated and configure their DAP client to connect to that port.
-These two options are shown below:</p>
+If the port is not specified or if it is set to 0, an available port in the ephemeral range will be automatically selected.
+If Ant is being used from outside Eclipse, the user will need to note the port that was allocated and configure their DAP client to connect to that port.</p>
+<p>The <code>StartDebugServerTask</code> also takes an optional <code>host</code> attribute to customize the IP addresses / hostnames on which the server will listen.
+If unspecified, the server will listen on all local addresses.</p>
+<p>These options are shown below:</p>
 <pre class="highlight"><code class="language-xml">&lt;!-- Automatically uses an available port in the ephemeral range --&gt;
 &lt;epsilon.startDebugServer /&gt;
 
 &lt;!-- Manually specifies the port to listen at --&gt;
-&lt;epsilon.startDebugServer port="4040" /&gt;</code></pre>
+&lt;epsilon.startDebugServer port="4040" /&gt;
+
+&lt;!-- Manually specifies the IP and port to listen at --&gt;
+&lt;epsilon.startDebugServer host="192.168.0.123" port="1234" /&gt;</code></pre>
 <p>The <code>StopDebugServerTask</code> will stop the running debug server.
 It does not take any attributes:</p>
 <pre class="highlight"><code class="language-xml">&lt;epsilon.stopDebugServer /&gt;</code></pre>
