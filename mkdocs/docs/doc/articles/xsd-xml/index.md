@@ -53,6 +53,14 @@ You can use the `new` operator for this.
 {{{ example("org.eclipse.epsilon.examples.xsdxml/library/create-element.eol") }}}
 ```
 
+## How does it work?
+
+The driver uses EMF's [XSDEcoreBuilder](https://github.com/eclipse-emf/org.eclipse.emf/blob/master/plugins/org.eclipse.xsd/src/org/eclipse/xsd/ecore/XSDEcoreBuilder.java) to transform the XSD into an Ecore metamodel, and then loads the XML document against the metamodel. The XSD to Ecore mapping process is described in [this document](https://eclipse.dev/modeling/emf/docs/overviews/XMLSchemaToEcoreMapping.pdf). If you'd like to save and inspect the Ecore metamodel that gets produced from your XSD, you can use the following snippet.
+
+```java
+{{{ example("org.eclipse.epsilon.examples.xsdxml/src/main/java/org/eclipse/epsilon/examples/xsdxml/XSDToEcoreExample.java") }}}
+```
+
 ## Running this example from Java
 
 You can use the driver's API as shown below to load the library XML document and XSD schema and run the EOL snippets above from Java. The complete Maven project is [here](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.xsdxml).
