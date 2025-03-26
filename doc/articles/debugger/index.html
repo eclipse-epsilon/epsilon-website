@@ -2066,20 +2066,22 @@ server.run();</code></pre>
 <p>In the specific case where your Epsilon program is embedded into an Eclipse plugin, it is likely that you are loading it as a plugin resource (i.e. through a <code>bundleentry://</code> URL).
 If you are debugging such a plugin through a nested Eclipse workbench, you can debug the Epsilon program via breakpoints on the main Eclipse workbench by using the <code>FileLocator</code> API to compute the relevant mappings.</p>
 <p>For example, suppose you were running the EOL script in <code>epsilon/main.eol</code> within your plugin.
-You would obtain its <code>bundleentry://</code> URL with this code, assuming you had created the <a href="https://help.eclipse.org/latest/topic/org.eclipse.pde.doc.user/guide/tools/project_wizards/plugin_content.htm">relevant <code>Activator</code></a> for your plugin:</p>
-<pre class="highlight"><code class="language-java">URL scriptUrl = FileLocator.find(
+You would obtain the <code>bundleentry://</code> URL of your plugin with this code, assuming you had created the <a href="https://help.eclipse.org/latest/topic/org.eclipse.pde.doc.user/guide/tools/project_wizards/plugin_content.htm">relevant <code>Activator</code></a> for your plugin:</p>
+<pre class="highlight"><code class="language-java">URL bundleUrl = FileLocator.find(
   Activator.getDefault().getBundle(),
-  new Path("epsilon/main.eol")
+  new Path("/")
 );</code></pre>
 <p>You could then turn it into a <code>java.nio.file.Path</code> with:</p>
 <pre class="highlight"><code class="language-java">java.nio.file.Path mappedPath = Paths.get(
-  FileLocator.toFileURL(scriptUrl).toURI()
+  FileLocator.toFileURL(bundleUrl).toURI()
 );</code></pre>
-<p>This would allow you to map the <code>bundleentry://</code> URL to the relevant file in your main Eclipse workbench with:</p>
+<p>You would then map the bundle's URL to the relevant folder in your main Eclipse workbench, like this:</p>
 <pre class="highlight"><code class="language-java">EpsilonDebugServer server = /* ... create instance as usual ... */;
 server.getDebugAdapter()
   .getUriToPathMappings()
-  .put(scriptUrl.toURI(), mappedPath);</code></pre>
+  .put(bundleUrl.toURI(), mappedPath);</code></pre>
+<p>This would allow you to place breakpoints anywhere within this plugin, assuming you were running it from its sources.
+This is better than only mapping the URL of the main script to a file, as that would only let you stop at breakpoints on that main script and not on its imports.</p>
 <p>For a fully worked-out example of this idea, you can check <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.eol.dap.bundleprogram">this example project</a> on Github.</p>
 <h3 id="debugging-across-multiple-epsilon-programs">Debugging across multiple Epsilon programs<a class="headerlink" href="#debugging-across-multiple-epsilon-programs" title="Permanent link">&para;</a></h3>
 <p>Since Epsilon 2.9.0, it is possible to reuse the same debugging session across multiple programs.
