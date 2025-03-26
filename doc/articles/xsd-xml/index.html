@@ -1853,6 +1853,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-does-it-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      How does it work?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#running-this-example-from-java" class="md-nav__link">
     <span class="md-ellipsis">
       Running this example from Java
@@ -1997,6 +2006,44 @@ library.book.add(newBook);
 
 // Get all books and print the new size
 BookType.all().size().println();</code></pre>
+<h2 id="how-does-it-work">How does it work?<a class="headerlink" href="#how-does-it-work" title="Permanent link">&para;</a></h2>
+<p>The driver uses EMF's <a href="https://github.com/eclipse-emf/org.eclipse.emf/blob/master/plugins/org.eclipse.xsd/src/org/eclipse/xsd/ecore/XSDEcoreBuilder.java">XSDEcoreBuilder</a> to transform the XSD into an Ecore metamodel, and then loads the XML document against the metamodel. The XSD to Ecore mapping process is described in <a href="https://eclipse.dev/modeling/emf/docs/overviews/XMLSchemaToEcoreMapping.pdf">this document</a>. If you'd like to save and inspect the Ecore metamodel that gets produced from your XSD, you can use the following snippet.</p>
+<pre class="highlight"><code class="language-java">package org.eclipse.epsilon.examples.xsdxml;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Collection;
+
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.XMIResource;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.xsd.ecore.XSDEcoreBuilder;
+
+public class XSDToEcoreExample {
+
+    public static void main(String[] args) throws Exception {
+
+        // Convert the XSD into a collection of Ecore EPackages
+        XSDEcoreBuilder xsdEcoreBuilder = new XSDEcoreBuilder();
+        Collection&lt;EObject&gt; ePackages = xsdEcoreBuilder.generate(URI.createURI("http://www.omg.org/spec/ReqIF/20110401/reqif.xsd"));
+
+        // Create a new XMI resource to save the EPackages 
+        ResourceSet resourceSet = new ResourceSetImpl();
+        resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore", new XMIResourceFactoryImpl());
+        Resource resource = resourceSet.createResource(URI.createURI(new File("reqif.ecore").toURI().toString()));
+
+        // Add the XSD-generated EPackages to the resource and save
+        resource.getContents().addAll(ePackages);
+        resource.save(null);
+    }
+
+}
+</code></pre>
 <h2 id="running-this-example-from-java">Running this example from Java<a class="headerlink" href="#running-this-example-from-java" title="Permanent link">&para;</a></h2>
 <p>You can use the driver's API as shown below to load the library XML document and XSD schema and run the EOL snippets above from Java. The complete Maven project is <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.xsdxml">here</a>.</p>
 <pre class="highlight"><code class="language-java">package org.eclipse.epsilon.examples.xsdxml;
