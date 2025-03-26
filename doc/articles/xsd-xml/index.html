@@ -1853,6 +1853,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#running-this-example-from-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running this example from Java
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#adding-an-xml-document-to-your-launch-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       Adding an XML document to your launch configuration
@@ -1906,7 +1915,6 @@
 <p>The XSD schema <code>library.xsd</code> that backs the <code>library.xml</code> file is the following.</p>
 <pre class="highlight"><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified"&gt;
-&lt;!-- XML Schema Generated from XML Document with XmlGrid.net Free Online Service http://xmlgrid.net --&gt;
     &lt;xs:element name="library"&gt;
         &lt;xs:complexType&gt;
             &lt;xs:sequence&gt;
@@ -1969,10 +1977,8 @@ var emfBook = BookType.all().first();
 // Set the title to a new one
 emfBook.title = "EMF Book";
 
-// Print the changed title (NB.: You need to have selected the "Store on disposal" 
-// option in the run configuration to save changes to the XML file.)
-var changedEmfBook =  BookType.all().first();
-changedEmfBook.title.println();</code></pre>
+// Check that the title has changed
+emfBook.title.println();</code></pre>
 <h3 id="how-do-i-create-an-element-and-add-it-to-an-existing-element">How do I create an element and add it to an existing element?<a class="headerlink" href="#how-do-i-create-an-element-and-add-it-to-an-existing-element" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>new</code> operator for this. </p>
 <pre class="highlight"><code class="language-eol">// Get all the books contained in this library
@@ -1991,6 +1997,44 @@ library.book.add(newBook);
 
 // Get all books and print the new size
 BookType.all().size().println();</code></pre>
+<h2 id="running-this-example-from-java">Running this example from Java<a class="headerlink" href="#running-this-example-from-java" title="Permanent link">&para;</a></h2>
+<p>You can use the driver's API as shown below to load the library XML document and XSD schema and run the EOL snippets above from Java. The complete Maven project is <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.xsdxml">here</a>.</p>
+<pre class="highlight"><code class="language-java">package org.eclipse.epsilon.examples.xsdxml;
+
+import java.io.File;
+
+import org.eclipse.epsilon.common.util.StringProperties;
+import org.eclipse.epsilon.emc.emf.xml.XmlModel;
+import org.eclipse.epsilon.eol.EolModule;
+
+public class LibraryExample {
+
+    public static void main(String[] args) throws Exception {
+
+        // Parse the EOL program
+        EolModule module = new EolModule();
+        module.parse(new File("library/query-by-type.eol"));
+
+        // Load the model
+        XmlModel model = new XmlModel();
+        StringProperties properties = new StringProperties();
+        properties.put(XmlModel.PROPERTY_NAME, "M");
+        // No need to specify XSD URI due to xsi:noNamespaceSchemaLocation="library.xsd" in library.xml
+        properties.put(XmlModel.PROPERTY_MODEL_URI, new File("library/library.xml").toURI());
+        properties.put(XmlModel.PROPERTY_READONLOAD, "true");
+        properties.put(XmlModel.PROPERTY_STOREONDISPOSAL, "false");
+        model.load(properties);
+
+        // Make the model available to the program
+        module.getContext().getModelRepository().addModel(model);
+
+        // Execute the EOL program
+        module.execute();
+
+        // Dispose of the model
+        module.getContext().getModelRepository().dispose();
+    }
+}</code></pre>
 <h2 id="adding-an-xml-document-to-your-launch-configuration">Adding an XML document to your launch configuration<a class="headerlink" href="#adding-an-xml-document-to-your-launch-configuration" title="Permanent link">&para;</a></h2>
 <p>To add an XML document to your Epsilon launch configuration, you need to select "XML document backed by XSD (EMF)" from the list of available model types.</p>
 <p><img alt="" src="select.png" /></p>
