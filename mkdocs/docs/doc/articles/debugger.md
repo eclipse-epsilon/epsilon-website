@@ -84,12 +84,12 @@ In the specific case where your Epsilon program is embedded into an Eclipse plug
 If you are debugging such a plugin through a nested Eclipse workbench, you can debug the Epsilon program via breakpoints on the main Eclipse workbench by using the `FileLocator` API to compute the relevant mappings.
 
 For example, suppose you were running the EOL script in `epsilon/main.eol` within your plugin.
-You would obtain its `bundleentry://` URL with this code, assuming you had created the [relevant `Activator`](https://help.eclipse.org/latest/topic/org.eclipse.pde.doc.user/guide/tools/project_wizards/plugin_content.htm) for your plugin:
+You would obtain the `bundleentry://` URL of your plugin with this code, assuming you had created the [relevant `Activator`](https://help.eclipse.org/latest/topic/org.eclipse.pde.doc.user/guide/tools/project_wizards/plugin_content.htm) for your plugin:
 
 ```java
-URL scriptUrl = FileLocator.find(
+URL bundleUrl = FileLocator.find(
   Activator.getDefault().getBundle(),
-  new Path("epsilon/main.eol")
+  new Path("/")
 );
 ```
 
@@ -97,18 +97,21 @@ You could then turn it into a `java.nio.file.Path` with:
 
 ```java
 java.nio.file.Path mappedPath = Paths.get(
-  FileLocator.toFileURL(scriptUrl).toURI()
+  FileLocator.toFileURL(bundleUrl).toURI()
 );
 ```
 
-This would allow you to map the `bundleentry://` URL to the relevant file in your main Eclipse workbench with:
+You would then map the bundle's URL to the relevant folder in your main Eclipse workbench, like this:
 
 ```java
 EpsilonDebugServer server = /* ... create instance as usual ... */;
 server.getDebugAdapter()
   .getUriToPathMappings()
-  .put(scriptUrl.toURI(), mappedPath);
+  .put(bundleUrl.toURI(), mappedPath);
 ```
+
+This would allow you to place breakpoints anywhere within this plugin, assuming you were running it from its sources.
+This is better than only mapping the URL of the main script to a file, as that would only let you stop at breakpoints on that main script and not on its imports.
 
 For a fully worked-out example of this idea, you can check [this example project](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.eol.dap.bundleprogram) on Github.
 
