@@ -2527,11 +2527,11 @@ the table below.</p>
 <tbody>
 <tr>
 <td>assertEqualDirectories(expectedPath : String, obtainedPath : String)</td>
-<td>Fails the test if the contents of the directory in differ from those of the directory in . Directory comparisons are performed on recursive snapshots of both directories.</td>
+<td>Fails the test if the contents of the directory in <code>expectedPath</code> differ from those of the directory in <code>obtainedPath</code>. Directory comparisons are performed on recursive snapshots of both directories.</td>
 </tr>
 <tr>
 <td>assertEqualFiles(expectedPath : String, obtainedPath : String)</td>
-<td>Fails the test if the contents of the file in differ from those of the file in . File comparisons are performed on snapshots of both files.</td>
+<td>Fails the test if the contents of the file in <code>expectedPath</code> differ from those of the file in <code>obtainedPath</code>. File comparisons are performed on snapshots of both files.</td>
 </tr>
 <tr>
 <td>assertEqualFilesIgnoringLineEndings(expectedPath : String, obtainedPath : String)</td>
@@ -2539,31 +2539,31 @@ the table below.</p>
 </tr>
 <tr>
 <td>assertEqualModels([msg : String,] expectedModel : String, obtainedModel : String[, options : Map])</td>
-<td>Fails the test with the optional message if the model named is not equal to the model named . Model comparisons are performed on snapshots of the resource sets of both models. During EMF comparisons, XMI identifiers are ignored. Additional comparator-specific options can be specified through .</td>
+<td>Fails the test with the optional message if the model named <code>expectedModel</code> is not equal to the model named <code>obtainedModel</code>. Model comparisons are performed on snapshots of the resource sets of both models. During EMF comparisons, XMI identifiers are ignored. Additional comparator-specific options can be specified through <code>options</code>.</td>
 </tr>
 <tr>
 <td>assertEquals([msg : String,] expected : Any, obtained : Any)</td>
-<td>Fails the test with the optional message if the values of and are not equal.</td>
+<td>Fails the test with the optional message <code>msg</code> if the values of <code>expected</code> and <code>obtained</code> are not equal.</td>
 </tr>
 <tr>
 <td>assertEquals([msg : String,] expected : Real, obtained : Real,ulps : Integer)</td>
-<td>Fails the test with the optional message if the values of and differ in more than units of least precision. See <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Math.html#ulp(double)">this site</a> for details.</td>
+<td>Fails the test with the optional message <code>msg</code> if the values of <code>expected</code> and <code>obtained</code> differ in more than units of least precision. See <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Math.html#ulp(double)">this site</a> for details.</td>
 </tr>
 <tr>
 <td>assertError(expr : Any)</td>
-<td>Fails the test if no exception is thrown during the evaluation of .</td>
+<td>Fails the test if no exception is thrown during the evaluation of <code>expr</code>.</td>
 </tr>
 <tr>
 <td>assertFalse([msg : String,] cond : Boolean)</td>
-<td>Fails the test with the optional message if is . It is a negated version of assertTrue.</td>
+<td>Fails the test with the optional message <code>msg</code> if <code>cond</code> is <code>true</code>. It is a negated version of assertTrue.</td>
 </tr>
 <tr>
 <td>assertLineWithMatch([msg : String,] path : String, regexp : String)</td>
-<td>Fails the test with the optional message if the file at does not have a line containing a substring matching the regular expression <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</td>
+<td>Fails the test with the optional message <code>msg</code> if the file at <code>path</code> does not have a line containing a substring matching the regular expression <code>regexp</code> <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</td>
 </tr>
 <tr>
 <td>assertMatchingLine([msg : String,] path : String, regexp : String)</td>
-<td>Fails the test with the optional message if the file at does not have a line that matches the regular expression <sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> from start to finish.</td>
+<td>Fails the test with the optional message <code>msg</code> if the file at <code>path</code> does not have a line that matches the regular expression <code>regexp</code> <sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> from start to finish.</td>
 </tr>
 <tr>
 <td>assertNotEqualDirectories(expectedPath : String, obtainedPath : String)</td>
@@ -2591,11 +2591,11 @@ the table below.</p>
 </tr>
 <tr>
 <td>assertTrue([msg : String,] cond : Boolean)</td>
-<td>Fails the test with the optional message if is .</td>
+<td>Fails the test with the optional message <code>msg</code> if <code>cond</code> is <code>false</code>.</td>
 </tr>
 <tr>
 <td>fail(msg : String)</td>
-<td>Fails a test with the message .</td>
+<td>Fails a test with the message <code>msg</code>.</td>
 </tr>
 </tbody>
 </table>
