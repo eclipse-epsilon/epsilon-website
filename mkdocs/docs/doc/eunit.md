@@ -288,24 +288,24 @@ the table below.
 
 | Signature | Description |
 | - | - |
-| assertEqualDirectories(expectedPath : String, obtainedPath : String) | Fails the test if the contents of the directory in differ from those of the directory in . Directory comparisons are performed on recursive snapshots of both directories.|
-|assertEqualFiles(expectedPath : String, obtainedPath : String) | Fails the test if the contents of the file in differ from those of the file in . File comparisons are performed on snapshots of both files.|
+| assertEqualDirectories(expectedPath : String, obtainedPath : String) | Fails the test if the contents of the directory in `expectedPath` differ from those of the directory in `obtainedPath`. Directory comparisons are performed on recursive snapshots of both directories.|
+|assertEqualFiles(expectedPath : String, obtainedPath : String) | Fails the test if the contents of the file in `expectedPath` differ from those of the file in `obtainedPath`. File comparisons are performed on snapshots of both files.|
 |assertEqualFilesIgnoringLineEndings(expectedPath : String, obtainedPath : String) | As above, but different line endings will not cause the test to fail. |
-|assertEqualModels(\[msg : String,\] expectedModel : String, obtainedModel : String\[, options : Map\]) | Fails the test with the optional message if the model named is not equal to the model named . Model comparisons are performed on snapshots of the resource sets of both models. During EMF comparisons, XMI identifiers are ignored. Additional comparator-specific options can be specified through .|
-|assertEquals(\[msg : String,\] expected : Any, obtained : Any) | Fails the test with the optional message if the values of and are not equal.|
-|assertEquals(\[msg : String,\] expected : Real, obtained : Real,ulps : Integer) | Fails the test with the optional message if the values of and differ in more than units of least precision. See [this site](http://download.oracle.com/javase/6/docs/api/java/lang/Math.html#ulp(double)) for details.|
-|assertError(expr : Any) | Fails the test if no exception is thrown during the evaluation of .|
-|assertFalse(\[msg : String,\] cond : Boolean) | Fails the test with the optional message if is . It is a negated version of assertTrue.|
-|assertLineWithMatch(\[msg : String,\] path : String, regexp : String) | Fails the test with the optional message if the file at does not have a line containing a substring matching the regular expression [^2].|
-|assertMatchingLine(\[msg : String,\] path : String, regexp : String) | Fails the test with the optional message if the file at does not have a line that matches the regular expression [^3] from start to finish.|
+|assertEqualModels(\[msg : String,\] expectedModel : String, obtainedModel : String\[, options : Map\]) | Fails the test with the optional message if the model named `expectedModel` is not equal to the model named `obtainedModel`. Model comparisons are performed on snapshots of the resource sets of both models. During EMF comparisons, XMI identifiers are ignored. Additional comparator-specific options can be specified through `options`.|
+|assertEquals(\[msg : String,\] expected : Any, obtained : Any) | Fails the test with the optional message `msg` if the values of `expected` and `obtained` are not equal.|
+|assertEquals(\[msg : String,\] expected : Real, obtained : Real,ulps : Integer) | Fails the test with the optional message `msg` if the values of `expected` and `obtained` differ in more than units of least precision. See [this site](http://download.oracle.com/javase/6/docs/api/java/lang/Math.html#ulp(double)) for details.|
+|assertError(expr : Any) | Fails the test if no exception is thrown during the evaluation of `expr`.|
+|assertFalse(\[msg : String,\] cond : Boolean) | Fails the test with the optional message `msg` if `cond` is `true`. It is a negated version of assertTrue.|
+|assertLineWithMatch(\[msg : String,\] path : String, regexp : String) | Fails the test with the optional message `msg` if the file at `path` does not have a line containing a substring matching the regular expression `regexp` [^2].|
+|assertMatchingLine(\[msg : String,\] path : String, regexp : String) | Fails the test with the optional message `msg` if the file at `path` does not have a line that matches the regular expression `regexp` [^3] from start to finish.|
 |assertNotEqualDirectories(expectedPath : String, obtainedPath : String) | Negated version of assertEqualDirectories.|
 |assertNotEqualFiles(expectedPath : String, obtainedPath : String) | Negated version of assertEqualFiles.|
 |assertNotEqualFilesIgnoringLineEndings(expectedPath : String, obtainedPath : String) | Negated version of assertEqualFilesIgnoringLineEndings.|
 |assertNotEqualModels(\[msg : String,\] expectedModel : String, obtainedModel : String) | Negated version of assertNotEqualModels.|
 |assertNotEquals(\[msg : String,\] expected : Any, obtained : Any) | Negated version of assertEquals(\[msg : String,\] expected : Any, obtained : Any).|
 |assertNotEquals(\[msg : String,\] expected : Real, obtained : Real, ulps : Integer) | Negated version of assertEquals(\[msg : String,\] expected : Real, obtained : Real, ulps : Integer).|
-|assertTrue(\[msg : String,\] cond : Boolean) | Fails the test with the optional message if is .|
-|fail(msg : String) | Fails a test with the message .|
+|assertTrue(\[msg : String,\] cond : Boolean) | Fails the test with the optional message `msg` if `cond` is `false`.|
+|fail(msg : String) | Fails a test with the message `msg`.|
 
 
 The table below lists the available option keys which can be used with the model equality assertions, by comparator.
