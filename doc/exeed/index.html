@@ -2032,9 +2032,8 @@
 <li><code>featureLabel</code>: Defines the label that will be used for the structural feature when it is displayed on all views related to the editor (editing tree, properties view, etc.)</li>
 </ul>
 <h2 id="exeed-annotations-values">Exeed Annotations Values<a class="headerlink" href="#exeed-annotations-values" title="Permanent link">&para;</a></h2>
-<p>All keys, except for <code>classIcon</code>, accept an EOL script as their value. This allows labels and icons to be dynamically allocated based on the properties of the instance. The EOL script is evaluated in the context of each instance, that is, the current instance can be accessed via the <code>self</code> keyword. Further, all other model elements are accessible via navigation (i.e. references from the instance) or by getting all elements of a type (e.g. MyType.all). </p>
-<p>For the <code>icon</code> and <code>classIcon</code> keys the expected value is the name of one of the icons available in Exeed. Thus, for <code>icon</code> the EOL script must return a string with the name of the icon and for <code>classIcon</code> the value must be the name of the icon. The following icons are available (the extension should not be included):</p>
-<p><img alt="Available Icons" src="icons.png" /></p>
+<p>All keys, except for <code>classIcon</code>, accept an EOL script as their value. This allows labels and icons to be dynamically allocated based on the properties of the instance. The EOL script is evaluated in the context of each instance, that is, the current instance can be accessed via the <code>self</code> keyword. Further, all other model elements are accessible via navigation (i.e. references from the instance) or by getting all elements of a type (e.g. <code>MyType.all</code>). </p>
+<p>For the <code>icon</code> and <code>classIcon</code> keys the expected value is the name of one of the <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/plugins/org.eclipse.epsilon.dt.exeed/icons">built-in icons</a> available in Exeed (excluding the file extension -- i.e. <code>model</code> instead of <code>model.gif</code>), or a fully-qualified Eclipse platform URI (see the <code>Package</code> class in the metamodel below for an example).</p>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
 <p>The images show the tree view of a OO Model with the EMF Reflective Editor (left) and the Exeed Editor (right).</p>
 <p><img alt="EMF Reflective Editor" src="normaltree.png" /><img alt="Exeed Editor" src="exeedtree.png" /></p>
@@ -2042,7 +2041,7 @@
 <pre class="highlight"><code class="language-emf">@namespace(uri="OO", prefix="")
 package OO;
 
-@exeed(classIcon="model")
+@exeed(classIcon="platform:/resource/org.eclipse.epsilon.examples.exeedoo/icons/model")
 class Model extends Package {
 }
 
@@ -2056,33 +2055,35 @@ str = str + self.name;
 return str;
 ")
 abstract class PackageableElement extends NamedElement {
-   ref Package#contents ~package;
+  !ordered ref Package[1]#contents ~package;
 }
 
 abstract class AnnotatedElement {
-  val Annotation[*] annotations;
+  !ordered val Annotation[*] annotations;
 }
 
 @exeed(label="return self.key + ' -&gt; ' + self.value;", classIcon="annotation")
 class Annotation {
-  attr String key;
-  attr String value;
+  !unique !ordered attr String[1] key;
+  !unique !ordered attr String[1] value;
 }
 
 @exeed(label="return self.name;")
 abstract class NamedElement extends AnnotatedElement {
-  attr String name;
+  !unique !ordered attr String[1] name;
 }
 
-@exeed(classIcon="package", label="return self.name;")
+@exeed(classIcon="platform:/resource/org.eclipse.epsilon.examples.exeedoo/icons/package.gif", label="return self.name;")
 class Package extends PackageableElement {
-  val PackageableElement[*]#~package contents;
+  !ordered val PackageableElement[*]#~package contents;
   ref Package[*] uses;
 }
 
-abstract class Classifier extends PackageableElement { }
+abstract class Classifier extends PackageableElement {
+}
 
-class ExternalClass extends Class { }
+class ExternalClass extends Class {
+}
 
 @exeed(classIcon="class", label="
 var label : String;
@@ -2093,10 +2094,10 @@ if (self.extends.isDefined()){
 return label;
 ")
 class Class extends Classifier {
-  ref Class#extendedBy ~extends;
-  ref Class[*]#~extends extendedBy;
-  val Feature[*]#owner features;
-  attr Boolean isAbstract;
+  !ordered ref Class[1]#extendedBy ~extends;
+  !ordered ref Class[*]#~extends extendedBy;
+  !ordered val Feature[*]#owner features;
+  !unique !ordered attr Boolean[1] isAbstract;
 }
 
 @exeed(classIcon="datatype")
@@ -2104,9 +2105,9 @@ class Datatype extends Classifier {
 }
 
 abstract class Feature extends NamedElement {
-  ref Class#features owner;
-  ref Classifier type;
-  attr VisibilityEnum visibility;
+  !ordered ref Class[1]#features owner;
+  !ordered ref Classifier[1] type;
+  !unique !ordered attr VisibilityEnum[1] visibility;
 }
 
 @exeed(label="
@@ -2128,7 +2129,7 @@ else {
 }
 ")
 abstract class StructuralFeature extends Feature {
-    attr Boolean isMany;
+  !unique !ordered attr Boolean[1] isMany;
 }
 
 @exeed(label="
@@ -2150,7 +2151,7 @@ if (self.type.isDefined()) {
 return label;
 ", classIcon="operation")
 class Operation extends Feature {
-   val Parameter[*]#owner parameters;
+  !ordered val Parameter[*]#owner parameters;
 }
 
 @exeed(label="
@@ -2162,18 +2163,21 @@ if (self.type.isDefined()){
 return label;
 ", classIcon="parameter")
 class Parameter extends NamedElement {
-  ref Classifier type;
-  ref Operation#parameters owner;
+  !ordered ref Classifier[1] type;
+  !ordered ref Operation[1]#parameters owner;
 }
 
-class Reference extends StructuralFeature { }
+class Reference extends StructuralFeature {
+}
 
-class Attribute extends StructuralFeature { }
+class Attribute extends StructuralFeature {
+}
 
 enum VisibilityEnum {
   public = 1;
   private = 2;
 }
+
 </code></pre>
 <h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
 <ul>
