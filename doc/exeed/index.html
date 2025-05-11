@@ -2003,7 +2003,7 @@
 <table>
 <thead>
 <tr>
-<th>Plain Reflective Editor</th>
+<th>EMF Reflective Editor</th>
 <th>Exeed</th>
 </tr>
 </thead>
@@ -2034,14 +2034,21 @@
 <h2 id="exeed-annotations-values">Exeed Annotations Values<a class="headerlink" href="#exeed-annotations-values" title="Permanent link">&para;</a></h2>
 <p>All keys, except for <code>classIcon</code>, accept an EOL script as their value. This allows labels and icons to be dynamically allocated based on the properties of the instance. The EOL script is evaluated in the context of each instance, that is, the current instance can be accessed via the <code>self</code> keyword. Further, all other model elements are accessible via navigation (i.e. references from the instance) or by getting all elements of a type (e.g. <code>MyType.all</code>). </p>
 <p>For the <code>icon</code> and <code>classIcon</code> keys the expected value is the name of one of the <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/plugins/org.eclipse.epsilon.dt.exeed/icons">built-in icons</a> available in Exeed (excluding the file extension -- i.e. <code>model</code> instead of <code>model.gif</code>), or a fully-qualified Eclipse platform URI (see the <code>Package</code> class in the metamodel below for an example).</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Built-in icons</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="" src="icons.png" /></p>
+</div>
+</div>
+</div>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<p>The images show the tree view of a OO Model with the EMF Reflective Editor (left) and the Exeed Editor (right).</p>
+<p>The images show the tree view of an OO model with the default EMF reflective editor (left) and Exeed (right).</p>
 <p><img alt="EMF Reflective Editor" src="normaltree.png" /><img alt="Exeed Editor" src="exeedtree.png" /></p>
-<p>The following code presents the annotated OO metamodel (in Emfatic) that was used to obtain the Exeed result above (the example is available from the <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.exeedoo">examples</a> folder of the Git repository):</p>
+<p>Below is the annotated OO metamodel (in Emfatic) that was used to obtain the Exeed result above (the example is available from the <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.exeedoo">examples</a> folder of the Git repository):</p>
 <pre class="highlight"><code class="language-emf">@namespace(uri="OO", prefix="")
 package OO;
 
-@exeed(classIcon="platform:/resource/org.eclipse.epsilon.examples.exeedoo/icons/model")
+@exeed(classIcon="model")
 class Model extends Package {
 }
 
