@@ -2,7 +2,7 @@
 
 Exeed is an extended version of the built-in tree-based reflective editor provided by EMF. The aim of Exeed is to **enable developers to customize the appearance of the editor (labels and icons)** by annotating Ecore metamodels. As a result, developers can enjoy the benefits of a customized editor for their models without needing to generate one and then customize it using Java.
 
-| Plain Reflective Editor | Exeed             |
+| EMF Reflective Editor | Exeed             |
 | ----------------------- | -----             |
 | ![](normaltree.png)     |![](exeedtree.png)|
 
@@ -26,12 +26,16 @@ All keys, except for `classIcon`, accept an EOL script as their value. This allo
 
 For the `icon` and `classIcon` keys the expected value is the name of one of the [built-in icons](https://github.com/eclipse-epsilon/epsilon/tree/main/plugins/org.eclipse.epsilon.dt.exeed/icons) available in Exeed (excluding the file extension -- i.e. `model` instead of `model.gif`), or a fully-qualified Eclipse platform URI (see the `Package` class in the metamodel below for an example).
 
+=== "Built-in icons"
+    
+    ![](icons.png)
+
 ## Example
-The images show the tree view of a OO Model with the EMF Reflective Editor (left) and the Exeed Editor (right).
+The images show the tree view of an OO model with the default EMF reflective editor (left) and Exeed (right).
 
 ![EMF Reflective Editor](normaltree.png)![Exeed Editor](exeedtree.png)
 
-The following code presents the annotated OO metamodel (in Emfatic) that was used to obtain the Exeed result above (the example is available from the [examples](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.exeedoo) folder of the Git repository):
+Below is the annotated OO metamodel (in Emfatic) that was used to obtain the Exeed result above (the example is available from the [examples](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.exeedoo) folder of the Git repository):
 
 ```emf
 {{{ example("org.eclipse.epsilon.examples.exeedoo/OO.emf", false) }}}
