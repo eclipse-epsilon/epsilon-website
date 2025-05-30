@@ -1,0 +1,25 @@
+rule M2M
+  transform s: Source!Model
+  to t: Target!Model
+{
+  var children = Map {};
+
+  for (inst in s.instances) {
+    if (children.containsKey(inst.name)) {
+      children.get(inst.name).values.add(inst.value);
+    } else {
+      var newInst = inst.equivalent();
+      t.instances.add(newInst);
+      children.put(inst.name, newInst);
+    }
+  }
+}
+
+@lazy
+rule A2A
+	transform s : Source!Element
+	to t : Target!Element
+{
+    t.name = s.name;
+	t.values.add(s.value);
+}

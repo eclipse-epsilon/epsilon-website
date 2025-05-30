@@ -1,0 +1,11 @@
+?nsuri: psl
+model:
+- instances:
+    - name: x
+    - value: 5
+- instances:
+    - name: x
+    - value: 3
+- instances:
+    - name: y
+    - value: 11

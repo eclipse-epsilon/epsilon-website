@@ -1,0 +1,29 @@
+pre {
+  var values = Map {};
+  for (a in Source!Element.all) {
+    if (values.containsKey(a.name)) {
+      a.~first = false;
+      values.get(a.name).add(a.value);
+    } else {
+      a.~first = true;
+      values.put(a.name, OrderedSet { a.value });
+    }
+  }
+}
+
+rule M2M
+  transform s: Source!Model
+  to t: Target!Model
+{
+  t.instances ::= s.instances;
+}
+
+rule A2A
+	transform s : Source!Element
+	to t : Target!Element
+{
+    guard: s.~first
+
+    t.name = s.name;
+	t.values = values.get(s.name);
+}
