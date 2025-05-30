@@ -1,0 +1,11 @@
+@namespace(uri="psl", prefix="")
+package before;
+
+class Model {
+  val Element[*] instances;
+}
+
+class Element {
+  attr String name;
+  attr int value;
+}

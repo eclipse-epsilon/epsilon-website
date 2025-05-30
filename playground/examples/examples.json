@@ -315,6 +315,24 @@
 				"flexmi": "callcentre/callcentre.flexmi",
 				"emfatic": "callcentre/callcentre.emf",
 				"secondEmfatic": "callcentre/minivoicexml.emf"
+			},
+			{
+				"id": "etl-many2one-pre",
+				"title": "Many to One (pre block)",
+				"language": "etl",
+				"program": "etl-many-to-one/pre-block.etl",
+				"flexmi": "etl-many-to-one/source.flexmi",
+				"emfatic": "etl-many-to-one/before.emf",
+				"secondEmfatic": "etl-many-to-one/after.emf"
+			},
+			{
+				"id": "etl-many2one-pre",
+				"title": "Many to One (lazy rule)",
+				"language": "etl",
+				"program": "etl-many-to-one/lazy-rule.etl",
+				"flexmi": "etl-many-to-one/source.flexmi",
+				"emfatic": "etl-many-to-one/before.emf",
+				"secondEmfatic": "etl-many-to-one/after.emf"
 			}
 		]
 	},
