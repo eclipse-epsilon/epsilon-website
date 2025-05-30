@@ -326,7 +326,7 @@
 				"secondEmfatic": "etl-many-to-one/after.emf"
 			},
 			{
-				"id": "etl-many2one-pre",
+				"id": "etl-many2one-lazy",
 				"title": "Many to One (lazy rule)",
 				"language": "etl",
 				"program": "etl-many-to-one/lazy-rule.etl",
