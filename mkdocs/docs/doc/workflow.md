@@ -456,6 +456,8 @@ The `epsilon.evl` task executes an EVL module, defined using the `src` attribute
 
 -   `exportAsModel` : Setting the value of this attribute causes the task to export the results of the validation as a new in-memory [Java model](https://download.eclipse.org/epsilon/interim-javadoc/org/eclipse/epsilon/eol/models/java/JavaModel.html) with the specified name in the project repository. The exported model is essentially a wrapper for all the [unsatisfied constraints](https://download.eclipse.org/epsilon/interim-javadoc/org/eclipse/epsilon/evl/execute/UnsatisfiedConstraint.html) identified by EVL.
 
+-   `fix` (from 2.9, default is `false`): Setting the value of the attribute to `true` causes the task to start an interactive command-line fixing interface, which asks whether to apply any of the identified fixes to the models.
+
 ### Model-to-Model Transformation Task
 
 The `epsilon.etl` task executes an ETL module, defined using the `src` attribute to transform between the models that are specified using the `model` nested elements. In addition to the attributes defined by the ExecutableModuleTask, this task also provides the `exportTransformationTrace` attribute that enables the developer to export the internal transformation trace to the project context. In this way this trace can be reused by subsequent tasks; for example another task can serialize it in the form of a separate traceability model.
