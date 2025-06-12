@@ -1871,14 +1871,8 @@ git commit -m "Set pom-plain versions to X.Y.Z"</code></pre>
 Typically this would be the last thing you do before tagging the release.
 After you've pushed this and tagged the repository with the Epsilon version, remember to bump the version to the next SNAPSHOT.</p>
 <h2 id="release-to-maven-central">Release to Maven Central<a class="headerlink" href="#release-to-maven-central" title="Permanent link">&para;</a></h2>
-<p>The Jenkins build will automatically sign the plain Maven JARs and create a new staging repository in the OSSRH Sonatype Nexus server.
-It will also attempt to "close" it to modification, which will trigger the Maven Central validation rules.
-If one of these rules fail, the repository will be left open: the violations will be recorded in the Jenkins build logs, and you can try to manually close the repository and see those checks applied once more.</p>
-<p>As a precaution, we require all staging repositories to be manually checked before we release them to Maven Central.
-Once the Jenkins build passes, log into <a href="https://oss.sonatype.org/">Sonatype OSS</a> with your JIRA credentials and check the "Staging Repositories" section.
-Search for "epsilon" and you should be able to see the newly created staging repository.</p>
-<p>Select the repository and check in the "Contents" tab that everything is in order. If you are not happy with it, you can drop the repository, add more commits to the Maven release branch, and retry the upload. If you are happy with the contents, click on "Release" and enter an appropriate message in the "Reason" field (usually, "Stable release RELEASE of Eclipse Epsilon" suffices).</p>
-<p>After about an hour or so, the staging repository will disappear, and after a few hours the contents of the repository should be available from <a href="https://search.maven.org/">Maven Central</a>. This may take up to a day, so be patient!</p>
+<p>The Jenkins build will automatically sign the plain Maven JARs and deploy to the Central Portal server.
+After a few hours the contents of the repository should be available from <a href="https://search.maven.org/">Maven Central</a>. This may take up to a day, so be patient!</p>
 
 
 
