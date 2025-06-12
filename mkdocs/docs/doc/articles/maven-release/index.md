@@ -49,14 +49,5 @@ After you've pushed this and tagged the repository with the Epsilon version, rem
 
 ## Release to Maven Central
 
-The Jenkins build will automatically sign the plain Maven JARs and create a new staging repository in the OSSRH Sonatype Nexus server.
-It will also attempt to "close" it to modification, which will trigger the Maven Central validation rules.
-If one of these rules fail, the repository will be left open: the violations will be recorded in the Jenkins build logs, and you can try to manually close the repository and see those checks applied once more.
-
-As a precaution, we require all staging repositories to be manually checked before we release them to Maven Central.
-Once the Jenkins build passes, log into [Sonatype OSS](https://oss.sonatype.org/) with your JIRA credentials and check the "Staging Repositories" section.
-Search for "epsilon" and you should be able to see the newly created staging repository.
-
-Select the repository and check in the "Contents" tab that everything is in order. If you are not happy with it, you can drop the repository, add more commits to the Maven release branch, and retry the upload. If you are happy with the contents, click on "Release" and enter an appropriate message in the "Reason" field (usually, "Stable release RELEASE of Eclipse Epsilon" suffices).
-
-After about an hour or so, the staging repository will disappear, and after a few hours the contents of the repository should be available from [Maven Central](https://search.maven.org/). This may take up to a day, so be patient!
+The Jenkins build will automatically sign the plain Maven JARs and deploy to the Central Portal server.
+After a few hours the contents of the repository should be available from [Maven Central](https://search.maven.org/). This may take up to a day, so be patient!

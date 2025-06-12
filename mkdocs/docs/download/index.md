@@ -16,14 +16,21 @@ Epsilon's stable versions are available on [Maven Central](https://mvnrepository
 
 	See our [Getting Started](../getting-started.md#using-epsilon-as-a-java-library) page for instructions on how to download and run Maven/Gradle-based examples from the [Epsilon Playground](../playground/).
 
-To use the latest SNAPSHOT (interim) version of Epsilon, you should add the Sonatype snapshots repository to your `pom.xml` and set the version of the Epsilon libraries to `2.9.0-SNAPSHOT` as shown below.
+To use the latest SNAPSHOT (interim) version of Epsilon, you should add the Central Portal Snapshots repository to your `pom.xml` and set the version of the Epsilon libraries to `2.9.0-SNAPSHOT` as shown below.
 
 ```xml
 <repositories>
-	<repository>
-		<id>ossrh</id>
-		<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-	</repository>
+  <repository>
+    <name>Central Portal Snapshots</name>
+    <id>central-portal-snapshots</id>
+    <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+    <releases>
+      <enabled>false</enabled>
+    </releases>
+    <snapshots>
+      <enabled>true</enabled>
+    </snapshots>
+  </repository>
 </repositories>
 
 <dependencies>
