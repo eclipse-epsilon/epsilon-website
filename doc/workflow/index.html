@@ -2852,6 +2852,9 @@ z.println();</code></pre>
 <li>
 <p><code>exportAsModel</code> : Setting the value of this attribute causes the task to export the results of the validation as a new in-memory <a href="https://download.eclipse.org/epsilon/interim-javadoc/org/eclipse/epsilon/eol/models/java/JavaModel.html">Java model</a> with the specified name in the project repository. The exported model is essentially a wrapper for all the <a href="https://download.eclipse.org/epsilon/interim-javadoc/org/eclipse/epsilon/evl/execute/UnsatisfiedConstraint.html">unsatisfied constraints</a> identified by EVL.</p>
 </li>
+<li>
+<p><code>fix</code> (from 2.9, default is <code>false</code>): Setting the value of the attribute to <code>true</code> causes the task to start an interactive command-line fixing interface, which asks whether to apply any of the identified fixes to the models.</p>
+</li>
 </ul>
 <h3 id="model-to-model-transformation-task">Model-to-Model Transformation Task<a class="headerlink" href="#model-to-model-transformation-task" title="Permanent link">&para;</a></h3>
 <p>The <code>epsilon.etl</code> task executes an ETL module, defined using the <code>src</code> attribute to transform between the models that are specified using the <code>model</code> nested elements. In addition to the attributes defined by the ExecutableModuleTask, this task also provides the <code>exportTransformationTrace</code> attribute that enables the developer to export the internal transformation trace to the project context. In this way this trace can be reused by subsequent tasks; for example another task can serialize it in the form of a separate traceability model.</p>

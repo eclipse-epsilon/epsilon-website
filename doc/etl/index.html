@@ -2071,7 +2071,8 @@
 <p>You can run and fiddle with an ETL transformation that transforms a tree model to a graph model in the <a href="../../playground/?etl">online Epsilon Playground</a>.</p>
 </div>
 <h2 id="abstract-syntax">Abstract Syntax<a class="headerlink" href="#abstract-syntax" title="Permanent link">&para;</a></h2>
-<p>As illustrated in the figure below, ETL transformations are organized in modules (<code>EtlModule</code>). A module can contain a number of transformation rules (<code>TransformRule</code>). Each rule has a unique name (in the context of the module) and also specifies one <code>source</code> and many <code>target</code> parameters. A transformation rule can also <code>extend</code> a number of other transformation rules and be declared as <code>abstract</code>, <code>primary</code> and/or <code>lazy</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. To limit its applicability to a subset of elements that conform to the type of the <code>source</code> parameter, a rule can optionally define a guard which is either an EOL expression or a block of EOL statements. Finally, each rule defines a block of EOL statements (<code>body</code>) where the logic for populating the property values of the target model elements is specified.</p>
+<p>As illustrated in the figure below, ETL transformations are organized in modules (<code>EtlModule</code>). A module can contain a number of transformation rules (<code>TransformRule</code>). Each rule has a unique name (in the context of the module) and also specifies one <code>source</code> and many <code>target</code> parameters. Since 2.9, target parameters can optionally have a <code>targetInitializer</code> expression: if not specified, they will be initialized to a new instance of their type.</p>
+<p>A transformation rule can also <code>extend</code> a number of other transformation rules and be declared as <code>abstract</code>, <code>primary</code> and/or <code>lazy</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. To limit its applicability to a subset of elements that conform to the type of the <code>source</code> parameter, a rule can optionally define a guard which is either an EOL expression or a block of EOL statements. Finally, each rule defines a block of EOL statements (<code>body</code>) where the logic for populating the property values of the target model elements is specified.</p>
 <p>Besides transformation rules, an ETL module can also optionally contain a number of <code>pre</code> and <code>post</code> named blocks of EOL statements which, as discussed later, are executed before and after the transformation rules respectively. These should not be confused with the pre-/post-condition annotations available for EOL user-defined operations.</p>
 <pre class="mermaid mermaid-100"><code>classDiagram
 class TransformRule {
@@ -2081,8 +2082,9 @@ class TransformRule {
     -primary: Boolean
     -greedy: Boolean
     -type: EolModelElementType
-    -guard: ExecutableBlock&lt;Boolean&gt;
-    -body: ExecutableBlock&lt;Void&gt;
+    -guard: ExecutableBlock&amp;lt;Boolean&amp;gt;
+    -body: ExecutableBlock&amp;lt;Void&amp;gt;
+    -targetInitializers: Optional&amp;lt;ExecutableBlock&amp;lt;Object&amp;gt;&amp;gt;[*]
 }
 class Parameter {
     -name: String
@@ -2103,14 +2105,17 @@ TransformRule -- Parameter: source
 TransformRule -- Parameter: targets *
 TransformRule -- TransformRule: extends *</code></pre>
 <h2 id="concrete-syntax">Concrete Syntax<a class="headerlink" href="#concrete-syntax" title="Permanent link">&para;</a></h2>
-<p>The concrete syntax of a transformation rule is displayed in the listing below. The optional <code>abstract</code>, <code>lazy</code> and <code>primary</code> attributes of the rule are specified using respective annotations. The name of the rule follows the <code>rule</code> keyword and the <code>source</code> and <code>target</code> parameters are defined after the <code>transform</code> and <code>to</code> keywords. Also, the rule can define an optional comma-separated list of rules it extends after the <code>extends</code> keyword. Inside the curly braces ({}), the rule can optionally specify its <code>guard</code> either as an EOL expression following a colon (:) (for simple guards) or as a block of statements in curly braces (for more complex guards). Finally, the <code>body</code> of the rule is specified as a sequence of EOL statements.</p>
+<p>The concrete syntax of a transformation rule is displayed in the listing below. The optional <code>abstract</code>, <code>lazy</code> and <code>primary</code> attributes of the rule are specified using respective annotations. The name of the rule follows the <code>rule</code> keyword and the <code>source</code> and <code>target</code> parameters are defined after the <code>transform</code> and <code>to</code> keywords. Since 2.9, <code>target</code> parameters can take an initializer expression to set their initial value (e.g. to create an instance of a specific subtype based on information in the source model).</p>
+<p>A rule can define an optional comma-separated list of rules it extends after the <code>extends</code> keyword. Inside the curly braces ({}), the rule can optionally specify its <code>guard</code> either as an EOL expression following a colon (:) (for simple guards) or as a block of statements in curly braces (for more complex guards). Finally, the <code>body</code> of the rule is specified as a sequence of EOL statements.</p>
 <pre class="highlight"><code>(@abstract)?
 (@lazy)?
 (@primary)?
 rule &lt;name&gt;
     transform &lt;sourceParameterName&gt;:&lt;sourceParameterType&gt;
     to &lt;targetParameterName&gt;:&lt;targetParameterType&gt;
-        (,&lt;targetParameterName&gt;:&lt;targetParameterType&gt;)*
+        (= &lt;initializerExpression&gt; )?
+        (,&lt;targetParameterName&gt;:&lt;targetParameterType&gt;
+          (= &lt;initializerExpression&gt; )? )*
     (extends &lt;ruleName&gt; (, &lt;ruleName&gt;*)? {
 
     (guard (:expression)|({statementBlock}))?
@@ -2126,7 +2131,8 @@ rule &lt;name&gt;
 <p>Similarly to EOL, an ETL module can import a number of other ETL modules. In this case, the importing ETL module inherits all the rules and pre/post blocks specified in the modules it imports (recursively). If the module specifies a rule or a pre/post block with the same name, the local rule/block overrides the imported one respectively.</p>
 <h3 id="rule-execution-scheduling">Rule Execution Scheduling<a class="headerlink" href="#rule-execution-scheduling" title="Permanent link">&para;</a></h3>
 <p>When an ETL module is executed, the <code>pre</code> blocks of the module are executed first in the order in which they have been specified.</p>
-<p>Following that, each non-abstract and non-lazy rule is executed for all the elements on which it is applicable. To be applicable on a particular element, the element must have a type-of relationship with the type defined in the rule's <code>sourceParameter</code> (or a kind-of relationship if the rule is annotated as <code>@greedy</code>) and must also satisfy the <code>guard</code> of the rule (and all the rules it extends). When a rule is executed on an applicable element, the target elements are initially created by instantiating the <code>targetParameters</code> of the rules, and then their contents are populated using the EOL statements of the <code>body</code> of the rule.</p>
+<p>Following that, each non-abstract and non-lazy rule is executed for all the elements on which it is applicable. To be applicable on a particular element, the element must have a type-of relationship with the type defined in the rule's <code>sourceParameter</code> (or a kind-of relationship if the rule is annotated as <code>@greedy</code>) and must also satisfy the <code>guard</code> of the rule (and all the rules it extends).</p>
+<p>When a rule is executed on an applicable element, the target elements are initially created by either using their initializer expressions, or by instantiating the <code>targetParameters</code> of the rules in their absence, and then their contents are populated using the EOL statements of the <code>body</code> of the rule.</p>
 <p>Finally, when all rules have been executed, the <code>post</code> blocks of the module are executed in the order in which they have been declared.</p>
 <h3 id="source-elements-resolution">Source Elements Resolution<a class="headerlink" href="#source-elements-resolution" title="Permanent link">&para;</a></h3>
 <p>Resolving target elements that have been (or can be) transformed from source elements by other rules is a frequent task in the body of a transformation rule. To automate this task and reduce coupling between rules, ETL contributes the <code>equivalents()</code> and <code>equivalent()</code> built-in operations that automatically resolve source elements to their transformed counterparts in the target models.</p>
