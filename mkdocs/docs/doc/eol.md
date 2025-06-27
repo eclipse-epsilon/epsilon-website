@@ -261,21 +261,21 @@ EOL provides four primitive types: String, Integer, Real and Boolean. The String
 ----------|-----------
 characterAt(index : Integer) : String                               |Returns the character in the specified index
 concat(str : String) : String                                       |Returns a concatenated form of the string with the `str` parameter
-endsWith(str : String) : Boolean                                    |Returns true iff the string ends with `str`
+endsWith(str : String) : Boolean                                    |Returns true if the string ends with `str`
 escapeXml() : String |Returns a new string with escaped XML-reserved characters
 firstToLowerCase() : String                                         |Returns a new string the first character of which has been converted to lower case
 ftlc() : String |Alias for `firstToLowerCase()`
 firstToUpperCase() : String                                         |Returns a new string, the first character of which has been converted to upper case
 ftuc : String |Alias for `firstToUpperCase()`
-isInteger() : Boolean                                               |Returns true iff the string is an integer
-isReal() : Boolean                                                  |Returns true iff the string is a real number
-isSubstringOf(str : String) : Boolean                               |Returns true iff the string the operation is invoked on is a substring of `str`
+isInteger() : Boolean                                               |Returns true if the string is an integer
+isReal() : Boolean                                                  |Returns true if the string is a real number
+isSubstringOf(str : String) : Boolean                               |Returns true if the string the operation is invoked on is a substring of `str`
 length() : Integer                                                  |Returns the number of characters in the string
 matches(reg : String) : Boolean                                     |Returns true if there are occurrences of the regular expression `reg` in the string
 pad(length : Integer, padding : String, right : Boolean) : String   |Pads the string up to the specified length with specified padding (e.g. `"foo".pad(5, "*", true)` returns `"foo**"`)
 replace(reg : String, replacement : String) : String                |Returns a new string in which all matches of the regular expression `reg` have been replaced with instances of `replacement`
 split(reg : String) : Sequence(String)                              |Splits the string using as a delimiter the provided regular expression, `reg`, and returns a sequence containing the parts
-startsWith(str : String) : Boolean                                  |Returns true iff the string starts with `str`
+startsWith(str : String) : Boolean                                  |Returns true if the string starts with `str`
 substring(index : Integer) : String                                 |Returns a sub-string of the string starting from the specified `index` and extending to the end of the original string
 substring(startIndex : Integer, endIndex : Integer) : String        |Returns a sub-string of the string starting from the specified `startIndex` and ending at `endIndex`
 toCharSequence() : Sequence(String)                                 |Returns a sequence containing all the characters of the string
