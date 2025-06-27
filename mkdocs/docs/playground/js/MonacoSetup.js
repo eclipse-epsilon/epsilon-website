@@ -327,7 +327,7 @@ class MonacoSetup {
                     ],
                     
                     constants: [
-                        'true', 'false', 'self', 'loopCount', 'hasMore'
+                        'true', 'false', 'self', 'loopCount', 'hasMore', 'out'
                     ],
         
                     types: [
