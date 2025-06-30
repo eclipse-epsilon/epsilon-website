@@ -282,13 +282,13 @@ The co-ordination engine provided by EGL facilitates the construction of modular
 
 EGL provides language constructs that allow M2T transformations to designate regions of generated text as *protected*. Whenever an EGL program attempts to generate text, any protected regions that are encountered in the specified destination are preserved.
 
-Within an EGL program, protected regions are specified with the *preserve(String, String, String, Boolean, String)* method on the `out` keyword. The first two parameters define the comment delimiters of the target language. The other parameters provide the name, enable-state and content of the protected region, as illustrated in the listing below.
+Within an EGL program, protected regions are specified with the *preserve(String, String, String, Boolean, String)* method on the `out` built-in variable. The first two parameters define the comment delimiters of the target language. The other parameters provide the name, enable-state and content of the protected region, as illustrated in the listing below.
 
 ```egl
 [%=out.preserve("/*", "*/", "anId", true, "System.out.println(foo);")%]
 ```
 
-A protected region declaration may have many lines, and use many EGL variables in the contents definition. To enhance readability, EGL provides two additional methods on the `out` keyword: *startPreserve(String, String, String, Boolean)* and `stopPreserve`. The listing below uses these to generate a protected region.
+A protected region declaration may have many lines, and use many EGL variables in the contents definition. To enhance readability, EGL provides two additional methods on the `out` built-in variable: *startPreserve(String, String, String, Boolean)* and `stopPreserve`. The listing below uses these to generate a protected region.
 
 ```egl
 [%=out.startPreserve("/*", "*/", "anId", true)%]
