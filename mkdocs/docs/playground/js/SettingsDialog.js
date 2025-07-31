@@ -19,10 +19,6 @@ class SettingsDialog {
         Metro.dialog.create({
             title: "Settings",
             content: `
-            <h6>Editors</h6>
-            `
-                + self.createEditorLineNumbersCheckbox() +
-                `
             <h6>Visible Panels</h6>
             `
                 + visibilityCheckboxes +
@@ -37,8 +33,6 @@ class SettingsDialog {
                             var visible = document.getElementById(panel.getId() + "Visible").checked;
                             panel.setVisible(visible);
                         }
-                        self.updateEditorLineNumbers();
-                        updateGutterVisibility();
                         fit();
                     }
                 },
@@ -49,21 +43,6 @@ class SettingsDialog {
             ],
             closeButton: true
         });
-    }
-
-    updateEditorLineNumbers() {
-        this.showEditorLineNumbers = document.getElementById("editorLineNumbers").checked;
-        panels.forEach(p => {
-            p.getEditor().updateOptions({
-                lineNumbers: this.showEditorLineNumbers ? 'on' : 'off'
-            });
-        });
-    }
-
-    createEditorLineNumbersCheckbox() {
-        var checked = this.showEditorLineNumbers ? "checked" : "";
-
-        return '<input type="checkbox" id="editorLineNumbers" data-role="checkbox" data-caption="Show line numbers" ' + checked + '>';
     }
 
     createPanelVisibilityCheckbox(panel) {
