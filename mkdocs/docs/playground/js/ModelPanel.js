@@ -8,6 +8,7 @@ class ModelPanel extends Panel {
     editable;
     metamodelPanel;
     diagramSvg;
+    diagramSvgPanZoomInstance;
 
     constructor(id, editable, metamodelPanel) {
         super(id);
@@ -195,7 +196,7 @@ class ModelPanel extends Panel {
         xhr.send(JSON.stringify(data));
     }
 
-    renderDiagram(svg) {
+    renderDiagram(svg, preservePanAndZoom = false) {
         var diagramId = this.id + "Diagram";
         var diagramElement = document.getElementById(diagramId);
         
@@ -204,10 +205,17 @@ class ModelPanel extends Panel {
         if (diagramId == "outputDiagram") {
             diagramElement.parentElement.style.padding = "0px";
         }
-        
-        svgPanZoom(this.embed(svg, diagramElement), {
+
+        var previousDiagramSvgPanZoomInstance = this.diagramSvgPanZoomInstance;
+
+        this.diagramSvgPanZoomInstance = svgPanZoom(this.embed(svg, diagramElement), {
           minZoom: 0
         });
+
+        if (previousDiagramSvgPanZoomInstance != null && preservePanAndZoom) {
+            this.diagramSvgPanZoomInstance.zoom(previousDiagramSvgPanZoomInstance.getZoom());
+            this.diagramSvgPanZoomInstance.pan(previousDiagramSvgPanZoomInstance.getPan());
+        }
     }
 
     embed(svg, container) {
