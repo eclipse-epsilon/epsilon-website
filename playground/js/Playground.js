@@ -13,6 +13,7 @@ import { Layout } from './Layout.js';
 import 'metro4';
 import { MonacoSetup } from './MonacoSetup.js';
 import { LiveShareManager } from './LiveShareManager.js';
+import { OutputIFrame } from './OutputIFrame.js';
 
 export var language = "eol";
 var outputType = "text";
@@ -311,16 +312,7 @@ function runProgram() {
                         }
                         else if (outputType == "html") {
                             consolePanel.setOutput(response.output);
-                            var iframe = document.getElementById("htmlIframe");
-                            if (iframe == null) {
-                                iframe = document.createElement("iframe");
-                                iframe.id = "htmlIframe"
-                                iframe.style.height = "100%";
-                                iframe.style.width = "100%";
-                                document.getElementById("outputDiagram").appendChild(iframe);
-                            }
-
-                            iframe.srcdoc = response.generatedText;
+                            new OutputIFrame("htmlIframe", document.getElementById("outputDiagram")).setContent(response.generatedText);
                         }
                         else if (outputType == "puml" || outputType == "dot") {
 

@@ -33,8 +33,33 @@ class Panel {
                 enabled: false,
                 maxLineCount: 0
             },
-            overviewRulerLanes: 0,
-            // folding: false
+            overviewRulerLanes: 0
+        });
+
+        this.editor.addAction({
+            id: "word-wrap",
+            label: "Toggle Word Wrap",
+            contextMenuGroupId: "view",
+            contextMenuOrder: 1,
+            run: function(ed) {
+                var currentOptions = ed.getRawOptions();
+                var currentOption = currentOptions.wordWrap || "off";
+                var newOption = currentOption === "on" ? "off" : "on";  
+                ed.updateOptions({ wordWrap: newOption });
+            }
+        });
+
+        this.editor.addAction({
+            id: "line-numbers",
+            label: "Toggle Line Numbers",
+            contextMenuGroupId: "view",
+            contextMenuOrder: 2,
+            run: function(ed) {
+                var currentOptions = ed.getRawOptions();
+                var currentOption = currentOptions.lineNumbers || "off";
+                var newOption = currentOption === "on" ? "off" : "on";  
+                ed.updateOptions({ lineNumbers: newOption });
+            }
         });
 
         // Fix the editor's end-of-line character to avoid issues with live
