@@ -13,6 +13,7 @@ import { Layout } from './Layout.js';
 import 'metro4';
 import { MonacoSetup } from './MonacoSetup.js';
 import { LiveShareManager } from './LiveShareManager.js';
+import { OutputIFrame } from './OutputIFrame.js';
 
 export var language = "eol";
 var outputType = "text";
@@ -311,38 +312,7 @@ function runProgram() {
                         }
                         else if (outputType == "html") {
                             consolePanel.setOutput(response.output);
-                            var iframe = document.getElementById("htmlIframe");
-                            var iframeDoc;
-                            var iframeDocScrollTop = 0;
-                            var iframeDocScrollLeft = 0;
-                            var iframeLoadEventListener;
-
-                            if (iframe == null) {
-                                iframe = document.createElement("iframe");
-                                iframe.id = "htmlIframe"
-                                iframe.style.height = "100%";
-                                iframe.style.width = "100%";
-                                document.getElementById("outputDiagram").appendChild(iframe);
-                            }
-                            else {
-                                iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                                iframeDocScrollTop = iframeDoc.documentElement.scrollTop || iframeDoc.body.scrollTop;
-                                iframeDocScrollLeft = iframeDoc.documentElement.scrollLeft || iframeDoc.body.scrollLeft;
-
-                                if (iframeLoadEventListener == null) {
-                                    iframeLoadEventListener = () => {
-                                        console.log("Restoring scroll position");
-                                        console.log('Scroll Top:', iframeDocScrollTop);
-                                        console.log('Scroll Left:', iframeDocScrollLeft);
-                                        iframe.contentWindow.scrollTo(iframeDocScrollLeft, iframeDocScrollTop);
-                                    };
-                                    iframe.addEventListener('load', iframeLoadEventListener);
-                                }
-                            }
-
-                            iframe.srcdoc = response.generatedText;
-
-                            
+                            new OutputIFrame("htmlIframe", document.getElementById("outputDiagram")).setContent(response.generatedText);
                         }
                         else if (outputType == "puml" || outputType == "dot") {
 
