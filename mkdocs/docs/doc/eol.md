@@ -770,7 +770,7 @@ x.refSetValue(feature, a);
 
 If `x` is a `Sequence` or some other type of Java `List`, `x[i] = y` (where `i` is a 0-based index) can be used to set the `i`-th element in the sequence to the value `y`.
 
-If `x` is a `Map`, `x[k] = y` can be used to associate the key `k` to the value `v`.
+If `x` is a `Map`, `x[k] = y` can be used to associate the key `k` to the value `y`.
 
 `x[i] = y` will fail with an exception if `x` is of any other type.
 For example, it will fail if `x` is a `Set`.
