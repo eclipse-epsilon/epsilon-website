@@ -1,5 +1,5 @@
 # Live validation and quick-fixes in GMF-based editors with EVL
-In [this tutorial](../eugenia-gmf-tutorial/), we demonstrated how Eugenia can be used to easily implement a GMF-based editor for a small FileSystem DSL. Now, we demonstrate how the Epsilon Validation Language can be used to easily contribute validation/quick fixes to our GMF editor. 
+In [this tutorial](../../eugenia/index.md), we demonstrated how Eugenia can be used to easily implement a GMF-based editor for a small FileSystem DSL. Now, we demonstrate how the Epsilon Validation Language can be used to easily contribute validation/quick fixes to our GMF editor. 
 
 !!! info 
     This applies to any GMF-based editor - not only to editors constructed with Eugenia.

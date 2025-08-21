@@ -75,10 +75,9 @@ The *guard* and *title* parts of a wizard need to be expressed using a language 
 
 Since EWL is built atop Epsilon, its abstract and concrete syntax need only to define the concepts that are relevant to the task it addresses; they can reuse lower-level constructs from EOL. A graphical overview of the abstract syntax of the language is provided in the figure below.
 
-The basic concept of the EWL abstract syntax is a *Wizard*. A wizard defines a *name*, a *guard* part, a *title* part and a $do$ part. Wizards are organized in *Modules*. The *name* of a wizard acts as an identifier and must be unique in the context of a module. The *guard* and *title* parts of a wizard are of type *ExpressionOrStatementBlock*, inherited from EOL. An *ExpressionOrStatementBlock* is either a single EOL expression or a block of EOL statements that include one or more *return* statements. This construct allows users to express simple declarative calculations as single expressions and complex calculations as blocks of imperative statements. Finally, the *do* part of the wizard is a block of EOL statements that specify the effects of the wizard when applied to a compatible selection of model elements.
+The basic concept of the EWL abstract syntax is a *Wizard*. A wizard defines a *name*, a *guard* part, a *title* part and a *do* part. Wizards are organized in *Modules*. The *name* of a wizard acts as an identifier and must be unique in the context of a module. The *guard* and *title* parts of a wizard are of type *ExpressionOrStatementBlock*, inherited from EOL. An *ExpressionOrStatementBlock* is either a single EOL expression or a block of EOL statements that include one or more *return* statements. This construct allows users to express simple declarative calculations as single expressions and complex calculations as blocks of imperative statements. Finally, the *do* part of the wizard is a block of EOL statements that specify the effects of the wizard when applied to a compatible selection of model elements.
 
-![EWL Abstract
-Syntax](images/EwlAbstractSyntax.png)
+![EWL Abstract Syntax](images/EwlAbstractSyntax.png)
 
 ## Concrete Syntax
 

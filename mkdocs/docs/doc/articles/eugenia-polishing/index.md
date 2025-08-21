@@ -28,7 +28,7 @@ class Attribute {
 }
 ```
 
-and we follow the [standard Eugenia procedure](../eugenia-gmf-tutorial/) to generate a GMF editor from it. The editor looks like this:
+and we follow the [standard Eugenia procedure](../../eugenia/index.md) to generate a GMF editor from it. The editor looks like this:
 
 ![](Classdiagramdefault.png)
 
