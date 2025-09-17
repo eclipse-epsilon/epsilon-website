@@ -1,6 +1,6 @@
 {
   "services": [
-    {"name": "RunEpsilonFunction", "url": "https://uk-ac-york-cs-epsilon-playground.h5rwqzvxy5sr4.eu-west-1.cs.amazonlightsail.com/epsilon"},
+    {"name": "RunEpsilonFunction", "url": "http://localhost:8080/epsilon"},
     {"name": "FlexmiToPlantUMLFunction", "url": "https://uk-ac-york-cs-epsilon-playground.h5rwqzvxy5sr4.eu-west-1.cs.amazonlightsail.com/flexmi2plantuml"},
     {"name": "EmfaticToPlantUMLFunction", "url": "https://uk-ac-york-cs-epsilon-playground.h5rwqzvxy5sr4.eu-west-1.cs.amazonlightsail.com/emfatic2plantuml"},
     {"name": "ShortURLFunction", "url": "https://l4p4ni4wo4lqtxk4qfedsapbtm0olxqn.lambda-url.eu-west-1.on.aws/"},

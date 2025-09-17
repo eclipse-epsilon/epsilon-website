@@ -268,8 +268,8 @@ class MonacoSetup {
                             [/[ \t\r\n]+/],
                 
                             // comments
-                            [/(#|\/\/)$/, 'comment'],
-                            [/(#|\/\/)/, 'comment', '@eolLineComment'],
+                            [/(\/\/)$/, 'comment'],
+                            [/(\/\/)/, 'comment', '@eolLineComment'],
                 
                             // block comments
                             [/\/\*/, 'comment', '@eolComment'],
