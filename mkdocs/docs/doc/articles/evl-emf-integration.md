@@ -63,6 +63,27 @@ Epsilon provides the `org.eclipse.epsilon.evl.emf.validation` extension point fo
 
 We recommend setting the `compose` attribute to `true`, else you will overwrite existing validators. You can also specify additional metamodels to be accessed by this validator using the `additionalNamespaceURI` entries. Note that you can also provide your own validator implementation. If omitted, the default `EvlValidator` will be used (should be sufficient for most cases).
 
+In order to display quick fixes, you will also need to make sure that the appropriate marker resolution generator extension has been registered against our `EvlMarkerResolutionGenerator`.
+For example, for the markers added by the EMF Validation framework and by the EMF [EcoreTools](https://eclipse.dev/ecoretools/).
+
+```xml
+<plugin>
+   <extension
+         point="org.eclipse.ui.ide.markerResolution">
+      <markerResolutionGenerator
+            class="org.eclipse.epsilon.evl.emf.validation.EvlMarkerResolutionGenerator"
+            markerType="org.eclipse.emf.ecore.diagnostic">
+      </markerResolutionGenerator>
+      <markerResolutionGenerator
+            class="org.eclipse.epsilon.evl.emf.validation.EvlMarkerResolutionGenerator"
+            markerType="org.eclipse.emf.ecoretools.diagram.diagnostic">
+      </markerResolutionGenerator>
+   </extension>  
+</plugin>
+```
+
+There should be exactly one such extension among the active plugins for each `markerType`: otherwise, multiple copies of the same fixes would be shown to the user.
+
 ## Runtime Adjustments
 
 !!! note
