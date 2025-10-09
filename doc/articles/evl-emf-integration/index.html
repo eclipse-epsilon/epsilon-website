@@ -1942,6 +1942,22 @@ if (existingValidator instanceof CompositeEValidator) {
    &lt;/extension&gt;
 &lt;/plugin&gt;</code></pre>
 <p>We recommend setting the <code>compose</code> attribute to <code>true</code>, else you will overwrite existing validators. You can also specify additional metamodels to be accessed by this validator using the <code>additionalNamespaceURI</code> entries. Note that you can also provide your own validator implementation. If omitted, the default <code>EvlValidator</code> will be used (should be sufficient for most cases).</p>
+<p>In order to display quick fixes, you will also need to make sure that the appropriate marker resolution generator extension has been registered against our <code>EvlMarkerResolutionGenerator</code>.
+For example, for the markers added by the EMF Validation framework and by the EMF <a href="https://eclipse.dev/ecoretools/">EcoreTools</a>.</p>
+<pre class="highlight"><code class="language-xml">&lt;plugin&gt;
+   &lt;extension
+         point="org.eclipse.ui.ide.markerResolution"&gt;
+      &lt;markerResolutionGenerator
+            class="org.eclipse.epsilon.evl.emf.validation.EvlMarkerResolutionGenerator"
+            markerType="org.eclipse.emf.ecore.diagnostic"&gt;
+      &lt;/markerResolutionGenerator&gt;
+      &lt;markerResolutionGenerator
+            class="org.eclipse.epsilon.evl.emf.validation.EvlMarkerResolutionGenerator"
+            markerType="org.eclipse.emf.ecoretools.diagram.diagnostic"&gt;
+      &lt;/markerResolutionGenerator&gt;
+   &lt;/extension&gt;  
+&lt;/plugin&gt;</code></pre>
+<p>There should be exactly one such extension among the active plugins for each <code>markerType</code>: otherwise, multiple copies of the same fixes would be shown to the user.</p>
 <h2 id="runtime-adjustments">Runtime Adjustments<a class="headerlink" href="#runtime-adjustments" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
