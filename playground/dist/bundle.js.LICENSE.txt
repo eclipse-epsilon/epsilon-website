@@ -1,4 +1,10 @@
 /*!
+	 * Metro UI Components Library  (https://metroui.org.ua)
+	 * Copyright 2012-2023 Serhii Pimenov
+	 * Licensed under MIT
+	 !*/
+
+/*!
 
 JSZip v3.10.1 - A JavaScript class for generating and reading zip files
 <http://stuartk.com/jszip>
@@ -10,21 +16,13 @@ JSZip uses the library pako released under the MIT license :
 https://github.com/nodeca/pako/blob/main/LICENSE
 */
 
-/*!
- * Datetime v1.0.0, (https://github.com/olton/DatetimeJS.git)
- * Copyright 2021 by Serhii Pimenov (https://pimenov.com.ua)
- * Datetime.js is a minimalist JavaScript library that parses, validates, manipulates, and displays dates and times for modern browsers with comfortable modern API.
- * Build at 11/01/2021 21:09:55
- * Licensed under MIT
- !*/
-
 /*! 
- * Cake string library 1.0.0
- * https://github.com/olton/cake
- *
- * Copyright 2020-2021 Serhii Pimenov
- * Released under the MIT license
- */
+	 * Cake string library 1.0.0
+	 * https://github.com/olton/cake
+	 *
+	 * Copyright 2020-2021 Serhii Pimenov
+	 * Released under the MIT license
+	 */
 
 /*! @license DOMPurify 3.1.7 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.1.7/LICENSE */
 
