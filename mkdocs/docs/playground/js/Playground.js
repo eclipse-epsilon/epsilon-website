@@ -10,7 +10,7 @@ import { LiveShareDialog } from './LiveShareDialog.js';
 import { Preloader } from './Preloader.js';
 import { Backend } from './Backend.js';
 import { Layout } from './Layout.js';
-import 'metro4';
+import '../node_modules/metro4/build/metro.js';
 import { MonacoSetup } from './MonacoSetup.js';
 import { LiveShareManager } from './LiveShareManager.js';
 import { OutputIFrame } from './OutputIFrame.js';
@@ -307,7 +307,7 @@ function runProgram() {
                     }
                     else if (language == "egl") {
                         if (outputType == "code") {
-                            outputPanel.getEditor().setValue(response.generatedText.trim(), 1);
+                            outputPanel.getEditor().setValue(response.generatedText.trimEnd(), 1);
                             consolePanel.setOutput(response.output);
                         }
                         else if (outputType == "html") {
@@ -431,7 +431,7 @@ function showLiveShare(event) {
 }
 
 // Some functions and variables are accessed
-// by onclick - or similer - events
+// by onclick - or similar - events
 // We need to use window.x = x for this to work
 window.fit = fit;
 window.updateGutterVisibility = updateGutterVisibility;

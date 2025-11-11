@@ -3,7 +3,7 @@ import { WebsocketProvider } from 'y-websocket'
 import { MonacoBinding } from './y-monaco.js'
 import * as monaco from 'monaco-editor'
 import { backend, consolePanel, outputPanel, preloader } from './Playground';
-import 'metro4';
+import '../node_modules/metro4/build/metro.js';
 
 // TODO: Join session via URL, disconnect, start new session -> the window url is different to the new share URL and this can cause confusion
 class LiveShareManager {
