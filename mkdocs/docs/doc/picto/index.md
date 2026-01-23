@@ -253,6 +253,16 @@ Picto also suports a standalone mode, where the details of the models to be visu
     * This is available from Epsilon 2.5, and it requires Eclipse 4.19 (2021-03) or later.
     * If it still fails to render, you may need to install [Microsoft WebView2](https://developer.microsoft.com/en-us/microsoft-edge/webview2/).
 
+## Browser Developer Tools
+
+To enable browser development tools in the embedded browser that Picto uses on MacOS, you can run the following commands in your terminal. Once you've restarted Eclipse, you will find an `Inspect Element` option in the right-click menu within the embedded browser that you can use to start the browser's development tools.
+
+```
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+```
+
 ## Philosophy
 
 While EMF provides support for [reflective model instantiation](../articles/reflective-emf-tutorial) within the same Eclipse workspace, graphical and textual modelling frameworks that sit on top of it such as GMF, Sirius and Xtext involve code generation and/or contributing to Eclipse extension points and hence require spawning a new Eclipse instance. While this inconvenience can pay off for large DSLs, it feels like an overkill when one needs to throw together a small DSL in situ. The original aim of Picto was to complement Flexmi in this respect by contributing model visualisation capabilities where creating a new dedicated graphical editor is considered to be an overkill.
