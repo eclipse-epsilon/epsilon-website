@@ -255,13 +255,15 @@ Picto also suports a standalone mode, where the details of the models to be visu
 
 ## Browser Developer Tools
 
-To enable browser development tools in the embedded browser that Picto uses on MacOS, you can run the following commands in your terminal. Once you've restarted Eclipse, you will find an `Inspect Element` option in the right-click menu within the embedded browser that you can use to start the browser's development tools.
+To enable browser development tools in the embedded browser that Picto uses on MacOS, you can run the following commands in your terminal. Once you've restarted Eclipse, you will find an `Inspect Element` item in the right-click menu within the embedded browser that you can use to start the browser's development tools.
 
 ```
 defaults write com.apple.Safari IncludeDevelopMenu -bool true
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 ```
+
+On Windows and Linux the `Inspect` and `Inspect Element` right-click menu items respectively should be available by default.
 
 ## Philosophy
 
