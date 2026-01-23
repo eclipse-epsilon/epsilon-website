@@ -979,6 +979,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#browser-developer-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Browser Developer Tools
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#philosophy" class="md-nav__link">
     <span class="md-ellipsis">
       Philosophy
@@ -2085,6 +2094,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#browser-developer-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Browser Developer Tools
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#philosophy" class="md-nav__link">
     <span class="md-ellipsis">
       Philosophy
@@ -2372,6 +2390,11 @@ operation isLayerActive(id : String) {
 </ul>
 </li>
 </ul>
+<h2 id="browser-developer-tools">Browser Developer Tools<a class="headerlink" href="#browser-developer-tools" title="Permanent link">&para;</a></h2>
+<p>To enable browser development tools in the embedded browser that Picto uses on MacOS, you can run the following commands in your terminal. Once you've restarted Eclipse, you will find an <code>Inspect Element</code> option in the right-click menu within the embedded browser that you can use to start the browser's development tools.</p>
+<pre class="highlight"><code>defaults write com.apple.Safari IncludeDevelopMenu -bool true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true</code></pre>
 <h2 id="philosophy">Philosophy<a class="headerlink" href="#philosophy" title="Permanent link">&para;</a></h2>
 <p>While EMF provides support for <a href="../articles/reflective-emf-tutorial">reflective model instantiation</a> within the same Eclipse workspace, graphical and textual modelling frameworks that sit on top of it such as GMF, Sirius and Xtext involve code generation and/or contributing to Eclipse extension points and hence require spawning a new Eclipse instance. While this inconvenience can pay off for large DSLs, it feels like an overkill when one needs to throw together a small DSL in situ. The original aim of Picto was to complement Flexmi in this respect by contributing model visualisation capabilities where creating a new dedicated graphical editor is considered to be an overkill.</p>
 <h2 id="gallery">Gallery<a class="headerlink" href="#gallery" title="Permanent link">&para;</a></h2>
