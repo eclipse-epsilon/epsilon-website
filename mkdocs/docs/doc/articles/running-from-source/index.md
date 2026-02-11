@@ -3,13 +3,13 @@
 To run Epsilon from source, you need to:
 
 - Download a copy of the [latest version of Eclipse](https://www.eclipse.org/downloads) and select the "Eclipse IDE for Eclipse Committers" option when prompted during the installation process.
-- Clone the Git repository from `https://github.com/eclipse-epsilon/epsilon`
+- Clone the Git repository from `https://github.com/eclipse-epsilon/epsilon`.
 - Import all the projects under the `plugins`, `features`, and `tests` folders in your workspace.
 - (optional) To organise your workspace, you can create [working sets](http://help.eclipse.org/kepler/index.jsp?topic=%2Forg.eclipse.platform.doc.user%2Fconcepts%2Fcworkset.htm). For example, you could create three working sets that mirror the contents of the folders above (`plugins`, `features`, and `tests`).
-- Run `build-and-test.sh` to build and install local Maven dependencies
-- Open `releng/org.eclipse.epsilon.target/org.eclipse.epsilon.target.target` and click the "Set as Active Target Platform" link on the top right
-- Set the JDK compliance level to 1.8. This setting can be found in Window/Preferences/Java/Compiler
-- Right-click on any Epsilon plugin project in the Project Explorer and select Run as → Eclipse Application
+- Run `build-and-test.sh` to build and install local Maven dependencies.
+- Open `releng/org.eclipse.epsilon.target/org.eclipse.epsilon.target.target` and click the "Set as Active Target Platform" link on the top right.
+- Set the JDK compliance level to 1.8. This setting can be found in Window/Preferences/Java/Compiler.
+- Right-click on any Epsilon plugin project in the Project Explorer and select Run as → Eclipse Application.
 
 !!! warning "Using your own Eclipse IDE and Maven m2e integration"
 
@@ -23,7 +23,7 @@ To run Epsilon from source, you need to:
 
 - The execution engines for the various Epsilon languages are located in `org.eclipse.epsilon.*.engine` plugins. These are Eclipse-independent.
 - Plugins named `*.dt` contain development tools (e.g. editors, run configurations, debuggers) for the respective Epsilon languages.
-- Plugins named `org.eclipse.epsilon.emc.*` contain Epsilon Model Connectivity (EMC) drivers through which Epsilon languages can interact with different types of models (e.g. EMF models, spreadsheets etc.)
+- Plugins named `org.eclipse.epsilon.emc.*` contain Epsilon Model Connectivity (EMC) drivers through which Epsilon languages can interact with different types of models (e.g. EMF models, spreadsheets etc.).
 - Plugins named `org.eclipse.epsilon.emc.*.dt` contain development tools (e.g. model configuration dialogs) for the respective EMC drivers.
 - Plugins named `*.workflow` contribute [ANT tasks](../../workflow).
 
@@ -31,7 +31,7 @@ To run Epsilon from source, you need to:
 
 - Before you can regenerate the Epsilon parsers, you need to clone the [epsilon-antlr-dev](https://github.com/epsilonlabs/epsilon-antlr-dev) Git repo into a sibling folder of the Epsilon repo.
 - To modify e.g. the EVL parser, you need to change `Evl.g` and/or `EvlParserRules.g`. To re-generate the parser you need to run `build-evl-parser.xml` as an Ant build.
-- Since all Epsilon languages extend EOL, if you modify the EOL parser, you'll then need to run `build-all-eol-dependent-parsers.xml`
+- Since all Epsilon languages extend EOL, if you modify the EOL parser, you'll then need to run `build-all-eol-dependent-parsers.xml`.
 
 ## Running the Epsilon tests
 
