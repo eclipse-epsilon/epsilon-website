@@ -1842,13 +1842,13 @@
 <p>To run Epsilon from source, you need to:</p>
 <ul>
 <li>Download a copy of the <a href="https://www.eclipse.org/downloads">latest version of Eclipse</a> and select the "Eclipse IDE for Eclipse Committers" option when prompted during the installation process.</li>
-<li>Clone the Git repository from <code>https://github.com/eclipse-epsilon/epsilon</code></li>
+<li>Clone the Git repository from <code>https://github.com/eclipse-epsilon/epsilon</code>.</li>
 <li>Import all the projects under the <code>plugins</code>, <code>features</code>, and <code>tests</code> folders in your workspace.</li>
 <li>(optional) To organise your workspace, you can create <a href="http://help.eclipse.org/kepler/index.jsp?topic=%2Forg.eclipse.platform.doc.user%2Fconcepts%2Fcworkset.htm">working sets</a>. For example, you could create three working sets that mirror the contents of the folders above (<code>plugins</code>, <code>features</code>, and <code>tests</code>).</li>
-<li>Run <code>build-and-test.sh</code> to build and install local Maven dependencies</li>
-<li>Open <code>releng/org.eclipse.epsilon.target/org.eclipse.epsilon.target.target</code> and click the "Set as Active Target Platform" link on the top right</li>
-<li>Set the JDK compliance level to 1.8. This setting can be found in Window/Preferences/Java/Compiler</li>
-<li>Right-click on any Epsilon plugin project in the Project Explorer and select Run as → Eclipse Application</li>
+<li>Run <code>build-and-test.sh</code> to build and install local Maven dependencies.</li>
+<li>Open <code>releng/org.eclipse.epsilon.target/org.eclipse.epsilon.target.target</code> and click the "Set as Active Target Platform" link on the top right.</li>
+<li>Set the JDK compliance level to 1.8. This setting can be found in Window/Preferences/Java/Compiler.</li>
+<li>Right-click on any Epsilon plugin project in the Project Explorer and select Run as → Eclipse Application.</li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Using your own Eclipse IDE and Maven m2e integration</p>
@@ -1862,7 +1862,7 @@
 <ul>
 <li>The execution engines for the various Epsilon languages are located in <code>org.eclipse.epsilon.*.engine</code> plugins. These are Eclipse-independent.</li>
 <li>Plugins named <code>*.dt</code> contain development tools (e.g. editors, run configurations, debuggers) for the respective Epsilon languages.</li>
-<li>Plugins named <code>org.eclipse.epsilon.emc.*</code> contain Epsilon Model Connectivity (EMC) drivers through which Epsilon languages can interact with different types of models (e.g. EMF models, spreadsheets etc.)</li>
+<li>Plugins named <code>org.eclipse.epsilon.emc.*</code> contain Epsilon Model Connectivity (EMC) drivers through which Epsilon languages can interact with different types of models (e.g. EMF models, spreadsheets etc.).</li>
 <li>Plugins named <code>org.eclipse.epsilon.emc.*.dt</code> contain development tools (e.g. model configuration dialogs) for the respective EMC drivers.</li>
 <li>Plugins named <code>*.workflow</code> contribute <a href="../../workflow">ANT tasks</a>.</li>
 </ul>
@@ -1870,7 +1870,7 @@
 <ul>
 <li>Before you can regenerate the Epsilon parsers, you need to clone the <a href="https://github.com/epsilonlabs/epsilon-antlr-dev">epsilon-antlr-dev</a> Git repo into a sibling folder of the Epsilon repo.</li>
 <li>To modify e.g. the EVL parser, you need to change <code>Evl.g</code> and/or <code>EvlParserRules.g</code>. To re-generate the parser you need to run <code>build-evl-parser.xml</code> as an Ant build.</li>
-<li>Since all Epsilon languages extend EOL, if you modify the EOL parser, you'll then need to run <code>build-all-eol-dependent-parsers.xml</code></li>
+<li>Since all Epsilon languages extend EOL, if you modify the EOL parser, you'll then need to run <code>build-all-eol-dependent-parsers.xml</code>.</li>
 </ul>
 <h2 id="running-the-epsilon-tests">Running the Epsilon tests<a class="headerlink" href="#running-the-epsilon-tests" title="Permanent link">&para;</a></h2>
 <ul>
