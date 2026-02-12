@@ -1,4 +1,4 @@
-# Epsilon EMC driver for RDF
+# Epsilon EMC driver for RDF-backed EMF models
 
 Epsilon can integrate with the [Apache Jena](https://jena.apache.org/) library to load and save EMF-based models from/to RDF formats, such as [Turtle](https://www.w3.org/TR/turtle/), [N-Triples](https://www.w3.org/TR/n-triples/), or [RDF/XML](https://www.w3.org/TR/rdf-syntax-grammar/).
 
@@ -10,11 +10,11 @@ Some of the advantages of this representation include:
 
 You can continue reading details below, or you can dive straight into these examples:
 
-* [Turtles](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.rdf.emf.turtles): shows how a Turtle file can hold information outside the metamodel, and how this can be accessed via EOL.
+* [Turtles](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.rdf.emf.turtles): shows how a Turtle file can hold information outside the metamodel, and how this [can be accessed via EOL](#escaping-to-rdf).
 * [Book](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.rdf.emf.book): shows how a single RDF node can [become multiple `EObject`s](#multiple-eobjects-from-same-rdf-node).
 * [OrgChart](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.rdf.emf.orgchart): shows how the information about a certain `EObject` can be broken up into multiple RDF documents (perhaps requiring different levels of access).
 * [ETL](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.rdf.emf.etl): shows how it is possible to [control the IRIs](#specifying-custom-rdf-iris-during-instance-creation) of the RDF nodes created when new `EObject`s are instantiated, and how the driver can create [new RDF files from scratch](#creating-a-model-from-scratch).
-* [Picto](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.rdf.emf.picto): demonstrates an RDF-aware visualisation that can combine information from inside and outside the relevant metamodels.
+* [Picto](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.rdf.emf.picto): demonstrates an RDF-aware visualisation that can combine information from inside and [outside](#escaping-to-rdf) the relevant metamodels.
 * [Maven](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.rdf.emf.maven): shows how to query an RDF file via Epsilon from a plain Java environment, only using Maven to fetch the dependencies.
 
 ## EMF-RDF mapping
@@ -134,6 +134,19 @@ However, when there is no existing structure, the data structure will be chosen 
 
 * `Container` (the default): use RDF containers (Bag or Seq).
 * `List`: use RDF lists.
+
+## Escaping to RDF
+
+The EMF resource underlying this EMC driver maintains a two-way mapping between the EMF `EObject`s that have been deserialised from the RDF graph, and their underlying RDF nodes.
+This means that it is possible to go from the `EObject` to the RDF node, and back:
+
+- If we have a model called `M` and an `EObject` variable named `eob`, we can use `M.resource.getRDFResource(eob)` to obtain the underlying Jena RDF [Resource](https://jena.apache.org/documentation/javadoc/jena/org.apache.jena.core/org/apache/jena/rdf/model/Resource.html) object.
+- Likewise, if we have a model called `M` and a Jena `Resource` variable named `rdfRes`, we can use `M.resource.getEObjects(rdfRes)` to obtain the collection of the `EObject`s associated to this resource. Note that while every `EObject` is backed by one RDF resource, a single RDF resource may result in [multiple `EObject`s](#multiple-eobjects-from-same-rdf-node).
+
+The following examples show some of the use cases enabled by this two-way mapping:
+
+* [Turtles](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.rdf.emf.turtles): shows how it is possible to escape to RDF to follow a RDF-only `friendOf` reference between two `EObject`s.
+* [Picto](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.rdf.emf.picto): shows how we can write a visualisation that shows both the underlying RDF nodes and the `EObject`s that have been deserialised from them.
 
 ## Multiple EObjects from same RDF node
 
