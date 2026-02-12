@@ -9,25 +9,21 @@
       
       
       
-        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../eol/">
-      
-      
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.6.9">
     
     
       
-        <title>Model Connectivity - Epsilon</title>
+        <title>Epsilon EMC driver for RDF-backed EMF models - Epsilon</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.4af4bdda.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,15 +42,15 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
     
-      <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
     
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 <script>
@@ -102,7 +98,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the-epsilon-model-connectivity-layer-emc" class="md-skip">
+        <a href="#epsilon-emc-driver-for-rdf-backed-emf-models" class="md-skip">
           Skip to content
         </a>
       
@@ -118,9 +114,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Epsilon" class="md-header__button md-logo" aria-label="Epsilon" data-md-component="logo">
+    <a href="../../.." title="Epsilon" class="md-header__button md-logo" aria-label="Epsilon" data-md-component="logo">
       
-  <img src="../../assets/images/epsilon-white-background.png" alt="logo">
+  <img src="../../../assets/images/epsilon-white-background.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -137,7 +133,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Model Connectivity
+              Epsilon EMC driver for RDF-backed EMF models
             
           </span>
         </div>
@@ -260,9 +256,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Epsilon" class="md-nav__button md-logo" aria-label="Epsilon" data-md-component="logo">
+    <a href="../../.." title="Epsilon" class="md-nav__button md-logo" aria-label="Epsilon" data-md-component="logo">
       
-  <img src="../../assets/images/epsilon-white-background.png" alt="logo">
+  <img src="../../../assets/images/epsilon-white-background.png" alt="logo">
 
     </a>
     Epsilon
@@ -289,7 +285,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -310,7 +306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/" class="md-nav__link">
+      <a href="../../../getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -331,7 +327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../playground" class="md-nav__link">
+      <a href="../../../playground" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -352,7 +348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../download/" class="md-nav__link">
+      <a href="../../../download/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -370,19 +366,17 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -397,7 +391,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Documentation
@@ -411,7 +405,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -430,31 +424,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Model Connectivity
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../emc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -464,173 +437,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#the-imodel-interface" class="md-nav__link">
-    <span class="md-ellipsis">
-      The IModel interface
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="The IModel interface">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#loading-and-persistence" class="md-nav__link">
-    <span class="md-ellipsis">
-      Loading and Persistence
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#type-related-services" class="md-nav__link">
-    <span class="md-ellipsis">
-      Type-related Services
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ownership" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ownership
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#creation-deletion-and-modifications" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creation, Deletion and Modifications
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-modelrepository-class" class="md-nav__link">
-    <span class="md-ellipsis">
-      The ModelRepository class
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-modelgroup-class" class="md-nav__link">
-    <span class="md-ellipsis">
-      The ModelGroup class
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#assumptions-about-the-underlying-modelling-technologies" class="md-nav__link">
-    <span class="md-ellipsis">
-      Assumptions about the underlying modelling technologies
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#emc-drivers" class="md-nav__link">
-    <span class="md-ellipsis">
-      EMC Drivers
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="EMC Drivers">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#eclipse-modeling-framework" class="md-nav__link">
-    <span class="md-ellipsis">
-      Eclipse Modeling Framework
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#matlab-simulink" class="md-nav__link">
-    <span class="md-ellipsis">
-      Matlab Simulink
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cameo-magicdraw-systems-modeler" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cameo / MagicDraw Systems Modeler
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#csv-excel-json-xml-yaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      CSV / Excel / JSON / XML / YAML
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#eclipse-hawk" class="md-nav__link">
-    <span class="md-ellipsis">
-      Eclipse Hawk
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#other-drivers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Other Drivers
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -679,7 +485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eol/" class="md-nav__link">
+      <a href="../../eol/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -701,7 +507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../egl/" class="md-nav__link">
+      <a href="../../egl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -723,7 +529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../egx/" class="md-nav__link">
+      <a href="../../egx/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -745,7 +551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../evl/" class="md-nav__link">
+      <a href="../../evl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -767,7 +573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../etl/" class="md-nav__link">
+      <a href="../../etl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -789,7 +595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ecl/" class="md-nav__link">
+      <a href="../../ecl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -811,7 +617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eml/" class="md-nav__link">
+      <a href="../../eml/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -833,7 +639,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../epl/" class="md-nav__link">
+      <a href="../../epl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -855,7 +661,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../flock/" class="md-nav__link">
+      <a href="../../flock/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -877,7 +683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../emg/" class="md-nav__link">
+      <a href="../../emg/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -899,7 +705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eunit/" class="md-nav__link">
+      <a href="../../eunit/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -921,7 +727,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pinset/" class="md-nav__link">
+      <a href="../../pinset/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -943,7 +749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ewl/" class="md-nav__link">
+      <a href="../../ewl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1009,7 +815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../picto/" class="md-nav__link">
+      <a href="../../picto/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1031,7 +837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../flexmi/" class="md-nav__link">
+      <a href="../../flexmi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1053,7 +859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eugenia/" class="md-nav__link">
+      <a href="../../eugenia/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1075,7 +881,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../exeed/" class="md-nav__link">
+      <a href="../../exeed/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1097,7 +903,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modelink/" class="md-nav__link">
+      <a href="../../modelink/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1119,7 +925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../hutn/" class="md-nav__link">
+      <a href="../../hutn/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1141,7 +947,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workflow/" class="md-nav__link">
+      <a href="../../workflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1171,7 +977,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../articles/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1193,7 +999,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../examples/" class="md-nav__link">
+      <a href="../../../examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1609,7 +1415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../faq/" class="md-nav__link">
+      <a href="../../../faq/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1631,7 +1437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../support/" class="md-nav__link">
+      <a href="../../../support/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1653,7 +1459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../professional-services" class="md-nav__link">
+      <a href="../../../professional-services" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1711,7 +1517,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../users/" class="md-nav__link">
+      <a href="../../../users/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1733,7 +1539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../users/education/" class="md-nav__link">
+      <a href="../../../users/education/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1755,7 +1561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../users/open-source/" class="md-nav__link">
+      <a href="../../../users/open-source/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1917,7 +1723,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../labs/" class="md-nav__link">
+      <a href="../../../labs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1946,7 +1752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../branding/" class="md-nav__link">
+      <a href="../../../branding/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1987,46 +1793,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-imodel-interface" class="md-nav__link">
+  <a href="#emf-rdf-mapping" class="md-nav__link">
     <span class="md-ellipsis">
-      The IModel interface
+      EMF-RDF mapping
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="The IModel interface">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#emf-rdf-resource-file-rdfres" class="md-nav__link">
+    <span class="md-ellipsis">
+      EMF-RDF resource file (.rdfres)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EMF-RDF resource file (.rdfres)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#loading-and-persistence" class="md-nav__link">
+  <a href="#default-namespace-for-new-eobjects" class="md-nav__link">
     <span class="md-ellipsis">
-      Loading and Persistence
+      Default namespace for new EObjects
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#type-related-services" class="md-nav__link">
+  <a href="#internal-consistency-checking" class="md-nav__link">
     <span class="md-ellipsis">
-      Type-related Services
+      Internal consistency checking
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ownership" class="md-nav__link">
+  <a href="#multi-valued-features" class="md-nav__link">
     <span class="md-ellipsis">
-      Ownership
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#creation-deletion-and-modifications" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creation, Deletion and Modifications
+      Multi-valued features
     </span>
   </a>
   
@@ -2038,98 +1844,56 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-modelrepository-class" class="md-nav__link">
+  <a href="#escaping-to-rdf" class="md-nav__link">
     <span class="md-ellipsis">
-      The ModelRepository class
+      Escaping to RDF
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-modelgroup-class" class="md-nav__link">
+  <a href="#multiple-eobjects-from-same-rdf-node" class="md-nav__link">
     <span class="md-ellipsis">
-      The ModelGroup class
+      Multiple EObjects from same RDF node
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#assumptions-about-the-underlying-modelling-technologies" class="md-nav__link">
+  <a href="#creating-a-model-from-scratch" class="md-nav__link">
     <span class="md-ellipsis">
-      Assumptions about the underlying modelling technologies
+      Creating a model from scratch
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#emc-drivers" class="md-nav__link">
+  <a href="#specifying-custom-rdf-iris-during-instance-creation" class="md-nav__link">
     <span class="md-ellipsis">
-      EMC Drivers
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="EMC Drivers">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#eclipse-modeling-framework" class="md-nav__link">
-    <span class="md-ellipsis">
-      Eclipse Modeling Framework
+      Specifying custom RDF IRIs during instance creation
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#matlab-simulink" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#working-with-rdf-xml-literals" class="md-nav__link">
     <span class="md-ellipsis">
-      Matlab Simulink
+      Working with RDF XML literals
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#cameo-magicdraw-systems-modeler" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#converting-an-xmi-file-to-rdf-formats" class="md-nav__link">
     <span class="md-ellipsis">
-      Cameo / MagicDraw Systems Modeler
+      Converting an XMI file to RDF formats
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#csv-excel-json-xml-yaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      CSV / Excel / JSON / XML / YAML
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#eclipse-hawk" class="md-nav__link">
-    <span class="md-ellipsis">
-      Eclipse Hawk
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#other-drivers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Other Drivers
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2152,102 +1916,196 @@
   
 
 
-<h1 id="the-epsilon-model-connectivity-layer-emc">The Epsilon Model Connectivity Layer (EMC)<a class="headerlink" href="#the-epsilon-model-connectivity-layer-emc" title="Permanent link">&para;</a></h1>
-<p>The Epsilon Model Connectivity (EMC) layer provides abstraction facilities over concrete modelling technologies such as <a href="#eclipse-modeling-framework">EMF</a>, <a href="#xmlcsvexcel">XML</a>, <a href="#matlab-simulink">Simulink</a> etc. and enables Epsilon programs to interact with models conforming to these technologies in a uniform manner. A graphical overview of the core classes and methods of EMC is displayed below.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>If you are interested in examples of EMC-based drivers for Epsilon, rather than on the organisation of EMC itself, please scroll to the <a href="#emc-drivers">bottom of this page</a>.</p>
-</div>
+<h1 id="epsilon-emc-driver-for-rdf-backed-emf-models">Epsilon EMC driver for RDF-backed EMF models<a class="headerlink" href="#epsilon-emc-driver-for-rdf-backed-emf-models" title="Permanent link">&para;</a></h1>
+<p>Epsilon can integrate with the <a href="https://jena.apache.org/">Apache Jena</a> library to load and save EMF-based models from/to RDF formats, such as <a href="https://www.w3.org/TR/turtle/">Turtle</a>, <a href="https://www.w3.org/TR/n-triples/">N-Triples</a>, or <a href="https://www.w3.org/TR/rdf-syntax-grammar/">RDF/XML</a>.</p>
+<p>Some of the advantages of this representation include:</p>
+<ul>
+<li>The RDF graph can include more information than that in the EMF metamodels: this information is accessible through dedicated APIs, and kept upon saving.</li>
+<li>The information about a single <code>EObject</code> can be broken up across multiple RDF files, e.g. due to some of the information being more sensitive. This is transparent to EMF.</li>
+<li>A subset of the W3C Web Ontology Language (<a href="https://www.w3.org/OWL/">OWL</a>) is supported for inference, e.g. to decide on the <code>EClass</code>es that a given RDF resource conforms to by looking at its features, rather than relying on a declared type (i.e. "duck-typing"). Specifically, Epsilon integrates the <a href="https://jena.apache.org/documentation/ontology/#creating-ontology-models">built-in Jena RDFS inference</a>.</li>
+</ul>
+<p>You can continue reading details below, or you can dive straight into these examples:</p>
+<ul>
+<li><a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.rdf.emf.turtles">Turtles</a>: shows how a Turtle file can hold information outside the metamodel, and how this <a href="#escaping-to-rdf">can be accessed via EOL</a>.</li>
+<li><a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.rdf.emf.book">Book</a>: shows how a single RDF node can <a href="#multiple-eobjects-from-same-rdf-node">become multiple <code>EObject</code>s</a>.</li>
+<li><a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.rdf.emf.orgchart">OrgChart</a>: shows how the information about a certain <code>EObject</code> can be broken up into multiple RDF documents (perhaps requiring different levels of access).</li>
+<li><a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.rdf.emf.etl">ETL</a>: shows how it is possible to <a href="#specifying-custom-rdf-iris-during-instance-creation">control the IRIs</a> of the RDF nodes created when new <code>EObject</code>s are instantiated, and how the driver can create <a href="#creating-a-model-from-scratch">new RDF files from scratch</a>.</li>
+<li><a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.rdf.emf.picto">Picto</a>: demonstrates an RDF-aware visualisation that can combine information from inside and <a href="#escaping-to-rdf">outside</a> the relevant metamodels.</li>
+<li><a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.rdf.emf.maven">Maven</a>: shows how to query an RDF file via Epsilon from a plain Java environment, only using Maven to fetch the dependencies.</li>
+</ul>
+<h2 id="emf-rdf-mapping">EMF-RDF mapping<a class="headerlink" href="#emf-rdf-mapping" title="Permanent link">&para;</a></h2>
+<p>The interoperability implements a mapping between RDF and EMF inspired by the OMG <a href="https://www.omg.org/spec/MOF2RDF/1.0/About-MOF2RDF">MOF2RDF</a> specification, with some simplifications.</p>
+<p>We will use a small example to illustrate the mapping.
+Suppose we had this minimal Ecore metamodel:</p>
 <pre class="mermaid mermaid-100"><code>classDiagram
-class IModel {
-    -name: String
-    -aliases: String[*]
-    +load()
-    +load(properties : StringProperties)
-    +store()
-    +getAllOfKind(type: String): Object[*]
-    +isKindOf(element: Object, type: String): boolean
-    +getAllOfType(type: String): Object[*]
-    +isTypeOf(element: Object, type: String): boolean
-    +createInstance(type: String): Object
-    +deleteElement(element: Object)
+class Organisation {
+  String name
 }
 
-class ModelRepository {
-    +getOwningModel(modelElement: Object)
-    +getModelByName(name: String)
-    +dispose()
+class Team {
+  String name
 }
 
-class IPropertyGetter {
-    +invoke(object: Object, property: String)
+class Employee {
+  String name
 }
 
-class IPropertySetter {
-    +invoke(object: Object, property: String, value: Object)
-}
+Organisation *-- Team: teams *
+Team *-- Employee: employees *</code></pre>
+<p>We could describe a small development team in Turtle like this:</p>
+<pre class="highlight"><code>@base &lt;http://my.org/&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix orgc: &lt;http://york.ac.uk/emf-rdf/examples/orgchart#&gt; .
 
-ModelRepository -- IModel: models *
-ModelGroup -- IModel: models *
-IModel &lt;|-- ModelGroup
-IModel -- IPropertySetter: propertySetter
-IModel -- IPropertyGetter: propertyGetter</code></pre>
-<p>To abstract away from diverse model representations and APIs provided by different modelling technologies, EMC defines the <em>IModel</em> interface. <em>IModel</em> provides a number of methods that enable querying and modifying the model elements it contains at a higher level of abstraction. To enable languages and tools that build atop EMC to manage multiple models simultaneously, the <em>ModelRepository</em> class acts as a container that offers façade services. The following sections discuss these two core concepts in detail.</p>
-<h2 id="the-imodel-interface">The IModel interface<a class="headerlink" href="#the-imodel-interface" title="Permanent link">&para;</a></h2>
-<p>Each model specifies a name which must be unique in the context of the model repository in which it is contained. Also, it defines a number of aliases; that is non-unique alternate names; via which it can be accessed. The interface also defines the following services.</p>
-<h3 id="loading-and-persistence">Loading and Persistence<a class="headerlink" href="#loading-and-persistence" title="Permanent link">&para;</a></h3>
-<p>The <em>load()</em> and <em>load(properties : Properties)</em> methods enable extenders to specify in a uniform way how a model is loaded into memory from the physical location in which it resides. Similarly, the <em>store()</em> and <em>store(location : String)</em> methods are used to define how the model can be persisted from memory to a permanent storage location.</p>
-<h3 id="type-related-services">Type-related Services<a class="headerlink" href="#type-related-services" title="Permanent link">&para;</a></h3>
-<p>The majority of metamodelling architectures support inheritance between meta-classes and therefore two types of type-conformance relationships generally appear between model elements and types. The <em>type-of</em> relationship appears when a model element is an instance of the type and the <em>kind-of</em> relationship appears when the model element is an instance of the type or any of its sub-types. Under this definition, the <em>getAllOfType(type: String)</em> and the <em>getAllOfKind(type: String)</em> operations return all the elements in the model that have a type-of and a kind-of relationship with the type in question respectively.</p>
-<p>Similarly, the <em>isTypeOf(element: Object, type : String)</em> and <em>isKindOf(element: Object, type : String)</em> return whether the element in question has a type-of or a kind-of relationship with the type respectively. The <em>getTypeOf(element: Object)</em> method returns the fully-qualified name of the type an element conforms to.</p>
-<p>The <em>hasType(type: String)</em> method returns true if the model supports a type with the specified name. To support technologies that enable users to define abstract (non-instantiable) types, the <em>isInstantiable(type: String)</em> method returns if instances of the type can be created.</p>
-<h3 id="ownership">Ownership<a class="headerlink" href="#ownership" title="Permanent link">&para;</a></h3>
-<p>The <em>allContents()</em> method returns all the elements that the model contains and the <em>owns(element: Object)</em> method returns true if the element under question belongs to the model.</p>
-<h3 id="creation-deletion-and-modifications">Creation, Deletion and Modifications<a class="headerlink" href="#creation-deletion-and-modifications" title="Permanent link">&para;</a></h3>
-<p>Model elements are created and deleted using the <em>createInstance(type: String)</em> and <em>deleteElement(element: Object)</em> methods respectively.</p>
-<p>To retrieve and set the values of properties of its model elements, <em>IModel</em> uses its associated <em>propertyGetter</em> (<em>IPropertyGetter</em>) and <em>propertySetter</em> (<em>IPropertySetter</em>) respectively. Technology-specific implementations of those two interfaces are responsible for accessing and modifying the value of a property of a model element through their <em>invoke(element: Object, property : String)</em> and <em>invoke(value: Object)</em> respectively.</p>
-<h2 id="the-modelrepository-class">The ModelRepository class<a class="headerlink" href="#the-modelrepository-class" title="Permanent link">&para;</a></h2>
-<p>A model repository acts as a container for a set of models that need to be managed in the context of a task or a set of tasks. Apart from a reference to the models it contains, <em>ModelRepository</em> also provides the following façade functionality.</p>
-<p>The <em>getOwningModel(element: Object)</em> method returns the model that owns a particular element. The <em>transactionSupport</em> property specifies an instance of the <em>ModelRepositoryTransactionSupport</em> class which is responsible for aggregate management of transactions by delegating calls to its <em>startTransaction()</em>, <em>commitTransaction()</em> and <em>abortTransaction()</em> methods, to the respective methods of instances of <em>IModelTransactionSupport</em> associated with models contained in the repository.</p>
-<h2 id="the-modelgroup-class">The ModelGroup class<a class="headerlink" href="#the-modelgroup-class" title="Permanent link">&para;</a></h2>
-<p>A <em>ModelGroup</em> is a group of models that have a common alias. <em>ModelGroups</em> are calculated dynamically by the model repository based on common model aliases. That is, if two or more models share a common alias, the repository forms a new model group. Since <em>ModelGroup</em> implements the <em>IModel</em> interface, clients can use all the methods of <em>IModel</em> to perform aggregate operations on multiple models, such as collecting the contents of more than one models. An exception to that is the <em>createInstance(type: String)</em> method which cannot be defined for a group of models as it cannot be determined in which model of the group the newly created element should belong.</p>
-<h2 id="assumptions-about-the-underlying-modelling-technologies">Assumptions about the underlying modelling technologies<a class="headerlink" href="#assumptions-about-the-underlying-modelling-technologies" title="Permanent link">&para;</a></h2>
-<p>The discussion provided above has demonstrated that EMC makes only minimal assumptions about the structure and the organization of the underlying modelling technologies. Thus, it intentionally refrains from defining classes for concepts such as <em>model element</em>, <em>type</em> and <em>metamodel</em>. By contrast, it employs a lightweight approach that uses primitive strings for type names and objects of the target implementation platforms as model elements. There are two reasons for this decision.</p>
+&lt;#organisation&gt;
+  a orgc:Organisation ;
+  orgc:name "My Organisation" ;
+  orgc:teams ( &lt;teams#dev&gt; ) .
+
+&lt;teams#dev&gt;
+  a orgc:Team ;
+  orgc:name "Development Team" ;
+  orgc:employees &lt;employees#1234&gt; ;
+  orgc:employees &lt;employees#2345&gt; .
+
+&lt;employees#1234&gt;
+  a orgc:Employee ;
+  orgc:name "John Doe" .
+
+&lt;employees#2345&gt;
+ a orgc:Employee ;
+ orgc:name "Jane Sue" .</code></pre>
+<p>The mapping is as follows:</p>
 <ul>
-<li>
-<p>The primary reason is that by minimizing the assumptions about the underlying technologies EMC becomes more resistant to future changes of the implementations of the current technologies and can also embrace new technologies without changes.</p>
-</li>
-<li>
-<p>Another reason is that if a heavy-weight approach was used, extending the platform with support for a new modelling technology would involve providing wrapping objects for the native objects which represent model elements and types in the specific modelling technology. Experiments in the early phases of the design of EMC demonstrated that such a heavy-weight approach significantly increases the amount of memory required to represent the models in memory, degrades performance and provides little benefits in reward.</p>
-</li>
+<li>A subject <code>s</code> is an <code>EObject</code> if there is a <code>&lt;s rdf:type ePackage:eClass&gt;</code> triple for it, where <code>ePackage</code> is the EPackage namespace URI plus <code>#</code> or <code>/</code>, and <code>eClass</code> is the name
+of the EClass in the EPackage that it conforms to.</li>
+<li>An EObject subject can have <code>&lt;s ePackage:eFeature value&gt;</code> triples for the values of its <code>EFeature</code>s, where <code>ePackage</code> follows the same rules as above, and <code>eFeature</code> is the name of the feature.</li>
+<li>We currently assume that a given EClass cannot have two features with the same name.</li>
+<li>The value can be other RDF resources (for <code>EReference</code>s), or literales (for <code>EAttribute</code>s).</li>
+<li>Multi-valued features are supported via <a href="https://www.w3.org/TR/rdf-schema/#ch_containervocab">containers</a> or <a href="https://www.w3.org/TR/rdf-schema/#ch_collectionvocab">lists</a>.</li>
 </ul>
-<h2 id="emc-drivers">EMC Drivers<a class="headerlink" href="#emc-drivers" title="Permanent link">&para;</a></h2>
-<p>Below are known <em>drivers</em> that implement the EMC interfaces discussed above and allow Epsilon programs to access different types of models and structured data.</p>
-<h3 id="eclipse-modeling-framework">Eclipse Modeling Framework<a class="headerlink" href="#eclipse-modeling-framework" title="Permanent link">&para;</a></h3>
-<p>The Eclipse Modelling Framework (EMF) is one of the most robust and widely used open-source modelling frameworks, and the cornerstone of an extensive ecosystem of technologies for graphical/textual model editing, model comparison and merging etc. Being an Eclipse project, Epsilon naturally provides support for all flavours of EMF models (e.g. textual, graphical, XSD-based XML), and most of the <a href="../screencasts">screencasts</a>, <a href="../articles/">articles</a> and <a href="../../examples">examples</a> in Epsilon's Git repository use EMF models.</p>
-<p>Epsilon can also connect to <a href="../articles/cdo-emc/">CDO repositories</a> of EMF models, and can save and load EMF models from <a href="../articles/rdf-emc/">RDF files</a>.</p>
-<h3 id="matlab-simulink">Matlab Simulink<a class="headerlink" href="#matlab-simulink" title="Permanent link">&para;</a></h3>
-<p>Epsilon also provides mature support for querying and modifying Matlab Simulink models as shown in <a href="../articles/#epsilon-and-simulink-models">these articles</a>.</p>
-<h3 id="cameo-magicdraw-systems-modeler">Cameo / MagicDraw Systems Modeler<a class="headerlink" href="#cameo-magicdraw-systems-modeler" title="Permanent link">&para;</a></h3>
-<p>Cameo Systems Modeler is a widely-used graphical systems modelling tool. A driver that allows Epsilon programs to read/write Cameo models is available under <a href="https://github.com/epsilonlabs/emc-cameo">EpsilonLabs on GitHub</a>.</p>
-<h3 id="csv-excel-json-xml-yaml">CSV / Excel / JSON / XML / YAML<a class="headerlink" href="#csv-excel-json-xml-yaml" title="Permanent link">&para;</a></h3>
-<p>For quick and dirty metamodel-less modelling, Epsilon also supports <a href="../articles/csv-emc">CSV files</a>, <a href="../articles/excel">Excel spreadsheets</a>, <a href="../articles/json-emc">JSON documents</a>, <a href="../articles/plain-xml">plain XML documents</a>, and <a href="../articles/yaml-emc">YAML files</a>.</p>
-<h3 id="eclipse-hawk">Eclipse Hawk<a class="headerlink" href="#eclipse-hawk" title="Permanent link">&para;</a></h3>
-<p><a href="https://www.eclipse.org/hawk">Hawk</a> is an Eclipse project that provides tools for monitoring, indexing and querying <em>repositories</em> (i.e. local folders, Eclipse workspaces, Git/SVN repositories) containing models. Hawk provides an EMC driver through which model indices can be queried with Epsilon languages.</p>
-<h3 id="other-drivers">Other Drivers<a class="headerlink" href="#other-drivers" title="Permanent link">&para;</a></h3>
-<p>There are also less mature/well-documented drivers for Epsilon for tools and formats such as:</p>
+<p>Note: the mapping allows for the same RDF resource to be deserialised into <a href="#multiple-eobjects-from-same-rdf-node">multiple <code>EObject</code>s</a>, if there are multiple <code>rdf:type</code> statements from disjoint <code>EClass</code> hierarchies.</p>
+<h2 id="emf-rdf-resource-file-rdfres">EMF-RDF resource file (<code>.rdfres</code>)<a class="headerlink" href="#emf-rdf-resource-file-rdfres" title="Permanent link">&para;</a></h2>
+<p>The RDF EMC driver is based on a <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/plugins/org.eclipse.epsilon.rdf.emf">custom EMF resource</a> which operates from dedicated <a href="https://yaml.org/">YAML</a>-based configuration files with the <code>.rdfres</code> extension.</p>
+<p>Assuming the above Turtle file was saved in <code>myorg.ttl</code>, a minimal <code>.rdfres</code> that Epsilon would be able to load and save from would be:</p>
+<pre class="highlight"><code class="language-yaml">dataModels:
+  - myorg.ttl</code></pre>
+<p>The available keys in the <code>.rdfres</code> format are as follows:</p>
 <ul>
-<li><a href="https://github.com/epsilonlabs/emc-argouml">ArgoUML</a></li>
-<li><a href="https://github.com/epsilonlabs/emc-cdo">Connected Data Objects (CDO)</a></li>
-<li><a href="https://github.com/epsilonlabs/emc-cdt">Eclipse C/C++ Development Tools</a></li>
-<li><a href="https://github.com/epsilonlabs/emc-jdt">Eclipse Java Development Tools</a></li>
-<li><a href="https://github.com/epsilonlabs/emc-cameo">MagicDraw / Cameo Systems Modeler</a></li>
-<li><a href="https://github.com/epsilonlabs/emc-metaedit">MetaEdit+</a></li>
-<li><a href="https://github.com/gdaniel/emc-neoemf">NeoEMF</a></li>
-<li><a href="https://github.com/epsilonlabs/emc-ptcim">PTC Integrity Modeller</a></li>
-<li><a href="https://github.com/epsilonlabs/emc-jdbc/">Relational Databases (JDBC)</a></li>
+<li><code>dataModels</code> (mandatory): list of one or more locations containing the statements for the <code>EObject</code>s.
+  These will be typically relative paths from the <code>.rdfres</code> to the relevant RDF files.
+  Epsilon supports all the file formats <a href="https://jena.apache.org/documentation/io/">implemented by Jena</a>, as it uses its RIOT system for I/O.</li>
+<li><code>defaultModelNamespace</code> (optional): the <a href="#default-namespace-for-new-eobjects">default namespace</a> to use for the underlying RDF resources when creating new <code>EObject</code>s.</li>
+<li><code>multiValueAttributeMode</code> (optional): string indicating the default RDF data structure to use for newly set <a href="#multi-valued-features">multi-valued features</a>.</li>
+<li><code>schemaModels</code> (optional): list of zero or more locations containing the OWL schemas to be used for inference over the union graph formed by all the data models. <code>EObject</code>s will not be deserialised from these locations.</li>
+<li><code>validationMode</code> (optional): string indicating the <a href="#internal-consistency-checking">internal consistency checking</a> mode to be used. By default, no checking is done.</li>
 </ul>
-<p>These drivers have not had much external use historically, but if you're interested in them, please <a href="../../forum">give us a shout</a>.</p>
+<h3 id="default-namespace-for-new-eobjects">Default namespace for new EObjects<a class="headerlink" href="#default-namespace-for-new-eobjects" title="Permanent link">&para;</a></h3>
+<p>Creating an <code>EObject</code> in an RDF-backed model will result in creating an RDF node (specifically, an RDF resource), which needs an IRI (a <a href="https://www.rfc-editor.org/rfc/rfc3987">generalised URI</a>).
+These IRIs are generated by combining the <em>default model namespace</em> (as set in the <code>defaultModelNamespace</code> key of the <code>.rdfres</code>) with a UUID.
+For example, if the namespace was set to <code>http://foo/bar/example#</code>, one possible IRI for the RDF resource backing a new <code>EObject</code> would be <code>http://foo/bar/example#_6sDDMIgJEfC2g6UdYdL1hg</code>.</p>
+<p>The IRI must be absolute, e.g. by starting with <code>file://</code> or <code>http://</code>.
+If you provide an invalid IRI, it will be ignored, and Epsilon will fall back to using the IRI of the first data model as the default model namespace.</p>
+<p>If a default model namespace is not provided in the <code>.rdfres</code> file, the resource will fall back to the IRI mentioned in the blank prefix (<code>PREFIX : &lt;IRI&gt;</code>) in the first data model.
+If such a prefix is not provided either, Epsilon will fall back again to using the IRI of the first data model as the default model namespace.</p>
+<h3 id="internal-consistency-checking">Internal consistency checking<a class="headerlink" href="#internal-consistency-checking" title="Permanent link">&para;</a></h3>
+<p>Jena can perform some consistency checks between the statements in the RDF graph, and the OWL classes mentioned in the schema models.
+These checks can be controlled through the <code>validationMode</code> key.
+The following validation modes are available :</p>
+<ul>
+<li><code>none</code>: no checking is done. This is the default, for performance.</li>
+<li><code>jena-valid</code>: validation passes if the model has no internal inconsistencies, even though there may be some warnings.</li>
+<li><code>jena-clean</code>: validation passes if the model has no internal inconsistencies and there are no warnings.</li>
+</ul>
+<h3 id="multi-valued-features">Multi-valued features<a class="headerlink" href="#multi-valued-features" title="Permanent link">&para;</a></h3>
+<p><code>EFeature</code>s with a maximum cardinality greater than 1 ("multi-valued features") are represented through RDF containers or RDF lists.
+The <code>unique</code> and <code>ordered</code> flags are supported: uniqueness checks are delegated to the EMF <code>EList</code>s, which ensure that the same element cannot be present multiple times.</p>
+<p>The resource will opt to update the RDF representation of a multi-value attribute based on its current data structure (container/list) in the RDF data model.
+However, when there is no existing structure, the data structure will be chosen based on the value of the <code>multiValueAttributeMode</code> in the <code>.rdfres</code> file:</p>
+<ul>
+<li><code>Container</code> (the default): use RDF containers (Bag or Seq).</li>
+<li><code>List</code>: use RDF lists.</li>
+</ul>
+<h2 id="escaping-to-rdf">Escaping to RDF<a class="headerlink" href="#escaping-to-rdf" title="Permanent link">&para;</a></h2>
+<p>The EMF resource underlying this EMC driver maintains a two-way mapping between the EMF <code>EObject</code>s that have been deserialised from the RDF graph, and their underlying RDF nodes.
+This means that it is possible to go from the <code>EObject</code> to the RDF node, and back:</p>
+<ul>
+<li>If we have a model called <code>M</code> and an <code>EObject</code> variable named <code>eob</code>, we can use <code>M.resource.getRDFResource(eob)</code> to obtain the underlying Jena RDF <a href="https://jena.apache.org/documentation/javadoc/jena/org.apache.jena.core/org/apache/jena/rdf/model/Resource.html">Resource</a> object.</li>
+<li>Likewise, if we have a model called <code>M</code> and a Jena <code>Resource</code> variable named <code>rdfRes</code>, we can use <code>M.resource.getEObjects(rdfRes)</code> to obtain the collection of the <code>EObject</code>s associated to this resource. Note that while every <code>EObject</code> is backed by one RDF resource, a single RDF resource may result in <a href="#multiple-eobjects-from-same-rdf-node">multiple <code>EObject</code>s</a>.</li>
+</ul>
+<p>The following examples show some of the use cases enabled by this two-way mapping:</p>
+<ul>
+<li><a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.rdf.emf.turtles">Turtles</a>: shows how it is possible to escape to RDF to follow a RDF-only <code>friendOf</code> reference between two <code>EObject</code>s.</li>
+<li><a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.rdf.emf.picto">Picto</a>: shows how we can write a visualisation that shows both the underlying RDF nodes and the <code>EObject</code>s that have been deserialised from them.</li>
+</ul>
+<h2 id="multiple-eobjects-from-same-rdf-node">Multiple EObjects from same RDF node<a class="headerlink" href="#multiple-eobjects-from-same-rdf-node" title="Permanent link">&para;</a></h2>
+<p>Suppose we had these two <code>EClass</code>es from different <code>EPackage</code>s:</p>
+<pre class="mermaid mermaid-100"><code>classDiagram
+class Book {
+  String title
+  String publisher
+}
+class FictionWork {
+  String title
+  String[*] genres
+}</code></pre>
+<p>We could have a set of RDF statements like these:</p>
+<pre class="highlight"><code>@base &lt;http://eclipse.org/epsilon/rdf/books#&gt; .
+@prefix books: &lt;http://eclipse.org/epsilon/rdf/books#&gt; .
+@prefix fiction: &lt;http://eclipse.org/epsilon/rdf/fiction#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+
+&lt;#quijote&gt;
+  books:publisher  "P Ublisher";
+  books:title      "El Quijote";
+  fiction:genres   ( "Narration" "Picaresque" "Chivalric romance" ) .</code></pre>
+<p>On top of this data model, we could add a <a href="https://github.com/eclipse-epsilon/epsilon/blob/main/examples/org.eclipse.epsilon.examples.rdf.emf.book/models/schema.ttl">schema model</a> with the following inference rules:</p>
+<ul>
+<li>A Book is anything with a title and a publisher.</li>
+<li>A FictionWork is anything with a title.</li>
+<li>Book titles are equivalent to FictionWork titles.</li>
+</ul>
+<p>The built-in RDFS inference supported by this driver would therefore compute that <code>&lt;http://eclipse.org/epsilon/rdf/books#quijote&gt;</code> is both a Book and a FictionWork (where the title of the FictionWork is also "El Quijote").</p>
+<p>This means that the same RDF node will be deserialised into multiple <code>EObject</code>s, each with its own subset of the information.
+Changes to these separate <code>EObject</code>s will be persisted to the same underlying RDF node, although re-inferencing is currently not supported (i.e. changing the name of the Book will not change the name of the FictionWork).</p>
+<p>To experiment with this behaviour, please consult the <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.rdf.emf.book">RDF book example</a> in the Epsilon GitHub repository.</p>
+<h2 id="creating-a-model-from-scratch">Creating a model from scratch<a class="headerlink" href="#creating-a-model-from-scratch" title="Permanent link">&para;</a></h2>
+<p>It is possible to use this EMC driver with <code>readOnLoad</code> set to <code>false</code> (i.e. without loading an <code>.rdfres</code> file).</p>
+<p>In this scenario, Epsilon will set up in-memory data models based on the in-memory configuration of the underlying EMF resource.
+Given an <code>RdfEmfModel m</code> (from the EMC driver), the underlying RDF-backed EMF resource can be obtained via:</p>
+<pre class="highlight"><code class="language-java">RDFGraphResourceImpl resource = (RDFGraphResourceImpl) m.getResource();</code></pre>
+<p>The in-memory configuration can be then accessed via <code>resource.getConfig()</code>.
+There are several points to consider about its configuration:</p>
+<ul>
+<li>If no data models have been specified, Epsilon will add a <code>.ttl</code> data model based on the URI of the resource (i.e. <code>file://path/to/file.rdfres</code> will result in <code>file://path/to/file.ttl</code> being created upon save). <code>platform:</code> URLs are supported in this way as well when running from the Eclipse IDE.</li>
+<li>No schema models will be used in this scenario: the expectation is that modifying an resource without loading it is for creating brand new graphs, rather than for performing reasoning on existing graphs.</li>
+<li>Saving the resource in this scenario will also write the configuration to the URI of the resource. If this is undesirable, call <code>resource.setConfigSaved(false)</code> before saving.</li>
+</ul>
+<p>Note that configurations are <em>not</em> saved by default for resources that were loaded before any changes were made.
+This can be changed by calling <code>resource.setConfigSaved(true)</code> before saving.</p>
+<h2 id="specifying-custom-rdf-iris-during-instance-creation">Specifying custom RDF IRIs during instance creation<a class="headerlink" href="#specifying-custom-rdf-iris-during-instance-creation" title="Permanent link">&para;</a></h2>
+<p>The underlying EMF resource (see <a href="#creating-a-model-from-scratch">above</a>) supports creating <code>EObject</code>s with arbitrary IRIs through its <code>createInstanceAt(EClass eClass, String iri)</code> method.</p>
+<p>The <a href="./examples/org.eclipse.epsilon.examples.rdf.emf.etl/">ETL example</a> shows how it can be used in combination with <a href="https://github.com/eclipse-epsilon/epsilon/issues/125">ETL "to" initializers</a>.</p>
+<h2 id="working-with-rdf-xml-literals">Working with RDF XML literals<a class="headerlink" href="#working-with-rdf-xml-literals" title="Permanent link">&para;</a></h2>
+<p>RDF supports defining <a href="https://www.w3.org/TR/rdf-syntax-grammar/#section-Syntax-XML-literals">XML literals</a>, whose content is an XML document fragment.
+These are parsed by the underlying Jena library as instances of <a href="https://docs.oracle.com/javase/8/docs/api/org/w3c/dom/DocumentFragment.html">DocumentFragment</a>.</p>
+<p>If you need to deserialise a property whose values will be XML literals, we recommend defining in your metamodel an EMF <code>EDataType</code> whose <code>instanceClassName</code> is <code>DocumentFragment</code>.
+You can then use it as the data type of any relevant attribute.
+For example, in the <a href="https://eclipse.dev/emfatic/">Eclipse Emfatic</a> notation, it would look like this:</p>
+<pre class="highlight"><code>datatype EXMLLiteral : org.w3c.dom.DocumentFragment;
+
+class Requirement {
+  attr EXMLLiteral title;
+}</code></pre>
+<p>In modularised Java codebases, accessing this feature via reflection (e.g. from an <a href="https://eclipse.dev/epsilon/">Epsilon</a> program) may cause an error message like this:</p>
+<pre class="highlight"><code>module java.xml does not "exports com.sun.org.apache.xerces.internal.dom" to unnamed module</code></pre>
+<p>In this case, you may need a flag like the following to your JVM options:</p>
+<pre class="highlight"><code>--add-opens=java.xml/com.sun.org.apache.xerces.internal.dom=ALL-UNNAMED</code></pre>
+<h2 id="converting-an-xmi-file-to-rdf-formats">Converting an XMI file to RDF formats<a class="headerlink" href="#converting-an-xmi-file-to-rdf-formats" title="Permanent link">&para;</a></h2>
+<p>The "RDF-Based EMF Resource Developer Tools" feature includes converters from XMI to the <a href="https://www.w3.org/TR/turtle/">Turtle</a> and <a href="https://www.w3.org/TR/n-triples/">N-Triples</a> serialisation formats for RDF.</p>
+<p>To use them, right-click on a file with the <code>.xmi</code> or <code>.model</code> extensions in the Eclipse "Project Explorer" or "Package Explorer" views, and select the appropriate option:</p>
+<p><img alt="Screenshot showing the conversion options" src="../../images/convert-to-rdf.png" /></p>
 
 
 
@@ -2274,44 +2132,6 @@ IModel -- IPropertyGetter: propertyGetter</code></pre>
       
         <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                Overview
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../eol/" class="md-footer__link md-footer__link--next" aria-label="Next: Object Language (EOL)">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Object Language (EOL)
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
   
   <div class="md-footer-meta md-typeset">
@@ -2377,12 +2197,12 @@ IModel -- IPropertyGetter: propertyGetter</code></pre>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.tabs.link", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
-        <script src="../../assets/dist/bundle.js"></script>
+        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

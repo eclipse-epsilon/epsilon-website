@@ -353,7 +353,7 @@ class MonacoSetup {
             tokenPostfix: '.emf',
             
             keywords: [
-                'abstract', 'attr', 'class', 'enum', 'mapentry', 'extends', 'import', 'package', 'ref', 'val', 'op', 'readonly', 'volatile', 'transient', 'unsettable', 'derived', 'unique', 'ordered', 'resolve', 'id'
+                'abstract', 'attr', 'class', 'datatype', 'enum', 'mapentry', 'extends', 'import', 'package', 'ref', 'val', 'op', 'readonly', 'volatile', 'transient', 'unsettable', 'derived', 'unique', 'ordered', 'resolve', 'id'
             ],
 
             constants: [
