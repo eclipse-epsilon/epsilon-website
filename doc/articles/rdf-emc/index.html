@@ -2100,7 +2100,7 @@ These are parsed by the underlying Jena library as instances of <a href="https:/
 <p>If you need to deserialise a property whose values will be XML literals, we recommend defining in your metamodel an EMF <code>EDataType</code> whose <code>instanceClassName</code> is <code>DocumentFragment</code>.
 You can then use it as the data type of any relevant attribute.
 For example, in the <a href="https://eclipse.dev/emfatic/">Eclipse Emfatic</a> notation, it would look like this:</p>
-<pre class="highlight"><code>datatype EXMLLiteral : org.w3c.dom.DocumentFragment;
+<pre class="highlight"><code class="language-emf">datatype EXMLLiteral : org.w3c.dom.DocumentFragment;
 
 class Requirement {
   attr EXMLLiteral title;
