@@ -1,5 +1,7 @@
 # Epsilon EMC driver for RDF-backed EMF models
 
+!!! tip "Available from version 2.9"
+
 Epsilon can integrate with the [Apache Jena](https://jena.apache.org/) library to load and save EMF-based models from/to RDF formats, such as [Turtle](https://www.w3.org/TR/turtle/), [N-Triples](https://www.w3.org/TR/n-triples/), or [RDF/XML](https://www.w3.org/TR/rdf-syntax-grammar/).
 
 Some of the advantages of this representation include:
