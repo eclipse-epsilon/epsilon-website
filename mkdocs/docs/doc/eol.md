@@ -504,6 +504,20 @@ var p : new Source!Person; // Creates a new Person in model Source
 delete t; // Deletes the element created in line 1
 ```
 
+Since version 1.5, the `new` operator can set properties at the same time that the instance is created.
+For example, this code:
+
+```eol
+var p : new Person(name='John Doe');
+```
+
+Is equivalent to:
+
+```eol
+var p : new Person;
+p.name = 'John Doe';
+```
+
 ## Expressions
 
 
