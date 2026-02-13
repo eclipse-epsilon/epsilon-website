@@ -229,7 +229,7 @@ If you need to deserialise a property whose values will be XML literals, we reco
 You can then use it as the data type of any relevant attribute.
 For example, in the [Eclipse Emfatic](https://eclipse.dev/emfatic/) notation, it would look like this:
 
-```
+```emf
 datatype EXMLLiteral : org.w3c.dom.DocumentFragment;
 
 class Requirement {
