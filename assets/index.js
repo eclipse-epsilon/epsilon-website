@@ -212,7 +212,7 @@ hljs.registerLanguage('emf', function(hljs) {
         },
         {
           className: 'keyword',
-          begin: '\\b(abstract|attr|class|enum|extends|import|package|ref|val|op|readonly|volatile|transient|unsettable|derived|unique|ordered|resolve|id)\\b'
+          begin: '\\b(abstract|attr|class|enum|extends|import|package|ref|val|op|readonly|volatile|transient|unsettable|derived|unique|ordered|resolve|id|datatype)\\b'
         },
         {
           className: 'string',
