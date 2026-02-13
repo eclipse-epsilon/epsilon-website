@@ -3559,10 +3559,11 @@ var p : new Source!Person; // Creates a new Person in model Source
 delete t; // Deletes the element created in line 1</code></pre>
 <p>Since version 1.5, the <code>new</code> operator can set properties at the same time that the instance is created.
 For example, this code:</p>
-<pre class="highlight"><code class="language-eol">var p : new Person(name='John Doe');</code></pre>
+<pre class="highlight"><code class="language-eol">var p : new Person(firstName='John', lastName='Doe');</code></pre>
 <p>Is equivalent to:</p>
 <pre class="highlight"><code class="language-eol">var p : new Person;
-p.name = 'John Doe';</code></pre>
+p.firstName = 'John';
+p.lastName = 'Doe';</code></pre>
 <h2 id="expressions">Expressions<a class="headerlink" href="#expressions" title="Permanent link">&para;</a></h2>
 <h3 id="literal-values">Literal Values<a class="headerlink" href="#literal-values" title="Permanent link">&para;</a></h3>
 <p>EOL provides special syntax constructs to create instances of each of
