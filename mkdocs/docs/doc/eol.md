@@ -508,14 +508,15 @@ Since version 1.5, the `new` operator can set properties at the same time that t
 For example, this code:
 
 ```eol
-var p : new Person(name='John Doe');
+var p : new Person(firstName='John', lastName='Doe');
 ```
 
 Is equivalent to:
 
 ```eol
 var p : new Person;
-p.name = 'John Doe';
+p.firstName = 'John';
+p.lastName = 'Doe';
 ```
 
 ## Expressions
