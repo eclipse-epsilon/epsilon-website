@@ -189,7 +189,7 @@ On top of this data model, we could add a [schema model](https://github.com/ecli
 The built-in RDFS inference supported by this driver would therefore compute that `<http://eclipse.org/epsilon/rdf/books#quijote>` is both a Book and a FictionWork (where the title of the FictionWork is also "El Quijote").
 
 This means that the same RDF node will be deserialised into multiple `EObject`s, each with its own subset of the information.
-Changes to these separate `EObject`s will be persisted to the same underlying RDF node, although re-inferencing is currently not supported (i.e. changing the name of the Book will not change the name of the FictionWork).
+Changes to these separate `EObject`s will be persisted to the same underlying RDF node, although re-inferencing is currently not supported (i.e. changing the title of the Book will not change the title of the FictionWork).
 
 To experiment with this behaviour, please consult the [RDF book example](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.rdf.emf.book) in the Epsilon GitHub repository.
 
