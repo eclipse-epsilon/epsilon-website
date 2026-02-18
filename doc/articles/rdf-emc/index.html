@@ -2075,7 +2075,7 @@ class FictionWork {
 </ul>
 <p>The built-in RDFS inference supported by this driver would therefore compute that <code>&lt;http://eclipse.org/epsilon/rdf/books#quijote&gt;</code> is both a Book and a FictionWork (where the title of the FictionWork is also "El Quijote").</p>
 <p>This means that the same RDF node will be deserialised into multiple <code>EObject</code>s, each with its own subset of the information.
-Changes to these separate <code>EObject</code>s will be persisted to the same underlying RDF node, although re-inferencing is currently not supported (i.e. changing the name of the Book will not change the name of the FictionWork).</p>
+Changes to these separate <code>EObject</code>s will be persisted to the same underlying RDF node, although re-inferencing is currently not supported (i.e. changing the title of the Book will not change the title of the FictionWork).</p>
 <p>To experiment with this behaviour, please consult the <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.rdf.emf.book">RDF book example</a> in the Epsilon GitHub repository.</p>
 <h2 id="creating-a-model-from-scratch">Creating a model from scratch<a class="headerlink" href="#creating-a-model-from-scratch" title="Permanent link">&para;</a></h2>
 <p>It is possible to use this EMC driver with <code>readOnLoad</code> set to <code>false</code> (i.e. without loading an <code>.rdfres</code> file).</p>
