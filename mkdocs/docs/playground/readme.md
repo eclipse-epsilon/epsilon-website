@@ -5,6 +5,10 @@ The Playground uses `webpack` for compiling dependencies and custom JavaScript i
 - `npx webpack --watch --mode=development` for a development build (faster build, larger `bundle.js`)
 - `npx webpack --mode=production` before you push to GitHub (slower build, smaller `bundle.js`)
 
+To only run the Playground front-end, you can use the following command:
+
+`npx live-server`
+
 ## Testing on the production deployment
 
 We use [Cypress](https://cypress.io) for automated testing. Tests are stored under the `cypress/e2e` folder. To run a single test, you need to use the following command:
