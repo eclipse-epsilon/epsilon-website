@@ -13,7 +13,7 @@
     <component name="Or">
         <port name="a" dir="in"/>
         <port name="b" dir="in"/>
-        <port name="out" dir="in"/>
+        <port name="out" dir="out"/>
     </component>
     <connector source="Not.out" target="Or.a"/>
     <connector source="And.out" target="Or.b"/>
