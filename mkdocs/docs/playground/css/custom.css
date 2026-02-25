@@ -112,6 +112,10 @@
 	content: url("../images/fit-diagram.png");
 }
 
+.mif-diagram-source::before {
+	content: url("../images/diagram-source.png");
+}
+
 .mif-diagram::before {
 	content: url("../images/diagram.png");
 }

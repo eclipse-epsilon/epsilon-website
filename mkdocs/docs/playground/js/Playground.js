@@ -296,10 +296,10 @@ function runProgram() {
                         secondModelPanel.renderDiagram(response.targetModelDiagram);
                     }
                     else if (language == "evl") {
-                        outputPanel.renderDiagram(response.validatedModelDiagram);
+                        outputPanel.renderDiagram(response.validatedModelDiagram, response.validatedModelDiagramSource);
                     }
                     else if (language == "epl") {
-                        outputPanel.renderDiagram(response.patternMatchedModelDiagram);
+                        outputPanel.renderDiagram(response.patternMatchedModelDiagram, response.patternMatchedModelDiagramSource);
                     }
                     else if (language == "egx" || language == "pinset") {
                         outputPanel.setGeneratedFiles(response.generatedFiles);

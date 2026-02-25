@@ -28,6 +28,10 @@ class MetamodelPanel extends ModelPanel {
             html: this.buttonHtml("fit-diagram", "Fit the metamodel class diagram", this.getFitDiagramButtonId()),
             cls: "sys-button",
             onclick: this.id + "Panel.fitDiagram()"
+        }, {
+            html: this.buttonHtml("diagram-source", "Show the source of the diagram in the console", this.getDiagramSourceButtonId()),
+            cls: "sys-button",
+            onclick: this.id + "Panel.showDiagramSource()"
         }];
     }
     
