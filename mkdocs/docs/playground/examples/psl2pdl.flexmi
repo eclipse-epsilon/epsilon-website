@@ -1,6 +1,6 @@
 ?nsuri: psl
 project:
-- title: ACME
+- name: ACME
 - task:
     - name: Analysis
     - start: 1

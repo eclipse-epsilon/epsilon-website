@@ -10,7 +10,7 @@ rule ProjectWithProject
     with r : Right!Project
     into m : Merged!Project {
 
-    m.title = l.title;
+    m.name = l.name;
     m.people ::= l.people + r.people;
     m.tasks ::= l.tasks + r.tasks;
 }
@@ -33,7 +33,7 @@ rule Task2Task
     transform s : Source!Task
     to t : Target!Task {
 
-    t.title = s.title;
+    t.name = s.name;
     t.start = s.start;
     t.duration = s.duration;
     t.effort ::= s.effort;

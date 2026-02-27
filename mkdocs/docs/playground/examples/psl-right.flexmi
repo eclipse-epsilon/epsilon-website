@@ -1,8 +1,8 @@
 <?nsuri psl?>
-<project title="ACME">
+<project name="ACME">
 	<person name="Alice"/>
 	<person name="Bob"/>
-	<task title="Testing" start="10" dur="3">
+	<task name="Testing" start="10" dur="3">
         <effort person="Bob" perc="50"/>
         <effort person="Alice" perc="50"/>
 	</task>

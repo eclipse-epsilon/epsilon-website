@@ -2,7 +2,7 @@
 package psl;
 
 class Project {
-	attr String title;
+	attr String name;
 	attr String description;
 	val Activity[*] activities;
 	@diagram(direction="right")
@@ -10,7 +10,7 @@ class Project {
 }
 
 class Activity {
-	attr String title;
+	attr String name;
 	attr int start;
 	attr int end;
 	@diagram(direction="right")

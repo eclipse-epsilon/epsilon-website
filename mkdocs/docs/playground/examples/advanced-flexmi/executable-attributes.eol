@@ -1,6 +1,6 @@
 // Get hold of the implementation task
 var implementation = 
-    Task.all.selectOne(t|t.title = "Implementation");
+    Task.all.selectOne(t|t.name = "Implementation");
 
 // Print the value of its start attribute
 implementation.start.println();

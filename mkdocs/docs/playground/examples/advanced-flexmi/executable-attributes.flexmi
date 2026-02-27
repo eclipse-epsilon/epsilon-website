@@ -1,18 +1,18 @@
 <?nsuri psl?>
-<project title="ACME">
+<project name="ACME">
   <person name="Alice"/>
   <person name="Bob"/>
-  <task title="Analysis" start="1" dur="3">
+  <task name="Analysis" start="1" dur="3">
     <effort person="Alice"/>
   </task>
-  <task title="Design" start="4" dur="6" :var="design">
+  <task name="Design" start="4" dur="6" :var="design">
     <effort person="Bob"/>
   </task>
   <!-- 
     Note how the start month of the Implementation task is computed 
     based on the the start and duration of the Design task.
   -->
-  <task title="Implementation" :start="design.start + design.duration + 1" dur="3">
+  <task name="Implementation" :start="design.start + design.duration + 1" dur="3">
     <effort person="Bob" perc="50"/>
     <effort person="Alice" perc="50"/>
   </task>

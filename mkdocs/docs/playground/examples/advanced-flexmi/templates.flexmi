@@ -1,12 +1,12 @@
 <?nsuri psl?>
 <_>
-  <project title="ACME">
+  <project name="ACME">
     <person name="Alice"/>
     <person name="Bob"/>
     <person name="Charlie"/>
-    <simpletask title="Analysis" person="Alice" dur="3"/>
-    <simpletask title="Design" person="Bob" dur="3" />
-    <simpletask title="Implementation" person="Charlie" dur="6"/>
+    <simpletask name="Analysis" person="Alice" dur="3"/>
+    <simpletask name="Design" person="Bob" dur="3" />
+    <simpletask name="Implementation" person="Charlie" dur="6"/>
   </project>
 
   <!-- 

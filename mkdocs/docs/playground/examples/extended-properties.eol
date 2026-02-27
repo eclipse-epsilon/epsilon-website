@@ -8,5 +8,5 @@ for (person in Person.all) {
 
 // Access the extended properties later in the program
 for (person in Person.all) {
-    (person.name + " contributes to " + person.~tasks.title.concat(", ")).println();
+    (person.name + " contributes to " + person.~tasks.name.concat(", ")).println();
 }

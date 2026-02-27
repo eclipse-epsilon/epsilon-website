@@ -2,7 +2,7 @@ rule Project2Project
 	transform s : Source!Project
 	to t : Target!Project {
 
-	t.title = s.title;
+	t.name = s.name;
 
 	// Transform the tasks of the source
 	// project using the Task2Deliverable
@@ -17,7 +17,7 @@ rule Task2Deliverable
 	transform t : Source!Task
 	to d : Target!Deliverable {
 
-	d.title = t.title + " Report";
+	d.name = t.name + " Report";
 	d.due = t.start + t.duration;
 
 	// The lead of the deliverable

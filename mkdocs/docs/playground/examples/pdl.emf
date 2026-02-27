@@ -2,12 +2,12 @@
 package pdl;
 
 class Project {
-	attr String title;
+	attr String name;
 	val Deliverable[*] deliverables;
 }
 
 class Deliverable {
-	attr String title;
+	attr String name;
 	attr int due;
 	ref Person lead;
 }

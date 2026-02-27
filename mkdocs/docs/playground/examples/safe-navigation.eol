@@ -16,6 +16,6 @@ for (task in Task.all) {
     // to "nobody" if it is null
     leadName ?= "nobody";
 
-    ("Task " + task.title + " is led by " + leadName).println();
+    ("Task " + task.name + " is led by " + leadName).println();
 
 }
