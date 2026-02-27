@@ -205,19 +205,21 @@ class ModelPanel extends Panel {
                         diagramSourceField = "metamodelDiagramSource";
                     }
 
-                    var message = "A diagram cannot be shown due to the following error ";
+                    var message = "The diagram cannot be generated because there is an error ";
                     if (diagramField == "metamodelDiagram") {
                         message += " in the metamodel.";
                     }
                     else {
                         message += " in the model or its metamodel.";
                     }
+                    message += " Check the console for details.";
 
                     if (json.hasOwnProperty("error")) {
-                        diagramElement.innerHTML = '<div class="model-rendering-error">' + message + '<div class="model-rendering-error-message">' + json.error + '</div></div>';
+                        diagramElement.innerHTML = '<div class="model-rendering-error"><span class="mif-16 mif-problems" style="position:relative;top:-1px;padding-right:5px"></span>' + message + '</div>';
                         self.diagramSvg = null;
                         self.diagramSource = null;
                         self.setDiagramSourceButtonVisible(false);
+                        consolePanel.setError(json.error);
                     }
                     else {
                         self.renderDiagram(json[diagramField], json[diagramSourceField]);
