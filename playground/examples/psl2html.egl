@@ -15,7 +15,7 @@
 [*Generate one row per task with the participants' effort*]
 [%for (t in Task.all){%]
 <tr>
-	<th>[%=t.title%]</th>
+	<th>[%=t.name%]</th>
 	[%for (p in Person.all){%]
 	<td>[%=t.effort.selectOne(e|e.person = p)?.percentage ?: 0%]%</td>
 	[%}%]

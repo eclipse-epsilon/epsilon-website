@@ -12,7 +12,7 @@ digraph G {
 	[*Create a node for each task*]
 	[%for (t in Task.all){%]
 
-	[%=t.getNodeId()%][label="[%=t.title%]", fillcolor="wheat"]
+	[%=t.getNodeId()%][label="[%=t.name%]", fillcolor="wheat"]
 
 	[*Link the person nodes with the task nodes*]
 	[%for (e in t.effort){%]

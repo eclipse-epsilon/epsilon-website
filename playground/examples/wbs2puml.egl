@@ -1,16 +1,16 @@
 [*Generates a PlantUML work breakdown diagram*]
 [%var project = Project.all.first();%]
 @startwbs
-[*The title of the project is underlined*]
-* <u>[%=project.title%]</u>
+[*The name of the project is underlined*]
+* <u>[%=project.name%]</u>
 
 [%for (wp in project.wps){%]
-[*The titles of work-packages are bold*]
-** <b>[%=wp.title%]</b>
+[*The names of work-packages are bold*]
+** <b>[%=wp.name%]</b>
 
 [%for (task in wp.tasks){%]
 [*Task boxes also include a badge (filled circle) for each of their partners*]
-*** [%=task.title%][%if(task.partners.notEmpty()){%]\n[%=task.partners.collect(partner|"<color:" + partner.color + "><U+2B24></color>").concat(" ")%][%}%] 
+*** [%=task.name%][%if(task.partners.notEmpty()){%]\n[%=task.partners.collect(partner|"<color:" + partner.color + "><U+2B24></color>").concat(" ")%][%}%] 
 [%}%]
 [%}%]
 

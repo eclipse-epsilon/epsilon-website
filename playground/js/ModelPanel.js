@@ -1,4 +1,5 @@
 import { Panel } from "./Panel.js";
+import { consolePanel } from "./Playground.js";
 import { Splitter } from "./Splitter.js";
 
 import svgPanZoom from 'svg-pan-zoom';
@@ -9,6 +10,7 @@ class ModelPanel extends Panel {
     metamodelPanel;
     diagramSvg;
     diagramSvgPanZoomInstance;
+    diagramSource;
 
     constructor(id, editable, metamodelPanel) {
         super(id);
@@ -22,6 +24,7 @@ class ModelPanel extends Panel {
     init() {
         super.init();
         this.setDiagramRefreshButtonVisible(false);
+        this.setDiagramSourceButtonVisible(false);
         this.setFitDiagramButtonVisible(!this.editable);
         this.setupSyntaxHighlighting();
     }
@@ -87,10 +90,18 @@ class ModelPanel extends Panel {
             html: this.buttonHtml("fit-diagram", "Fit the model object diagram", this.getFitDiagramButtonId()),
             cls: "sys-button",
             onclick: this.id + "Panel.fitDiagram()"
+        }, {
+            html: this.buttonHtml("diagram-source", "Show the source of the diagram in the console", this.getDiagramSourceButtonId()),
+            cls: "sys-button",
+            onclick: this.id + "Panel.showDiagramSource()"
         }] : [{
             html: this.buttonHtml("fit-diagram", "Fit the model object diagram", this.getFitDiagramButtonId()),
             cls: "sys-button",
             onclick: this.id + "Panel.fitDiagram()"
+        }, {
+            html: this.buttonHtml("diagram-source", "Show the source of the diagram in the console", this.getDiagramSourceButtonId()),
+            cls: "sys-button",
+            onclick: this.id + "Panel.showDiagramSource()"
         }];
     }
 
@@ -106,12 +117,14 @@ class ModelPanel extends Panel {
             }
             this.setDiagramRefreshButtonVisible(true);
             this.setFitDiagramButtonVisible(true);
+            this.setDiagramSource(this.diagramSource);
         }
         else {
             element.style.display = "none";
             this.getDiagramButton().className = "mif-diagram";
             this.setDiagramRefreshButtonVisible(false);
             this.setFitDiagramButtonVisible(false);
+            this.setDiagramSourceButtonVisible(false);
         }
         this.fit();
         updateGutterVisibility();
@@ -133,10 +146,21 @@ class ModelPanel extends Panel {
         return this.id + "DiagramRefreshButton";
     }
 
+    getDiagramSourceButtonId() {
+        return this.id + "DiagramSourceButton";
+    }
+
     setDiagramRefreshButtonVisible(visible) {
         var diagramRefreshButton = document.getElementById(this.getDiagramRefreshButtonId());
         if (diagramRefreshButton != null) {
             diagramRefreshButton.parentElement.style.display = visible ? "flex" : "none";
+        }
+    }
+
+    setDiagramSourceButtonVisible(visible) {
+        var diagramSourceButton = document.getElementById(this.getDiagramSourceButtonId());
+        if (diagramSourceButton != null) {
+            diagramSourceButton.parentElement.style.display = visible ? "flex" : "none";
         }
     }
 
@@ -149,8 +173,12 @@ class ModelPanel extends Panel {
 
     fitDiagram() {
         if (this.diagramSvg) {
-            this.renderDiagram(this.diagramSvg);
+            this.renderDiagram(this.diagramSvg, this.diagramSource);
         }
+    }
+
+    showDiagramSource() {
+        consolePanel.setOutput(this.diagramSource);
     }
 
     /* TODO: Rename to something more sensible */
@@ -169,24 +197,33 @@ class ModelPanel extends Panel {
                     var json = JSON.parse(xhr.responseText);
 
                     // FIXME: Make both functions return the PlantUML diagram in a "diagram" field
-                    var jsonField = "modelDiagram";
-                    if (diagramId.endsWith("etamodelDiagram"))
-                        jsonField = "metamodelDiagram";
+                    var diagramField = "modelDiagram";
+                    var diagramSourceField = "modelDiagramSource";
 
-                    var message = "A diagram cannot be shown due to the following error ";
-                    if (jsonField == "metamodelDiagram") {
+                    if (diagramId.endsWith("etamodelDiagram")) {
+                        diagramField = "metamodelDiagram";
+                        diagramSourceField = "metamodelDiagramSource";
+                    }
+
+                    var message = "The diagram cannot be generated because there is an error ";
+                    if (diagramField == "metamodelDiagram") {
                         message += " in the metamodel.";
                     }
                     else {
                         message += " in the model or its metamodel.";
                     }
+                    message += " Check the console for details.";
 
                     if (json.hasOwnProperty("error")) {
-                        diagramElement.innerHTML = '<div class="model-rendering-error">' + message + '<div class="model-rendering-error-message">' + json.error + '</div></div>';
+                        diagramElement.innerHTML = '<div class="model-rendering-error"><span class="mif-16 mif-problems" style="position:relative;top:-1px;padding-right:5px"></span>' + message + '</div>';
                         self.diagramSvg = null;
+                        self.diagramSource = null;
+                        self.setDiagramSourceButtonVisible(false);
+                        consolePanel.setError(json.error);
                     }
                     else {
-                        self.renderDiagram(json[jsonField]);
+                        self.renderDiagram(json[diagramField], json[diagramSourceField]);
+                        self.setDiagramSourceButtonVisible(json[diagramSourceField] != null);
                     }
                 }
             }
@@ -196,9 +233,10 @@ class ModelPanel extends Panel {
         xhr.send(JSON.stringify(data));
     }
 
-    renderDiagram(svg, preservePanAndZoom = false) {
+    renderDiagram(svg, diagramSource, preservePanAndZoom = false) {
         var diagramId = this.id + "Diagram";
         var diagramElement = document.getElementById(diagramId);
+        this.setDiagramSource(diagramSource);
         
         this.diagramSvg = svg;
 
@@ -216,6 +254,11 @@ class ModelPanel extends Panel {
             this.diagramSvgPanZoomInstance.zoom(previousDiagramSvgPanZoomInstance.getZoom());
             this.diagramSvgPanZoomInstance.pan(previousDiagramSvgPanZoomInstance.getPan());
         }
+    }
+
+    setDiagramSource(diagramSource) {
+        this.diagramSource = diagramSource;
+        this.setDiagramSourceButtonVisible(diagramSource != null);
     }
 
     embed(svg, container) {

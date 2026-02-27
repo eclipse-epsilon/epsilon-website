@@ -1,7 +1,7 @@
 // For every task in the model
 for (t in Task.all) {
     // Print its name
-    t.title.println();
+    t.name.println();
     "---".println();
     // Print its start and duration
     ("Start: " + t.start + ", Duration: " + t.duration).println();

@@ -1,18 +1,18 @@
 package wbs;
 
 class Project {
-	attr String title;
+	attr String name;
 	val WP[*] wps;
 	val Partner[*] partners;
 }
 
 class WP {
-	attr String title;
+	attr String name;
 	val Task[*] tasks;
 }
 
 class Task {
-    attr String title;
+    attr String name;
     ref Partner[*] partners;
 }
 

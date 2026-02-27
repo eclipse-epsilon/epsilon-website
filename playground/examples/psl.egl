@@ -8,9 +8,9 @@
 <table>
 [*For every task*]
 [%for (t in p.getTasks()){%]
-	[*Generate a row with the title of the task*]
+	[*Generate a row with the name of the task*]
     <tr>
-        <td>[%=t.title%]</td>
+        <td>[%=t.name%]</td>
     </tr>
 [%}%]
 </table>

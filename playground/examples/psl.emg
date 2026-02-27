@@ -16,13 +16,13 @@ pre {
 $instances numberOfProjects
 @list projects
 operation Project create() {
-	self.title = "P_" + nextString("LETTER_UPPER", 4);
+	self.name = "P_" + nextString("LETTER_UPPER", 4);
 }
 
 $instances numberOfTasks
 @list tasks
 operation Task create() {
-	self.title = nextFromCollection(taskNames);
+	self.name = nextFromCollection(taskNames);
 	self.start = nextInteger(6);
 	self.duration = nextInteger(6);
 	nextFromList("projects").tasks.add(self);

@@ -1,14 +1,14 @@
 <?nsuri wbs?>
-<project title="ACME">
-	<wp title="Requirements and Use-Cases">
-		<task title="Use-Case Analysis" partners="altech, bitstream"/>
-		<task title="Technology Analysis" partners="altech, codely"/>
-		<task title="Evaluation Planning" partners="altech, bitstream, codely"/>
+<project name="ACME">
+	<wp name="Requirements and Use-Cases">
+		<task name="Use-Case Analysis" partners="altech, bitstream"/>
+		<task name="Technology Analysis" partners="altech, codely"/>
+		<task name="Evaluation Planning" partners="altech, bitstream, codely"/>
 	</wp>
-	<wp title="Project Management">
-		<task title="Progress Tracking" partners="bitstream"/>
-		<task title="Quality Management" partners="bitstream, codely"/>
-		<task title="Project Reporting" partners="bitstream, altech, codely"/>
+	<wp name="Project Management">
+		<task name="Progress Tracking" partners="bitstream"/>
+		<task name="Quality Management" partners="bitstream, codely"/>
+		<task name="Project Reporting" partners="bitstream, altech, codely"/>
 	</wp>
 	<partner id="altech" name="Altech" color="orangered"/>
 	<partner id="bitstream" name="Bitstream" color="royalblue"/>

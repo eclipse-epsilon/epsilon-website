@@ -1946,9 +1946,9 @@
 &lt;table&gt;
 [*For every task*]
 [%for (t in p.getTasks()){%]
-    [*Generate a row with the title of the task*]
+    [*Generate a row with the name of the task*]
     &lt;tr&gt;
-        &lt;td&gt;[%=t.title%]&lt;/td&gt;
+        &lt;td&gt;[%=t.name%]&lt;/td&gt;
     &lt;/tr&gt;
 [%}%]
 &lt;/table&gt;
@@ -2007,7 +2007,7 @@ context Person {
     transform s : Source!Project
     to t : Target!Project {
 
-    t.title = s.title;
+    t.name = s.name;
 
     // Transform the tasks of the source
     // project using the Task2Deliverable
@@ -2022,7 +2022,7 @@ rule Task2Deliverable
     transform t : Source!Task
     to d : Target!Deliverable {
 
-    d.title = t.title + " Report";
+    d.name = t.name + " Report";
     d.due = t.start + t.duration;
 
     // The lead of the deliverable
@@ -2073,16 +2073,16 @@ class Effort {
 </div>
 <div class="tabbed-block">
 <pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
-&lt;project title="ACME"&gt;
+&lt;project name="ACME"&gt;
     &lt;person name="Alice"/&gt;
     &lt;person name="Bob"/&gt;
-    &lt;task title="Analysis" start="1" dur="3"&gt;
+    &lt;task name="Analysis" start="1" dur="3"&gt;
         &lt;effort person="Alice"/&gt;
     &lt;/task&gt;
-    &lt;task title="Design" start="4" dur="6"&gt;
+    &lt;task name="Design" start="4" dur="6"&gt;
         &lt;effort person="Bob"/&gt;
     &lt;/task&gt;
-    &lt;task title="Implementation" start="7" dur="3"&gt;
+    &lt;task name="Implementation" start="7" dur="3"&gt;
         &lt;effort person="Bob" perc="50"/&gt;
         &lt;effort person="Alice" perc="50"/&gt;
     &lt;/task&gt;

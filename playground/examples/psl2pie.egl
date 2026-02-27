@@ -11,12 +11,12 @@
 					['Task', 'Months'],
 					[*Generate one slice for every task*]
 					[%for (t in Task.all){%]
-					['[%=t.title%]', [%=t.duration%]],
+					['[%=t.name%]', [%=t.duration%]],
 					[%}%]
 				]);
 
 				var options = {
-					title: '[%=Project.all.first().title%]'
+					title: '[%=Project.all.first().name%]'
 				};
 
 				var chart = new google.visualization.PieChart(document.getElementById('piechart'));

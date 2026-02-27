@@ -1,5 +1,5 @@
 dataset tasks over t : Task {
-    properties [title, start, duration]
+    properties [name, start, duration]
 
     // Assuming each person provides at most one effort to a task
     column num_participants : t.effort.size()
@@ -13,7 +13,7 @@ dataset effort_crosstable over p : Person {
     // value with the person's effort to that task (if any)
     grid {
         keys : Task.all
-        header : key.title
+        header : key.name
         body {
             // Check if that person provides an effort for that task
             var effort = key.effort.selectOne(e | e.person.name == p.name);
