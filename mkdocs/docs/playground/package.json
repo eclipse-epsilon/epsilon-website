@@ -23,7 +23,7 @@
     "yjs": "^13.6.23"
   },
   "devDependencies": {
-    "cypress": "13.16.0",
+    "cypress": "15.11.0",
     "file-loader": "6.2.0",
     "webpack": "5.76.0",
     "webpack-cli": "5.1.4",
