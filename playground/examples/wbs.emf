@@ -6,16 +6,19 @@ class Project {
 	val Partner[*] partners;
 }
 
+@node(label="name", contents="tasks")
 class WP {
 	attr String name;
 	val Task[*] tasks;
 }
 
+@node(label="name", shape="object", contents="partners")
 class Task {
     attr String name;
     ref Partner[*] partners;
 }
 
+@text(label="name")
 class Partner {
 	id attr String ~id;
 	attr String name;

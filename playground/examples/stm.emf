@@ -7,12 +7,14 @@ class StateMachine {
 	val Transition[*] transitions;
 }
 
+@node(label="name")
 class State {
     attr String name;
     ref Transition[*]#from outgoing;
     ref Transition[*]#to incoming;
 }
 
+@edge(source="from", target="to")
 class Transition {
     ref State#outgoing from;
     ref State#incoming to;

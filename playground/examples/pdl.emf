@@ -6,12 +6,15 @@ class Project {
 	val Deliverable[*] deliverables;
 }
 
+@node(label="name")
 class Deliverable {
 	attr String name;
 	attr int due;
+	@edge(sourceDecoration="arrow", targetDecoration="none", direction="up", label="leads")
 	ref Person lead;
 }
 
+@node(label="name")
 class Person {
 	attr String name;
 }

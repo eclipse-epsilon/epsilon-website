@@ -6,10 +6,12 @@ class Graph {
 	val Edge[*] edges;
 }
 
+@node(label="name")
 class Node {
 	attr String name;
 }
 
+@edge(source="source", target="target", preamble="left to right direction")
 class Edge {
 	ref Node source;
 	ref Node target;

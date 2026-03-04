@@ -273,7 +273,7 @@
 				"program": "ccl/ccl.mig",
 				"flexmi": "ccl/ccl-0.9.flexmi",
 				"emfatic": "ccl/ccl-0.9.emf",
-				"secondEmfatic": "ccl/ccl.emf"
+				"secondEmfatic": "ccl/ccl-no-annotations.emf"
 			}
 		]
 	},
