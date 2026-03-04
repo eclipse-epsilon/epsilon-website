@@ -6,6 +6,7 @@ class Model {
 	val Transition[*] transitions;
 }
 
+@node(label="text")
 abstract class Step {
 	attr String name;
 	attr String text;
@@ -15,6 +16,7 @@ abstract class Step {
 
 class Statement extends Step {}
 
+@node(shape="hexagon", wrapLength="15")
 class Decision extends Step {}
 
 class CallRedirection extends Step {
@@ -25,6 +27,7 @@ class InputQuestion extends Step {
     attr String variable;
 }
 
+@edge(label="text", source="from", target="to", direction="down")
 class Transition {
 	attr String text;
 	ref Step#outgoing from;

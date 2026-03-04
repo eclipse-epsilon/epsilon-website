@@ -7,11 +7,13 @@ class Graph {
     val Type[*] types;
 }
 
+@node(label="eol: self.name + (self.type.isDefined() ? (' : ' + self.type.name) : '')")
 class Node {
     attr String name;
     ref Type type;
 }
 
+@edge(source="from", target="to", direction="down")
 class Edge {
     ref Node from;
     ref Node to;

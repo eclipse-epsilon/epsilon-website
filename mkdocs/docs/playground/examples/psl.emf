@@ -9,6 +9,7 @@ class Project {
 	val Person[*] people;
 }
 
+@node(label="name")
 class Task {
 	attr String name;
 	attr int start;
@@ -17,10 +18,12 @@ class Task {
 	val Effort[*]#task effort;
 }
 
+@node(label="name")
 class Person {
 	attr String name;
 }
 
+@edge(source="person", target="task", label="eol: self.percentage + '%'")
 class Effort {
     @diagram(direction="up")
 	ref Person person;

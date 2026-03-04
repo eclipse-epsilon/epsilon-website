@@ -1,7 +1,9 @@
 package tree;
 
+@node(label="label")
 class Tree {
 	attr String label;
+	@edge(label="eol: '#' + (self.children.indexOf(item) + 1)")
 	val Tree[*]#parent children;
 	ref Tree#children parent;
 }

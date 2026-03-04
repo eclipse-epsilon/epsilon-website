@@ -4,7 +4,11 @@ The [Epsilon Playground](../../../playground) is a web application for fiddling 
 
 ## Emfatic Metamodels in the Playground
 
-For metamodelling, the Playground uses Ecore's [Emfatic](https://eclipse.org/emfatic) textual syntax, augmented with a couple of [annotations](https://www.eclipse.org/emfatic/#annotations) to control the graphical appearance of the metamodels.
+For metamodelling, the Playground uses Ecore's [Emfatic](https://eclipse.org/emfatic) textual syntax, augmented with a few [annotations](https://www.eclipse.org/emfatic/#annotations) to control the graphical appearance of models and metamodels.
+
+### Metamodel Diagram Annotations
+
+The annotations below control the appearance of the class diagram that the Playground generates for Emfatic metamodels.
 
 - `@diagram(direction="up/down/left/right/none")`: Can be attached to references (`val`/`ref`) and to attributes of enumeration type to specify the direction of the respective edge in the diagram (`right` by default for non-containment references, `left` for enumeration-typed attributes, and `down` for containment references). Setting the direction to `none` hides the edge.
 - `@diagram(inheritance.direction="up/down/left/right/none")`: Can be attached to classes to specify the direction of its inheritance edges in the diagram (`up` by default).
@@ -84,7 +88,52 @@ produces the monochrome diagram below.
 
 ![](monochrome.png)
 
+### Model Graphical Syntax Annotations
 
+[Additional annotations](graphical-syntax-annotations.md) can be used to specify the graphical syntax of models. In the absence of such annotations, models are displayed as object diagrams where elements are represented with objects and references with edges between them as shown below.
+
+![](default-object-diagram.png)
+
+By adding the `@node` and `@edge` annotations below, the same model is displayed as a more concise and meaningful diagram.
+
+```emf
+@namespace(uri="psl", prefix="")
+package psl;
+
+class Project {
+	attr String name;
+	attr String description;
+	val Task[*] tasks;
+	@diagram(direction="right")
+	val Person[*] people;
+}
+
+@node(label="name")
+class Task {
+	attr String name;
+	attr int start;
+	attr int duration;
+	@diagram(direction="right")
+	val Effort[*]#task effort;
+}
+
+@node(label="name")
+class Person {
+	attr String name;
+}
+
+@edge(source="person", target="task", label="eol: self.percentage + '%'")
+class Effort {
+    @diagram(direction="up")
+	ref Person person;
+	ref Task#effort task;
+	attr int percentage = 100;
+}
+```
+
+![](custom-diagram.png)
+
+The complete list of supported annotations is available [here](graphical-syntax-annotations.md).
 
 ## Save and share your work
 
