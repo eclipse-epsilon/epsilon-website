@@ -348,6 +348,14 @@
 				"emfatic": "psl.emf"
 			},
 			{
+				"id": "eol-callcentre",
+				"title": "Query Call Centre Model",
+				"language": "eol",
+				"program": "callcentre/callcentre.eol",
+				"flexmi": "callcentre/callcentre.flexmi",
+				"emfatic": "callcentre/callcentre.emf"
+			},
+			{
 				"id": "safe-navigation",
 				"title": "Safe Navigation",
 				"language": "eol",
