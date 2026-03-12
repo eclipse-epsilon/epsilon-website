@@ -1,0 +1,49 @@
+// Prints the total number of Statements, Decisions 
+// InputQuestions and CallRedirections as all of these are subtypes of Step
+Step.getAllOfKind().size().println();
+
+// .all is a shorthand for .getAllOfKind()
+Step.all.size().println();
+
+// Prints 0 as Step is an abstract class
+Step.getAllOfType().size().println();
+
+// Prints true
+Statement.all.first().isTypeOf(Statement).println();
+
+// Prints true because Statement is a sub-type of Step
+Statement.all.first().isKindOf(Step).println();
+
+// Define a variable of type Sequence
+var longSteps : Sequence;
+
+// Iterate through all elements of type Step in the call centre model
+for (step in Step.all) {
+	// Calculate the length of its label
+	var length : Integer;
+	length = step.text.length();
+	// If it’s > 30
+	if (length > 30) {
+		longSteps.add(step.text);
+	}
+}
+
+// Print the long steps
+longSteps.println();
+
+// Prints true if there is at least one 
+// Decision the text of which does not end
+// with a question mark
+Decision.all.exists(d | not d.text.endsWith("?")).println();
+
+// Loops only through the statements (notice the type of the iterator)
+var filtered = Step.all.select(s : Statement | s.text.startsWith("W"));
+filtered.text.println();
+
+// Collects the labels of all transitions in the model in a new collection
+var transitionLabels = Transition.all.collect(t | t.text);
+
+// Does the same as the above
+var transitionLabels = Transition.all.text;
+transitionLabels.println();
+

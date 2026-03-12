@@ -9,11 +9,11 @@
   <redirection name="SavingsRedirection" text="Redirect to 01904 100000" number="01904 100001"/>
   <redirection name="MortgagesRedirection" text="Redirect to 01904 100001" number="01904 100001"/>
   <transitions from="WelcomeStatement" to="ExistingCustomerDecision"/>
-  <transitions text="Yes" from="ExistingCustomerDecision" to="AccountNumberInput"/>
+  <transitions text="Yes" from="ExistingCustomerDecision" to="AccountNumberInput" direction="left"/>
   <transitions text="No" from="ExistingCustomerDecision" to="CallRecordedStatement"/>
-  <transitions from="PINInput" to="CallRecordedStatement"/>
+  <transitions from="PINInput" to="CallRecordedStatement" direction="right"/>
   <transitions from="CallRecordedStatement" to="TalkAboutDecision"/>
-  <transitions text="Savings" from="TalkAboutDecision" to="SavingsRedirection"/>
-  <transitions text="Mortgages" from="TalkAboutDecision" to="MortgagesRedirection"/>
+  <transitions text="Savings" from="TalkAboutDecision" to="SavingsRedirection" direction="left"/>
+  <transitions text="Mortgages" from="TalkAboutDecision" to="MortgagesRedirection" direction="right"/>
   <transitions from="AccountNumberInput" to="PINInput"/>
 </model>

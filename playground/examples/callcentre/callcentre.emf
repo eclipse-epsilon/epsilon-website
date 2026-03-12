@@ -1,3 +1,4 @@
+@diagram(monochrome="true")
 package callcentre;
 
 class Model {
@@ -14,22 +15,27 @@ abstract class Step {
 	ref Transition[*]#from outgoing;
 }
 
+@diagram(color="FFE45D")
 class Statement extends Step {}
 
+@diagram(color="FFC586")
 @node(shape="hexagon", wrapLength="15")
 class Decision extends Step {}
 
+@diagram(color="BEEEA3")
 class CallRedirection extends Step {
 	attr String number;
 }
 
+@diagram(color="AEEEFD")
 class InputQuestion extends Step {
     attr String variable;
 }
 
-@edge(label="text", source="from", target="to", direction="down")
+@edge(label="text", source="from", target="to", direction="eol: self.direction")
 class Transition {
 	attr String text;
+	attr String direction = "down";
 	ref Step#outgoing from;
 	ref Step#incoming to;
 }
