@@ -112,6 +112,9 @@ If validation is successful but you still get PlantUML errors:
 === "Component Diagram"
     [![](examples/ccl.svg)](../../../../playground/?cclvalidate)
 
+=== "Flowchart Diagram"
+    [![](examples/callcentre.svg)](../../../../playground/?callcentre2minivoicexml)
+
 === "Project Diagram"
     [![](examples/psl.svg)](../../../../playground/?eol)
 

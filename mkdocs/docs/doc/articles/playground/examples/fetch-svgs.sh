@@ -43,3 +43,8 @@ generate_diagram \
   "../../../../playground/examples/stm.flexmi" \
   "../../../../playground/examples/stm.emf" \
   "stm.svg"
+
+generate_diagram \
+  "../../../../playground/examples/callcentre/callcentre.flexmi" \
+  "../../../../playground/examples/callcentre/callcentre.emf" \
+  "callcentre.svg"
