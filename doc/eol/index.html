@@ -2677,14 +2677,16 @@
 <p>You can run and fiddle with an EOL program that queries a project scheduling model in the <a href="../../playground/?eol">online Epsilon Playground</a>.</p>
 </div>
 <h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
-<p>EOL programs are organized in <code>modules</code>. Each module defines a <code>body</code> and a number of <code>operations</code>. The body is a block of statements that are evaluated when the module is executed. Each operation defines the kind of objects on which it is applicable (<code>context</code>), a <code>name</code>, a set of <code>parameters</code> and optionally a <code>return type</code>. Modules can also import other modules using <code>import</code> statements and access their operations, as shown in the listing below.</p>
+<p>EOL programs are organized in <code>modules</code>. Each module defines a <code>body</code> and a number of <code>operations</code>. The body is a block of statements that are evaluated when the module is executed. Each operation defines the kind of objects on which it is applicable (<code>context</code>), a <code>name</code>, a set of <code>parameters</code> and optionally a <code>return type</code>.</p>
+<p>Modules can also import other modules using <code>import</code> statements and access their operations, as shown in the listing below.
+Import statements can take relative paths, absolute URIs, and (since 2.9) <a href="../articles/up-imports/"><code>up://</code> URIs</a>.</p>
 <p><pre class="highlight"><code class="language-eol">// file imported.eol
 operation hello() {
   "Hello world!".println();
 }</code></pre>
 &nbsp;
 <pre class="highlight"><code class="language-eol">// file importer.eol
-// We can use relative/absolute paths or platform:/ URIs
+// We can use relative/absolute paths, platform:/ URIs, or up:// URIs
 import "imported.eol";
 
 hello(); // main body
