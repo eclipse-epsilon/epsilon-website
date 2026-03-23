@@ -7,7 +7,10 @@ EOL is the core expression language of Epsilon, and the foundation for task-spec
 
 ## Syntax
 
-EOL programs are organized in `modules`. Each module defines a `body` and a number of `operations`. The body is a block of statements that are evaluated when the module is executed. Each operation defines the kind of objects on which it is applicable (`context`), a `name`, a set of `parameters` and optionally a `return type`. Modules can also import other modules using `import` statements and access their operations, as shown in the listing below.
+EOL programs are organized in `modules`. Each module defines a `body` and a number of `operations`. The body is a block of statements that are evaluated when the module is executed. Each operation defines the kind of objects on which it is applicable (`context`), a `name`, a set of `parameters` and optionally a `return type`.
+
+Modules can also import other modules using `import` statements and access their operations, as shown in the listing below.
+Import statements can take relative paths, absolute URIs, and (since 2.9) [`up://` URIs](articles/up-imports.md).
 
 ```eol
 // file imported.eol
@@ -18,7 +21,7 @@ operation hello() {
 &nbsp;
 ```eol
 // file importer.eol
-// We can use relative/absolute paths or platform:/ URIs
+// We can use relative/absolute paths, platform:/ URIs, or up:// URIs
 import "imported.eol";
 
 hello(); // main body
