@@ -209,6 +209,7 @@ ModelElementType --|> Any
 Any <|-- Native
 Any <|-- Collection
 Any <|-- Map
+Map <|-- Tuple
 Collection <|-- Bag
 Collection <|-- Set
 Collection <|-- OrderedSet
