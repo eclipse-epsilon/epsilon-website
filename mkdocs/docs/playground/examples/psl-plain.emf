@@ -4,18 +4,17 @@ package psl;
 class Project {
 	attr String name;
 	attr String description;
-	val Activity[*] activities;
+	val Task[*] tasks;
 	@diagram(direction="right")
 	val Person[*] people;
 }
 
-@diagram(color="ivory")
-class Activity {
+class Task {
 	attr String name;
 	attr int start;
-	attr int end;
+	attr int duration;
 	@diagram(direction="right")
-	val Effort[*] effort;
+	val Effort[*]#task effort;
 }
 
 class Person {
@@ -25,5 +24,6 @@ class Person {
 class Effort {
     @diagram(direction="up")
 	ref Person person;
+	ref Task#effort task;
 	attr int percentage = 100;
 }
