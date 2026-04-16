@@ -1,26 +1,17 @@
-?nsuri: psl
-project:
-- name: ACME
-- task:
-    - name: Analysis
-    - start: 1
-    - dur: 3
-    - effort: {person: Alice}
-- task:
-    - name: Design
-    - start: 4
-    - dur: 6
-    - effort: {person: Bob, perc: 70}
-    - effort: {person: Charlie, perc: 30}
-- task:
-    - name: Implementation
-    - start: 7
-    - dur: 3
-    - effort: {person: Bob, perc: 40}
-    - effort: {person: Alice, perc: 60}
-- person:
-    - name: Alice
-- person:
-    - name: Bob
-- person:
-    - name: Charlie
+<?nsuri psl?>
+<project name="ACME">
+	<person name="Alice"/>
+	<person name="Bob"/>
+    <person name="Charlie"/>
+	<task name="Analysis" start="1" dur="3">
+		<effort person="Alice"/>
+	</task>
+	<task name="Design" start="4" dur="6">
+		<effort person="Bob" perc="70"/>
+        <effort person="Charlie" perc="30"/>
+	</task>
+	<task name="Implementation" start="7" dur="3">
+		<effort person="Bob" perc="40"/>
+		<effort person="Alice" perc="60"/>
+	</task>
+</project>
