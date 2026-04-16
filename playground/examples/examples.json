@@ -71,7 +71,7 @@
 				"language": "flock",
 				"program": "psl.mig",
 				"flexmi": "psl.flexmi",
-				"emfatic": "psl.emf",
+				"emfatic": "psl-plain.emf",
 				"secondEmfatic": "pslv2.emf"
 			},			
 			{
