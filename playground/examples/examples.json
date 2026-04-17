@@ -333,6 +333,24 @@
 				"flexmi": "etl-many-to-one/source.flexmi",
 				"emfatic": "etl-many-to-one/before.emf",
 				"secondEmfatic": "etl-many-to-one/after.emf"
+			},
+			{
+				"id": "tree2graph-equivalent",
+				"title": "Equivalents in Tree to Graph",
+				"language": "etl",
+				"program": "tree2graph-equivalent.etl",
+				"flexmi": "tree.flexmi",
+				"emfatic": "tree.emf",
+				"secondEmfatic": "graph.emf"
+			},
+			{
+				"id": "pslv0-v1",
+				"title": "Add Effort to Project Plan",
+				"language": "flock",
+				"program": "pslv0-v1.mig",
+				"flexmi": "pslv0.flexmi",
+				"emfatic": "pslv0.emf",
+				"secondEmfatic": "psl-plain.emf"
 			}
 		]
 	},
@@ -394,19 +412,6 @@
 			}
 		]
 	},
-	{
-		"title": "Advanced ETL Examples",
-		"examples": [
-			{
-				"id": "tree2graph-equivalent",
-				"title": "Equivalents in Tree to Graph",
-				"language": "etl",
-				"program": "tree2graph-equivalent.etl",
-				"flexmi": "tree.flexmi",
-				"emfatic": "tree.emf",
-				"secondEmfatic": "graph.emf"
-			}
-	]},
 	{
 		"title": "Model Generation Examples",
 		"examples": [

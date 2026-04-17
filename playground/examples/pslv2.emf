@@ -1,4 +1,4 @@
-@namespace(uri="psl", prefix="")
+@namespace(uri="psl-v2", prefix="")
 package psl;
 
 class Project {

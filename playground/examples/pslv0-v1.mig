@@ -1,0 +1,20 @@
+// The new version of the metamodel introduces
+// the concept of Effort. We need to migrate
+// Tasks to contain Effort elements instead of
+// direct references to participants
+migrate Task {
+    
+    // For every task participant
+    for (p in original.participants) {
+        // Create a new Effort element in the migrated model
+        var effort : new Migrated!Effort;
+        migrated.effort.add(effort);
+
+        // Set its person to the equivalent of the participant
+        // in the migrated model
+        effort.person = p.equivalent();
+
+        // Split percentage evenly across participants
+        effort.percentage = 100 / original.participants.size();
+    }
+}
