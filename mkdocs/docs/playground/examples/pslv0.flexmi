@@ -1,0 +1,8 @@
+<?nsuri psl-v0?>
+<project name="ACME">
+	<person name="Alice"/>
+	<person name="Bob"/>
+	<task name="Analysis" start="1" dur="3" part="Alice"/>
+	<task name="Design" start="4" dur="6" part="Bob"/>
+	<task name="Implementation" start="7" dur="3" part="Bob, Alice"/>
+</project>
