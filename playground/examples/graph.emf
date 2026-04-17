@@ -1,5 +1,7 @@
 package graph;
 
+@diagram(color="ivory")
+@node(label="name", contents="nodes")
 class Graph {
 	attr String name;
 	val Node[*] nodes;
