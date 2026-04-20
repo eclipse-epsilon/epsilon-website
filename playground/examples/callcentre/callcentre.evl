@@ -1,0 +1,27 @@
+context Decision {
+	
+	constraint AtLeast2Outgoing {
+		check: self.outgoing.size() >= 2
+		
+		message: "Decisions must have at least two outgoing transitions"
+	}
+	
+	critique TextEndsWithQuestionMark {
+		guard: self.text.isDefined()
+		check {
+			var text = self.text;
+			return text.endsWith("?");
+		}
+	}
+}
+
+context Step {
+	
+	critique TextStartsWithUpperCase {
+		guard: self.text.isDefined()
+
+		check: self.text.firstToUpperCase() = self.text
+		
+		message: "The text of steps should start with an upper-case letter"
+	}
+}
