@@ -278,6 +278,36 @@
 		]
 	},
 	{
+		"title": "Call Centre Examples",
+		"examples": [
+			{
+				"id": "eol-callcentre",
+				"title": "Query Call Centre Model",
+				"language": "eol",
+				"program": "callcentre/callcentre.eol",
+				"flexmi": "callcentre/callcentre.flexmi",
+				"emfatic": "callcentre/callcentre.emf"
+			},
+			{
+				"id": "evl-callcentre",
+				"title": "Validate Call Centre Model",
+				"language": "evl",
+				"program": "callcentre/callcentre.evl",
+				"flexmi": "callcentre/callcentre-evl.flexmi",
+				"emfatic": "callcentre/callcentre.emf"
+			},
+			{
+				"id": "callcentre2minivoicexml",
+				"title": "Call Centre to Mini VoiceXML",
+				"language": "etl",
+				"program": "callcentre/callcentre2minivoicexml.etl",
+				"flexmi": "callcentre/callcentre.flexmi",
+				"emfatic": "callcentre/callcentre.emf",
+				"secondEmfatic": "callcentre/minivoicexml.emf"
+			}
+		]
+	},
+	{
 		"title": "Model-to-Model Examples",
 		"examples": [
 			{
@@ -306,15 +336,6 @@
 				"flexmi": "notes-and-coins/notes.flexmi",
 				"emfatic": "notes-and-coins/notes.emf",
 				"secondEmfatic": "notes-and-coins/coins.emf"
-			},
-			{
-				"id": "callcentre2minivoicexml",
-				"title": "Call Centre to Mini VoiceXML",
-				"language": "etl",
-				"program": "callcentre/callcentre2minivoicexml.etl",
-				"flexmi": "callcentre/callcentre.flexmi",
-				"emfatic": "callcentre/callcentre.emf",
-				"secondEmfatic": "callcentre/minivoicexml.emf"
 			},
 			{
 				"id": "etl-many2one-pre",
@@ -364,14 +385,6 @@
 				"program": "extended-properties.eol",
 				"flexmi": "psl.flexmi",
 				"emfatic": "psl.emf"
-			},
-			{
-				"id": "eol-callcentre",
-				"title": "Query Call Centre Model",
-				"language": "eol",
-				"program": "callcentre/callcentre.eol",
-				"flexmi": "callcentre/callcentre.flexmi",
-				"emfatic": "callcentre/callcentre.emf"
 			},
 			{
 				"id": "safe-navigation",

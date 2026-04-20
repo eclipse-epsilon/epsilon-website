@@ -1,0 +1,18 @@
+<?nsuri callcentre?>
+<model name="AcmeBank">
+  <statement name="WelcomeStatement" text="welcome to Acme Bank"/>
+  <decision name="ExistingCustomerDecision" text="Are you an existing customer?"/>
+  <input name="AccountNumberInput" text="Please enter your account number" variable="accountNumber"/>
+  <input name="PINInput" text="Please enter your PIN" variable="pin"/>
+  <statement name="CallRecordedStatement" text="Please be aware that the call may be recorded for training and quality purposes"/>
+  <decision name="TalkAboutDecision" text="What would you like to talk to us about?" />
+  <redirection name="SavingsRedirection" text="Redirect to 01904 100000" number="01904 100001"/>
+  <redirection name="MortgagesRedirection" text="Redirect to 01904 100001" number="01904 100001"/>
+  <transitions from="WelcomeStatement" to="ExistingCustomerDecision"/>
+  <transitions text="Yes" from="ExistingCustomerDecision" to="AccountNumberInput" direction="left"/>
+  <transitions from="PINInput" to="CallRecordedStatement" direction="right"/>
+  <transitions from="CallRecordedStatement" to="TalkAboutDecision"/>
+  <transitions text="Savings" from="TalkAboutDecision" to="SavingsRedirection" direction="left"/>
+  <transitions text="Mortgages" from="TalkAboutDecision" to="MortgagesRedirection" direction="right"/>
+  <transitions from="AccountNumberInput" to="PINInput"/>
+</model>
