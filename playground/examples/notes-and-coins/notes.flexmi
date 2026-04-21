@@ -1,9 +1,5 @@
-?nsuri: notes
-wallet: {
-    note: {
-        value: 2
-    },
-    note: {
-        value: 5
-    }
-}
+<?nsuri notes?>
+<wallet>
+    <note value="2"/>
+    <note value="5"/>
+</wallet>
