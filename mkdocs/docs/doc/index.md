@@ -43,15 +43,6 @@ graph TD
 	EMC --- PTC
 	EMC --- CSV
 	EMC --- Dots
-
-	classDef eol fill:#CCCCCC;
-	class EOL eol;
-	classDef emc fill:#AFAFAF;
-	class EMC emc;
-	classDef language fill:#ffffff;
-	class ETL,Flock,EGL,EVL,ECL,EPL,EML,Pinset language;
-	classDef driver fill:#E8E8E8;
-	class EMF,XML,CSV,Simulink,Excel,PTC,Dots driver;
 ```
 
 ### Task-Specific Languages
