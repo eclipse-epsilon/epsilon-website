@@ -1,0 +1,16 @@
+<?nsuri minigsn?>
+<model>
+    <context name="System" desc="Autonomous delivery drone system operating in an urban area"/>
+    <context name="OpsEnv" desc="Normal operating environment includes GPS coverage, mapped routes, and monitored weather conditions"/>
+    <goal name="Top" desc="The autonomous delivery drone is acceptably safe for urban package delivery operations"/>
+    <contextOf source="Top" target="System" direction="left"/>
+    <contextOf source="Top" target="OpsEnv" direction="right"/>
+    <strat name="ByHazards" desc="Argument by showing that all identified operational hazards are adequately controlled"/>
+    <supp source="Top" target="ByHazards"/>
+    <goal name="G1" desc="Collision with people, vehicles, or buildings is prevented or mitigated"/>
+    <goal name="G2" desc="Loss of navigation or communication is detected and handled safely"/>
+    <goal name="G3" desc="Battery and propulsion failures are managed without unacceptable risk"/>
+    <supp source="ByHazards" target="G1"/>
+    <supp source="ByHazards" target="G2"/>
+    <supp source="ByHazards" target="G3"/>
+</model>

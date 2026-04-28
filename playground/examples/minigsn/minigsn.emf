@@ -1,0 +1,36 @@
+@namespace(uri="minigsn")
+package minigsn;
+
+class Model {
+  val Node[*] nodes;
+  val SupportedBy[*] supportedBy;
+  val ContextOf[*] contextOf;
+}
+
+@node(label="eol:'**' + self.name + '**' + '\\n\\n' + self.description.wrap(30)", wrap="false")
+abstract class Node {
+  attr String name;
+  attr String description;
+}
+
+class Goal extends Node {}
+
+class Strategy extends Node {}
+
+class Context extends Node {}
+
+class Solution extends Node {}
+
+@edge(source="source", target="target", direction="eol:self.direction")
+class SupportedBy {
+  ref Node source;
+  ref Node target;
+  attr String direction = "down";
+}
+
+@edge(source="source", target="target", direction="eol:self.direction", targetDecoration="arrow.empty")
+class ContextOf {
+  ref Node source;
+  ref Context target;
+  attr String direction = "right";
+}
