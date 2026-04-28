@@ -308,6 +308,28 @@
 		]
 	},
 	{
+		"title": "Safety Assurance Examples",
+		"examples": [
+			{
+				"id": "egl-minigsn",
+				"title": "Generate Safety Case Report",
+				"language": "egl",
+				"program": "minigsn/minigsn.egl",
+				"flexmi": "minigsn/minigsn.flexmi",
+				"emfatic": "minigsn/minigsn.emf",
+				"outputType": "html"
+			},
+			{
+				"id": "evl-minigsn",
+				"title": "Validate Assurance Model",
+				"language": "evl",
+				"program": "minigsn/minigsn.evl",
+				"flexmi": "minigsn/minigsn-evl.flexmi",
+				"emfatic": "minigsn/minigsn.emf"
+			}
+		]
+	},
+	{
 		"title": "Model-to-Model Examples",
 		"examples": [
 			{

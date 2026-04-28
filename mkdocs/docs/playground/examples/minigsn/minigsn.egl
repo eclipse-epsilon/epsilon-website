@@ -1,0 +1,228 @@
+<html>
+
+<head>
+    <title>Safety Case Report</title>
+</head>
+
+<body>
+    <h1>Safety Case Report</h1>
+
+    <h2>1. Overview</h2>
+
+    <p>This report presents the safety assurance argument captured in the model.</p>
+
+    <div class="summary">
+        <div class="card"><strong>Goals</strong><br>[%=Goal.all.size()%]</div>
+        <div class="card"><strong>Strategies</strong><br>[%=Strategy.all.size()%]</div>
+        <div class="card"><strong>Contexts</strong><br>[%=Context.all.size()%]</div>
+        <div class="card"><strong>Solutions</strong><br>[%=Solution.all.size()%]</div>
+        <div class="card"><strong>Supported By Links</strong><br>[%=SupportedBy.all.size()%]</div>
+        <div class="card"><strong>Context Of Links</strong><br>[%=ContextOf.all.size()%]</div>
+    </div>
+
+    <h2>2. Top-Level Goals</h2>
+
+    [%for (g in Goal.all) {%]
+    [%if (not SupportedBy.all.exists(sb | sb.target == g)) {%]
+
+            <div class="node">
+                <div class="kind">Goal</div>
+                <h3>[%=g.name%]</h3>
+                <p>[%=g.description%]</p>
+
+                [%var ctxs = g.contexts();%]
+                [%if (ctxs.size() > 0) {%]
+                    <strong>Context</strong>
+                    <ul>
+                    [%for (c in ctxs) {%]
+                        <li><strong>[%=c.name%]</strong>: [%=c.description%]</li>
+                    [%}%]
+                    </ul>
+                [%}%]
+            </div>
+        [%}%]
+    [%}%]
+
+    <h2>3. Argument Structure</h2>
+
+    [%for (g in Goal.all) {%]
+    <div class="node [%if (not g.isSupported()) {%]warning[%}%]">
+            <div class="kind">Goal</div>
+            <h3>[%=g.name%]</h3>
+            <p>[%=g.description%]</p>
+
+            [%var ctxs = g.contexts();%]
+            [%if (ctxs.size() > 0) {%]
+                <strong>Context</strong>
+                <ul>
+                    [%for (c in ctxs) {%]
+                        <li><strong>[%=c.name%]</strong>: [%=c.description%]</li>
+                    [%}%]
+                </ul>
+            [%}%]
+
+            [%var supports = g.supportingElements();%]
+            [%if (supports.size() > 0) {%]
+                <strong>Supported by</strong>
+                <ul>
+                [%for (s in supports) {%]
+                    <li>
+                        <strong>[%=s.kind()%] [%=s.name%]</strong>:
+                        [%=s.description%]
+                    </li>
+                [%}%]
+                </ul>
+            [%} else {%]
+                <p><strong>Support status:</strong> No supporting elements are defined.</p>
+            [%}%]
+        </div>
+
+    [%}%]
+
+    <h2>4. Strategies</h2>
+
+    [%for (s in Strategy.all) {%]
+    <div class="node">
+        <div class="kind">Strategy</div>
+        <h3>[%=s.name%]</h3>
+        <p>[%=s.description%]</p>
+
+        [%var supports = s.supportingElements();%]
+
+        [%if (supports.size() > 0) {%]
+            <strong>Decomposes into</strong>
+
+            <ul>
+            [%for (e in supports) {%]
+                <li>
+                    <strong>[%=e.kind()%] [%=e.name%]</strong>:
+                    [%=e.description%]
+                </li>
+            [%}%]
+            </ul>
+
+        [%} else {%]
+            <p>No further decomposition is defined.</p>
+        [%}%]
+    </div>
+
+    [%}%]
+
+    <h2>5. Evidence</h2>
+
+    [%for (sol in Solution.all) {%]
+        <div class="node evidence">
+            <div class="kind">Solution</div>
+            <h3>[%=sol.name%]</h3>
+            <p>[%=sol.description%]</p>
+        </div>
+    [%}%]
+
+    <h2>6. Assurance Completeness Check</h2>
+
+    [%var unsupportedGoals = Goal.all.select(g | not g.isSupported());%]
+
+    [%if (unsupportedGoals.size() == 0) {%]
+        <div class="card">
+            <p><strong>Result:</strong> All goals have at least one supporting element.</p>
+        </div>
+    [%} else {%]
+        <div class="card warning">
+            <p><strong>Result:</strong> The following goals currently have no supporting elements:</p>
+            <ul>
+                [%for (g in unsupportedGoals) {%]
+                <li><strong>[%=g.name%]</strong>: [%=g.description%]</li>
+                [%}%]
+            </ul>
+        </div>
+
+    [%}%]
+
+    <h2>7. Context Catalogue</h2>
+
+    [%for (c in Context.all) {%]
+    <div class="node context">
+        <div class="kind">Context</div>
+        <h3>[%=c.name%]</h3>
+        <p>[%=c.description%]</p>
+    </div>
+    [%}%]
+
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+            line-height: 1.5;
+            color: #222;
+        }
+
+        h1, h2, h3 {
+            color: #1f3a5f;
+        }
+
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1rem 0 2rem 0;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            background: #f8f9fb;
+        }
+
+        .node {
+            border-left: 4px solid #1f3a5f;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+            background: #fff;
+        }
+
+        .warning {
+            border-left-color: #b45309;
+            background: #fff7ed;
+        }
+
+        .evidence {
+            border-left-color: #15803d;
+        }
+
+        .context {
+            border-left-color: #6d28d9;
+        }
+
+        .kind {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        ul {
+            margin-top: 0.5rem;
+        }
+    </style>
+    
+</body>
+
+</html>
+[%
+operation Node kind() {
+    return self.eClass().name;
+}
+
+operation Node supportingElements() {
+    return SupportedBy.all.select(sb | sb.source == self).collect(sb | sb.target);
+}
+
+operation Node contexts() {
+    return ContextOf.all.select(co | co.source == self).collect(co | co.target);
+}
+
+operation Node isSupported() {
+    return self.supportingElements().size() > 0;
+}
+%]

@@ -1,0 +1,23 @@
+context Goal {
+
+    // All goals should be supported
+    critique IsSupported {
+
+        check:  SupportedBy.all.exists(sb | sb.source == self)
+
+        message: "No supporting elements are defined"
+    }
+
+}
+
+context Context {
+
+    // All context elements must be context of at least one node
+    constraint IsConnected {
+
+        check: ContextOf.all.exists(co| co.target = self)
+
+        message: "Disconnected context"
+    }
+
+}
