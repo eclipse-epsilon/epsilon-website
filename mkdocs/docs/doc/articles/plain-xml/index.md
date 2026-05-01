@@ -246,7 +246,7 @@ model.bind("book", "authors", "author", "id", true);
 model.bind("book", "editor", "editor", "name", false);
 ```
 
-where `model` is the name of the model (as specified in the run configuration). These statements should be at the top of the EOL file so the bindings are added before any other code executes. For rule-based languages, this could be done in a `pre` block. If invoking from [java](#loading-an-xml-document-through-java-code)) the bind method can be called on the model variable.
+where `model` is the name of the model (as specified in the run configuration). These statements should be at the top of the EOL file so the bindings are added before any other code executes. For rule-based languages, this could be done in a `pre` block. If invoking from [Java](#loading-an-xml-document-through-java-code) the `bind` method can be called on the model variable.
 
 After the bindings are in place, we can use them:
 
