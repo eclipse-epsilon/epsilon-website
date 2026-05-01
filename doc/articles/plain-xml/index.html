@@ -2148,7 +2148,7 @@ If a root element is not assigned, then the output file will be empty.</p>
 <p>For enabling the references, we need to add the desired bindings to the model. The <code>bind</code> method has the following signature: <code>bind(String sourceTag, String sourceAttribute, String targetTag, String targetAttribute, boolean many)</code>. Thus, for the library example, in EOL this can be done like this:</p>
 <pre class="highlight"><code class="language-eol">model.bind("book", "authors", "author", "id", true);
 model.bind("book", "editor", "editor", "name", false);</code></pre>
-<p>where <code>model</code> is the name of the model (as specified in the run configuration). These statements should be at the top of the EOL file so the bindings are added before any other code executes. For rule-based languages, this could be done in a <code>pre</code> block. If invoking from <a href="#loading-an-xml-document-through-java-code">java</a>) the bind method can be called on the model variable.</p>
+<p>where <code>model</code> is the name of the model (as specified in the run configuration). These statements should be at the top of the EOL file so the bindings are added before any other code executes. For rule-based languages, this could be done in a <code>pre</code> block. If invoking from <a href="#loading-an-xml-document-through-java-code">Java</a> the <code>bind</code> method can be called on the model variable.</p>
 <p>After the bindings are in place, we can use them:</p>
 <pre class="highlight"><code class="language-eol">var lib = t_library.all.first();
 // Prints 4
