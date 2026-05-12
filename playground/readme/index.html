@@ -1879,6 +1879,10 @@
 <ul>
 <li><code>npx cypress run --browser firefox --spec "cypress/e2e/*.cy.js"</code></li>
 </ul>
+<p>To exclude <code>download.cy.js</code>, which takes a while to run, you can use the following command:</p>
+<ul>
+<li><code>npx cypress run --browser firefox --spec 'cypress/e2e/*.cy.js,!cypress/e2e/download.cy.js'</code></li>
+</ul>
 <p>Note: When the browser is not set to <code>firefox</code>, tests in <code>download.cy.js</code> can be flaky.</p>
 <h2 id="testing-on-a-local-deployment">Testing on a local deployment<a class="headerlink" href="#testing-on-a-local-deployment" title="Permanent link">&para;</a></h2>
 <p>To run the Cypress tests on a locally-running Playground, run:</p>

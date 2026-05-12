@@ -79,15 +79,15 @@ class ModelPanel extends Panel {
             cls: "sys-button",
             onclick: "window.open('https://www.eclipse.org/epsilon/doc/flexmi');"
         }, {
-            html: this.buttonHtml("diagram", "Show/hide the model object diagram", this.getDiagramButtonId()),
+            html: this.buttonHtml("diagram", "Show/hide the model diagram", this.getDiagramButtonId()),
             cls: "sys-button",
             onclick: this.id + "Panel.toggleDiagram()"
         }, {
-            html: this.buttonHtml("refresh", "Refresh the model object diagram", this.getDiagramRefreshButtonId()),
+            html: this.buttonHtml("refresh", "Refresh the model diagram", this.getDiagramRefreshButtonId()),
             cls: "sys-button",
             onclick: this.id + "Panel.refreshDiagram()"
         }, {
-            html: this.buttonHtml("fit-diagram", "Fit the model object diagram", this.getFitDiagramButtonId()),
+            html: this.buttonHtml("fit-diagram", "Fit the model diagram", this.getFitDiagramButtonId()),
             cls: "sys-button",
             onclick: this.id + "Panel.fitDiagram()"
         }, {
@@ -95,7 +95,7 @@ class ModelPanel extends Panel {
             cls: "sys-button",
             onclick: this.id + "Panel.showDiagramSource()"
         }] : [{
-            html: this.buttonHtml("fit-diagram", "Fit the model object diagram", this.getFitDiagramButtonId()),
+            html: this.buttonHtml("fit-diagram", "Fit the model diagram", this.getFitDiagramButtonId()),
             cls: "sys-button",
             onclick: this.id + "Panel.fitDiagram()"
         }, {
