@@ -10,6 +10,6 @@ describe('Tests the default Pinset example', () => {
     }),
     it('Checks that the generation runs fine and a Project is produced', () => {
       cy.get(runButton).click();
-      cy.contains("title,start,duration");
+      cy.contains("name,start,duration");
     })
 });

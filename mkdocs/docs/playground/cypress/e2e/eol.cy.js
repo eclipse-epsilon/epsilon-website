@@ -16,7 +16,7 @@ describe('Tests the default EOL example', () => {
     }),
     it('Checks the model diagram generated when the toggle button is pressed', () => {
       cy.get(toggleModelDiagramButton).click();
-      cy.contains(":Task");
+      cy.contains("100%");
     }),
     it('Checks the metamodel diagram generated when the toggle button is pressed', () => {
       cy.get(toggleMetamodelDiagramButton).click();

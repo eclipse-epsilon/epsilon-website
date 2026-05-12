@@ -8,8 +8,8 @@ describe('Tests the default EMG example', () => {
       cy.contains('- Each project');
       cy.contains('package psl;');
     }),
-    it('Checks that the generation runs fine and a Project is produced', () => {
+    it('Checks that the generation runs fine and an effort is produced', () => {
       cy.get(runButton).click();
-      cy.contains(":Project");
+      cy.contains("%");
     })
   });

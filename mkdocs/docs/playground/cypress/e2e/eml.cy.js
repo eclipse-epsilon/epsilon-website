@@ -11,8 +11,8 @@ describe('Tests the default EML example', () => {
       cy.contains('Testing');
       cy.contains('package psl;');
     }),
-    it('Checks that the program runs fine and a person is produced', () => {
+    it('Checks that the program runs fine and an effort is produced', () => {
       cy.get(runButton).click();
-      cy.contains(":Person");
+      cy.contains("100%");
     })
   });

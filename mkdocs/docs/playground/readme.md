@@ -19,6 +19,10 @@ To run all the end-to-end tests under `cypress/e2e`, you can use the following c
 
 - `npx cypress run --browser firefox --spec "cypress/e2e/*.cy.js"`
 
+To exclude `download.cy.js`, which takes a while to run, you can use the following command:
+
+- `npx cypress run --browser firefox --spec 'cypress/e2e/*.cy.js,!cypress/e2e/download.cy.js'`
+
 Note: When the browser is not set to `firefox`, tests in `download.cy.js` can be flaky.
 
 ## Testing on a local deployment

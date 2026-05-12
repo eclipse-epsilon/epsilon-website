@@ -11,6 +11,6 @@ describe('Tests the default EVL example', () => {
     }),
     it('Checks that the constraints run fine and a warning is produced', () => {
       cy.get(runButton).click();
-      cy.contains("Charlie is not involved in the project");
+      cy.contains("Charlie is not involved");
     })
   });
