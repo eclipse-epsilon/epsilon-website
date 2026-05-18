@@ -2354,7 +2354,7 @@ class Skill {
   &lt;/people&gt;
 &lt;/project&gt;</code></pre>
 <h3 id="non-containment-reference-resolution">Non-Containment Reference Resolution<a class="headerlink" href="#non-containment-reference-resolution" title="Permanent link">&para;</a></h3>
-<p>To resolve non-containment references, Flexmi needs target elements to have some kind of ID. If a class has an EAttribute marked as <code>id</code>, Flexmi will use that to identify its instances, otherwise, it will use the value of the <code>name</code> attribute, if present. Fully-qualified ID paths, separated by <code>.</code> are also supported.</p>
+<p>To resolve non-containment references, Flexmi needs target elements to have some kind of ID. If a class has an EAttribute marked as <code>id</code>, Flexmi will use that to identify its instances, otherwise, it will use the value of the <code>name</code> attribute, if present. Fully-qualified ID paths, separated by <code>.</code> are also supported. Since version 2.9, <a href="https://github.com/eclipse-epsilon/epsilon/issues/221">partially-qualified ID paths</a> are also supported.</p>
 <h3 id="long-attribute-values">Long Attribute Values<a class="headerlink" href="#long-attribute-values" title="Permanent link">&para;</a></h3>
 <p>XML elements can also be used instead of XML attributes to capture long/multiline EAttributes. For example, we can use a <code>&lt;description&gt;</code> nested element instead of an attribute as below.</p>
 <pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
@@ -2372,7 +2372,7 @@ class Skill {
 &lt;/project&gt;</code></pre>
 <h3 id="attribute-assignment">Attribute Assignment<a class="headerlink" href="#attribute-assignment" title="Permanent link">&para;</a></h3>
 <p>The Flexmi parser uses an implementation of the <a href="https://en.wikipedia.org/wiki/Hungarian_algorithm">Hungarian algorithm</a> to decide the best match of XML attribute names to EAttribute and non-containment EReference names.
-Containment EReference names are currently ignored during matching.</p>
+Containment EReference names are ignored during matching.</p>
 <h2 id="executable-attributes">Executable Attributes<a class="headerlink" href="#executable-attributes" title="Permanent link">&para;</a></h2>
 <p>Prepending <code>:</code> to the name of an attribute instructs the Flexmi parser to interpret its value as an executable <a href="../eol">EOL</a> expression instead of a literal value. Also, Flexmi supports attaching a <code>:var</code> or a <code>:global</code> attribute to XML elements, to declare local/global variables that can be used in EOL expressions. The scope of local variables includes siblings of the element, and their descendants, while global variables can be accessed from anywhere in the model.</p>
 <p>For example, in the Flexmi model below, the <code>Design</code> task is assigned to a local variable named <code>design</code>, which is then used to compute the value of the <code>start</code> time of the implementation task.</p>
