@@ -102,7 +102,7 @@ As such, it will create an instance of `Person` and will then try to find a suit
 
 ### Non-Containment Reference Resolution
 
-To resolve non-containment references, Flexmi needs target elements to have some kind of ID. If a class has an EAttribute marked as `id`, Flexmi will use that to identify its instances, otherwise, it will use the value of the `name` attribute, if present. Fully-qualified ID paths, separated by `.` are also supported.
+To resolve non-containment references, Flexmi needs target elements to have some kind of ID. If a class has an EAttribute marked as `id`, Flexmi will use that to identify its instances, otherwise, it will use the value of the `name` attribute, if present. Fully-qualified ID paths, separated by `.` are also supported. Since version 2.9, [partially-qualified ID paths](https://github.com/eclipse-epsilon/epsilon/issues/221) are also supported.
 
 ### Long Attribute Values
 
@@ -131,7 +131,7 @@ To keep very long values out of Flexmi models altogether, appending an `_` to th
 ### Attribute Assignment
 
 The Flexmi parser uses an implementation of the [Hungarian algorithm](https://en.wikipedia.org/wiki/Hungarian_algorithm) to decide the best match of XML attribute names to EAttribute and non-containment EReference names.
-Containment EReference names are currently ignored during matching.
+Containment EReference names are ignored during matching.
 
 ## Executable Attributes
 
