@@ -1059,9 +1059,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#block-style-indentation-based" class="md-nav__link">
+    <span class="md-ellipsis">
+      Block style (indentation-based)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flow-style-curly-braces-and-brackets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flow style (curly braces and brackets)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#dynamic-templates-in-yaml" class="md-nav__link">
     <span class="md-ellipsis">
       Dynamic Templates in YAML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#representing-heterogeneous-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representing heterogeneous lists
     </span>
   </a>
   
@@ -2215,9 +2242,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#block-style-indentation-based" class="md-nav__link">
+    <span class="md-ellipsis">
+      Block style (indentation-based)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flow-style-curly-braces-and-brackets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flow style (curly braces and brackets)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#dynamic-templates-in-yaml" class="md-nav__link">
     <span class="md-ellipsis">
       Dynamic Templates in YAML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#representing-heterogeneous-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representing heterogeneous lists
     </span>
   </a>
   
@@ -2506,77 +2560,75 @@ resource.load(null);</code></pre>
 <p>You can convert a Flexmi model to standard XMI (with no templates, executable attributes etc.) by right-clicking on it in the Project Explorer view and selecting <code>Generate XMI</code>.</p>
 <p>Converting an XMI model to Flexmi on the other hand is not supported as there's no unique mapping in this direction.</p>
 <h2 id="yaml-flavour">YAML Flavour<a class="headerlink" href="#yaml-flavour" title="Permanent link">&para;</a></h2>
-<p>Since Epsilon 2.3.0, Flexmi also supports a YAML flavour. Equivalent YAML representations for the XML-based model at the top of this page are shown below.</p>
+<p>Since Epsilon 2.3.0, Flexmi also supports a YAML flavour, which was revamped in 2.9.0 to improve ease of use.</p>
+<p>Equivalent YAML representations for the XML-based model at the top of this page are shown below, using the YAML flavour available from 2.9.0 onwards.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>The YAML flavour of Flexmi supports all the features of the XML flavour, including <a href="#reusable-templates">plain</a> and <a href="#dynamic-templates-and-slots">dynamic templates</a>, and <a href="#executable-attributes">executable attributes</a>. Also, it is worth noting that YAML is a superset of JSON.</p>
+<p>The YAML flavour of Flexmi supports all the features of the XML flavour, including <a href="#reusable-templates">plain</a> and <a href="#dynamic-templates-and-slots">dynamic templates</a>, and <a href="#executable-attributes">executable attributes</a>. YAML-specific features like <a href="https://spec.yaml.io/main/spec/1.2.2/#alias-nodes">anchors and aliases</a> are also supported.</p>
 </div>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Indentation-based</label><label for="__tabbed_1_2">Curly brackets-based</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
+<h3 id="block-style-indentation-based">Block style (indentation-based)<a class="headerlink" href="#block-style-indentation-based" title="Permanent link">&para;</a></h3>
 <pre class="highlight"><code class="language-yaml">?nsuri: psl
 project:
-- name: ACME
-- person: {name: Alice}
-- person: {name: Bob}
-- task:
-  - title: Analysis
-  - start: 1
-  - dur: 3
-  - effort: {person: Alice}
-- task:
-  - title: Design
-  - start: 4
-  - dur: 6
-  - effort: {person: Bob}
-- task:
-  - title: Implementation
-  - start: 7
-  - dur: 3
-  - effort: {person: Bob, perc: 50}
-  - effort: {person: Alice, perc: 50}</code></pre>
-</div>
-<div class="tabbed-block">
+  name: ACME
+  person:
+    - name: Alice
+    - name: Bob
+  task:
+    - title: Analysis
+      start: 1
+      dur: 3
+      effort:
+        person: Alice
+    - title: Design
+      start: 4
+      dur: 6
+      effort:
+        person: Bob
+    - title: Implementation
+      start: 7
+      dur: 3
+      effort:
+        - person: Bob
+          perc: 50
+        - person: Alice
+          perc: 50</code></pre>
+<h3 id="flow-style-curly-braces-and-brackets">Flow style (curly braces and brackets)<a class="headerlink" href="#flow-style-curly-braces-and-brackets" title="Permanent link">&para;</a></h3>
 <pre class="highlight"><code class="language-yaml">?nsuri: psl
 project: {
   name: ACME,
-  person: {name: Alice},
-  person: {name: Bob},
-  task: {
+  person: [{name: Alice}, {name: Bob}],
+  task: [{
     title: Analysis,
     start: 1,
     dur: 3,
     effort: {person: Alice}
   },
-  task: {
+  {
     title: Design,
     start: 4,
     dur: 6,
     effort: {person: Bob}
   },
-  task: {
+  {
     title: Implementation,
     start: 7,
     dur: 3,
-    effort: {person: Bob, perc: 50},
-    effort: {person: Alice, perc: 50}
-  }
+    effort: [{person: Bob, perc: 50},
+             {person: Alice, perc: 50}]
+  }]
 }</code></pre>
-</div>
-</div>
-</div>
-<p>For multi-valued attributes and non-containment references, comma-separated values, or lists of scalars can be used as shown below.</p>
-<pre class="highlight"><code class="language-yaml">- ?nsuri: psl
-- person:
+<p>For multi-valued attributes and non-containment references, lists of scalars can be used as shown below.</p>
+<pre class="highlight"><code class="language-yaml">?nsuri: psl
+person:
   - name: Alice 
-  - skills: Java, HTML # Comma-separated
-- person:
+    skills: Java
   - name: Bob
-  - skills: # List of scalars
+    skills: # List of scalars
       - Java
       - HTML
-- skill: {name: Java}
-- skill: {name: HTML}</code></pre>
+skill:
+ - name: Java
+ - name: HTML</code></pre>
 <div class="admonition tip">
 <p class="admonition-title">Tabs vs. Spaces</p>
 <p>If your YAML-flavoured Flexmi model doesn't parse (i.e. the outline view of the Flexmi editor is empty), you may want to check that you have not accidentally used tabs instead of spaces for indentation.</p>
@@ -2584,28 +2636,68 @@ project: {
 <p>The Flexmi parser auto-detects whether a file is XML-based or YAML-based and parses it accordingly. As such, you should be able to edit YAML-flavoured <code>*.flexmi</code> files in the Flexmi editor. Additional examples of YAML-flavoured Flexmi models are available in this <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/tests/org.eclipse.epsilon.flexmi.test/src/org/eclipse/epsilon/flexmi/test/models">test project</a> (look for <code>*.yaml</code> files).</p>
 <h3 id="dynamic-templates-in-yaml">Dynamic Templates in YAML<a class="headerlink" href="#dynamic-templates-in-yaml" title="Permanent link">&para;</a></h3>
 <p>The YAML flavour requires a <code>script</code> attribute in the <code>content</code> of dynamic templates, that holds the EGL script used to dynamically produce the YAML content. The YAML equivalent of the XML-based dynamic template <a href="#dynamic-templates-and-slots">shown above</a> is as follows.</p>
-<pre class="highlight"><code class="language-yaml">- ?nsuri: psl
-
-- project:
-  - title: ACME
-  - person:
-    - name: Alice
-  - longtask:
-    - title: Implementation
-    - years: 2
-    - effort:
-      - person: Alice
-
-- :template:
-  - name: longtask
-  - parameter:
-    - name: years
-  - content:
-    - language: EGL
-    - script: |- # Multi-line EGL script
-       - task:
-         - duration: [%=years.asInteger()*12%]
-         - :slot</code></pre>
+<pre class="highlight"><code class="language-yaml">?nsuri: psl
+project:
+  title: ACME
+  person:
+    name: Alice
+  longtask:
+    title: Implementation
+    years: 2
+    effort:
+      person: Alice
+:template:
+  name: longtask
+  parameter:
+    name: years
+  content:
+    language: EGL
+    script: |- # Multi-line EGL script
+       task:
+         duration: [%=years.asInteger()*12%]
+         :slot: {}</code></pre>
+<h3 id="representing-heterogeneous-lists">Representing heterogeneous lists<a class="headerlink" href="#representing-heterogeneous-lists" title="Permanent link">&para;</a></h3>
+<p>There is a specific scenario that requires special attention in the YAML flavour.
+Suppose that we wanted to rewrite this Flexmi XML document using the YAML flavour, keeping exactly this order among the <code>EStructuralFeature</code>s of the <code>EClass</code> (<code>r1</code>, then <code>a1</code>, then <code>r2</code>):</p>
+<pre class="highlight"><code class="language-xml">&lt;?xml version="1.0"?&gt;
+&lt;?nsuri http://www.eclipse.org/emf/2002/Ecore?&gt;
+&lt;class name="c1"&gt;
+  &lt;eref name="r1" /&gt;
+  &lt;eattr name="a1" /&gt;
+  &lt;eref name="r2" /&gt;
+&lt;/class&gt;</code></pre>
+<p>Unfortunately, YAML does not allow us to repeat keys, so this document would not work as intended - we'd only see <code>r2</code>, and not <code>r1</code>:</p>
+<pre class="highlight"><code class="language-yaml">$nsuri: http://www.eclipse.org/emf/2002/Ecore
+class:
+  name: c1
+  eref: {name: r1} # &lt;-- would be ignored!
+  eattr: {name: a1}
+  eref: {name: r2}</code></pre>
+<p>Instead, what we'd need to do is to introduce a key encompassing the heterogeneous list of <code>EReference</code>s and <code>EAttribute</code>s, and use <code>$type</code> to override the XML tag that would be produced for each of its elements:</p>
+<pre class="highlight"><code class="language-yaml">$nsuri: http://www.eclipse.org/emf/2002/Ecore
+class:
+  name: c1
+  features:
+    - {$type: eref, name: r1}
+    - {$type: eattr, name: a1}
+    - {$type: eref, name: r2}</code></pre>
+<p>To save some space, we could use <code>eref</code> instead of <code>features</code>, and avoid using <code>$type</code> for the <code>eref</code>s:</p>
+<pre class="highlight"><code class="language-yaml">$nsuri: http://www.eclipse.org/emf/2002/Ecore
+class:
+  name: c1
+  eref:
+    - {name: r1}
+    - {$type: eattr, name: a1}
+    - {name: r2}</code></pre>
+<p>Note that if we do not care about preserving the exact order as in the XML document above, we could have just written:</p>
+<pre class="highlight"><code class="language-yaml">$nsuri: http://www.eclipse.org/emf/2002/Ecore
+class:
+  name: c1
+  eref:
+    - name: r1
+    - name: r2
+  eattr:
+    - name: a1</code></pre>
 <h2 id="philosophy">Philosophy<a class="headerlink" href="#philosophy" title="Permanent link">&para;</a></h2>
 <p>Flexmi was originally developed as a quick and dirty way to type in EMF models without having to define an Xtext grammar or adhere to the rigid naming rules of XMI or HUTN. The name is a combination of the word "flexible" and the "XMI" acronym.</p>
 <h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
