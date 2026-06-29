@@ -313,81 +313,86 @@ Converting an XMI model to Flexmi on the other hand is not supported as there's 
 
 ## YAML Flavour
 
-Since Epsilon 2.3.0, Flexmi also supports a YAML flavour. Equivalent YAML representations for the XML-based model at the top of this page are shown below.
+Since Epsilon 2.3.0, Flexmi also supports a YAML flavour, which was revamped in 2.9.0 to improve ease of use.
+
+Equivalent YAML representations for the XML-based model at the top of this page are shown below, using the YAML flavour available from 2.9.0 onwards.
 
 !!! info
-    The YAML flavour of Flexmi supports all the features of the XML flavour, including [plain](#reusable-templates) and [dynamic templates](#dynamic-templates-and-slots), and [executable attributes](#executable-attributes). Also, it is worth noting that YAML is a superset of JSON.
+    The YAML flavour of Flexmi supports all the features of the XML flavour, including [plain](#reusable-templates) and [dynamic templates](#dynamic-templates-and-slots), and [executable attributes](#executable-attributes). YAML-specific features like [anchors and aliases](https://spec.yaml.io/main/spec/1.2.2/#alias-nodes) are also supported.
 
-=== "Indentation-based"
-  
-    ```yaml
-    ?nsuri: psl
-    project:
-    - name: ACME
-    - person: {name: Alice}
-    - person: {name: Bob}
-    - task:
-      - title: Analysis
-      - start: 1
-      - dur: 3
-      - effort: {person: Alice}
-    - task:
-      - title: Design
-      - start: 4
-      - dur: 6
-      - effort: {person: Bob}
-    - task:
-      - title: Implementation
-      - start: 7
-      - dur: 3
-      - effort: {person: Bob, perc: 50}
-      - effort: {person: Alice, perc: 50}
-    ```
-
-=== "Curly brackets-based"
-  
-    ```yaml
-    ?nsuri: psl
-    project: {
-      name: ACME,
-      person: {name: Alice},
-      person: {name: Bob},
-      task: {
-        title: Analysis,
-        start: 1,
-        dur: 3,
-        effort: {person: Alice}
-      },
-      task: {
-        title: Design,
-        start: 4,
-        dur: 6,
-        effort: {person: Bob}
-      },
-      task: {
-        title: Implementation,
-        start: 7,
-        dur: 3,
-        effort: {person: Bob, perc: 50},
-        effort: {person: Alice, perc: 50}
-      }
-    }
-    ```
-
-For multi-valued attributes and non-containment references, comma-separated values, or lists of scalars can be used as shown below.
+### Block style (indentation-based)
 
 ```yaml
-- ?nsuri: psl
-- person:
+?nsuri: psl
+project:
+  name: ACME
+  person:
+    - name: Alice
+    - name: Bob
+  task:
+    - title: Analysis
+      start: 1
+      dur: 3
+      effort:
+        person: Alice
+    - title: Design
+      start: 4
+      dur: 6
+      effort:
+        person: Bob
+    - title: Implementation
+      start: 7
+      dur: 3
+      effort:
+        - person: Bob
+          perc: 50
+        - person: Alice
+          perc: 50
+```
+
+### Flow style (curly braces and brackets)
+
+```yaml
+?nsuri: psl
+project: {
+  name: ACME,
+  person: [{name: Alice}, {name: Bob}],
+  task: [{
+    title: Analysis,
+    start: 1,
+    dur: 3,
+    effort: {person: Alice}
+  },
+  {
+    title: Design,
+    start: 4,
+    dur: 6,
+    effort: {person: Bob}
+  },
+  {
+    title: Implementation,
+    start: 7,
+    dur: 3,
+    effort: [{person: Bob, perc: 50},
+             {person: Alice, perc: 50}]
+  }]
+}
+```
+
+For multi-valued attributes and non-containment references, lists of scalars can be used as shown below.
+
+```yaml
+?nsuri: psl
+person:
   - name: Alice 
-  - skills: Java, HTML # Comma-separated
-- person:
+    skills: Java
   - name: Bob
-  - skills: # List of scalars
+    skills: # List of scalars
       - Java
       - HTML
-- skill: {name: Java}
-- skill: {name: HTML}
+skill:
+ - name: Java
+ - name: HTML
 ```
 
 !!! tip "Tabs vs. Spaces"
@@ -400,29 +405,91 @@ The Flexmi parser auto-detects whether a file is XML-based or YAML-based and par
 The YAML flavour requires a `script` attribute in the `content` of dynamic templates, that holds the EGL script used to dynamically produce the YAML content. The YAML equivalent of the XML-based dynamic template [shown above](#dynamic-templates-and-slots) is as follows.
 
 ```yaml
-- ?nsuri: psl
-
-- project:
-  - title: ACME
-  - person:
-    - name: Alice
-  - longtask:
-    - title: Implementation
-    - years: 2
-    - effort:
-      - person: Alice
-
-- :template:
-  - name: longtask
-  - parameter:
-    - name: years
-  - content:
-    - language: EGL
-    - script: |- # Multi-line EGL script
-       - task:
-         - duration: [%=years.asInteger()*12%]
-         - :slot
+?nsuri: psl
+project:
+  title: ACME
+  person:
+    name: Alice
+  longtask:
+    title: Implementation
+    years: 2
+    effort:
+      person: Alice
+:template:
+  name: longtask
+  parameter:
+    name: years
+  content:
+    language: EGL
+    script: |- # Multi-line EGL script
+       task:
+         duration: [%=years.asInteger()*12%]
+         :slot: {}
 ```
+
+### Representing heterogeneous lists
+
+There is a specific scenario that requires special attention in the YAML flavour.
+Suppose that we wanted to rewrite this Flexmi XML document using the YAML flavour, keeping exactly this order among the `EStructuralFeature`s of the `EClass` (`r1`, then `a1`, then `r2`):
+
+```xml
+<?xml version="1.0"?>
+<?nsuri http://www.eclipse.org/emf/2002/Ecore?>
+<class name="c1">
+  <eref name="r1" />
+  <eattr name="a1" />
+  <eref name="r2" />
+</class>
+```
+
+Unfortunately, YAML does not allow us to repeat keys, so this document would not work as intended - we'd only see `r2`, and not `r1`:
+
+```yaml
+$nsuri: http://www.eclipse.org/emf/2002/Ecore
+class:
+  name: c1
+  eref: {name: r1} # <-- would be ignored!
+  eattr: {name: a1}
+  eref: {name: r2}
+```
+
+Instead, what we'd need to do is to introduce a key encompassing the heterogeneous list of `EReference`s and `EAttribute`s, and use `$type` to override the XML tag that would be produced for each of its elements:
+
+```yaml
+$nsuri: http://www.eclipse.org/emf/2002/Ecore
+class:
+  name: c1
+  features:
+    - {$type: eref, name: r1}
+    - {$type: eattr, name: a1}
+    - {$type: eref, name: r2}
+```
+
+To save some space, we could use `eref` instead of `features`, and avoid using `$type` for the `eref`s:
+
+```yaml
+$nsuri: http://www.eclipse.org/emf/2002/Ecore
+class:
+  name: c1
+  eref:
+    - {name: r1}
+    - {$type: eattr, name: a1}
+    - {name: r2}
+```
+
+Note that if we do not care about preserving the exact order as in the XML document above, we could have just written:
+
+```yaml
+$nsuri: http://www.eclipse.org/emf/2002/Ecore
+class:
+  name: c1
+  eref:
+    - name: r1
+    - name: r2
+  eattr:
+    - name: a1
+```
+
 
 ## Philosophy
 
