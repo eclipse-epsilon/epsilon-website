@@ -2046,7 +2046,42 @@ public class XSDToEcoreExample {
 </code></pre>
 <h2 id="running-this-example-from-java">Running this example from Java<a class="headerlink" href="#running-this-example-from-java" title="Permanent link">&para;</a></h2>
 <p>You can use the driver's API as shown below to load the library XML document and XSD schema and run the EOL snippets above from Java. The complete Maven project is <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.xsdxml">here</a>.</p>
-<pre class="highlight"><code class="language-java">400: Invalid request</code></pre>
+<pre class="highlight"><code class="language-java">package org.eclipse.epsilon.examples.xsdxml;
+
+import java.io.File;
+
+import org.eclipse.epsilon.common.util.StringProperties;
+import org.eclipse.epsilon.emc.emf.xml.XmlModel;
+import org.eclipse.epsilon.eol.EolModule;
+
+public class LibraryExample {
+
+    public static void main(String[] args) throws Exception {
+
+        // Parse the EOL program
+        EolModule module = new EolModule();
+        module.parse(new File("library/query-by-type.eol"));
+
+        // Load the model
+        XmlModel model = new XmlModel();
+        StringProperties properties = new StringProperties();
+        properties.put(XmlModel.PROPERTY_NAME, "M");
+        // No need to specify XSD URI due to xsi:noNamespaceSchemaLocation="library.xsd" in library.xml
+        properties.put(XmlModel.PROPERTY_MODEL_URI, new File("library/library.xml").toURI());
+        properties.put(XmlModel.PROPERTY_READONLOAD, "true");
+        properties.put(XmlModel.PROPERTY_STOREONDISPOSAL, "false");
+        model.load(properties);
+
+        // Make the model available to the program
+        module.getContext().getModelRepository().addModel(model);
+
+        // Execute the EOL program
+        module.execute();
+
+        // Dispose of the model
+        module.getContext().getModelRepository().dispose();
+    }
+}</code></pre>
 <h2 id="adding-an-xml-document-to-your-launch-configuration">Adding an XML document to your launch configuration<a class="headerlink" href="#adding-an-xml-document-to-your-launch-configuration" title="Permanent link">&para;</a></h2>
 <p>To add an XML document to your Epsilon launch configuration, you need to select "XML document backed by XSD (EMF)" from the list of available model types.</p>
 <p><img alt="" src="select.png" /></p>
