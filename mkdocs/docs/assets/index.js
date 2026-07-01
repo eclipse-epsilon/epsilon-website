@@ -139,7 +139,7 @@ hljs.registerLanguage('ecl', function(hljs) {
   
     return hljs.inherit(eol, {
       keywords: {
-        keyword: 'match auto do compare guard pre post with extends rule abstract',
+        keyword: 'match auto do compare guard pre post with extends rule abstract from',
         variable: 'matchTrace autoCompare matchInfo'
       }
     });

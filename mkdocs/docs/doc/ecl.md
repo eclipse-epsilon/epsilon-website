@@ -27,6 +27,10 @@ class Parameter {
     -name: String
     -type: EolType 
 }
+class Domain {
+    -dynamic: Boolean
+    -expression: ExecutableBlock<Collection>
+}
 class NamedStatementBlockRule {
     -name: String
     -body: StatementBlock
@@ -39,11 +43,13 @@ ErlModule -- Pre: pre *
 ErlModule -- Post: post *
 EclModule -- MatchRule: rules *
 MatchRule -- Parameter: left
+MatchRule -- Domain: leftDomain 0..1
 MatchRule -- Parameter: right
+MatchRule -- Domain: rightDomain 0..1
 MatchRule -- MatchRule: extends *
 ```
 
-A match rule has three parts. The *guard* part is an EOL expression or statement block that further limits the applicability of the rule to an even narrower range of elements than that specified by the *left* and *right* parameters. The *compare* part is an EOL expression or statement block that is responsible for comparing a pair of elements and deciding if they match or not. Finally, the *do* part is an EOL expression or block that is executed if the *compare* part returns true to perform any additional actions required.
+A match rule has three parts. The *guard* part is an EOL expression or statement block that further limits the applicability of the rule to an even narrower range of elements than that specified by the *left* and *right* parameters. The *left* domain is by default every instance of its type, but since Epsilon 2.5, it can be limited to the collection of elements returned by an optional expression. The *right* domain can also be optionally limited (since Epsilon 2.5) to the collection returned by an expression, and additionally it can optionally be *dynamic* (i.e. the expression can take the left element under consideration as a parameter): note that the *left* domain cannot be dynamic. The *compare* part is an EOL expression or statement block that is responsible for comparing a pair of elements and deciding if they match or not. Finally, the *do* part is an EOL expression or block that is executed if the *compare* part returns true to perform any additional actions required.
 
 *Pre* and *post* blocks are named blocks of EOL statements which as discussed in the sequel are executed before and after the match-rules have been executed respectively.
 
@@ -56,12 +62,14 @@ The concrete syntax of a match-rule is displayed below.
 (@greedy)?
 (@abstract)?
 rule <name>
-    match <leftParameterName>:<leftParameterType> 
+    match <leftParameterName>:<leftParameterType>
+        (in (:expression|{statementBlock}))?
     with <rightParameterName>:<rightParameterType>
+        ((in|from) (:expression|{statementBlock}))?
         (extends <ruleName>(, <ruleName>)*)? { 
 
-    (guard (:expression)|({statementBlock}))?
-    compare (:expression)|({statementBlock})
+    (guard (:expression|{statementBlock}))?
+    compare (:expression|{statementBlock})
     (do {statementBlock})?
 }
 ```
@@ -104,11 +112,15 @@ Map -- Match: info
 
 ### Rule Execution Scheduling
 
-Non-abstract, non-lazy match-rules are evaluated automatically by the execution engine in a top-down fashion - with respect to their order of appearance - in two passes. In the first pass, each rule is evaluated for all the pairs of instances in the two models that have a type-of relationship with the types specified by the *leftParameter* and *rightParameter* of the rule. In the second pass, each rule that is marked as *greedy* is executed for all pairs that have not been compared in the first pass, and which have a kind-of relationship with the types specified by the rule. In both passes, to evaluate the compare part of the rule, the guard must be satisfied.
+Non-abstract, non-lazy match-rules are evaluated automatically by the execution engine in a top-down fashion - with respect to their order of appearance - in two passes:
+
+- In the first pass, each rule is evaluated for all the pairs of instances in the two models that have a type-of relationship with the types specified by the *leftParameter* and *rightParameter* of the rule. This behaviour can be overridden by manually specifying domains, i.e. expressions or statement blocks that return Collections with the instances to consider for a particular side. If specified via *in*, the left domain is always evaluated exactly once and does not take any parameters. The right domain can be similarly evaluated once while taking no parameters (using *in*), or can be made dynamic, being re-evaluated for every instance of the left parameter under consideration (using *from*).
+
+- In the second pass, each rule that is marked as *greedy* is executed for all pairs that have not been compared in the first pass, and which have a kind-of relationship with the types specified by the rule. In both passes, to evaluate the compare part of the rule, the guard must be satisfied.
 
 Before the compare part of a rule is executed, the compare parts of all of the rules it extends (super-rules) must be executed (recursively). Before executing the compare part of a super-rule, the engine verifies that the super-rule is actually applicable to the elements under comparison by checking for type conformance and evaluating the guard part of the super-rule.
 
-If the compare part of a rule evaluates to true, the optional do part is executed. In the do part the user can specify any actions that need to be performed for the identified matching elements, such as to populate the *info* map of the established *match* with additional information. Finally, a new match is added to the match trace that has its *matching* property set to the logical conjunction of the results of the evaluation of the compare parts of the rule and its super-rules.
+If the compare part of a rule evaluates to true, the optional *do* part is executed. In the do part the user can specify any actions that need to be performed for the identified matching elements, such as to populate the *info* map of the established *match* with additional information. Finally, a new match is added to the match trace that has its *matching* property set to the logical conjunction of the results of the evaluation of the compare parts of the rule and its super-rules.
 
 ### The *matches()* built-in operation
 
@@ -171,6 +183,73 @@ rule FuzzyTree2Tree
 
 operation String fuzzyMatch(other : String) : Boolean {
     return simmetrics.similarity(self,other,"Levenshtein") > 0.5;
+}
+```
+
+## Using domains to direct the matching process (Epsilon 2.5+)
+
+Instead of always doing all-pairs matching, it is possible to use `in` and `from` to direct the matching process and reduce execution times.
+
+For example, if we wanted to match two `Tree` models by using their labels, we could precompute a label-to-Tree mapping for the right side, and replace all-pairs matching with a lookup:
+
+```ecl
+pre {
+  var rByLabel = RightTree!Tree.all.mapBy(t|t.label);
+}
+
+rule LeftWithRight
+  match l : LeftTree!Tree
+  with r : RightTree!Tree
+  from: rByLabel.getOrDefault(l.label, Set {})
+{
+  compare: true
+  do {
+    (l.label + " on the left matched with " + r.label + " on the right").println();
+  }
+}
+```
+
+The above example uses a dynamic domain for the right parameter (specified via `from`).
+This expression is re-evaluated for every value of `l`.
+
+Besides dynamic domains, both left and right parameters can use static domains (specified via `in`), which are evaluated once and do not take any parameters.
+For example, the example below would limit matching to the first three levels of the tree:
+
+```ecl
+rule LeftWithRight
+  match l : LeftTree!Tree
+  in: LeftTree.resource.contents.first.upToDepth(1)
+  with r : RightTree!Tree
+  in: RightTree.resource.contents.first.upToDepth(1)
+{
+  compare: l.label == r.label
+  do {
+    var ld = l.depth();
+    var rd = r.depth();
+    (l.label + " (depth " + ld + " ) matched with " + r.label + " (depth " + rd + ")").println();
+  }
+}
+
+operation LeftTree!Tree upToDepth(depth: Integer): Collection {
+  var result : Set;
+  var pending = Sequence { self };
+  while (not pending.empty) {
+    var e = pending.removeAt(0);
+    if (e.depth() <= depth) {
+      result.add(e);
+      pending.addAll(e.children);
+    } 
+  }
+  return result;
+}
+
+@cached
+operation LeftTree!Tree depth() {
+  if (self.eContainer().isDefined()) {
+    return 1 + self.eContainer().depth();
+  } else {
+    return 0;
+  }
 }
 ```
 

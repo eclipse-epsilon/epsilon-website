@@ -12,7 +12,7 @@ class EolLexer(RegexLexer):
         (r'//.*?$', Comment.Singleline),
         (r'/', Text),
         (r'@|\$', Comment.Preproc),
-        (r'(if|else|for|while|in|case|default|switch|break|continue|operation|function|import|transaction|driver|alias|new|var|return|async|breakAll|ext|throw|delete|transaction|abort|model|group|as)', Keyword),
+        (r'(if|else|for|while|in|case|default|switch|break|continue|operation|function|import|transaction|driver|alias|new|var|return|async|breakAll|ext|throw|delete|transaction|abort|model|group|as|from)', Keyword),
         (r'not|xor|implies|or|and', Operator.Word),
         (r'new|var', Keyword.Declaration),
         (r'import', Keyword.Namespace),
