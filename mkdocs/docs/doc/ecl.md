@@ -22,6 +22,7 @@ class MatchRule {
     -guard: ExecutableBlock<Boolean>
     -compare: ExecutableBlock<Boolean>
     -do: ExecutableBlock<Void>
+    -extends: MatchRule[*]
 }
 class Parameter {
     -name: String
@@ -46,7 +47,6 @@ MatchRule -- Parameter: left
 MatchRule -- Domain: leftDomain 0..1
 MatchRule -- Parameter: right
 MatchRule -- Domain: rightDomain 0..1
-MatchRule -- MatchRule: extends *
 ```
 
 A match rule has three parts. The *guard* part is an EOL expression or statement block that further limits the applicability of the rule to an even narrower range of elements than that specified by the *left* and *right* parameters. The *left* domain is by default every instance of its type, but since Epsilon 2.5, it can be limited to the collection of elements returned by an optional expression. The *right* domain can also be optionally limited (since Epsilon 2.5) to the collection returned by an expression, and additionally it can optionally be *dynamic* (i.e. the expression can take the left element under consideration as a parameter): note that the *left* domain cannot be dynamic. The *compare* part is an EOL expression or statement block that is responsible for comparing a pair of elements and deciding if they match or not. Finally, the *do* part is an EOL expression or block that is executed if the *compare* part returns true to perform any additional actions required.
@@ -57,7 +57,7 @@ A match rule has three parts. The *guard* part is an EOL expression or statement
 
 The concrete syntax of a match-rule is displayed below.
 
-```
+```ecl
 (@lazy)?
 (@greedy)?
 (@abstract)?

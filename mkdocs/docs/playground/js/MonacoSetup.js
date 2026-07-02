@@ -17,7 +17,7 @@ class MonacoSetup {
         
         this.registerEolBasedLanguage("egx", ['transform', 'rule', 'guard', 'pre', 'post', 'target', 'extends', 'parameters', 'template', 'overwrite', 'protectRegions', 'merge', 'append', 'patch'], ['generated']);
         this.registerEolBasedLanguage("flock", ['delete', 'retype', 'to', 'migrate', 'when', 'ignoring', 'package', 'pre', 'post'], ['original', 'migrated']);
-        this.registerEolBasedLanguage("ecl", ['match', 'auto', 'do', 'compare', 'guard', 'pre', 'post', 'with', 'extends', 'rule', 'abstract'], ['matchTrace', 'autoCompare', 'matchInfo']);
+        this.registerEolBasedLanguage("ecl", ['match', 'auto', 'do', 'compare', 'guard', 'pre', 'post', 'with', 'extends', 'rule', 'abstract', 'from'], ['matchTrace', 'autoCompare', 'matchInfo']);
         this.registerEolBasedLanguage("eml", etlKeywords.concat(['merge', 'mid', 'with', 'into']), etlConstants.concat(['matchTrace', 'mergeTrace']));
         
         ["epl", "emg"].forEach(l => { this.registerEolBasedLanguage(l, ['pre', 'post', 'pattern', 'match', 'guard', 'do', 'onmatch', 'nomatch', 'from', 'no', 'optional', 'active']); });
