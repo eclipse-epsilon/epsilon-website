@@ -2086,6 +2086,7 @@ class MatchRule {
     -guard: ExecutableBlock&lt;Boolean&gt;
     -compare: ExecutableBlock&lt;Boolean&gt;
     -do: ExecutableBlock&lt;Void&gt;
+    -extends: MatchRule[*]
 }
 class Parameter {
     -name: String
@@ -2109,13 +2110,12 @@ EclModule -- MatchRule: rules *
 MatchRule -- Parameter: left
 MatchRule -- Domain: leftDomain 0..1
 MatchRule -- Parameter: right
-MatchRule -- Domain: rightDomain 0..1
-MatchRule -- MatchRule: extends *</code></pre>
+MatchRule -- Domain: rightDomain 0..1</code></pre>
 <p>A match rule has three parts. The <em>guard</em> part is an EOL expression or statement block that further limits the applicability of the rule to an even narrower range of elements than that specified by the <em>left</em> and <em>right</em> parameters. The <em>left</em> domain is by default every instance of its type, but since Epsilon 2.5, it can be limited to the collection of elements returned by an optional expression. The <em>right</em> domain can also be optionally limited (since Epsilon 2.5) to the collection returned by an expression, and additionally it can optionally be <em>dynamic</em> (i.e. the expression can take the left element under consideration as a parameter): note that the <em>left</em> domain cannot be dynamic. The <em>compare</em> part is an EOL expression or statement block that is responsible for comparing a pair of elements and deciding if they match or not. Finally, the <em>do</em> part is an EOL expression or block that is executed if the <em>compare</em> part returns true to perform any additional actions required.</p>
 <p><em>Pre</em> and <em>post</em> blocks are named blocks of EOL statements which as discussed in the sequel are executed before and after the match-rules have been executed respectively.</p>
 <h2 id="concrete-syntax">Concrete Syntax<a class="headerlink" href="#concrete-syntax" title="Permanent link">&para;</a></h2>
 <p>The concrete syntax of a match-rule is displayed below.</p>
-<pre class="highlight"><code>(@lazy)?
+<pre class="highlight"><code class="language-ecl">(@lazy)?
 (@greedy)?
 (@abstract)?
 rule &lt;name&gt;
