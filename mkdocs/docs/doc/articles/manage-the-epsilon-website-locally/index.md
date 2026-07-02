@@ -20,7 +20,9 @@ Once you've happy with the changes you've made to the Markdown sources, you can 
 
 ## Updating the website contents
 
-As a convention for project commiters, introducing a change in the website is usually separated in two commits: the first one contains any changes to the Markdown sources, while the second one includes the result of building again the static site as described in the previous section.
+As a convention for project commiters, introducing a change in the website is usually separated in two commits: the first one contains any changes to the Markdown sources, while the second one includes the result of building again the static site as described in the previous section. 
+
+If you modify any of the JavaScript code of the website, you will also need to use `webpack` to compile your code into a `bundle.js`, as discussed in the `README.md` files of the [main website](https://github.com/eclipse-epsilon/epsilon-website/blob/main/mkdocs/docs/assets/readme.md) and the [Playground](https://github.com/eclipse-epsilon/epsilon-website/blob/main/mkdocs/docs/playground/readme.md).
 
 If you are not a commiter, but you find any typos or parts of the website that do not work as they should, thanks for [letting us know](https://github.com/eclipse-epsilon/epsilon/issues)!
 
