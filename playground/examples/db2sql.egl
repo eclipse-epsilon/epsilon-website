@@ -7,7 +7,7 @@ CREATE TABLE [%=t.name%] (
 [%}%]
 [*Create primary keys*]
 [%if (t.columns.select(c|c.key).notEmpty()){%]
-    PRIMARY KEY ( [%=t.columns.select(c|c.key).collect(k | k.name).concat(", ")%] ),
+    PRIMARY KEY ([%=t.columns.select(c|c.key).collect(k | k.name).concat(", ")%]),
 [%}%]
 [*Create foreign keys*]
 [%for (fk in ForeignKey.all.select(fk|fk.child.table = t)) { %]
