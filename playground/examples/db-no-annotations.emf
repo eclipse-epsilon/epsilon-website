@@ -9,23 +9,19 @@ abstract class DatabaseElement {
 	ref Database#contents database;
 }
 
-@node(label="name", shape="object", contents="columns")
 class Table extends DatabaseElement {
 	val Column[*]#table columns;
+	ref Column[*] primaryKeys;
 }
 
-@text(label="eol: self.name + ':' + self.type")
 class Column extends DatabaseElement {
-	attr boolean key;
 	ref Table#columns table;
 	attr String type;
 }
 
-@edge(label="eol: self.child.name + '→' + self.parent.name", source="eol: self.child.table", target="eol: self.parent.table", direction="eol: self.direction")
 class ForeignKey extends DatabaseElement {
     @diagram(direction="left")
 	ref Column parent;
 	@diagram(direction="left")
 	ref Column child;
-	attr String direction = "down";
 }

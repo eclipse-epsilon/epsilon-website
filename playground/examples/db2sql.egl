@@ -1,0 +1,21 @@
+[*Generates SQLite database setup code from a database model*]
+[% for (t in Table.all) { %]
+CREATE TABLE [%=t.name%] (
+[* Create columns*]
+[%for (c in t.columns) {%]
+    [%=c.name%] [%=c.type%],
+[%}%]
+[*Create primary keys*]
+[%if (t.columns.select(c|c.key).notEmpty()){%]
+    PRIMARY KEY ( [%=t.columns.select(c|c.key).collect(k | k.name).concat(", ")%] ),
+[%}%]
+[*Create foreign keys*]
+[%for (fk in ForeignKey.all.select(fk|fk.child.table = t)) { %]
+    CONSTRAINT [%=fk.name%] FOREIGN KEY ([%=fk.child.name%]) REFERENCES [%=fk.parent.table.name%]([%=fk.parent.name%]),
+[%}%]
+[*Remove the last comma*]
+[%if (out.toString().trim().endsWith(',')) {
+    out.chop(out.toString().length() - out.toString().lastIndexOf(','));
+}%] 
+);
+[% } %]

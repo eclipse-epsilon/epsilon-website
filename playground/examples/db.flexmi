@@ -1,0 +1,29 @@
+<?nsuri db?>
+<database>
+  <table name="Author">
+    <column name="id" type="INT" key="true"/>
+    <column name="name" type="NVARCHAR(100)"/>
+  </table>
+
+  <table name="Publisher">
+    <column name="id" type="INT" key="true"/>
+    <column name="name" type="NVARCHAR(100)"/>
+  </table>
+
+  <table name="Book">
+    <column name="id" type="INT" key="true"/>
+    <column name="title" type="NVARCHAR(200)"/>
+    <column name="authorId" type="INT"/>
+    <column name="publisherId" type="INT"/>
+  </table>
+
+  <table name="Review">
+    <column name="id" type="INT" key="true"/>
+    <column name="bookId" type="INT"/>
+    <column name="rating" type="TINYINT"/>
+  </table>
+
+  <foreignKey name="fk_book_author" parent="Author.id" child="Book.authorId"/>
+  <foreignKey name="fk_book_publisher" parent="Publisher.id" child="Book.publisherId"/>
+  <foreignKey name="fk_review_book" parent="Book.id" child="Review.bookId" direction="right"/>
+</database>
