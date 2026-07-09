@@ -11,11 +11,14 @@ CREATE TABLE [%=t.name%] (
 [%}%]
 [*Create foreign keys*]
 [%for (fk in ForeignKey.all.select(fk|fk.child.table = t)) { %]
-    CONSTRAINT [%=fk.name%] FOREIGN KEY ([%=fk.child.name%]) REFERENCES [%=fk.parent.table.name%]([%=fk.parent.name%]),
+    CONSTRAINT [%=fk.name%] 
+        FOREIGN KEY ([%=fk.child.name%]) 
+        REFERENCES [%=fk.parent.table.name%]([%=fk.parent.name%]),
 [%}%]
 [*Remove the last comma*]
 [%if (out.toString().trim().endsWith(',')) {
     out.chop(out.toString().length() - out.toString().lastIndexOf(','));
 }%] 
 );
+
 [% } %]
