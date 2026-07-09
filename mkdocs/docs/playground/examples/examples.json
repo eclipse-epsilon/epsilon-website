@@ -144,6 +144,16 @@
 				"outputType": "puml"
 			},
 			{
+				"id": "db2sql",
+				"title": "Generate SQLite Schema",
+				"language": "egl",
+				"program": "db2sql.egl",
+				"flexmi": "db.flexmi",
+				"emfatic": "db.emf",
+				"outputType": "code",
+				"outputLanguage": "SQL"
+			},
+			{
 				"id": "plt2html",
 				"title": "Generate SVG Variants",
 				"language": "egl",
@@ -348,7 +358,7 @@
 				"program": "oo2db.etl",
 				"flexmi": "oo.yaml.flexmi",
 				"emfatic": "oo.emf",
-				"secondEmfatic": "db.emf"
+				"secondEmfatic": "db-no-annotations.emf"
 			},
 			{
 				"id": "notes2coins",
