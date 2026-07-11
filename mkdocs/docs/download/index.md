@@ -50,11 +50,11 @@ The simplest way to get a copy of Eclipse with Epsilon 2.8 and all its developme
 
 | OS | Architecture | Eclipse Installer |
 | - | - | - |
-| Windows | x86_64 | <http://www.eclipse.org/downloads/download.php?file=/oomph/products/eclipse-inst-jre-win64.exe> |
-| Mac | x86_64 | <http://www.eclipse.org/downloads/download.php?file=/oomph/products/eclipse-inst-jre-mac64.dmg> |
-| Mac | AArch64 | <http://www.eclipse.org/downloads/download.php?file=/oomph/products/eclipse-inst-jre-mac-aarch64.dmg> |
-| Linux | x86_64 | <http://www.eclipse.org/downloads/download.php?file=/oomph/products/eclipse-inst-jre-linux64.tar.gz> |
-| Linux | AArch64 | <http://www.eclipse.org/downloads/download.php?file=/oomph/products/eclipse-inst-jre-linux-aarch64.tar.gz> |
+| Windows | x86_64 | <https://www.eclipse.org/downloads/download.php?file=/oomph/products/eclipse-inst-jre-win64.exe> |
+| Mac | x86_64 | <https://www.eclipse.org/downloads/download.php?file=/oomph/products/eclipse-inst-jre-mac64.dmg> |
+| Mac | AArch64 | <https://www.eclipse.org/downloads/download.php?file=/oomph/products/eclipse-inst-jre-mac-aarch64.dmg> |
+| Linux | x86_64 | <https://www.eclipse.org/downloads/download.php?file=/oomph/products/eclipse-inst-jre-linux64.tar.gz> |
+| Linux | AArch64 | <https://www.eclipse.org/downloads/download.php?file=/oomph/products/eclipse-inst-jre-linux-aarch64.tar.gz> |
 
 
 !!! tip "Can't find Epsilon?"
@@ -69,8 +69,8 @@ Alternatively, you can use the following update sites through the `Help` --> `In
 
 | Site | Location |
 | - | - |
-| Stable | `http://download.eclipse.org/epsilon/updates/2.8/`|
-| Interim | `http://download.eclipse.org/epsilon/interim/`|
+| Stable | `https://download.eclipse.org/epsilon/updates/2.8/`|
+| Interim | `https://download.eclipse.org/epsilon/interim/`|
 
 !!! warning "Eclipse failing to find dependencies?"
     While Epsilon update sites contain references to all 3rd party dependencies and shouldn't require installing any prerequisites separately, Eclipse's installation system (p2) can be temperamental and occasionally fail to find external dependencies. In this case, installation can fail with the following message: `Cannot complete the install because one or more required items could not be found`.
