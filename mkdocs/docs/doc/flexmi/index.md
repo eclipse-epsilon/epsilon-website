@@ -313,71 +313,74 @@ Converting an XMI model to Flexmi on the other hand is not supported as there's 
 
 ## YAML Flavour
 
-Since Epsilon 2.3.0, Flexmi also supports a YAML flavour, which was revamped in 2.9.0 to improve ease of use.
+Since Epsilon 2.3, Flexmi also supports a YAML flavour, which was revamped in 2.9 to improve ease of use. 
 
-Equivalent YAML representations for the XML-based model at the top of this page are shown below, using the YAML flavour available from 2.9.0 onwards.
+Equivalent YAML representations for the XML-based model at the top of this page are shown below, using the YAML flavour available from 2.9 onwards.
+
+!!! warning
+    If you are using Epsilon 2.8 or earlier, please see [the documentation of the legacy YAML flavour](legacy-flexmi-yaml-flavour.md) instead. The [Playground](../../playground/) also runs Epsilon 2.8 at the moment.
 
 !!! info
     The YAML flavour of Flexmi supports all the features of the XML flavour, including [plain](#reusable-templates) and [dynamic templates](#dynamic-templates-and-slots), and [executable attributes](#executable-attributes). YAML-specific features like [anchors and aliases](https://spec.yaml.io/main/spec/1.2.2/#alias-nodes) are also supported.
 
-### Block style (indentation-based)
+=== "Block style (indentation-based)"
+ 
+    ```yaml
+    ?nsuri: psl
+    project:
+      name: ACME
+      person:
+        - name: Alice
+        - name: Bob
+      task:
+        - title: Analysis
+          start: 1
+          dur: 3
+          effort:
+            person: Alice
+        - title: Design
+          start: 4
+          dur: 6
+          effort:
+            person: Bob
+        - title: Implementation
+          start: 7
+          dur: 3
+          effort:
+            - person: Bob
+              perc: 50
+            - person: Alice
+              perc: 50
+    ```
 
-```yaml
-?nsuri: psl
-project:
-  name: ACME
-  person:
-    - name: Alice
-    - name: Bob
-  task:
-    - title: Analysis
-      start: 1
-      dur: 3
-      effort:
-        person: Alice
-    - title: Design
-      start: 4
-      dur: 6
-      effort:
-        person: Bob
-    - title: Implementation
-      start: 7
-      dur: 3
-      effort:
-        - person: Bob
-          perc: 50
-        - person: Alice
-          perc: 50
-```
-
-### Flow style (curly braces and brackets)
-
-```yaml
-?nsuri: psl
-project: {
-  name: ACME,
-  person: [{name: Alice}, {name: Bob}],
-  task: [{
-    title: Analysis,
-    start: 1,
-    dur: 3,
-    effort: {person: Alice}
-  },
-  {
-    title: Design,
-    start: 4,
-    dur: 6,
-    effort: {person: Bob}
-  },
-  {
-    title: Implementation,
-    start: 7,
-    dur: 3,
-    effort: [{person: Bob, perc: 50},
-             {person: Alice, perc: 50}]
-  }]
-}
-```
+=== "Flow style (curly braces and brackets)"
+ 
+    ```yaml
+    ?nsuri: psl
+    project: {
+      name: ACME,
+      person: [{name: Alice}, {name: Bob}],
+      task: [{
+        title: Analysis,
+        start: 1,
+        dur: 3,
+        effort: {person: Alice}
+      },
+      {
+        title: Design,
+        start: 4,
+        dur: 6,
+        effort: {person: Bob}
+      },
+      {
+        title: Implementation,
+        start: 7,
+        dur: 3,
+        effort: [{person: Bob, perc: 50},
+                {person: Alice, perc: 50}]
+      }]
+    }
+    ```
 
 For multi-valued attributes and non-containment references, lists of scalars can be used as shown below.
 
