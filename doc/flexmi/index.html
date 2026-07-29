@@ -2537,7 +2537,7 @@ resource.load(null);</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Block style (indentation-based)</label><label for="__tabbed_1_2">Flow style (curly braces and brackets)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-yaml">?nsuri: psl
+<pre class="highlight"><code class="language-yaml">$nsuri: psl
 project:
   name: ACME
   person:
@@ -2564,7 +2564,7 @@ project:
           perc: 50</code></pre>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-yaml">?nsuri: psl
+<pre class="highlight"><code class="language-yaml">$nsuri: psl
 project: {
   name: ACME,
   person: [{name: Alice}, {name: Bob}],
@@ -2592,7 +2592,7 @@ project: {
 </div>
 </div>
 <p>For multi-valued attributes and non-containment references, lists of scalars can be used as shown below.</p>
-<pre class="highlight"><code class="language-yaml">?nsuri: psl
+<pre class="highlight"><code class="language-yaml">$nsuri: psl
 person:
   - name: Alice 
     skills: Java
@@ -2610,7 +2610,7 @@ skill:
 <p>The Flexmi parser auto-detects whether a file is XML-based or YAML-based and parses it accordingly. As such, you should be able to edit YAML-flavoured <code>*.flexmi</code> files in the Flexmi editor. Additional examples of YAML-flavoured Flexmi models are available in this <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/tests/org.eclipse.epsilon.flexmi.test/src/org/eclipse/epsilon/flexmi/test/models">test project</a> (look for <code>*.yaml</code> files).</p>
 <h3 id="dynamic-templates-in-yaml">Dynamic Templates in YAML<a class="headerlink" href="#dynamic-templates-in-yaml" title="Permanent link">&para;</a></h3>
 <p>The YAML flavour requires a <code>script</code> attribute in the <code>content</code> of dynamic templates, that holds the EGL script used to dynamically produce the YAML content. The YAML equivalent of the XML-based dynamic template <a href="#dynamic-templates-and-slots">shown above</a> is as follows.</p>
-<pre class="highlight"><code class="language-yaml">?nsuri: psl
+<pre class="highlight"><code class="language-yaml">$nsuri: psl
 project:
   title: ACME
   person:
