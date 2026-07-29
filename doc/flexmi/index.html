@@ -1059,24 +1059,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#block-style-indentation-based" class="md-nav__link">
-    <span class="md-ellipsis">
-      Block style (indentation-based)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#flow-style-curly-braces-and-brackets" class="md-nav__link">
-    <span class="md-ellipsis">
-      Flow style (curly braces and brackets)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#dynamic-templates-in-yaml" class="md-nav__link">
     <span class="md-ellipsis">
       Dynamic Templates in YAML
@@ -2242,24 +2224,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#block-style-indentation-based" class="md-nav__link">
-    <span class="md-ellipsis">
-      Block style (indentation-based)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#flow-style-curly-braces-and-brackets" class="md-nav__link">
-    <span class="md-ellipsis">
-      Flow style (curly braces and brackets)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#dynamic-templates-in-yaml" class="md-nav__link">
     <span class="md-ellipsis">
       Dynamic Templates in YAML
@@ -2560,13 +2524,19 @@ resource.load(null);</code></pre>
 <p>You can convert a Flexmi model to standard XMI (with no templates, executable attributes etc.) by right-clicking on it in the Project Explorer view and selecting <code>Generate XMI</code>.</p>
 <p>Converting an XMI model to Flexmi on the other hand is not supported as there's no unique mapping in this direction.</p>
 <h2 id="yaml-flavour">YAML Flavour<a class="headerlink" href="#yaml-flavour" title="Permanent link">&para;</a></h2>
-<p>Since Epsilon 2.3.0, Flexmi also supports a YAML flavour, which was revamped in 2.9.0 to improve ease of use.</p>
-<p>Equivalent YAML representations for the XML-based model at the top of this page are shown below, using the YAML flavour available from 2.9.0 onwards.</p>
+<p>Since Epsilon 2.3, Flexmi also supports a YAML flavour, which was revamped in 2.9 to improve ease of use. </p>
+<p>Equivalent YAML representations for the XML-based model at the top of this page are shown below, using the YAML flavour available from 2.9 onwards.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are using Epsilon 2.8 or earlier, please see <a href="legacy-flexmi-yaml-flavour/">the documentation of the legacy YAML flavour</a> instead. The <a href="../../playground/">Playground</a> also runs Epsilon 2.8 at the moment.</p>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>The YAML flavour of Flexmi supports all the features of the XML flavour, including <a href="#reusable-templates">plain</a> and <a href="#dynamic-templates-and-slots">dynamic templates</a>, and <a href="#executable-attributes">executable attributes</a>. YAML-specific features like <a href="https://spec.yaml.io/main/spec/1.2.2/#alias-nodes">anchors and aliases</a> are also supported.</p>
 </div>
-<h3 id="block-style-indentation-based">Block style (indentation-based)<a class="headerlink" href="#block-style-indentation-based" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Block style (indentation-based)</label><label for="__tabbed_1_2">Flow style (curly braces and brackets)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <pre class="highlight"><code class="language-yaml">?nsuri: psl
 project:
   name: ACME
@@ -2592,7 +2562,8 @@ project:
           perc: 50
         - person: Alice
           perc: 50</code></pre>
-<h3 id="flow-style-curly-braces-and-brackets">Flow style (curly braces and brackets)<a class="headerlink" href="#flow-style-curly-braces-and-brackets" title="Permanent link">&para;</a></h3>
+</div>
+<div class="tabbed-block">
 <pre class="highlight"><code class="language-yaml">?nsuri: psl
 project: {
   name: ACME,
@@ -2614,9 +2585,12 @@ project: {
     start: 7,
     dur: 3,
     effort: [{person: Bob, perc: 50},
-             {person: Alice, perc: 50}]
+            {person: Alice, perc: 50}]
   }]
 }</code></pre>
+</div>
+</div>
+</div>
 <p>For multi-valued attributes and non-containment references, lists of scalars can be used as shown below.</p>
 <pre class="highlight"><code class="language-yaml">?nsuri: psl
 person:
