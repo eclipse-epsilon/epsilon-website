@@ -326,7 +326,7 @@ Equivalent YAML representations for the XML-based model at the top of this page 
 === "Block style (indentation-based)"
  
     ```yaml
-    ?nsuri: psl
+    $nsuri: psl
     project:
       name: ACME
       person:
@@ -356,7 +356,7 @@ Equivalent YAML representations for the XML-based model at the top of this page 
 === "Flow style (curly braces and brackets)"
  
     ```yaml
-    ?nsuri: psl
+    $nsuri: psl
     project: {
       name: ACME,
       person: [{name: Alice}, {name: Bob}],
@@ -385,7 +385,7 @@ Equivalent YAML representations for the XML-based model at the top of this page 
 For multi-valued attributes and non-containment references, lists of scalars can be used as shown below.
 
 ```yaml
-?nsuri: psl
+$nsuri: psl
 person:
   - name: Alice 
     skills: Java
@@ -408,7 +408,7 @@ The Flexmi parser auto-detects whether a file is XML-based or YAML-based and par
 The YAML flavour requires a `script` attribute in the `content` of dynamic templates, that holds the EGL script used to dynamically produce the YAML content. The YAML equivalent of the XML-based dynamic template [shown above](#dynamic-templates-and-slots) is as follows.
 
 ```yaml
-?nsuri: psl
+$nsuri: psl
 project:
   title: ACME
   person:
