@@ -57,7 +57,7 @@ Epsilon provides the following task-specific languages, which use EOL as their c
 -   [Epsilon Merging Language (EML)](eml.md): A rule-based language for merging models of diverse metamodels, after first identifying their correspondences with [ECL](ecl) (or otherwise).
 -   [Epsilon Pattern Language (EPL)](epl.md): A pattern language for matching model elements based on element relations and characteristics.
 -   [Epsilon Model Generation Language (EMG)](emg.md): A language for semi-automated model generation.
--   [Epsilon Flock](flock.md: A rule-based transformation language for updating models in response to metamodel changes.
+-   [Epsilon Flock](flock.md): A rule-based transformation language for updating models in response to metamodel changes.
 -   [EUnit](eunit.md): EUnit is a unit testing framework specialized on testing model management tasks, such as model-to-model transformations, model-to-text transformations or model validation. It is based on Epsilon, but it can be used for model technologies external to Epsilon. Tests are written by combining an EOL script and an [ANT](workflow) buildfile.
 - [Pinset](pinset/index.md): A rule-based domain-specific transformation language that allows extracting tabular datasets (i.e. CSVs) from input models.
 
