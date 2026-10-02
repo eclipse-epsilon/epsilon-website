@@ -1838,6 +1838,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#lenient-datetime-parsing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lenient date/time parsing
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2000,6 +2009,7 @@ of the EClass in the EPackage that it conforms to.</li>
   These will be typically relative paths from the <code>.rdfres</code> to the relevant RDF files.
   Epsilon supports all the file formats <a href="https://jena.apache.org/documentation/io/">implemented by Jena</a>, as it uses its RIOT system for I/O.</li>
 <li><code>defaultModelNamespace</code> (optional): the <a href="#default-namespace-for-new-eobjects">default namespace</a> to use for the underlying RDF resources when creating new <code>EObject</code>s.</li>
+<li><code>lenientDates</code> (optional): boolean indicating whether <a href="#lenient-datetime-parsing">ill-formed date/time literals should be corrected</a> while loading, instead of raising an error. <code>false</code> by default.</li>
 <li><code>multiValueAttributeMode</code> (optional): string indicating the default RDF data structure to use for newly set <a href="#multi-valued-features">multi-valued features</a>.</li>
 <li><code>schemaModels</code> (optional): list of zero or more locations containing the OWL schemas to be used for inference over the union graph formed by all the data models. <code>EObject</code>s will not be deserialised from these locations.</li>
 <li><code>validationMode</code> (optional): string indicating the <a href="#internal-consistency-checking">internal consistency checking</a> mode to be used. By default, no checking is done.</li>
@@ -2034,6 +2044,18 @@ However, when there is no existing structure, the data structure will be chosen 
 <li><code>Container</code> (the default): use RDF containers (Bag or Seq).</li>
 <li><code>List</code>: use RDF lists.</li>
 </ul>
+<h3 id="lenient-datetime-parsing">Lenient date/time parsing<a class="headerlink" href="#lenient-datetime-parsing" title="Permanent link">&para;</a></h3>
+<p>RDF literals with an <code>xsd:date</code>, <code>xsd:dateTime</code> or <code>xsd:dateTimeStamp</code> datatype are expected to follow the lexical format defined by the XML Schema specification, e.g. <code>2026-09-10T11:12:13Z</code>.
+In practice, some RDF sources (e.g. OSLC tools) may produce literals that do not strictly follow this format, such as <code>2026-09-10</code> for an <code>xsd:dateTime</code> value: by default, the driver will raise an error upon encountering one of these ill-formed literals while loading a model.</p>
+<p>Setting the <code>lenientDates</code> key to <code>true</code> in the <code>.rdfres</code> file tells the driver to attempt to repair these literals before the RDF graph is handed over to Jena, rather than failing. The driver will add or remove components as needed to produce a valid literal of the original datatype:</p>
+<ul>
+<li>Missing time components default to zero, e.g. <code>2026-09-10</code> becomes <code>2026-09-10T00:00:00</code> for <code>xsd:dateTime</code>.</li>
+<li>Missing timezones are left out, except for <code>xsd:dateTimeStamp</code> (which requires one), where UTC is assumed.</li>
+<li>Single-digit month, day, hour, minute and second components are zero-padded, e.g. <code>2026-9-1 14:5</code> becomes <code>2026-09-01T14:05:00</code>.</li>
+<li>Extraneous time components are dropped when correcting an <code>xsd:date</code> literal, e.g. <code>2026-09-10T04:05:06</code> becomes <code>2026-09-10</code>.</li>
+</ul>
+<p>Literals that cannot be repaired this way (e.g. <code>yesterday</code>, or a date with an out-of-range month) are left untouched, and will still cause the usual error when Jena attempts to use them.
+Every literal that is corrected is reported with a message on standard error, mentioning the named graph it was found in.</p>
 <h2 id="escaping-to-rdf">Escaping to RDF<a class="headerlink" href="#escaping-to-rdf" title="Permanent link">&para;</a></h2>
 <p>The EMF resource underlying this EMC driver maintains a two-way mapping between the EMF <code>EObject</code>s that have been deserialised from the RDF graph, and their underlying RDF nodes.
 This means that it is possible to go from the <code>EObject</code> to the RDF node, and back:</p>
