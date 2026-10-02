@@ -1,7 +1,7 @@
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const path = require('path');
 
-module.exports = {
+module.exports = (env, argv) => ({
   entry: './js/Playground.js',
   output: {
     publicPath: 'dist/',
@@ -11,6 +11,16 @@ module.exports = {
   devtool: 'source-map', // Add this line to enable source maps
   module: {
 		rules: [
+			{
+				test: /\.jsx$/,
+				exclude: /node_modules/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: [['@babel/preset-react', { runtime: 'automatic', development: argv.mode === 'development' }]]
+					}
+				}
+			},
 			{
 				test: /\.css$/,
 				use: ['style-loader', 'css-loader']
@@ -22,4 +32,4 @@ module.exports = {
 		]
 	},
 	plugins: [new MonacoWebpackPlugin()]
-};
+});

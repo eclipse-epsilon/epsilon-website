@@ -1,6 +1,7 @@
 import { Panel } from "./Panel.js";
 import { consolePanel } from "./Playground.js";
 import { Splitter } from "./Splitter.js";
+import { GraphDiagram } from "./GraphDiagram.jsx";
 
 import svgPanZoom from 'svg-pan-zoom';
 
@@ -11,6 +12,7 @@ class ModelPanel extends Panel {
     diagramSvg;
     diagramSvgPanZoomInstance;
     diagramSource;
+    graphDiagram;
 
     constructor(id, editable, metamodelPanel) {
         super(id);
@@ -46,7 +48,7 @@ class ModelPanel extends Panel {
     }
 
     refreshDiagram() {
-        this.refreshDiagramImpl(backend.getFlexmiToPlantUMLService(), "FlexmiToPlantUML", this.id + "Diagram", "model", this.getEditor(), this.metamodelPanel.getEditor());
+        this.refreshDiagramImpl(backend.getFlexmiToGraphService(), "FlexmiToGraph", "modelGraph", "model", this.getEditor(), this.metamodelPanel.getEditor());
     }
 
     setupSyntaxHighlighting() {
@@ -173,7 +175,10 @@ class ModelPanel extends Panel {
 
     fitDiagram() {
         if (this.diagramSvg) {
-            this.renderDiagram(this.diagramSvg, this.diagramSource);
+            this.renderSvgDiagram(this.diagramSvg, this.diagramSource);
+        }
+        else if (this.graphDiagram) {
+            this.graphDiagram.fit();
         }
     }
 
@@ -181,11 +186,23 @@ class ModelPanel extends Panel {
         consolePanel.setOutput(this.diagramSource);
     }
 
-    /* TODO: Rename to something more sensible */
-    refreshDiagramImpl(url, functionName, diagramId, diagramName, modelEditor, metamodelEditor) {
+    getGraphDiagram() {
+        if (this.graphDiagram == null) {
+            this.graphDiagram = new GraphDiagram(document.getElementById(this.id + "Diagram"), this.id + "Diagram");
+        }
+        return this.graphDiagram;
+    }
 
-        var diagramElement = document.getElementById(diagramId);
-        diagramElement.innerHTML = '<img src="images/preloader.gif" style="width:100px;margin:auto"/>'
+    /**
+     * Fetches the graph of the diagram of the model (or metamodel) in the
+     * editors from the backend, and renders it.
+     *
+     * @param graphField the field of the response that holds the graph
+     * @param diagramName "model" or "metamodel"
+     */
+    refreshDiagramImpl(url, functionName, graphField, diagramName, modelEditor, metamodelEditor) {
+
+        this.getGraphDiagram().showLoading();
 
         var xhr = new XMLHttpRequest();
         xhr.open("POST", url, true);
@@ -196,17 +213,8 @@ class ModelPanel extends Panel {
                 if (xhr.status === 200) {
                     var json = JSON.parse(xhr.responseText);
 
-                    // FIXME: Make both functions return the PlantUML diagram in a "diagram" field
-                    var diagramField = "modelDiagram";
-                    var diagramSourceField = "modelDiagramSource";
-
-                    if (diagramId.endsWith("etamodelDiagram")) {
-                        diagramField = "metamodelDiagram";
-                        diagramSourceField = "metamodelDiagramSource";
-                    }
-
                     var message = "The diagram cannot be generated because there is an error ";
-                    if (diagramField == "metamodelDiagram") {
+                    if (diagramName == "metamodel") {
                         message += " in the metamodel.";
                     }
                     else {
@@ -215,15 +223,11 @@ class ModelPanel extends Panel {
                     message += " Check the console for details.";
 
                     if (json.hasOwnProperty("error")) {
-                        diagramElement.innerHTML = '<div class="model-rendering-error"><span class="mif-16 mif-problems" style="position:relative;top:-1px;padding-right:5px"></span>' + message + '</div>';
-                        self.diagramSvg = null;
-                        self.diagramSource = null;
-                        self.setDiagramSourceButtonVisible(false);
+                        self.showDiagramError(message);
                         consolePanel.setError(json.error);
                     }
                     else {
-                        self.renderDiagram(json[diagramField], json[diagramSourceField]);
-                        self.setDiagramSourceButtonVisible(json[diagramSourceField] != null);
+                        self.renderGraph(json[graphField]);
                     }
                 }
             }
@@ -233,7 +237,32 @@ class ModelPanel extends Panel {
         xhr.send(JSON.stringify(data));
     }
 
-    renderDiagram(svg, diagramSource, preservePanAndZoom = false) {
+    showDiagramError(message) {
+        this.diagramSvg = null;
+        this.setDiagramSource(null);
+        this.getGraphDiagram().showError(message);
+    }
+
+    /**
+     * Renders a graph returned by the backend as an interactive diagram.
+     * The source of the diagram is the graph's JSON.
+     */
+    renderGraph(graph) {
+        this.diagramSvg = null;
+        this.setDiagramSource(graph != null ? JSON.stringify(graph, null, 2) : null);
+        if (graph == null) {
+            this.getGraphDiagram().clear();
+        }
+        else {
+            this.getGraphDiagram().render(graph);
+        }
+    }
+
+    /**
+     * Renders an SVG diagram (e.g. produced by Kroki from generated PlantUML or Graphviz code)
+     * that can be zoomed and panned.
+     */
+    renderSvgDiagram(svg, diagramSource, preservePanAndZoom = false) {
         var diagramId = this.id + "Diagram";
         var diagramElement = document.getElementById(diagramId);
         this.setDiagramSource(diagramSource);

@@ -24,12 +24,12 @@ class Backend {
         return this.services["RunEpsilonFunction"];
     }
 
-    getFlexmiToPlantUMLService() {
-        return this.services["FlexmiToPlantUMLFunction"];
+    getFlexmiToGraphService() {
+        return this.services["FlexmiToGraphFunction"];
     }
 
-    getEmfaticToPlantUMLService() {
-        return this.services["EmfaticToPlantUMLFunction"];
+    getEmfaticToGraphService() {
+        return this.services["EmfaticToGraphFunction"];
     }
 
     getShortURLService() {

@@ -293,13 +293,10 @@ function runProgram() {
                     consolePanel.setOutput(response.output);
 
                     if (language == "etl" || language == "emg" || language == "flock" || language == "eml") {
-                        secondModelPanel.renderDiagram(response.targetModelDiagram);
+                        secondModelPanel.renderGraph(response.modelGraph);
                     }
-                    else if (language == "evl") {
-                        outputPanel.renderDiagram(response.validatedModelDiagram, response.validatedModelDiagramSource);
-                    }
-                    else if (language == "epl") {
-                        outputPanel.renderDiagram(response.patternMatchedModelDiagram, response.patternMatchedModelDiagramSource);
+                    else if (language == "evl" || language == "epl") {
+                        outputPanel.renderGraph(response.modelGraph);
                     }
                     else if (language == "egx" || language == "pinset") {
                         outputPanel.setGeneratedFiles(response.generatedFiles);
@@ -328,7 +325,7 @@ function runProgram() {
                             krokiXhr.onreadystatechange = function () {
                                 if (krokiXhr.readyState === 4) {
                                     if (krokiXhr.status === 200) {
-                                        outputPanel.renderDiagram(krokiXhr.responseText, true);
+                                        outputPanel.renderSvgDiagram(krokiXhr.responseText, response.generatedText);
                                     }
                                 }
                             };
@@ -347,6 +344,8 @@ function runProgram() {
 
     var data = editorsToJsonObject();
     data.function = "RunEpsilon";
+    // Ask for model diagrams as JSON graphs, which are rendered with React Flow
+    data.diagramFormat = "graph";
     xhr.send(JSON.stringify(data));
 
     longNotification("Executing program");
