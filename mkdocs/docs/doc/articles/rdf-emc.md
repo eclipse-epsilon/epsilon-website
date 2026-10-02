@@ -100,6 +100,7 @@ The available keys in the `.rdfres` format are as follows:
   These will be typically relative paths from the `.rdfres` to the relevant RDF files.
   Epsilon supports all the file formats [implemented by Jena](https://jena.apache.org/documentation/io/), as it uses its RIOT system for I/O.
 * `defaultModelNamespace` (optional): the [default namespace](#default-namespace-for-new-eobjects) to use for the underlying RDF resources when creating new `EObject`s.
+* `lenientDates` (optional): boolean indicating whether [ill-formed date/time literals should be corrected](#lenient-datetime-parsing) while loading, instead of raising an error. `false` by default.
 * `multiValueAttributeMode` (optional): string indicating the default RDF data structure to use for newly set [multi-valued features](#multi-valued-features).
 * `schemaModels` (optional): list of zero or more locations containing the OWL schemas to be used for inference over the union graph formed by all the data models. `EObject`s will not be deserialised from these locations.
 * `validationMode` (optional): string indicating the [internal consistency checking](#internal-consistency-checking) mode to be used. By default, no checking is done.
@@ -136,6 +137,21 @@ However, when there is no existing structure, the data structure will be chosen 
 
 * `Container` (the default): use RDF containers (Bag or Seq).
 * `List`: use RDF lists.
+
+### Lenient date/time parsing
+
+RDF literals with an `xsd:date`, `xsd:dateTime` or `xsd:dateTimeStamp` datatype are expected to follow the lexical format defined by the XML Schema specification, e.g. `2026-09-10T11:12:13Z`.
+In practice, some RDF sources (e.g. OSLC tools) may produce literals that do not strictly follow this format, such as `2026-09-10` for an `xsd:dateTime` value: by default, the driver will raise an error upon encountering one of these ill-formed literals while loading a model.
+
+Setting the `lenientDates` key to `true` in the `.rdfres` file tells the driver to attempt to repair these literals before the RDF graph is handed over to Jena, rather than failing. The driver will add or remove components as needed to produce a valid literal of the original datatype:
+
+* Missing time components default to zero, e.g. `2026-09-10` becomes `2026-09-10T00:00:00` for `xsd:dateTime`.
+* Missing timezones are left out, except for `xsd:dateTimeStamp` (which requires one), where UTC is assumed.
+* Single-digit month, day, hour, minute and second components are zero-padded, e.g. `2026-9-1 14:5` becomes `2026-09-01T14:05:00`.
+* Extraneous time components are dropped when correcting an `xsd:date` literal, e.g. `2026-09-10T04:05:06` becomes `2026-09-10`.
+
+Literals that cannot be repaired this way (e.g. `yesterday`, or a date with an out-of-range month) are left untouched, and will still cause the usual error when Jena attempts to use them.
+Every literal that is corrected is reported with a message on standard error, mentioning the named graph it was found in.
 
 ## Escaping to RDF
 
