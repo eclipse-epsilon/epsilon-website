@@ -18,8 +18,18 @@ module.exports = {
 			{
 				test: /\.ttf$/,
 				type: 'asset/resource'
+			},
+			{
+				test: /\.wasm$/,
+				type: 'asset/resource'
 			}
 		]
+	},
+	resolve: {
+		alias: {
+			// libavoid-js doesn't export its WebAssembly binary
+			'libavoid.wasm$': path.resolve(__dirname, 'node_modules/libavoid-js/dist/libavoid.wasm')
+		}
 	},
 	plugins: [new MonacoWebpackPlugin()]
 };

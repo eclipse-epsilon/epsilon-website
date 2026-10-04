@@ -3,6 +3,7 @@ import { consolePanel } from "./Playground.js";
 import { Splitter } from "./Splitter.js";
 
 import svgPanZoom from 'svg-pan-zoom';
+import { MovableDiagram } from './MovableDiagram.js';
 
 class ModelPanel extends Panel {
 
@@ -11,6 +12,9 @@ class ModelPanel extends Panel {
     diagramSvg;
     diagramSvgPanZoomInstance;
     diagramSource;
+    diagramMovable;
+    diagramLayout;
+    movableDiagram;
 
     constructor(id, editable, metamodelPanel) {
         super(id);
@@ -173,7 +177,7 @@ class ModelPanel extends Panel {
 
     fitDiagram() {
         if (this.diagramSvg) {
-            this.renderDiagram(this.diagramSvg, this.diagramSource);
+            this.renderDiagram(this.diagramSvg, this.diagramSource, false, this.diagramMovable);
         }
     }
 
@@ -233,12 +237,22 @@ class ModelPanel extends Panel {
         xhr.send(JSON.stringify(data));
     }
 
-    renderDiagram(svg, diagramSource, preservePanAndZoom = false) {
+    /**
+     * Renders an SVG diagram in the panel. If movable is true, the classes/objects
+     * of PlantUML class diagrams can be moved around and their links are rerouted.
+     * The positions of moved elements are kept when the same diagram is re-rendered
+     * (e.g. to fit it), and are reset when a new diagram is rendered.
+     */
+    renderDiagram(svg, diagramSource, preservePanAndZoom = false, movable = true) {
         var diagramId = this.id + "Diagram";
         var diagramElement = document.getElementById(diagramId);
         this.setDiagramSource(diagramSource);
         
+        if (svg !== this.diagramSvg || this.diagramLayout == null) {
+            this.diagramLayout = { offsets: new Map(), routed: new Set() };
+        }
         this.diagramSvg = svg;
+        this.diagramMovable = movable;
 
         if (diagramId == "outputDiagram") {
             diagramElement.parentElement.style.padding = "0px";
@@ -253,6 +267,28 @@ class ModelPanel extends Panel {
         if (previousDiagramSvgPanZoomInstance != null && preservePanAndZoom) {
             this.diagramSvgPanZoomInstance.zoom(previousDiagramSvgPanZoomInstance.getZoom());
             this.diagramSvgPanZoomInstance.pan(previousDiagramSvgPanZoomInstance.getPan());
+        }
+
+        this.movableDiagram?.destroy();
+        this.movableDiagram = null;
+        var svgElement = diagramElement.firstElementChild;
+        if (movable && MovableDiagram.isApplicable(svgElement)) {
+            var panZoom = this.diagramSvgPanZoomInstance;
+            MovableDiagram.create(svgElement, this.diagramLayout).then(movableDiagram => {
+                // The diagram may have been re-rendered while libavoid was loading
+                if (panZoom != this.diagramSvgPanZoomInstance) {
+                    movableDiagram.destroy();
+                    return;
+                }
+                this.movableDiagram = movableDiagram;
+                if (this.diagramLayout.offsets.size > 0 && !preservePanAndZoom) {
+                    // Moved elements may lie outside the original bounds of the diagram
+                    panZoom.updateBBox();
+                    panZoom.fit();
+                    if (panZoom.getZoom() > 1) panZoom.zoom(1);
+                    panZoom.center();
+                }
+            });
         }
     }
 
