@@ -2,6 +2,7 @@ import { Panel } from "./Panel.js";
 import { consolePanel } from "./Playground.js";
 import { Splitter } from "./Splitter.js";
 import { GraphDiagram } from "./GraphDiagram.jsx";
+import { DiagramEngine, getDiagramEngine } from "./DiagramEngine.js";
 
 import svgPanZoom from 'svg-pan-zoom';
 
@@ -47,8 +48,21 @@ class ModelPanel extends Panel {
         $("#" + this.id + "Editor").hide();
     }
 
+    /**
+     * Returns the engine that renders the diagram of the panel,
+     * selected by the @diagram annotation of the metamodel's package.
+     */
+    getDiagramEngine() {
+        return getDiagramEngine(this.metamodelPanel != null ? this.metamodelPanel.getValue() : null);
+    }
+
     refreshDiagram() {
-        this.refreshDiagramImpl(backend.getFlexmiToGraphService(), "FlexmiToGraph", "modelGraph", "model", this.getEditor(), this.metamodelPanel.getEditor());
+        if (this.getDiagramEngine() == DiagramEngine.PLANTUML) {
+            this.refreshDiagramImpl(backend.getFlexmiToPlantUMLService(), "FlexmiToPlantUML", "modelDiagram", "model", this.getEditor(), this.metamodelPanel.getEditor());
+        }
+        else {
+            this.refreshDiagramImpl(backend.getFlexmiToGraphService(), "FlexmiToGraph", "modelGraph", "model", this.getEditor(), this.metamodelPanel.getEditor());
+        }
     }
 
     setupSyntaxHighlighting() {
@@ -188,20 +202,31 @@ class ModelPanel extends Panel {
 
     getGraphDiagram() {
         if (this.graphDiagram == null) {
+            this.destroySvgPanZoom();
             this.graphDiagram = new GraphDiagram(document.getElementById(this.id + "Diagram"), this.id + "Diagram");
         }
         return this.graphDiagram;
     }
 
+    destroySvgPanZoom() {
+        if (this.diagramSvgPanZoomInstance != null) {
+            this.diagramSvgPanZoomInstance.destroy();
+            this.diagramSvgPanZoomInstance = null;
+        }
+    }
+
     /**
-     * Fetches the graph of the diagram of the model (or metamodel) in the
-     * editors from the backend, and renders it.
+     * Fetches the diagram of the model (or metamodel) in the editors
+     * from the backend, and renders it with the panel's diagram engine:
+     * as an SVG with PlantUML, or as a graph with React Flow.
      *
-     * @param graphField the field of the response that holds the graph
+     * @param diagramField the field of the response that holds the diagram
+     * (the SVG or the graph); with PlantUML, its source is in diagramField + "Source"
      * @param diagramName "model" or "metamodel"
      */
-    refreshDiagramImpl(url, functionName, graphField, diagramName, modelEditor, metamodelEditor) {
+    refreshDiagramImpl(url, functionName, diagramField, diagramName, modelEditor, metamodelEditor) {
 
+        var engine = this.getDiagramEngine();
         this.getGraphDiagram().showLoading();
 
         var xhr = new XMLHttpRequest();
@@ -227,7 +252,7 @@ class ModelPanel extends Panel {
                         consolePanel.setError(json.error);
                     }
                     else {
-                        self.renderGraph(json[graphField]);
+                        self.renderDiagram(engine, json[diagramField], json[diagramField + "Source"]);
                     }
                 }
             }
@@ -241,6 +266,19 @@ class ModelPanel extends Panel {
         this.diagramSvg = null;
         this.setDiagramSource(null);
         this.getGraphDiagram().showError(message);
+    }
+
+    /**
+     * Renders a diagram returned by the backend with a diagram engine:
+     * a PlantUML-rendered SVG (with its PlantUML source), or a graph.
+     */
+    renderDiagram(engine, diagram, diagramSource) {
+        if (engine == DiagramEngine.PLANTUML && diagram != null) {
+            this.renderSvgDiagram(diagram, diagramSource);
+        }
+        else {
+            this.renderGraph(diagram);
+        }
     }
 
     /**
@@ -268,6 +306,12 @@ class ModelPanel extends Panel {
         this.setDiagramSource(diagramSource);
         
         this.diagramSvg = svg;
+
+        // The SVG replaces the contents of the diagram element, including any graph diagram
+        if (this.graphDiagram != null) {
+            this.graphDiagram.dispose();
+            this.graphDiagram = null;
+        }
 
         if (diagramId == "outputDiagram") {
             diagramElement.parentElement.style.padding = "0px";

@@ -1,4 +1,5 @@
 import { ModelPanel } from './ModelPanel.js';
+import { DiagramEngine, getDiagramEngine } from './DiagramEngine.js';
 
 class MetamodelPanel extends ModelPanel {
     constructor(id) {
@@ -35,8 +36,17 @@ class MetamodelPanel extends ModelPanel {
         }];
     }
     
+    getDiagramEngine() {
+        return getDiagramEngine(this.getValue());
+    }
+
     refreshDiagram() {
-        this.refreshDiagramImpl(backend.getEmfaticToGraphService(), "EmfaticToGraph", "metamodelGraph", "metamodel", null, this.getEditor());
+        if (this.getDiagramEngine() == DiagramEngine.PLANTUML) {
+            this.refreshDiagramImpl(backend.getEmfaticToPlantUMLService(), "EmfaticToPlantUML", "metamodelDiagram", "metamodel", null, this.getEditor());
+        }
+        else {
+            this.refreshDiagramImpl(backend.getEmfaticToGraphService(), "EmfaticToGraph", "metamodelGraph", "metamodel", null, this.getEditor());
+        }
     }
 
 }

@@ -32,6 +32,14 @@ class Backend {
         return this.services["EmfaticToGraphFunction"];
     }
 
+    getFlexmiToPlantUMLService() {
+        return this.services["FlexmiToPlantUMLFunction"];
+    }
+
+    getEmfaticToPlantUMLService() {
+        return this.services["EmfaticToPlantUMLFunction"];
+    }
+
     getShortURLService() {
         return this.services["ShortURLFunction"];
     }

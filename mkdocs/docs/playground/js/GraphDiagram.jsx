@@ -195,6 +195,18 @@ class GraphDiagram {
         this.showMessage(null);
     }
 
+    /**
+     * Unmounts the diagram (and cancels any pending render), and removes it from its element.
+     */
+    dispose() {
+        this.renders++;
+        this.flow = null;
+        if (this.root != null) this.root.unmount();
+        if (this.container != null) this.container.remove();
+        this.root = null;
+        this.container = null;
+    }
+
     fit() {
         if (this.flow != null) this.flow.fitView({ padding: 0.05, maxZoom: 1, duration: 200 });
     }

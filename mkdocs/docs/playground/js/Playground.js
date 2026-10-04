@@ -14,6 +14,7 @@ import '../node_modules/metro4/build/metro.js';
 import { MonacoSetup } from './MonacoSetup.js';
 import { LiveShareManager } from './LiveShareManager.js';
 import { OutputIFrame } from './OutputIFrame.js';
+import { DiagramEngine, getDiagramEngine } from './DiagramEngine.js';
 
 export var language = "eol";
 var outputType = "text";
@@ -274,7 +275,20 @@ function fit() {
     panels.forEach(panel => panel.fit());
 }
 
+/**
+ * Returns the engine that renders the diagram of the model produced (or
+ * validated, or pattern-matched) by the program, selected by the @diagram
+ * annotation of the package of its metamodel.
+ */
+function getOutputDiagramEngine() {
+    var metamodelPanel = (language == "etl" || language == "flock" || language == "eml") ? secondMetamodelPanel : firstMetamodelPanel;
+    return getDiagramEngine(metamodelPanel.getValue());
+}
+
 function runProgram() {
+
+    var diagramEngine = getOutputDiagramEngine();
+    var plantUML = diagramEngine == DiagramEngine.PLANTUML;
 
     var xhr = new XMLHttpRequest();
     var url = backend.getRunEpsilonService();
@@ -293,10 +307,13 @@ function runProgram() {
                     consolePanel.setOutput(response.output);
 
                     if (language == "etl" || language == "emg" || language == "flock" || language == "eml") {
-                        secondModelPanel.renderGraph(response.modelGraph);
+                        secondModelPanel.renderDiagram(diagramEngine, plantUML ? response.targetModelDiagram : response.modelGraph);
                     }
-                    else if (language == "evl" || language == "epl") {
-                        outputPanel.renderGraph(response.modelGraph);
+                    else if (language == "evl") {
+                        outputPanel.renderDiagram(diagramEngine, plantUML ? response.validatedModelDiagram : response.modelGraph, response.validatedModelDiagramSource);
+                    }
+                    else if (language == "epl") {
+                        outputPanel.renderDiagram(diagramEngine, plantUML ? response.patternMatchedModelDiagram : response.modelGraph, response.patternMatchedModelDiagramSource);
                     }
                     else if (language == "egx" || language == "pinset") {
                         outputPanel.setGeneratedFiles(response.generatedFiles);
@@ -344,8 +361,9 @@ function runProgram() {
 
     var data = editorsToJsonObject();
     data.function = "RunEpsilon";
-    // Ask for model diagrams as JSON graphs, which are rendered with React Flow
-    data.diagramFormat = "graph";
+    // The backend renders model diagrams with PlantUML by default:
+    // ask for JSON graphs instead if they are to be rendered with React Flow
+    if (!plantUML) data.diagramFormat = "graph";
     xhr.send(JSON.stringify(data));
 
     longNotification("Executing program");
