@@ -204,10 +204,13 @@ class MovableDiagram {
      * (the point touching the node), so it can be re-applied to a new end.
      */
     createDecoration(polygon, points, pathEnd, previous, atStart) {
+        // The tip is the point furthest along the end of the path. The farthest point is not
+        // always the tip: the wings of PlantUML's arrowheads are farther from the path end.
+        const d = normalise({ x: pathEnd.x - previous.x, y: pathEnd.y - previous.y }) ?? { x: 1, y: 0 };
+        const ahead = p => (p.x - pathEnd.x) * d.x + (p.y - pathEnd.y) * d.y;
         let tip = points[0];
-        for (const p of points) if (distance(p, pathEnd) > distance(tip, pathEnd)) tip = p;
-        let u = normalise({ x: tip.x - pathEnd.x, y: tip.y - pathEnd.y });
-        if (u == null) u = normalise({ x: pathEnd.x - previous.x, y: pathEnd.y - previous.y }) ?? { x: 1, y: 0 };
+        for (const p of points) if (ahead(p) > ahead(tip)) tip = p;
+        const u = normalise({ x: tip.x - pathEnd.x, y: tip.y - pathEnd.y }) ?? d;
         const n = { x: -u.y, y: u.x };
         const local = p => ({ a: (p.x - tip.x) * u.x + (p.y - tip.y) * u.y, b: (p.x - tip.x) * n.x + (p.y - tip.y) * n.y });
         return { polygon, atStart, points: points.map(local), pathEnd: local(pathEnd).a };
