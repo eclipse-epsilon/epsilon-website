@@ -328,7 +328,8 @@ function runProgram() {
                             krokiXhr.onreadystatechange = function () {
                                 if (krokiXhr.readyState === 4) {
                                     if (krokiXhr.status === 200) {
-                                        outputPanel.renderDiagram(krokiXhr.responseText, response.generatedText, true, false);
+                                        // PlantUML diagrams can be made movable, unlike Graphviz ones
+                                        outputPanel.renderDiagram(krokiXhr.responseText, response.generatedText, true, outputType == "puml");
                                     }
                                 }
                             };

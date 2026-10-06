@@ -189,6 +189,7 @@ class ModelPanel extends Panel {
     refreshDiagramImpl(url, functionName, diagramId, diagramName, modelEditor, metamodelEditor) {
 
         var diagramElement = document.getElementById(diagramId);
+        this.releaseMovableDiagram();
         diagramElement.innerHTML = '<img src="images/preloader.gif" style="width:100px;margin:auto"/>'
 
         var xhr = new XMLHttpRequest();
@@ -270,14 +271,13 @@ class ModelPanel extends Panel {
             this.diagramSvgPanZoomInstance.pan(previousDiagramSvgPanZoomInstance.getPan());
         }
 
-        this.movableDiagram?.destroy();
-        this.movableDiagram = null;
+        this.releaseMovableDiagram();
         var svgElement = diagramElement.firstElementChild;
         if (movable && MovableDiagram.isApplicable(svgElement)) {
             var panZoom = this.diagramSvgPanZoomInstance;
             MovableDiagram.create(svgElement, this.diagramLayout).then(movableDiagram => {
-                // The diagram may have been re-rendered while libavoid was loading
-                if (panZoom != this.diagramSvgPanZoomInstance) {
+                // The diagram may have been re-rendered or replaced while libavoid was loading
+                if (panZoom != this.diagramSvgPanZoomInstance || diagramElement.firstElementChild != svgElement) {
                     movableDiagram.destroy();
                     return;
                 }
@@ -291,6 +291,12 @@ class ModelPanel extends Panel {
                 }
             });
         }
+    }
+
+    /** Releases the memory of the movable diagram, which is about to be replaced */
+    releaseMovableDiagram() {
+        this.movableDiagram?.destroy();
+        this.movableDiagram = null;
     }
 
     setDiagramSource(diagramSource) {
