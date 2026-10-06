@@ -20,6 +20,7 @@ function loadAvoid() {
  * diagram SVG movable. When nodes are moved, the affected links are
  * rerouted orthogonally around the other nodes using libavoid, and their
  * decorations (arrowheads, diamonds) and labels are moved along with them.
+ * Link labels can also be moved by dragging them.
  *
  * Expects the SVG structure produced by PlantUML, where nodes are
  * g.entity / g.cluster elements and links are g.link elements that
@@ -33,9 +34,11 @@ class MovableDiagram {
      * @param svg the (already embedded) SVG element
      * @param layout the layout to restore and update as nodes are moved:
      *   offsets is a Map from node ids to {x, y} offsets, and routed is a Set
-     *   with the indices of the links that have been rerouted
+     *   with the indices of the links that have been rerouted, and labels is
+     *   a Map from "link index:label index" keys to the anchors of the labels
+     *   that have been moved by the user
      */
-    static async create(svg, layout = { offsets: new Map(), routed: new Set() }) {
+    static async create(svg, layout = { offsets: new Map(), routed: new Set(), labels: new Map() }) {
         return new MovableDiagram(svg, layout, await loadAvoid());
     }
 
@@ -44,6 +47,7 @@ class MovableDiagram {
         this.avoid = avoid;
         this.offsets = layout.offsets;
         this.routed = layout.routed;
+        this.anchors = layout.labels;
         this.router = null;
         this.nodes = new Map();
         this.links = [];
@@ -59,8 +63,11 @@ class MovableDiagram {
             this.links.forEach((link, i) => { if (this.routed.has(i)) this.route(link); });
             this.reroute(new Set(this.offsets.keys()));
         }
+        // Routed links have placed their labels already
+        for (const link of this.links) if (!link.routed) this.placeLabels(link, false);
 
         for (const node of this.nodes.values()) this.makeDraggable(node);
+        for (const link of this.links) link.labels.forEach(label => this.makeLabelDraggable(link, label));
     }
 
     /** Releases the memory used by libavoid */
@@ -160,10 +167,17 @@ class MovableDiagram {
 
             for (const text of element.querySelectorAll("text")) {
                 const box = text.getBBox();
+                const key = `${this.links.length}:${link.labels.length}`;
                 link.labels.push({
                     element: text,
+                    key,
+                    // Top-left corner of the label
+                    x: box.x,
+                    y: box.y,
                     width: box.width,
                     height: box.height,
+                    // Where a label moved by the user is attached to its link
+                    anchor: this.anchors.get(key) ?? null,
                     // Offsets from the bounding box to the text's x/y attributes
                     dx: parseFloat(text.getAttribute("x")) - box.x,
                     dy: parseFloat(text.getAttribute("y")) - box.y
@@ -200,25 +214,53 @@ class MovableDiagram {
     }
 
     makeDraggable(node) {
-        const element = node.element;
+        this.onDrag(node.element, () => {
+            const moved = [node, ...node.children];
+            const initial = new Map(moved.map(n => [n.id, { ...this.offsetOf(n) }]));
+            return (dx, dy) => {
+                for (const n of moved) {
+                    const start = initial.get(n.id);
+                    this.offsets.set(n.id, { x: start.x + dx, y: start.y + dy });
+                    this.applyOffset(n);
+                }
+                this.updateClusters();
+                this.reroute(new Set(moved.map(n => n.id)));
+            };
+        });
+    }
+
+    makeLabelDraggable(link, label) {
+        this.onDrag(label.element, () => {
+            const initial = { x: label.x, y: label.y };
+            return (dx, dy) => {
+                moveLabel(label, initial.x + dx, initial.y + dy);
+                label.anchor = anchorOf(link.polyline, label);
+                this.anchors.set(label.key, label.anchor);
+            };
+        });
+    }
+
+    /**
+     * Lets an element be dragged. When a drag starts, begin() is called and
+     * returns the function that applies a displacement (dx, dy) from the start.
+     */
+    onDrag(element, begin) {
         element.classList.add("movable");
-        // Keep svg-pan-zoom from panning when a node is grabbed
+        // Keep svg-pan-zoom from panning when the element is grabbed
         const stop = event => event.stopPropagation();
         element.addEventListener("mousedown", stop);
         element.addEventListener("touchstart", stop, { passive: true });
 
         element.addEventListener("pointerdown", event => {
             if (event.button != 0 || this.drag != null) return;
-            // Nested nodes receive the event first
+            // Nested elements receive the event first
             event.stopPropagation();
             event.preventDefault();
 
-            const moved = [node, ...node.children];
             this.drag = {
                 pointerId: event.pointerId,
                 start: this.toDiagram(event),
-                moved,
-                initial: new Map(moved.map(n => [n.id, { ...this.offsetOf(n) }])),
+                apply: begin(),
                 frame: null,
                 last: null,
                 dragged: false
@@ -263,13 +305,7 @@ class MovableDiagram {
         // A click without any movement leaves the diagram untouched
         if (dx == 0 && dy == 0 && !this.drag.dragged) return;
         this.drag.dragged = true;
-        for (const node of this.drag.moved) {
-            const initial = this.drag.initial.get(node.id);
-            this.offsets.set(node.id, { x: initial.x + dx, y: initial.y + dy });
-            this.applyOffset(node);
-        }
-        this.updateClusters();
-        this.reroute(new Set(this.drag.moved.map(n => n.id)));
+        this.drag.apply(dx, dy);
     }
 
     offsetOf(node) {
@@ -278,7 +314,7 @@ class MovableDiagram {
 
     applyOffset(node) {
         const offset = this.offsetOf(node);
-        if (this.offsets.has(node.id)) node.element.setAttribute("transform", `translate(${offset.x},${offset.y})`);
+        if (this.offsets.has(node.id)) node.element.setAttribute("transform", `translate(${round(offset.x)},${round(offset.y)})`);
         node.rect = { ...node.baseRect, x: node.baseRect.x + offset.x, y: node.baseRect.y + offset.y };
         if (node.obstacle) {
             this.router.moveShape_delta(node.obstacle, offset.x - node.obstacleOffset.x, offset.y - node.obstacleOffset.y);
@@ -298,10 +334,10 @@ class MovableDiagram {
             }
             cluster.rect = rect;
             if (cluster.shape.tagName == "rect") {
-                cluster.shape.setAttribute("x", rect.x - offset.x);
-                cluster.shape.setAttribute("y", rect.y - offset.y);
-                cluster.shape.setAttribute("width", rect.width);
-                cluster.shape.setAttribute("height", rect.height);
+                cluster.shape.setAttribute("x", round(rect.x - offset.x));
+                cluster.shape.setAttribute("y", round(rect.y - offset.y));
+                cluster.shape.setAttribute("width", round(rect.width));
+                cluster.shape.setAttribute("height", round(rect.height));
                 if (cluster.title) {
                     // Keep the title centred at the top of the cluster
                     const base = cluster.baseRect;
@@ -380,9 +416,16 @@ class MovableDiagram {
             }
             route.delete();
             if (points.length < 2) return;
-            // Routes connect the centres of the nodes: cut them at the nodes' outlines
-            points = clipStart(this.straighten(points, link.source, link.target), this.outline(link.source));
-            points = clipStart(points.reverse(), this.outline(link.target)).reverse();
+            // Routes connect the centres of the nodes: cut them at the nodes' outlines.
+            // When the nodes overlap, a straight line may lie entirely inside them,
+            // while libavoid's route may still leave the source outside the target.
+            const source = this.outline(link.source), target = this.outline(link.target);
+            const straight = this.straightLine(link);
+            points = (straight && clipLink(straight, source, target)) ??
+                clipLink(this.straighten(points, link.source, link.target), source, target);
+            // Nothing can be drawn between nodes that overlap too much
+            link.element.style.visibility = points ? "" : "hidden";
+            if (points == null) return;
         }
         else {
             points = this.selfLoop(link.source.rect);
@@ -406,7 +449,20 @@ class MovableDiagram {
         }
 
         link.path.setAttribute("d", roundedPath(drawn));
-        this.placeLabels(link, points);
+        this.placeLabels(link);
+    }
+
+    /**
+     * Returns a straight (possibly diagonal) line between the centres of the
+     * ends of a link, or null if it would cross any other non-container node.
+     */
+    straightLine(link) {
+        const a = centre(link.source.rect), b = centre(link.target.rect);
+        for (const node of this.nodes.values()) {
+            if (node.cluster || node == link.source || node == link.target) continue;
+            if (segmentCrossesRect(a, b, node.rect)) return null;
+        }
+        return [a, b];
     }
 
     /**
@@ -449,15 +505,33 @@ class MovableDiagram {
         return [{ x: r.x, y: r.y }, { x: r.x + r.width, y: r.y }, { x: r.x + r.width, y: r.y + r.height }, { x: r.x, y: r.y + r.height }];
     }
 
-    /** Places labels next to the longest segments, avoiding nodes */
-    placeLabels(link, points) {
-        if (link.labels.length == 0) return;
+    /**
+     * Keeps the labels moved by the user at their anchors on the link, and
+     * (if automatic is true) places the rest next to the longest segments,
+     * avoiding nodes and the labels already in place.
+     */
+    placeLabels(link, automatic = true) {
+        const points = link.polyline;
+        for (const label of link.labels) {
+            if (label.anchor) {
+                const p = pointAtAnchor(points, label.anchor);
+                moveLabel(label, p.x + label.anchor.dx, p.y + label.anchor.dy);
+            }
+        }
+        const pending = link.labels.filter(label => !label.anchor);
+        if (!automatic || pending.length == 0) return;
         const segments = [];
         for (let i = 0; i < points.length - 1; i++) segments.push({ a: points[i], b: points[i + 1], length: distance(points[i], points[i + 1]) });
         segments.sort((s, t) => t.length - s.length);
         const obstacles = [...this.nodes.values()].filter(n => !n.cluster).map(n => n.rect);
+        for (const other of this.links) {
+            if (other.element.style.visibility == "hidden") continue;
+            for (const label of other.labels) {
+                if (!pending.includes(label)) obstacles.push(label);
+            }
+        }
 
-        for (const label of link.labels) {
+        for (const label of pending) {
             const candidates = segments.flatMap(s => {
                 const mid = { x: (s.a.x + s.b.x) / 2, y: (s.a.y + s.b.y) / 2 };
                 return s.a.y == s.b.y ? [
@@ -470,10 +544,100 @@ class MovableDiagram {
             }).map(c => ({ ...c, width: label.width, height: label.height }));
             const chosen = candidates.find(c => !obstacles.some(o => overlap(o, c))) ?? candidates[0];
             obstacles.push(chosen);
-            label.element.setAttribute("x", round(chosen.x + label.dx));
-            label.element.setAttribute("y", round(chosen.y + label.dy));
+            moveLabel(label, chosen.x, chosen.y);
         }
     }
+}
+
+/** Moves the top-left corner of a label */
+function moveLabel(label, x, y) {
+    label.x = x;
+    label.y = y;
+    label.element.setAttribute("x", round(x + label.dx));
+    label.element.setAttribute("y", round(y + label.dy));
+}
+
+/**
+ * Attaches a label to the point of a link nearest to it. Labels near an end
+ * of the link keep their distance to that end, and the rest keep their
+ * relative position along the link. The label keeps its offset from that point.
+ */
+function anchorOf(points, label) {
+    const lengths = cumulativeLengths(points), total = lengths[lengths.length - 1];
+    const s = nearestLength(points, lengths, { x: label.x + label.width / 2, y: label.y + label.height / 2 });
+    const p = pointAtLength(points, lengths, s);
+    const fraction = total > 0 ? s / total : 0.5;
+    const anchor = { dx: label.x - p.x, dy: label.y - p.y };
+    if (fraction < 0.25) anchor.fromStart = s;
+    else if (fraction > 0.75) anchor.fromEnd = total - s;
+    else anchor.fraction = fraction;
+    return anchor;
+}
+
+function pointAtAnchor(points, anchor) {
+    const lengths = cumulativeLengths(points), total = lengths[lengths.length - 1];
+    const s = anchor.fraction != null ? anchor.fraction * total :
+        anchor.fromStart != null ? anchor.fromStart : total - anchor.fromEnd;
+    return pointAtLength(points, lengths, Math.min(total, Math.max(0, s)));
+}
+
+function cumulativeLengths(points) {
+    const lengths = [0];
+    for (let i = 1; i < points.length; i++) lengths.push(lengths[i - 1] + distance(points[i - 1], points[i]));
+    return lengths;
+}
+
+function pointAtLength(points, lengths, s) {
+    for (let i = 1; i < points.length; i++) {
+        if (s <= lengths[i] || i == points.length - 1) {
+            const segment = lengths[i] - lengths[i - 1];
+            const t = segment > 0 ? Math.min(1, Math.max(0, (s - lengths[i - 1]) / segment)) : 0;
+            return { x: points[i - 1].x + (points[i].x - points[i - 1].x) * t, y: points[i - 1].y + (points[i].y - points[i - 1].y) * t };
+        }
+    }
+    return { ...points[0] };
+}
+
+/** The length along a polyline of its point nearest to p */
+function nearestLength(points, lengths, p) {
+    let best = 0, bestDistance = Infinity;
+    for (let i = 1; i < points.length; i++) {
+        const a = points[i - 1], b = points[i];
+        const segment = lengths[i] - lengths[i - 1];
+        const t = segment > 0 ? Math.min(1, Math.max(0, ((p.x - a.x) * (b.x - a.x) + (p.y - a.y) * (b.y - a.y)) / (segment * segment))) : 0;
+        const d = distance(p, { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t });
+        if (d < bestDistance) { bestDistance = d; best = lengths[i - 1] + t * segment; }
+    }
+    return best;
+}
+
+/** The part of a polyline between a length a and a length b along it */
+function subPolyline(points, lengths, a, b) {
+    const result = [pointAtLength(points, lengths, a)];
+    for (let i = 1; i < points.length - 1; i++) if (lengths[i] > a && lengths[i] < b) result.push(points[i]);
+    result.push(pointAtLength(points, lengths, b));
+    return result;
+}
+
+function centre(r) {
+    return { x: r.x + r.width / 2, y: r.y + r.height / 2 };
+}
+
+/** Whether the segment from a to b passes through the inside of a rectangle (Liang-Barsky clipping) */
+function segmentCrossesRect(a, b, r) {
+    const dx = b.x - a.x, dy = b.y - a.y;
+    let t0 = 0, t1 = 1;
+    for (const [p, q] of [[-dx, a.x - r.x], [dx, r.x + r.width - a.x], [-dy, a.y - r.y], [dy, r.y + r.height - a.y]]) {
+        if (p == 0) {
+            if (q <= 0) return false;
+        }
+        else {
+            const t = q / p;
+            if (p < 0) t0 = Math.max(t0, t);
+            else t1 = Math.min(t1, t);
+        }
+    }
+    return t0 < t1;
 }
 
 function roundedPath(points) {
@@ -489,22 +653,36 @@ function roundedPath(points) {
     return d + ` L${round(last.x)},${round(last.y)}`;
 }
 
-/** Cuts a polyline that starts inside a polygon where it leaves the polygon */
-function clipStart(points, polygon) {
+/**
+ * Cuts a polyline that runs from inside a source polygon to inside a target
+ * polygon, keeping the part between where it last leaves the source and where
+ * it first enters the target. Returns null if there is no such part (i.e.
+ * the polyline leaves the source after entering the target).
+ */
+function clipLink(points, source, target) {
+    const lengths = cumulativeLengths(points), total = lengths[lengths.length - 1];
+    let exit = 0, entry = total;
     for (let i = 0; i < points.length - 1; i++) {
-        const a = points[i], b = points[i + 1];
-        let exit = null;
-        for (let j = 0; j < polygon.length; j++) {
-            const c = polygon[j], d = polygon[(j + 1) % polygon.length];
-            const denominator = (b.x - a.x) * (d.y - c.y) - (b.y - a.y) * (d.x - c.x);
-            if (denominator == 0) continue;
-            const t = ((c.x - a.x) * (d.y - c.y) - (c.y - a.y) * (d.x - c.x)) / denominator;
-            const u = ((c.x - a.x) * (b.y - a.y) - (c.y - a.y) * (b.x - a.x)) / denominator;
-            if (t >= 0 && t <= 1 && u >= 0 && u <= 1 && (exit == null || t > exit)) exit = t;
-        }
-        if (exit != null) return [{ x: a.x + (b.x - a.x) * exit, y: a.y + (b.y - a.y) * exit }, ...points.slice(i + 1)];
+        const segment = lengths[i + 1] - lengths[i];
+        for (const t of crossings(points[i], points[i + 1], source)) exit = Math.max(exit, lengths[i] + t * segment);
+        for (const t of crossings(points[i], points[i + 1], target)) entry = Math.min(entry, lengths[i] + t * segment);
     }
-    return points;
+    if (entry - exit < 1) return null;
+    return subPolyline(points, lengths, exit, entry);
+}
+
+/** The positions (between 0 and 1) where the segment from a to b crosses the outline of a polygon */
+function crossings(a, b, polygon) {
+    const result = [];
+    for (let j = 0; j < polygon.length; j++) {
+        const c = polygon[j], d = polygon[(j + 1) % polygon.length];
+        const denominator = (b.x - a.x) * (d.y - c.y) - (b.y - a.y) * (d.x - c.x);
+        if (denominator == 0) continue;
+        const t = ((c.x - a.x) * (d.y - c.y) - (c.y - a.y) * (d.x - c.x)) / denominator;
+        const u = ((c.x - a.x) * (b.y - a.y) - (c.y - a.y) * (b.x - a.x)) / denominator;
+        if (t >= 0 && t <= 1 && u >= 0 && u <= 1) result.push(t);
+    }
+    return result;
 }
 
 function parsePoints(value) {

@@ -346,8 +346,8 @@ body {
 	-ms-user-select: none; /* IE10+/Edge */
 	user-select: none; /* Standard */	
 }
-/* Movable classes/objects in model and metamodel diagrams */
-.diagram svg g.movable {
+/* Movable classes/objects and link labels in model and metamodel diagrams */
+.diagram svg .movable {
 	cursor: move;
 	touch-action: none;
 }

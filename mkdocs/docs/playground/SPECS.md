@@ -1,0 +1,70 @@
+# Movable nodes in SVG diagrams
+
+Requirements implemented by `js/MovableDiagram.js`, together with its integration in `js/ModelPanel.js`, `css/custom.css` and `webpack.config.js`.
+
+## Scope and applicability
+
+- Users can move the nodes (classes/objects, and packages/containers) of PlantUML class/object diagrams rendered as SVG in the model, metamodel and output panels.
+- The feature applies to SVGs with PlantUML's structure: nodes are `g.entity[id]` or `g.cluster[id]` groups, and links are `g.link` groups that name their ends through `data-entity-1` / `data-entity-2`.
+- A node's shape is its first direct child `rect`, `polygon`, `ellipse`, `circle` or `path`. Groups without a shape are ignored.
+- Diagrams with no applicable nodes, and diagrams rendered with `movable = false` (e.g. Kroki-rendered Graphviz output of generation programs), stay static.
+- If the SVG is not displayed yet, the diagram is not made movable.
+
+## Interaction
+
+- Nodes are dragged with the primary mouse button, a pen or touch, using Pointer Events. Only one drag runs at a time, tracked by pointer id.
+- Movable nodes show a `move` cursor and set `touch-action: none`. During a drag the whole SVG shows a `move` cursor and text selection is disabled.
+- Grabbing a node must not pan the diagram. Panning and zooming on the background still work.
+- When nodes are nested, the innermost node under the pointer is the one moved.
+- Pointer positions are converted from screen to diagram coordinates through the node layer's screen CTM, so dragging follows the pointer at any pan or zoom level.
+- Drag updates are throttled to one per animation frame. The final position is applied on `pointerup` / `pointercancel`.
+- A click with no movement leaves the diagram unchanged: no offsets are recorded and no links are rerouted.
+
+## Moving nodes and containers
+
+- A moved node is translated with a `transform="translate(dx,dy)"` on its group, relative to its original position.
+- Moving a container (cluster) moves all its descendant nodes with it. A node is a descendant when its `data-qualified-name` starts with the cluster's qualified name followed by `.`.
+- Containers grow, innermost first, so that they keep enclosing their children's bounds plus a 12px padding. Containers grow but never shrink below their original size.
+- When a rectangular container is resized, its title stays centred horizontally at the top of the container.
+
+## Moving labels
+
+- Link labels can be dragged like nodes (same pointer handling, `move` cursor and `touch-action: none`).
+- A dragged label is anchored to the point of its link nearest to the label's centre, keeping its offset from that point. Labels in the first or last quarter of the link keep their distance to that end, and the rest keep their relative position along the link.
+- When the link's path changes (e.g. while dragging its nodes), dragged labels move with their anchors, so they move together with the link.
+
+## Link routing
+
+- Links touched by a move are rerouted around the other nodes with libavoid (the WebAssembly build of `libavoid-js`). Shape buffer and nudging distance are 12, segment penalty is 50 and crossing penalty is 200, and parallel segments are nudged apart.
+- A link is drawn as a single straight (possibly diagonal) line between the centres of its end nodes whenever that line does not cross any other non-container node and part of it lies outside both end nodes. Otherwise, its libavoid route is used.
+- Nodes that are not containers are routing obstacles. Containers are not, so links can pass through them to reach the nodes inside.
+- Links attach to the centre pin of their nodes (all directions allowed), and libavoid's nudging spreads them out. Links to containers attach to the container's current centre, which follows its size.
+- A link's route is computed lazily. It switches from PlantUML's original path to a libavoid route only when one of its ends moves, one of its end containers changes size, or a moved node now overlaps its current path. Once rerouted, a link stays routed.
+- The direction of a link is found from geometry, not from the data attributes: the source is the end node nearest to the start of the path.
+- Routes run between node centres and are clipped at the real outline of each end node: polygon, ellipse/circle (approximated with 32 points) or bounding rectangle. The visible part runs from where the route last leaves the source outline to where it first enters the target outline, so links never run into the centre of a node next to or overlapping the other end.
+- If neither the straight line nor the libavoid route has a visible part (the end nodes overlap too much), the link is hidden until the nodes are moved apart.
+- Small jogs (≤ 20px) that nudging adds between nodes that could be joined by a straight line are removed, provided the nodes overlap enough along that axis.
+- Self-loops are not routed by libavoid. They are drawn as a fixed orthogonal loop over the top-right corner of the node, with a 16px gap.
+- Routed paths are drawn as polylines with corners rounded to a 4px radius, capped at half the length of each adjacent segment.
+- Coordinates written to the SVG are rounded to two decimal places.
+
+## Link decorations and labels
+
+- Arrowheads, diamonds and other polygon decorations stay attached to their link ends. Each decoration is stored in a local frame anchored at its tip and aligned with the end segment, then re-applied at the new end with the new orientation.
+- A decoration belongs to the link end nearest to its centroid.
+- Where a decoration sits, the path is shortened so the line does not run through it, but never by more than the length of the end segment.
+- Link labels are moved next to the longest segments of the new route: above or below horizontal segments, and to the right or left of vertical ones.
+- Labels avoid overlapping non-container nodes and labels already placed (including those of other links, except hidden ones). If no free spot is found, the first candidate is used. Labels dragged by the user are not placed automatically (see *Moving labels*).
+
+## Layout persistence and re-rendering
+
+- The layout state is the offset of each moved node (`Map` id → `{x, y}`), the set of rerouted link indices, and the anchors of the labels dragged by the user (`Map` "link index:label index" → anchor). It belongs to the panel and is updated in place while dragging.
+- Re-rendering the same SVG with the *Fit diagram* button keeps the layout.
+- Any other rendering (e.g. running the program again, even if it produces the same SVG, or after the model or metamodel changes) resets the layout.
+- When a restored layout has moved nodes or labels and pan/zoom is not preserved, the view is refitted to the moved nodes, which may lie outside the original bounds. It is capped at 100% zoom and centred.
+- libavoid is loaded asynchronously, only once, and shared by all diagrams. If the diagram is re-rendered while it loads, the stale instance is discarded.
+- The libavoid router's memory is released whenever its diagram is replaced.
+
+## Build
+
+- The libavoid WebAssembly binary, which `libavoid-js` doesn't export, is aliased as `libavoid.wasm` and bundled by webpack as an asset resource.

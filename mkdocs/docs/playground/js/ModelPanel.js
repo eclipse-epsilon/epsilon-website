@@ -177,7 +177,7 @@ class ModelPanel extends Panel {
 
     fitDiagram() {
         if (this.diagramSvg) {
-            this.renderDiagram(this.diagramSvg, this.diagramSource, false, this.diagramMovable);
+            this.renderDiagram(this.diagramSvg, this.diagramSource, false, this.diagramMovable, true);
         }
     }
 
@@ -240,16 +240,17 @@ class ModelPanel extends Panel {
     /**
      * Renders an SVG diagram in the panel. If movable is true, the classes/objects
      * of PlantUML class diagrams can be moved around and their links are rerouted.
-     * The positions of moved elements are kept when the same diagram is re-rendered
-     * (e.g. to fit it), and are reset when a new diagram is rendered.
+     * The positions of moved elements are kept if keepLayout is true and the same
+     * diagram is re-rendered (e.g. to fit it), and are reset otherwise (e.g. when
+     * the program is run again, even if it produces the same diagram).
      */
-    renderDiagram(svg, diagramSource, preservePanAndZoom = false, movable = true) {
+    renderDiagram(svg, diagramSource, preservePanAndZoom = false, movable = true, keepLayout = false) {
         var diagramId = this.id + "Diagram";
         var diagramElement = document.getElementById(diagramId);
         this.setDiagramSource(diagramSource);
         
-        if (svg !== this.diagramSvg || this.diagramLayout == null) {
-            this.diagramLayout = { offsets: new Map(), routed: new Set() };
+        if (!keepLayout || svg !== this.diagramSvg || this.diagramLayout == null) {
+            this.diagramLayout = { offsets: new Map(), routed: new Set(), labels: new Map() };
         }
         this.diagramSvg = svg;
         this.diagramMovable = movable;
@@ -281,8 +282,8 @@ class ModelPanel extends Panel {
                     return;
                 }
                 this.movableDiagram = movableDiagram;
-                if (this.diagramLayout.offsets.size > 0 && !preservePanAndZoom) {
-                    // Moved elements may lie outside the original bounds of the diagram
+                if ((this.diagramLayout.offsets.size > 0 || this.diagramLayout.labels.size > 0) && !preservePanAndZoom) {
+                    // Moved nodes and labels may lie outside the original bounds of the diagram
                     panZoom.updateBBox();
                     panZoom.fit();
                     if (panZoom.getZoom() > 1) panZoom.zoom(1);
