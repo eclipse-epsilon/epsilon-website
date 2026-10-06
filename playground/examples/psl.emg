@@ -36,7 +36,7 @@ operation Person create() {
 	// To ensure that every project involves at
 	// least one person, distribute persons among
 	// projects without people before doing it randomly
-	var firstProjectWithoutPeople = Project.all().select(p | p.people.isEmpty()).first;
+	var firstProjectWithoutPeople = Project.all().select(p | p.people.isEmpty()).first();
 	if (firstProjectWithoutPeople.isDefined()) {
 		firstProjectWithoutPeople.people.add(self);
 	} else {
@@ -52,7 +52,7 @@ operation Effort create() {
 	// assigned to it, distribute efforts among
 	// tasks without efforts before doing it randomly
 	var task = null;
-	var firstFreeTask = Task.all().select(s | s.effort.isEmpty()).first;
+	var firstFreeTask = Task.all().select(s | s.effort.isEmpty()).first();
 	if (firstFreeTask.isDefined()) {
 		firstFreeTask.effort.add(self);
 		task = firstFreeTask;
