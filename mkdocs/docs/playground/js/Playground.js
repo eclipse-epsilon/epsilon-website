@@ -328,7 +328,7 @@ function runProgram() {
                             krokiXhr.onreadystatechange = function () {
                                 if (krokiXhr.readyState === 4) {
                                     if (krokiXhr.status === 200) {
-                                        outputPanel.renderDiagram(krokiXhr.responseText, true, false, false);
+                                        outputPanel.renderDiagram(krokiXhr.responseText, response.generatedText, true, false);
                                     }
                                 }
                             };
