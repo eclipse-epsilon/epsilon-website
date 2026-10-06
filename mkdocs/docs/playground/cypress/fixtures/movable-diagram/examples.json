@@ -1,0 +1,13 @@
+{
+	"examples": [
+		{
+			"id": "movable",
+			"title": "Movable diagram",
+			"language": "egl",
+			"program": "diagram.egl",
+			"flexmi": "../../../examples/psl.flexmi",
+			"emfatic": "../../../examples/psl.emf",
+			"outputType": "puml"
+		}
+	]
+}

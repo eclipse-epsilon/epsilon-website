@@ -112,16 +112,17 @@ class MovableDiagram {
             const box = shape.getBBox();
             // getBBox() returns an empty box if the SVG is not displayed
             if (box.width == 0 && box.height == 0) return false;
-            const title = element.querySelector(":scope > text");
+            const cluster = element.classList.contains("cluster");
             this.nodes.set(element.id, {
                 id: element.id,
                 element,
                 shape,
                 name: element.getAttribute("data-qualified-name") ?? element.id,
-                cluster: element.classList.contains("cluster"),
+                cluster,
                 baseRect: { x: box.x, y: box.y, width: box.width, height: box.height },
                 rect: { x: box.x, y: box.y, width: box.width, height: box.height },
-                title: title ? { element: title, x: parseFloat(title.getAttribute("x")), y: parseFloat(title.getAttribute("y")) } : null,
+                // The outline, separators and title of a cluster, which are stretched when it grows
+                parts: cluster ? [...element.children].map(capturePart).filter(part => part != null) : [],
                 children: []
             });
         }
@@ -336,18 +337,10 @@ class MovableDiagram {
                 rect = union(rect, inflate(child.rect, CLUSTER_PADDING));
             }
             cluster.rect = rect;
-            if (cluster.shape.tagName == "rect") {
-                cluster.shape.setAttribute("x", round(rect.x - offset.x));
-                cluster.shape.setAttribute("y", round(rect.y - offset.y));
-                cluster.shape.setAttribute("width", round(rect.width));
-                cluster.shape.setAttribute("height", round(rect.height));
-                if (cluster.title) {
-                    // Keep the title centred at the top of the cluster
-                    const base = cluster.baseRect;
-                    cluster.title.element.setAttribute("x", round(cluster.title.x + (rect.x - offset.x + rect.width / 2) - (base.x + base.width / 2)));
-                    cluster.title.element.setAttribute("y", round(cluster.title.y + (rect.y - offset.y) - base.y));
-                }
-            }
+            const local = { ...rect, x: rect.x - offset.x, y: rect.y - offset.y };
+            const mapX = stretch(cluster.baseRect.x, cluster.baseRect.width, local.x, local.width);
+            const mapY = stretch(cluster.baseRect.y, cluster.baseRect.height, local.y, local.height);
+            for (const part of cluster.parts) stretchPart(part, mapX, mapY);
         }
     }
 
@@ -550,6 +543,100 @@ class MovableDiagram {
             moveLabel(label, chosen.x, chosen.y);
         }
     }
+}
+
+/**
+ * Maps the coordinates along an axis of a shape that grows from [start, start + size]
+ * to [newStart, newStart + newSize]: those in the first half follow the start, those
+ * in the second half follow the end, and those in the middle move halfway between both.
+ */
+function stretch(start, size, newStart, newSize) {
+    const middle = start + size / 2, before = newStart - start, after = newStart + newSize - start - size;
+    return v => v < middle - 1 ? v + before : v > middle + 1 ? v + after : v + (before + after) / 2;
+}
+
+// The attributes with the geometry of each kind of part of a cluster
+const PART_ATTRIBUTES = {
+    rect: ["x", "y", "width", "height"],
+    line: ["x1", "y1", "x2", "y2"],
+    polygon: ["points"],
+    path: ["d"],
+    ellipse: ["cx", "cy"],
+    circle: ["cx", "cy"],
+    text: ["x", "y"]
+};
+
+/** Captures the original geometry of a part of a cluster, or returns null if it has none */
+function capturePart(element) {
+    const names = PART_ATTRIBUTES[element.tagName];
+    if (names == null) return null;
+    const part = { element, attributes: Object.fromEntries(names.map(name => [name, element.getAttribute(name)])) };
+    // Texts are stretched by their centres, so centred titles stay centred.
+    // PlantUML's textLength is the width it laid the text out with, whereas
+    // getBBox() depends on the fonts available to the browser.
+    if (element.tagName == "text") {
+        const length = parseFloat(element.getAttribute("textLength"));
+        part.halfWidth = (Number.isFinite(length) ? length : element.getBBox().width) / 2;
+    }
+    return part;
+}
+
+/** Re-applies the original geometry of a part of a cluster through the mappings of its axes */
+function stretchPart(part, mapX, mapY) {
+    const a = part.attributes, element = part.element;
+    const number = name => parseFloat(a[name]) || 0;
+    const set = (name, value) => element.setAttribute(name, round(value));
+    switch (element.tagName) {
+        case "rect":
+            set("x", mapX(number("x")));
+            set("y", mapY(number("y")));
+            set("width", mapX(number("x") + number("width")) - mapX(number("x")));
+            set("height", mapY(number("y") + number("height")) - mapY(number("y")));
+            break;
+        case "line":
+            set("x1", mapX(number("x1")));
+            set("y1", mapY(number("y1")));
+            set("x2", mapX(number("x2")));
+            set("y2", mapY(number("y2")));
+            break;
+        case "polygon":
+            element.setAttribute("points", parsePoints(a.points).map(p => `${round(mapX(p.x))},${round(mapY(p.y))}`).join(","));
+            break;
+        case "path":
+            element.setAttribute("d", stretchPathData(a.d, mapX, mapY));
+            break;
+        case "ellipse":
+        case "circle":
+            set("cx", mapX(number("cx")));
+            set("cy", mapY(number("cy")));
+            break;
+        case "text":
+            set("x", mapX(number("x") + part.halfWidth) - part.halfWidth);
+            set("y", mapY(number("y")));
+            break;
+    }
+}
+
+// The axis of each parameter of the absolute path commands ("-" for those that are not coordinates)
+const PATH_AXES = { M: "xy", L: "xy", T: "xy", H: "x", V: "y", C: "xy", S: "xy", Q: "xy", A: "-----xy", Z: "" };
+
+/** Maps the coordinates of path data. Paths with relative commands are left unchanged. */
+function stretchPathData(d, mapX, mapY) {
+    const result = [];
+    let axes = "", index = 0;
+    for (const token of d.match(/[a-zA-Z]|[-+]?(\d+\.?\d*|\.\d+)(e[-+]?\d+)?/gi) ?? []) {
+        if (/^[a-zA-Z]$/.test(token)) {
+            axes = PATH_AXES[token];
+            if (axes == null) return d;
+            index = 0;
+            result.push(token);
+        }
+        else {
+            const axis = axes[index++ % axes.length];
+            result.push(axis == "x" ? round(mapX(parseFloat(token))) : axis == "y" ? round(mapY(parseFloat(token))) : token);
+        }
+    }
+    return result.join(" ");
 }
 
 /** Moves the top-left corner of a label */

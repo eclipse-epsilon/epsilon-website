@@ -26,7 +26,8 @@ Requirements implemented by `js/MovableDiagram.js`, together with its integratio
 - A moved node is translated with a `transform="translate(dx,dy)"` on its group, relative to its original position.
 - Moving a container (cluster) moves all its descendant nodes with it. A node is a descendant when its `data-qualified-name` starts with the cluster's qualified name followed by `.`.
 - Containers grow, innermost first, so that they keep enclosing their children's bounds plus a 12px padding. Containers grow but never shrink below their original size.
-- When a rectangular container is resized, its title stays centred horizontally at the top of the container.
+- Containers of any shape (e.g. PlantUML's default folder-shaped packages, nodes or databases) are resized by stretching all their parts: outline, separator lines and title. Along each axis, coordinates in the first half of the original container follow its left/top edge, those in the second half follow its right/bottom edge, and those within 1px of the middle move halfway between both. Texts are stretched by their centres, so tabs and left-aligned titles stay at the top-left corner, and centred titles stay centred.
+- Only absolute path commands are stretched: paths with relative commands keep their original shape.
 
 ## Moving labels
 

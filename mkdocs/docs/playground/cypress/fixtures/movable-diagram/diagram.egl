@@ -1,0 +1,16 @@
+@startuml
+!pragma layout smetana
+package outer {
+  rectangle inner {
+    class A
+    class B
+  }
+  class C
+}
+class D
+class E
+A --> B : ab
+C --> D : cd
+D --> D : loop
+D --> E
+@enduml
