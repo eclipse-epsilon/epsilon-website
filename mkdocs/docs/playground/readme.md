@@ -9,6 +9,20 @@ To only run the Playground front-end, you can use the following command:
 
 `npx live-server`
 
+## Kroki version
+
+EGL programs with an output type of `puml` or `dot` are rendered to SVG through the Kroki service configured in `backend.json` (and `backend.local.json`). The Kroki instance must be **version 0.30.0 or later**, as it is the first release that bundles PlantUML 1.2026.1 or later.
+
+`MovableDiagram` only makes PlantUML diagrams movable when their SVG has the structure introduced in PlantUML 1.2026.1: nodes are `g.entity` / `g.cluster` groups with a `data-qualified-name` attribute, and links are `g.link` groups whose `data-entity-1` / `data-entity-2` attributes hold the `id`s of their ends. Older versions produce SVGs that do not match this structure, so the diagrams stay static:
+
+| Kroki         | PlantUML  | SVG structure                                                                   |
+|---------------|-----------|---------------------------------------------------------------------------------|
+| up to 0.27.0  | 1.2024.1  | `<g id="elem_A">`: no `entity` / `cluster` / `link` classes                     |
+| 0.28.0–0.29.1 | 1.2025.x  | `<g class="entity" id="entity_A">`, but links reference entity names (`A`), not `id`s, and there is no `data-qualified-name` |
+| 0.30.0+       | 1.2026.1+ | `<g class="entity" id="ent0003" data-qualified-name="p.A">`, links reference `id`s |
+
+To check the versions used by a Kroki instance, query its `/health` endpoint (e.g. `curl <kroki-url>/health`) and look at the `kroki` and `plantuml` entries.
+
 ## Testing on the production deployment
 
 We use [Cypress](https://cypress.io) for automated testing. Tests are stored under the `cypress/e2e` folder. To run a single test, you need to use the following command:
