@@ -328,8 +328,13 @@ function runProgram() {
                             krokiXhr.onreadystatechange = function () {
                                 if (krokiXhr.readyState === 4) {
                                     if (krokiXhr.status === 200) {
-                                        // PlantUML diagrams can be made movable, unlike Graphviz ones
-                                        outputPanel.renderDiagram(krokiXhr.responseText, response.generatedText, true, outputType == "puml");
+                                        if (outputType == "puml") {
+                                            // Use the default value for the movable flag for PlantUML diagrams
+                                            outputPanel.renderDiagram(krokiXhr.responseText, response.generatedText, true);
+                                        } else {
+                                            // We do not support moving nodes in DOT diagrams
+                                            outputPanel.renderDiagram(krokiXhr.responseText, response.generatedText, true, false);
+                                        }
                                     }
                                 }
                             };
