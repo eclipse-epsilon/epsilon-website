@@ -2548,16 +2548,16 @@ the table below.</p>
 </thead>
 <tbody>
 <tr>
-<td>assertEqualDirectories(expectedPath : String, obtainedPath : String)</td>
-<td>Fails the test if the contents of the directory in <code>expectedPath</code> differ from those of the directory in <code>obtainedPath</code>. Directory comparisons are performed on recursive snapshots of both directories.</td>
-</tr>
-<tr>
 <td>assertEqualFiles(expectedPath : String, obtainedPath : String)</td>
-<td>Fails the test if the contents of the file in <code>expectedPath</code> differ from those of the file in <code>obtainedPath</code>. File comparisons are performed on snapshots of both files.</td>
+<td>Fails the test if the contents of the file/directory in <code>expectedPath</code> differ from those of the file/directory in <code>obtainedPath</code>. File comparisons are performed on snapshots of both files, and directory comparisons are performed on recursive snapshots of both directories.</td>
 </tr>
 <tr>
 <td>assertEqualFilesIgnoringLineEndings(expectedPath : String, obtainedPath : String)</td>
 <td>As above, but different line endings will not cause the test to fail.</td>
+</tr>
+<tr>
+<td>assertEqualDirectories(expectedPath : String, obtainedPath : String)</td>
+<td><em>Deprecated since 2.10</em>: alias for <code>assertEqualFiles</code>.</td>
 </tr>
 <tr>
 <td>assertEqualModels([msg : String,] expectedModel : String, obtainedModel : String[, options : Map])</td>
