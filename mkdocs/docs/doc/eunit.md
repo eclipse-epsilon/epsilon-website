@@ -288,9 +288,9 @@ the table below.
 
 | Signature | Description |
 | - | - |
-| assertEqualDirectories(expectedPath : String, obtainedPath : String) | Fails the test if the contents of the directory in `expectedPath` differ from those of the directory in `obtainedPath`. Directory comparisons are performed on recursive snapshots of both directories.|
-|assertEqualFiles(expectedPath : String, obtainedPath : String) | Fails the test if the contents of the file in `expectedPath` differ from those of the file in `obtainedPath`. File comparisons are performed on snapshots of both files.|
+|assertEqualFiles(expectedPath : String, obtainedPath : String) | Fails the test if the contents of the file/directory in `expectedPath` differ from those of the file/directory in `obtainedPath`. File comparisons are performed on snapshots of both files, and directory comparisons are performed on recursive snapshots of both directories. |
 |assertEqualFilesIgnoringLineEndings(expectedPath : String, obtainedPath : String) | As above, but different line endings will not cause the test to fail. |
+| assertEqualDirectories(expectedPath : String, obtainedPath : String) | *Deprecated since 2.10*: alias for `assertEqualFiles`. |
 |assertEqualModels(\[msg : String,\] expectedModel : String, obtainedModel : String\[, options : Map\]) | Fails the test with the optional message if the model named `expectedModel` is not equal to the model named `obtainedModel`. Model comparisons are performed on snapshots of the resource sets of both models. During EMF comparisons, XMI identifiers are ignored. Additional comparator-specific options can be specified through `options`.|
 |assertEquals(\[msg : String,\] expected : Any, obtained : Any) | Fails the test with the optional message `msg` if the values of `expected` and `obtained` are not equal.|
 |assertEquals(\[msg : String,\] expected : Real, obtained : Real,ulps : Integer) | Fails the test with the optional message `msg` if the values of `expected` and `obtained` differ in more than units of least precision. See [this site](http://download.oracle.com/javase/6/docs/api/java/lang/Math.html#ulp(double)) for details.|
