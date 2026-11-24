@@ -46,13 +46,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2098,7 +2092,7 @@
 <h2 id="abstract-syntax">Abstract Syntax<a class="headerlink" href="#abstract-syntax" title="Permanent link">&para;</a></h2>
 <p>In ECL, comparison specifications are organized in modules (<em>EcLModule</em>). As illustrated below, <em>EclModule</em> (indirectly) extends <em>EolModule</em> which means that it can contain user-defined operations and import other library modules and ECL modules. Apart from operations, an ECL module contains a set of match-rules (<em>MatchRule</em>) and a set of <em>pre</em> and <em>post</em> blocks than run before and after all comparisons, respectively.</p>
 <p><em>MatchRules</em> enable users to perform comparison of model elements at a high level of abstraction. Each match-rule declares a name, and two parameters (<em>leftParameter</em> and <em>rightParameter</em>) that specify the types of elements it can compare. It also optionally defines a number of rules it inherits (<em>extends</em>) and if it is <em>abstract</em>, <em>lazy</em> and/or <em>greedy</em>. The semantics of the latter are discussed shortly.</p>
-<pre class="mermaid mermaid-90"><code>classDiagram
+<pre class="mermaid"><code>classDiagram
 class MatchRule {
     -name: String
     -abstract: Boolean
@@ -2137,30 +2131,32 @@ MatchRule -- Domain: rightDomain 0..1</code></pre>
 <p><em>Pre</em> and <em>post</em> blocks are named blocks of EOL statements which as discussed in the sequel are executed before and after the match-rules have been executed respectively.</p>
 <h2 id="concrete-syntax">Concrete Syntax<a class="headerlink" href="#concrete-syntax" title="Permanent link">&para;</a></h2>
 <p>The concrete syntax of a match-rule is displayed below.</p>
-<pre class="highlight"><code class="language-ecl">(@lazy)?
-(@greedy)?
-(@abstract)?
-rule &lt;name&gt;
-    match &lt;leftParameterName&gt;:&lt;leftParameterType&gt;
-        (in (:expression|{statementBlock}))?
-    with &lt;rightParameterName&gt;:&lt;rightParameterType&gt;
-        ((in|from) (:expression|{statementBlock}))?
-        (extends &lt;ruleName&gt;(, &lt;ruleName&gt;)*)? { 
-
-    (guard (:expression|{statementBlock}))?
-    compare (:expression|{statementBlock})
-    (do {statementBlock})?
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">(</span><span class="cp">@lazy)?</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">(</span><span class="cp">@greedy)?</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">(</span><span class="cp">@abstract)?</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">rule</span><span class="w"> </span><span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="o">&lt;</span><span class="n">leftParameterName</span><span class="o">&gt;:&lt;</span><span class="n">leftParameterType</span><span class="o">&gt;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="p">(</span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="o">:</span><span class="n">expression</span><span class="o">|</span><span class="p">{</span><span class="n">statementBlock</span><span class="p">}))</span><span class="o">?</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="k">with</span><span class="w"> </span><span class="o">&lt;</span><span class="n">rightParameterName</span><span class="o">&gt;:&lt;</span><span class="n">rightParameterType</span><span class="o">&gt;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="p">((</span><span class="k">in</span><span class="o">|</span><span class="k">from</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">:</span><span class="n">expression</span><span class="o">|</span><span class="p">{</span><span class="n">statementBlock</span><span class="p">}))</span><span class="o">?</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="p">(</span><span class="k">extends</span><span class="w"> </span><span class="o">&lt;</span><span class="n">ruleName</span><span class="o">&gt;</span><span class="p">(,</span><span class="w"> </span><span class="o">&lt;</span><span class="n">ruleName</span><span class="o">&gt;</span><span class="p">)</span><span class="o">*</span><span class="p">)</span><span class="o">?</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="p">(</span><span class="k">guard</span><span class="w"> </span><span class="p">(</span><span class="o">:</span><span class="n">expression</span><span class="o">|</span><span class="p">{</span><span class="n">statementBlock</span><span class="p">}))</span><span class="o">?</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="k">compare</span><span class="w"> </span><span class="p">(</span><span class="o">:</span><span class="n">expression</span><span class="o">|</span><span class="p">{</span><span class="n">statementBlock</span><span class="p">})</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="p">(</span><span class="k">do</span><span class="w"> </span><span class="p">{</span><span class="n">statementBlock</span><span class="p">})</span><span class="o">?</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">}</span>
+</code></pre></div>
 <p><em>Pre</em> and <em>post</em> blocks have a simple syntax that, as shown below, consists of the identifier (<em>pre</em> or <em>post</em>), an optional name and the set of statements to be executed enclosed in curly braces.</p>
-<pre class="highlight"><code>(pre|post) &lt;name&gt; {
-    statement+
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>(pre|post) &lt;name&gt; {
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    statement+
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>}
+</code></pre></div>
 <h2 id="execution-semantics">Execution Semantics<a class="headerlink" href="#execution-semantics" title="Permanent link">&para;</a></h2>
 <h3 id="rule-and-block-overriding">Rule and Block Overriding<a class="headerlink" href="#rule-and-block-overriding" title="Permanent link">&para;</a></h3>
 <p>An ECL module can import a number of other ECL modules. In such a case, the importing ECL module inherits all the rules and pre/post blocks specified in the modules it imports (recursively). If the module specifies a rule or a pre/post block with the same name, the local rule/block overrides the imported one respectively.</p>
 <h3 id="comparison-outcome">Comparison Outcome<a class="headerlink" href="#comparison-outcome" title="Permanent link">&para;</a></h3>
 <p>As illustrated below, the result of comparing two models with ECL is a trace (<em>MatchTrace</em>) that consists of a number of matches (<em>Match</em>). Each match holds a reference to the objects from the two models that have been compared (<em>left</em> and <em>right</em>), a boolean value that indicates if they have been found to be <em>matching</em> or not, a reference to the <em>rule</em> that has made the decision, and a Map (<em>info</em>) that is used to hold any additional information required by the user (accessible at runtime through the <em>matchInfo</em> implicit variable). During the matching process, a second, temporary, match trace is also used to detect and resolve cyclic invocation of match-rules as discussed in the sequel.</p>
-<pre class="mermaid mermaid-80"><code>classDiagram
+<pre class="mermaid"><code>classDiagram
 class Match {
     -left: Object
     -right: Object
@@ -2193,100 +2189,104 @@ Map -- Match: info</code></pre>
 <h3 id="cyclic-invocation-of-matches">Cyclic invocation of <em>matches()</em><a class="headerlink" href="#cyclic-invocation-of-matches" title="Permanent link">&para;</a></h3>
 <p>Providing the built-in <em>matches</em> operation significantly simplifies comparison specifications. It also enhances decoupling between match-rules from each other as when a rule needs to compare two elements that are outside its scope, it does not need to know/specify which other rule can compare those elements explicitly.</p>
 <p>On the other hand, it is possible - and quite common indeed - for two rules to implicitly invoke each other. For example consider the match rule below that attempts to match nodes of the simple Tree metamodel.</p>
-<pre class="mermaid mermaid-40"><code>classDiagram
+<pre class="mermaid"><code>classDiagram
 class Tree {
     +label: String
     +parent: Tree
     +children: Tree[*]
 }
 Tree -- Tree</code></pre>
-<pre class="highlight"><code class="language-ecl">rule Tree2Tree 
-    match l : T1!Tree
-    with r : T2!Tree {
-
-    compare : l.label = r.label and 
-        l.parent.matches(r.parent) and
-        l.children.matches(r.children)
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">rule</span><span class="w"> </span><span class="n">Tree2Tree</span><span class="w"> </span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">T1</span><span class="o">!</span><span class="n">Tree</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">with</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">T2</span><span class="o">!</span><span class="n">Tree</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="k">compare</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">l</span><span class="o">.</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="o">.</span><span class="n">label</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="n">l</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">matches</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span><span class="w"> </span><span class="ow">and</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="n">l</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">matches</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">children</span><span class="p">)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">}</span>
+</code></pre></div>
 <p>The rule specifies that for two Tree nodes (<em>l</em> and <em>r</em>) to match, they should have the same label, belong to matching parents and have matching children. In the absence of a dedicated mechanism for cycle detection and resolution, the rule would end up in an infinite loop. To address this problem, ECL provides a temporary match-trace which is used to detect and resolve cyclic invocations of the <em>match()</em> built-in operation.</p>
 <p>As discussed above, a match is added to the primary match-trace as soon as the compare part of the rule has been executed to completion. By contrast, a temporary match (with its <em>matching</em> property set to <em>true</em>) is added to the temporary trace before the compare part is executed. In this way, any subsequent attempts to match the two elements from invoked rules will not re-invoke the rule. Finally, when a top-level rule returns, the temporary match trace is reset.</p>
 <h2 id="fuzzy-and-dictionary-based-string-matching">Fuzzy and Dictionary-based String Matching<a class="headerlink" href="#fuzzy-and-dictionary-based-string-matching" title="Permanent link">&para;</a></h2>
 <p>In the example above, the rule specifies that to match, two trees must - among other criteria - have the same label. However, there are cases when a less-strict approach to matching string properties of model elements is desired. For instance, when comparing two UML models originating from different organizations, it is common to encounter ontologically equivalent classes which however have different names (e.g. Client and Customer). In this case, to achieve a more sound matching, the use of a dictionary or a lexical database (e.g. WordNet) is necessary. Alternatively, fuzzy string matching algorithms can be used.</p>
 <p>As several such tools and algorithms have been implemented in various programming languages, it is a sensible approach to reuse them instead of re-implementing them. For example, in the listing below a wrapper for the Simmetrics fuzzy string comparison tool is used to compare the labels of the trees using the Levenshtein algorithm. To achieve this, line 11 invokes the <em>fuzzyMatch()</em> operation defined in lines 16-18 which uses the simmterics native tool (instantiated in lines 2-4) to match the two labels using their Levenshtein distance with a threshold of 0.5.</p>
-<pre class="highlight"><code class="language-ecl">pre {
-    var simmetrics = 
-        new Native("org.epsilon.ecl.tools.
-            textcomparison.simmetrics.SimMetricsTool"); 
-}
-
-rule FuzzyTree2Tree 
-    match l : T1!Tree
-    with r : T2!Tree {
-
-    compare : l.label.fuzzyMatch(r.label) and 
-        l.parent.matches(r.parent) and
-        l.children.matches(r.children)
-}
-
-operation String fuzzyMatch(other : String) : Boolean {
-    return simmetrics.similarity(self,other,"Levenshtein") &gt; 0.5;
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">pre</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">simmetrics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="kt">Native</span><span class="p">(</span><span class="s2">&quot;org.epsilon.ecl.tools.</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="s2">            textcomparison.simmetrics.SimMetricsTool&quot;</span><span class="p">);</span><span class="w"> </span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">rule</span><span class="w"> </span><span class="n">FuzzyTree2Tree</span><span class="w"> </span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">T1</span><span class="o">!</span><span class="n">Tree</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="k">with</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">T2</span><span class="o">!</span><span class="n">Tree</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="k">compare</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">l</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">fuzzyMatch</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">label</span><span class="p">)</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="n">l</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">matches</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span><span class="w"> </span><span class="ow">and</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="n">l</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">matches</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">children</span><span class="p">)</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="p">}</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="k">operation</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">fuzzyMatch</span><span class="p">(</span><span class="n">other</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">simmetrics</span><span class="o">.</span><span class="n">similarity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">,</span><span class="s2">&quot;Levenshtein&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="p">}</span>
+</code></pre></div>
 <h2 id="using-domains-to-direct-the-matching-process-epsilon-25">Using domains to direct the matching process (Epsilon 2.5+)<a class="headerlink" href="#using-domains-to-direct-the-matching-process-epsilon-25" title="Permanent link">&para;</a></h2>
 <p>Instead of always doing all-pairs matching, it is possible to use <code>in</code> and <code>from</code> to direct the matching process and reduce execution times.</p>
 <p>For example, if we wanted to match two <code>Tree</code> models by using their labels, we could precompute a label-to-Tree mapping for the right side, and replace all-pairs matching with a lookup:</p>
-<pre class="highlight"><code class="language-ecl">pre {
-  var rByLabel = RightTree!Tree.all.mapBy(t|t.label);
-}
-
-rule LeftWithRight
-  match l : LeftTree!Tree
-  with r : RightTree!Tree
-  from: rByLabel.getOrDefault(l.label, Set {})
-{
-  compare: true
-  do {
-    (l.label + " on the left matched with " + r.label + " on the right").println();
-  }
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">pre</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">rByLabel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RightTree</span><span class="o">!</span><span class="n">Tree</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">mapBy</span><span class="p">(</span><span class="n">t</span><span class="o">|</span><span class="n">t</span><span class="o">.</span><span class="n">label</span><span class="p">);</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">}</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">rule</span><span class="w"> </span><span class="n">LeftWithRight</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="k">match</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">LeftTree</span><span class="o">!</span><span class="n">Tree</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="k">with</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">RightTree</span><span class="o">!</span><span class="n">Tree</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span><span class="k">from</span><span class="o">:</span><span class="w"> </span><span class="n">rByLabel</span><span class="o">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="kt">Set</span><span class="w"> </span><span class="p">{})</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="p">{</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span><span class="k">compare</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">label</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; on the left matched with &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">r</span><span class="o">.</span><span class="n">label</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; on the right&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="p">}</span>
+</code></pre></div>
 <p>The above example uses a dynamic domain for the right parameter (specified via <code>from</code>).
 This expression is re-evaluated for every value of <code>l</code>.</p>
 <p>Besides dynamic domains, both left and right parameters can use static domains (specified via <code>in</code>), which are evaluated once and do not take any parameters.
 For example, the example below would limit matching to the first three levels of the tree:</p>
-<pre class="highlight"><code class="language-ecl">rule LeftWithRight
-  match l : LeftTree!Tree
-  in: LeftTree.resource.contents.first.upToDepth(1)
-  with r : RightTree!Tree
-  in: RightTree.resource.contents.first.upToDepth(1)
-{
-  compare: l.label == r.label
-  do {
-    var ld = l.depth();
-    var rd = r.depth();
-    (l.label + " (depth " + ld + " ) matched with " + r.label + " (depth " + rd + ")").println();
-  }
-}
-
-operation LeftTree!Tree upToDepth(depth: Integer): Collection {
-  var result : Set;
-  var pending = Sequence { self };
-  while (not pending.empty) {
-    var e = pending.removeAt(0);
-    if (e.depth() &lt;= depth) {
-      result.add(e);
-      pending.addAll(e.children);
-    } 
-  }
-  return result;
-}
-
-@cached
-operation LeftTree!Tree depth() {
-  if (self.eContainer().isDefined()) {
-    return 1 + self.eContainer().depth();
-  } else {
-    return 0;
-  }
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">rule</span><span class="w"> </span><span class="n">LeftWithRight</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="k">match</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">LeftTree</span><span class="o">!</span><span class="n">Tree</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="k">in</span><span class="o">:</span><span class="w"> </span><span class="n">LeftTree</span><span class="o">.</span><span class="n">resource</span><span class="o">.</span><span class="n">contents</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">upToDepth</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="k">with</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">RightTree</span><span class="o">!</span><span class="n">Tree</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="k">in</span><span class="o">:</span><span class="w"> </span><span class="n">RightTree</span><span class="o">.</span><span class="n">resource</span><span class="o">.</span><span class="n">contents</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">upToDepth</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">{</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="k">compare</span><span class="o">:</span><span class="w"> </span><span class="n">l</span><span class="o">.</span><span class="n">label</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">r</span><span class="o">.</span><span class="n">label</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">ld</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">l</span><span class="o">.</span><span class="n">depth</span><span class="p">();</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">rd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="o">.</span><span class="n">depth</span><span class="p">();</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">label</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; (depth &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ld</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; ) matched with &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">r</span><span class="o">.</span><span class="n">label</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; (depth &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rd</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="p">}</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="k">operation</span><span class="w"> </span><span class="n">LeftTree</span><span class="o">!</span><span class="n">Tree</span><span class="w"> </span><span class="n">upToDepth</span><span class="p">(</span><span class="n">depth</span><span class="o">:</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">Collection</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Set</span><span class="p">;</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">pending</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Sequence</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="p">};</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="ow">not</span><span class="w"> </span><span class="n">pending</span><span class="o">.</span><span class="n">empty</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pending</span><span class="o">.</span><span class="n">removeAt</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">depth</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">depth</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">      </span><span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">      </span><span class="n">pending</span><span class="o">.</span><span class="n">addAll</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">children</span><span class="p">);</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="p">}</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="cp">@cached</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="k">operation</span><span class="w"> </span><span class="n">LeftTree</span><span class="o">!</span><span class="n">Tree</span><span class="w"> </span><span class="n">depth</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eContainer</span><span class="p">()</span><span class="o">.</span><span class="n">isDefined</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">eContainer</span><span class="p">()</span><span class="o">.</span><span class="n">depth</span><span class="p">();</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="p">}</span>
+</code></pre></div>
 <h2 id="the-match-trace">The Match Trace<a class="headerlink" href="#the-match-trace" title="Permanent link">&para;</a></h2>
 <p>Users can query and modify the <a href="https://download.eclipse.org/epsilon/stable-javadoc/org/eclipse/epsilon/ecl/trace/MatchTrace.html">match trace</a> calculated during the comparison process in the post sections of the module or export it into another application or Epsilon program. For example, in a post section, the trace can be printed to the default output stream or serialized into a model of an arbitrary metamodel. In another use case, the trace may be exported to be used in the context of a validation module that will use the identified matches to evaluate inter-model constraints, or in a merging module that will use the matches to identify the elements on which the two models will be merged.</p>
 <div class="admonition tip">
@@ -2426,8 +2426,6 @@ operation LeftTree!Tree depth() {
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

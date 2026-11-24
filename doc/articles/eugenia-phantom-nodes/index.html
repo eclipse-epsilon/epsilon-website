@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1827,28 +1821,29 @@
 
 <h1 id="eugenia-phantom-nodes-in-gmf-editors">Eugenia: Phantom nodes in GMF editors<a class="headerlink" href="#eugenia-phantom-nodes-in-gmf-editors" title="Permanent link">&para;</a></h1>
 <p>Containment references in Ecore metamodels are usually depicted in GMF as spatial containment (e.g. in the sense that a class is contained inside the figure of a package). However, it is sometimes needed to represent containment references using links instead. To achieve this, GMF provides the notion of <em>phantom nodes.</em> Eugenia provides first-class support for phantom nodes in GMF using the <code>phantom</code> annotation detail. The following listing provides such an example:</p>
-<pre class="highlight"><code class="language-emf">@namespace(uri="phantom", prefix="phantom")
-package phantom;
-
-@gmf.diagram
-class Model extends NamedElement {
-   val Group[*] groups;
-}
-
-class NamedElement {
-   attr String name;
-}
-
-@gmf.node(label="name")
-class Group extends NamedElement {
-   @gmf.link(label="member")
-   val Member[*] members;
-}
-
-@gmf.node(label="name", phantom="true")
-class Member extends NamedElement {
-
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@namespace</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="s2">&quot;phantom&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;phantom&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">package</span><span class="w"> </span><span class="n">phantom</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nd">@gmf.diagram</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">class</span><span class="w"> </span><span class="n">Model</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">NamedElement</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">   </span><span class="k">val</span><span class="w"> </span><span class="n">Group</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">groups</span><span class="p">;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">class</span><span class="w"> </span><span class="n">NamedElement</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">   </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">}</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="nd">@gmf.node</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">class</span><span class="w"> </span><span class="n">Group</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">NamedElement</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">   </span><span class="nd">@gmf.link</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;member&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">   </span><span class="k">val</span><span class="w"> </span><span class="n">Member</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">members</span><span class="p">;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="p">}</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="nd">@gmf.node</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">phantom</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="k">class</span><span class="w"> </span><span class="n">Member</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">NamedElement</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="p">}</span>
+</code></pre></div>
 <p>In this example, a Model contains many groups and a Group contains many members. To represent the Group.members containment reference as a normal link, we set the <code>phantom</code> detail of the <code>gmf.node</code> annotation of Member to <code>true</code> and add a <code>gmf.link</code> anotation to Group.members. The result looks like this:</p>
 <p><img alt="" src="Phantomgmf.png" /></p>
 <p><img alt="" src="Phantomemf2.png" /></p>
@@ -1947,8 +1942,6 @@ class Member extends NamedElement {
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

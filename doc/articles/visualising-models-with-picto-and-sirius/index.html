@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1852,7 +1846,7 @@
 
 
 <h1 id="visualising-models-with-picto-and-sirius">Visualising Models with Picto and Sirius<a class="headerlink" href="#visualising-models-with-picto-and-sirius" title="Permanent link">&para;</a></h1>
-<p>Graphical modelling frameworks such as <a href="https://www.eclipse.org/sirius/">Sirius</a> allow for models to be visualised and edited as diagrams, tables and trees. Sometimes it may be beneficial to visualise parts of the model in a different format, such as graphs. By combining both Sirius and <a href="../../picto">Picto</a>, you can combine the benefits of graphical editing, with the flexibility of rendering views using HTML/SVG/JavaScript-based technologies. </p>
+<p>Graphical modelling frameworks such as <a href="https://www.eclipse.org/sirius/">Sirius</a> allow for models to be visualised and edited as diagrams, tables and trees. Sometimes it may be beneficial to visualise parts of the model in a different format, such as graphs. By combining both Sirius and <a href="../../picto/">Picto</a>, you can combine the benefits of graphical editing, with the flexibility of rendering views using HTML/SVG/JavaScript-based technologies. </p>
 <p><img alt="Picto Sirius Visualisation" src="img/img1.PNG" /></p>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
 <p>In this example, we will use the Sirius basicfamily example and render charts using <a href="https://www.chartjs.org/">ChartJS</a>.</p>
@@ -1898,19 +1892,20 @@
 <p><img alt="Picto Sirius Visualisation" src="img/img5.PNG" /></p>
 <h2 id="modifying-the-example">Modifying the Example<a class="headerlink" href="#modifying-the-example" title="Permanent link">&para;</a></h2>
 <p>The <code>org.eclipse.epsilon.examples.picto.sirius</code> plug-in uses the <code>pictoSource</code> extension point and the <code>BasicFamilyPictoSource</code> class to allow Picto to obtain model elements and auto-refresh on save of the Sirius editor. This uses part of the Sirius API to get the root element of the diagram.</p>
-<pre class="highlight"><code class="language-java">protected EObject getRootOfDiagram(IEditorPart editorPart) {
-    if (isSiriusEditor(editorPart)) {
-        DDiagramEditor editor = (DDiagramEditor) editorPart;
-        DSemanticDiagramImpl diagram = 
-            (DSemanticDiagramImpl) editor.getRepresentation();
-        return diagram.getTarget();
-    }
-    return null;
-}
-
-protected boolean isSiriusEditor(IEditorPart editorPart) {
-    return editorPart instanceof DDiagramEditor;
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">protected</span><span class="w"> </span><span class="n">EObject</span><span class="w"> </span><span class="nf">getRootOfDiagram</span><span class="p">(</span><span class="n">IEditorPart</span><span class="w"> </span><span class="n">editorPart</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isSiriusEditor</span><span class="p">(</span><span class="n">editorPart</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="n">DDiagramEditor</span><span class="w"> </span><span class="n">editor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">DDiagramEditor</span><span class="p">)</span><span class="w"> </span><span class="n">editorPart</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="n">DSemanticDiagramImpl</span><span class="w"> </span><span class="n">diagram</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">            </span><span class="p">(</span><span class="n">DSemanticDiagramImpl</span><span class="p">)</span><span class="w"> </span><span class="n">editor</span><span class="p">.</span><span class="na">getRepresentation</span><span class="p">();</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">diagram</span><span class="p">.</span><span class="na">getTarget</span><span class="p">();</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">}</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="kd">protected</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isSiriusEditor</span><span class="p">(</span><span class="n">IEditorPart</span><span class="w"> </span><span class="n">editorPart</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">editorPart</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">DDiagramEditor</span><span class="p">;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">}</span>
+</code></pre></div>
 <p>The <code>basicfamily.egx</code> file (located in the resources directory of the <code>org.eclipse.epsilon.examples.picto.sirius</code> plug-in) coordinates the generation of the Picto views.</p>
 <p>The <code>model2bar.egl</code> and <code>model2pie.egl</code> files generate the respective bar and pie chart views using the ChartJS framework.</p>
 
@@ -2008,8 +2003,6 @@ protected boolean isSiriusEditor(IEditorPart editorPart) {
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1853,115 +1847,121 @@
 
 <h1 id="type-relationships-in-epsilon">Type Relationships in Epsilon<a class="headerlink" href="#type-relationships-in-epsilon" title="Permanent link">&para;</a></h1>
 <p>Types in an Epsilon program come from Epsilon's standard library (e.g. <code>Boolean</code>, <code>Sequence</code>, <code>Native</code>) and from the models it has access to. For example, if a program is executed against an EMF model that conforms to the metamodel below, it can also define variables, parameters etc. of types <code>Project</code>, <code>Task</code>, <code>Person</code> etc.</p>
-<pre class="highlight"><code class="language-emf">package psl;
-
-class Project {
-    attr String title;
-    val Task[*] tasks;
-    val Person[*] people;
-}
-
-class Task {
-    attr String title;
-    ref Person[*] participants;
-}
-
-abstract class Person {
-    attr String name;
-}
-
-class Employee extends Person {}
-
-class Manager extends Employee {}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">package</span><span class="w"> </span><span class="n">psl</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">class</span><span class="w"> </span><span class="n">Project</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">title</span><span class="p">;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="k">val</span><span class="w"> </span><span class="n">Task</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">tasks</span><span class="p">;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">val</span><span class="w"> </span><span class="n">Person</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">people</span><span class="p">;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">class</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">title</span><span class="p">;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="k">ref</span><span class="w"> </span><span class="n">Person</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">participants</span><span class="p">;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">}</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="p">}</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="k">class</span><span class="w"> </span><span class="n">Employee</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="k">class</span><span class="w"> </span><span class="n">Manager</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Employee</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
 <h2 id="type-related-operations">Type-Related Operations<a class="headerlink" href="#type-related-operations" title="Permanent link">&para;</a></h2>
 <p>Epsilon provides the <code>isKindOf</code> and <code>isTypeOf</code> operations to check conformance of objects to types and the <code>getAllOfKind</code> and <code>getAllOfType</code> operations to retrieve all instances of types at runtime. Consider the following Flexmi model that conforms to the metamodel above.</p>
-<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
-&lt;project title="Acme"&gt;
-    &lt;employee name="Alice"/&gt;
-    &lt;employee name="Bob"/&gt;
-    &lt;manager name="Charlie"/&gt;
-&lt;/project&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">&lt;?nsuri psl?&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Acme&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">&lt;employee</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">&lt;employee</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Bob&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nt">&lt;manager</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Charlie&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nt">&lt;/project&gt;</span>
+</code></pre></div>
 <p>The following EOL program demonstrates how the language's type-related methods work.</p>
-<pre class="highlight"><code class="language-eol">// Prints Alice, Bob
-Employee.getAllOfType().name.println();
-
-// Define variables for Alice and Charlie
-// Employee.all is an alias for Employee.getAllOfKind()
-var alice = Employee.all.first();
-var charlie = Manager.all.first();
-
-// Prints true as Alice's type (Employee) is a sub-type of Person
-alice.isKindOf(Person).println();
-
-// Also prints true
-alice.isTypeOf(Employee).println();
-
-// Prints false as Alice is not a manager
-alice.isTypeOf(Manager).println();
-
-// Prints true as Charlie's type (Manager) is a sub-type of Person
-charlie.isKindOf(Person).println();
-
-// Also prints true
-alice.isTypeOf(Manager).println();
-
-// Prints true as Charlie's type (Manager) is a sub-type of Employee
-alice.isKindOf(Employee).println();
-
-// Prints true as Charlie's most specific type is Manager
-alice.isTypeOf(Employee).println();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Prints Alice, Bob</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">Employee</span><span class="o">.</span><span class="n">getAllOfType</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">// Define variables for Alice and Charlie</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1">// Employee.all is an alias for Employee.getAllOfKind()</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">var</span><span class="w"> </span><span class="n">alice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Employee</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">();</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">var</span><span class="w"> </span><span class="n">charlie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Manager</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">();</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1">// Prints true as Alice&#39;s type (Employee) is a sub-type of Person</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="n">alice</span><span class="o">.</span><span class="n">isKindOf</span><span class="p">(</span><span class="n">Person</span><span class="p">)</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="c1">// Also prints true</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="n">alice</span><span class="o">.</span><span class="n">isTypeOf</span><span class="p">(</span><span class="n">Employee</span><span class="p">)</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="c1">// Prints false as Alice is not a manager</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="n">alice</span><span class="o">.</span><span class="n">isTypeOf</span><span class="p">(</span><span class="n">Manager</span><span class="p">)</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="c1">// Prints true as Charlie&#39;s type (Manager) is a sub-type of Person</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="n">charlie</span><span class="o">.</span><span class="n">isKindOf</span><span class="p">(</span><span class="n">Person</span><span class="p">)</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="c1">// Also prints true</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="n">alice</span><span class="o">.</span><span class="n">isTypeOf</span><span class="p">(</span><span class="n">Manager</span><span class="p">)</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="c1">// Prints true as Charlie&#39;s type (Manager) is a sub-type of Employee</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="n">alice</span><span class="o">.</span><span class="n">isKindOf</span><span class="p">(</span><span class="n">Employee</span><span class="p">)</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="c1">// Prints true as Charlie&#39;s most specific type is Manager</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="n">alice</span><span class="o">.</span><span class="n">isTypeOf</span><span class="p">(</span><span class="n">Employee</span><span class="p">)</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+</code></pre></div>
 <h2 id="user-defined-operation-call-dispatch">User-Defined Operation Call Dispatch<a class="headerlink" href="#user-defined-operation-call-dispatch" title="Permanent link">&para;</a></h2>
 <p>As discussed in <a href="../../eol/#user-defined-operations">EOL's documentation page</a>, the language supports adding user-defined operations to existing types. For example, we can define <code>getRole()</code> methods for <code>Employee</code> and <code>Manager</code> that return a string representation of the element's role as shown below.</p>
-<pre class="highlight"><code class="language-eol">var alice = Employee.all.first();
-var charlie = Manager.all.first();
-
-// Prints employee
-alice.getRole().println();
-
-// Prints manager
-charlie.getRole().println();
-
-// Prints employee, manager
-Sequence{alice, charlie}.collect(p|p.getRole()).println();
-
-operation Employee getRole() {
-    return "employee";
-}
-
-operation Manager getRole() {
-    return "manager";
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">var</span><span class="w"> </span><span class="n">alice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Employee</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">();</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">var</span><span class="w"> </span><span class="n">charlie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Manager</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">();</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1">// Prints employee</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">alice</span><span class="o">.</span><span class="n">getRole</span><span class="p">()</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1">// Prints manager</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">charlie</span><span class="o">.</span><span class="n">getRole</span><span class="p">()</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c1">// Prints employee, manager</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="kt">Sequence</span><span class="p">{</span><span class="n">alice</span><span class="p">,</span><span class="w"> </span><span class="n">charlie</span><span class="p">}</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">p</span><span class="o">|</span><span class="n">p</span><span class="o">.</span><span class="n">getRole</span><span class="p">())</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="k">operation</span><span class="w"> </span><span class="n">Employee</span><span class="w"> </span><span class="n">getRole</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;employee&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="p">}</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="k">operation</span><span class="w"> </span><span class="n">Manager</span><span class="w"> </span><span class="n">getRole</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;manager&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="p">}</span>
+</code></pre></div>
 <p>As the EOL interpreter dispatches calls to these operations at runtime, the fact that we have not declared the types of the <code>alice</code> and <code>charlie</code> variables is inconsequential. To determine which operation to call, the interpreter works in two phases:</p>
 <ul>
 <li>In the first phase it will try to dispatch the call to an operation where both its context type and its parameter types have <code>type-of</code> relationships with the object and parameters on which it is called.</li>
 <li>If no such operation is found, it will dispatch the call the <strong>first</strong> operation where its context type and parameter types have <code>kind-of</code> relationships with the objects and parameters on which it is called.</li>
 </ul>
 <p>As EOL is only aware of <code>type-of</code> and <code>kind-of</code> relationships between types and objects, it does not take into account more complex type hierarchies that the underlying modelling framework may support. For example, consider the following program.</p>
-<pre class="highlight"><code class="language-eol">var charlie = Manager.all.first();
-
-// Prints person instead of employee
-charlie.getRole().println();
-
-operation Person getRole() {
-    return "person";
-}
-
-operation Employee getRole() {
-    return "employee";
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">var</span><span class="w"> </span><span class="n">charlie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Manager</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">();</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1">// Prints person instead of employee</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">charlie</span><span class="o">.</span><span class="n">getRole</span><span class="p">()</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="k">operation</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="n">getRole</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;person&quot;</span><span class="p">;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="p">}</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="k">operation</span><span class="w"> </span><span class="n">Employee</span><span class="w"> </span><span class="n">getRole</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;employee&quot;</span><span class="p">;</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="p">}</span>
+</code></pre></div>
 <p>Coming from a language like Java, one would expect <code>charlie.getRole()</code> to be dispatched to <code>Employee.getRole()</code> as <code>Employee</code> is a <em>closer</em> super-type of <code>Manager</code> than <code>Person</code>. However, according to the dispatch algorithm described above, since there is no version of <code>getRole()</code> that applies specifically to managers, the EOL interpreter will choose the first operation with matching <code>kind-of</code> types that it finds to dispatch the call. For <code>Employee.getRole()</code> to be called in this case, we would need to swap the order of the two operations as shown below.</p>
-<pre class="highlight"><code class="language-eol">var charlie = Manager.all.first();
-
-// Prints employee
-charlie.getRole().println();
-
-operation Employee getRole() {
-    return "employee";
-}
-
-operation Person getRole() {
-    return "person";
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">var</span><span class="w"> </span><span class="n">charlie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Manager</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">();</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1">// Prints employee</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">charlie</span><span class="o">.</span><span class="n">getRole</span><span class="p">()</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">operation</span><span class="w"> </span><span class="n">Employee</span><span class="w"> </span><span class="n">getRole</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;employee&quot;</span><span class="p">;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">}</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="k">operation</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="n">getRole</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;person&quot;</span><span class="p">;</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="p">}</span>
+</code></pre></div>
 <p>To avoid unexpected behaviour for developers with a background in mainstream object-oriented languages, it is advisable to place user-defined operations that apply on more abstract types below their overloaded counterparts for more concrete types in Epsilon programs.</p>
 
 
@@ -2058,8 +2058,6 @@ operation Person getRole() {
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

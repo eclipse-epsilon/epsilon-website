@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1955,28 +1949,31 @@ created as new <code>simulink/Sources/Step</code>; To create Simulink Blocks you
 may instantiate them using the following syntax. The full path of the
 block matches their location in the Simulink "Library Browser". The EOL
 syntax to create this blocks is as follows:</p>
-<pre class="highlight"><code class="language-eol">var step = new `simulink/Sources/Step`;
-var sum = new `simulink/Math Operations/Sum`;
-var chart = new `sflib/Chart`;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">var</span><span class="w"> </span><span class="n">step</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">`simulink/Sources/Step`</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">var</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">`simulink/Math Operations/Sum`</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">var</span><span class="w"> </span><span class="n">chart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">`sflib/Chart`</span><span class="p">;</span>
+</code></pre></div>
 <p>In contrast to Simulink Blocks, Stateflow Blocks don't require the full
 library path but have to be instantiated with the Stateflow prefix (e.g.
 <code>Stateflow.${Block_Type}</code>). These blocks also need to have a parent and there are three options to do this with the Epsilon
 driver.</p>
-<pre class="highlight"><code class="language-eol">// Pass the parent as an argument of the constructor 
-new `Stateflow.State`(parent);
-
-// Add the child to the parent 
-var state= new `Stateflow.State`; 
-parent.add(state);
-
-// Set the parent as an object attribute 
-var state= new `Stateflow.State`;
-state.parent = parent;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Pass the parent as an argument of the constructor </span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">new</span><span class="w"> </span><span class="n">`Stateflow.State`</span><span class="p">(</span><span class="n">parent</span><span class="p">);</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1">// Add the child to the parent </span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">var</span><span class="w"> </span><span class="n">state</span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">`Stateflow.State`</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">parent</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">state</span><span class="p">);</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1">// Set the parent as an object attribute </span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="k">var</span><span class="w"> </span><span class="n">state</span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">`Stateflow.State`</span><span class="p">;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">state</span><span class="o">.</span><span class="n">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">;</span>
+</code></pre></div>
 <h3 id="child-blocks">Child Blocks<a class="headerlink" href="#child-blocks" title="Permanent link">&para;</a></h3>
 <p>You can also retrieve the child blocks of a given Simulink or Stateflow
 block using either syntax for both kinds of blocks:</p>
-<pre class="highlight"><code class="language-eol">state.getChildren();
-chart.children;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">state</span><span class="o">.</span><span class="n">getChildren</span><span class="p">();</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">chart</span><span class="o">.</span><span class="n">children</span><span class="p">;</span>
+</code></pre></div>
 <p>Note that Stateflow Blocks will return Stateflow Blocks as children and
 Simulink Blocks will return their Simulink children Blocks.</p>
 <h2 id="querying-for-existing-blocks">Querying for existing blocks<a class="headerlink" href="#querying-for-existing-blocks" title="Permanent link">&para;</a></h2>
@@ -1985,39 +1982,46 @@ with your EOL script, then you may query for all the blocks of a given
 type.</p>
 <p>For Simulink Blocks you may do this without having to specify their full
 path.</p>
-<pre class="highlight"><code class="language-eol">// var sum = new `simulink/Math Operations/Sum`; // Full path 
-var sumBlockList = Sum.all; // Type only</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// var sum = new `simulink/Math Operations/Sum`; // Full path </span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">var</span><span class="w"> </span><span class="n">sumBlockList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sum</span><span class="o">.</span><span class="n">all</span><span class="p">;</span><span class="w"> </span><span class="c1">// Type only</span>
+</code></pre></div>
 <p>For Stateflow Blocks you must specify the fully qualified type i.e. the
 same used for creation:</p>
-<pre class="highlight"><code class="language-eol">// var state= new `Stateflow.State`; // Fully qualified type
-var stateBlockList = `Stateflow.State`.all; </code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// var state= new `Stateflow.State`; // Fully qualified type</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">var</span><span class="w"> </span><span class="n">stateBlockList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">`Stateflow.State`</span><span class="o">.</span><span class="n">all</span><span class="p">;</span><span class="w"> </span>
+</code></pre></div>
 <p>Be aware that some Simulink Blocks have different "BlockTypes" than the
 path used for their construction.</p>
-<pre class="highlight"><code class="language-eol">var pidController = new `simulink/Continuous/PID Controller`; 
-var subsystemBlockList = SubSystem.all; // Includes PID Controller
-// PIDController.all or `PID Controller`.all would return an error
-var transferFcn = new `simulink/Continuous/Transfer Fcn`;
-var transferFcnBlockList = TransferFcn.all; // Removed the space</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">var</span><span class="w"> </span><span class="n">pidController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">`simulink/Continuous/PID Controller`</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">var</span><span class="w"> </span><span class="n">subsystemBlockList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SubSystem</span><span class="o">.</span><span class="n">all</span><span class="p">;</span><span class="w"> </span><span class="c1">// Includes PID Controller</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1">// PIDController.all or `PID Controller`.all would return an error</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">var</span><span class="w"> </span><span class="n">transferFcn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">`simulink/Continuous/Transfer Fcn`</span><span class="p">;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">var</span><span class="w"> </span><span class="n">transferFcnBlockList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TransferFcn</span><span class="o">.</span><span class="n">all</span><span class="p">;</span><span class="w"> </span><span class="c1">// Removed the space</span>
+</code></pre></div>
 <p>You may find the real Simulink Block type of the element by retrieving
 the "BlockType" property of the Simulink Block.</p>
-<pre class="highlight"><code class="language-eol">var pidController = new `simulink/Continuous/PID Controller`;
-pidController.BlockType.println; // prints "SubSystem"</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">var</span><span class="w"> </span><span class="n">pidController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">`simulink/Continuous/PID Controller`</span><span class="p">;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">pidController</span><span class="o">.</span><span class="n">BlockType</span><span class="o">.</span><span class="n">println</span><span class="p">;</span><span class="w"> </span><span class="c1">// prints &quot;SubSystem&quot;</span>
+</code></pre></div>
 <p>Note that Simulink and Stateflow Block types are case sensitive for
 instantiation and collection.</p>
 <h2 id="reading-and-updating-the-block-properties">Reading and Updating the block properties<a class="headerlink" href="#reading-and-updating-the-block-properties" title="Permanent link">&para;</a></h2>
 <p>You may read and update properties of Simulink and Stateflow blocks as
 follows:</p>
-<pre class="highlight"><code class="language-eol">state.Name = "State A"; // Set
-state.name.println; // Get</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">state</span><span class="o">.</span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;State A&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Set</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">state</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">println</span><span class="p">;</span><span class="w"> </span><span class="c1">// Get</span>
+</code></pre></div>
 <p>You may also set and get positioning attributes.</p>
-<pre class="highlight"><code class="language-eol">state.Position = "[50 50 310 200]"; // Set (receives a string type)
-var seq = state.position; // Get position (returns a sequence type)
-assert(seq.at(0) = 50); // element 0 of state block position</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">state</span><span class="o">.</span><span class="n">Position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;[50 50 310 200]&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Set (receives a string type)</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">var</span><span class="w"> </span><span class="n">seq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span><span class="o">.</span><span class="n">position</span><span class="p">;</span><span class="w"> </span><span class="c1">// Get position (returns a sequence type)</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">assert</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="p">);</span><span class="w"> </span><span class="c1">// element 0 of state block position</span>
+</code></pre></div>
 <p>Note that properties are case insensitive.</p>
 <h2 id="deleting-blocks">Deleting blocks<a class="headerlink" href="#deleting-blocks" title="Permanent link">&para;</a></h2>
 <p>You can also delete blocks using the following syntax:</p>
-<pre class="highlight"><code class="language-eol">delete state; // `Stateflow.State`
-delete chart; // `sflib/Chart`</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">delete</span><span class="w"> </span><span class="n">state</span><span class="p">;</span><span class="w"> </span><span class="c1">// `Stateflow.State`</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">delete</span><span class="w"> </span><span class="n">chart</span><span class="p">;</span><span class="w"> </span><span class="c1">// `sflib/Chart`</span>
+</code></pre></div>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <p>In this tutorial we've seen how to create, read, update, and delete
 Simulink and Stateflow block types in epsilon and also how to set up
@@ -2122,8 +2126,6 @@ folder in the official epsilon repository.</p>
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

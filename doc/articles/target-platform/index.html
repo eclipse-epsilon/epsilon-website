@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1845,7 +1839,8 @@
 <p><img alt="" src="target-platform-state.png" /></p>
 <p>This view allows you to search through the contents of the current target platform, and to check how dependencies have been resolved between the plugins. There is a drop down menu with an option for only showing unresolved plugins: a good target platform should never have any listed in there, unless they happen to be platform-specific. For instance, it makes sense if a Mac-specific plugin (e.g. a Mac binary for launching Eclipse) does not resolve in a developer's Linux machine.</p>
 <p>Once the target platform has been revised and we have double-checked that everything compiles fine and that there are no unresolved plugins in the "Target Platform State" view, we should do one last check before pushing the changes to Git: making sure the Tycho build still works. To do so, we should go to the main folder of the Epsilon Git repository and run this command, assuming we have a recent version of Maven 3 installed and available from our <code>PATH</code>:</p>
-<pre class="highlight"><code>mvn clean install</code></pre>
+<div class="highlight"><pre><span></span><code>mvn clean install
+</code></pre></div>
 <p>If this command succeeds, it is ready to be pushed. Push the changes, wait until the build succeeds in the <a href="https://ci.eclipse.org/epsilon/job/interim-kubernetes/job/main/">Epsilon Jenkins instance</a> (Jenkins checks every 5 minutes or so for changes), and then you're done!</p>
 
 
@@ -1942,8 +1937,6 @@
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1908,7 +1902,7 @@
 <h1 id="reflective-emf-tutorial">Reflective EMF Tutorial<a class="headerlink" href="#reflective-emf-tutorial" title="Permanent link">&para;</a></h1>
 <p>This tutorial demonstrates how to create an EMF Ecore metamodel and a sample model that conforms to it reflectively (i.e. without generating any code).</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>To go through this tutorial you need to first install the Eclipse Modeling Distribution, Epsilon and Emfatic. Installation instructions are available <a href="../../../download">here</a>.</p>
+<p>To go through this tutorial you need to first install the Eclipse Modeling Distribution, Epsilon and Emfatic. Installation instructions are available <a href="../../../download/">here</a>.</p>
 <h2 id="create-a-new-project">Create a new project<a class="headerlink" href="#create-a-new-project" title="Permanent link">&para;</a></h2>
 <p>Go to <code>File</code> &rarr; <code>New</code> &rarr; <code>Other...</code> and select <code>General</code> &rarr; <code>Project</code>. Type <code>library</code> as the project name:</p>
 <p><img alt="" src="new-project.jpg" /></p>
@@ -1918,30 +1912,31 @@
 <p>This is where we'll specify our Ecore metamodel using the Emfatic textual syntax</p>
 <h2 id="add-content-to-libraryemf">Add content to library.emf<a class="headerlink" href="#add-content-to-libraryemf" title="Permanent link">&para;</a></h2>
 <p>Now <code>library.emf</code> should be open and you can copy-paste the following text into it (our sample metamodel) and save.</p>
-<pre class="highlight"><code class="language-emf">@namespace(uri="library", prefix="")
-package library;
-
-class Library {
-   val Writer[*] writers;
-   val Book[*] books;
-}
-
-class Writer {
-   attr String name;
-   ref Book[*] books;
-}
-
-class Book {
-   attr String title;
-   attr int pages = 100;
-   attr BookCategory category;
-}
-
-enum BookCategory {
-   Mystery;
-   ScienceFiction;
-   Biography;
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@namespace</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="s2">&quot;library&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">package</span><span class="w"> </span><span class="n">library</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">class</span><span class="w"> </span><span class="n">Library</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">   </span><span class="k">val</span><span class="w"> </span><span class="n">Writer</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">writers</span><span class="p">;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">   </span><span class="k">val</span><span class="w"> </span><span class="n">Book</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">books</span><span class="p">;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">class</span><span class="w"> </span><span class="n">Writer</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">   </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">   </span><span class="k">ref</span><span class="w"> </span><span class="n">Book</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">books</span><span class="p">;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">}</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">class</span><span class="w"> </span><span class="n">Book</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">   </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">title</span><span class="p">;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">   </span><span class="k">attr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">pages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">   </span><span class="k">attr</span><span class="w"> </span><span class="n">BookCategory</span><span class="w"> </span><span class="n">category</span><span class="p">;</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="p">}</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="k">enum</span><span class="w"> </span><span class="n">BookCategory</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">   </span><span class="n">Mystery</span><span class="p">;</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">   </span><span class="n">ScienceFiction</span><span class="p">;</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">   </span><span class="n">Biography</span><span class="p">;</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="p">}</span>
+</code></pre></div>
 <p>Now your <code>library.emf</code> editor should look like this:</p>
 <p><img alt="" src="emfatic-editor.png" /></p>
 <h2 id="generate-libraryecore-from-libraryemf">Generate library.ecore from library.emf<a class="headerlink" href="#generate-libraryecore-from-libraryemf" title="Permanent link">&para;</a></h2>
@@ -2072,8 +2067,6 @@ enum BookCategory {
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1930,7 +1924,7 @@
 
 
 <h1 id="epsilon-playground">Epsilon Playground<a class="headerlink" href="#epsilon-playground" title="Permanent link">&para;</a></h1>
-<p>The <a href="../../../playground">Epsilon Playground</a> is a web application for fiddling with metamodelling, modelling and automated model management using <a href="https://eclipse.org/emfatic">Emfatic</a>, <a href="../../flexmi">Flexmi</a> and Epsilon's languages. Its back-end is implemented using <a href="https://cloud.google.com/functions">Google Cloud Platform Functions</a> and the front-end builds heavily on the <a href="https://metroui.org.ua">Metro 4</a> framework. Diagrams are rendered using <a href="https://plantuml.com">PlantUML</a> and <a href="https://kroki.io">Kroki</a>.</p>
+<p>The <a href="../../../playground">Epsilon Playground</a> is a web application for fiddling with metamodelling, modelling and automated model management using <a href="https://eclipse.org/emfatic">Emfatic</a>, <a href="../../flexmi/">Flexmi</a> and Epsilon's languages. Its back-end is implemented using <a href="https://cloud.google.com/functions">Google Cloud Platform Functions</a> and the front-end builds heavily on the <a href="https://metroui.org.ua">Metro 4</a> framework. Diagrams are rendered using <a href="https://plantuml.com">PlantUML</a> and <a href="https://kroki.io">Kroki</a>.</p>
 <h2 id="emfatic-metamodels-in-the-playground">Emfatic Metamodels in the Playground<a class="headerlink" href="#emfatic-metamodels-in-the-playground" title="Permanent link">&para;</a></h2>
 <p>For metamodelling, the Playground uses Ecore's <a href="https://eclipse.org/emfatic">Emfatic</a> textual syntax, augmented with a few <a href="https://www.eclipse.org/emfatic/#annotations">annotations</a> to control the graphical appearance of models and metamodels.</p>
 <h3 id="metamodel-diagram-annotations">Metamodel Diagram Annotations<a class="headerlink" href="#metamodel-diagram-annotations" title="Permanent link">&para;</a></h3>
@@ -1942,98 +1936,102 @@
 <li><code>@diagram(monochrome="true/false/&lt;color&gt;")</code>: Can be attached to packages to specify that all their classes/enumerations should be displayed with the same color.</li>
 </ul>
 <p>For example, the plain Emfatic metamodel below is rendered as follows:</p>
-<pre class="highlight"><code class="language-emf">package ptl;
-
-class Project {
-    attr String name;
-    val Task[*] tasks;
-    val Person[*] people;
-}
-
-abstract class Task {
-    attr String name;
-}
-
-class ManualTask extends Task {
-    ref Person person;
-}
-
-class AutomatedTask extends Task {
-
-}
-
-class Person {
-    attr String name;
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">package</span><span class="w"> </span><span class="n">ptl</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">class</span><span class="w"> </span><span class="n">Project</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="k">val</span><span class="w"> </span><span class="n">Task</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">tasks</span><span class="p">;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">val</span><span class="w"> </span><span class="n">Person</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">people</span><span class="p">;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">}</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">class</span><span class="w"> </span><span class="n">ManualTask</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="k">ref</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="p">}</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="k">class</span><span class="w"> </span><span class="n">AutomatedTask</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="p">}</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="k">class</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="p">}</span>
+</code></pre></div>
 <p><img alt="" src="plain.png" /></p>
 <p>while its annotated version produces the diagram below.</p>
-<pre class="highlight"><code class="language-emf">package ptl;
-
-class Project {
-    attr String name;
-    val Task[*] tasks;
-    val Person[*] people;
-}
-
-abstract class Task {
-    attr String name;
-}
-
-class ManualTask extends Task {
-    @diagram(direction="up")
-    ref Person person;
-}
-
-@diagram(inheritance.direction="down")
-class AutomatedTask extends Task {
-
-}
-
-class Person {
-    attr String name;
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">package</span><span class="w"> </span><span class="n">ptl</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">class</span><span class="w"> </span><span class="n">Project</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="k">val</span><span class="w"> </span><span class="n">Task</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">tasks</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="k">val</span><span class="w"> </span><span class="n">Person</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">people</span><span class="p">;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">}</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="k">class</span><span class="w"> </span><span class="n">ManualTask</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="nd">@diagram</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s2">&quot;up&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="k">ref</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">;</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="p">}</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="nd">@diagram</span><span class="p">(</span><span class="n">inheritance</span><span class="o">.</span><span class="n">direction</span><span class="o">=</span><span class="s2">&quot;down&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="k">class</span><span class="w"> </span><span class="n">AutomatedTask</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="p">}</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="k">class</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="p">}</span>
+</code></pre></div>
 <p><img alt="" src="annotated.png" /></p>
 <p>Changing the first line to</p>
-<pre class="highlight"><code class="language-emf">@diagram(monochrome="true")
-package ptl;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nd">@diagram</span><span class="p">(</span><span class="n">monochrome</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">package</span><span class="w"> </span><span class="n">ptl</span><span class="p">;</span>
+</code></pre></div>
 <p>produces the monochrome diagram below.</p>
 <p><img alt="" src="monochrome.png" /></p>
 <h3 id="model-graphical-syntax-annotations">Model Graphical Syntax Annotations<a class="headerlink" href="#model-graphical-syntax-annotations" title="Permanent link">&para;</a></h3>
 <p><a href="graphical-syntax-annotations/">Additional annotations</a> can be used to specify the graphical syntax of models. In the absence of such annotations, models are displayed as object diagrams where elements are represented with objects and references with edges between them as shown below.</p>
 <p><img alt="" src="default-object-diagram.png" /></p>
 <p>By adding the <code>@node</code> and <code>@edge</code> annotations below, the same model is displayed as a more concise and meaningful diagram.</p>
-<pre class="highlight"><code class="language-emf">@namespace(uri="psl", prefix="")
-package psl;
-
-class Project {
-    attr String name;
-    attr String description;
-    val Task[*] tasks;
-    @diagram(direction="right")
-    val Person[*] people;
-}
-
-@node(label="name")
-class Task {
-    attr String name;
-    attr int start;
-    attr int duration;
-    @diagram(direction="right")
-    val Effort[*]#task effort;
-}
-
-@node(label="name")
-class Person {
-    attr String name;
-}
-
-@edge(source="person", target="task", label="eol: self.percentage + '%'")
-class Effort {
-    @diagram(direction="up")
-    ref Person person;
-    ref Task#effort task;
-    attr int percentage = 100;
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nd">@namespace</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="s2">&quot;psl&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">package</span><span class="w"> </span><span class="n">psl</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">class</span><span class="w"> </span><span class="n">Project</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">description</span><span class="p">;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="k">val</span><span class="w"> </span><span class="n">Task</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">tasks</span><span class="p">;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nd">@diagram</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="k">val</span><span class="w"> </span><span class="n">Person</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">people</span><span class="p">;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="p">}</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="nd">@node</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="k">class</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="p">;</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">duration</span><span class="p">;</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="nd">@diagram</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="k">val</span><span class="w"> </span><span class="n">Effort</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="o">#</span><span class="n">task</span><span class="w"> </span><span class="n">effort</span><span class="p">;</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="p">}</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="nd">@node</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="k">class</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="p">}</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="nd">@edge</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;person&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="o">=</span><span class="s2">&quot;task&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;eol: self.percentage + &#39;%&#39;&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="k">class</span><span class="w"> </span><span class="n">Effort</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">    </span><span class="nd">@diagram</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s2">&quot;up&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">    </span><span class="k">ref</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">;</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">    </span><span class="k">ref</span><span class="w"> </span><span class="n">Task</span><span class="o">#</span><span class="n">effort</span><span class="w"> </span><span class="n">task</span><span class="p">;</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">percentage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">;</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="p">}</span>
+</code></pre></div>
 <p><img alt="" src="custom-diagram.png" /></p>
 <p>The complete list of supported annotations is available <a href="graphical-syntax-annotations/">here</a>.</p>
 <h2 id="save-and-share-your-work">Save and share your work<a class="headerlink" href="#save-and-share-your-work" title="Permanent link">&para;</a></h2>
@@ -2046,8 +2044,8 @@ class Effort {
 <h2 id="download-your-work">Download your work<a class="headerlink" href="#download-your-work" title="Permanent link">&para;</a></h2>
 <p>To download a zipped archive of your work, click the <code>Download</code> button. Depending on your selection, the zipped archived will contain the model management program(s), the models and metamodels of the example, a <code>readme.md</code> file with instructions as well as:</p>
 <ul>
-<li><code>Gradle</code>/<code>Maven</code>: a <code>build.gradle</code> or <code>pom.xml</code> file that includes the Epsilon dependencies and the <a href="../../workflow">ANT tasks</a> you need to run the example from the command line</li>
-<li><code>Ant (Eclipse)</code>: a <code>build.xml</code> file that in includes the <a href="../../workflow">ANT tasks</a> you need to run the example from within Eclipse</li>
+<li><code>Gradle</code>/<code>Maven</code>: a <code>build.gradle</code> or <code>pom.xml</code> file that includes the Epsilon dependencies and the <a href="../../workflow/">ANT tasks</a> you need to run the example from the command line</li>
+<li><code>Ant (Eclipse)</code>: a <code>build.xml</code> file that in includes the <a href="../../workflow/">ANT tasks</a> you need to run the example from within Eclipse</li>
 <li><code>Java (Gradle)</code>/<code>Java (Maven)</code>: a Java class that runs the model management program using Epsilon's API, and a <code>build.gradle</code> or <code>pom.xml</code> file that includes the Epsilon dependencies</li>
 </ul>
 <h2 id="custom-examples">Custom examples<a class="headerlink" href="#custom-examples" title="Permanent link">&para;</a></h2>
@@ -2060,9 +2058,9 @@ class Effort {
 <h2 id="docker-container">Docker container<a class="headerlink" href="#docker-container" title="Permanent link">&para;</a></h2>
 <p>If the Playground is a critical dependency for you (e.g. to support a training course), you may want to run your own instance through a <a href="https://github.com/epsilonlabs/playground-backend">Docker container</a>. Despite using <a href="https://github.com/eclipse-epsilon/epsilon-website/tree/master/mkdocs/docs/playground/cypress/e2e">automated testing with Cypress</a>, as we are evolving the Playground, we may inadvertently introduce regressions that break the Playground and make (parts of it) unusable for a period of time.</p>
 <h2 id="fair-usage-policy">Fair usage policy<a class="headerlink" href="#fair-usage-policy" title="Permanent link">&para;</a></h2>
-<p>The cost of running Epsilon Playground is proportional to the number of requests made to its Google Cloud Platform back-end (i.e. execution of programs and rendering of diagrams). With fair usage we can comfortably afford this cost and keep the Playground operational, but in case of excessive use we may have to take it down with no notice. To keep costs down, server-side operations that take more than 60 seconds to complete are automatically terminated. For extensive use, large models, or complex programs, please use the <a href="../../../download">development tools / Java libraries</a> provided on the Epsilon website instead, or run your own instance of the Epsilon Playground in a <a href="https://github.com/epsilonlabs/playground-docker">Docker container</a>.</p>
+<p>The cost of running Epsilon Playground is proportional to the number of requests made to its Google Cloud Platform back-end (i.e. execution of programs and rendering of diagrams). With fair usage we can comfortably afford this cost and keep the Playground operational, but in case of excessive use we may have to take it down with no notice. To keep costs down, server-side operations that take more than 60 seconds to complete are automatically terminated. For extensive use, large models, or complex programs, please use the <a href="../../../download/">development tools / Java libraries</a> provided on the Epsilon website instead, or run your own instance of the Epsilon Playground in a <a href="https://github.com/epsilonlabs/playground-docker">Docker container</a>.</p>
 <h2 id="reporting-bugs-and-requesting-help">Reporting bugs and requesting help<a class="headerlink" href="#reporting-bugs-and-requesting-help" title="Permanent link">&para;</a></h2>
-<p>Please submit bug reports using <a href="https://github.com/eclipse-epsilon/epsilon-website/issues">GitHub Issues</a> and ask for help in <a href="../../../forum">Epsilon's forum</a>. You can submit feature requests too but please keep in mind that the Playground is not a replacement for Epsilon's <a href="../../../download">Eclipse-based development tools</a>. The Playground has been tested on recent versions of Firefox and Chrome. It's unlikely that we'll be able to invest too much effort in making it compatible with older/other browsers but any pull requests you may be able to contribute are always welcome.</p>
+<p>Please submit bug reports using <a href="https://github.com/eclipse-epsilon/epsilon-website/issues">GitHub Issues</a> and ask for help in <a href="../../../forum">Epsilon's forum</a>. You can submit feature requests too but please keep in mind that the Playground is not a replacement for Epsilon's <a href="../../../download/">Eclipse-based development tools</a>. The Playground has been tested on recent versions of Firefox and Chrome. It's unlikely that we'll be able to invest too much effort in making it compatible with older/other browsers but any pull requests you may be able to contribute are always welcome.</p>
 
 
 
@@ -2158,8 +2156,6 @@ class Effort {
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

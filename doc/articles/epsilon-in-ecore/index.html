@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2014,18 +2008,20 @@
 <p>The provided EOL/EVL implementations become active when the appropriate delegate functionality is registered for a given EPackage. In practice, all three delegations should be registered.</p>
 <h3 id="setting-delegate">Setting Delegate<a class="headerlink" href="#setting-delegate" title="Permanent link">&para;</a></h3>
 <p>The setting delegate is specified by adding an EAnnotation to the EPackage with the following values:</p>
-<pre class="highlight"><code>source = "http://www.eclipse.org/emf/2002/Ecore"
-key = "settingDelegates"
-value = "http://eclipse.dev/epsilon/ecore/EOL"</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>source = &quot;http://www.eclipse.org/emf/2002/Ecore&quot;
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>key = &quot;settingDelegates&quot;
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>value = &quot;http://eclipse.dev/epsilon/ecore/EOL&quot;
+</code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>When generating the java classes from your genmodel, remember to set the genmodel option <code>root-&gt;Model-&gt;'Feature Delegation'</code> to something other than <code>None</code> (the specific type depends on your needs).</p>
 </div>
 <h3 id="invocation-delegate">Invocation Delegate<a class="headerlink" href="#invocation-delegate" title="Permanent link">&para;</a></h3>
 <p>The invocation delegate is specified by an EPackage EAnnotation with:</p>
-<pre class="highlight"><code>source = "http://www.eclipse.org/emf/2002/Ecore"
-key = "invocationDelegates"
-value = "http://eclipse.dev/epsilon/ecore/EOL"</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>source = &quot;http://www.eclipse.org/emf/2002/Ecore&quot;
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>key = &quot;invocationDelegates&quot;
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>value = &quot;http://eclipse.dev/epsilon/ecore/EOL&quot;
+</code></pre></div>
 <p>The delegate value matches an org.eclipse.emf.ecore.invocation_delegate extension point usage in the org.eclipse.ocl.ecore plug-in that provides the delegate functionality. Multiple comma-separated delegates may be specified.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2033,9 +2029,10 @@ value = "http://eclipse.dev/epsilon/ecore/EOL"</code></pre>
 </div>
 <h3 id="validation-delegate">Validation Delegate<a class="headerlink" href="#validation-delegate" title="Permanent link">&para;</a></h3>
 <p>The validation delegate is specified by an EPackage EAnnotation with:</p>
-<pre class="highlight"><code>source = "http://www.eclipse.org/emf/2002/Ecore"
-key = "validationDelegates"
-value = "http://eclipse.dev/epsilon/ecore/EVL"</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>source = &quot;http://www.eclipse.org/emf/2002/Ecore&quot;
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>key = &quot;validationDelegates&quot;
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>value = &quot;http://eclipse.dev/epsilon/ecore/EVL&quot;
+</code></pre></div>
 <h2 id="eol-setting-delegation">EOL Setting Delegation<a class="headerlink" href="#eol-setting-delegation" title="Permanent link">&para;</a></h2>
 <p>A setting delegate is invoked to provide the derived value of an EStructuralFeature. Folowing the guidelines of the Eclipse Modeling Framework book, EOL Setting Delegation will only work for derived EStructuralFeature that are volatile, transient and non-changeable.</p>
 <div class="admonition warning">
@@ -2044,15 +2041,17 @@ value = "http://eclipse.dev/epsilon/ecore/EVL"</code></pre>
 </div>
 <h3 id="implementing-derived-features-with-eol">Implementing Derived features with EOL<a class="headerlink" href="#implementing-derived-features-with-eol" title="Permanent link">&para;</a></h3>
 <p>The setting delegate is provided by an EAnnotation on the EStructuralFeature:</p>
-<pre class="highlight"><code>source = "http://eclipse.dev/epsilon/ecore/EOL"
-key = derivation
-value = EOL expression</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>source = &quot;http://eclipse.dev/epsilon/ecore/EOL&quot;
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>key = derivation
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>value = EOL expression
+</code></pre></div>
 <p>The EOL expression is evaluated to provide the EStructuralFeature value with the containing EClassifier instance (EObject) assigned to the special variable <code>self</code>. The EOL expression must be a valid EOL expression (i.e., no syntax errors) and the runtime result type of the EOL expression must conform to the type of the EStructuralFeature.</p>
 <h2 id="eol-invocation-delegation">EOL Invocation Delegation<a class="headerlink" href="#eol-invocation-delegation" title="Permanent link">&para;</a></h2>
 <p>The invocation delegate is provided by an EAnnotation on the EOperation:</p>
-<pre class="highlight"><code>source = "http://eclipse.dev/epsilon/ecore/EOL"
-key = body
-value = body EOL expression</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>source = &quot;http://eclipse.dev/epsilon/ecore/EOL&quot;
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>key = body
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>value = body EOL expression
+</code></pre></div>
 <p>The body EOL expression is evaluated to provide the EOperation value with the containing EClassifier  instance (EObject) assigned to the special variable <code>self</code> and one variable for each EParameters. The body EOL expression of the contraint must be a valid EOL operation body, i.e., no syntax errors, and have a <code>return</code> statement. The runtime result type of the return statement must be <code>boolean</code>.</p>
 <h2 id="evl-validation-delegation">EVL Validation Delegation<a class="headerlink" href="#evl-validation-delegation" title="Permanent link">&para;</a></h2>
 <p>Validation delegation allows to specify contraints for an EClassifier and consists of two parts:</p>
@@ -2066,108 +2065,113 @@ value = body EOL expression</code></pre>
 </div>
 <h3 id="specifying-constraints">Specifying Constraints<a class="headerlink" href="#specifying-constraints" title="Permanent link">&para;</a></h3>
 <p>All Ecore constraints must be listed in an EAnnotation on the EClassifier</p>
-<pre class="highlight"><code>source = http://www.eclipse.org/emf/2002/Ecore
-key = constraints
-value = constraintName_1 constraintName_2 ... constraintName_n</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>source = http://www.eclipse.org/emf/2002/Ecore
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>key = constraints
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>value = constraintName_1 constraintName_2 ... constraintName_n
+</code></pre></div>
 <h3 id="implementing-constraints-with-evl">Implementing Constraints with EVL<a class="headerlink" href="#implementing-constraints-with-evl" title="Permanent link">&para;</a></h3>
 <p>The validation delegate for each Ecore constraint is provided by either a further EAnnotation on the EClassifier or an EOperation in the EClassifier.</p>
 <h4 id="via-eannotation">Via EAnnotation<a class="headerlink" href="#via-eannotation" title="Permanent link">&para;</a></h4>
 <p>The EVL constraint body (<em>check</em>) is specified by an EAnnotation on the EClassifier</p>
-<pre class="highlight"><code>source = "http://eclipse.dev/epsilon/ecore/EVL"
-key = "constraintName_1"
-value = EOL expression</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>source = &quot;http://eclipse.dev/epsilon/ecore/EVL&quot;
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>key = &quot;constraintName_1&quot;
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>value = EOL expression
+</code></pre></div>
 <p>The EOL expression is evaluated to validate the EClassifier instance (EObject) with the instance assigned to the special variable <code>self</code>. The EOL expression must be a valid EOL expression and the runtime result type of the EOL expression must be <code>boolean</code>.</p>
 <h4 id="via-eoperation">Via EOperation<a class="headerlink" href="#via-eoperation" title="Permanent link">&para;</a></h4>
 <p>The EVL constraint can be defined by adding an EOperation to the EClassifier with the following signature:</p>
 <p><code>EBoolean constraintName (DiagnosticChain diagnostics, EMap&lt;EJavaObject, EJavaObject&gt; context)</code></p>
 <p>The EVL constraint body (<em>check</em>) is specified by an EAnnotation on the EOperation</p>
-<pre class="highlight"><code>source = "http://eclipse.dev/epsilon/ecore/EVL"
-key = "body"
-value = body EOL expression</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>source = &quot;http://eclipse.dev/epsilon/ecore/EVL&quot;
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>key = &quot;body&quot;
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>value = body EOL expression
+</code></pre></div>
 <p>The body EOL expression is evaluated to validate the EClassifier instance (EObject) with the instance assigned to the special variable <code>self</code>. The body EOL expression of the contraint must be a valid EOL operation body, i.e., no syntax errors, and have a <code>return</code> statement. The runtime result type of the return statement must be <code>boolean</code>.</p>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
 <p>The following annotated EMF metamodel (expressed using <a href="https://eclipse.dev/emfatic/">Emfatic</a> shows how to use the Epsilon delegates:</p>
 <p>First, we register the delegates in the EPacakge:</p>
-<pre class="highlight"><code class="language-emf">@Ecore(
-    validationDelegates="http://eclipse.dev/epsilon/ecore/EVL",
-    invocationDelegates="http://eclipse.dev/epsilon/ecore/EOL",
-    settingDelegates="http://eclipse.dev/epsilon/ecore/EOL")
-@namespace(
-    uri="http://www.eclipse.org/OCL/examples/codegen/employee",
-    prefix="emp")
-package employee;
-
-class Company {
-    attr String name;
-    val Employee[*]#company employees;
-    val Department[*]#company departments;
-}
-...</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nd">@Ecore</span><span class="p">(</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">validationDelegates</span><span class="o">=</span><span class="s2">&quot;http://eclipse.dev/epsilon/ecore/EVL&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="n">invocationDelegates</span><span class="o">=</span><span class="s2">&quot;http://eclipse.dev/epsilon/ecore/EOL&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="n">settingDelegates</span><span class="o">=</span><span class="s2">&quot;http://eclipse.dev/epsilon/ecore/EOL&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nd">@namespace</span><span class="p">(</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="n">uri</span><span class="o">=</span><span class="s2">&quot;http://www.eclipse.org/OCL/examples/codegen/employee&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;emp&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="k">package</span><span class="w"> </span><span class="n">employee</span><span class="p">;</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="k">class</span><span class="w"> </span><span class="n">Company</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">    </span><span class="k">val</span><span class="w"> </span><span class="n">Employee</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="o">#</span><span class="n">company</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">    </span><span class="k">val</span><span class="w"> </span><span class="n">Department</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="o">#</span><span class="n">company</span><span class="w"> </span><span class="n">departments</span><span class="p">;</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="p">}</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="o">...</span>
+</code></pre></div>
 <p>For the <em>Department</em> EClass, we defined three constraints implemented via EAnnotations, and the feature <em>directReports</em> as derived:</p>
-<pre class="highlight"><code class="language-emf">...
-
-@Ecore(constraints="deptHasEmployees positiveID validName")
-@"http://eclipse.dev/epsilon/ecore/EVL"(
-    deptHasEmployees="not self.manager.isUndefined() implies self.employees.notEmpty()",
-    positiveID="self.deptID &gt; 0",
-    validName="not self.name.isUndefined() and self.name.length() &gt; 0")
-class Department {
-    ref Employee manager;
-    id attr int[1] deptID;
-    attr String name;
-
-    @"http://eclipse.dev/epsilon/ecore/EOL"(
-        derivation="if (self.manager.isUndefined()) {
-                return Sequence{};
-            } else {
-                return self.manager.directReports;
-            }")
-    !ordered readonly volatile transient derived ref Employee[*]#department employees;
-    ref Company#departments company;
-}
-...</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="o">...</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nd">@Ecore</span><span class="p">(</span><span class="n">constraints</span><span class="o">=</span><span class="s2">&quot;deptHasEmployees positiveID validName&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>@<span class="s2">&quot;http://eclipse.dev/epsilon/ecore/EVL&quot;</span><span class="p">(</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="n">deptHasEmployees</span><span class="o">=</span><span class="s2">&quot;not self.manager.isUndefined() implies self.employees.notEmpty()&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="n">positiveID</span><span class="o">=</span><span class="s2">&quot;self.deptID &gt; 0&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="n">validName</span><span class="o">=</span><span class="s2">&quot;not self.name.isUndefined() and self.name.length() &gt; 0&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="k">class</span><span class="w"> </span><span class="n">Department</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="k">ref</span><span class="w"> </span><span class="n">Employee</span><span class="w"> </span><span class="n">manager</span><span class="p">;</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">    </span><span class="k">id</span><span class="w"> </span><span class="k">attr</span><span class="w"> </span><span class="kt">int</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="n">deptID</span><span class="p">;</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">    </span>@<span class="s2">&quot;http://eclipse.dev/epsilon/ecore/EOL&quot;</span><span class="p">(</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">        </span><span class="n">derivation</span><span class="o">=</span><span class="s2">&quot;if (self.manager.isUndefined()) {</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="s2">                return Sequence{};</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="s2">            } else {</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="s2">                return self.manager.directReports;</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="s2">            }&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">    </span><span class="o">!</span><span class="k">ordered</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="k">transient</span><span class="w"> </span><span class="k">derived</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="n">Employee</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="o">#</span><span class="n">department</span><span class="w"> </span><span class="n">employees</span><span class="p">;</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">    </span><span class="k">ref</span><span class="w"> </span><span class="n">Company</span><span class="o">#</span><span class="n">departments</span><span class="w"> </span><span class="n">company</span><span class="p">;</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="p">}</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="o">...</span>
+</code></pre></div>
 <p>For the <em>Employee</em> EClass, we defined the <em>validName</em> constraint implemented via EOperation. The features <em>isManager</em> and <em>department</em> are derived. Last, the operations <em>allReports</em>, <em>reportinChain</em> and <em>reportsTo</em> are implemented with EOL.</p>
-<pre class="highlight"><code class="language-emf">...
-@Ecore(constraints="positiveID validName")
-@"http://eclipse.dev/epsilon/ecore/EVL"(
-    positiveID="self.empID &gt; 0")
-class Employee {
-
-    @"http://eclipse.dev/epsilon/ecore/EOL"(
-        body="return self.closure(t | t.directReports);")
-    !ordered op Employee[*] allReports();
-
-    @"http://eclipse.dev/epsilon/ecore/EOL"(
-        body="if (self.manager.isUndefined()) {
-                return Sequence{};
-            } else {
-                var result = Sequence {self.manager};
-                return result.includingAll(self.manager.reportingChain());
-            }")
-    op Employee[*] reportingChain();
-
-    @"http://eclipse.dev/epsilon/ecore/EOL"(
-        body="return self.reportingChain().includes(mgr);")
-    !ordered op boolean reportsTo(Employee mgr);
-
-    @"http://eclipse.dev/epsilon/ecore/EVL"(
-        body="not self.name.isUndefined() and self.name.length() &gt; 0")
-    op boolean validName(ecore.EDiagnosticChain diagnostics, ecore.EMap&lt;EJavaObject, EJavaObject&gt; context);
-
-    @"http://eclipse.dev/epsilon/ecore/EOL"(
-        derivation="return self.directReports.notEmpty();")
-    readonly volatile transient derived attr boolean isManager;
-
-    @"http://eclipse.dev/epsilon/ecore/EOL"(
-        derivation="return self.company.departments.selectOne(d | d.employees.includes(self));")
-    readonly volatile transient derived ref Department#employees department;
-    ref Employee#directReports manager;
-    !ordered ref Employee[*]#manager directReports;
-    id attr int[1] empID;
-    attr String name;
-    ref Company#employees company;
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="o">...</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nd">@Ecore</span><span class="p">(</span><span class="n">constraints</span><span class="o">=</span><span class="s2">&quot;positiveID validName&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>@<span class="s2">&quot;http://eclipse.dev/epsilon/ecore/EVL&quot;</span><span class="p">(</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="n">positiveID</span><span class="o">=</span><span class="s2">&quot;self.empID &gt; 0&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="k">class</span><span class="w"> </span><span class="n">Employee</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span>@<span class="s2">&quot;http://eclipse.dev/epsilon/ecore/EOL&quot;</span><span class="p">(</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">        </span><span class="n">body</span><span class="o">=</span><span class="s2">&quot;return self.closure(t | t.directReports);&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="o">!</span><span class="k">ordered</span><span class="w"> </span><span class="k">op</span><span class="w"> </span><span class="n">Employee</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">allReports</span><span class="p">();</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span>@<span class="s2">&quot;http://eclipse.dev/epsilon/ecore/EOL&quot;</span><span class="p">(</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">        </span><span class="n">body</span><span class="o">=</span><span class="s2">&quot;if (self.manager.isUndefined()) {</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="s2">                return Sequence{};</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="s2">            } else {</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="s2">                var result = Sequence {self.manager};</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="s2">                return result.includingAll(self.manager.reportingChain());</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="s2">            }&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">    </span><span class="k">op</span><span class="w"> </span><span class="n">Employee</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">reportingChain</span><span class="p">();</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="w">    </span>@<span class="s2">&quot;http://eclipse.dev/epsilon/ecore/EOL&quot;</span><span class="p">(</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="w">        </span><span class="n">body</span><span class="o">=</span><span class="s2">&quot;return self.reportingChain().includes(mgr);&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="w">    </span><span class="o">!</span><span class="k">ordered</span><span class="w"> </span><span class="k">op</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">reportsTo</span><span class="p">(</span><span class="n">Employee</span><span class="w"> </span><span class="n">mgr</span><span class="p">);</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>
+<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="w">    </span>@<span class="s2">&quot;http://eclipse.dev/epsilon/ecore/EVL&quot;</span><span class="p">(</span>
+<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="w">        </span><span class="n">body</span><span class="o">=</span><span class="s2">&quot;not self.name.isUndefined() and self.name.length() &gt; 0&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="w">    </span><span class="k">op</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">validName</span><span class="p">(</span><span class="n">ecore</span><span class="o">.</span><span class="n">EDiagnosticChain</span><span class="w"> </span><span class="n">diagnostics</span><span class="p">,</span><span class="w"> </span><span class="n">ecore</span><span class="o">.</span><span class="n">EMap</span><span class="o">&lt;</span><span class="n">EJavaObject</span><span class="p">,</span><span class="w"> </span><span class="n">EJavaObject</span><span class="o">&gt;</span><span class="w"> </span><span class="n">context</span><span class="p">);</span>
+<a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a>
+<a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a><span class="w">    </span>@<span class="s2">&quot;http://eclipse.dev/epsilon/ecore/EOL&quot;</span><span class="p">(</span>
+<a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="w">        </span><span class="n">derivation</span><span class="o">=</span><span class="s2">&quot;return self.directReports.notEmpty();&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a><span class="w">    </span><span class="k">readonly</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="k">transient</span><span class="w"> </span><span class="k">derived</span><span class="w"> </span><span class="k">attr</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isManager</span><span class="p">;</span>
+<a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a>
+<a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a><span class="w">    </span>@<span class="s2">&quot;http://eclipse.dev/epsilon/ecore/EOL&quot;</span><span class="p">(</span>
+<a id="__codelineno-10-33" name="__codelineno-10-33" href="#__codelineno-10-33"></a><span class="w">        </span><span class="n">derivation</span><span class="o">=</span><span class="s2">&quot;return self.company.departments.selectOne(d | d.employees.includes(self));&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-34" name="__codelineno-10-34" href="#__codelineno-10-34"></a><span class="w">    </span><span class="k">readonly</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="k">transient</span><span class="w"> </span><span class="k">derived</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="n">Department</span><span class="o">#</span><span class="n">employees</span><span class="w"> </span><span class="n">department</span><span class="p">;</span>
+<a id="__codelineno-10-35" name="__codelineno-10-35" href="#__codelineno-10-35"></a><span class="w">    </span><span class="k">ref</span><span class="w"> </span><span class="n">Employee</span><span class="o">#</span><span class="n">directReports</span><span class="w"> </span><span class="n">manager</span><span class="p">;</span>
+<a id="__codelineno-10-36" name="__codelineno-10-36" href="#__codelineno-10-36"></a><span class="w">    </span><span class="o">!</span><span class="k">ordered</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="n">Employee</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="o">#</span><span class="n">manager</span><span class="w"> </span><span class="n">directReports</span><span class="p">;</span>
+<a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a><span class="w">    </span><span class="k">id</span><span class="w"> </span><span class="k">attr</span><span class="w"> </span><span class="kt">int</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="n">empID</span><span class="p">;</span>
+<a id="__codelineno-10-38" name="__codelineno-10-38" href="#__codelineno-10-38"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-10-39" name="__codelineno-10-39" href="#__codelineno-10-39"></a><span class="w">    </span><span class="k">ref</span><span class="w"> </span><span class="n">Company</span><span class="o">#</span><span class="n">employees</span><span class="w"> </span><span class="n">company</span><span class="p">;</span>
+<a id="__codelineno-10-40" name="__codelineno-10-40" href="#__codelineno-10-40"></a><span class="p">}</span>
+</code></pre></div>
 <h3 id="validation-results">Validation Results<a class="headerlink" href="#validation-results" title="Permanent link">&para;</a></h3>
 <p>The results of running the validation are shown in the following figure.</p>
 <p><img alt="" src="Validation.png" /></p>
@@ -2269,8 +2273,6 @@ class Employee {
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

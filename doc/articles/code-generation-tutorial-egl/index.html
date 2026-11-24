@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1853,77 +1847,81 @@
 
 <h1 id="code-generation-tutorial-with-egl">Code Generation Tutorial with EGL<a class="headerlink" href="#code-generation-tutorial-with-egl" title="Permanent link">&para;</a></h1>
 <p>EGL is a template-based language that can be used to generate code (or any other kind of text) from different types of models supported by Epsilon (e.g. EMF, UML, XML). This example demonstrates using EGL to generate HTML code from the XML document below.</p>
-<pre class="highlight"><code class="language-xml">&lt;library&gt;
-  &lt;book title="EMF Eclipse Modeling Framework" pages="744" public="true"&gt;
-    &lt;id&gt;EMFBook&lt;/id&gt;
-    &lt;author&gt;Dave Steinberg&lt;/author&gt;
-    &lt;author&gt;Frank Budinsky&lt;/author&gt;
-    &lt;author&gt;Marcelo Paternostro&lt;/author&gt;
-    &lt;author&gt;Ed Merks&lt;/author&gt;
-    &lt;published&gt;2009&lt;/published&gt;
-  &lt;/book&gt;
-  &lt;book title="Eclipse Modeling Project: A Domain-Specific Language (DSL) Toolkit" 
-    pages="736" public="true"&gt;
-    &lt;id&gt;EMPBook&lt;/id&gt;
-    &lt;author&gt;Richard Gronback&lt;/author&gt;
-    &lt;published&gt;2009&lt;/published&gt;
-  &lt;/book&gt;
-  &lt;book title="Official Eclipse 3.0 FAQs" pages="432" public="false"&gt;
-    &lt;id&gt;Eclipse3FAQs&lt;/id&gt;
-    &lt;author&gt;John Arthorne&lt;/author&gt;
-    &lt;author&gt;Chris Laffra&lt;/author&gt;
-    &lt;published&gt;2004&lt;/published&gt;
-  &lt;/book&gt;
-&lt;/library&gt;</code></pre>
-<p>More specifically, we will generate one HTML file for each <code>&lt;book&gt;</code> element that has a <code>public</code> attribute set to <code>true</code>. Below is an EGL template (<code>book2page.egl</code>) that can generate an HTML file from a single <code>&lt;book&gt;</code> element. For more details on using EGL's expression language to navigate and query XML documents, please refer to <a href="../plain-xml">this article</a>.</p>
-<pre class="highlight"><code class="language-egl">&lt;h1&gt;Book [%=index%]: [%=book.a_title%]&lt;/h1&gt;
-
-&lt;h2&gt;Authors&lt;/h2&gt;
-&lt;ul&gt;
-[%for (author in book.c_author) { %]
-  &lt;li&gt;[%=author.text%]
-[%}%]
-&lt;/ul&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&lt;library&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&lt;book</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;EMF Eclipse Modeling Framework&quot;</span><span class="w"> </span><span class="na">pages=</span><span class="s">&quot;744&quot;</span><span class="w"> </span><span class="na">public=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&lt;id&gt;</span>EMFBook<span class="nt">&lt;/id&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">&lt;author&gt;</span>Dave<span class="w"> </span>Steinberg<span class="nt">&lt;/author&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">&lt;author&gt;</span>Frank<span class="w"> </span>Budinsky<span class="nt">&lt;/author&gt;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">&lt;author&gt;</span>Marcelo<span class="w"> </span>Paternostro<span class="nt">&lt;/author&gt;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nt">&lt;author&gt;</span>Ed<span class="w"> </span>Merks<span class="nt">&lt;/author&gt;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nt">&lt;published&gt;</span>2009<span class="nt">&lt;/published&gt;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">&lt;/book&gt;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="nt">&lt;book</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Eclipse Modeling Project: A Domain-Specific Language (DSL) Toolkit&quot;</span><span class="w"> </span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="na">pages=</span><span class="s">&quot;736&quot;</span><span class="w"> </span><span class="na">public=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="nt">&lt;id&gt;</span>EMPBook<span class="nt">&lt;/id&gt;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="nt">&lt;author&gt;</span>Richard<span class="w"> </span>Gronback<span class="nt">&lt;/author&gt;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="nt">&lt;published&gt;</span>2009<span class="nt">&lt;/published&gt;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span><span class="nt">&lt;/book&gt;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="nt">&lt;book</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Official Eclipse 3.0 FAQs&quot;</span><span class="w"> </span><span class="na">pages=</span><span class="s">&quot;432&quot;</span><span class="w"> </span><span class="na">public=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="nt">&lt;id&gt;</span>Eclipse3FAQs<span class="nt">&lt;/id&gt;</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="nt">&lt;author&gt;</span>John<span class="w"> </span>Arthorne<span class="nt">&lt;/author&gt;</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="nt">&lt;author&gt;</span>Chris<span class="w"> </span>Laffra<span class="nt">&lt;/author&gt;</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="nt">&lt;published&gt;</span>2004<span class="nt">&lt;/published&gt;</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span><span class="nt">&lt;/book&gt;</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="nt">&lt;/library&gt;</span>
+</code></pre></div>
+<p>More specifically, we will generate one HTML file for each <code>&lt;book&gt;</code> element that has a <code>public</code> attribute set to <code>true</code>. Below is an EGL template (<code>book2page.egl</code>) that can generate an HTML file from a single <code>&lt;book&gt;</code> element. For more details on using EGL's expression language to navigate and query XML documents, please refer to <a href="../plain-xml/">this article</a>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&lt;h1&gt;Book <span class="cp">[%=</span><span class="n">index</span><span class="cp">%]</span>: <span class="cp">[%=</span><span class="n">book</span><span class="o">.</span><span class="n">a_title</span><span class="cp">%]</span>&lt;/h1&gt;
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>&lt;h2&gt;Authors&lt;/h2&gt;
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>&lt;ul&gt;
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cp">[%</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">author</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">book</span><span class="o">.</span><span class="n">c_author</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cp">%]</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  &lt;li&gt;<span class="cp">[%=</span><span class="n">author</span><span class="o">.</span><span class="n">text</span><span class="cp">%]</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="cp">[%</span><span class="p">}</span><span class="cp">%]</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>&lt;/ul&gt;
+</code></pre></div>
 <p>The template above can generate one HTML file from one <code>&lt;book&gt;</code> element. To run this template against '''all''' <code>&lt;book&gt;</code> elements anywhere in the XML document, and generate appropriately-named HTML files, we need to use an EGX co-ordination program such as the one illustrated below (<code>main.egx</code>). The <code>Book2Page</code> rule of the EGX program will <code>transform</code> every <code>&lt;book&gt;</code> element (<code>t_book</code>) that satisfies the declared <code>guard</code> (has a <code>public</code> attribute set to <code>true</code>), into a <code>target</code> file, using the specified <code>template</code> (<code>book2page.egl</code>). In addition, the EGX program specifies a <code>Library2Page</code> rule, that generates an HTML (index) file for each <code>&lt;library&gt;</code> element in the document.</p>
-<pre class="highlight"><code class="language-egx">rule Book2Page 
-  transform book : t_book {
-
-  // We only want to generate pages
-  // for books that have their public
-  // attribute set to true
-  guard : book.b_public
-
-  parameters {
-    // These parameters will be made available
-    // to the invoked template as variables
-    var params : new Map;
-    params.put("index", t_book.all.indexOf(book) + 1);
-    return params;
-  }
-
-  // The EGL template to be invoked
-  template : "book2page.egl"
-
-  // Output file
-  target : "gen/" + book.e_id.text + ".html"
-
-}
-
-rule Library2Page 
-  transform library : t_library {
-
-  template : "library2page.egl"
-
-  target : "gen/index.html"
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">rule</span><span class="w"> </span><span class="n">Book2Page</span><span class="w"> </span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="k">transform</span><span class="w"> </span><span class="n">book</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">t_book</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="c1">// We only want to generate pages</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="c1">// for books that have their public</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="c1">// attribute set to true</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="k">guard</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">book</span><span class="o">.</span><span class="n">b_public</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="k">parameters</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="c1">// These parameters will be made available</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="c1">// to the invoked template as variables</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">Map</span><span class="p">;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="n">params</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">t_book</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">indexOf</span><span class="p">(</span><span class="n">book</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">params</span><span class="p">;</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">  </span><span class="c1">// The EGL template to be invoked</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;book2page.egl&quot;</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">  </span><span class="c1">// Output file</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">  </span><span class="k">target</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;gen/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">book</span><span class="o">.</span><span class="n">e_id</span><span class="o">.</span><span class="n">text</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;.html&quot;</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="p">}</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="k">rule</span><span class="w"> </span><span class="n">Library2Page</span><span class="w"> </span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">  </span><span class="k">transform</span><span class="w"> </span><span class="n">library</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">t_library</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;library2page.egl&quot;</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">  </span><span class="k">target</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;gen/index.html&quot;</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="p">}</span>
+</code></pre></div>
 <p>For completeness, the source code of the <code>library2page.egl</code> template appears below.</p>
-<pre class="highlight"><code class="language-egl">&lt;h1&gt;Books&lt;/h1&gt;
-
-&lt;ul&gt;
-[%for (book in library.c_book.select(b|b.b_public)) { %]
-  &lt;li&gt;&lt;a href="[%=book.e_id.text%].html"&gt;[%=book.a_title%]&lt;/a&gt;
-[%}%]
-&lt;/ul&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>&lt;h1&gt;Books&lt;/h1&gt;
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>&lt;ul&gt;
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="cp">[%</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">book</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">library</span><span class="o">.</span><span class="n">c_book</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">b</span><span class="o">|</span><span class="n">b</span><span class="o">.</span><span class="n">b_public</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cp">%]</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>  &lt;li&gt;&lt;a href=&quot;<span class="cp">[%=</span><span class="n">book</span><span class="o">.</span><span class="n">e_id</span><span class="o">.</span><span class="n">text</span><span class="cp">%]</span>.html&quot;&gt;<span class="cp">[%=</span><span class="n">book</span><span class="o">.</span><span class="n">a_title</span><span class="cp">%]</span>&lt;/a&gt;
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="cp">[%</span><span class="p">}</span><span class="cp">%]</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>&lt;/ul&gt;
+</code></pre></div>
 <h2 id="running-the-code-generator-from-eclipse">Running the Code Generator from Eclipse<a class="headerlink" href="#running-the-code-generator-from-eclipse" title="Permanent link">&para;</a></h2>
 <p>Screenshots of the Eclipse run configuration appear below. The complete source for this example is available <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.egl.library">here</a>.</p>
 <p><img alt="" src="run-configuration.png" /></p>
@@ -1931,38 +1929,39 @@ rule Library2Page
 <p><img alt="" src="run-configuration-model.png" /></p>
 <h2 id="running-the-code-generator-from-java">Running the Code Generator from Java<a class="headerlink" href="#running-the-code-generator-from-java" title="Permanent link">&para;</a></h2>
 <p>The following snippet demonstrates using Epsilon's Java API to parse the XML document and execute the EGX program. The complete source for this example is available <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.egl.library">here</a> (please read <code>lib/readme.txt</code> for instructions on how to obtain the missing Epsilon JAR). </p>
-<pre class="highlight"><code class="language-java">import java.io.File;
-
-import org.eclipse.epsilon.egl.EglFileGeneratingTemplateFactory;
-import org.eclipse.epsilon.egl.EgxModule;
-import org.eclipse.epsilon.emc.plainxml.PlainXmlModel;
-
-public class App {
-
-  public static void main(String[] args) throws Exception {
-
-    // Parse main.egx
-    EgxModule module = new EgxModule(new EglFileGeneratingTemplateFactory());
-    module.parse(new File("main.egx").getAbsoluteFile());
-
-    if (!module.getParseProblems().isEmpty()) {
-      System.out.println("Syntax errors found. Exiting.");
-      return;
-    }
-
-    // Load the XML document
-    PlainXmlModel model = new PlainXmlModel();
-    model.setFile(new File("library.xml"));
-    model.setName("L");
-    model.load();
-
-    // Make the document visible to the EGX program
-    module.getContext().getModelRepository().addModel(model);
-    // ... and execute
-    module.execute();
-  }
-
-}  </code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.File</span><span class="p">;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.egl.EglFileGeneratingTemplateFactory</span><span class="p">;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.egl.EgxModule</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.eclipse.epsilon.emc.plainxml.PlainXmlModel</span><span class="p">;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">App</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="c1">// Parse main.egx</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="n">EgxModule</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EgxModule</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">EglFileGeneratingTemplateFactory</span><span class="p">());</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="n">module</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;main.egx&quot;</span><span class="p">).</span><span class="na">getAbsoluteFile</span><span class="p">());</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">module</span><span class="p">.</span><span class="na">getParseProblems</span><span class="p">().</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Syntax errors found. Exiting.&quot;</span><span class="p">);</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">      </span><span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="c1">// Load the XML document</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="n">PlainXmlModel</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PlainXmlModel</span><span class="p">();</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="na">setFile</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;library.xml&quot;</span><span class="p">));</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;L&quot;</span><span class="p">);</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="na">load</span><span class="p">();</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">    </span><span class="c1">// Make the document visible to the EGX program</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">    </span><span class="n">module</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">getModelRepository</span><span class="p">().</span><span class="na">addModel</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">    </span><span class="c1">// ... and execute</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">    </span><span class="n">module</span><span class="p">.</span><span class="na">execute</span><span class="p">();</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="p">}</span><span class="w">  </span>
+</code></pre></div>
 
 
 
@@ -2058,8 +2057,6 @@ public class App {
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

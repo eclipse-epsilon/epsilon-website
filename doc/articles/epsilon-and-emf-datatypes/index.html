@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1858,68 +1852,76 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">numbers.eol</label><label for="__tabbed_1_2">numbers.flexmi</label><label for="__tabbed_1_3">numbers.emf</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-eol">Number.all.dec.sum().println(); // Prints 0.24
-Number.all.dbl.sum().println(); // Prints 0.24000000000000002
-Number.all.flt.sum().println(); // Prints 0.24000001</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">Number</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">dec</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">println</span><span class="p">();</span><span class="w"> </span><span class="c1">// Prints 0.24</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">Number</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">dbl</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">println</span><span class="p">();</span><span class="w"> </span><span class="c1">// Prints 0.24000000000000002</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">Number</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">flt</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">println</span><span class="p">();</span><span class="w"> </span><span class="c1">// Prints 0.24000001</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-xml">&lt;?nsuri numbers?&gt;
-&lt;_&gt;
-    &lt;number dec="0.1" dbl="0.1" flt="0.1"/&gt;
-    &lt;number dec="0.14" dbl="0.14" flt="0.14"/&gt;
-&lt;/_&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">&lt;?nsuri numbers?&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">&lt;_&gt;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">&lt;number</span><span class="w"> </span><span class="na">dec=</span><span class="s">&quot;0.1&quot;</span><span class="w"> </span><span class="na">dbl=</span><span class="s">&quot;0.1&quot;</span><span class="w"> </span><span class="na">flt=</span><span class="s">&quot;0.1&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">&lt;number</span><span class="w"> </span><span class="na">dec=</span><span class="s">&quot;0.14&quot;</span><span class="w"> </span><span class="na">dbl=</span><span class="s">&quot;0.14&quot;</span><span class="w"> </span><span class="na">flt=</span><span class="s">&quot;0.14&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nt">&lt;/_&gt;</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-emf">@namespace(uri="numbers", prefix="")
-package numbers;
-
-class Number {
-    attr EBigDecimal dec;
-    attr double dbl;
-    attr float flt;
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nd">@namespace</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="s2">&quot;numbers&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">package</span><span class="w"> </span><span class="n">numbers</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">class</span><span class="w"> </span><span class="n">Number</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="n">EBigDecimal</span><span class="w"> </span><span class="n">dec</span><span class="p">;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">dbl</span><span class="p">;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">flt</span><span class="p">;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">}</span>
+</code></pre></div>
 </div>
 </div>
 </div>
 <p>To set the value of an <code>EBigDecimal</code> attribute you can use its underpinning Java type as shown below.</p>
-<pre class="highlight"><code class="language-eol">Number.all.first().dec = new Native("java.math.BigDecimal")("0.2");</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">Number</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">dec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">Native</span><span class="p">(</span><span class="s2">&quot;java.math.BigDecimal&quot;</span><span class="p">)(</span><span class="s2">&quot;0.2&quot;</span><span class="p">);</span>
+</code></pre></div>
 <h2 id="dates">Dates<a class="headerlink" href="#dates" title="Permanent link">&para;</a></h2>
 <p>Ecore supports a built-in <code>EDate</code> type, underpinned by Java's <code>Date</code> type. EMF provides built-in support for the following <a href="https://github.com/eclipse-emf/org.eclipse.emf/blob/5a62f269ed73a54af6a636cb3e001cfa6683fefb/plugins/org.eclipse.emf.ecore/src/org/eclipse/emf/ecore/impl/EFactoryImpl.java#L65">date formats</a>:</p>
-<pre class="highlight"><code>yyyy-MM-dd'T'HH:mm:ss'.'SSSZ
-yyyy-MM-dd'T'HH:mm:ss'.'SSS
-yyyy-MM-dd'T'HH:mm:ss
-yyyy-MM-dd'T'HH:mm
-yyyy-MM-dd</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>yyyy-MM-dd&#39;T&#39;HH:mm:ss&#39;.&#39;SSSZ
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>yyyy-MM-dd&#39;T&#39;HH:mm:ss&#39;.&#39;SSS
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>yyyy-MM-dd&#39;T&#39;HH:mm:ss
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>yyyy-MM-dd&#39;T&#39;HH:mm
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>yyyy-MM-dd
+</code></pre></div>
 <p>The example below (also <a href="https://eclipse.dev/epsilon/playground/?8fd182d8">on the playground</a>) shows how to work with date attributes in Epsilon.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">persons.eol</label><label for="__tabbed_2_2">persons.flexmi</label><label for="__tabbed_2_3">persons.emf</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-eol">var newton = Person.all.first();
-
-newton.dob.println(); // Prints Sun Jan 04 00:00:00 UTC 1643
-newton.dob.class.println(); // Prints class java.util.Date
-
-var einstein = new Person;
-einstein.name = "Albert Einstein";
-einstein.dob = new Native("java.text.SimpleDateFormat")
-    ("yyyy-MM-dd").parse("1879-03-14");
-einstein.dob.println(); // Prints Fri Mar 14 00:00:00 UTC 1879</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">var</span><span class="w"> </span><span class="n">newton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Person</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">();</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">newton</span><span class="o">.</span><span class="n">dob</span><span class="o">.</span><span class="n">println</span><span class="p">();</span><span class="w"> </span><span class="c1">// Prints Sun Jan 04 00:00:00 UTC 1643</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">newton</span><span class="o">.</span><span class="n">dob</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">println</span><span class="p">();</span><span class="w"> </span><span class="c1">// Prints class java.util.Date</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">var</span><span class="w"> </span><span class="n">einstein</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">einstein</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Albert Einstein&quot;</span><span class="p">;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">einstein</span><span class="o">.</span><span class="n">dob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">Native</span><span class="p">(</span><span class="s2">&quot;java.text.SimpleDateFormat&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="p">(</span><span class="s2">&quot;yyyy-MM-dd&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;1879-03-14&quot;</span><span class="p">);</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="n">einstein</span><span class="o">.</span><span class="n">dob</span><span class="o">.</span><span class="n">println</span><span class="p">();</span><span class="w"> </span><span class="c1">// Prints Fri Mar 14 00:00:00 UTC 1879</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-xml">&lt;?nsuri persons?&gt;
-&lt;_&gt;
-    &lt;person name="Isaac Newton" dob="1643-01-04"/&gt;
-    &lt;person name="Charles Darwin" dob="1809-02-12"/&gt;
-    &lt;person name="Marie Curie" dob="1867-11-07"/&gt;
-&lt;/_&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cp">&lt;?nsuri persons?&gt;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nt">&lt;_&gt;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Isaac Newton&quot;</span><span class="w"> </span><span class="na">dob=</span><span class="s">&quot;1643-01-04&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Charles Darwin&quot;</span><span class="w"> </span><span class="na">dob=</span><span class="s">&quot;1809-02-12&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Marie Curie&quot;</span><span class="w"> </span><span class="na">dob=</span><span class="s">&quot;1867-11-07&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nt">&lt;/_&gt;</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-emf">package persons;
-
-class Person {
-    attr String name;
-    attr EDate dob;
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">package</span><span class="w"> </span><span class="n">persons</span><span class="p">;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">class</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="n">EDate</span><span class="w"> </span><span class="n">dob</span><span class="p">;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="p">}</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2018,8 +2020,6 @@ class Person {
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

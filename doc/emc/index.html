@@ -46,13 +46,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2180,7 +2174,7 @@
 <p class="admonition-title">Tip</p>
 <p>If you are interested in examples of EMC-based drivers for Epsilon, rather than on the organisation of EMC itself, please scroll to the <a href="#emc-drivers">bottom of this page</a>.</p>
 </div>
-<pre class="mermaid mermaid-100"><code>classDiagram
+<pre class="mermaid"><code>classDiagram
 class IModel {
     -name: String
     -aliases: String[*]
@@ -2246,14 +2240,14 @@ IModel -- IPropertyGetter: propertyGetter</code></pre>
 <h2 id="emc-drivers">EMC Drivers<a class="headerlink" href="#emc-drivers" title="Permanent link">&para;</a></h2>
 <p>Below are known <em>drivers</em> that implement the EMC interfaces discussed above and allow Epsilon programs to access different types of models and structured data.</p>
 <h3 id="eclipse-modeling-framework">Eclipse Modeling Framework<a class="headerlink" href="#eclipse-modeling-framework" title="Permanent link">&para;</a></h3>
-<p>The Eclipse Modelling Framework (EMF) is one of the most robust and widely used open-source modelling frameworks, and the cornerstone of an extensive ecosystem of technologies for graphical/textual model editing, model comparison and merging etc. Being an Eclipse project, Epsilon naturally provides support for all flavours of EMF models (e.g. textual, graphical, XSD-based XML), and most of the <a href="../screencasts">screencasts</a>, <a href="../articles/">articles</a> and <a href="../../examples">examples</a> in Epsilon's Git repository use EMF models.</p>
+<p>The Eclipse Modelling Framework (EMF) is one of the most robust and widely used open-source modelling frameworks, and the cornerstone of an extensive ecosystem of technologies for graphical/textual model editing, model comparison and merging etc. Being an Eclipse project, Epsilon naturally provides support for all flavours of EMF models (e.g. textual, graphical, XSD-based XML), and most of the <a href="../screencasts">screencasts</a>, <a href="../articles/">articles</a> and <a href="../../examples/">examples</a> in Epsilon's Git repository use EMF models.</p>
 <p>Epsilon can also connect to <a href="../articles/cdo-emc/">CDO repositories</a> of EMF models, and can save and load EMF models from <a href="../articles/rdf-emc/">RDF files</a>.</p>
 <h3 id="matlab-simulink">Matlab Simulink<a class="headerlink" href="#matlab-simulink" title="Permanent link">&para;</a></h3>
 <p>Epsilon also provides mature support for querying and modifying Matlab Simulink models as shown in <a href="../articles/#epsilon-and-simulink-models">these articles</a>.</p>
 <h3 id="cameo-magicdraw-systems-modeler">Cameo / MagicDraw Systems Modeler<a class="headerlink" href="#cameo-magicdraw-systems-modeler" title="Permanent link">&para;</a></h3>
 <p>Cameo Systems Modeler is a widely-used graphical systems modelling tool. A driver that allows Epsilon programs to read/write Cameo models is available under <a href="https://github.com/epsilonlabs/emc-cameo">EpsilonLabs on GitHub</a>.</p>
 <h3 id="csv-excel-json-xml-yaml">CSV / Excel / JSON / XML / YAML<a class="headerlink" href="#csv-excel-json-xml-yaml" title="Permanent link">&para;</a></h3>
-<p>For quick and dirty metamodel-less modelling, Epsilon also supports <a href="../articles/csv-emc">CSV files</a>, <a href="../articles/excel">Excel spreadsheets</a>, <a href="../articles/json-emc">JSON documents</a>, <a href="../articles/plain-xml">plain XML documents</a>, and <a href="../articles/yaml-emc">YAML files</a>.</p>
+<p>For quick and dirty metamodel-less modelling, Epsilon also supports <a href="../articles/csv-emc/">CSV files</a>, <a href="../articles/excel/">Excel spreadsheets</a>, <a href="../articles/json-emc/">JSON documents</a>, <a href="../articles/plain-xml/">plain XML documents</a>, and <a href="../articles/yaml-emc/">YAML files</a>.</p>
 <h3 id="eclipse-hawk">Eclipse Hawk<a class="headerlink" href="#eclipse-hawk" title="Permanent link">&para;</a></h3>
 <p><a href="https://www.eclipse.org/hawk">Hawk</a> is an Eclipse project that provides tools for monitoring, indexing and querying <em>repositories</em> (i.e. local folders, Eclipse workspaces, Git/SVN repositories) containing models. Hawk provides an EMC driver through which model indices can be queried with Epsilon languages.</p>
 <h3 id="other-drivers">Other Drivers<a class="headerlink" href="#other-drivers" title="Permanent link">&para;</a></h3>
@@ -2403,8 +2397,6 @@ IModel -- IPropertyGetter: propertyGetter</code></pre>
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

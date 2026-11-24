@@ -46,13 +46,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2096,7 +2090,7 @@
 <p>As illustrated in the figure below, ETL transformations are organized in modules (<code>EtlModule</code>). A module can contain a number of transformation rules (<code>TransformRule</code>). Each rule has a unique name (in the context of the module) and also specifies one <code>source</code> and many <code>target</code> parameters. Since 2.9, target parameters can optionally have a <code>targetInitializer</code> expression: if not specified, they will be initialized to a new instance of their type.</p>
 <p>A transformation rule can also <code>extend</code> a number of other transformation rules and be declared as <code>abstract</code>, <code>primary</code> and/or <code>lazy</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. To limit its applicability to a subset of elements that conform to the type of the <code>source</code> parameter, a rule can optionally define a guard which is either an EOL expression or a block of EOL statements. Finally, each rule defines a block of EOL statements (<code>body</code>) where the logic for populating the property values of the target model elements is specified.</p>
 <p>Besides transformation rules, an ETL module can also optionally contain a number of <code>pre</code> and <code>post</code> named blocks of EOL statements which, as discussed later, are executed before and after the transformation rules respectively. These should not be confused with the pre-/post-condition annotations available for EOL user-defined operations.</p>
-<pre class="mermaid mermaid-100"><code>classDiagram
+<pre class="mermaid"><code>classDiagram
 class TransformRule {
     -name: String
     -abstract: Boolean
@@ -2129,25 +2123,27 @@ TransformRule -- TransformRule: extends *</code></pre>
 <h2 id="concrete-syntax">Concrete Syntax<a class="headerlink" href="#concrete-syntax" title="Permanent link">&para;</a></h2>
 <p>The concrete syntax of a transformation rule is displayed in the listing below. The optional <code>abstract</code>, <code>lazy</code> and <code>primary</code> attributes of the rule are specified using respective annotations. The name of the rule follows the <code>rule</code> keyword and the <code>source</code> and <code>target</code> parameters are defined after the <code>transform</code> and <code>to</code> keywords. Since 2.9, <code>target</code> parameters can take an initializer expression to set their initial value (e.g. to create an instance of a specific subtype based on information in the source model).</p>
 <p>A rule can define an optional comma-separated list of rules it extends after the <code>extends</code> keyword. Inside the curly braces ({}), the rule can optionally specify its <code>guard</code> either as an EOL expression following a colon (:) (for simple guards) or as a block of statements in curly braces (for more complex guards). Finally, the <code>body</code> of the rule is specified as a sequence of EOL statements.</p>
-<pre class="highlight"><code>(@abstract)?
-(@lazy)?
-(@primary)?
-rule &lt;name&gt;
-    transform &lt;sourceParameterName&gt;:&lt;sourceParameterType&gt;
-    to &lt;targetParameterName&gt;:&lt;targetParameterType&gt;
-        (= &lt;initializerExpression&gt; )?
-        (,&lt;targetParameterName&gt;:&lt;targetParameterType&gt;
-          (= &lt;initializerExpression&gt; )? )*
-    (extends &lt;ruleName&gt; (, &lt;ruleName&gt;*)? {
-
-    (guard (:expression)|({statementBlock}))?
-
-    statement+
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>(@abstract)?
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>(@lazy)?
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>(@primary)?
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>rule &lt;name&gt;
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    transform &lt;sourceParameterName&gt;:&lt;sourceParameterType&gt;
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    to &lt;targetParameterName&gt;:&lt;targetParameterType&gt;
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        (= &lt;initializerExpression&gt; )?
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        (,&lt;targetParameterName&gt;:&lt;targetParameterType&gt;
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>          (= &lt;initializerExpression&gt; )? )*
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    (extends &lt;ruleName&gt; (, &lt;ruleName&gt;*)? {
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    (guard (:expression)|({statementBlock}))?
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    statement+
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>}
+</code></pre></div>
 <p><code>Pre</code> and <code>post</code> blocks have a simple syntax that, as presented the listing below, consists of the identifier (<code>pre</code> or <code>post</code>), an optional name and the set of statements to be executed enclosed in curly braces.</p>
-<pre class="highlight"><code>(pre|post) &lt;name&gt; {
-    statement+
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>(pre|post) &lt;name&gt; {
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    statement+
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>}
+</code></pre></div>
 <h2 id="execution-semantics">Execution Semantics<a class="headerlink" href="#execution-semantics" title="Permanent link">&para;</a></h2>
 <h3 id="rule-and-block-overriding">Rule and Block Overriding<a class="headerlink" href="#rule-and-block-overriding" title="Permanent link">&para;</a></h3>
 <p>Similarly to EOL, an ETL module can import a number of other ETL modules. In this case, the importing ETL module inherits all the rules and pre/post blocks specified in the modules it imports (recursively). If the module specifies a rule or a pre/post block with the same name, the local rule/block overrides the imported one respectively.</p>
@@ -2169,7 +2165,7 @@ rule &lt;name&gt;
 </ul>
 <p>The <code>equivalents()</code> operation can be also invoked with an arbitrary number of rule names as parameters, to invoke and return only the equivalents created by specific rules. Unlike the main execution scheduling scheme discussed above, the <code>equivalents()</code> operation invokes both lazy and non-lazy rules. It is worth noting that lazy rules are computationally expensive and should be used with caution as they can significantly degrade the performance of the overall transformation.</p>
 <p>With regard to the ordering of the results of the <code>equivalents()</code> operations, the returned elements appear in the respective order of the rules that have created them. An exception to this occurs when one of the rules is declared as <code>primary</code>, in which case its results precede the results of all other rules.</p>
-<pre class="mermaid mermaid-80"><code>classDiagram
+<pre class="mermaid"><code>classDiagram
 
 class Transformation {
     -source: Object
@@ -2192,7 +2188,7 @@ Transformation -- TransformRule: rule</code></pre>
 </ul>
 <p>As with the <code>equivalents()</code> operation, the <code>equivalent()</code> operation can also be invoked with or without parameters.</p>
 <p>The semantics of the <code>equivalent()</code> operation are further illustrated through a simple example. In this example, we need to transform a model that conforms to the Tree metamodel displayed below into a model that conforms to the Graph metamodel, also displayed below.</p>
-<pre class="mermaid mermaid-70"><code>classDiagram
+<pre class="mermaid"><code>classDiagram
 class Node {
     +label: String
     +incoming: Edge[*]
@@ -2211,42 +2207,45 @@ Tree -- Tree
 Node -- Edge
 Edge -- Node</code></pre>
 <p>More specifically, we need to transform each <code>Tree</code> element to a <code>Node</code>, and an <code>Edge</code> that connects it with the <code>Node</code> that is equivalent to the tree's <code>parent</code>. This is achieved using the rule below.</p>
-<pre class="highlight"><code class="language-etl">rule Tree2Node
-    transform t : Tree!Tree
-    to n : Graph!Node {
-
-    n.label = t.label;
-
-    if (t.parent.isDefined()) {
-        var edge = new Graph!Edge;
-        edge.source = n;
-        edge.target = t.parent.equivalent();
-    }
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">rule</span><span class="w"> </span><span class="n">Tree2Node</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">transform</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Tree</span><span class="o">!</span><span class="n">Tree</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">to</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Graph</span><span class="o">!</span><span class="n">Node</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="n">n</span><span class="o">.</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="o">.</span><span class="n">label</span><span class="p">;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">isDefined</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="k">var</span><span class="w"> </span><span class="n">edge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Graph</span><span class="o">!</span><span class="n">Edge</span><span class="p">;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="n">edge</span><span class="o">.</span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="n">edge</span><span class="o">.</span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">equivalent</span><span class="p">();</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="p">}</span>
+</code></pre></div>
 <p>In lines 1--3, the <code>Tree2Node</code> rule specifies that it can transform elements of the <code>Tree</code> type in the <code>Tree</code> model into elements of the <code>Node</code> type in the <code>Graph</code> model. In line 5 it specifies that the label of the created Node should be the same as the label of the source Tree. If the parent of the source <code>Tree</code> is defined (line 7), the rule creates a new <code>Edge</code> (line 8) and sets its <code>source</code> property to the created <code>Node</code> (line 9) and its <code>target</code> property to the <code>equivalent</code> <code>Node</code> of the source <code>Tree</code>'s <code>parent</code> (line 10).</p>
 <p>The Epsilon Playground includes a <a href="../../playground/?tree2graph-equivalent">more comprehensive version of this example</a>, providing comparisons between the various ways to use the <code>equivalent()</code> and <code>equivalents()</code> operations.</p>
 <h4 id="persisting-the-transformation-trace">Persisting the transformation trace<a class="headerlink" href="#persisting-the-transformation-trace" title="Permanent link">&para;</a></h4>
 <p>ETL does not provide built-in support for persisting the transformation trace, however, you can access it through <code>System.context.transformationTrace</code> and persist (parts of) it in a format of your choice (e.g. in a <code>post</code> block of your transformation).</p>
 <h3 id="overriding-the-semantics-of-the-eol-special-assignment-operator">Overriding the semantics of the EOL Special Assignment Operator<a class="headerlink" href="#overriding-the-semantics-of-the-eol-special-assignment-operator" title="Permanent link">&para;</a></h3>
 <p>As discussed above, resolving the equivalent(s) or source model elements in the target model is a recurring task in model transformation. Furthermore, in most cases resolving the equivalent of a model element is immediately followed by assigning/adding the obtained target model elements to the value(s) of a property of another target model element. For example, in line 10 of the listing above, the <code>equivalent</code> obtained is immediately assigned to the <code>target</code> property of the generated <code>Edge</code>. To make transformation specifications more readable, ETL overrides the semantics of the <code>SpecialAssignmentStatement</code> (<code>::=</code> in terms of concrete syntax), to set its left-hand side, not to the element its right-hand side evaluates to, but to its <code>equivalent</code> as calculated using the <code>equivalent()</code> operation discussed above. Using this feature, line 10 of the <code>Tree2Node</code> rule can be rewritten as shown below.</p>
-<pre class="highlight"><code>edge.target ::= t.parent;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>edge.target ::= t.parent;
+</code></pre></div>
 <h3 id="interactive-transformations">Interactive Transformations<a class="headerlink" href="#interactive-transformations" title="Permanent link">&para;</a></h3>
 <p>Using the user interaction facilities of EOL, an ETL transformation can become interactive by prompting the user for input during its execution. For example in the listing below, we modify the <code>Tree2Node</code> rule by adding a <code>guard</code> part that uses the user-input facilities of EOL (more specifically the <code>UserInput.confirm(String,Boolean)</code> operation) to enable the user select manually at runtime which of the Tree elements need to be transformed to respective Node elements in the target model and which not.</p>
-<pre class="highlight"><code class="language-etl">rule Tree2Node
-    transform t : Tree!Tree
-    to n : Graph!Node {
-
-    guard : UserInput.confirm
-        ("Transform tree " + t.label + "?", true)
-
-    n.label = t.label;
-    var target : Graph!Node ::= t.parent;
-    if (target.isDefined()) {
-        var edge = new Graph!Edge;
-        edge.source = n;
-        edge.target = target;
-    }
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">rule</span><span class="w"> </span><span class="n">Tree2Node</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">transform</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Tree</span><span class="o">!</span><span class="n">Tree</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="k">to</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Graph</span><span class="o">!</span><span class="n">Node</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="k">guard</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">UserInput</span><span class="o">.</span><span class="n">confirm</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="p">(</span><span class="s2">&quot;Transform tree &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">t</span><span class="o">.</span><span class="n">label</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;?&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="n">n</span><span class="o">.</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="o">.</span><span class="n">label</span><span class="p">;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Graph</span><span class="o">!</span><span class="n">Node</span><span class="w"> </span><span class="o">::=</span><span class="w"> </span><span class="n">t</span><span class="o">.</span><span class="n">parent</span><span class="p">;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">isDefined</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="k">var</span><span class="w"> </span><span class="n">edge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Graph</span><span class="o">!</span><span class="n">Edge</span><span class="p">;</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="n">edge</span><span class="o">.</span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="n">edge</span><span class="o">.</span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target</span><span class="p">;</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="p">}</span>
+</code></pre></div>
 <h2 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
 <p>Additional resources about ETL are available <a href="../articles/#epsilon-transformation-language">here</a>.</p>
 <div class="footnote">
@@ -2390,8 +2389,6 @@ Edge -- Node</code></pre>
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

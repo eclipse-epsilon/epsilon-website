@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1908,12 +1902,14 @@
 <p>Note: When the browser is not set to <code>firefox</code>, tests in <code>download.cy.js</code> can be flaky.</p>
 <h2 id="testing-on-a-local-deployment">Testing on a local deployment<a class="headerlink" href="#testing-on-a-local-deployment" title="Permanent link">&para;</a></h2>
 <p>To run the Cypress tests on a locally-running Playground, run:</p>
-<pre class="highlight"><code class="language-shell">./run-cypress-local.sh</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>./run-cypress-local.sh
+</code></pre></div>
 <p>The script will use the <code>standalone-server</code> image of the Playground, and use a local <code>/shorturl</code> service based on local files.</p>
 <p><em>Note</em>: this script still requires a working internet connection, as the playground loads some resources from the internet.</p>
 <h3 id="disable-live-reloading">Disable Live Reloading<a class="headerlink" href="#disable-live-reloading" title="Permanent link">&para;</a></h3>
 <p>To speed up test execution, please disable live reloading by serving the website using the following command.</p>
-<pre class="highlight"><code>./serve-no-livereload.sh</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>./serve-no-livereload.sh
+</code></pre></div>
 <h2 id="running-yjs-locally">Running YJS locally<a class="headerlink" href="#running-yjs-locally" title="Permanent link">&para;</a></h2>
 <p>YJS enables live collaboration in the Playground. To run YJS locally, run:</p>
 <ul>
@@ -2017,8 +2013,6 @@
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

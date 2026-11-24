@@ -46,13 +46,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2042,7 +2036,7 @@
 <p>The aim of EML is to contribute model merging capabilities to Epsilon. More specifically, EML can be used to merge an arbitrary number of input models of potentially diverse metamodels and modelling technologies. This section provides a discussion on the abstract and concrete syntax of EML, as well as its execution semantics. It also provides two examples of merging homogeneous and heterogeneous models.</p>
 <h2 id="abstract-syntax">Abstract Syntax<a class="headerlink" href="#abstract-syntax" title="Permanent link">&para;</a></h2>
 <p>In EML, merging specifications are organized in modules (<em>EmlModule</em>). As displayed below, <em>EmlModule</em> inherits from <em>EtlModule</em>.</p>
-<pre class="mermaid mermaid-90"><code>classDiagram
+<pre class="mermaid"><code>classDiagram
 class MergeRule {
     -name: String
     -abstract: Boolean
@@ -2077,22 +2071,24 @@ MergeRule -- MergeRule: extends *</code></pre>
 <p>Each merge rule defines a name, a left, a right, and one or more target parameters. It can also extend one or more other merge rules and be defined as having one or more of the following properties: abstract, greedy, lazy and primary.</p>
 <h2 id="concrete-syntax">Concrete Syntax<a class="headerlink" href="#concrete-syntax" title="Permanent link">&para;</a></h2>
 <p>The listing below demonstrates the concrete syntax of EML merge-rules.</p>
-<pre class="highlight"><code>(@abstract)?
-(@lazy)?
-(@primary)? (@greedy)? 
-rule &lt;name&gt;
-    merge &lt;leftParameter&gt;
-    with &lt;rightParameter&gt;
-    into (&lt;targetParameter&gt;(, &lt;targetParameter&gt;)*)? 
-        (extends &lt;ruleName&gt;(, &lt;ruleName&gt;)*)? {
-
-    statementBlock
-
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>(@abstract)?
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>(@lazy)?
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>(@primary)? (@greedy)? 
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>rule &lt;name&gt;
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    merge &lt;leftParameter&gt;
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    with &lt;rightParameter&gt;
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    into (&lt;targetParameter&gt;(, &lt;targetParameter&gt;)*)? 
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        (extends &lt;ruleName&gt;(, &lt;ruleName&gt;)*)? {
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    statementBlock
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>}
+</code></pre></div>
 <p><em>Pre</em> and <em>post</em> blocks have a simple syntax that consists of the identifier (<em>pre</em> or <em>post</em>), an optional name and the set of statements to be executed enclosed in curly braces.</p>
-<pre class="highlight"><code>(pre|post) &lt;name&gt; {
-    statement+
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>(pre|post) &lt;name&gt; {
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    statement+
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>}
+</code></pre></div>
 <h2 id="execution-semantics">Execution Semantics<a class="headerlink" href="#execution-semantics" title="Permanent link">&para;</a></h2>
 <h3 id="rule-and-block-overriding">Rule and Block Overriding<a class="headerlink" href="#rule-and-block-overriding" title="Permanent link">&para;</a></h3>
 <p>An EML module can import a number of other EML and ETL modules. In this case, the importing EML module inherits all the rules and pre/post blocks specified in the modules it imports (recursively). If the module specifies a rule or a pre/post block with the same name, the local rule/block overrides the imported one respectively.</p>
@@ -2105,7 +2101,7 @@ rule &lt;name&gt;
 <h3 id="source-elements-resolution">Source Elements Resolution<a class="headerlink" href="#source-elements-resolution" title="Permanent link">&para;</a></h3>
 <p>As with model transformation, in model merging it is often required to resolve the counterparts of an element of a source model into the target models. In EML, this is achieved by overloading the semantics of the <em>equivalents()</em> and <em>equivalent()</em> operations defined by ETL. In EML, in addition to inspecting the transformation trace and invoking any applicable transformation rules, the <em>equivalents()</em> operation also examines the <em>mergeTrace</em> (displayed in the figure below) that stores the results of the application of merge-rules and invokes any applicable (both lazy and non-lazy) rules.</p>
 <p>Similarly to ETL, the order of the results of the <em>equivalents()</em> operation respects the order of the (merge or transform) rules that have produced them. An exception to that occurs if one of the rules has been declared as primary, in which case its results are prepended to the list of elements returned by equivalent.</p>
-<pre class="mermaid mermaid-60"><code>classDiagram
+<pre class="mermaid"><code>classDiagram
 class Merge {
     -left: Object
     -right: Object
@@ -2118,104 +2114,107 @@ MergeTrace -- Merge: merges *
 Merge -- MergeRule</code></pre>
 <h2 id="homogeneous-model-merging-example">Homogeneous Model Merging Example<a class="headerlink" href="#homogeneous-model-merging-example" title="Permanent link">&para;</a></h2>
 <p>In this scenario, two models conforming to the Graph metamodel need to be merged. The first step is to compare the two graphs using the ECL module below.</p>
-<pre class="highlight"><code class="language-ecl">rule MatchNodes
-    match l : Left!Node
-    with r : Right!Node {
-
-    compare : l.label = r.label
-}
-
-rule MatchEdges
-    match l : Left!Edge
-    with r : Right!Edge {
-
-    compare : l.source.matches(r.source)
-        and l.target.matches(r.target)
-}
-
-rule MatchGraphs
-    match l : Left!Graph
-    with r : Right!Graph {
-
-    compare : true
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">rule</span><span class="w"> </span><span class="n">MatchNodes</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Left</span><span class="o">!</span><span class="n">Node</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">with</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Right</span><span class="o">!</span><span class="n">Node</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="k">compare</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">l</span><span class="o">.</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="o">.</span><span class="n">label</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">}</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">rule</span><span class="w"> </span><span class="n">MatchEdges</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Left</span><span class="o">!</span><span class="n">Edge</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="k">with</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Right</span><span class="o">!</span><span class="n">Edge</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="k">compare</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">l</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">matches</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">        </span><span class="ow">and</span><span class="w"> </span><span class="n">l</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">matches</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="p">}</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="k">rule</span><span class="w"> </span><span class="n">MatchGraphs</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Left</span><span class="o">!</span><span class="n">Graph</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="k">with</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Right</span><span class="o">!</span><span class="n">Graph</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="k">compare</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="p">}</span>
+</code></pre></div>
 <p>The <em>MatchNodes</em> rule in line 1 defines that two nodes match if they have the same label. The <em>MatchEdges</em> rule in line 8 specifies that two edges match if both their source and target nodes match (regardless of whether the labels of the edges match or not as it is assumed that there can not be two distinct edges between the same nodes). Finally, since only one instance of Graph is expected to be in each model, the <em>MatchGraphs</em> rule in line 16 returns <em>true</em> for any pair of Graphs.</p>
 <p>Having established the necessary correspondences between matching elements of the two models, the EML specification below performs the merge.</p>
-<pre class="highlight"><code class="language-eml">import "Graphs.etl";
-
-rule MergeGraphs
-    merge l : Left!Graph
-    with r : Right!Graph
-    into t : Target!Graph {
-
-    t.label = l.label + " and " + r.label;
-
-}
-
-@abstract
-rule MergeGraphElements
-    merge l : Left!GraphElement
-    with r : Right!GraphElement
-    into t : Target!GraphElement {
-
-    t.graph ::= l.graph;
-
-}
-
-rule MergeNodes
-    merge l : Left!Node
-    with r : Right!Node
-    into t : Target!Node 
-    extends GraphElements {
-
-    t.label = "c_" + l.label;
-
-}
-rule MergeEdges
-    merge l : Left!Edge
-    with r : Right!Edge
-    into t : Target!Edge 
-    extends GraphElements {
-
-    t.source ::= l.source;
-    t.target ::= l.target;
-
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">import</span><span class="w"> </span><span class="s2">&quot;Graphs.etl&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">rule</span><span class="w"> </span><span class="n">MergeGraphs</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="k">merge</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Left</span><span class="o">!</span><span class="n">Graph</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="k">with</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Right</span><span class="o">!</span><span class="n">Graph</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="k">into</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Target</span><span class="o">!</span><span class="n">Graph</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="n">t</span><span class="o">.</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">l</span><span class="o">.</span><span class="n">label</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; and &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">r</span><span class="o">.</span><span class="n">label</span><span class="p">;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="p">}</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="cp">@abstract</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="k">rule</span><span class="w"> </span><span class="n">MergeGraphElements</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="k">merge</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Left</span><span class="o">!</span><span class="n">GraphElement</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="k">with</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Right</span><span class="o">!</span><span class="n">GraphElement</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="k">into</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Target</span><span class="o">!</span><span class="n">GraphElement</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="n">t</span><span class="o">.</span><span class="n">graph</span><span class="w"> </span><span class="o">::=</span><span class="w"> </span><span class="n">l</span><span class="o">.</span><span class="n">graph</span><span class="p">;</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="p">}</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="k">rule</span><span class="w"> </span><span class="n">MergeNodes</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="k">merge</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Left</span><span class="o">!</span><span class="n">Node</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">    </span><span class="k">with</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Right</span><span class="o">!</span><span class="n">Node</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">    </span><span class="k">into</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Target</span><span class="o">!</span><span class="n">Node</span><span class="w"> </span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">    </span><span class="k">extends</span><span class="w"> </span><span class="n">GraphElements</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">    </span><span class="n">t</span><span class="o">.</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;c_&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">l</span><span class="o">.</span><span class="n">label</span><span class="p">;</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="p">}</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="k">rule</span><span class="w"> </span><span class="n">MergeEdges</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">    </span><span class="k">merge</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Left</span><span class="o">!</span><span class="n">Edge</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="w">    </span><span class="k">with</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Right</span><span class="o">!</span><span class="n">Edge</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="w">    </span><span class="k">into</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Target</span><span class="o">!</span><span class="n">Edge</span><span class="w"> </span>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="w">    </span><span class="k">extends</span><span class="w"> </span><span class="n">GraphElements</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a>
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a><span class="w">    </span><span class="n">t</span><span class="o">.</span><span class="n">source</span><span class="w"> </span><span class="o">::=</span><span class="w"> </span><span class="n">l</span><span class="o">.</span><span class="n">source</span><span class="p">;</span>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="w">    </span><span class="n">t</span><span class="o">.</span><span class="n">target</span><span class="w"> </span><span class="o">::=</span><span class="w"> </span><span class="n">l</span><span class="o">.</span><span class="n">target</span><span class="p">;</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a>
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a><span class="p">}</span>
+</code></pre></div>
 <p>In line 3, the <em>MergeGraphs</em> merge rule specifies that two matching Graphs (<em>l</em> and <em>r</em>) are to be merged into one Graph <em>t</em> in the target model that has as a label, the concatenation of the labels of the two input graphs separated using 'and'. The <em>mergeNodes</em> rule In line 22 specifies that two matching Nodes are merged into a single Node in the target model. The label of the merged node is derived by concatenating the c (for common) static string with the label of the source Node from the left model. Similarly, the <em>MergeEdges</em> rule specifies that two matching Edges are merged into a single Edge in the target model. The source and target nodes of the merged Edge are set to the equivalents (::=) of the source and target nodes of the edge from the left model.</p>
 <p>To reduce duplication, the <em>MergeNodes</em> and <em>MergeEdges</em> rules extend the abstract <em>MergeGraphElements</em> rule specified in line 13 which assigns the <em>graph</em> property of the graph element to the equivalent of the left graph.</p>
 <p>The rules displayed above address only the matching elements of the two models. To also copy the elements for which no equivalent has been found in the opposite model, the EML module imports the ETL module below.</p>
-<pre class="highlight"><code class="language-etl">rule TransformGraph 
-    transform s : Source!Graph
-    to t : Target!Graph {
-
-    t.label = s.label;
-
-}
-
-@abstract
-rule TransformGraphElement 
-    transform s : Source!GraphElement
-    to t : Target!GraphElement {
-
-    t.graph ::= s.graph;
-}
-
-rule TransformNode
-    transform s : Source!Node
-    to t : Target!Node 
-    extends TransformGraphElement {
-
-    t.label = s.graph.label + "_" + s.label;
-}
-
-rule TransformEdge 
-    transform s : Source!Edge
-    to t : Target!Edge 
-    extends TransformGraphElement {
-
-    t.source ::= s.source;
-    t.target ::= s.target;  
-} </code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">rule</span><span class="w"> </span><span class="n">TransformGraph</span><span class="w"> </span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">transform</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Source</span><span class="o">!</span><span class="n">Graph</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="k">to</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Target</span><span class="o">!</span><span class="n">Graph</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="n">t</span><span class="o">.</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="o">.</span><span class="n">label</span><span class="p">;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="p">}</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="cp">@abstract</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="k">rule</span><span class="w"> </span><span class="n">TransformGraphElement</span><span class="w"> </span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="k">transform</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Source</span><span class="o">!</span><span class="n">GraphElement</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="k">to</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Target</span><span class="o">!</span><span class="n">GraphElement</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="n">t</span><span class="o">.</span><span class="n">graph</span><span class="w"> </span><span class="o">::=</span><span class="w"> </span><span class="n">s</span><span class="o">.</span><span class="n">graph</span><span class="p">;</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="p">}</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="k">rule</span><span class="w"> </span><span class="n">TransformNode</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="k">transform</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Source</span><span class="o">!</span><span class="n">Node</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="k">to</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Target</span><span class="o">!</span><span class="n">Node</span><span class="w"> </span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="k">extends</span><span class="w"> </span><span class="n">TransformGraphElement</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">    </span><span class="n">t</span><span class="o">.</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">label</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;_&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="o">.</span><span class="n">label</span><span class="p">;</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="p">}</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="k">rule</span><span class="w"> </span><span class="n">TransformEdge</span><span class="w"> </span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">    </span><span class="k">transform</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Source</span><span class="o">!</span><span class="n">Edge</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">    </span><span class="k">to</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Target</span><span class="o">!</span><span class="n">Edge</span><span class="w"> </span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">    </span><span class="k">extends</span><span class="w"> </span><span class="n">TransformGraphElement</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">    </span><span class="n">t</span><span class="o">.</span><span class="n">source</span><span class="w"> </span><span class="o">::=</span><span class="w"> </span><span class="n">s</span><span class="o">.</span><span class="n">source</span><span class="p">;</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="w">    </span><span class="n">t</span><span class="o">.</span><span class="n">target</span><span class="w"> </span><span class="o">::=</span><span class="w"> </span><span class="n">s</span><span class="o">.</span><span class="n">target</span><span class="p">;</span><span class="w">  </span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="p">}</span><span class="w"> </span>
+</code></pre></div>
 <p>The rules of the ETL module apply to model elements of both the Left and
 the Right model as both have been aliased as Source. Of special interest
 is the TransformNode rule in line 17 that specifies that non-matching nodes
@@ -2223,19 +2222,19 @@ in the two input models will be transformed into nodes in the target
 model the labels of which will be a concatenation of their input graph
 and the label of their counterparts in the input models.</p>
 <p>Executing the ECL and EML modules on the exemplar models displayed in the following two figures creates the target model of the final figure.</p>
-<p><pre class="mermaid mermaid-40"><code>graph LR
+<p><pre class="mermaid"><code>graph LR
     n1 --&gt; n2
     n1 --&gt; n3
     n3 --&gt; n5
     n2 --&gt; n4</code></pre>
 Left model</p>
-<p><pre class="mermaid mermaid-50"><code>graph LR
+<p><pre class="mermaid"><code>graph LR
     n1 --&gt; n8
     n1 --&gt; n6
     n8 --&gt; n6
     n6 --&gt; n3</code></pre>
 Right model</p>
-<p><pre class="mermaid mermaid-90"><code>graph LR
+<p><pre class="mermaid"><code>graph LR
     c_n1 --&gt; g1_n2
     g1_n2 --&gt; c_n4
     c_n1 --&gt; g2_n8
@@ -2378,8 +2377,6 @@ Merged model</p>
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

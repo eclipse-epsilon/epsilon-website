@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2047,11 +2041,13 @@ More information on the stable and interim Epsilon Maven artifacts is available 
 <h3 id="wrapping-your-module-with-the-epsilondebugserver">Wrapping your module with the EpsilonDebugServer<a class="headerlink" href="#wrapping-your-module-with-the-epsilondebugserver" title="Permanent link">&para;</a></h3>
 <p>The next step is to replace your regular <code>module.execute()</code> call with code that uses the debug server.
 For instance, if you have this code:</p>
-<pre class="highlight"><code class="language-java">Object result = module.execute();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">Object</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">module</span><span class="p">.</span><span class="na">execute</span><span class="p">();</span>
+</code></pre></div>
 <p>You can replace it with:</p>
-<pre class="highlight"><code class="language-java">EpsilonDebugServer server = new EpsilonDebugServer(module, port);
-server.run();
-Object result = server.getResult().get();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">EpsilonDebugServer</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EpsilonDebugServer</span><span class="p">(</span><span class="n">module</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="p">);</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">server</span><span class="p">.</span><span class="na">run</span><span class="p">();</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">Object</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="na">getResult</span><span class="p">().</span><span class="na">get</span><span class="p">();</span>
+</code></pre></div>
 <ul>
 <li>The first line wraps the module with Epsilon's DAP server and indicates that it will listen on a certain port (it can be a port of your choosing, or 0 to pick any available port).</li>
 <li>The second line starts the server and blocks until the program has completed its execution: the server will automatically shut down once the program has completed its execution.</li>
@@ -2063,16 +2059,17 @@ Several options are discussed in the <a href="#debug-adapter-protocol-clients-te
 <h3 id="mapping-module-uris-to-your-ide-files">Mapping module URIs to your IDE files<a class="headerlink" href="#mapping-module-uris-to-your-ide-files" title="Permanent link">&para;</a></h3>
 <p>If your Epsilon programs are being loaded from URIs rather than regular files, you will need to tell the <code>EpsilonDebugServer</code> how to map those module URIs to the files with your breakpoints.
 Here is a simplified excerpt from the <code>DebugClasspathBasedEOL</code> example, which shows how to do this:</p>
-<pre class="highlight"><code class="language-java">EolModule module = new EolModule();
-URI classpathUri = DebugClasspathBasedEOL.class.getResource("your.eol").toURI();
-module.parse(classpathUri);
-
-EpsilonDebugServer server = new EpsilonDebugServer(module, 4040);
-server.getDebugAdapter().getUriToPathMappings().put(
-    classpathUri,
-    Paths.get("src/path/to/your.eol"));
-
-server.run();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">EolModule</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EolModule</span><span class="p">();</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">URI</span><span class="w"> </span><span class="n">classpathUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DebugClasspathBasedEOL</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getResource</span><span class="p">(</span><span class="s">&quot;your.eol&quot;</span><span class="p">).</span><span class="na">toURI</span><span class="p">();</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">module</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">classpathUri</span><span class="p">);</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">EpsilonDebugServer</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EpsilonDebugServer</span><span class="p">(</span><span class="n">module</span><span class="p">,</span><span class="w"> </span><span class="mi">4040</span><span class="p">);</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">server</span><span class="p">.</span><span class="na">getDebugAdapter</span><span class="p">().</span><span class="na">getUriToPathMappings</span><span class="p">().</span><span class="na">put</span><span class="p">(</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="n">classpathUri</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="n">Paths</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;src/path/to/your.eol&quot;</span><span class="p">));</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="n">server</span><span class="p">.</span><span class="na">run</span><span class="p">();</span>
+</code></pre></div>
 <p>A debugging session would work like this:</p>
 <ul>
 <li>From your DAP client, you would set some breakpoints in <code>your.eol</code>.</li>
@@ -2089,52 +2086,60 @@ server.run();</code></pre>
 If you are debugging such a plugin through a nested Eclipse workbench, you can debug the Epsilon program via breakpoints on the main Eclipse workbench by using the <code>FileLocator</code> API to compute the relevant mappings.</p>
 <p>For example, suppose you were running the EOL script in <code>epsilon/main.eol</code> within your plugin.
 You would obtain the <code>bundleentry://</code> URL of your plugin with this code, assuming you had created the <a href="https://help.eclipse.org/latest/topic/org.eclipse.pde.doc.user/guide/tools/project_wizards/plugin_content.htm">relevant <code>Activator</code></a> for your plugin:</p>
-<pre class="highlight"><code class="language-java">URL bundleUrl = FileLocator.find(
-  Activator.getDefault().getBundle(),
-  new Path("/")
-);</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">URL</span><span class="w"> </span><span class="n">bundleUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FileLocator</span><span class="p">.</span><span class="na">find</span><span class="p">(</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="n">Activator</span><span class="p">.</span><span class="na">getDefault</span><span class="p">().</span><span class="na">getBundle</span><span class="p">(),</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="k">new</span><span class="w"> </span><span class="n">Path</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">);</span>
+</code></pre></div>
 <p>You could then turn it into a <code>java.nio.file.Path</code> with:</p>
-<pre class="highlight"><code class="language-java">java.nio.file.Path mappedPath = Paths.get(
-  FileLocator.toFileURL(bundleUrl).toURI()
-);</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">java</span><span class="p">.</span><span class="na">nio</span><span class="p">.</span><span class="na">file</span><span class="p">.</span><span class="na">Path</span><span class="w"> </span><span class="n">mappedPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Paths</span><span class="p">.</span><span class="na">get</span><span class="p">(</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="n">FileLocator</span><span class="p">.</span><span class="na">toFileURL</span><span class="p">(</span><span class="n">bundleUrl</span><span class="p">).</span><span class="na">toURI</span><span class="p">()</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">);</span>
+</code></pre></div>
 <p>You would then map the bundle's URL to the relevant folder in your main Eclipse workbench, like this:</p>
-<pre class="highlight"><code class="language-java">EpsilonDebugServer server = /* ... create instance as usual ... */;
-server.getDebugAdapter()
-  .getUriToPathMappings()
-  .put(bundleUrl.toURI(), mappedPath);</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">EpsilonDebugServer</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/* ... create instance as usual ... */</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">server</span><span class="p">.</span><span class="na">getDebugAdapter</span><span class="p">()</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="p">.</span><span class="na">getUriToPathMappings</span><span class="p">()</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">bundleUrl</span><span class="p">.</span><span class="na">toURI</span><span class="p">(),</span><span class="w"> </span><span class="n">mappedPath</span><span class="p">);</span>
+</code></pre></div>
 <p>This would allow you to place breakpoints anywhere within this plugin, assuming you were running it from its sources.
 This is better than only mapping the URL of the main script to a file, as that would only let you stop at breakpoints on that main script and not on its imports.</p>
 <p>For a fully worked-out example of this idea, you can check <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.eol.dap.bundleprogram">this example project</a> on Github.</p>
 <h3 id="debugging-across-multiple-epsilon-programs">Debugging across multiple Epsilon programs<a class="headerlink" href="#debugging-across-multiple-epsilon-programs" title="Permanent link">&para;</a></h3>
 <p>Since Epsilon 2.9.0, it is possible to reuse the same debugging session across multiple programs.
 First, you will need to create the reusable debug server:</p>
-<pre class="highlight"><code class="language-java">var server = new ReusableEpsilonDebugServer(port);
-// ... set up server as usual (e.g. URI to path mappings ...)</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">var</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ReusableEpsilonDebugServer</span><span class="p">(</span><span class="n">port</span><span class="p">);</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1">// ... set up server as usual (e.g. URI to path mappings ...)</span>
+</code></pre></div>
 <p>Next, you will have to run the server on its own thread and wait until it has fully started:</p>
-<pre class="highlight"><code class="language-java">var serverThread = new Thread(server::run, "Epsilon Debug Server Thread");
-var latch = new CountDownLatch(1);
-server.setOnStart(latch::countDown);
-serverThread.start();
-latch.await();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">var</span><span class="w"> </span><span class="n">serverThread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Thread</span><span class="p">(</span><span class="n">server</span><span class="p">::</span><span class="n">run</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Epsilon Debug Server Thread&quot;</span><span class="p">);</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kd">var</span><span class="w"> </span><span class="n">latch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CountDownLatch</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">server</span><span class="p">.</span><span class="na">setOnStart</span><span class="p">(</span><span class="n">latch</span><span class="p">::</span><span class="n">countDown</span><span class="p">);</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">serverThread</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">latch</span><span class="p">.</span><span class="na">await</span><span class="p">();</span>
+</code></pre></div>
 <p>You can now enqueue modules to be executed and debugged by using the special <code>.enqueue()</code> method in the <code>ExecutionQueueModule</code> set up by the <code>ReusableEpsilonDebugServer</code>:</p>
-<pre class="highlight"><code class="language-java">var module = new EolModule();
-// ... set up module ...
-var futureResult = server.getModule().enqueue(module);
-// ... do other things while the module runs in the server thread ...
-// wait for the module to finish executing and obtain its result
-var moduleResult = futureResult.get();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">var</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EolModule</span><span class="p">();</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1">// ... set up module ...</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="kd">var</span><span class="w"> </span><span class="n">futureResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="na">getModule</span><span class="p">().</span><span class="na">enqueue</span><span class="p">(</span><span class="n">module</span><span class="p">);</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1">// ... do other things while the module runs in the server thread ...</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1">// wait for the module to finish executing and obtain its result</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="kd">var</span><span class="w"> </span><span class="n">moduleResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">futureResult</span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
+</code></pre></div>
 <p>The debug server will wait until a DAP connection is made, and then it will start to run the programs in its queue.
 Once all programs have been run, it will wait indefinitely for the next program to be queued until shut down.
 To shut it down, send a <code>terminate</code> request to the debug adapter:</p>
-<pre class="highlight"><code class="language-java">// send the request
-var terminateResponse = server.getDebugAdapter().terminate(new TerminateArguments());
-// optionally, wait for acknowledgment
-terminateResponse.get();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">// send the request</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kd">var</span><span class="w"> </span><span class="n">terminateResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">.</span><span class="na">getDebugAdapter</span><span class="p">().</span><span class="na">terminate</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">TerminateArguments</span><span class="p">());</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1">// optionally, wait for acknowledgment</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">terminateResponse</span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
+</code></pre></div>
 <h2 id="debugging-epsilon-programs-running-from-ant-workflows">Debugging Epsilon programs running from Ant workflows<a class="headerlink" href="#debugging-epsilon-programs-running-from-ant-workflows" title="Permanent link">&para;</a></h2>
 <p>If you need to debug your Epsilon program that you are <a href="../running-epsilon-ant-tasks-from-command-line/">running from the command line</a> (e.g. Ant or Gradle), you will need to use the Debug Adapter Protocol support available from Epsilon 2.6.0.</p>
 <h3 id="debugging-a-single-epsilon-program">Debugging a single Epsilon program<a class="headerlink" href="#debugging-a-single-epsilon-program" title="Permanent link">&para;</a></h3>
 <p>To debug a single Epsilon program, set the <code>debug</code> and <code>debugPort</code> attributes in your Ant task, like this:</p>
-<pre class="highlight"><code class="language-xml">&lt;epsilon.eol ... debug="true" debugPort="4040"/&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">&lt;epsilon.eol</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="na">debug=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="na">debugPort=</span><span class="s">&quot;4040&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
 <p>When executed, this task will start a DAP server listening on TCP port 4040.
 It wait for a connection from a <a href="#debug-adapter-protocol-clients-tested-with-epsilon">DAP client</a>, and then start the program.
 The server will be automatically shut down after the program terminates.</p>
@@ -2144,10 +2149,11 @@ There is also an <a href="https://github.com/eclipse-epsilon/epsilon/blob/main/e
 <p>If you need to run multiple Epsilon programs in your Ant buildfile, you may want to debug some of them without having to repeatedly connect to each of the DAP servers they start.
 Since Epsilon 2.9.0, you can use the Ant tasks that start and stop an independent server that can be reused across programs.
 For example:</p>
-<pre class="highlight"><code class="language-xml">&lt;epsilon.startDebugServer port="4040" /&gt;
-&lt;epsilon.eol ... debug="true" /&gt;
-&lt;epsilon.eol ... debug="true" /&gt;
-&lt;epsilon.stopDebugServer /&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nt">&lt;epsilon.startDebugServer</span><span class="w"> </span><span class="na">port=</span><span class="s">&quot;4040&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nt">&lt;epsilon.eol</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="na">debug=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nt">&lt;epsilon.eol</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="na">debug=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="nt">&lt;epsilon.stopDebugServer</span><span class="w"> </span><span class="nt">/&gt;</span>
+</code></pre></div>
 <p>The <a href="https://github.com/eclipse-epsilon/epsilon/blob/main/examples/org.eclipse.epsilon.examples.eol.dap/build.xml">example build file</a> includes a <code>multiple-server-debug</code> target that uses this feature.</p>
 <h2 id="debug-adapter-protocol-clients-tested-with-epsilon">Debug Adapter Protocol clients tested with Epsilon<a class="headerlink" href="#debug-adapter-protocol-clients-tested-with-epsilon" title="Permanent link">&para;</a></h2>
 <p>After the <code>EpsilonDebugServer</code> has started and is waiting for a DAP connection, you should be able to connect to it with a DAP client of your choice.
@@ -2171,23 +2177,25 @@ Epsilon includes an <a href="https://github.com/eclipse-epsilon/epsilon/tree/mai
 The rest of the section breaks down some of these details.</p>
 <h4 id="starting-the-dap-server">Starting the DAP server<a class="headerlink" href="#starting-the-dap-server" title="Permanent link">&para;</a></h4>
 <p>First, you will need to add the <code>debug</code> and <code>debugPort</code> attributes to the Ant tasks being executed from your Gradle script:</p>
-<pre class="highlight"><code class="language-groovy">task runHello {
-  dependsOn tasks.setupEpsilonTasks
-  doLast {
-    ant.'epsilon.eol'(src: '01-hello.eol', debug: true, debugPort: 4040)
-  }
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">task</span><span class="w"> </span><span class="n">runHello</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="n">dependsOn</span><span class="w"> </span><span class="n">tasks</span><span class="o">.</span><span class="na">setupEpsilonTasks</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span><span class="n">doLast</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span><span class="n">ant</span><span class="o">.</span><span class="s1">&#39;epsilon.eol&#39;</span><span class="o">(</span><span class="nl">src:</span><span class="w"> </span><span class="s1">&#39;01-hello.eol&#39;</span><span class="o">,</span><span class="w"> </span><span class="nl">debug:</span><span class="w"> </span><span class="kc">true</span><span class="o">,</span><span class="w"> </span><span class="nl">debugPort:</span><span class="w"> </span><span class="mi">4040</span><span class="o">)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">  </span><span class="o">}</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="o">}</span>
+</code></pre></div>
 <p>Note how the Epsilon task is wrapped in a <code>doLast</code> block, to ensure it only runs when we explicitly run the task, and not on Gradle's configure phase.
 When the task is run, execution will suspend until a DAP client (VS Code in this case) connects to the DAP server.</p>
 <h4 id="creating-and-launching-a-debug-configuration">Creating and launching a debug configuration<a class="headerlink" href="#creating-and-launching-a-debug-configuration" title="Permanent link">&para;</a></h4>
 <p>You will then need to add a launch configuration to your <code>launch.json</code> file.
 Based on the above example, you would need something like:</p>
-<pre class="highlight"><code class="language-json">{
-    "type": "epsilon",
-    "request": "attach",
-    "name": "Debug 01-hello",
-    "port": 4040
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="p">{</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;epsilon&quot;</span><span class="p">,</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;attach&quot;</span><span class="p">,</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Debug 01-hello&quot;</span><span class="p">,</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4040</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="p">}</span>
+</code></pre></div>
 <p>Set breakpoints as usual.
 Launch the above configuration, and you should be able to hit breakpoints, control execution, and inspect variables as usual:</p>
 <p><img alt="VS Code debugger stopped on an EOL breakpoint" src="vscode-debugger.png" /></p>
@@ -2214,15 +2222,17 @@ From VS Code, you can use the "Watch" section to enter EOL expressions:</p>
 <h4 id="stopping-at-every-statement-on-a-line-breakpoint">Stopping at every statement on a line breakpoint<a class="headerlink" href="#stopping-at-every-statement-on-a-line-breakpoint" title="Permanent link">&para;</a></h4>
 <p>Instead of using inline breakpoints, you can instruct the debug adapter to stop at every statement on your line breakpoints.
 This can be done by setting the <code>"stop-at-every-statement"</code> to <code>true</code> in your <code>launch.json</code> configuration, like this:</p>
-<pre class="highlight"><code class="language-json">{
-    "type": "epsilon",
-    "request": "attach",
-    "name": "Debug 01-hello",
-    "port": 4040,
-    "stop-at-every-statement": true
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="p">{</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;epsilon&quot;</span><span class="p">,</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;attach&quot;</span><span class="p">,</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Debug 01-hello&quot;</span><span class="p">,</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">    </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4040</span><span class="p">,</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">    </span><span class="nt">&quot;stop-at-every-statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="p">}</span>
+</code></pre></div>
 <p><em>Note</em>: in EGL, every static region is a statement of its own, dynamic regions can have their own statements as well, and the final newline is on a statement of its own. For instance, if you use this option and set a line breakpoint on this line of EGL code:</p>
-<pre class="highlight"><code class="language-egl">Hello [%=name]! The current date is [%=date%].</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Hello <span class="cp">[%=</span><span class="n">name</span><span class="p">]</span><span class="o">!</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="n">date</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="p">[</span><span class="o">%=</span><span class="n">date</span><span class="cp">%]</span>.
+</code></pre></div>
 <p>The debugger will then stop at:</p>
 <ol>
 <li><code>Hello</code>,</li>
@@ -2240,24 +2250,25 @@ You can configure VS Code to launch the Gradle task for you, by using a <code>pr
 <p>Select the "Gradle: ..." task corresponding to the Gradle task to be executed:</p>
 <p><img alt="VS Code Command Palette showing the Gradle task to be configured" src="vscode-gradle_task.png" /></p>
 <p>This add a rather verbose block to your <a href="https://code.visualstudio.com/Docs/editor/tasks"><code>tasks.json</code></a> file:</p>
-<pre class="highlight"><code class="language-json">{
-    "type": "gradle",
-    "id": "...",
-    "script": "runHello",
-    "description": "",
-    "group": "other",
-    "project": "org.eclipse.epsilon.examples.eol.dap",
-    "buildFile": ".../org.eclipse.epsilon/examples/org.eclipse.epsilon.examples.eol.dap/epsilon/build.gradle",
-    "rootProject": "org.eclipse.epsilon.examples.eol.dap",
-    "projectFolder": ".../org.eclipse.epsilon/examples/org.eclipse.epsilon.examples.eol.dap/epsilon",
-    "workspaceFolder": ".../org.eclipse.epsilon/examples/org.eclipse.epsilon.examples.eol.dap/epsilon",
-    "args": "",
-    "javaDebug": false,
-    "problemMatcher": [
-        "$gradle"
-    ],
-    "label": "gradle: runHello"
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="p">{</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gradle&quot;</span><span class="p">,</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="nt">&quot;script&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;runHello&quot;</span><span class="p">,</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;other&quot;</span><span class="p">,</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">    </span><span class="nt">&quot;project&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.eclipse.epsilon.examples.eol.dap&quot;</span><span class="p">,</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">    </span><span class="nt">&quot;buildFile&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;.../org.eclipse.epsilon/examples/org.eclipse.epsilon.examples.eol.dap/epsilon/build.gradle&quot;</span><span class="p">,</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">    </span><span class="nt">&quot;rootProject&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.eclipse.epsilon.examples.eol.dap&quot;</span><span class="p">,</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">    </span><span class="nt">&quot;projectFolder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;.../org.eclipse.epsilon/examples/org.eclipse.epsilon.examples.eol.dap/epsilon&quot;</span><span class="p">,</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">    </span><span class="nt">&quot;workspaceFolder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;.../org.eclipse.epsilon/examples/org.eclipse.epsilon.examples.eol.dap/epsilon&quot;</span><span class="p">,</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="w">    </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="w">    </span><span class="nt">&quot;javaDebug&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="w">    </span><span class="nt">&quot;problemMatcher&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="w">        </span><span class="s2">&quot;$gradle&quot;</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="w">    </span><span class="p">],</span>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="w">    </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gradle: runHello&quot;</span>
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="p">}</span>
+</code></pre></div>
 <p>This JSON block needs a number of changes before it can be used:</p>
 <ul>
 <li>Remove the unnecessary <code>id</code>, <code>description</code>, <code>project</code>, and <code>rootProject</code> fields.</li>
@@ -2268,29 +2279,31 @@ You can configure VS Code to launch the Gradle task for you, by using a <code>pr
 <li>Add an <code>"isBackground": true</code> setting, to mark it as a background task. Otherwise, debugging will never start as VS Code will indefinitely wait for this task to complete, rather than read the INFO messages to detect when the DAP server has started.</li>
 </ul>
 <p>You should end up with something like the following:</p>
-<pre class="highlight"><code class="language-json">{
-    "type": "gradle",
-    "script": "runHello",
-    "group": "other",
-    "buildFile": "${workspaceFolder}/build.gradle",
-    "workspaceFolder": "${workspaceFolder}",
-    "projectFolder": "${workspaceFolder}",
-    "args": "--info",
-    "problemMatcher": [
-        "$gradle",
-        "$epsilon-debug"
-    ],
-    "label": "epsilonDebug: hello",
-    "isBackground": true
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="p">{</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gradle&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="nt">&quot;script&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;runHello&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">    </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;other&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">    </span><span class="nt">&quot;buildFile&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}/build.gradle&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">    </span><span class="nt">&quot;workspaceFolder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">    </span><span class="nt">&quot;projectFolder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">    </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;--info&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">    </span><span class="nt">&quot;problemMatcher&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">        </span><span class="s2">&quot;$gradle&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">        </span><span class="s2">&quot;$epsilon-debug&quot;</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">    </span><span class="p">],</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="w">    </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;epsilonDebug: hello&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="w">    </span><span class="nt">&quot;isBackground&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="p">}</span>
+</code></pre></div>
 <p>Now that the task has been set up, you can return to your <code>launch.json</code> file, and use the task as your <code>preLaunchTask</code>:</p>
-<pre class="highlight"><code class="language-json">{
-    "type": "epsilon",
-    "request": "attach",
-    "name": "Debug 01-hello",
-    "port": 4040,
-    "preLaunchTask": "epsilonDebug: hello"
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="p">{</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;epsilon&quot;</span><span class="p">,</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;attach&quot;</span><span class="p">,</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Debug 01-hello&quot;</span><span class="p">,</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">    </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4040</span><span class="p">,</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">    </span><span class="nt">&quot;preLaunchTask&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;epsilonDebug: hello&quot;</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="p">}</span>
+</code></pre></div>
 <p>After these steps, launching <code>Debug 01-hello</code> should run the Gradle task, wait until the DAP server is started, and then start the debugging session as usual.</p>
 
 
@@ -2387,8 +2400,6 @@ You can configure VS Code to launch the Gradle task for you, by using a <code>pr
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

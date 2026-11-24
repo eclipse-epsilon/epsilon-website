@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2045,7 +2039,8 @@ Contributors: <Your Name>
 <p>We will use a <em>pom-less</em> configuration to build your project with maven and Tycho. Create a POM for your project. If you divide your projects into plugins, features, tests folders (btw, you should) you need to create a parent pom, and then a pom for each folder. A <em>pom-less</em> build avoids having a pom for each project, but still needs the structure ones. Use the provided template(s), change the artifact id and add your plugins and features to the modules section. The templates are <a href="http://eclipse.org/epsilon/doc/articles/labsupdatesite/maven/">here</a> or in the EpsilonLabs updatesite <a href="https://github.com/epsilonlabs/epsilonlabs-updatesite">repository</a>) To enable the pomless build, copy the <a href="http://eclipse.org/epsilon/doc/articles/labsupdatesite/extensions.xml">extensions.xml</a> (or in the repository) file to a .mvn folder in your project.</p>
 <h3 id="local-maven-build">Local maven build<a class="headerlink" href="#local-maven-build" title="Permanent link">&para;</a></h3>
 <p>Install Maven and build your project to test that your poms are correct. You should also make sure that any tests you have coded are executed as part of the Maven build.</p>
-<pre class="highlight"><code>  mvn clean install</code></pre>
+<div class="highlight"><pre><span></span><code>  mvn clean install
+</code></pre></div>
 <p>Check that the required JARs have been created in the <em>target</em> folder.</p>
 <h2 id="test-your-ci-build">Test your CI build<a class="headerlink" href="#test-your-ci-build" title="Permanent link">&para;</a></h2>
 <p>Merge your repository changes (new files) to your main branch and push to GitHub. This should trigger a new build. Go to CircleCI and verify that your build completed without errors. CircleCI will simply execute a maven build so if your local build succeeded the CircleCi should too.</p>
@@ -2055,11 +2050,12 @@ Contributors: <Your Name>
 <p>Fork the EpsilonLabs update site repository and add your project in two places:</p>
 <p>Add a new entry(line) to the projects.txt file. The line should have your project name (the name of the project in GitHub) and the target platform information. In most cases this can be <em>Any</em>. If you only support a specific platform you should provide the correct values.</p>
 <p>Add a new local repository to the updasite's root pom (the <strong>project</strong> name should match the entry in the projects file):</p>
-<pre class="highlight"><code class="language-xml">&lt;repository&gt;
-    &lt;id&gt;epsilonlabs-{project}&lt;/id&gt;
-    &lt;url&gt;file:///${main.basedir}/repository/{project}}&lt;/url&gt;
-    &lt;layout&gt;p2&lt;/layout&gt;
-&lt;/repository&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&lt;repository&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">&lt;id&gt;</span>epsilonlabs-{project}<span class="nt">&lt;/id&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&lt;url&gt;</span>file:///${main.basedir}/repository/{project}}<span class="nt">&lt;/url&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">&lt;layout&gt;</span>p2<span class="nt">&lt;/layout&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">&lt;/repository&gt;</span>
+</code></pre></div>
 <ul>
 <li>Make a <em>pull request</em> to the main EpsilonLabs update site project.</li>
 <li>After your request has been merged you should see your project in the update site.</li>
@@ -2163,8 +2159,6 @@ Contributors: <Your Name>
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

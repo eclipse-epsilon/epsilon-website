@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1873,169 +1867,173 @@
 <p>This article demonstrates using <a href="../../Picto">Picto</a> and its <a href="https://plantuml.com">PlantUML</a> integration to generate <a href="#drill-down-sequence-diagrams">drill-down sequence diagrams</a> from models conforming to a minimal EMF-based sequence diagram language.</p>
 <h2 id="metamodel">Metamodel<a class="headerlink" href="#metamodel" title="Permanent link">&para;</a></h2>
 <p>Below is the metamodel of our mini sequence-diagram (<code>minisd</code>) DSL (in <a href="../emfatic">Emfatic</a>). In our language, a scenario consists of a number of interactions between participants, and alternative execution paths (<code>Alt</code>).</p>
-<pre class="highlight"><code class="language-emf">@namespace(uri="minisd", prefix="")
-package minisd;
-
-class Scenario extends Block {}
-
-class Participant {
-    attr String name;
-}
-
-abstract class Step {}
-
-class Block extends Step {
-    attr String title;
-    val Step[*] steps;
-}
-
-class Alt extends Step {
-    attr String title;
-    val Block[*] blocks;
-}
-
-class Interaction extends Step {
-    ref Participant from;
-    ref Participant to;
-    attr String message;
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@namespace</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="s2">&quot;minisd&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">package</span><span class="w"> </span><span class="n">minisd</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">class</span><span class="w"> </span><span class="n">Scenario</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">class</span><span class="w"> </span><span class="n">Participant</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">}</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">class</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">title</span><span class="p">;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="k">val</span><span class="w"> </span><span class="n">Step</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">steps</span><span class="p">;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="p">}</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="k">class</span><span class="w"> </span><span class="n">Alt</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">title</span><span class="p">;</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="k">val</span><span class="w"> </span><span class="n">Block</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">blocks</span><span class="p">;</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="p">}</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="k">class</span><span class="w"> </span><span class="n">Interaction</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="k">ref</span><span class="w"> </span><span class="n">Participant</span><span class="w"> </span><span class="n">from</span><span class="p">;</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="k">ref</span><span class="w"> </span><span class="n">Participant</span><span class="w"> </span><span class="n">to</span><span class="p">;</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">message</span><span class="p">;</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="p">}</span>
+</code></pre></div>
 <h2 id="customer-atm-model">Customer-ATM Model<a class="headerlink" href="#customer-atm-model" title="Permanent link">&para;</a></h2>
-<p>Below is a <a href="../../flexmi">Flexmi</a> model that conforms to the minisd DSL and captures the interaction between a customer and an ATM.</p>
-<pre class="highlight"><code class="language-xml">&lt;?nsuri minisd?&gt;
-&lt;?render-egx minisd2plantuml.egx?&gt;
-&lt;_&gt;
-    &lt;participant name="Customer"/&gt;
-    &lt;participant name="ATM"/&gt;
-
-    &lt;scenario title="Customer-ATM"&gt;
-        &lt;int from="Customer" to="ATM" msg="Insert card"/&gt;
-        &lt;int from="ATM" to="Customer" msg="Request PIN"/&gt;
-        &lt;int from="Customer" to="ATM" msg="Enter PIN"/&gt;
-        &lt;alt title="Check PIN"&gt;
-            &lt;block title="PIN valid"&gt;
-                &lt;int from="ATM" to="Customer" msg="Display options"/&gt;
-                &lt;alt title="Options"&gt;
-                    &lt;block title="Cash withdrawal"&gt;
-                        &lt;int from="Customer" to="ATM" msg="Select cash withdrawal"/&gt;
-                        &lt;int from="ATM" to="Customer" msg="Ask for amount"/&gt;
-                        &lt;int from="Customer" to="ATM" msg="Enter amount"/&gt;
-                        &lt;alt title="Check funds"&gt;
-                            &lt;block title="Sufficient funds"&gt;
-                                &lt;int from="ATM" to="Customer" msg="Produce cash"/&gt;
-                            &lt;/block&gt;
-                            &lt;block title="Insufficient funds"&gt;
-                                &lt;int from="ATM" to="Customer" msg="Produce error message"/&gt;
-                            &lt;/block&gt;
-                        &lt;/alt&gt;
-                    &lt;/block&gt;
-                    &lt;block title="Balance display"&gt;
-                        &lt;int from="Customer" to="ATM" msg="Select balance display"/&gt;
-                        &lt;int from="ATM" to="Customer" msg="Display balance"/&gt;
-                        &lt;int from="ATM" to="Customer" msg="Return card"/&gt;
-                    &lt;/block&gt;
-                &lt;/alt&gt;
-            &lt;/block&gt;
-            &lt;block title="PIN invalid"&gt;
-                &lt;int from="ATM" to="Customer" msg="Try again"/&gt;
-            &lt;/block&gt;
-        &lt;/alt&gt;
-    &lt;/scenario&gt;
-&lt;/_&gt;</code></pre>
+<p>Below is a <a href="../../flexmi/">Flexmi</a> model that conforms to the minisd DSL and captures the interaction between a customer and an ATM.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">&lt;?nsuri minisd?&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cp">&lt;?render-egx minisd2plantuml.egx?&gt;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">&lt;_&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">&lt;participant</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Customer&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nt">&lt;participant</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ATM&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nt">&lt;scenario</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Customer-ATM&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="nt">&lt;int</span><span class="w"> </span><span class="na">from=</span><span class="s">&quot;Customer&quot;</span><span class="w"> </span><span class="na">to=</span><span class="s">&quot;ATM&quot;</span><span class="w"> </span><span class="na">msg=</span><span class="s">&quot;Insert card&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="nt">&lt;int</span><span class="w"> </span><span class="na">from=</span><span class="s">&quot;ATM&quot;</span><span class="w"> </span><span class="na">to=</span><span class="s">&quot;Customer&quot;</span><span class="w"> </span><span class="na">msg=</span><span class="s">&quot;Request PIN&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="nt">&lt;int</span><span class="w"> </span><span class="na">from=</span><span class="s">&quot;Customer&quot;</span><span class="w"> </span><span class="na">to=</span><span class="s">&quot;ATM&quot;</span><span class="w"> </span><span class="na">msg=</span><span class="s">&quot;Enter PIN&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="nt">&lt;alt</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Check PIN&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">            </span><span class="nt">&lt;block</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;PIN valid&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">                </span><span class="nt">&lt;int</span><span class="w"> </span><span class="na">from=</span><span class="s">&quot;ATM&quot;</span><span class="w"> </span><span class="na">to=</span><span class="s">&quot;Customer&quot;</span><span class="w"> </span><span class="na">msg=</span><span class="s">&quot;Display options&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">                </span><span class="nt">&lt;alt</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Options&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">                    </span><span class="nt">&lt;block</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Cash withdrawal&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">                        </span><span class="nt">&lt;int</span><span class="w"> </span><span class="na">from=</span><span class="s">&quot;Customer&quot;</span><span class="w"> </span><span class="na">to=</span><span class="s">&quot;ATM&quot;</span><span class="w"> </span><span class="na">msg=</span><span class="s">&quot;Select cash withdrawal&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">                        </span><span class="nt">&lt;int</span><span class="w"> </span><span class="na">from=</span><span class="s">&quot;ATM&quot;</span><span class="w"> </span><span class="na">to=</span><span class="s">&quot;Customer&quot;</span><span class="w"> </span><span class="na">msg=</span><span class="s">&quot;Ask for amount&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">                        </span><span class="nt">&lt;int</span><span class="w"> </span><span class="na">from=</span><span class="s">&quot;Customer&quot;</span><span class="w"> </span><span class="na">to=</span><span class="s">&quot;ATM&quot;</span><span class="w"> </span><span class="na">msg=</span><span class="s">&quot;Enter amount&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">                        </span><span class="nt">&lt;alt</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Check funds&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">                            </span><span class="nt">&lt;block</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Sufficient funds&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">                                </span><span class="nt">&lt;int</span><span class="w"> </span><span class="na">from=</span><span class="s">&quot;ATM&quot;</span><span class="w"> </span><span class="na">to=</span><span class="s">&quot;Customer&quot;</span><span class="w"> </span><span class="na">msg=</span><span class="s">&quot;Produce cash&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">                            </span><span class="nt">&lt;/block&gt;</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">                            </span><span class="nt">&lt;block</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Insufficient funds&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">                                </span><span class="nt">&lt;int</span><span class="w"> </span><span class="na">from=</span><span class="s">&quot;ATM&quot;</span><span class="w"> </span><span class="na">to=</span><span class="s">&quot;Customer&quot;</span><span class="w"> </span><span class="na">msg=</span><span class="s">&quot;Produce error message&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">                            </span><span class="nt">&lt;/block&gt;</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">                        </span><span class="nt">&lt;/alt&gt;</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">                    </span><span class="nt">&lt;/block&gt;</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">                    </span><span class="nt">&lt;block</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Balance display&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">                        </span><span class="nt">&lt;int</span><span class="w"> </span><span class="na">from=</span><span class="s">&quot;Customer&quot;</span><span class="w"> </span><span class="na">to=</span><span class="s">&quot;ATM&quot;</span><span class="w"> </span><span class="na">msg=</span><span class="s">&quot;Select balance display&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">                        </span><span class="nt">&lt;int</span><span class="w"> </span><span class="na">from=</span><span class="s">&quot;ATM&quot;</span><span class="w"> </span><span class="na">to=</span><span class="s">&quot;Customer&quot;</span><span class="w"> </span><span class="na">msg=</span><span class="s">&quot;Display balance&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">                        </span><span class="nt">&lt;int</span><span class="w"> </span><span class="na">from=</span><span class="s">&quot;ATM&quot;</span><span class="w"> </span><span class="na">to=</span><span class="s">&quot;Customer&quot;</span><span class="w"> </span><span class="na">msg=</span><span class="s">&quot;Return card&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">                    </span><span class="nt">&lt;/block&gt;</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">                </span><span class="nt">&lt;/alt&gt;</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">            </span><span class="nt">&lt;/block&gt;</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">            </span><span class="nt">&lt;block</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;PIN invalid&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">                </span><span class="nt">&lt;int</span><span class="w"> </span><span class="na">from=</span><span class="s">&quot;ATM&quot;</span><span class="w"> </span><span class="na">to=</span><span class="s">&quot;Customer&quot;</span><span class="w"> </span><span class="na">msg=</span><span class="s">&quot;Try again&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">            </span><span class="nt">&lt;/block&gt;</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">        </span><span class="nt">&lt;/alt&gt;</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">    </span><span class="nt">&lt;/scenario&gt;</span>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="nt">&lt;/_&gt;</span>
+</code></pre></div>
 <h2 id="visualisation-transformation">Visualisation Transformation<a class="headerlink" href="#visualisation-transformation" title="Permanent link">&para;</a></h2>
 <p>To visualise models that conform to the minisd DSL (such as the Customer-ATM model above) in Picto, we have written a model-to-text transformation in EGL, that transforms such models into a series of PlantUML sequence diagrams.</p>
-<p>In particular, the transformation produces one sequence diagram for the entire model, and one sequence diagram for each execution path in it. The <a href="../../egx">EGX</a> orchestration program and the <a href="../../egl">EGL</a> template are shown below.</p>
+<p>In particular, the transformation produces one sequence diagram for the entire model, and one sequence diagram for each execution path in it. The <a href="../../egx/">EGX</a> orchestration program and the <a href="../../egl/">EGL</a> template are shown below.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">minisd2plantuml.egx</label><label for="__tabbed_1_2">minisd2plantuml.egl</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-egx">rule Scenario2PlantUml 
-    transform s : Scenario {
-
-    template : "minisd2plantuml.egl"
-
-    parameters : Map {
-        "mainBlock" = null,
-        "format" = "plantuml",
-        "path" = List{s.title},
-        "icon" = "sequence"
-    }
-
-}
-
-rule Block2PlantUml 
-    transform b : Block {
-
-    guard : b.eContainer.isTypeOf(Alt)
-
-    template : "minisd2plantuml.egl"
-
-    parameters : Map {
-        "mainBlock" = b,
-        "format" = "plantuml",
-        "path" = b.closure(p|p.eContainer).invert().including(b).title,
-        "icon" = "block"
-    }
-
-}
-
-rule Alt2PlantUml 
-    transform a : Alt {
-
-    parameters : Map {
-        "format" = "text",
-        "path" =  a.closure(p|p.eContainer).invert().including(a).title,
-        "icon" = "alt"
-    }
-
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">rule</span><span class="w"> </span><span class="n">Scenario2PlantUml</span><span class="w"> </span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">transform</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Scenario</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;minisd2plantuml.egl&quot;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="k">parameters</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Map</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="s2">&quot;mainBlock&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="s2">&quot;format&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;plantuml&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="s2">&quot;path&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">List</span><span class="p">{</span><span class="n">s</span><span class="o">.</span><span class="n">title</span><span class="p">},</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="s2">&quot;icon&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sequence&quot;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="p">}</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="k">rule</span><span class="w"> </span><span class="n">Block2PlantUml</span><span class="w"> </span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="k">transform</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="k">guard</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">b</span><span class="o">.</span><span class="n">eContainer</span><span class="o">.</span><span class="n">isTypeOf</span><span class="p">(</span><span class="n">Alt</span><span class="p">)</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;minisd2plantuml.egl&quot;</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">    </span><span class="k">parameters</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Map</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">        </span><span class="s2">&quot;mainBlock&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">,</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">        </span><span class="s2">&quot;format&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;plantuml&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">        </span><span class="s2">&quot;path&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="o">.</span><span class="n">closure</span><span class="p">(</span><span class="n">p</span><span class="o">|</span><span class="n">p</span><span class="o">.</span><span class="n">eContainer</span><span class="p">)</span><span class="o">.</span><span class="n">invert</span><span class="p">()</span><span class="o">.</span><span class="n">including</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">        </span><span class="s2">&quot;icon&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;block&quot;</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="p">}</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="k">rule</span><span class="w"> </span><span class="n">Alt2PlantUml</span><span class="w"> </span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">    </span><span class="k">transform</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Alt</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">    </span><span class="k">parameters</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Map</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">        </span><span class="s2">&quot;format&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">        </span><span class="s2">&quot;path&quot;</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">a</span><span class="o">.</span><span class="n">closure</span><span class="p">(</span><span class="n">p</span><span class="o">|</span><span class="n">p</span><span class="o">.</span><span class="n">eContainer</span><span class="p">)</span><span class="o">.</span><span class="n">invert</span><span class="p">()</span><span class="o">.</span><span class="n">including</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">        </span><span class="s2">&quot;icon&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;alt&quot;</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="p">}</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-egl">@startuml
-[%
-var excludedBlocks = Sequence{};
-if (mainBlock.isDefined()) {
-    var ancestors = mainBlock.closure(b|b.eContainer()).select(b|b.isTypeOf(Block)).including(mainBlock);
-    for (a in ancestors) {
-        if (a.eContainer().isDefined() and a.eContainer().isTypeOf(Alt)) {
-            excludedBlocks.addAll(a.eContainer().blocks.excluding(a));
-        }
-    }
-}
-%]
-[%=Scenario.all.first().toPlantUml()%]
-@enduml
-
-[%
-operation Scenario toPlantUml() {
-    return self.steps.collect(s|s.toPlantUml()).concat("\n");
-}
-
-operation Interaction toPlantUml() {
-    return self.from.name + "-&gt;" + self.to.name + ": " + self.message + "\n";
-}
-
-operation Alt toPlantUml() {
-    var plantUml = "";
-    var visibleBlocks = self.blocks.excludingAll(excludedBlocks);
-    for (b in visibleBlocks) {
-        if (loopCount == 1) {
-            plantUml += "alt";
-            if (mainBlock.isDefined() and mainBlock.eContainer == self) {
-                plantUml += " #azure";
-            }
-        }
-        else plantUml += "else ";
-        plantUml += " " + b.title;
-        plantUml += "\n" + b.toPlantUml();
-    }
-    if (visibleBlocks.notEmpty()) plantUml += "\nend\n";
-    return plantUml;
-}
-
-operation Block toPlantUml() {
-    if (excludedBlocks.contains(self)) return "";
-    return self.steps.collect(s|s.toPlantUml()).concat("");
-}
-%]</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>@startuml
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="cp">[%</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">var</span><span class="w"> </span><span class="n">excludedBlocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Sequence</span><span class="p">{};</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mainBlock</span><span class="o">.</span><span class="n">isDefined</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">ancestors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mainBlock</span><span class="o">.</span><span class="n">closure</span><span class="p">(</span><span class="n">b</span><span class="o">|</span><span class="n">b</span><span class="o">.</span><span class="n">eContainer</span><span class="p">())</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">b</span><span class="o">|</span><span class="n">b</span><span class="o">.</span><span class="n">isTypeOf</span><span class="p">(</span><span class="n">Block</span><span class="p">))</span><span class="o">.</span><span class="n">including</span><span class="p">(</span><span class="n">mainBlock</span><span class="p">);</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">ancestors</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">eContainer</span><span class="p">()</span><span class="o">.</span><span class="n">isDefined</span><span class="p">()</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">a</span><span class="o">.</span><span class="n">eContainer</span><span class="p">()</span><span class="o">.</span><span class="n">isTypeOf</span><span class="p">(</span><span class="n">Alt</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">            </span><span class="n">excludedBlocks</span><span class="o">.</span><span class="n">addAll</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">eContainer</span><span class="p">()</span><span class="o">.</span><span class="n">blocks</span><span class="o">.</span><span class="n">excluding</span><span class="p">(</span><span class="n">a</span><span class="p">));</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="p">}</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="cp">%]</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="cp">[%=</span><span class="n">Scenario</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">toPlantUml</span><span class="p">()</span><span class="cp">%]</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>@enduml
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="cp">[%</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="k">operation</span><span class="w"> </span><span class="n">Scenario</span><span class="w"> </span><span class="n">toPlantUml</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">s</span><span class="o">|</span><span class="n">s</span><span class="o">.</span><span class="n">toPlantUml</span><span class="p">())</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="s2">&quot;\n&quot;</span><span class="p">);</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="p">}</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="k">operation</span><span class="w"> </span><span class="n">Interaction</span><span class="w"> </span><span class="n">toPlantUml</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">from</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;-&gt;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">to</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;\n&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="p">}</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="k">operation</span><span class="w"> </span><span class="n">Alt</span><span class="w"> </span><span class="n">toPlantUml</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">plantUml</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">visibleBlocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="o">.</span><span class="n">excludingAll</span><span class="p">(</span><span class="n">excludedBlocks</span><span class="p">);</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">visibleBlocks</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="bp">loopCount</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">            </span><span class="n">plantUml</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;alt&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mainBlock</span><span class="o">.</span><span class="n">isDefined</span><span class="p">()</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">mainBlock</span><span class="o">.</span><span class="n">eContainer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">                </span><span class="n">plantUml</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot; #azure&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="n">plantUml</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;else &quot;</span><span class="p">;</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="w">        </span><span class="n">plantUml</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="o">.</span><span class="n">title</span><span class="p">;</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a><span class="w">        </span><span class="n">plantUml</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;\n&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="o">.</span><span class="n">toPlantUml</span><span class="p">();</span>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">visibleBlocks</span><span class="o">.</span><span class="n">notEmpty</span><span class="p">())</span><span class="w"> </span><span class="n">plantUml</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;\nend\n&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">plantUml</span><span class="p">;</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a><span class="p">}</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a>
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a><span class="k">operation</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="n">toPlantUml</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">excludedBlocks</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">s</span><span class="o">|</span><span class="n">s</span><span class="o">.</span><span class="n">toPlantUml</span><span class="p">())</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+<a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a><span class="p">}</span>
+<a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a><span class="cp">%]</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2141,8 +2139,6 @@ operation Block toPlantUml() {
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

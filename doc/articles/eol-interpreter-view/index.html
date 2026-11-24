@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1852,7 +1846,7 @@
 
 
 <h1 id="eol-interpreter-view">EOL Interpreter View<a class="headerlink" href="#eol-interpreter-view" title="Permanent link">&para;</a></h1>
-<p>Acceleo provides an <a href="https://wiki.eclipse.org/Acceleo/Interpreter">extensible interpreter view</a> that can be used to evaluate queries on selections of model elements in EMF-based editors. Epsilon extends this view with support for writing and running <a href="../../eol">Epsilon Object Language</a> scripts. To show the view, click on <code>Window</code> &rarr; <code>Show View</code> &rarr; <code>Other</code> &rarr; <code>Interpreter</code>, and to switch to EOL, click on the respective button at the top-right of the view. More detailed instructions on using the different facilities offered by the interpreter view (e.g. variables, live evaluation) are provided <a href="https://wiki.eclipse.org/Acceleo/Interpreter">here</a>.</p>
+<p>Acceleo provides an <a href="https://wiki.eclipse.org/Acceleo/Interpreter">extensible interpreter view</a> that can be used to evaluate queries on selections of model elements in EMF-based editors. Epsilon extends this view with support for writing and running <a href="../../eol/">Epsilon Object Language</a> scripts. To show the view, click on <code>Window</code> &rarr; <code>Show View</code> &rarr; <code>Other</code> &rarr; <code>Interpreter</code>, and to switch to EOL, click on the respective button at the top-right of the view. More detailed instructions on using the different facilities offered by the interpreter view (e.g. variables, live evaluation) are provided <a href="https://wiki.eclipse.org/Acceleo/Interpreter">here</a>.</p>
 <p><img alt="" src="eol-interpreter.gif" /></p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -1862,14 +1856,15 @@
 <p>Selected model elements in EMF-based editors can be accessed from the EOL script through the <code>self</code> variable. If multiple model elements are selected, then <code>self</code> will be a list containing all these elements, and if no model elements are selected, <code>self</code> will be <code>null</code>. Variables are accessible by name.</p>
 <h2 id="importing-external-operations">Importing External Operations<a class="headerlink" href="#importing-external-operations" title="Permanent link">&para;</a></h2>
 <p>You can import operations defined in EOL files in your workspace using an <code>import</code> statement with a <code>platform:/resource</code> URI, as shown below.</p>
-<pre class="highlight"><code class="language-eol">// bar() is defined in bar.eol under the bar project
-import "platform:/resource/bar/bar.eol";
-
-return foo() + bar();
-
-operation foo() {
-    return "foo";
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// bar() is defined in bar.eol under the bar project</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">import</span><span class="w"> </span><span class="s2">&quot;platform:/resource/bar/bar.eol&quot;</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">return</span><span class="w"> </span><span class="n">foo</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bar</span><span class="p">();</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">operation</span><span class="w"> </span><span class="n">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">}</span>
+</code></pre></div>
 
 
 
@@ -1965,8 +1960,6 @@ operation foo() {
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

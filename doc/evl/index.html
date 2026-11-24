@@ -46,13 +46,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2204,9 +2198,9 @@
 <p>In EVL, validation specifications are organized in modules (<em>EvlModule</em>). As illustrated in the figure below, <em>EvlModule</em> (indirectly) extends <em>EolModule</em> which means that it can contain user-defined operations and import other EOL library modules and EVL modules. Apart from operations, an EVL module also contains a set of constraints grouped by the context they apply to, and, by extending <em>ErlModule</em>, a number of <em>pre</em> and <em>post</em> blocks.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>As with most languages in Epsilon, EVL uses <a href="../eol">EOL</a> as its expression language. This page only documents the additional syntax and semantics that EVL provides on top of EOL.</p>
+<p>As with most languages in Epsilon, EVL uses <a href="../eol/">EOL</a> as its expression language. This page only documents the additional syntax and semantics that EVL provides on top of EOL.</p>
 </div>
-<pre class="mermaid mermaid-80"><code>classDiagram
+<pre class="mermaid"><code>classDiagram
 class Constraint {
     -name: String
     -guard: ExecutableBlock&lt;Boolean&gt;
@@ -2251,31 +2245,33 @@ Constraint -- Fix: fixes *
 <p>An EVL module can define a number of named <em>pre</em> and a <em>post</em> blocks that contain EOL statements which are executed before and after evaluating the constraints respectively. These should not be confused with the pre-/post-condition annotations available for EOL user-defined operations.</p>
 <h2 id="concrete-syntax">Concrete Syntax<a class="headerlink" href="#concrete-syntax" title="Permanent link">&para;</a></h2>
 <p>The following listing demonstrates the concrete syntax of the <em>context</em>, <em>constraint</em> and <em>fix</em> abstract syntax constructs discussed above.</p>
-<pre class="highlight"><code>(@lazy)?
-context &lt;name&gt; {
-    (guard (:expression)|({statementBlock}))?
-    (constraint)* 
-}
-
-((@lazy)?
-(constraint|critique) &lt;name&gt; {
-    (guard (:expression)|({statementBlock}))?
-    (check (:expression)|({statementBlock}))?
-    (message (:expression)|({statementBlock}))? 
-    (fix)*
-}
-
-fix {
-    (guard (:expression)|({statementBlock}))?
-    (title (:expression)|({statementBlock}))
-    do {
-        statementBlock
-    } 
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>(@lazy)?
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>context &lt;name&gt; {
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    (guard (:expression)|({statementBlock}))?
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    (constraint)* 
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>}
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>((@lazy)?
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>(constraint|critique) &lt;name&gt; {
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    (guard (:expression)|({statementBlock}))?
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    (check (:expression)|({statementBlock}))?
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    (message (:expression)|({statementBlock}))? 
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    (fix)*
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>}
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>fix {
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    (guard (:expression)|({statementBlock}))?
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    (title (:expression)|({statementBlock}))
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    do {
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        statementBlock
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    } 
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>}
+</code></pre></div>
 <p><em>Pre</em> and <em>post</em> blocks have a simple syntax that, as presented in the listing below, consists of the identifier (<em>pre</em> or <em>post</em>), an optional name and the set of statements to be executed enclosed in curly braces.</p>
-<pre class="highlight"><code>(pre|post) &lt;name&gt; {
-    statement+
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>(pre|post) &lt;name&gt; {
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    statement+
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>}
+</code></pre></div>
 <h2 id="execution-semantics">Execution Semantics<a class="headerlink" href="#execution-semantics" title="Permanent link">&para;</a></h2>
 <p>Having discussed the abstract and concrete syntaxes of EVL, this section provides an informal discussion of the execution semantics of the language. The execution of an EVL module is separated into four phases:</p>
 <h3 id="phase-1">Phase 1<a class="headerlink" href="#phase-1" title="Permanent link">&para;</a></h3>
@@ -2293,7 +2289,7 @@ fix {
 <p>When one of these operations is invoked, if the required <em>constraints</em> (either lazy or non-lazy) have been evaluated for the instances on which the operation is invoked, the engine will return their cached results; otherwise it will evaluate them and return their results.</p>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
 <p>The following is an EVL program demonstrating some of the language features, which validates models confirming to the Movies metamodel shown below. Execution begins from the <em>pre</em> block, which simply computes the average number of actors per Movie and stores it into a global variable, which can be accessed at any point. The <em>ValidActors</em> constraint checks that for every instance of <em>Movie</em> which has more than the average number of actors, all of the actors have valid names. This is achieved through a dependency on the <em>HashValidName</em> invariant declared in the context of <em>Person</em> type. This constraint is marked as lazy, which means it is only executed when invoked by <em>satisfies</em>, so avoiding unnecessary or duplicate invocations. The <em>HasValidName</em> constraint makes use of a helper operation (<em>isPlain()</em>) on Strings. Once all Movie instances have been checked, the execution engine then proceeds to validate all <em>Person</em> instances, which consists of only one non-lazy constraint <em>ValidMovieYears</em>. This checks that all of the movies the actor has played in were released at least 3 years after the actor was born. Finally, the <em>post</em> block is executed, which in this case simply prints some basic information about the model.</p>
-<pre class="mermaid mermaid-30"><code>classDiagram
+<pre class="mermaid"><code>classDiagram
 class Movie {
     -title: String
     -rating: Double
@@ -2305,41 +2301,42 @@ class Person {
 }
 
 Movie -- Person: movies * / persons *</code></pre>
-<pre class="highlight"><code class="language-evl">pre {
-  var numMovies = Movie.all.size();
-  var numActors = Person.all.size();
-  var apm = numActors / numMovies;
-}
-
-context Movie {
-
-  constraint ValidActors {
-    guard : self.persons.size() &gt; apm    
-    check : self.persons.forAll(p | p.satisfies("HasValidName"))
-  }
-}
-
-context Person {
-
-  @lazy
-  constraint HasValidName {
-    check : self.name.isPlain()
-  } 
-
-  constraint ValidMovieYears {
-    check : self.movies.forAll(m |  m.year + 1 &gt; self.birthYear)
-  }
-}
-
-operation String isPlain() : Boolean {
-  return self.matches("[A-Za-z\\s]+");
-}
-
-post {
-  ("Actors per Movie="+apm).println();
-  ("# Movies="+numMovies).println();
-  ("# Actors="+numActors).println();
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">pre</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">numMovies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Movie</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">size</span><span class="p">();</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">numActors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Person</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">size</span><span class="p">();</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">apm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numActors</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">numMovies</span><span class="p">;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">}</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">context</span><span class="w"> </span><span class="n">Movie</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="k">constraint</span><span class="w"> </span><span class="n">ValidActors</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="k">guard</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">persons</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">apm</span><span class="w">    </span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="k">check</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">persons</span><span class="o">.</span><span class="n">forAll</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">satisfies</span><span class="p">(</span><span class="s2">&quot;HasValidName&quot;</span><span class="p">))</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="p">}</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="k">context</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">  </span><span class="cp">@lazy</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">  </span><span class="k">constraint</span><span class="w"> </span><span class="n">HasValidName</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="k">check</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">isPlain</span><span class="p">()</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">  </span><span class="k">constraint</span><span class="w"> </span><span class="n">ValidMovieYears</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="k">check</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">movies</span><span class="o">.</span><span class="n">forAll</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">|</span><span class="w">  </span><span class="n">m</span><span class="o">.</span><span class="n">year</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">birthYear</span><span class="p">)</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="p">}</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="k">operation</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">isPlain</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">matches</span><span class="p">(</span><span class="s2">&quot;[A-Za-z\\s]+&quot;</span><span class="p">);</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="p">}</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="k">post</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">  </span><span class="p">(</span><span class="s2">&quot;Actors per Movie=&quot;</span><span class="o">+</span><span class="n">apm</span><span class="p">)</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">  </span><span class="p">(</span><span class="s2">&quot;# Movies=&quot;</span><span class="o">+</span><span class="n">numMovies</span><span class="p">)</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">  </span><span class="p">(</span><span class="s2">&quot;# Actors=&quot;</span><span class="o">+</span><span class="n">numActors</span><span class="p">)</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="p">}</span>
+</code></pre></div>
 <h2 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
 <p>Additional resources about EVL are available <a href="../articles/#epsilon-validation-language">here</a>.</p>
 
@@ -2475,8 +2472,6 @@ post {
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1900,56 +1894,58 @@
 <p>Below are some frequently-asked questions related to querying and modifying EMF-based models with Epsilon.</p>
 <h2 id="what-is-the-difference-between-containment-and-non-containment-references-in-emf">What is the difference between containment and non-containment references in EMF?<a class="headerlink" href="#what-is-the-difference-between-containment-and-non-containment-references-in-emf" title="Permanent link">&para;</a></h2>
 <p>Briefly, a model element can belong to as most one containment reference at a time. Containment references also demonstrate a cascade-delete behaviour. For example, consider the following Ecore metamodel (captured in Emfatic).</p>
-<pre class="highlight"><code class="language-emf">package cars;
-
-class Person {
-  ref Person[*] friends; //non-containment reference
-  val Car[*] cars; // containment reference
-}
-
-class Car { }</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">package</span><span class="w"> </span><span class="n">cars</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">class</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="k">ref</span><span class="w"> </span><span class="n">Person</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">friends</span><span class="p">;</span><span class="w"> </span><span class="c1">//non-containment reference</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="k">val</span><span class="w"> </span><span class="n">Car</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">cars</span><span class="p">;</span><span class="w"> </span><span class="c1">// containment reference</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">}</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">class</span><span class="w"> </span><span class="n">Car</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
 <p>Now consider the following EOL code which demonstrates the similarities/differences of containment and non-containment references.</p>
-<pre class="highlight"><code class="language-eol">// Set up a few model elements to play with
-var c1 = new Car;
-var c2 = new Car;
-var p1 = new Person;
-var p2 = new Person;
-var p3 = new Person;
-
-// p1's car is c1 and p2's car is c2
-p1.cars.add(c1);
-p2.cars.add(c2);
-
-// p3 is a friend of both p1 and p2
-p1.friends.add(p3);
-p2.friends.add(p3);
-
-p1.friends.println(); // prints {p3}
-p2.friends.println(); // prints {p3}
-
-//add c2 to p1's cars
-p1.cars.add(c2);
-p1.cars.println(); // prints {c1, c2}
-
-// The following statement prints an empty set! 
-// As discussed above, model elements can belong to at 
-// most 1 containment reference. As such, by adding c2 to
-// the cars of p1, EMF removes it from the cars of p2
-p2.cars.println();
-
-// Delete p1 from the model
-delete p1;
-
-Person.all.println(); // prints {p2, p3}
-
-// The following statement prints an empty set!
-// As discussed above, containment references demonstrate
-// a cascade-delete behaviour. As such, when we deleted p1,
-// all the model elements contained in its cars containment reference
-// were also deleted from the model. Note how the friends of p1 (p2 and p3)
-// were not deleted from the model, since they were referenced through a 
-// non-containment reference (friends)
-Car.all.println();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Set up a few model elements to play with</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">var</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Car</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">var</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Car</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">var</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">var</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">var</span><span class="w"> </span><span class="n">p3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1">// p1&#39;s car is c1 and p2&#39;s car is c2</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">p1</span><span class="o">.</span><span class="n">cars</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">c1</span><span class="p">);</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">p2</span><span class="o">.</span><span class="n">cars</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">c2</span><span class="p">);</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1">// p3 is a friend of both p1 and p2</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">p1</span><span class="o">.</span><span class="n">friends</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">p3</span><span class="p">);</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="n">p2</span><span class="o">.</span><span class="n">friends</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">p3</span><span class="p">);</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="n">p1</span><span class="o">.</span><span class="n">friends</span><span class="o">.</span><span class="n">println</span><span class="p">();</span><span class="w"> </span><span class="c1">// prints {p3}</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="n">p2</span><span class="o">.</span><span class="n">friends</span><span class="o">.</span><span class="n">println</span><span class="p">();</span><span class="w"> </span><span class="c1">// prints {p3}</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="c1">//add c2 to p1&#39;s cars</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="n">p1</span><span class="o">.</span><span class="n">cars</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">c2</span><span class="p">);</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="n">p1</span><span class="o">.</span><span class="n">cars</span><span class="o">.</span><span class="n">println</span><span class="p">();</span><span class="w"> </span><span class="c1">// prints {c1, c2}</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="c1">// The following statement prints an empty set! </span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="c1">// As discussed above, model elements can belong to at </span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="c1">// most 1 containment reference. As such, by adding c2 to</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="c1">// the cars of p1, EMF removes it from the cars of p2</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="n">p2</span><span class="o">.</span><span class="n">cars</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="c1">// Delete p1 from the model</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="k">delete</span><span class="w"> </span><span class="n">p1</span><span class="p">;</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="n">Person</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">println</span><span class="p">();</span><span class="w"> </span><span class="c1">// prints {p2, p3}</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="c1">// The following statement prints an empty set!</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="c1">// As discussed above, containment references demonstrate</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="c1">// a cascade-delete behaviour. As such, when we deleted p1,</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="c1">// all the model elements contained in its cars containment reference</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="c1">// were also deleted from the model. Note how the friends of p1 (p2 and p3)</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="c1">// were not deleted from the model, since they were referenced through a </span>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="c1">// non-containment reference (friends)</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="n">Car</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+</code></pre></div>
 <h2 id="how-can-i-get-all-children-of-a-model-element">How can I get all children of a model element?<a class="headerlink" href="#how-can-i-get-all-children-of-a-model-element" title="Permanent link">&para;</a></h2>
 <p>Epsilon does not provide a built-in method for this but you can use EObject's <code>eContents()</code> method if you're working with EMF. To get all descendants of an element, something like the following should do the trick: <code>o.asSequence().closure(x | x.eContents())</code>. See <a href="https://www.eclipse.org/forums/index.php/t/855628/">https://www.eclipse.org/forums/index.php/t/855628/</a> for more details.</p>
 <h2 id="how-can-i-get-the-container-of-a-model-element">How can I get the container of a model element?<a class="headerlink" href="#how-can-i-get-the-container-of-a-model-element" title="Permanent link">&para;</a></h2>
@@ -1960,23 +1956,25 @@ Car.all.println();</code></pre>
 <p>You can use the <code>getResource()</code> method of <code>AbstractEmfModel</code> for this.</p>
 <h2 id="how-can-i-use-custom-loadsave-options-for-my-emf-model">How can I use custom load/save options for my EMF model?<a class="headerlink" href="#how-can-i-use-custom-loadsave-options-for-my-emf-model" title="Permanent link">&para;</a></h2>
 <p>You need to un-tick the "Read on load"/"Store on disposal" options in your model configuration dialog and use the underlying EMF resource's load/save methods directly from your EOL code. For example, to turn off the OPTION_DEFER_IDREF_RESOLUTION option, which is on by default in Epsilon's EMF driver and has been reported to <a href="https://www.eclipse.org/forums/index.php/m/1754026/#msg_1754026">slow down loading of models that use "id" attributes</a>, you can use the following EOL statement.</p>
-<pre class="highlight"><code class="language-java">M.resource.load(Map{"DEFER_IDREF_RESOLUTION" = false});</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">M</span><span class="p">.</span><span class="na">resource</span><span class="p">.</span><span class="na">load</span><span class="p">(</span><span class="n">Map</span><span class="p">{</span><span class="s">&quot;DEFER_IDREF_RESOLUTION&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">});</span>
+</code></pre></div>
 <h2 id="how-do-i-load-an-ecore-metamodel">How do I load an Ecore metamodel?<a class="headerlink" href="#how-do-i-load-an-ecore-metamodel" title="Permanent link">&para;</a></h2>
 <p>If you're developing a standalone application, before you can load an EMF model, you will need to put its metamodel (<code>EPackage</code>) in the global EMF EPackage registry, or in the local package registry of the model resource. The following snippet shows how you can parse an Ecore metamodel from a file (<code>my.ecore</code>) and put its root EPackage in the global EMF registry.</p>
-<pre class="highlight"><code class="language-java">// Parse the metamodel file into an EMF resource
-ResourceSet ecoreResourceSet = new ResourceSetImpl();
-ecoreResourceSet.getResourceFactoryRegistry().
-    getExtensionToFactoryMap().put("ecore", new XMIResourceFactoryImpl());
-ecoreResourceSet.getPackageRegistry().
-    put(EcorePackage.eINSTANCE.getNsURI(), EcorePackage.eINSTANCE); 
-Resource ecoreResource = ecoreResourceSet.createResource(
-    URI.createFileURI(new File("my.ecore").getAbsolutePath()));
-ecoreResource.load(null);
-
-// Ecore files usually contain one EPackage
-EPackage ePackage = (EPackage) ecoreResource.getContents().get(0);
-// Put the EPackage in the global EMF EPackage registry
-EPackage.Registry.INSTANCE.put(ePackage.getNsURI(), ePackage);</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Parse the metamodel file into an EMF resource</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">ResourceSet</span><span class="w"> </span><span class="n">ecoreResourceSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ResourceSetImpl</span><span class="p">();</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">ecoreResourceSet</span><span class="p">.</span><span class="na">getResourceFactoryRegistry</span><span class="p">().</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">getExtensionToFactoryMap</span><span class="p">().</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;ecore&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XMIResourceFactoryImpl</span><span class="p">());</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">ecoreResourceSet</span><span class="p">.</span><span class="na">getPackageRegistry</span><span class="p">().</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="n">put</span><span class="p">(</span><span class="n">EcorePackage</span><span class="p">.</span><span class="na">eINSTANCE</span><span class="p">.</span><span class="na">getNsURI</span><span class="p">(),</span><span class="w"> </span><span class="n">EcorePackage</span><span class="p">.</span><span class="na">eINSTANCE</span><span class="p">);</span><span class="w"> </span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">Resource</span><span class="w"> </span><span class="n">ecoreResource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ecoreResourceSet</span><span class="p">.</span><span class="na">createResource</span><span class="p">(</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="n">URI</span><span class="p">.</span><span class="na">createFileURI</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;my.ecore&quot;</span><span class="p">).</span><span class="na">getAbsolutePath</span><span class="p">()));</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">ecoreResource</span><span class="p">.</span><span class="na">load</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1">// Ecore files usually contain one EPackage</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="n">EPackage</span><span class="w"> </span><span class="n">ePackage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EPackage</span><span class="p">)</span><span class="w"> </span><span class="n">ecoreResource</span><span class="p">.</span><span class="na">getContents</span><span class="p">().</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="c1">// Put the EPackage in the global EMF EPackage registry</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="n">EPackage</span><span class="p">.</span><span class="na">Registry</span><span class="p">.</span><span class="na">INSTANCE</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">ePackage</span><span class="p">.</span><span class="na">getNsURI</span><span class="p">(),</span><span class="w"> </span><span class="n">ePackage</span><span class="p">);</span>
+</code></pre></div>
 
 
 
@@ -2072,8 +2070,6 @@ EPackage.Registry.INSTANCE.put(ePackage.getNsURI(), ePackage);</code></pre>
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>
