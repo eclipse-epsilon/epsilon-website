@@ -26,7 +26,7 @@ EGL is a template-based language that can be used to generate code (or any other
 </library>
 ```
  
-More specifically, we will generate one HTML file for each `<book>` element that has a `public` attribute set to `true`. Below is an EGL template (`book2page.egl`) that can generate an HTML file from a single `<book>` element. For more details on using EGL's expression language to navigate and query XML documents, please refer to [this article](../plain-xml).
+More specifically, we will generate one HTML file for each `<book>` element that has a `public` attribute set to `true`. Below is an EGL template (`book2page.egl`) that can generate an HTML file from a single `<book>` element. For more details on using EGL's expression language to navigate and query XML documents, please refer to [this article](../plain-xml/index.md).
  
 ```egl
 <h1>Book [%=index%]: [%=book.a_title%]</h1>

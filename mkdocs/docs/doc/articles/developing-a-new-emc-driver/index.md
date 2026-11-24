@@ -1,10 +1,10 @@
 # Developing a new EMC Driver
 
-This article demonstrates the implementation of "drivers" for Epsilon's [Model Connectivity layer](../../emc).
+This article demonstrates the implementation of "drivers" for Epsilon's [Model Connectivity layer](../../emc.md).
 
 ## YAML Driver
 
-The following training session recording and deck of slides demonstrate the implementation of [Epsilon's YAML driver](../yaml-emc). The complete source-code is located in [Epsilon's Git repository](https://github.com/eclipse-epsilon/epsilon/tree/main/plugins/org.eclipse.epsilon.emc.yaml).
+The following training session recording and deck of slides demonstrate the implementation of [Epsilon's YAML driver](../yaml-emc/index.md). The complete source-code is located in [Epsilon's Git repository](https://github.com/eclipse-epsilon/epsilon/tree/main/plugins/org.eclipse.epsilon.emc.yaml).
 
 <iframe src="https://www.youtube.com/embed/M0nvnhSF6Y0" width="100%" height="485" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen></iframe> <div style="margin-bottom:15px"></div>
 

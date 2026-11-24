@@ -1,6 +1,6 @@
 # Managing Profiled UML Models in Epsilon
 
-This article shows how to create and query profiled [Eclipse UML](https://wiki.eclipse.org/MDT-UML2) models using Epsilon's core language ([EOL](../../eol)). For our example we will use [a profile](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.eol.uml.profiled/activityfunctions.uml) called `ActivityFunctions` which contains a single `Function` stereotype that applies to UML activities, and has a single `body` String property.
+This article shows how to create and query profiled [Eclipse UML](https://wiki.eclipse.org/MDT-UML2) models using Epsilon's core language ([EOL](../../eol.md)). For our example we will use [a profile](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.eol.uml.profiled/activityfunctions.uml) called `ActivityFunctions` which contains a single `Function` stereotype that applies to UML activities, and has a single `body` String property.
 
 ## Creating a Profiled UML Model
 

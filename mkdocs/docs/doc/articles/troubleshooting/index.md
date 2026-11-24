@@ -16,4 +16,4 @@ In the dialog that pops up after you have clicked the `Browse` button, please st
 
 ## Syntax highlighting doesn't work in the Epsilon/Emfatic editors
 
-Chances are that you don't have Epsilon installed in your Eclipse instance. To download Epsilon please follow [these instructions](../../../download). 
+Chances are that you don't have Epsilon installed in your Eclipse instance. To download Epsilon please follow [these instructions](../../../download/index.md). 

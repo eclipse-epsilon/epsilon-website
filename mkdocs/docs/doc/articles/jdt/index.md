@@ -85,7 +85,7 @@ We also expose the JDT index so you  can quickly find a type by name: in fact, i
 
 ## Applications
 
-In [this example](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.jdt.picto), we use the JDT driver and [Picto](../../picto) to generate PlantUML diagrams from existing Java code on the fly.
+In [this example](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.jdt.picto), we use the JDT driver and [Picto](../../picto/index.md) to generate PlantUML diagrams from existing Java code on the fly.
 
 ![](picto-jdt.png)
 

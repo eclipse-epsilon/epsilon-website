@@ -21,7 +21,7 @@ class Widget {
 }
 ```
 
-In this case, we only have one child node (the label for the node). We need to add a polishing transformation to our project (described in more detail in [this article](../eugenia-polishing/)) to use a grid layout and specify the appropriate layout data for the label. In a file named ECore2GMF.eol, place the following code:
+In this case, we only have one child node (the label for the node). We need to add a polishing transformation to our project (described in more detail in [this article](../eugenia-polishing/index.md)) to use a grid layout and specify the appropriate layout data for the label. In a file named ECore2GMF.eol, place the following code:
 
 ```eol
 var shape = findShape('WidgetFigure');

@@ -60,7 +60,7 @@ class Skill {
 -   Create a text file named `psl.emf` in your workspace and place the Emfatic content above in it.
 -   Convert it into Ecore and register the produced Ecore metamodel
     (`psl.ecore`) as shown
-    [here](../articles/reflective-emf-tutorial).
+    [here](../articles/reflective-emf-tutorial/index.md).
 -   Create a new text file named `acme.flexmi` and place the XML content above in it.
 -   The result should look like the screenshot below.
 
@@ -135,7 +135,7 @@ Containment EReference names are ignored during matching.
 
 ## Executable Attributes
 
-Prepending `:` to the name of an attribute instructs the Flexmi parser to interpret its value as an executable [EOL](../eol) expression instead of a literal value. Also, Flexmi supports attaching a `:var` or a `:global` attribute to XML elements, to declare local/global variables that can be used in EOL expressions. The scope of local variables includes siblings of the element, and their descendants, while global variables can be accessed from anywhere in the model.
+Prepending `:` to the name of an attribute instructs the Flexmi parser to interpret its value as an executable [EOL](../eol.md) expression instead of a literal value. Also, Flexmi supports attaching a `:var` or a `:global` attribute to XML elements, to declare local/global variables that can be used in EOL expressions. The scope of local variables includes siblings of the element, and their descendants, while global variables can be accessed from anywhere in the model.
 
 For example, in the Flexmi model below, the `Design` task is assigned to a local variable named `design`, which is then used to compute the value of the `start` time of the implementation task.
 
@@ -262,7 +262,7 @@ Flexmi templates also support parameters, which can be used to configure the con
 
 ### Dynamic Templates and Slots
 
-To further customise the content that Flexmi templates produce, one can use an [EGL](../egl) template that produces XML as the value of the `<content>` element of the template, by setting it's language to EGL as shown below. Also Flexmi supports a `<:slot>` element in the content of templates, which specifies where any nested elements of the caller should be placed in the produced XML as shown below.
+To further customise the content that Flexmi templates produce, one can use an [EGL](../egl.md) template that produces XML as the value of the `<content>` element of the template, by setting it's language to EGL as shown below. Also Flexmi supports a `<:slot>` element in the content of templates, which specifies where any nested elements of the caller should be placed in the produced XML as shown below.
 
 ```xml
 <?nsuri psl?>
@@ -506,7 +506,7 @@ Flexmi was originally developed as a quick and dirty way to type in EMF models w
 ## Resources
 
 - More examples of using Flexmi can be found in projects containing `flexmi` in their name, under the [examples folder](https://github.com/eclipse-epsilon/epsilon/tree/main/examples) of Epsilon's Git repository.
-- [This article](../articles/running-epsilon-ant-tasks-from-command-line/#flexmi-and-emfatic) shows how to use Flexmi models in ANT/Gradle/Maven builds
+- [This article](../articles/running-epsilon-ant-tasks-from-command-line/index.md#flexmi-and-emfatic) shows how to use Flexmi models in ANT/Gradle/Maven builds
 - Flexmi and relevant underpinning research is further described in the following papers:
     - [Towards Flexible Parsing of StructuredTextual Model Representations](http://ceur-ws.org/Vol-1694/FlexMDE2016_paper_3.pdf)
     - [Towards a Modular and Flexible Human-UsableTextual Syntax for EMF Models](http://ceur-ws.org/Vol-2245/flexmde_paper_3.pdf)

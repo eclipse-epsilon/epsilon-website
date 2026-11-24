@@ -154,7 +154,7 @@ The execution of a test case is divided into the following steps:
 
 An important difference between JUnit and EUnit is that setup is split into two parts: model setup and regular setup. This split allows users to add code before and after model bindings are applied. Normally, the model setup sections will load all the models needed by the test suite, and the regular setup sections will further prepare the models selected by the model binding. Explicit teardown sections are usually not needed, as models are disposed automatically by EUnit. EUnit includes them for consistency with the xUnit frameworks.
 
-Due to its focus on model management, model setup in EUnit is very flexible. Developers can combine several ways to set up models, such as model references, individual Apache Ant tasks, Apache Ant targets or [Human-Usable Text Notation (HUTN)](../hutn) fragments.
+Due to its focus on model management, model setup in EUnit is very flexible. Developers can combine several ways to set up models, such as model references, individual Apache Ant tasks, Apache Ant targets or [Human-Usable Text Notation (HUTN)](hutn.md) fragments.
 
 A test case may produce one among several results. `SUCCESS` is obtained if all assertions passed and no exceptions were thrown. `FAILURE` is obtained if an assertion failed. `ERROR` is obtained if an unexpected exception was thrown while running the test. Finally, tests may be `SKIPPED` by the user.
 

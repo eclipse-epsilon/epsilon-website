@@ -65,7 +65,7 @@ This page links to more than **80 articles** on various aspects of Epsilon. Shou
 ## Epsilon and other types of models
 
 - [Scripting XML documents using Epsilon](plain-xml/index.md): In this article we demonstrate how you can create, query and modify plain standalone XML documents (i.e. no XSD/DTD needed) in Epsilon programs using the PlainXML driver.
-- [Scripting XML documents that conform to an XSD schema using Epsilon](xsd-xml): In this article we demonstrate how you can create, query and modify XML documents backed by an XSD schema in Epsilon.
+- [Scripting XML documents that conform to an XSD schema using Epsilon](xsd-xml/index.md): In this article we demonstrate how you can create, query and modify XML documents backed by an XSD schema in Epsilon.
 - [Scripting YAML documents using Epsilon](yaml-emc/index.md): This article demonstrates how you can query and modify YAML documents with Epsilon programs using the YAML driver.
 - [Scripting JSON documents using Epsilon](json-emc/index.md): This article shows how you can create, query and modify JSON documents with Epsilon programs using the JSON driver.
 - [Scripting CSV files using Epsilon](csv-emc/index.md): This article demonstrates how you can query CSV files with Epsilon programs using the CSV driver.
@@ -119,7 +119,7 @@ This page links to more than **80 articles** on various aspects of Epsilon. Shou
 ## Teaching Material
 
 - [MDE Exercises](exercises/index.md): This article provides a number of exercises which enable you to test your knowledge on MDE, EMF and Epsilon.
-- [Epsilon Playground](playground): The Epsilon Playground is a web application for fiddling with metamodelling, modelling and automated model management using Emfatic, Flexmi and Epsilon's languages.
+- [Epsilon Playground](playground/index.md): The Epsilon Playground is a web application for fiddling with metamodelling, modelling and automated model management using Emfatic, Flexmi and Epsilon's languages.
 
 ## Technical Support
 

@@ -106,8 +106,8 @@ Additional projects which are experimental or have dependencies which are incomp
 
 ## Older versions
 
-Previous stable versions of Epsilon are available [here](all-versions).
+Previous stable versions of Epsilon are available [here](all-versions.md).
 
 ## This website
 
-[This article](../doc/articles/manage-the-epsilon-website-locally) demonstrates how to download and manage the Epsilon website in your machine.
+[This article](../doc/articles/manage-the-epsilon-website-locally/index.md) demonstrates how to download and manage the Epsilon website in your machine.

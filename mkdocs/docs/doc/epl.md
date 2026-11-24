@@ -48,7 +48,7 @@ MethodDeclaration -- TypeAccess: returnType
 
 ## Syntax
 
-The syntax of EPL is an extension of the syntax of the [EOL language](../eol), which is the core language of Epsilon. As such, any references to *expression* and *statement block* in this chapter, refer to EOL expressions and blocks of EOL statements respectively. It is also worth noting that EOL expressions and statements can produce side-effects on models, and therefore, it is the responsibility of the developer to decide which expressions used in the context of EPL patterns should be side-effect free and which not.
+The syntax of EPL is an extension of the syntax of the [EOL language](eol.md), which is the core language of Epsilon. As such, any references to *expression* and *statement block* in this chapter, refer to EOL expressions and blocks of EOL statements respectively. It is also worth noting that EOL expressions and statements can produce side-effects on models, and therefore, it is the responsibility of the developer to decide which expressions used in the context of EPL patterns should be side-effect free and which not.
 
 As illustrated in the figure below, EPL patterns are organised in *modules*. Each module contains a number of named *patterns* and optionally, *pre* and *post* statement blocks that are executed before and after the pattern matching process, and helper EOL operations. EPL modules can import other EPL and EOL modules to facilitate reuse and modularity.
 
@@ -234,7 +234,7 @@ An EPL module can be executed in a one-off or iterative mode. In the one-off mod
 Pattern Matching Output
 -----------------------
 
-The output of the execution of an EPL module on a set of models is a collection of matches encapsulated in a *PatternMatchModel*, as illustrated in the figure below. As *PatternMatchModel* implements the *IModel* [EMC](../emc) interface, its instances can be accessed from other programs expressed in languages of the Epsilon family.
+The output of the execution of an EPL module on a set of models is a collection of matches encapsulated in a *PatternMatchModel*, as illustrated in the figure below. As *PatternMatchModel* implements the *IModel* [EMC](emc.md) interface, its instances can be accessed from other programs expressed in languages of the Epsilon family.
 
 ```mermaid-60
 classDiagram

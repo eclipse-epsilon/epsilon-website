@@ -25,7 +25,7 @@ To run Epsilon from source, you need to:
 - Plugins named `*.dt` contain development tools (e.g. editors, run configurations, debuggers) for the respective Epsilon languages.
 - Plugins named `org.eclipse.epsilon.emc.*` contain Epsilon Model Connectivity (EMC) drivers through which Epsilon languages can interact with different types of models (e.g. EMF models, spreadsheets etc.).
 - Plugins named `org.eclipse.epsilon.emc.*.dt` contain development tools (e.g. model configuration dialogs) for the respective EMC drivers.
-- Plugins named `*.workflow` contribute [ANT tasks](../../workflow).
+- Plugins named `*.workflow` contribute [ANT tasks](../../workflow.md).
 
 ## Modifying the Epsilon parsers
 

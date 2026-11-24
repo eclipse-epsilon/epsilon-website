@@ -85,4 +85,4 @@ catch (Exception ex) {
 ## Technical Support
 
 1. **No forum post goes unanswered**: to maintain and foster the community around Epsilon, we answer every question on the user forum.
-2. **Encourage users to produce minimal examples**: if we need to reproduce a user's issue, we will often ask for [a minimal example](../minimal-examples) to aid in debugging. We have found this to be effective because it allows us to focus most of our time on fixing issues, and because users sometimes discover the solution to their issue while producing the minimal example.
+2. **Encourage users to produce minimal examples**: if we need to reproduce a user's issue, we will often ask for [a minimal example](../minimal-examples/index.md) to aid in debugging. We have found this to be effective because it allows us to focus most of our time on fixing issues, and because users sometimes discover the solution to their issue while producing the minimal example.

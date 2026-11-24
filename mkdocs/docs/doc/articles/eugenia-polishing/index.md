@@ -90,7 +90,7 @@ GMF generates code in two steps:
 
 To use your own GMF figure templates, you need to place them under a folder called `templates-gmfgraph`, which should be a sibling of the folder where your `.emf` or `.ecore` files are stored. If it exists, Eugenia will use its templates for the GmfMap → GmfGen transformation.
 
-To customize the code generated from the GmfGen model, you will need to use [Eugenia's patch generation and application functionality](../eugenia-patching/) or [GMF dynamic templates](http://www.bonitasoft.org/blog/eclipse/customize-your-gmf-editor-by-customizing-templates/).
+To customize the code generated from the GmfGen model, you will need to use [Eugenia's patch generation and application functionality](../eugenia-patching/index.md) or [GMF dynamic templates](http://www.bonitasoft.org/blog/eclipse/customize-your-gmf-editor-by-customizing-templates/).
 
 ## Getting assistance in writing these transformations
 

@@ -1,6 +1,6 @@
 # Epsilon Playground
 
-The [Epsilon Playground](../../../playground) is a web application for fiddling with metamodelling, modelling and automated model management using [Emfatic](https://eclipse.org/emfatic), [Flexmi](../../flexmi) and Epsilon's languages. Its back-end is implemented using [Google Cloud Platform Functions](https://cloud.google.com/functions) and the front-end builds heavily on the [Metro 4](https://metroui.org.ua) framework. Diagrams are rendered using [PlantUML](https://plantuml.com) and [Kroki](https://kroki.io).
+The [Epsilon Playground](../../../playground) is a web application for fiddling with metamodelling, modelling and automated model management using [Emfatic](https://eclipse.org/emfatic), [Flexmi](../../flexmi/index.md) and Epsilon's languages. Its back-end is implemented using [Google Cloud Platform Functions](https://cloud.google.com/functions) and the front-end builds heavily on the [Metro 4](https://metroui.org.ua) framework. Diagrams are rendered using [PlantUML](https://plantuml.com) and [Kroki](https://kroki.io).
 
 ## Emfatic Metamodels in the Playground
 
@@ -148,8 +148,8 @@ To start a live sharing session, click the `Live Share` button. This will create
 
 To download a zipped archive of your work, click the `Download` button. Depending on your selection, the zipped archived will contain the model management program(s), the models and metamodels of the example, a `readme.md` file with instructions as well as:
 
-- `Gradle`/`Maven`: a `build.gradle` or `pom.xml` file that includes the Epsilon dependencies and the [ANT tasks](../../workflow) you need to run the example from the command line
-- `Ant (Eclipse)`: a `build.xml` file that in includes the [ANT tasks](../../workflow) you need to run the example from within Eclipse
+- `Gradle`/`Maven`: a `build.gradle` or `pom.xml` file that includes the Epsilon dependencies and the [ANT tasks](../../workflow.md) you need to run the example from the command line
+- `Ant (Eclipse)`: a `build.xml` file that in includes the [ANT tasks](../../workflow.md) you need to run the example from within Eclipse
 - `Java (Gradle)`/`Java (Maven)`: a Java class that runs the model management program using Epsilon's API, and a `build.gradle` or `pom.xml` file that includes the Epsilon dependencies
 
 ## Custom examples
@@ -172,7 +172,7 @@ If the Playground is a critical dependency for you (e.g. to support a training c
 
 ## Fair usage policy
 
-The cost of running Epsilon Playground is proportional to the number of requests made to its Google Cloud Platform back-end (i.e. execution of programs and rendering of diagrams). With fair usage we can comfortably afford this cost and keep the Playground operational, but in case of excessive use we may have to take it down with no notice. To keep costs down, server-side operations that take more than 60 seconds to complete are automatically terminated. For extensive use, large models, or complex programs, please use the [development tools / Java libraries](../../../download) provided on the Epsilon website instead, or run your own instance of the Epsilon Playground in a [Docker container](https://github.com/epsilonlabs/playground-docker).
+The cost of running Epsilon Playground is proportional to the number of requests made to its Google Cloud Platform back-end (i.e. execution of programs and rendering of diagrams). With fair usage we can comfortably afford this cost and keep the Playground operational, but in case of excessive use we may have to take it down with no notice. To keep costs down, server-side operations that take more than 60 seconds to complete are automatically terminated. For extensive use, large models, or complex programs, please use the [development tools / Java libraries](../../../download/index.md) provided on the Epsilon website instead, or run your own instance of the Epsilon Playground in a [Docker container](https://github.com/epsilonlabs/playground-docker).
 
 ## Reporting bugs and requesting help
-Please submit bug reports using [GitHub Issues](https://github.com/eclipse-epsilon/epsilon-website/issues) and ask for help in [Epsilon's forum](../../../forum). You can submit feature requests too but please keep in mind that the Playground is not a replacement for Epsilon's [Eclipse-based development tools](../../../download). The Playground has been tested on recent versions of Firefox and Chrome. It's unlikely that we'll be able to invest too much effort in making it compatible with older/other browsers but any pull requests you may be able to contribute are always welcome.
+Please submit bug reports using [GitHub Issues](https://github.com/eclipse-epsilon/epsilon-website/issues) and ask for help in [Epsilon's forum](../../../forum). You can submit feature requests too but please keep in mind that the Playground is not a replacement for Epsilon's [Eclipse-based development tools](../../../download/index.md). The Playground has been tested on recent versions of Firefox and Chrome. It's unlikely that we'll be able to invest too much effort in making it compatible with older/other browsers but any pull requests you may be able to contribute are always welcome.

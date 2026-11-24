@@ -1,6 +1,6 @@
 # XML to EMF Transformation with ETL
 
-This example shows how to transform an XML document into an EMF model using the [Epsilon Transformation Language](../../etl) and Epsilon's [XML driver](../plain-xml). We start with our source XML file (`tree.xml`), which is shown below:
+This example shows how to transform an XML document into an EMF model using the [Epsilon Transformation Language](../etl.md) and Epsilon's [XML driver](plain-xml/index.md). We start with our source XML file (`tree.xml`), which is shown below:
 
 ```xml
 <?xml version="1.0"?>

@@ -1,10 +1,10 @@
 # Generating table views in Picto
 
-This article shows how [Picto](../../picto) is able to render CSV files as enhanced HTML tables provided by the [Metro UI](https://metroui.org.ua/tables.html) library, which include table styling, pagination, column sorting, and search capabilities. It also shows how the [Pinset](../../pinset) language can be used to create these table views without having to generate CSVs through a general-purpose model-to-text transformation.
+This article shows how [Picto](../../picto/index.md) is able to render CSV files as enhanced HTML tables provided by the [Metro UI](https://metroui.org.ua/tables.html) library, which include table styling, pagination, column sorting, and search capabilities. It also shows how the [Pinset](../../pinset/index.md) language can be used to create these table views without having to generate CSVs through a general-purpose model-to-text transformation.
 
 ## Rendering CSV files in the workspace
 
-Picto can be used to render CSV files present in an Eclipse project. The following figure shows the table generated for one of the output CSV files of the [Pinset](../../pinset) grading example:
+Picto can be used to render CSV files present in an Eclipse project. The following figure shows the table generated for one of the output CSV files of the [Pinset](../../pinset/index.md) grading example:
 
 ![](csv-picto.png)
 
@@ -12,9 +12,9 @@ To automatically render CSV files in Picto, the `Render verbatim sources` option
 
 ## Generating table views with a Pinset transformation
 
-[Pinset](../../pinset) is a domain-specific transformation language that allows extracting tabular datasets from models. Initially devised for data analysis purposes, this language can be used along Picto to generate table-based model visualisations.
+[Pinset](../../pinset/index.md) is a domain-specific transformation language that allows extracting tabular datasets from models. Initially devised for data analysis purposes, this language can be used along Picto to generate table-based model visualisations.
 
-In the Social Network example that can be found in the [Picto](../../picto) documentation, one of the views is generated with the following Pinset dataset rule:
+In the Social Network example that can be found in the [Picto](../../picto/index.md) documentation, one of the views is generated with the following Pinset dataset rule:
 
 ```pinset
 dataset personStats over person : Person {
@@ -32,7 +32,7 @@ dataset personStats over person : Person {
 }
 ```
 
-Briefly, a Pinset dataset rule contains EOL-based definitions of the different columns of the output dataset. These columns operate over elements of the input model (such as the `Person` elements in the rule above) to create the dataset rows. In the example, likes and dislikes counts are obtained for each `Person` element in the dataset. Check the [Pinset documentation](../../pinset) for more information about other features of the language such as advanced column generators.
+Briefly, a Pinset dataset rule contains EOL-based definitions of the different columns of the output dataset. These columns operate over elements of the input model (such as the `Person` elements in the rule above) to create the dataset rows. In the example, likes and dislikes counts are obtained for each `Person` element in the dataset. Check the [Pinset documentation](../../pinset/index.md) for more information about other features of the language such as advanced column generators.
 
 To use the above Pinset rule to create a Picto view in the social network model visualisation, the following EGX rule is present in the `picto/socialnetwork.egx` file:
 

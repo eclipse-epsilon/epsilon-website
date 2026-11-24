@@ -215,6 +215,6 @@ rule Tree2Node
 
 ## Additional Resources
 
-Additional resources about ETL are available [here](../articles/#epsilon-transformation-language).
+Additional resources about ETL are available [here](articles/index.md#epsilon-transformation-language).
 
 [^1]: The concept of lazy rules was first introduced in ATL

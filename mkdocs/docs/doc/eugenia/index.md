@@ -1,7 +1,7 @@
 # Graphical Model Editor development with Eugenia/GMF
 
 !!! warning "Eugenia discontinued in Epsilon 2.5"
-    Following the [archival of the GMF Tooling project](https://projects.eclipse.org/projects/modeling.gmf-tooling), Eugenia has been discontinued from version 2.5 onwards. While you can still use Eugenia with older versions of Epsilon, you may want to consider more actively-maintained tools such as [Eclipse Sirius](https://eclipse.org/sirius) if you need to develop a graphical editor, or [Picto](../picto) if you are only interested in producing read-only views from models.
+    Following the [archival of the GMF Tooling project](https://projects.eclipse.org/projects/modeling.gmf-tooling), Eugenia has been discontinued from version 2.5 onwards. While you can still use Eugenia with older versions of Epsilon, you may want to consider more actively-maintained tools such as [Eclipse Sirius](https://eclipse.org/sirius) if you need to develop a graphical editor, or [Picto](../picto/index.md) if you are only interested in producing read-only views from models.
 
 Eugenia is a tool that simplifies the development of GMF-based graphical model editors by automatically generating the `.gmfgraph`, `.gmftool` and `.gmfmap` models needed by GMF editor from a single annotated Ecore metamodel. For example, from the following annotated EMF metamodel (expressed using Emfatic; an Ecore version is available [here](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.eugenia.examples.filesystem/model/filesystem.ecore)) it can generate a fully functional GMF editor, a screenshot of which is displayed below.
 
@@ -78,11 +78,11 @@ Applies to an `EClass` and denotes that it should appear on the diagram as a nod
 * `label.edit.pattern` (optional) : like `label.pattern`, but only for editing the label.
 * `label.pattern` (optional) : if more than one attributes are specified in the label, the format detail is necessary to show how their values will be rendered in the label. The format follows the Java Message Format style (e.g. `{0} : {1}`). The same pattern is used for editing and viewing the label.
 * `label.view.pattern` (optional) : like `label.pattern`, but only for viewing the label.
-* `label.placement` (optional) : defines the placement of the label in relation to the node. Can be set to `internal`, `external` or `none` (no label will be shown). ''(The default distance of an external label in GMF is 20pt which is a bit too far away for my taste. [Read more](../articles/eugenia-affixed-nodes) about fixing this without changing the generated code every time)''.
+* `label.placement` (optional) : defines the placement of the label in relation to the node. Can be set to `internal`, `external` or `none` (no label will be shown). ''(The default distance of an external label in GMF is 20pt which is a bit too far away for my taste. [Read more](../articles/eugenia-affixed-nodes/index.md) about fixing this without changing the generated code every time)''.
 * `label.text` (optional) : defines the default text to be used when the `EAttribute`(s) in `label` are not set. By default, it is set to the name of the `EClass`.
 * `label.readOnly` (optional) : a value of `true` denotes that the label cannot be changed in the generated diagram editor.
 * `margin` (optional) : inset margin (5 units by default) for the node.
-* `phantom` (optional) : defines if the node is phantom (`true`/`false`). Phantom nodes are particularly useful in order to visualize containment references using links instead of spatial containment ([read more...](../articles/eugenia-phantom-nodes)).
+* `phantom` (optional) : defines if the node is phantom (`true`/`false`). Phantom nodes are particularly useful in order to visualize containment references using links instead of spatial containment ([read more...](../articles/eugenia-phantom-nodes/index.md)).
 * `polygon.x` (when `figure` is set to `polygon`) : list of space-separated integers with the X coordinates of the polygon used as figure.
 * `polygon.y` (when `figure` is set to `polygon`) : list of space-separated integers with the Y coordinates of the polygon used as figure.
 * `resizable` (optional) : a value of `false` disables all the resize handles for the node
@@ -147,7 +147,7 @@ Defines that the containment reference will create a compartment where model ele
 * `layout` (optional) : The layout of the compartment. Can be set to free (default) or list
 
 ### gmf.affixed (for containment EReference)
-Defines that the containment reference will create nodes which are affixed to the edges of the containing node. [See an example](../articles/eugenia-affixed-nodes).
+Defines that the containment reference will create nodes which are affixed to the edges of the containing node. [See an example](../articles/eugenia-affixed-nodes/index.md).
 
 ### gmf.label (for EAttribute)
 Defines additional labels for the containing `EClass`. These labels will be displayed underneath the default label for the containing `EClass`. It accepts the following details:
@@ -181,7 +181,7 @@ If you now change your metamodel you'll have to rerun Eugenia to generate your u
 - Right-click your Ecore metamodel (or Emfatic file) and select `Eugenia` --> `Generate GMF editor`
 - Run a new instance of Eclipse
 
-(Please note that any changes you have made manually to the editor's `.gmfgraph`, `.gmftool` and `.gmfmap` models will be **overwritten**. Have a look [here](../articles/eugenia-polishing) for an alternative way to customize these models)
+(Please note that any changes you have made manually to the editor's `.gmfgraph`, `.gmftool` and `.gmfmap` models will be **overwritten**. Have a look [here](../articles/eugenia-polishing/index.md) for an alternative way to customize these models)
 
 ## Troubleshooting
 * Certain versions of Emfatic do not support annotations without details (e.g. `@gmf` or `@gmf.diagram`). You can use dummy details as a workaround (e.g. `@gmf(foo="bar")`)
@@ -190,16 +190,16 @@ If you now change your metamodel you'll have to rerun Eugenia to generate your u
 * Ensure that the name of your package is different to the names of the classes it contains (i.e. a package Foo should not contain a Foo class)
 
 ## Recipes
-* [Nodes with user defined images](../articles/eugenia-nodes-with-images) (e.g. jpg, png, gif)
-* [Nodes with user defined images at runtime](../articles/eugenia-nodes-with-runtime-images)
+* [Nodes with user defined images](../articles/eugenia-nodes-with-images/index.md) (e.g. jpg, png, gif)
+* [Nodes with user defined images at runtime](../articles/eugenia-nodes-with-runtime-images/index.md)
 
 ## Customizing your editor
-[Click here](../articles/eugenia-polishing) to find out how you can further customize the generated `.gmfgraph`, `.gmfmap` and `.gmftool` models in ways that are not supported by the annotations provided by Eugenia, and still preserve the customizations when Eugenia is re-invoked.
+[Click here](../articles/eugenia-polishing/index.md) to find out how you can further customize the generated `.gmfgraph`, `.gmfmap` and `.gmftool` models in ways that are not supported by the annotations provided by Eugenia, and still preserve the customizations when Eugenia is re-invoked.
 
 ## Adding Copyright
 To add copyright information to your generated .gmfgen model, simply create a file named copyright.txt next to it. Next time you invoke `Eugenia` --> `Synchronize GMF gen model`, Eugenia will pick it up and place its contents in the root GenDiagramEditor of your .gmfgen model. If you have added the copyright.txt file, you can also inject its contents to your .genmodel model (EMF generator model) by right-clicking it and invoking `Eugenia` --> `Synchronize EMF gen model`.
 
 ## Next Steps
-Now that you've learned how to generate a GMF-based editor using Eugenia, you may also want to add some constraints to your editor, which you can then evaluate (explicitly or on-save) to [check the correctness/consistency of your models](../articles/evl-gmf-integration):
+Now that you've learned how to generate a GMF-based editor using Eugenia, you may also want to add some constraints to your editor, which you can then evaluate (explicitly or on-save) to [check the correctness/consistency of your models](../articles/evl-gmf-integration/index.md):
 
 ![](Filesystemwitherrorshighlighted.png)

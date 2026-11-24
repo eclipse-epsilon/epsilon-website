@@ -4,7 +4,7 @@ This tutorial demonstrates how to create an EMF Ecore metamodel and a sample mod
 
 ## Prerequisites
  
-To go through this tutorial you need to first install the Eclipse Modeling Distribution, Epsilon and Emfatic. Installation instructions are available [here](../../../download).
+To go through this tutorial you need to first install the Eclipse Modeling Distribution, Epsilon and Emfatic. Installation instructions are available [here](../../../download/index.md).
 
 ## Create a new project
  

@@ -1,8 +1,8 @@
 # Using EGL as a server-side scripting language in Tomcat
 
-The original purpose of [EGL](../../egl) was to enable batch generation of source code and other textual artefacts from EMF models. However, since there is no hard binding between the language and the file system, it is also possible to use EGL in other contexts.
+The original purpose of [EGL](../../egl.md) was to enable batch generation of source code and other textual artefacts from EMF models. However, since there is no hard binding between the language and the file system, it is also possible to use EGL in other contexts.
 
-In this article, we demonstrate using [EGL](../../egl) as a server-side scripting language in Tomcat, to produce web pages from EMF models on the fly.
+In this article, we demonstrate using [EGL](../../egl.md) as a server-side scripting language in Tomcat, to produce web pages from EMF models on the fly.
 
 ## Setup
 

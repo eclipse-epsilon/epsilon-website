@@ -36,7 +36,7 @@ class Interaction extends Step {
 ```
 
 ## Customer-ATM Model
-Below is a [Flexmi](../../flexmi) model that conforms to the minisd DSL and captures the interaction between a customer and an ATM.
+Below is a [Flexmi](../../flexmi/index.md) model that conforms to the minisd DSL and captures the interaction between a customer and an ATM.
 
 ```xml
 <?nsuri minisd?>
@@ -85,7 +85,7 @@ Below is a [Flexmi](../../flexmi) model that conforms to the minisd DSL and capt
 
 To visualise models that conform to the minisd DSL (such as the Customer-ATM model above) in Picto, we have written a model-to-text transformation in EGL, that transforms such models into a series of PlantUML sequence diagrams.
 
-In particular, the transformation produces one sequence diagram for the entire model, and one sequence diagram for each execution path in it. The [EGX](../../egx) orchestration program and the [EGL](../../egl) template are shown below.
+In particular, the transformation produces one sequence diagram for the entire model, and one sequence diagram for each execution path in it. The [EGX](../../egx.md) orchestration program and the [EGL](../../egl.md) template are shown below.
 
 === "minisd2plantuml.egx"
 

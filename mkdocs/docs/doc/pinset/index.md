@@ -36,7 +36,7 @@ Student *--> Grade: grades *
 Grade --> EvaluationItem: item
 ```
 
-As for the data shown as a result of the Pinset scripts, we use the following [Flexmi](../flexmi) model, which conforms to the metamodel above:
+As for the data shown as a result of the Pinset scripts, we use the following [Flexmi](../flexmi/index.md) model, which conforms to the metamodel above:
 
 ```xml
 <?nsuri grades?>
@@ -226,7 +226,7 @@ dataset studentGrades over s : Student {
 }
 ```
 
-In that grid generator, the course evaluation items are used as `keys`, which means that each one of these items would be evaluated over the `header` and `body` expressions to generate a new column. The `header` of the columns uses the item name, and the `body` is calculated by looking for a grade of the student for the evaluation item. The body uses the `?.` [safe null navigation operator](../eol#safe-navigation-and-elvis-operator) in case the student does not have a grade for certain item.
+In that grid generator, the course evaluation items are used as `keys`, which means that each one of these items would be evaluated over the `header` and `body` expressions to generate a new column. The `header` of the columns uses the item name, and the `body` is calculated by looking for a grade of the student for the evaluation item. The body uses the `?.` [safe null navigation operator](../eol.md#safe-navigation-and-elvis-operator) in case the student does not have a grade for certain item.
 
 ## Typeless dataset rules
 
@@ -336,4 +336,4 @@ The dataset rule above contains a column with the normalised final grade of the 
 
 ## Picto Integration
 
-Check out [this article](../articles/picto-tables) to learn how Pinset can be used to generate [Picto](../picto) table visualisations.
+Check out [this article](../articles/picto-tables/index.md) to learn how Pinset can be used to generate [Picto](../picto/index.md) table visualisations.

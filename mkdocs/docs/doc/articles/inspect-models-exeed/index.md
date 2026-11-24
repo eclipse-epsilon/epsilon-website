@@ -1,6 +1,6 @@
 # Inspecting EMF models with Exeed
  
-[Exeed](../../../doc/exeed) is an extended version of the built-in EMF reflective editor that enables customisation of labels and icons by adding annotations to ECore metamodels. Another feature it provides is the ability to display structural information about the elements of an EMF model. To see the types of all elements in the editor tree as well as the feature in which each element is contained, open your EMF model with Exeed and click `Exeed` --> `Show Structural Info`.
+[Exeed](../../exeed/index.md) is an extended version of the built-in EMF reflective editor that enables customisation of labels and icons by adding annotations to ECore metamodels. Another feature it provides is the ability to display structural information about the elements of an EMF model. To see the types of all elements in the editor tree as well as the feature in which each element is contained, open your EMF model with Exeed and click `Exeed` --> `Show Structural Info`.
 
 ![Exeed Menu](exeed-menu.png)
 

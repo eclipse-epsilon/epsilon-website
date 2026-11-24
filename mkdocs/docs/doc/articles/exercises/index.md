@@ -4,7 +4,7 @@ This article provides a number of exercises you can use to test your knowledge o
 
 ## Exercise 1: Metamodelling with Ecore
 
-Write Ecore metamodels (using Emfatic or the graphical Ecore editor) for the following scenarios, and create instances of these metamodels using the [reflective EMF tree editor](../reflective-emf-tutorial):
+Write Ecore metamodels (using Emfatic or the graphical Ecore editor) for the following scenarios, and create instances of these metamodels using the [reflective EMF tree editor](../reflective-emf-tutorial/index.md):
 
 1.  All school rooms have a buzzer triggered by a central clock to signal the end of the school day.
 2.  Political parties, such as the Labour Party, the Conservative party, and the Liberal Democrat party, have both voters and supporters.
@@ -15,7 +15,7 @@ Write Ecore metamodels (using Emfatic or the graphical Ecore editor) for the fol
 
 ## Exercise 2: Constructing models programmatically using EOL
 
-In the previous exercise, you created sample models conforming to your metamodels using the reflective EMF tree editor. In this exercise, you should create the same models, but this time programmatically using [EOL](../../eol).
+In the previous exercise, you created sample models conforming to your metamodels using the reflective EMF tree editor. In this exercise, you should create the same models, but this time programmatically using [EOL](../../eol.md).
 
 ## Exercise 3: Introducing EOL operations
 
