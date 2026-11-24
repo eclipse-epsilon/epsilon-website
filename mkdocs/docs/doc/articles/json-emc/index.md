@@ -227,7 +227,7 @@ Since both `M.root.x` and `M.root.y` referenced the same JSON object, the last l
 If this is undesirable, JSON models provide a `deepClone` method which can produce a standalone clone of any `JSONObject` or `JSONArray`.
 As an example, here is an EOL script which sets `M.root.y` to a deep clone of `M.root.x`:
 
-```json
+```eol
 M.root = new JSONObject;
 M.root.x = new JSONObject;
 M.root.y = M.deepClone(M.root.x);

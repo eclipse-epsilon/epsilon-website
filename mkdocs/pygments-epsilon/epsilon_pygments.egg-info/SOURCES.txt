@@ -1,0 +1,8 @@
+pyproject.toml
+epsilon_pygments/__init__.py
+epsilon_pygments.egg-info/PKG-INFO
+epsilon_pygments.egg-info/SOURCES.txt
+epsilon_pygments.egg-info/dependency_links.txt
+epsilon_pygments.egg-info/entry_points.txt
+epsilon_pygments.egg-info/requires.txt
+epsilon_pygments.egg-info/top_level.txt

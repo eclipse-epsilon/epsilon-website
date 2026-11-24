@@ -136,17 +136,20 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.details
   - pymdownx.highlight:
-      use_pygments: false
+      anchor_linenums: true
+      # ecl and eml clash with built-in Pygments lexers (Enterprise Control Language, E-mail)
+      extend_pygments_lang:
+        - name: ecl
+          lang: epsilon-ecl
+        - name: eml
+          lang: epsilon-eml
+  - pymdownx.inlinehilite
   - toc:
       permalink: true
   - pymdownx.snippets
 plugins:
     - exclude:
         glob:
-          - assets/node_modules/*
-          - assets/package-lock.json
-          - assets/webpack.config.js
-          - assets/package.json
           - playground/cypress/*
           - playground/node_modules/*
           - playground/package-lock.json
@@ -175,10 +178,6 @@ copyright: 'Copyright © <a href="https://www.eclipse.org">Eclipse Foundation, I
 extra_css:
   - 'assets/stylesheets/mermaid.css'
   - 'assets/stylesheets/extra.css'
-  - 'assets/stylesheets/nnfx-light.css'
-  - 'assets/stylesheets/nnfx-dark.css'
-extra_javascript:
-  - 'assets/dist/bundle.js'
 google_analytics:
   - UA-184785655-1
   - auto
