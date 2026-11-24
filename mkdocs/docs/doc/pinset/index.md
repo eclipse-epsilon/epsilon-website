@@ -8,7 +8,7 @@ We use as running example a course model, which contains the enrolled students a
 
 All Pinset scripts query the following metamodel:
 
-```mermaid-70
+```mermaid
 classDiagram
 class Course {
 	name: String

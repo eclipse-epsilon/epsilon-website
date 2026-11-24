@@ -58,7 +58,7 @@ Model bindings are specific to EUnit: they allow developers to repeat a single t
 
 The figure below shows an example of an EUnit test tree: nodes with data bindings are marked with `data`, and nodes with model bindings are marked with `model`.
 
-```mermaid-90
+```mermaid
 graph TD
 	data1[data<br/>x=1]
 	data2[data<br/>x=2]
@@ -100,7 +100,7 @@ Optionally, EUnit can filter tests by name, running only `A` or `B`. Similarly t
 
 Parametric testing is not to be confused with *theories*: both repeat a test case with different values, but results are reported quite differently. While parametric testing produces separate test cases with independent results, theories produce aggregated tests which only pass if the original test case passes for every data point. The figures below illustrate these differences. EUnit does not support theories yet: however, they can be approximated with data bindings.
 
-```mermaid-50
+```mermaid
 graph TD
 	data1[data 1]
 	data2[data 2]
@@ -117,7 +117,7 @@ graph TD
 ```
 Parametric Testing
 
-```mermaid-50
+```mermaid
 graph TD
 	data1[test 1]
 	data2[test 2]

@@ -105,28 +105,7 @@ markdown_extensions:
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
-          class: mermaid mermaid-100
-          format: !!python/name:pymdownx.superfences.fence_code_format
-        - name: mermaid-90
-          class: mermaid mermaid-90
-          format: !!python/name:pymdownx.superfences.fence_code_format
-        - name: mermaid-80
-          class: mermaid mermaid-80
-          format: !!python/name:pymdownx.superfences.fence_code_format
-        - name: mermaid-70
-          class: mermaid mermaid-70
-          format: !!python/name:pymdownx.superfences.fence_code_format
-        - name: mermaid-60
-          class: mermaid mermaid-60
-          format: !!python/name:pymdownx.superfences.fence_code_format
-        - name: mermaid-50
-          class: mermaid mermaid-50
-          format: !!python/name:pymdownx.superfences.fence_code_format
-        - name: mermaid-40
-          class: mermaid mermaid-40
-          format: !!python/name:pymdownx.superfences.fence_code_format
-        - name: mermaid-30
-          class: mermaid mermaid-30
+          class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
   - admonition
   - pymdownx.smartsymbols
@@ -176,7 +155,6 @@ plugins:
 
 copyright: 'Copyright © <a href="https://www.eclipse.org">Eclipse Foundation, Inc.</a> All Rights Reserved <br/> <a href="https://www.eclipse.org/legal/privacy.php">Privacy Policy</a> &centerdot; <a href="https://www.eclipse.org/legal/termsofuse.php">Terms of Use</a> &centerdot; <a href="https://www.eclipse.org/legal/copyright.php">Copyright Agent</a>  &centerdot; <a href="https://www.eclipse.org/legal/">Legal</a><p><img src="https://eclipse.dev/epsilon/assets/images/eclipse-foundation-logo.svg"/></p>'
 extra_css:
-  - 'assets/stylesheets/mermaid.css'
   - 'assets/stylesheets/extra.css'
 google_analytics:
   - UA-184785655-1

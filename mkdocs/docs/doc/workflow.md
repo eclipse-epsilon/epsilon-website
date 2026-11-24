@@ -32,7 +32,7 @@ This section provides a brief discussion of the structure and concrete syntax of
 
 In ANT, each workflow is captured as a `project`. A simplified illustration of the structure of an ANT project is displayed in the figure below. Each ANT project consists of a number of `targets`. The one specified as the `default` is executed automatically when the project is executed. Each `target` contains a number of `tasks` and `depends` on other targets that must be executed before it. An ANT task is responsible for a distinct activity and can either succeed or fail. Exemplar activities implemented by ANT tasks include file system management, compiler invocation, version management and remote artefact deployment.
 
-```mermaid-80
+```mermaid
 classDiagram
 class Project {
   -targets: Target[*]
@@ -103,7 +103,7 @@ Having discussed ANT, Epsilon and the challenges their integration poses, the fo
 
 The role of the core framework, illustrated below, is to provide model loading and storing facilities as well as runtime communication facilities to the individual model management tasks that build atop it. This section provides a detailed discussion of the components it consists of.
 
-```mermaid-90
+```mermaid
 classDiagram
 class Task {
   -name: String
@@ -285,7 +285,7 @@ The example below demonstrates an exemplar usage of the `epsilon.startTransactio
 </epsilon.eol>
 ```
 
-```mermaid-90
+```mermaid
 classDiagram
 class ExecutableModuleTask {
   -src: String

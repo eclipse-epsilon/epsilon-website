@@ -236,7 +236,7 @@ Pattern Matching Output
 
 The output of the execution of an EPL module on a set of models is a collection of matches encapsulated in a *PatternMatchModel*, as illustrated in the figure below. As *PatternMatchModel* implements the *IModel* [EMC](emc.md) interface, its instances can be accessed from other programs expressed in languages of the Epsilon family.
 
-```mermaid-60
+```mermaid
 classDiagram
 class Match {
     +bindings: Map<String, Object>

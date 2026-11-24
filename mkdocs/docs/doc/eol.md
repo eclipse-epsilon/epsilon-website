@@ -946,7 +946,7 @@ After a simulation step, the state of the model has been drastically changed sin
 
 Quite often, during a model management operation it is necessary to associate model elements with information that is not supported by the metamodel they conform to. For instance, the EOL program in the listing below calculates the depth of each Tree element in a model that conforms to the Tree metamodel displayed below.
 
-```mermaid-30
+```mermaid
 classDiagram
 class Tree {
   +label: String

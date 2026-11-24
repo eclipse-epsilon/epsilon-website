@@ -4,7 +4,7 @@ The aim of Epsilon Flock is to contribute *model migration* capabilities to Epsi
 
 To illustrate the challenges of model migration, we use the example of metamodel evolution below. In the top figure, a `Component` comprises other `Component`s, `Connector`s and `Port`s. A `Connector` joins two `Port`s. `Connector`s are unidirectional, and hence define `to` and `from` references to `Port`. The original metamodel allows a `Connector` to start and end at the same `Port`, and the metamodel was evolved to prevent this, as shown in the bottom figure. `Port` was made abstract, and split into two subtypes, `InputPort` and `OutputPort`. The references between `Connector` and (the subtypes of) `Port` were renamed for consistency with the names of the subtypes.
 
-```mermaid-50
+```mermaid
 classDiagram
 class Component {
     +subcomponents: Component[*]
@@ -27,7 +27,7 @@ Connector -- Port: from
 Port -- Connector: to
 ```
 
-```mermaid-80
+```mermaid
 classDiagram
 class Component {
     +subcomponents: Component[*]
