@@ -6,37 +6,18 @@ This article shows how [Picto](../../picto/index.md) can be used to produce grap
 
 ## Setup
 
+- This example requires an Eclipse installation with Epsilon, Xtext, and the required plugins to run a nested Eclipse instance. If unsure of how to achieve this, a simple way is to [obtain Epsilon via the Eclipse installer](../../../download/index.md#development-tools).
 - Import the projects below from the `examples` folder of the [Epsilon Git repository](https://github.com/eclipse-epsilon/epsilon/tree/main/examples)
     - `org.eclipse.epsilon.examples.picto.xtext.domainmodel`
     - `org.eclipse.epsilon.examples.picto.xtext.domainmodel.ide`
     - `org.eclipse.epsilon.examples.picto.xtext.domainmodel.ui`
     - `org.eclipse.epsilon.examples.picto.xtext.domainmodel.picto`
 - Right-click on `Domainmodel.xtext` and select `Run As` --> `Generate Xtext Artefacts`
-- Run a nested Eclipse instance.
-- In the nested Eclipse instance workspace, create a new file named `blog.dmodel` with the content below:
+- Run a nested Eclipse instance (right-click on any of the project, `Run As` --> `Eclipse Application`).
+- In the nested Eclipse instance workspace, import the `org.eclipse.epsilon.examples.picto.xtext.domainmodel.example` project, which has a file named `blog.dmodel` with the content below:
 
-```
-datatype String
- 
-entity Blog {
-    title: String
-    many posts: Post
-}
- 
-entity HasAuthor {
-    author: String
-}
-
-entity Post extends HasAuthor {
-    title: String
-    content: String
-    many comments: Comment
-}
- 
-entity Comment extends HasAuthor {
-    content: String
-    many responses: Comment
-}
+```graphql
+{{{ example("org.eclipse.epsilon.examples.picto.xtext.domainmodel.example/blog.dmodel", true) }}}
 ```
 
 - Open the Picto view from the Window --> Show View menu.
@@ -67,23 +48,40 @@ Picto is made aware of this class through the `org.eclipse.epsilon.picto.pictoSo
 
 ### The Visualisation Transformation
 
-The visualisation transformation has been implemented using Epsilon's [EGL model-to-text transformation language](../../egl.md) and produces Graphviz-based class diagrams from the active entity model. The transformation consists of the `dmodel.egx` coordination rules, and the `entity2graphviz.egl` template shown below. The transformation produces one view for each entity in the model, which consists of the entity itself, any super/sub-types it may have, as well as other entities that it is related to. 
+The main visualisation transformation has been implemented using Epsilon's [EGL model-to-text transformation language](../../egl.md) and produces [Plantuml-based class diagrams](https://plantuml.com/class-diagram) from the active entity model. The transformation consists of the `dmodel.egx` coordination rules, and the `entity2plantuml.egl` template shown below. The first transformation rule (`AllEntities`) produces a general view for the whole domain model. The second rule (`Entity2PlantUML`) generates an individual view for each entity in the model with the entity itself, any super/sub-types it may have, as well as other entities that it is related to. The individual views are placed in the `Entities` folder in Picto's view tree.
 
 === "dmodel.egx"
 
     ```egx
-    {{{ example("org.eclipse.epsilon.examples.picto.xtext.domainmodel.picto/dmodel.egx", true) }}}
+    {{{ example("org.eclipse.epsilon.examples.picto.xtext.domainmodel.picto/picto/dmodel.egx", true) }}}
     ```
 
-=== "entity2graphviz.egl"
+=== "entity2plantuml.egl"
 
     ```egl
-    {{{ example("org.eclipse.epsilon.examples.picto.xtext.domainmodel.picto/entity2graphviz.egl", true) }}}
+    {{{ example("org.eclipse.epsilon.examples.picto.xtext.domainmodel.picto/picto/entity2plantuml.egl", true) }}}
     ```
+
+=== "barchart.egl"
+
+    ```egl
+    {{{ example("org.eclipse.epsilon.examples.picto.xtext.domainmodel.picto/picto/barchart.egl", true) }}}
+    ```
+
+=== "typeStats.pinset"
+
+    ```pinset
+    {{{ example("org.eclipse.epsilon.examples.picto.xtext.domainmodel.picto/picto/typeStats.pinset", true) }}}
+    ```
+
+The visualization includes the following two extra views/transformations:
+
+- A `Stats` view that contains a chartjs barchart with counts of data types, entities and features in the domain model. This showcases how Picto can also target available web libraries by generating plain html, css and javascript via EGL (`barchart.egl`).
+- A table-based visualization of the `Types` usage in the model (either entities or data types), created using the `typeStats.pinset` template. Pinset is an Epsilon language that allows [extracting tabular datasets from models](../../pinset/).
 
 ### Interactive Diagrams
 
-As shown below, you can navigate between diagrams and back to the Xtext editor using Picto's built-in `showElement` and `showView` [JavaScript functions](../../picto/index.md#interactive-diagrams).
+As shown below, you can navigate between PlantUML diagrams and back to the Xtext editor using Picto's built-in `showElement` and `showView` [JavaScript functions](../../picto/index.md#interactive-diagrams).
 
 ![](show-element.gif)
 
