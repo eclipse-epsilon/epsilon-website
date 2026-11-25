@@ -16,8 +16,8 @@ This article shows how [Picto](../../picto/index.md) can be used to produce grap
 - Run a nested Eclipse instance (right-click on any of the project, `Run As` --> `Eclipse Application`).
 - In the nested Eclipse instance workspace, import the `org.eclipse.epsilon.examples.picto.xtext.domainmodel.example` project, which has a file named `blog.dmodel` with the content below:
 
-```graphql
-{{{ example("org.eclipse.epsilon.examples.picto.xtext.domainmodel.example/blog.dmodel", true) }}}
+```
+{{{ example("org.eclipse.epsilon.examples.picto.xtext.domainmodel.example/blog.dmodel", false) }}}
 ```
 
 - Open the Picto view from the Window --> Show View menu.
