@@ -46,13 +46,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2257,44 +2251,45 @@
 <h1 id="graphical-model-editor-development-with-eugeniagmf">Graphical Model Editor development with Eugenia/GMF<a class="headerlink" href="#graphical-model-editor-development-with-eugeniagmf" title="Permanent link">&para;</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Eugenia discontinued in Epsilon 2.5</p>
-<p>Following the <a href="https://projects.eclipse.org/projects/modeling.gmf-tooling">archival of the GMF Tooling project</a>, Eugenia has been discontinued from version 2.5 onwards. While you can still use Eugenia with older versions of Epsilon, you may want to consider more actively-maintained tools such as <a href="https://eclipse.org/sirius">Eclipse Sirius</a> if you need to develop a graphical editor, or <a href="../picto">Picto</a> if you are only interested in producing read-only views from models.</p>
+<p>Following the <a href="https://projects.eclipse.org/projects/modeling.gmf-tooling">archival of the GMF Tooling project</a>, Eugenia has been discontinued from version 2.5 onwards. While you can still use Eugenia with older versions of Epsilon, you may want to consider more actively-maintained tools such as <a href="https://eclipse.org/sirius">Eclipse Sirius</a> if you need to develop a graphical editor, or <a href="../picto/">Picto</a> if you are only interested in producing read-only views from models.</p>
 </div>
 <p>Eugenia is a tool that simplifies the development of GMF-based graphical model editors by automatically generating the <code>.gmfgraph</code>, <code>.gmftool</code> and <code>.gmfmap</code> models needed by GMF editor from a single annotated Ecore metamodel. For example, from the following annotated EMF metamodel (expressed using Emfatic; an Ecore version is available <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.eugenia.examples.filesystem/model/filesystem.ecore">here</a>) it can generate a fully functional GMF editor, a screenshot of which is displayed below.</p>
 <h2 id="the-filesystem-metamodel">The Filesystem metamodel<a class="headerlink" href="#the-filesystem-metamodel" title="Permanent link">&para;</a></h2>
-<pre class="highlight"><code class="language-emf">@namespace(uri="filesystem", prefix="filesystem")
-@gmf
-package filesystem;
-
-@gmf.diagram
-class Filesystem {
-    val Drive[*] drives;
-    val Sync[*] syncs;
-}
-
-class Drive extends Folder {
-
-}
-
-class Folder extends File {
-    @gmf.compartment
-    val File[*] contents;
-}
-
-class Shortcut extends File {
-    @gmf.link(target.decoration="arrow", style="dash")
-    ref File target;
-}
-
-@gmf.link(source="source", target="target", style="dot", width="2")
-class Sync {
-    ref File source;
-    ref File target;
-}
-
-@gmf.node(label = "name")
-class File {
-    attr String name;
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@namespace</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="s2">&quot;filesystem&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;filesystem&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nd">@gmf</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">package</span><span class="w"> </span><span class="n">filesystem</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nd">@gmf.diagram</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">class</span><span class="w"> </span><span class="n">Filesystem</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="k">val</span><span class="w"> </span><span class="n">Drive</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">drives</span><span class="p">;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">val</span><span class="w"> </span><span class="n">Sync</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">syncs</span><span class="p">;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">}</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">class</span><span class="w"> </span><span class="n">Drive</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Folder</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">}</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="k">class</span><span class="w"> </span><span class="n">Folder</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="nd">@gmf.compartment</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="k">val</span><span class="w"> </span><span class="n">File</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">contents</span><span class="p">;</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="p">}</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="k">class</span><span class="w"> </span><span class="n">Shortcut</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="nd">@gmf.link</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">decoration</span><span class="o">=</span><span class="s2">&quot;arrow&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;dash&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="k">ref</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">target</span><span class="p">;</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="p">}</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="nd">@gmf.link</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;source&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;dot&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="k">class</span><span class="w"> </span><span class="n">Sync</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">    </span><span class="k">ref</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">source</span><span class="p">;</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="k">ref</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="n">target</span><span class="p">;</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="p">}</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="nd">@gmf.node</span><span class="p">(</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="k">class</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="p">}</span>
+</code></pre></div>
 <h2 id="the-generated-editor">The generated editor<a class="headerlink" href="#the-generated-editor" title="Permanent link">&para;</a></h2>
 <p><img alt="" src="Filesystemscreenshot2.png" /></p>
 <h2 id="supported-annotations">Supported Annotations<a class="headerlink" href="#supported-annotations" title="Permanent link">&para;</a></h2>
@@ -2325,11 +2320,11 @@ class File {
 <li><code>label.edit.pattern</code> (optional) : like <code>label.pattern</code>, but only for editing the label.</li>
 <li><code>label.pattern</code> (optional) : if more than one attributes are specified in the label, the format detail is necessary to show how their values will be rendered in the label. The format follows the Java Message Format style (e.g. <code>{0} : {1}</code>). The same pattern is used for editing and viewing the label.</li>
 <li><code>label.view.pattern</code> (optional) : like <code>label.pattern</code>, but only for viewing the label.</li>
-<li><code>label.placement</code> (optional) : defines the placement of the label in relation to the node. Can be set to <code>internal</code>, <code>external</code> or <code>none</code> (no label will be shown). ''(The default distance of an external label in GMF is 20pt which is a bit too far away for my taste. <a href="../articles/eugenia-affixed-nodes">Read more</a> about fixing this without changing the generated code every time)''.</li>
+<li><code>label.placement</code> (optional) : defines the placement of the label in relation to the node. Can be set to <code>internal</code>, <code>external</code> or <code>none</code> (no label will be shown). ''(The default distance of an external label in GMF is 20pt which is a bit too far away for my taste. <a href="../articles/eugenia-affixed-nodes/">Read more</a> about fixing this without changing the generated code every time)''.</li>
 <li><code>label.text</code> (optional) : defines the default text to be used when the <code>EAttribute</code>(s) in <code>label</code> are not set. By default, it is set to the name of the <code>EClass</code>.</li>
 <li><code>label.readOnly</code> (optional) : a value of <code>true</code> denotes that the label cannot be changed in the generated diagram editor.</li>
 <li><code>margin</code> (optional) : inset margin (5 units by default) for the node.</li>
-<li><code>phantom</code> (optional) : defines if the node is phantom (<code>true</code>/<code>false</code>). Phantom nodes are particularly useful in order to visualize containment references using links instead of spatial containment (<a href="../articles/eugenia-phantom-nodes">read more...</a>).</li>
+<li><code>phantom</code> (optional) : defines if the node is phantom (<code>true</code>/<code>false</code>). Phantom nodes are particularly useful in order to visualize containment references using links instead of spatial containment (<a href="../articles/eugenia-phantom-nodes/">read more...</a>).</li>
 <li><code>polygon.x</code> (when <code>figure</code> is set to <code>polygon</code>) : list of space-separated integers with the X coordinates of the polygon used as figure.</li>
 <li><code>polygon.y</code> (when <code>figure</code> is set to <code>polygon</code>) : list of space-separated integers with the Y coordinates of the polygon used as figure.</li>
 <li><code>resizable</code> (optional) : a value of <code>false</code> disables all the resize handles for the node</li>
@@ -2394,7 +2389,7 @@ class File {
 <li><code>layout</code> (optional) : The layout of the compartment. Can be set to free (default) or list</li>
 </ul>
 <h3 id="gmfaffixed-for-containment-ereference">gmf.affixed (for containment EReference)<a class="headerlink" href="#gmfaffixed-for-containment-ereference" title="Permanent link">&para;</a></h3>
-<p>Defines that the containment reference will create nodes which are affixed to the edges of the containing node. <a href="../articles/eugenia-affixed-nodes">See an example</a>.</p>
+<p>Defines that the containment reference will create nodes which are affixed to the edges of the containing node. <a href="../articles/eugenia-affixed-nodes/">See an example</a>.</p>
 <h3 id="gmflabel-for-eattribute">gmf.label (for EAttribute)<a class="headerlink" href="#gmflabel-for-eattribute" title="Permanent link">&para;</a></h3>
 <p>Defines additional labels for the containing <code>EClass</code>. These labels will be displayed underneath the default label for the containing <code>EClass</code>. It accepts the following details:</p>
 <ul>
@@ -2424,7 +2419,7 @@ Detailed <a href="http://www.eclipse.org/gmt/epsilon/download">installation inst
 <li>Right-click your Ecore metamodel (or Emfatic file) and select <code>Eugenia</code> &rarr; <code>Generate GMF editor</code></li>
 <li>Run a new instance of Eclipse</li>
 </ul>
-<p>(Please note that any changes you have made manually to the editor's <code>.gmfgraph</code>, <code>.gmftool</code> and <code>.gmfmap</code> models will be <strong>overwritten</strong>. Have a look <a href="../articles/eugenia-polishing">here</a> for an alternative way to customize these models)</p>
+<p>(Please note that any changes you have made manually to the editor's <code>.gmfgraph</code>, <code>.gmftool</code> and <code>.gmfmap</code> models will be <strong>overwritten</strong>. Have a look <a href="../articles/eugenia-polishing/">here</a> for an alternative way to customize these models)</p>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Certain versions of Emfatic do not support annotations without details (e.g. <code>@gmf</code> or <code>@gmf.diagram</code>). You can use dummy details as a workaround (e.g. <code>@gmf(foo="bar")</code>)</li>
@@ -2434,15 +2429,15 @@ Detailed <a href="http://www.eclipse.org/gmt/epsilon/download">installation inst
 </ul>
 <h2 id="recipes">Recipes<a class="headerlink" href="#recipes" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../articles/eugenia-nodes-with-images">Nodes with user defined images</a> (e.g. jpg, png, gif)</li>
-<li><a href="../articles/eugenia-nodes-with-runtime-images">Nodes with user defined images at runtime</a></li>
+<li><a href="../articles/eugenia-nodes-with-images/">Nodes with user defined images</a> (e.g. jpg, png, gif)</li>
+<li><a href="../articles/eugenia-nodes-with-runtime-images/">Nodes with user defined images at runtime</a></li>
 </ul>
 <h2 id="customizing-your-editor">Customizing your editor<a class="headerlink" href="#customizing-your-editor" title="Permanent link">&para;</a></h2>
-<p><a href="../articles/eugenia-polishing">Click here</a> to find out how you can further customize the generated <code>.gmfgraph</code>, <code>.gmfmap</code> and <code>.gmftool</code> models in ways that are not supported by the annotations provided by Eugenia, and still preserve the customizations when Eugenia is re-invoked.</p>
+<p><a href="../articles/eugenia-polishing/">Click here</a> to find out how you can further customize the generated <code>.gmfgraph</code>, <code>.gmfmap</code> and <code>.gmftool</code> models in ways that are not supported by the annotations provided by Eugenia, and still preserve the customizations when Eugenia is re-invoked.</p>
 <h2 id="adding-copyright">Adding Copyright<a class="headerlink" href="#adding-copyright" title="Permanent link">&para;</a></h2>
 <p>To add copyright information to your generated .gmfgen model, simply create a file named copyright.txt next to it. Next time you invoke <code>Eugenia</code> &rarr; <code>Synchronize GMF gen model</code>, Eugenia will pick it up and place its contents in the root GenDiagramEditor of your .gmfgen model. If you have added the copyright.txt file, you can also inject its contents to your .genmodel model (EMF generator model) by right-clicking it and invoking <code>Eugenia</code> &rarr; <code>Synchronize EMF gen model</code>.</p>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>Now that you've learned how to generate a GMF-based editor using Eugenia, you may also want to add some constraints to your editor, which you can then evaluate (explicitly or on-save) to <a href="../articles/evl-gmf-integration">check the correctness/consistency of your models</a>:</p>
+<p>Now that you've learned how to generate a GMF-based editor using Eugenia, you may also want to add some constraints to your editor, which you can then evaluate (explicitly or on-save) to <a href="../articles/evl-gmf-integration/">check the correctness/consistency of your models</a>:</p>
 <p><img alt="" src="Filesystemwitherrorshighlighted.png" /></p>
 
 
@@ -2577,8 +2572,6 @@ Detailed <a href="http://www.eclipse.org/gmt/epsilon/download">installation inst
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

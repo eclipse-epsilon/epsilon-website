@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1949,7 +1943,7 @@
 </tbody>
 </table>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>The development tools of Epsilon come as a set of Eclipse plugins and therefore, unless you download one of the ready-made distributions above, to install Epsilon you need to download and install a  <a href="https://adoptopenjdk.net/">Java Runtime Environment</a> and Eclipse first. The <a href="https://www.eclipse.org/downloads/packages/">Eclipse Modeling Tools</a> distribution contains most of the necessary prerequisites for Epsilon 1.x. See <a href="../all-versions">this page</a> to find out which modeling tools distribution matches the version of Epsilon you wish to install.</p>
+<p>The development tools of Epsilon come as a set of Eclipse plugins and therefore, unless you download one of the ready-made distributions above, to install Epsilon you need to download and install a  <a href="https://adoptopenjdk.net/">Java Runtime Environment</a> and Eclipse first. The <a href="https://www.eclipse.org/downloads/packages/">Eclipse Modeling Tools</a> distribution contains most of the necessary prerequisites for Epsilon 1.x. See <a href="../all-versions/">this page</a> to find out which modeling tools distribution matches the version of Epsilon you wish to install.</p>
 <h2 id="update-site">Update Site<a class="headerlink" href="#update-site" title="Permanent link">&para;</a></h2>
 <p>You can use the following update sites through the <code>Help</code> &rarr; <code>Install new software</code> menu in Eclipse to install (parts of) Epsilon. Please untick the <code>Show only the latest versions of available software</code> check box, as shown below, to reveal older versions of Epsilon.</p>
 <table>
@@ -2026,15 +2020,16 @@
 <p>The source code of 1.x versions of Epsilon can be obtained by checking out the respective tag listed under <a href="https://github.com/eclipse-epsilon/epsilon/tags">https://github.com/eclipse-epsilon/epsilon/tags</a> (e.g. <code>https://github.com/eclipse-epsilon/epsilon/releases/tag/1.4</code> for 1.4)</p>
 <h2 id="maven">Maven<a class="headerlink" href="#maven" title="Permanent link">&para;</a></h2>
 <p>Older versions of Epsilon JARs are available from <a href="https://mvnrepository.com/artifact/org.eclipse.epsilon">Maven Central</a>. Note that prior to 2.0, the structure was different (less modular). For instance, to use the <code>epsilon-core</code> JAR from your <code>pom.xml</code>:</p>
-<pre class="highlight"><code class="language-xml">&lt;dependencies&gt;
-  ...
-  &lt;dependency&gt;
-    &lt;groupId&gt;org.eclipse.epsilon&lt;/groupId&gt;
-    &lt;artifactId&gt;epsilon-core&lt;/artifactId&gt;
-    &lt;version&gt;1.5.1&lt;/version&gt;
-  &lt;/dependency&gt;
-  ...
-&lt;/dependencies&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&lt;dependencies&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span>...
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&lt;dependency&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>org.eclipse.epsilon<span class="nt">&lt;/groupId&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>epsilon-core<span class="nt">&lt;/artifactId&gt;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">&lt;version&gt;</span>1.5.1<span class="nt">&lt;/version&gt;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="nt">&lt;/dependency&gt;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span>...
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nt">&lt;/dependencies&gt;</span>
+</code></pre></div>
 
 
 
@@ -2130,8 +2125,6 @@
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

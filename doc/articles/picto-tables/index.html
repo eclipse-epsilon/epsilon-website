@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1852,41 +1846,43 @@
 
 
 <h1 id="generating-table-views-in-picto">Generating table views in Picto<a class="headerlink" href="#generating-table-views-in-picto" title="Permanent link">&para;</a></h1>
-<p>This article shows how <a href="../../picto">Picto</a> is able to render CSV files as enhanced HTML tables provided by the <a href="https://metroui.org.ua/tables.html">Metro UI</a> library, which include table styling, pagination, column sorting, and search capabilities. It also shows how the <a href="../../pinset">Pinset</a> language can be used to create these table views without having to generate CSVs through a general-purpose model-to-text transformation.</p>
+<p>This article shows how <a href="../../picto/">Picto</a> is able to render CSV files as enhanced HTML tables provided by the <a href="https://metroui.org.ua/tables.html">Metro UI</a> library, which include table styling, pagination, column sorting, and search capabilities. It also shows how the <a href="../../pinset/">Pinset</a> language can be used to create these table views without having to generate CSVs through a general-purpose model-to-text transformation.</p>
 <h2 id="rendering-csv-files-in-the-workspace">Rendering CSV files in the workspace<a class="headerlink" href="#rendering-csv-files-in-the-workspace" title="Permanent link">&para;</a></h2>
-<p>Picto can be used to render CSV files present in an Eclipse project. The following figure shows the table generated for one of the output CSV files of the <a href="../../pinset">Pinset</a> grading example:</p>
+<p>Picto can be used to render CSV files present in an Eclipse project. The following figure shows the table generated for one of the output CSV files of the <a href="../../pinset/">Pinset</a> grading example:</p>
 <p><img alt="" src="csv-picto.png" /></p>
 <p>To automatically render CSV files in Picto, the <code>Render verbatim sources</code> option needs to be enabled. This option can be turned on temporarily in the top-right hamburger menu option of the Picto window, or it can be permanently set in the Eclipse preferences (Epsilon &gt; Picto).</p>
 <h2 id="generating-table-views-with-a-pinset-transformation">Generating table views with a Pinset transformation<a class="headerlink" href="#generating-table-views-with-a-pinset-transformation" title="Permanent link">&para;</a></h2>
-<p><a href="../../pinset">Pinset</a> is a domain-specific transformation language that allows extracting tabular datasets from models. Initially devised for data analysis purposes, this language can be used along Picto to generate table-based model visualisations.</p>
-<p>In the Social Network example that can be found in the <a href="../../picto">Picto</a> documentation, one of the views is generated with the following Pinset dataset rule:</p>
-<pre class="highlight"><code class="language-pinset">dataset personStats over person : Person {
-    properties[name]
-
-    column liked_by : Person.all.select(p |
-            p.likes.includes(person)).size()
-    column liking : person.likes.size()
-
-    column disliked_by : Person.all.select(p |
-            p.dislikes.includes(person)).size()
-    column disliking : person.dislikes.size()
-
-    column like_meter : liked_by - disliked_by
-}</code></pre>
-<p>Briefly, a Pinset dataset rule contains EOL-based definitions of the different columns of the output dataset. These columns operate over elements of the input model (such as the <code>Person</code> elements in the rule above) to create the dataset rows. In the example, likes and dislikes counts are obtained for each <code>Person</code> element in the dataset. Check the <a href="../../pinset">Pinset documentation</a> for more information about other features of the language such as advanced column generators.</p>
+<p><a href="../../pinset/">Pinset</a> is a domain-specific transformation language that allows extracting tabular datasets from models. Initially devised for data analysis purposes, this language can be used along Picto to generate table-based model visualisations.</p>
+<p>In the Social Network example that can be found in the <a href="../../picto/">Picto</a> documentation, one of the views is generated with the following Pinset dataset rule:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">dataset</span><span class="w"> </span><span class="n">personStats</span><span class="w"> </span><span class="k">over</span><span class="w"> </span><span class="n">person</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">properties</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">column</span><span class="w"> </span><span class="n">liked_by</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Person</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">|</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">            </span><span class="n">p</span><span class="o">.</span><span class="n">likes</span><span class="o">.</span><span class="n">includes</span><span class="p">(</span><span class="n">person</span><span class="p">))</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">column</span><span class="w"> </span><span class="n">liking</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">person</span><span class="o">.</span><span class="n">likes</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">column</span><span class="w"> </span><span class="n">disliked_by</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Person</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">|</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">            </span><span class="n">p</span><span class="o">.</span><span class="n">dislikes</span><span class="o">.</span><span class="n">includes</span><span class="p">(</span><span class="n">person</span><span class="p">))</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="k">column</span><span class="w"> </span><span class="n">disliking</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">person</span><span class="o">.</span><span class="n">dislikes</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="k">column</span><span class="w"> </span><span class="n">like_meter</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">liked_by</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">disliked_by</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">}</span>
+</code></pre></div>
+<p>Briefly, a Pinset dataset rule contains EOL-based definitions of the different columns of the output dataset. These columns operate over elements of the input model (such as the <code>Person</code> elements in the rule above) to create the dataset rows. In the example, likes and dislikes counts are obtained for each <code>Person</code> element in the dataset. Check the <a href="../../pinset/">Pinset documentation</a> for more information about other features of the language such as advanced column generators.</p>
 <p>To use the above Pinset rule to create a Picto view in the social network model visualisation, the following EGX rule is present in the <code>picto/socialnetwork.egx</code> file:</p>
-<pre class="highlight"><code class="language-egx">rule Persons2Table {
-
-    template : "persons2table.pinset"
-
-    parameters : Map {
-        "path" = Sequence{"Stats"},
-        "icon" = "table",
-        "format" = "csv"
-
-        // ,"pinsetrule" = "otherStats"
-    }
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">rule</span><span class="w"> </span><span class="n">Persons2Table</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;persons2table.pinset&quot;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="k">parameters</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Map</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="s2">&quot;path&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Sequence</span><span class="p">{</span><span class="s2">&quot;Stats&quot;</span><span class="p">},</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="s2">&quot;icon&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;table&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="s2">&quot;format&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;csv&quot;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="c1">// ,&quot;pinsetrule&quot; = &quot;otherStats&quot;</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="p">}</span>
+</code></pre></div>
 <p>The EGX rule above is very similar to the ones normally used for EGL templates. As differences, the rule points to a <code>.pinset</code> template file where the Pinset dataset rules are contained, and the defined icon and format are <code>table</code> and <code>csv</code> respectivelly. Lastly, as a Pinset file can contain several dataset rules, it is possible to select which rule to use in the visualisation with the <code>pinsetrule</code> parameter (commented out in the rule above).</p>
 <p>The above EGX and Pinset rules generate the following table view:</p>
 <p><img alt="" src="pinset-picto.png" /></p>
@@ -1985,8 +1981,6 @@
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

@@ -58,7 +58,7 @@ Model bindings are specific to EUnit: they allow developers to repeat a single t
 
 The figure below shows an example of an EUnit test tree: nodes with data bindings are marked with `data`, and nodes with model bindings are marked with `model`.
 
-```mermaid-90
+```mermaid
 graph TD
 	data1[data<br/>x=1]
 	data2[data<br/>x=2]
@@ -100,7 +100,7 @@ Optionally, EUnit can filter tests by name, running only `A` or `B`. Similarly t
 
 Parametric testing is not to be confused with *theories*: both repeat a test case with different values, but results are reported quite differently. While parametric testing produces separate test cases with independent results, theories produce aggregated tests which only pass if the original test case passes for every data point. The figures below illustrate these differences. EUnit does not support theories yet: however, they can be approximated with data bindings.
 
-```mermaid-50
+```mermaid
 graph TD
 	data1[data 1]
 	data2[data 2]
@@ -117,7 +117,7 @@ graph TD
 ```
 Parametric Testing
 
-```mermaid-50
+```mermaid
 graph TD
 	data1[test 1]
 	data2[test 2]
@@ -154,7 +154,7 @@ The execution of a test case is divided into the following steps:
 
 An important difference between JUnit and EUnit is that setup is split into two parts: model setup and regular setup. This split allows users to add code before and after model bindings are applied. Normally, the model setup sections will load all the models needed by the test suite, and the regular setup sections will further prepare the models selected by the model binding. Explicit teardown sections are usually not needed, as models are disposed automatically by EUnit. EUnit includes them for consistency with the xUnit frameworks.
 
-Due to its focus on model management, model setup in EUnit is very flexible. Developers can combine several ways to set up models, such as model references, individual Apache Ant tasks, Apache Ant targets or [Human-Usable Text Notation (HUTN)](../hutn) fragments.
+Due to its focus on model management, model setup in EUnit is very flexible. Developers can combine several ways to set up models, such as model references, individual Apache Ant tasks, Apache Ant targets or [Human-Usable Text Notation (HUTN)](hutn.md) fragments.
 
 A test case may produce one among several results. `SUCCESS` is obtained if all assertions passed and no exceptions were thrown. `FAILURE` is obtained if an assertion failed. `ERROR` is obtained if an unexpected exception was thrown while running the test. Finally, tests may be `SKIPPED` by the user.
 

@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1938,7 +1932,8 @@ It's important to do them in proper order, as described below.</p>
 <h3 id="checking-licensing-via-the-dash-tool">Checking licensing via the Dash tool<a class="headerlink" href="#checking-licensing-via-the-dash-tool" title="Permanent link">&para;</a></h3>
 <p>We use the <a href="https://www.eclipse.org/projects/handbook/#ip-license-tool">Eclipse Dash License</a> tool to check the libraries we use.
 To perform these checks, run the provided script in the root of the repository:</p>
-<pre class="highlight"><code class="language-shell">./dash-license-check.sh</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>./dash-license-check.sh
+</code></pre></div>
 <p>The script may mention a number of libraries which show as restricted due to their coordinates not being recorded in IPLab, but are still OK to use as they are on Eclipse Orbit (which has had its own IP review process), or they match a Maven Central dependency which has an approved license.</p>
 <p>If there is a restricted dependency which has not been reviewed in any way, then it needs to be put through the <a href="https://www.eclipse.org/projects/handbook/#ip-request">IPLab</a> process.</p>
 <h3 id="checking-that-the-interim-site-is-installable-from-a-clean-eclipse">Checking that the interim site is installable from a clean Eclipse<a class="headerlink" href="#checking-that-the-interim-site-is-installable-from-a-clean-eclipse" title="Permanent link">&para;</a></h3>
@@ -1956,7 +1951,7 @@ This script needs to be run from the CI server via the <a href="https://ci.eclip
 <p>The <code>releng/org.eclipse.epsilon.releng/epsilonUse.setup</code> should be updated with the new version. You can copy the Interim version and rename it to the release. The ordering of Product Versions should always be the latest release at the top, then Interim, then older versions. Whichever is at the top will be the default when users try to install Epsilon using Oomph.
 Of course, the properties for the new version should be changed to match (e.g. the name, description and update site). Check these carefully. A version of Eclipse should also be hard-coded, rather than relying on the latest update site, so pick whichever is the latest Eclipse release and use that.</p>
 <h3 id="build-and-release-to-maven-central">Build and release to Maven Central<a class="headerlink" href="#build-and-release-to-maven-central" title="Permanent link">&para;</a></h3>
-<p>See <a href="../maven-release">this article</a>.</p>
+<p>See <a href="../maven-release/">this article</a>.</p>
 <h3 id="tagging-the-release">Tagging the release<a class="headerlink" href="#tagging-the-release" title="Permanent link">&para;</a></h3>
 <p>You should run <code>git tag x.y</code>, replacing x.y with the version. Then do <code>git push origin x.y</code> (again, <code>x.y</code> is the version).
 You can verify the tag was pushed by checking the output of <code>git ls-remote --tags origin</code>.</p>
@@ -1967,13 +1962,14 @@ Add the new release info to <code>all-versions.md</code>. Copy <code>index.md</c
 <p>Also don't forget to build the static site for changes to take effect.</p>
 <h3 id="bump-up-versions">Bump up versions<a class="headerlink" href="#bump-up-versions" title="Permanent link">&para;</a></h3>
 <p>Run the following commands from the root of the repository, replacing <code>X.Y.Z</code> with the full version number of the release (where Z is the patch, usually 0). Tycho will automatically take care of updating the Maven and PDE projects (<code>MANIFEST.MF</code>, <code>feature.xml</code> etc.). Note that the standalone POMs (i.e. the <code>pom-plain.xml</code> files) are bumped separately using the third command below. Also note the order: run the Tycho one first, then bump <code>epsilon.version</code>, then run the Tycho versions bump again and it should succeed.</p>
-<pre class="highlight"><code>mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=X.Y.Z-SNAPSHOT
-
-mvn versions:set-property -Dproperty=epsilon.version -DnewVersion=X.Y.Z-SNAPSHOT
-
-mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=X.Y.Z-SNAPSHOT
-
-mvn -f pom-plain.xml versions:set -DnewVersion=X.Y.Z-SNAPSHOT</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=X.Y.Z-SNAPSHOT
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>mvn versions:set-property -Dproperty=epsilon.version -DnewVersion=X.Y.Z-SNAPSHOT
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=X.Y.Z-SNAPSHOT
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>mvn -f pom-plain.xml versions:set -DnewVersion=X.Y.Z-SNAPSHOT
+</code></pre></div>
 <p>You may also need to manually bump up the version of the <code>releng/org.eclipse.epsilon.target</code> project. Specifically, the <code>META-INF/MANIFEST.MF</code>, but it's also worth checking the <code>pom.xml</code> to make sure they're consistent with each other. Also check <code>org.eclipse.epsilon.test/META-INF/MANIFEST.MF</code>. The build will fail if anything is inconsistent.</p>
 <p>Update the target platform (both <code>.tpd</code> and <code>.target</code>) to point to the matching version of the Jena uber-JAR, as otherwise the build will break.</p>
 <h3 id="announce-release-on-forum">Announce release on forum<a class="headerlink" href="#announce-release-on-forum" title="Permanent link">&para;</a></h3>
@@ -2073,8 +2069,6 @@ mvn -f pom-plain.xml versions:set -DnewVersion=X.Y.Z-SNAPSHOT</code></pre>
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

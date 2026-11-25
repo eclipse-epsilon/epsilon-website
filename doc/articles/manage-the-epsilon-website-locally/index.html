@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1908,7 +1902,8 @@
 <p>There is a <code>publish.sh</code> script in the repo, which creates separate commits for the changes to <code>mkdocs</code> and the changes to the generated static files, and then pushes both commits to the remote repo. You can use it as follows: <code>./publish.sh "Added new article"</code>.</p>
 <h2 id="finding-broken-links">Finding broken links<a class="headerlink" href="#finding-broken-links" title="Permanent link">&para;</a></h2>
 <p><code>wget</code> and <code>grep</code> can be used to find broken links in the Epsilon website. First, run the website locally by executing the <code>./serve.sh</code> command as described above. Then, we will traverse the website using <code>wget</code> with this command:</p>
-<pre class="highlight"><code>wget -e robots=off --spider -r --no-parent -o wget_errors.txt http://localhost:8000</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>wget -e robots=off --spider -r --no-parent -o wget_errors.txt http://localhost:8000
+</code></pre></div>
 <p>We have used these options:</p>
 <ul>
 <li><code>-e robots=off</code> makes <code>wget</code> ignore <code>robots.txt</code>. This is OK in this case, as we're running the spider on our own local server.</li>
@@ -1918,7 +1913,8 @@
 <li><code>-o wget_errors.txt</code> collects all messages in the <code>wget_errors.txt</code> file</li>
 </ul>
 <p>Once it's done, we can simply search for the word "404" in the log, with:</p>
-<pre class="highlight"><code>grep -B2 -w 404 wget_errors.txt</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>grep -B2 -w 404 wget_errors.txt
+</code></pre></div>
 <p>We will get a list of all the URLs which reported 404 (Not Found) HTTP error codes.</p>
 
 
@@ -2015,8 +2011,6 @@
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

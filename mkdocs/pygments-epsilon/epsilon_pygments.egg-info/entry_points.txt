@@ -1,0 +1,13 @@
+[pygments.lexers]
+ecl = epsilon_pygments:EclLexer
+egl = epsilon_pygments:EglLexer
+egx = epsilon_pygments:EgxLexer
+emfatic = epsilon_pygments:EmfaticLexer
+eml = epsilon_pygments:EmlLexer
+eol = epsilon_pygments:EolLexer
+epl = epsilon_pygments:EplLexer
+etl = epsilon_pygments:EtlLexer
+evl = epsilon_pygments:EvlLexer
+ewl = epsilon_pygments:EwlLexer
+flock = epsilon_pygments:FlockLexer
+pinset = epsilon_pygments:PinsetLexer

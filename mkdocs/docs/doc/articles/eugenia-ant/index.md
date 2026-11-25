@@ -16,7 +16,7 @@ The Eugenia Ant task only requires specifying the source Emfatic description or 
 
 !!! warning Important
 
-	The Eugenia Ant task requires that the Ant buildfile is run from the same JRE as the workspace. Please check the [Workflow](../../../doc/workflow) documentation for instructions on how to do it.
+	The Eugenia Ant task requires that the Ant buildfile is run from the same JRE as the workspace. Please check the [Workflow](../../workflow.md) documentation for instructions on how to do it.
 
 ## Limiting the steps to be run
 Normally, Eugenia runs all these steps:

@@ -15,7 +15,7 @@ Below are different versions of the Epsilon logo to use in posters, presentation
 
 ## What do the name and the logo mean?
 
-Epsilon (pronounced [ɛpsɪlɒn](https://youtu.be/Z2MJ_oBcfYE?t=10)) stands for **E**xtensible **P**latform for **S**pecification of **I**nteroperable **L**anguages for M**o**del Ma**n**agement. The dark blue jigsaw pieces in the logo represent the [different languages in Epsilon](../doc/#languages), while the purple pieces represent the [different modelling technologies](../doc/emc/#emc-drivers) that Epsilon programs can operate on.
+Epsilon (pronounced [ɛpsɪlɒn](https://youtu.be/Z2MJ_oBcfYE?t=10)) stands for **E**xtensible **P**latform for **S**pecification of **I**nteroperable **L**anguages for M**o**del Ma**n**agement. The dark blue jigsaw pieces in the logo represent the [different languages in Epsilon](../doc/index.md#languages), while the purple pieces represent the [different modelling technologies](../doc/emc.md#emc-drivers) that Epsilon programs can operate on.
 
 ## License
 

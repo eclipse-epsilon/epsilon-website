@@ -42,4 +42,4 @@ Below is the annotated OO metamodel (in Emfatic) that was used to obtain the Exe
 ```
 
 ## Resources
-- [Article: Inspecting EMF Models with Exeed](../articles/inspect-models-exeed)
+- [Article: Inspecting EMF Models with Exeed](../articles/inspect-models-exeed/index.md)

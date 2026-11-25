@@ -14,7 +14,7 @@ You can try most Epsilon languages in the online [Epsilon Playground](playground
 
 ## Using Epsilon as a Java library
 
-The execution engines of Epsilon's languages, the [Flexmi](doc/flexmi/index.md) parser, and drivers for [EMF](doc/articles/index.md#epsilon-and-emf-models), [UML](../doc/articles/profiled-uml-models), [XML](doc/articles/plain-xml/index.md) and [Excel](doc/articles/excel/index.md) are available as standard Java libraries through [Maven Central](https://central.sonatype.com/namespace/org.eclipse.epsilon). To get started with parsing and executing Epsilon programs from your Java application:
+The execution engines of Epsilon's languages, the [Flexmi](doc/flexmi/index.md) parser, and drivers for [EMF](doc/articles/index.md#epsilon-and-emf-models), [UML](doc/articles/profiled-uml-models/index.md), [XML](doc/articles/plain-xml/index.md) and [Excel](doc/articles/excel/index.md) are available as standard Java libraries through [Maven Central](https://central.sonatype.com/namespace/org.eclipse.epsilon). To get started with parsing and executing Epsilon programs from your Java application:
 
 - Go to the [Epsilon Playground](playground/index.html) and select one of the examples;
 - Click the `Download` button and select `Java (Maven)` or `Java (Gradle)` from the window that pops up to download a zipped copy of the example. The downloaded zip file includes an `Example` Java class as well as a `pom.xml`/`build.gradle` file with all the Epsilon dependencies;

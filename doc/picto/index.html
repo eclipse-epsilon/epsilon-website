@@ -46,13 +46,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2174,7 +2168,7 @@
 <p>Picto is an Eclipse view for <strong>visualising models via model-to-text transformation</strong> to SVG/HTML. Compared to existing graphical modelling frameworks such as <a href="https://eclipse.org/sirius">Sirius</a> and <a href="../eugenia/">GMF/Eugenia</a>, the main appeal of Picto is that model visualisation takes place in an embedded browser and therefore you can leverage any HTML/SVG/JavaScript-based technology such as <a href="https://d3js.org/">D3.js</a>, <a href="https://github.com/jgraph/mxgraph">mxGraph</a> and <a href="https://www.jointjs.com/">JointJS</a>. Picto also provides built-in support for the powerful <a href="https://www.graphviz.org/">Graphviz</a> and <a href="https://plantuml.com/">PlantUML</a> textual syntaxes (which are transformed to SVG via the respective tools). A distinguishing feature of Picto is that it does not require running multiple Eclipse instances as the metamodels, models and visualisation transformations can all reside in the same workspace.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>As Picto uses <a href="../egl">EGL</a> for model-to-text transformation, it is <a href="#using-picto-in-standalone-mode-with-many-models">not limited to EMF-based models</a> and can be used to visualise the contents of Simulink models, XML documents, spreadsheets, and any other type of artefact supported by an <a href="../emc">Epsilon EMC driver</a>.</p>
+<p>As Picto uses <a href="../egl/">EGL</a> for model-to-text transformation, it is <a href="#using-picto-in-standalone-mode-with-many-models">not limited to EMF-based models</a> and can be used to visualise the contents of Simulink models, XML documents, spreadsheets, and any other type of artefact supported by an <a href="../emc/">Epsilon EMC driver</a>.</p>
 </div>
 <details class="info">
 <summary>Citing Picto in a publication?</summary>
@@ -2184,68 +2178,71 @@
 <p><img alt="" src="picto-eclipse.png" /></p>
 <h2 id="metamodel">Metamodel<a class="headerlink" href="#metamodel" title="Permanent link">&para;</a></h2>
 <p>We start with the metamodel of our social network DSL expressed in <a href="https://www.eclipse.org/emfatic/">Emfatic</a> (the <code>.ecore</code> version of the metamodel is also provided in the repository). The DSL allows modelling people in a network and likes/dislikes relationships between them.</p>
-<pre class="highlight"><code class="language-emf">@namespace(uri="socialnetwork", prefix="")
-package socialnetwork;
-
-class SocialNetwork {
-    val Person[*] people;
-}
-
-class Person {
-    attr String name;
-    ref Person[*] likes;
-    ref Person[*] dislikes;
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@namespace</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="s2">&quot;socialnetwork&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">package</span><span class="w"> </span><span class="n">socialnetwork</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">class</span><span class="w"> </span><span class="n">SocialNetwork</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="k">val</span><span class="w"> </span><span class="n">Person</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">people</span><span class="p">;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">}</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">class</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="k">ref</span><span class="w"> </span><span class="n">Person</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">likes</span><span class="p">;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="k">ref</span><span class="w"> </span><span class="n">Person</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">dislikes</span><span class="p">;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">}</span>
+</code></pre></div>
 <h2 id="model">Model<a class="headerlink" href="#model" title="Permanent link">&para;</a></h2>
-<p>Below is a model that conforms to the social network metamodel. The model is defined for convenience in <a href="../flexmi">Flexmi</a>, however Picto also works with XMI-based models (see below).</p>
-<pre class="highlight"><code class="language-xml">&lt;?nsuri socialnetwork?&gt;
-&lt;?render-egx picto/socialnetwork.egx?&gt;
-&lt;socialnetwork&gt;
-    &lt;person name="Alice" likes="Bob, Charlie"/&gt;
-    &lt;person name="Bob" likes="Enid, Alice" dislikes="Fred, Charlie"/&gt;
-    &lt;person name="Charlie" likes="Fred, Alice" dislikes="Dawn, Enid"/&gt;
-    &lt;person name="Dawn" likes="Bob" dislikes="Fred"/&gt;
-    &lt;person name="Enid" likes="Charlie" dislikes="Alice"/&gt;
-    &lt;person name="Fred" dislikes="Bob" likes="Enid, Alice"/&gt;
-&lt;/socialnetwork&gt;</code></pre>
+<p>Below is a model that conforms to the social network metamodel. The model is defined for convenience in <a href="../flexmi/">Flexmi</a>, however Picto also works with XMI-based models (see below).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">&lt;?nsuri socialnetwork?&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cp">&lt;?render-egx picto/socialnetwork.egx?&gt;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">&lt;socialnetwork&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="w"> </span><span class="na">likes=</span><span class="s">&quot;Bob, Charlie&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Bob&quot;</span><span class="w"> </span><span class="na">likes=</span><span class="s">&quot;Enid, Alice&quot;</span><span class="w"> </span><span class="na">dislikes=</span><span class="s">&quot;Fred, Charlie&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Charlie&quot;</span><span class="w"> </span><span class="na">likes=</span><span class="s">&quot;Fred, Alice&quot;</span><span class="w"> </span><span class="na">dislikes=</span><span class="s">&quot;Dawn, Enid&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Dawn&quot;</span><span class="w"> </span><span class="na">likes=</span><span class="s">&quot;Bob&quot;</span><span class="w"> </span><span class="na">dislikes=</span><span class="s">&quot;Fred&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Enid&quot;</span><span class="w"> </span><span class="na">likes=</span><span class="s">&quot;Charlie&quot;</span><span class="w"> </span><span class="na">dislikes=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Fred&quot;</span><span class="w"> </span><span class="na">dislikes=</span><span class="s">&quot;Bob&quot;</span><span class="w"> </span><span class="na">likes=</span><span class="s">&quot;Enid, Alice&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="nt">&lt;/socialnetwork&gt;</span>
+</code></pre></div>
 <p>In line 2 of the model, notice the <code>render-egx</code> processing instruction, which specifies a model-to-text transformation written in <a href="../egx/">EGX/EGL</a>, that Picto should use to visualise this model.</p>
 <h2 id="model-to-text-transformation">Model-to-Text Transformation<a class="headerlink" href="#model-to-text-transformation" title="Permanent link">&para;</a></h2>
 <p>The <code>socialnetwork.egx</code> EGX model-to-text transformation is as follows:</p>
-<pre class="highlight"><code class="language-egx">rule Network2Graphviz
-    transform n : socialnetwork::SocialNetwork {
-
-    template : "socialnetwork2graphviz.egl"
-
-    parameters : Map{
-        "path" = Sequence{"Social Network"},
-        "icon" = "diagram-ffffff",
-        "format" = "graphviz-circo",
-        "layers" = Sequence {
-            Map {"id"="likes", "title"="Likes", "active"=true},
-            Map {"id"="dislikes", "title"="Dislikes", "active"=true}
-        },
-        "people" = n.people
-    }
-
-}
-
-rule Person2Graphviz
-    transform p : socialnetwork::Person {
-
-    template : "socialnetwork2graphviz.egl"
-
-    parameters : Map{
-        "path" = Sequence{"Social Network", p.name},
-        "icon" = "diagram-c0c0c0",
-        "format" = "graphviz-dot",
-        "layers" = Sequence {
-            Map {"id"="likes", "title"="Likes", "active"=true},
-            Map {"id"="dislikes", "title"="Dislikes", "active"=true}
-        },
-        "people" = Sequence{p}
-    }
-
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">rule</span><span class="w"> </span><span class="n">Network2Graphviz</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">transform</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">socialnetwork</span><span class="o">::</span><span class="n">SocialNetwork</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;socialnetwork2graphviz.egl&quot;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="k">parameters</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Map</span><span class="p">{</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="s2">&quot;path&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Sequence</span><span class="p">{</span><span class="s2">&quot;Social Network&quot;</span><span class="p">},</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="s2">&quot;icon&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;diagram-ffffff&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="s2">&quot;format&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;graphviz-circo&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="s2">&quot;layers&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Sequence</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">            </span><span class="kt">Map</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="o">=</span><span class="s2">&quot;likes&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;title&quot;</span><span class="o">=</span><span class="s2">&quot;Likes&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;active&quot;</span><span class="o">=</span><span class="kc">true</span><span class="p">},</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">            </span><span class="kt">Map</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="o">=</span><span class="s2">&quot;dislikes&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;title&quot;</span><span class="o">=</span><span class="s2">&quot;Dislikes&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;active&quot;</span><span class="o">=</span><span class="kc">true</span><span class="p">}</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">        </span><span class="p">},</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="s2">&quot;people&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="o">.</span><span class="n">people</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="p">}</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="k">rule</span><span class="w"> </span><span class="n">Person2Graphviz</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="k">transform</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">socialnetwork</span><span class="o">::</span><span class="n">Person</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;socialnetwork2graphviz.egl&quot;</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">    </span><span class="k">parameters</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Map</span><span class="p">{</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">        </span><span class="s2">&quot;path&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Sequence</span><span class="p">{</span><span class="s2">&quot;Social Network&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">},</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">        </span><span class="s2">&quot;icon&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;diagram-c0c0c0&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">        </span><span class="s2">&quot;format&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;graphviz-dot&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">        </span><span class="s2">&quot;layers&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Sequence</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">            </span><span class="kt">Map</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="o">=</span><span class="s2">&quot;likes&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;title&quot;</span><span class="o">=</span><span class="s2">&quot;Likes&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;active&quot;</span><span class="o">=</span><span class="kc">true</span><span class="p">},</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">            </span><span class="kt">Map</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;id&quot;</span><span class="o">=</span><span class="s2">&quot;dislikes&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;title&quot;</span><span class="o">=</span><span class="s2">&quot;Dislikes&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;active&quot;</span><span class="o">=</span><span class="kc">true</span><span class="p">}</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">        </span><span class="p">},</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">        </span><span class="s2">&quot;people&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Sequence</span><span class="p">{</span><span class="n">p</span><span class="p">}</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="p">}</span>
+</code></pre></div>
 <p>The transformation consists of two rules:</p>
 <ul>
 <li><code>Network2Graphviz</code> which will be executed once and will produce a Graphviz graph for the entire network</li>
@@ -2259,43 +2256,44 @@ rule Person2Graphviz
 <li><code>layers</code>: A sequence of maps, each of which represents a layer of the view. Each layer needs to define an <code>id</code>, a <code>title</code> and (optionally), whether it is <code>active</code> by default</li>
 </ul>
 <p>The EGL template <code>socialnetwork2graphviz.egl</code> is as follows:</p>
-<pre class="highlight"><code class="language-egl">digraph G {
-    node[shape=rectangle, fontname=Tahoma, fontsize=10, style="filled",
-        gradientangle="270", fillcolor="bisque"]
-
-    edge[penwidth=3, style=tapered, arrowhead=none]
-
-[%for (p in people){%]
-
-    [%=p.name%] [%if (people.size()==1){%][fillcolor="azure2"][%}%]
-
-    [%if (isLayerActive("likes")){%]
-        [%for (l in p.likes){%]
-            [%=p.name%] -&gt; [%=l.name%] [color="#2A6C41"]
-        [%}%]
-    [%}%]
-
-    [%if (isLayerActive("dislikes")){%]
-        [%for (l in p.dislikes){%]
-            [%=p.name%] -&gt; [%=l.name%] [color="#B43431"]
-        [%}%]
-    [%}%]
-
-[%}%]
-
-}
-
-[%
-operation isLayerActive(id : String) {
-    var layer = layers.selectOne(l|l.id = id);
-    if (layer.isDefined()) {
-        return layer.active;
-    }
-    else {
-        return true;
-    }
-}
-%]</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>digraph G {
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    node[shape=rectangle, fontname=Tahoma, fontsize=10, style=&quot;filled&quot;,
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        gradientangle=&quot;270&quot;, fillcolor=&quot;bisque&quot;]
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    edge[penwidth=3, style=tapered, arrowhead=none]
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="cp">[%</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">people</span><span class="p">){</span><span class="cp">%]</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="cp">[%=</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="cp">%]</span> <span class="cp">[%</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">people</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">==</span><span class="mi">1</span><span class="p">){</span><span class="cp">%]</span>[fillcolor=&quot;azure2&quot;]<span class="cp">[%</span><span class="p">}</span><span class="cp">%]</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="cp">[%</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isLayerActive</span><span class="p">(</span><span class="s2">&quot;likes&quot;</span><span class="p">)){</span><span class="cp">%]</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>        <span class="cp">[%</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">l</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">likes</span><span class="p">){</span><span class="cp">%]</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>            <span class="cp">[%=</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="cp">%]</span> -&gt; <span class="cp">[%=</span><span class="n">l</span><span class="o">.</span><span class="n">name</span><span class="cp">%]</span> [color=&quot;#2A6C41&quot;]
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>        <span class="cp">[%</span><span class="p">}</span><span class="cp">%]</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="cp">[%</span><span class="p">}</span><span class="cp">%]</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>    <span class="cp">[%</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isLayerActive</span><span class="p">(</span><span class="s2">&quot;dislikes&quot;</span><span class="p">)){</span><span class="cp">%]</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>        <span class="cp">[%</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">l</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">dislikes</span><span class="p">){</span><span class="cp">%]</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>            <span class="cp">[%=</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="cp">%]</span> -&gt; <span class="cp">[%=</span><span class="n">l</span><span class="o">.</span><span class="n">name</span><span class="cp">%]</span> [color=&quot;#B43431&quot;]
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>        <span class="cp">[%</span><span class="p">}</span><span class="cp">%]</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>    <span class="cp">[%</span><span class="p">}</span><span class="cp">%]</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="cp">[%</span><span class="p">}</span><span class="cp">%]</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>}
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="cp">[%</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="k">operation</span><span class="w"> </span><span class="n">isLayerActive</span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">String</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">layer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">layers</span><span class="o">.</span><span class="n">selectOne</span><span class="p">(</span><span class="n">l</span><span class="o">|</span><span class="n">l</span><span class="o">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">isDefined</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">layer</span><span class="o">.</span><span class="n">active</span><span class="p">;</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="p">}</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a><span class="cp">%]</span>
+</code></pre></div>
 <h2 id="result">Result<a class="headerlink" href="#result" title="Permanent link">&para;</a></h2>
 <p>Every time <code>socialnetwork.flexmi</code> is saved, Picto will run the EGX/EGL transformation and display the results in a view that consists of a tree viewer and a browser. For this model, Picto produces 7 diagrams; one for the network as a whole through the application of the <code>Network2Graphviz</code> rule and one for each person in the network through the application of the <code>Person2Graphviz</code> rule. Screenshots of the populated Picto view appear below.</p>
 <p><img alt="" src="picto.png" /></p>
@@ -2308,20 +2306,21 @@ operation isLayerActive(id : String) {
 <p>When targeting Graphviz or PlantUML it is also advisable to keep your generated diagrams relatively small as auto-layout is computationally expensive (particularly routing edges) and rendering your views can take a long time. For example, generating the Graphviz representation of the full UML metamodel class diagram (260+ classes/650+ references) is instantaneous but getting Graphviz's dot program to render it takes hours. In any event, such a diagram would have been unreadable, and hence pointless (see the 20-class/50-references diagram of Ecore.ecore below, which is generated and rendered instantaneously).</p>
 <p><img alt="" src="picto-all-ecore.png" /></p>
 <p>To "protect" your visualisation rules from input that is bound to generate meaningless output you can use guards as shown below.</p>
-<pre class="highlight"><code class="language-egx">rule ClassDiagram {
-
-    guard : EClass.all.size() &lt; 30
-
-    parameters : Map {
-        "classes" = EClass.all,
-        "format" = "graphviz-dot",
-        "path" = List{"Model", "(All Classes)"},
-        "icon" = "diagram-ff0000"
-    }
-
-    template: "ecore2dot.egl"
-
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">rule</span><span class="w"> </span><span class="n">ClassDiagram</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="k">guard</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">EClass</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">30</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="k">parameters</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Map</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="s2">&quot;classes&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EClass</span><span class="o">.</span><span class="n">all</span><span class="p">,</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="s2">&quot;format&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;graphviz-dot&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="s2">&quot;path&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">List</span><span class="p">{</span><span class="s2">&quot;Model&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;(All Classes)&quot;</span><span class="p">},</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">        </span><span class="s2">&quot;icon&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;diagram-ff0000&quot;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="k">template</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ecore2dot.egl&quot;</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="p">}</span>
+</code></pre></div>
 <p>In such cases, it is preferable to generate many smaller diagrams; for this example, a class diagram for each class of the metamodel, surrounded by its super/sub/referenced types.</p>
 <h2 id="interactive-diagrams">Interactive Diagrams<a class="headerlink" href="#interactive-diagrams" title="Permanent link">&para;</a></h2>
 <p>Diagrams can also be linked to each other and link back to the models from which they were generated. For example, clicking any of the yellow classes in the diagram below takes you to the respective diagram and clicking on the green EClassifer class, takes you to the class definition in the Ecore editor. This is achieved through two built-in JavaScript functions below, which are showcased <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.picto.ecore/ecore2vis/classdiagram.egl">here</a>.</p>
@@ -2389,14 +2388,15 @@ operation isLayerActive(id : String) {
 <p>Please see this <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/plugins/org.eclipse.epsilon.picto/plugin.xml">plugin.xml</a>, which shows how some of these extension points were used to integrate Picto with different technologies, such as <a href="https://plantuml.com/">PlantUML</a> or <a href="https://github.com/mermaid-js/mermaid">Mermaid</a>.</p>
 <h2 id="using-picto-in-standalone-mode-with-many-models">Using Picto in standalone mode / with many models<a class="headerlink" href="#using-picto-in-standalone-mode-with-many-models" title="Permanent link">&para;</a></h2>
 <p>Picto also suports a standalone mode, where the details of the models to be visualised are provided within the <code>.picto</code> file itself. An example of visualising <code>socialnetwork.model</code> in standalone mode (without the model being open in a tree editor) is below and in <code>socialnetwork-standalone.picto</code> in the example folder.</p>
-<pre class="highlight"><code class="language-xml">&lt;?nsuri picto?&gt;
-&lt;picto format="egx" transformation="picto/socialnetwork.egx" standalone="true"&gt;
-    &lt;model type="EMF"&gt;
-        &lt;parameter name="name" value="M"/&gt;
-        &lt;parameter name="metamodelUri" value="socialnetwork"/&gt;
-        &lt;parameter name="modelFile" file="socialnetwork.model"/&gt;
-    &lt;/model&gt;
-&lt;/picto&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cp">&lt;?nsuri picto?&gt;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nt">&lt;picto</span><span class="w"> </span><span class="na">format=</span><span class="s">&quot;egx&quot;</span><span class="w"> </span><span class="na">transformation=</span><span class="s">&quot;picto/socialnetwork.egx&quot;</span><span class="w"> </span><span class="na">standalone=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nt">&lt;model</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;EMF&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">        </span><span class="nt">&lt;parameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;M&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="nt">&lt;parameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;metamodelUri&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;socialnetwork&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">        </span><span class="nt">&lt;parameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;modelFile&quot;</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;socialnetwork.model&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="nt">&lt;/model&gt;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nt">&lt;/picto&gt;</span>
+</code></pre></div>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <ul>
 <li>If you can't find the Picto view, you will need to upgrade to a version of Epsilon &gt;= 2.0.</li>
@@ -2414,12 +2414,13 @@ operation isLayerActive(id : String) {
 </ul>
 <h2 id="browser-developer-tools">Browser Developer Tools<a class="headerlink" href="#browser-developer-tools" title="Permanent link">&para;</a></h2>
 <p>To enable browser development tools in the embedded browser that Picto uses on MacOS, you can run the following commands in your terminal. Once you've restarted Eclipse, you will find an <code>Inspect Element</code> item in the right-click menu within the embedded browser that you can use to start the browser's development tools.</p>
-<pre class="highlight"><code>defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write NSGlobalDomain WebKitDeveloperExtras -bool true</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>defaults write com.apple.Safari IncludeDevelopMenu -bool true
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+</code></pre></div>
 <p>On Windows and Linux the <code>Inspect</code> and <code>Inspect Element</code> right-click menu items respectively should be available by default.</p>
 <h2 id="philosophy">Philosophy<a class="headerlink" href="#philosophy" title="Permanent link">&para;</a></h2>
-<p>While EMF provides support for <a href="../articles/reflective-emf-tutorial">reflective model instantiation</a> within the same Eclipse workspace, graphical and textual modelling frameworks that sit on top of it such as GMF, Sirius and Xtext involve code generation and/or contributing to Eclipse extension points and hence require spawning a new Eclipse instance. While this inconvenience can pay off for large DSLs, it feels like an overkill when one needs to throw together a small DSL in situ. The original aim of Picto was to complement Flexmi in this respect by contributing model visualisation capabilities where creating a new dedicated graphical editor is considered to be an overkill.</p>
+<p>While EMF provides support for <a href="../articles/reflective-emf-tutorial/">reflective model instantiation</a> within the same Eclipse workspace, graphical and textual modelling frameworks that sit on top of it such as GMF, Sirius and Xtext involve code generation and/or contributing to Eclipse extension points and hence require spawning a new Eclipse instance. While this inconvenience can pay off for large DSLs, it feels like an overkill when one needs to throw together a small DSL in situ. The original aim of Picto was to complement Flexmi in this respect by contributing model visualisation capabilities where creating a new dedicated graphical editor is considered to be an overkill.</p>
 <h2 id="gallery">Gallery<a class="headerlink" href="#gallery" title="Permanent link">&para;</a></h2>
 <p><a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.picto.plantuml.minisd"><img alt="" src="picto-minisd.png" /></a></p>
 <p><a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.flexmi.comps"><img alt="" src="picto-comps.png" /></a></p>
@@ -2561,8 +2562,6 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true</code></pre>
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

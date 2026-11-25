@@ -109,7 +109,7 @@ The `equivalents()` operation can be also invoked with an arbitrary number of ru
 
 With regard to the ordering of the results of the `equivalents()` operations, the returned elements appear in the respective order of the rules that have created them. An exception to this occurs when one of the rules is declared as `primary`, in which case its results precede the results of all other rules.
 
-```mermaid-80
+```mermaid
 classDiagram
 
 class Transformation {
@@ -137,7 +137,7 @@ As with the `equivalents()` operation, the `equivalent()` operation can also be 
 
 The semantics of the `equivalent()` operation are further illustrated through a simple example. In this example, we need to transform a model that conforms to the Tree metamodel displayed below into a model that conforms to the Graph metamodel, also displayed below.
 
-```mermaid-70
+```mermaid
 classDiagram
 class Node {
     +label: String
@@ -215,6 +215,6 @@ rule Tree2Node
 
 ## Additional Resources
 
-Additional resources about ETL are available [here](../articles/#epsilon-transformation-language).
+Additional resources about ETL are available [here](articles/index.md#epsilon-transformation-language).
 
 [^1]: The concept of lazy rules was first introduced in ATL

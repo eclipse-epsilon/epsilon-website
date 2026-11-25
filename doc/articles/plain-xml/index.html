@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1998,50 +1992,53 @@
 
 <h2 id="querying-an-xml-document">Querying an XML document<a class="headerlink" href="#querying-an-xml-document" title="Permanent link">&para;</a></h2>
 <p>We use the following <code>library.xml</code> as a base for demonstrating the EOL syntax for querying XML documents.</p>
-<pre class="highlight"><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
-&lt;library&gt;
-    &lt;book title="EMF Eclipse Modeling Framework" pages="744"&gt;
-        &lt;author&gt;Dave Steinberg&lt;/author&gt;
-        &lt;author&gt;Frank Budinsky&lt;/author&gt;
-        &lt;author&gt;Marcelo Paternostro&lt;/author&gt;
-        &lt;author&gt;Ed Merks&lt;/author&gt;
-        &lt;published&gt;2009&lt;/published&gt;
-    &lt;/book&gt;
-    &lt;book title="Eclipse Modeling Project: A Domain-Specific Language (DSL) Toolkit" pages="736"&gt;
-        &lt;author&gt;Richard Gronback&lt;/author&gt;
-        &lt;published&gt;2009&lt;/published&gt;
-    &lt;/book&gt;
-    &lt;book title="Official Eclipse 3.0 FAQs" pages="432"&gt;
-        &lt;author&gt;John Arthorne&lt;/author&gt;
-        &lt;author&gt;Chris Laffra&lt;/author&gt;
-        &lt;published&gt;2004&lt;/published&gt;
-    &lt;/book&gt;
-&lt;/library&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">&lt;library&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&lt;book</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;EMF Eclipse Modeling Framework&quot;</span><span class="w"> </span><span class="na">pages=</span><span class="s">&quot;744&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="nt">&lt;author&gt;</span>Dave<span class="w"> </span>Steinberg<span class="nt">&lt;/author&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="nt">&lt;author&gt;</span>Frank<span class="w"> </span>Budinsky<span class="nt">&lt;/author&gt;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="nt">&lt;author&gt;</span>Marcelo<span class="w"> </span>Paternostro<span class="nt">&lt;/author&gt;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="nt">&lt;author&gt;</span>Ed<span class="w"> </span>Merks<span class="nt">&lt;/author&gt;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="nt">&lt;published&gt;</span>2009<span class="nt">&lt;/published&gt;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="nt">&lt;/book&gt;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="nt">&lt;book</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Eclipse Modeling Project: A Domain-Specific Language (DSL) Toolkit&quot;</span><span class="w"> </span><span class="na">pages=</span><span class="s">&quot;736&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="nt">&lt;author&gt;</span>Richard<span class="w"> </span>Gronback<span class="nt">&lt;/author&gt;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span><span class="nt">&lt;published&gt;</span>2009<span class="nt">&lt;/published&gt;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="nt">&lt;/book&gt;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="nt">&lt;book</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Official Eclipse 3.0 FAQs&quot;</span><span class="w"> </span><span class="na">pages=</span><span class="s">&quot;432&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="nt">&lt;author&gt;</span>John<span class="w"> </span>Arthorne<span class="nt">&lt;/author&gt;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="nt">&lt;author&gt;</span>Chris<span class="w"> </span>Laffra<span class="nt">&lt;/author&gt;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="nt">&lt;published&gt;</span>2004<span class="nt">&lt;/published&gt;</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="nt">&lt;/book&gt;</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="nt">&lt;/library&gt;</span>
+</code></pre></div>
 <h2 id="queryingmodifying-xml-documents-in-eol">Querying/modifying XML documents in EOL<a class="headerlink" href="#queryingmodifying-xml-documents-in-eol" title="Permanent link">&para;</a></h2>
 <p>The PlainXML driver uses predefined naming conventions to allow developers to programmatically access and modify XML documents in a concise way. This section outlines the supported conventions in the form of questions and answers followed by relevant examples.</p>
 <h3 id="how-can-i-access-elements-by-tag-name">How can I access elements by tag name?<a class="headerlink" href="#how-can-i-access-elements-by-tag-name" title="Permanent link">&para;</a></h3>
 <p>The <code>t_</code> prefix in front of the name of the tag is used to represent a type, instances of which are all the elements with that tag. For instance, <code>t_book.all</code> can be used to get all elements tagged as <code>&lt;book&gt;</code> in the document, <code>t_author.all</code> to retrieve all <code>&lt;author&gt;</code> elements etc. Also, if <code>b</code> is an element with a <code>&lt;book&gt;</code> tag, then <code>b.isTypeOf(t_book)</code> shall return true. If the tag name contains hyphens, underscores, and/or periods, you must escape the complete type name inside back ticks: <code>`t_first-name`</code> </p>
-<pre class="highlight"><code class="language-eol">// Get all &lt;book&gt; elements
-var books = t_book.all;
-
-// Get a random book
-var b = books.random();
-
-// Check if b is a book
-// Prints 'true'
-b.isTypeOf(t_book).println();
-
-// Check if b is a library
-// Prints 'false'
-b.isTypeOf(t_library).println();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Get all &lt;book&gt; elements</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">var</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t_book</span><span class="o">.</span><span class="n">all</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1">// Get a random book</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">var</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">books</span><span class="o">.</span><span class="n">random</span><span class="p">();</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1">// Check if b is a book</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1">// Prints &#39;true&#39;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">b</span><span class="o">.</span><span class="n">isTypeOf</span><span class="p">(</span><span class="n">t_book</span><span class="p">)</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1">// Check if b is a library</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1">// Prints &#39;false&#39;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">b</span><span class="o">.</span><span class="n">isTypeOf</span><span class="p">(</span><span class="n">t_library</span><span class="p">)</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+</code></pre></div>
 <h3 id="how-can-i-get-the-tag-name-of-an-element">How can I get the tag name of an element?<a class="headerlink" href="#how-can-i-get-the-tag-name-of-an-element" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>.name</code> property for this purpose. For instance, if <code>b</code> is an element tagged as <code>&lt;book&gt;</code>, <code>b.name</code> shall return <code>book</code>. The <code>name</code> property is read-only.</p>
-<pre class="highlight"><code class="language-eol">// Get a random &lt;book&gt; element
-var b = t_book.all.random();
-
-// Print its tag
-// Prints 'book'
-b.name.println();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Get a random &lt;book&gt; element</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">var</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t_book</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">random</span><span class="p">();</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">// Print its tag</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1">// Prints &#39;book&#39;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">b</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+</code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">tagName property is deprecated</p>
 <p>Previously the <code>tagName</code> property was suggested for getting the tag name of an element. Due to the introduction of modules in Java 9 accessing this property is deprecated and future use can result in run time exceptions.</p>
@@ -2049,134 +2046,146 @@ b.name.println();</code></pre>
 <h3 id="how-can-i-getset-the-attributes-of-an-element">How can I get/set the attributes of an element?<a class="headerlink" href="#how-can-i-getset-the-attributes-of-an-element" title="Permanent link">&para;</a></h3>
 <p>You can use the attribute name as a property of the element object, prefixed by <code>a_</code>. For example, if <code>b</code> is the first book of <code>library.xml</code>, <code>b.a_title</code> will return <code>EMF Eclipse Modeling Framework</code>. Attribute properties are read/write.</p>
 <p>In this example, <code>b.a_pages</code> will return <code>744</code> as a string. For <code>744</code> to be returned as an integer instead, the <code>i_</code> prefix should be used instead (i.e. <code>b.i_pages</code>. The driver also supports the following prefixes: <code>b_</code> for boolean, <code>s_</code> for string (alias of <code>a_</code>) and <code>r_</code> for real values. </p>
-<pre class="highlight"><code class="language-eol">// Print all the titles of the books in the library
-for (b in t_book.all) {
-    b.a_title.println();
-}
-
-// Print the total number of pages of all books
-var total = 0;
-for (b in t_book.all) {
-    total = total + b.i_pages;
-}
-total.print();
-
-// ... the same using collect() and sum() 
-// instead of a for loop
-t_book.all.collect(b|b.i_pages).sum();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Print all the titles of the books in the library</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">t_book</span><span class="o">.</span><span class="n">all</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">b</span><span class="o">.</span><span class="n">a_title</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">}</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1">// Print the total number of pages of all books</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">var</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">t_book</span><span class="o">.</span><span class="n">all</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="o">.</span><span class="n">i_pages</span><span class="p">;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="p">}</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="n">total</span><span class="o">.</span><span class="n">print</span><span class="p">();</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="c1">// ... the same using collect() and sum() </span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="c1">// instead of a for loop</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="n">t_book</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">b</span><span class="o">|</span><span class="n">b</span><span class="o">.</span><span class="n">i_pages</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">();</span>
+</code></pre></div>
 <h3 id="how-can-i-getset-the-text-of-an-element">How can I get/set the text of an element?<a class="headerlink" href="#how-can-i-getset-the-text-of-an-element" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>.text</code> read-write property for this.</p>
-<pre class="highlight"><code class="language-eol">for (author in t_author.all) {
-    author.text.println();
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">author</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">t_author</span><span class="o">.</span><span class="n">all</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">author</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">}</span>
+</code></pre></div>
 <h3 id="how-do-i-get-the-parent-of-an-element">How do I get the parent of an element?<a class="headerlink" href="#how-do-i-get-the-parent-of-an-element" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>.parentNode</code> read-only property for this.</p>
-<pre class="highlight"><code class="language-eol">// Get a random book
-var b = t_book.all.random();
-
-// Print the tag of its parent node
-// Prints 'library'
-b.parentNode.name.println();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// Get a random book</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">var</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t_book</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">random</span><span class="p">();</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1">// Print the tag of its parent node</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1">// Prints &#39;library&#39;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">b</span><span class="o">.</span><span class="n">parentNode</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+</code></pre></div>
 <h3 id="how-do-i-get-the-children-of-an-element">How do I get the children of an element?<a class="headerlink" href="#how-do-i-get-the-children-of-an-element" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>.children</code> read-only property for this.</p>
-<pre class="highlight"><code class="language-eol">// Get the &lt;library&gt; element
-var lib = t_library.all.first();
-
-// Iterate through its children
-for (b in lib.children) {
-    // Print the title of each child
-    b.a_title.println();
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// Get the &lt;library&gt; element</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">var</span><span class="w"> </span><span class="n">lib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t_library</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">();</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1">// Iterate through its children</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">lib</span><span class="o">.</span><span class="n">children</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="c1">// Print the title of each child</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="n">b</span><span class="o">.</span><span class="n">a_title</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">}</span>
+</code></pre></div>
 <h3 id="how-do-i-get-child-elements-with-a-specific-tag-name">How do I get child elements with a specific tag name?<a class="headerlink" href="#how-do-i-get-child-elements-with-a-specific-tag-name" title="Permanent link">&para;</a></h3>
 <p>Using what you've learned so far, you can do this using a combination of the <code>.children</code> property and the <code>select()</code>/<code>selectOne()</code> operations. However, the driver also supports <code>e_</code> and <code>c_</code>-prefixed shorthand properties for accessing one or a collection of elements with the specified name respectively. <code>e_</code> and <code>c_</code> properties are read-only.</p>
-<pre class="highlight"><code class="language-eol">// Get a random book
-var b = t_book.all.random();
-
-// Get its &lt;author&gt; children using the 
-// .children property
-var authors = b.children.select(a|a.name = "author");
-
-// Do the same using the shorthand
-authors = b.c_author;
-
-// Get its &lt;published&gt; child and print
-// its text using the
-// .children property
-b.children.selectOne(p|p.name = "published").text.println();
-
-// Do the same using the shorthand
-// (e_ instead of c_ this time as 
-// we only want one element, 
-// not a collection of them)
-b.e_published.text.println();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// Get a random book</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">var</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t_book</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">random</span><span class="p">();</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1">// Get its &lt;author&gt; children using the </span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="c1">// .children property</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="k">var</span><span class="w"> </span><span class="n">authors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">a</span><span class="o">|</span><span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;author&quot;</span><span class="p">);</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1">// Do the same using the shorthand</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="n">authors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="o">.</span><span class="n">c_author</span><span class="p">;</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="c1">// Get its &lt;published&gt; child and print</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="c1">// its text using the</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="c1">// .children property</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="n">b</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">selectOne</span><span class="p">(</span><span class="n">p</span><span class="o">|</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;published&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="c1">// Do the same using the shorthand</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="c1">// (e_ instead of c_ this time as </span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="c1">// we only want one element, </span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="c1">// not a collection of them)</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="n">b</span><span class="o">.</span><span class="n">e_published</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+</code></pre></div>
 <h3 id="how-do-i-create-an-element">How do I create an element?<a class="headerlink" href="#how-do-i-create-an-element" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>new</code> operator for this. </p>
-<pre class="highlight"><code class="language-eol">// Check how many &lt;books&gt; are in the library
-// Prints '3'
-t_book.all.size().println();
-
-// Creates a new book element
-var b = new t_book;
-
-// Check again
-// Prints '4'
-t_book.all.size().println();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">// Check how many &lt;books&gt; are in the library</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1">// Prints &#39;3&#39;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">t_book</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1">// Creates a new book element</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="k">var</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">t_book</span><span class="p">;</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="c1">// Check again</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1">// Prints &#39;4&#39;</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="n">t_book</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+</code></pre></div>
 <h3 id="how-can-i-add-a-child-to-an-existing-element">How can I add a child to an existing element?<a class="headerlink" href="#how-can-i-add-a-child-to-an-existing-element" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>.appendChild(child)</code> operation for this.</p>
-<pre class="highlight"><code class="language-eol">// Create a new book
-var b = new t_book;
-
-// Get the library element
-var lib = t_library.all.first();
-
-// Add the book to the library
-lib.appendChild(b);</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">// Create a new book</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">var</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">t_book</span><span class="p">;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1">// Get the library element</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">var</span><span class="w"> </span><span class="n">lib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t_library</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">();</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1">// Add the book to the library</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="n">lib</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+</code></pre></div>
 <h3 id="how-can-i-set-the-root-element-of-an-xml-document">How can I set the root element of an XML document?<a class="headerlink" href="#how-can-i-set-the-root-element-of-an-xml-document" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>.root</code> property for this.</p>
-<pre class="highlight"><code class="language-eol">XMLDoc.root = new t_library;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">XMLDoc</span><span class="o">.</span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">t_library</span><span class="p">;</span>
+</code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Root element is required</p>
 <p>When writing scripts that create new XML documents, e.g. ETL, the root element must be set on the output model. This can be done in a <code>pre</code> block (e.g. if the root is not created by a transformation rule) or in a rule/operation/other. For the Library example above (where <code>lib</code> is the model name): 
-<pre class="highlight"><code class="language-etl">pre {
-    var root = new t_library;
-    lib.root = root;
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">pre</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">t_library</span><span class="p">;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="n">lib</span><span class="o">.</span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="p">;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">}</span>
+</code></pre></div>
 If a root element is not assigned, then the output file will be empty.</p>
 </div>
 <h3 id="using-xml-attributes-as-references">Using XML attributes as references<a class="headerlink" href="#using-xml-attributes-as-references" title="Permanent link">&para;</a></h3>
 <p>The XML model type allows XML attributes to be used as references by using the attribute value as a "key" of another element. For example, we could extend the library example to include an author and editor reference on each book, and move authors to the root:</p>
-<pre class="highlight"><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
-&lt;library&gt;
-    &lt;book title="EMF Eclipse Modeling Framework" pages="744" authors="DS,FB,MP,EM" editor="EG"&gt;
-
-        &lt;published&gt;2009&lt;/published&gt;
-    &lt;/book&gt;
-    &lt;book title="Eclipse Modeling Project: A Domain-Specific Language (DSL) Toolkit" pages="736" authors="RG"&gt;
-        &lt;published&gt;2009&lt;/published&gt;
-    &lt;/book&gt;
-    &lt;book title="Official Eclipse 3.0 FAQs" pages="432"&gt;
-        &lt;author&gt;John Arthorne&lt;/author&gt;
-        &lt;author&gt;Chris Laffra&lt;/author&gt;
-        &lt;published&gt;2004&lt;/published&gt;
-    &lt;/book&gt;
-    &lt;author id="DS"&gt;Dave Steinberg&lt;/author&gt;
-    &lt;author id="FB"&gt;Frank Budinsky&lt;/author&gt;
-    &lt;author id="MP"&gt;Marcelo Paternostro&lt;/author&gt;
-    &lt;author id="EM"&gt;Ed Merks&lt;/author&gt;
-    &lt;author id="RG"&gt;Richard Gronback&lt;/author&gt;
-    &lt;editor id="EG"&gt;Erich Gamma&lt;/editor&gt;
-&lt;/library&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nt">&lt;library&gt;</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="nt">&lt;book</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;EMF Eclipse Modeling Framework&quot;</span><span class="w"> </span><span class="na">pages=</span><span class="s">&quot;744&quot;</span><span class="w"> </span><span class="na">authors=</span><span class="s">&quot;DS,FB,MP,EM&quot;</span><span class="w"> </span><span class="na">editor=</span><span class="s">&quot;EG&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">        </span><span class="nt">&lt;published&gt;</span>2009<span class="nt">&lt;/published&gt;</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">    </span><span class="nt">&lt;/book&gt;</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span><span class="nt">&lt;book</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Eclipse Modeling Project: A Domain-Specific Language (DSL) Toolkit&quot;</span><span class="w"> </span><span class="na">pages=</span><span class="s">&quot;736&quot;</span><span class="w"> </span><span class="na">authors=</span><span class="s">&quot;RG&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">        </span><span class="nt">&lt;published&gt;</span>2009<span class="nt">&lt;/published&gt;</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">    </span><span class="nt">&lt;/book&gt;</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">    </span><span class="nt">&lt;book</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Official Eclipse 3.0 FAQs&quot;</span><span class="w"> </span><span class="na">pages=</span><span class="s">&quot;432&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">        </span><span class="nt">&lt;author&gt;</span>John<span class="w"> </span>Arthorne<span class="nt">&lt;/author&gt;</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">        </span><span class="nt">&lt;author&gt;</span>Chris<span class="w"> </span>Laffra<span class="nt">&lt;/author&gt;</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">        </span><span class="nt">&lt;published&gt;</span>2004<span class="nt">&lt;/published&gt;</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">    </span><span class="nt">&lt;/book&gt;</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="w">    </span><span class="nt">&lt;author</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;DS&quot;</span><span class="nt">&gt;</span>Dave<span class="w"> </span>Steinberg<span class="nt">&lt;/author&gt;</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="w">    </span><span class="nt">&lt;author</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;FB&quot;</span><span class="nt">&gt;</span>Frank<span class="w"> </span>Budinsky<span class="nt">&lt;/author&gt;</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="w">    </span><span class="nt">&lt;author</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;MP&quot;</span><span class="nt">&gt;</span>Marcelo<span class="w"> </span>Paternostro<span class="nt">&lt;/author&gt;</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="w">    </span><span class="nt">&lt;author</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;EM&quot;</span><span class="nt">&gt;</span>Ed<span class="w"> </span>Merks<span class="nt">&lt;/author&gt;</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="w">    </span><span class="nt">&lt;author</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;RG&quot;</span><span class="nt">&gt;</span>Richard<span class="w"> </span>Gronback<span class="nt">&lt;/author&gt;</span>
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="w">    </span><span class="nt">&lt;editor</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;EG&quot;</span><span class="nt">&gt;</span>Erich<span class="w"> </span>Gamma<span class="nt">&lt;/editor&gt;</span>
+<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="nt">&lt;/library&gt;</span>
+</code></pre></div>
 <p>Note that the attributes used for references must be a comma-separated list of "keys".</p>
 <p>For enabling the references, we need to add the desired bindings to the model. The <code>bind</code> method has the following signature: <code>bind(String sourceTag, String sourceAttribute, String targetTag, String targetAttribute, boolean many)</code>. Thus, for the library example, in EOL this can be done like this:</p>
-<pre class="highlight"><code class="language-eol">model.bind("book", "authors", "author", "id", true);
-model.bind("book", "editor", "editor", "name", false);</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">model</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;book&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;authors&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;author&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">model</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;book&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;editor&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;editor&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span>
+</code></pre></div>
 <p>where <code>model</code> is the name of the model (as specified in the run configuration). These statements should be at the top of the EOL file so the bindings are added before any other code executes. For rule-based languages, this could be done in a <code>pre</code> block. If invoking from <a href="#loading-an-xml-document-through-java-code">Java</a> the <code>bind</code> method can be called on the model variable.</p>
 <p>After the bindings are in place, we can use them:</p>
-<pre class="highlight"><code class="language-eol">var lib = t_library.all.first();
-// Prints 4
-lib.c_book.first().authors.size().println();
-// Prints Frank Budinsky
-lib.c_book.first().authors.second().text.println();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">var</span><span class="w"> </span><span class="n">lib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t_library</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">();</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1">// Prints 4</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">lib</span><span class="o">.</span><span class="n">c_book</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">authors</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1">// Prints Frank Budinsky</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="n">lib</span><span class="o">.</span><span class="n">c_book</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">authors</span><span class="o">.</span><span class="n">second</span><span class="p">()</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+</code></pre></div>
 <h2 id="adding-an-xml-document-to-your-launch-configuration">Adding an XML document to your launch configuration<a class="headerlink" href="#adding-an-xml-document-to-your-launch-configuration" title="Permanent link">&para;</a></h2>
 <p>To add an XML document to your Epsilon launch configuration, you need to select "Plain XML document" from the list of available model types.</p>
 <p><img alt="" src="select.png" /></p>
@@ -2184,32 +2193,34 @@ lib.c_book.first().authors.second().text.println();</code></pre>
 <p><img alt="" src="configure.png" /></p>
 <h2 id="loading-an-xml-document-in-your-ant-buildfile">Loading an XML document in your ANT buildfile<a class="headerlink" href="#loading-an-xml-document-in-your-ant-buildfile" title="Permanent link">&para;</a></h2>
 <p>The following ANT build file demonstrates how you can use ANT to load/store and process XML documents with Epsilon.</p>
-<pre class="highlight"><code class="language-xml">&lt;project default="main"&gt;
-    &lt;target name="main"&gt;
-
-        &lt;epsilon.xml.loadModel name="XMLDoc" file="library.xml"
-            read="true" store="false"/&gt;
-        &lt;/epsilon.xml.loadModel&gt;
-
-        &lt;epsilon.eol src="my.eol"&gt;
-            &lt;model ref="XMLDoc"/&gt;
-        &lt;/epsilon.eol&gt;
-
-    &lt;/target&gt;
-&lt;/project&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nt">&lt;project</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;main&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="nt">&lt;target</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;main&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">        </span><span class="nt">&lt;epsilon.xml.loadModel</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;XMLDoc&quot;</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;library.xml&quot;</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">            </span><span class="na">read=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="na">store=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">        </span><span class="nt">&lt;/epsilon.xml.loadModel&gt;</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">        </span><span class="nt">&lt;epsilon.eol</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;my.eol&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">            </span><span class="nt">&lt;model</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;XMLDoc&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">        </span><span class="nt">&lt;/epsilon.eol&gt;</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">    </span><span class="nt">&lt;/target&gt;</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="nt">&lt;/project&gt;</span>
+</code></pre></div>
 <h2 id="loading-an-xml-document-through-java-code">Loading an XML document through Java code<a class="headerlink" href="#loading-an-xml-document-through-java-code" title="Permanent link">&para;</a></h2>
 <p>The following excerpt demonstrates using XML models using Epsilon's Java API.</p>
-<pre class="highlight"><code class="language-java">EolModule module = new EolModule();
-module.parse(new File("..."));
-
-PlainXmlModel model = new PlainXmlModel();
-model.setName("M");
-model.setFile(new File("..."));
-model.load();
-
-module.getContext().getModelRepository().addModel(model);
-module.getContext().setModule(module);
-module.execute();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">EolModule</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EolModule</span><span class="p">();</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">module</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;...&quot;</span><span class="p">));</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="n">PlainXmlModel</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PlainXmlModel</span><span class="p">();</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">model</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;M&quot;</span><span class="p">);</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="n">model</span><span class="p">.</span><span class="na">setFile</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;...&quot;</span><span class="p">));</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="n">model</span><span class="p">.</span><span class="na">load</span><span class="p">();</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="n">module</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">getModelRepository</span><span class="p">().</span><span class="na">addModel</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="n">module</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">setModule</span><span class="p">(</span><span class="n">module</span><span class="p">);</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="n">module</span><span class="p">.</span><span class="na">execute</span><span class="p">();</span>
+</code></pre></div>
 <h2 id="additional-resources">Additional resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="http://java.sun.com/javase/6/docs/api/org/w3c/dom/Element.html">http://java.sun.com/javase/6/docs/api/org/w3c/dom/Element.html</a>: Complete list of the operations that are applicable to XML elements</li>
@@ -2309,8 +2320,6 @@ module.execute();</code></pre>
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

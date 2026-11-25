@@ -1,6 +1,6 @@
 # Using template operations in EGL
 
-Template operations provide a way to re-use small fragments of [EGL](../../egl) code. This article shows how to write [EGL](../../egl) template operations and discusses when you might want to use them.
+Template operations provide a way to re-use small fragments of [EGL](../../egl.md) code. This article shows how to write [EGL](../../egl.md) template operations and discusses when you might want to use them.
  
 Suppose we are writing a code generator for plain-old Java objects, and we have the following EGL code (which assumes the presence of a class object):
 

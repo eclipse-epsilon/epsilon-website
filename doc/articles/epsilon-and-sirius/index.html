@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1850,88 +1844,91 @@ By default, Sirius-based editors store semantic model information in standard EM
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Code Generator (EGX)</label><label for="__tabbed_1_2">decision2java.egl</label><label for="__tabbed_1_3">Validation Constraints (EVL)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-egx">rule Model2App 
-    transform m : Model {
-
-    template : "model2java.egl"
-
-    parameters : Map{}
-
-    target : m.name.toLowerCase() + "/" + m.name.ftuc() + ".java"
-}
-
-rule Decision2Java 
-    transform d : Decision {
-
-    template : "decision2java.egl"
-
-    parameters : Map{
-        "m" = d.eContainer()
-    }
-
-    target : d.getJavaFileName()
-}
-
-// ...
-
-operation Step getJavaFileName() {
-    return self.eContainer.name.toLowerCase() + "/" + self.name.ftuc() + ".java";
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">rule</span><span class="w"> </span><span class="n">Model2App</span><span class="w"> </span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">transform</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Model</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;model2java.egl&quot;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">parameters</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Map</span><span class="p">{}</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">target</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">toLowerCase</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">ftuc</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;.java&quot;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">}</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">rule</span><span class="w"> </span><span class="n">Decision2Java</span><span class="w"> </span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="k">transform</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Decision</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;decision2java.egl&quot;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="k">parameters</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Map</span><span class="p">{</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="s2">&quot;m&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="o">.</span><span class="n">eContainer</span><span class="p">()</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="k">target</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">d</span><span class="o">.</span><span class="n">getJavaFileName</span><span class="p">()</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="p">}</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="c1">// ...</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="k">operation</span><span class="w"> </span><span class="n">Step</span><span class="w"> </span><span class="n">getJavaFileName</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">eContainer</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">toLowerCase</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">ftuc</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;.java&quot;</span><span class="p">;</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="p">}</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-egl">package [%=m.name.toLowerCase()%];
-
-import java.util.Scanner;
-
-public class [%=d.name.ftuc()%] {
-
-    public void run([%=m.name.ftuc()%] [%=m.name%]) {
-        System.out.println("[%=d.text%]");
-
-        [%for (t in d.outgoing){%]
-        System.out.println("[%=loopCount%]. [%=t.text%]");
-        [%}%]
-
-        while (true) {
-            String response = new Scanner(System.in).nextLine();
-            [%for (t in d.outgoing){%]
-            if (response.equals("[%=loopCount%]")) {
-                [%=m.name%].get[%=t.to.name.ftuc()%]().run([%=m.name%]);
-                return;
-            }
-            [%}%]
-            System.out.println("Invalid option selected. Please select a valid option");
-        }
-
-    }
-
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>package <span class="cp">[%=</span><span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">toLowerCase</span><span class="p">()</span><span class="cp">%]</span>;
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>import java.util.Scanner;
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>public class <span class="cp">[%=</span><span class="n">d</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">ftuc</span><span class="p">()</span><span class="cp">%]</span> {
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    public void run(<span class="cp">[%=</span><span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">ftuc</span><span class="p">()</span><span class="cp">%]</span> <span class="cp">[%=</span><span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="cp">%]</span>) {
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>        System.out.println(&quot;<span class="cp">[%=</span><span class="n">d</span><span class="o">.</span><span class="n">text</span><span class="cp">%]</span>&quot;);
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        <span class="cp">[%</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">d</span><span class="o">.</span><span class="n">outgoing</span><span class="p">){</span><span class="cp">%]</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>        System.out.println(&quot;<span class="cp">[%=</span><span class="bp">loopCount</span><span class="cp">%]</span>. <span class="cp">[%=</span><span class="n">t</span><span class="o">.</span><span class="n">text</span><span class="cp">%]</span>&quot;);
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        <span class="cp">[%</span><span class="p">}</span><span class="cp">%]</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>        while (true) {
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>            String response = new Scanner(System.in).nextLine();
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>            <span class="cp">[%</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">d</span><span class="o">.</span><span class="n">outgoing</span><span class="p">){</span><span class="cp">%]</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>            if (response.equals(&quot;<span class="cp">[%=</span><span class="bp">loopCount</span><span class="cp">%]</span>&quot;)) {
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>                <span class="cp">[%=</span><span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="cp">%]</span>.get<span class="cp">[%=</span><span class="n">t</span><span class="o">.</span><span class="n">to</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">ftuc</span><span class="p">()</span><span class="cp">%]</span>().run(<span class="cp">[%=</span><span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="cp">%]</span>);
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>                return;
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>            }
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>            <span class="cp">[%</span><span class="p">}</span><span class="cp">%]</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>            System.out.println(&quot;Invalid option selected. Please select a valid option&quot;);
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>        }
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>    }
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>}
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-evl">context Decision {
-
-    constraint AtLeastTwoOutgoing {
-
-        check: self.outgoing.size() &gt;= 2
-
-        message: "Decision " + self.text + 
-            " must have at least 2 outgoing" +
-            " transitions"
-    }
-
-}
-
-context Model {
-
-    constraint OneEntryPoint {
-
-        check : self.steps.select(s|s.incoming.isEmpty()).size() = 1
-
-        message : "The model has mutliple entry points: " +
-            self.steps.select(s|s.incoming.isEmpty()).text.concat(", ")
-
-    }
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">context</span><span class="w"> </span><span class="n">Decision</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">constraint</span><span class="w"> </span><span class="n">AtLeastTwoOutgoing</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="k">check</span><span class="o">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">outgoing</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="k">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Decision &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">            </span><span class="s2">&quot; must have at least 2 outgoing&quot;</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">            </span><span class="s2">&quot; transitions&quot;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="p">}</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="k">context</span><span class="w"> </span><span class="n">Model</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="k">constraint</span><span class="w"> </span><span class="n">OneEntryPoint</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">        </span><span class="k">check</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">s</span><span class="o">|</span><span class="n">s</span><span class="o">.</span><span class="n">incoming</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">())</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">        </span><span class="k">message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;The model has mutliple entry points: &quot;</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">s</span><span class="o">|</span><span class="n">s</span><span class="o">.</span><span class="n">incoming</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">())</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="p">}</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2033,8 +2030,6 @@ context Model {
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

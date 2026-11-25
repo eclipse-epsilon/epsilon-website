@@ -93,13 +93,13 @@ Below are known *drivers* that implement the EMC interfaces discussed above and 
 
 ### Eclipse Modeling Framework
 
-The Eclipse Modelling Framework (EMF) is one of the most robust and widely used open-source modelling frameworks, and the cornerstone of an extensive ecosystem of technologies for graphical/textual model editing, model comparison and merging etc. Being an Eclipse project, Epsilon naturally provides support for all flavours of EMF models (e.g. textual, graphical, XSD-based XML), and most of the [screencasts](../screencasts), [articles](../articles/) and [examples](../../examples) in Epsilon's Git repository use EMF models.
+The Eclipse Modelling Framework (EMF) is one of the most robust and widely used open-source modelling frameworks, and the cornerstone of an extensive ecosystem of technologies for graphical/textual model editing, model comparison and merging etc. Being an Eclipse project, Epsilon naturally provides support for all flavours of EMF models (e.g. textual, graphical, XSD-based XML), and most of the [screencasts](../screencasts), [articles](articles/index.md) and [examples](../examples.md) in Epsilon's Git repository use EMF models.
 
 Epsilon can also connect to [CDO repositories](articles/cdo-emc.md) of EMF models, and can save and load EMF models from [RDF files](articles/rdf-emc.md).
 
 ### Matlab Simulink
 
-Epsilon also provides mature support for querying and modifying Matlab Simulink models as shown in [these articles](../articles/#epsilon-and-simulink-models).
+Epsilon also provides mature support for querying and modifying Matlab Simulink models as shown in [these articles](articles/index.md#epsilon-and-simulink-models).
 
 ### Cameo / MagicDraw Systems Modeler
 
@@ -107,7 +107,7 @@ Cameo Systems Modeler is a widely-used graphical systems modelling tool. A drive
 
 ### CSV / Excel / JSON / XML / YAML
 
-For quick and dirty metamodel-less modelling, Epsilon also supports [CSV files](../articles/csv-emc), [Excel spreadsheets](../articles/excel), [JSON documents](../articles/json-emc), [plain XML documents](../articles/plain-xml), and [YAML files](../articles/yaml-emc).
+For quick and dirty metamodel-less modelling, Epsilon also supports [CSV files](articles/csv-emc/index.md), [Excel spreadsheets](articles/excel/index.md), [JSON documents](articles/json-emc/index.md), [plain XML documents](articles/plain-xml/index.md), and [YAML files](articles/yaml-emc/index.md).
 
 ### Eclipse Hawk
 

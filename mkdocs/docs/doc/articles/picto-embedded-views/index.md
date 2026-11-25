@@ -1,8 +1,8 @@
 # Embedding Picto views in a static Markdown or HTML document
 
-It is possible to include other [Picto](../../picto) views in a static Markdown or HTML document. This feature is very useful to e.g. create on-the-fly reports concerning one or more models that can be later exported and shared for discussion.
+It is possible to include other [Picto](../../picto/index.md) views in a static Markdown or HTML document. This feature is very useful to e.g. create on-the-fly reports concerning one or more models that can be later exported and shared for discussion.
 
-We will reuse the social network example depicted in the [Picto](../../picto) documentation. The complete source code of this example is available [here](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.picto.socialnetwork/).
+We will reuse the social network example depicted in the [Picto](../../picto/index.md) documentation. The complete source code of this example is available [here](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.picto.socialnetwork/).
 
 ![](readme.png)
 

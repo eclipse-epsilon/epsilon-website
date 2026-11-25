@@ -46,13 +46,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2316,152 +2310,162 @@
 
 <h1 id="flexmi">Flexmi<a class="headerlink" href="#flexmi" title="Permanent link">&para;</a></h1>
 <p>Flexmi (pronounced <em>flex-em-eye</em>) is a <strong>reflective textual syntax for EMF models</strong>. Flexmi supports an XML-based and a <a href="#yaml-flavour">YAML-based</a> flavour and offers features such as fuzzy matching of tags and attributes against Ecore class/feature names, support for embedding EOL expressions in models and for defining and instantiating model element templates. For example, the following XML document (<code>acme.flexmi</code>):</p>
-<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
-&lt;project title="ACME"&gt;
-  &lt;person name="Alice"/&gt;
-  &lt;person name="Bob"/&gt;
-  &lt;task title="Analysis" start="1" dur="3"&gt;
-    &lt;effort person="Alice"/&gt;
-  &lt;/task&gt;
-  &lt;task title="Design" start="4" dur="6"&gt;
-    &lt;effort person="Bob"/&gt;
-  &lt;/task&gt;
-  &lt;task title="Implementation" start="7" dur="3"&gt;
-    &lt;effort person="Bob" perc="50"/&gt;
-    &lt;effort person="Alice" perc="50"/&gt;
-  &lt;/task&gt;
-&lt;/project&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">&lt;?nsuri psl?&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Bob&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Analysis&quot;</span><span class="w"> </span><span class="na">start=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="nt">&lt;/task&gt;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Design&quot;</span><span class="w"> </span><span class="na">start=</span><span class="s">&quot;4&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;6&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Bob&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="nt">&lt;/task&gt;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Implementation&quot;</span><span class="w"> </span><span class="na">start=</span><span class="s">&quot;7&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Bob&quot;</span><span class="w"> </span><span class="na">perc=</span><span class="s">&quot;50&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Alice&quot;</span><span class="w"> </span><span class="na">perc=</span><span class="s">&quot;50&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="nt">&lt;/task&gt;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="nt">&lt;/project&gt;</span>
+</code></pre></div>
 <p>is a valid instance of the Ecore metamodel (in Emfatic) below (<code>psl</code> stands for Project Scheduling Language):</p>
-<pre class="highlight"><code class="language-emf">@namespace(uri="psl", prefix="")
-package psl;
-
-class Project {
-  attr String name;
-  attr String description;
-  val Task[*] tasks;
-  val Person[*] people;
-}
-
-class Task {
-  attr String title;
-  attr int start;
-  attr int duration;
-  val Effort[*] effort;
-}
-
-class Person {
-  attr String name;
-  ref Skill[*] skills;
-}
-
-class Effort {
-  ref Person person;
-  attr int percentage = 100;
-}
-
-class Skill {
-  attr String name;
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nd">@namespace</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="s2">&quot;psl&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">package</span><span class="w"> </span><span class="n">psl</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">class</span><span class="w"> </span><span class="n">Project</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">description</span><span class="p">;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="k">val</span><span class="w"> </span><span class="n">Task</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">tasks</span><span class="p">;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="k">val</span><span class="w"> </span><span class="n">Person</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">people</span><span class="p">;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">}</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="k">class</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">title</span><span class="p">;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="k">attr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="p">;</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span><span class="k">attr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">duration</span><span class="p">;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span><span class="k">val</span><span class="w"> </span><span class="n">Effort</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">effort</span><span class="p">;</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="p">}</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="k">class</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">  </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">  </span><span class="k">ref</span><span class="w"> </span><span class="n">Skill</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">skills</span><span class="p">;</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="p">}</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="k">class</span><span class="w"> </span><span class="n">Effort</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">  </span><span class="k">ref</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">;</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">  </span><span class="k">attr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">percentage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">;</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="p">}</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="k">class</span><span class="w"> </span><span class="n">Skill</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">  </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="p">}</span>
+</code></pre></div>
 <h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Create a text file named <code>psl.emf</code> in your workspace and place the Emfatic content above in it.</li>
 <li>Convert it into Ecore and register the produced Ecore metamodel
     (<code>psl.ecore</code>) as shown
-    <a href="../articles/reflective-emf-tutorial">here</a>.</li>
+    <a href="../articles/reflective-emf-tutorial/">here</a>.</li>
 <li>Create a new text file named <code>acme.flexmi</code> and place the XML content above in it.</li>
 <li>The result should look like the screenshot below.</li>
 </ul>
 <p><img alt="" src="screenshot.png" /></p>
 <h2 id="fuzzy-parsing">Fuzzy Parsing<a class="headerlink" href="#fuzzy-parsing" title="Permanent link">&para;</a></h2>
 <p>The Flexmi parser uses fuzzy matching to map the tags in the XML document to instances of EClasses in the target metamodel. In Flexmi, attributes and non-containment references are captured using XML attributes. Multiple values can be captured in a single XML attribute as comma-delimited strings as shown below.</p>
-<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
-&lt;_&gt;
-  &lt;person name="Alice" skills="Java, HTML"/&gt;
-  &lt;skill name="Java"/&gt;
-  &lt;skill name="HTML"/&gt;
-&lt;/_&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">&lt;?nsuri psl?&gt;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">&lt;_&gt;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="w"> </span><span class="na">skills=</span><span class="s">&quot;Java, HTML&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">&lt;skill</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Java&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="nt">&lt;skill</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;HTML&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nt">&lt;/_&gt;</span>
+</code></pre></div>
 <p>Containment references are captured using XML element containment. If an XML element has attributes, the Flexmi parser will compare its tag against EClass/EReference names expected in the context and choose the best match. For example, when it encounters the <code>&lt;person&gt;</code> element below, knowing that it is already in the context of <code>Project</code> it will match the name <code>person</code> against the names of the containment references of <code>Project</code> (<code>tasks</code>, <code>people</code>) and (all the sub-types of) their types (<code>Person</code>, <code>Task</code>) and will decide that the best match for it is <code>Person</code>.</p>
-<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
-&lt;project title="ACME"&gt;
-  &lt;person name="Alice"/&gt;
-  ...
-&lt;/project&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cp">&lt;?nsuri psl?&gt;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>...
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nt">&lt;/project&gt;</span>
+</code></pre></div>
 <p>As such, it will create an instance of <code>Person</code> and will then try to find a suitable containment reference for it (<code>people</code>). If there were multiple containment references of type <code>Person</code> in class <code>Project</code>, we could help the Flexmi parser by either using the name of the target reference instead or <code>person</code>, or by using an empty container element as follows.</p>
-<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
-&lt;project title="ACME"&gt;
-  &lt;people&gt;
-    &lt;person name="Alice"/&gt;
-  &lt;/people&gt;
-&lt;/project&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cp">&lt;?nsuri psl?&gt;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nt">&lt;people&gt;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="nt">&lt;/people&gt;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nt">&lt;/project&gt;</span>
+</code></pre></div>
 <h3 id="non-containment-reference-resolution">Non-Containment Reference Resolution<a class="headerlink" href="#non-containment-reference-resolution" title="Permanent link">&para;</a></h3>
 <p>To resolve non-containment references, Flexmi needs target elements to have some kind of ID. If a class has an EAttribute marked as <code>id</code>, Flexmi will use that to identify its instances, otherwise, it will use the value of the <code>name</code> attribute, if present. Fully-qualified ID paths, separated by <code>.</code> are also supported. Since version 2.9, <a href="https://github.com/eclipse-epsilon/epsilon/issues/221">partially-qualified ID paths</a> are also supported.</p>
 <h3 id="long-attribute-values">Long Attribute Values<a class="headerlink" href="#long-attribute-values" title="Permanent link">&para;</a></h3>
 <p>XML elements can also be used instead of XML attributes to capture long/multiline EAttributes. For example, we can use a <code>&lt;description&gt;</code> nested element instead of an attribute as below.</p>
-<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
-&lt;project title="ACME"&gt;
-  &lt;description&gt;
-    Lorem ipsum dolor sit amet,
-    consectetur adipiscing elit,
-    sed do eiusmod tempor incididunt
-    ut labore et dolore magna aliqua.
-  &lt;/description&gt;
-&lt;/project&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cp">&lt;?nsuri psl?&gt;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="nt">&lt;description&gt;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span>Lorem<span class="w"> </span>ipsum<span class="w"> </span>dolor<span class="w"> </span>sit<span class="w"> </span>amet,
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span>consectetur<span class="w"> </span>adipiscing<span class="w"> </span>elit,
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span>sed<span class="w"> </span>do<span class="w"> </span>eiusmod<span class="w"> </span>tempor<span class="w"> </span>incididunt
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span>ut<span class="w"> </span>labore<span class="w"> </span>et<span class="w"> </span>dolore<span class="w"> </span>magna<span class="w"> </span>aliqua.
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span><span class="nt">&lt;/description&gt;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="nt">&lt;/project&gt;</span>
+</code></pre></div>
 <p>To keep very long values out of Flexmi models altogether, appending an <code>_</code> to the name of an attribute will instruct the Flexmi parser to look for a file with that name and parse its content as the value of the attribute as shown below.</p>
-<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
-&lt;project title="ACME" description_="readme.txt"&gt;
-&lt;/project&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cp">&lt;?nsuri psl?&gt;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="w"> </span><span class="na">description_=</span><span class="s">&quot;readme.txt&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nt">&lt;/project&gt;</span>
+</code></pre></div>
 <h3 id="attribute-assignment">Attribute Assignment<a class="headerlink" href="#attribute-assignment" title="Permanent link">&para;</a></h3>
 <p>The Flexmi parser uses an implementation of the <a href="https://en.wikipedia.org/wiki/Hungarian_algorithm">Hungarian algorithm</a> to decide the best match of XML attribute names to EAttribute and non-containment EReference names.
 Containment EReference names are ignored during matching.</p>
 <h2 id="executable-attributes">Executable Attributes<a class="headerlink" href="#executable-attributes" title="Permanent link">&para;</a></h2>
-<p>Prepending <code>:</code> to the name of an attribute instructs the Flexmi parser to interpret its value as an executable <a href="../eol">EOL</a> expression instead of a literal value. Also, Flexmi supports attaching a <code>:var</code> or a <code>:global</code> attribute to XML elements, to declare local/global variables that can be used in EOL expressions. The scope of local variables includes siblings of the element, and their descendants, while global variables can be accessed from anywhere in the model.</p>
+<p>Prepending <code>:</code> to the name of an attribute instructs the Flexmi parser to interpret its value as an executable <a href="../eol/">EOL</a> expression instead of a literal value. Also, Flexmi supports attaching a <code>:var</code> or a <code>:global</code> attribute to XML elements, to declare local/global variables that can be used in EOL expressions. The scope of local variables includes siblings of the element, and their descendants, while global variables can be accessed from anywhere in the model.</p>
 <p>For example, in the Flexmi model below, the <code>Design</code> task is assigned to a local variable named <code>design</code>, which is then used to compute the value of the <code>start</code> time of the implementation task.</p>
-<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
-&lt;project title="ACME"&gt;
-  &lt;person name="Alice"/&gt;
-  &lt;person name="Bob"/&gt;
-  &lt;task title="Analysis" start="1" dur="3"&gt;
-    &lt;effort person="Alice"/&gt;
-  &lt;/task&gt;
-  &lt;task title="Design" start="4" dur="6" :var="design"&gt;
-    &lt;effort person="Bob"/&gt;
-  &lt;/task&gt;
-  &lt;task title="Implementation" :start="design.start + design.duration + 1" dur="3"&gt;
-    &lt;effort person="Bob" perc="50"/&gt;
-    &lt;effort person="Alice" perc="50"/&gt;
-  &lt;/task&gt;
-&lt;/project&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="cp">&lt;?nsuri psl?&gt;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Bob&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Analysis&quot;</span><span class="w"> </span><span class="na">start=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span><span class="nt">&lt;/task&gt;</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">  </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Design&quot;</span><span class="w"> </span><span class="na">start=</span><span class="s">&quot;4&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;6&quot;</span><span class="w"> </span><span class="na">:var=</span><span class="s">&quot;design&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Bob&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">  </span><span class="nt">&lt;/task&gt;</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">  </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Implementation&quot;</span><span class="w"> </span><span class="na">:start=</span><span class="s">&quot;design.start + design.duration + 1&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Bob&quot;</span><span class="w"> </span><span class="na">perc=</span><span class="s">&quot;50&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Alice&quot;</span><span class="w"> </span><span class="na">perc=</span><span class="s">&quot;50&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">  </span><span class="nt">&lt;/task&gt;</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="nt">&lt;/project&gt;</span>
+</code></pre></div>
 <p>You can also use <code>:var</code>/<code>:global</code> and EOL attributes to refer to model elements without using names/ids as identifiers. For example, in the version, below, <code>Alice</code> is attached to the local variable name <code>alice</code>, which is then used in the <code>:person</code> reference of the second effort of the <code>Implementation</code> task.</p>
-<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
-&lt;project title="ACME"&gt;
-  &lt;person name="Alice" :var="alice"/&gt;
-  &lt;person name="Bob"/&gt;
-  &lt;task title="Analysis" start="1" dur="3"&gt;
-    &lt;effort person="Alice"/&gt;
-  &lt;/task&gt;
-  &lt;task title="Design" start="4" dur="6" :var="design"&gt;
-    &lt;effort person="Bob"/&gt;
-  &lt;/task&gt;
-  &lt;task title="Implementation" :start="design.start+design.duration+1" dur="3"&gt;
-    &lt;effort person="Bob" perc="50"/&gt;
-    &lt;effort :person="alice" perc="50"/&gt;
-  &lt;/task&gt;
-&lt;/project&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="cp">&lt;?nsuri psl?&gt;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="w"> </span><span class="na">:var=</span><span class="s">&quot;alice&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Bob&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Analysis&quot;</span><span class="w"> </span><span class="na">start=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">  </span><span class="nt">&lt;/task&gt;</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">  </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Design&quot;</span><span class="w"> </span><span class="na">start=</span><span class="s">&quot;4&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;6&quot;</span><span class="w"> </span><span class="na">:var=</span><span class="s">&quot;design&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Bob&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">  </span><span class="nt">&lt;/task&gt;</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">  </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Implementation&quot;</span><span class="w"> </span><span class="na">:start=</span><span class="s">&quot;design.start+design.duration+1&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Bob&quot;</span><span class="w"> </span><span class="na">perc=</span><span class="s">&quot;50&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">    </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">:person=</span><span class="s">&quot;alice&quot;</span><span class="w"> </span><span class="na">perc=</span><span class="s">&quot;50&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">  </span><span class="nt">&lt;/task&gt;</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="nt">&lt;/project&gt;</span>
+</code></pre></div>
 <h2 id="object-initialization">Object Initialization<a class="headerlink" href="#object-initialization" title="Permanent link">&para;</a></h2>
 <p>An XML element representing an object can have an <code>:init</code> child with complex EOL-based initialization logic.
 For example, this would initialize the "Analysis" task to have an Effort child pointing to the first Person in the model:</p>
-<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
-&lt;project title="ACME"&gt;
-  &lt;person name="Alice"/&gt;
-  &lt;person name="Bob"/&gt;
-  &lt;task title="Analysis" start="1" dur="3"&gt;
-    &lt;:init&gt;
-      var effort = new Effort();
-      self.effort.add(effort);
-      effort.person = Person.all.first();
-    &lt;/:init&gt;
-  &lt;/task&gt;
-&lt;/project&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="cp">&lt;?nsuri psl?&gt;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Bob&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Analysis&quot;</span><span class="w"> </span><span class="na">start=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="nt">&lt;:init&gt;</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">      </span>var<span class="w"> </span>effort<span class="w"> </span>=<span class="w"> </span>new<span class="w"> </span>Effort();
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">      </span>self.effort.add(effort);
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">      </span>effort.person<span class="w"> </span>=<span class="w"> </span>Person.all.first();
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">    </span><span class="nt">&lt;/:init&gt;</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">  </span><span class="nt">&lt;/task&gt;</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="nt">&lt;/project&gt;</span>
+</code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">ITool instances not available</p>
 <p>Since Flexmi is designed to work from outside Eclipse, <a href="../articles/call-java-from-epsilon/">Eclipse extension point-based tools</a> are not available from Flexmi EOL code.</p>
@@ -2474,74 +2478,78 @@ For example, this would initialize the "Analysis" task to have an Effort child p
 <p>If you need to have multiple top-level elements in your model, you can add them under a <code>&lt;_&gt;</code> root element, which has no other semantics.</p>
 <h2 id="reusable-templates">Reusable Templates<a class="headerlink" href="#reusable-templates" title="Permanent link">&para;</a></h2>
 <p>Flexmi supports defining reusable templates through the reserved <code>&lt;:template&gt;</code> XML tag. For example, when designing one-person projects where all tasks take place in sequence, we can omit all the repetitive <code>&lt;effort&gt;</code> elements that refer to the same person, and we can automate the calculation of the start date of each task using a <code>simpletask</code> template, as shown below.</p>
-<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
-&lt;_&gt;
-  &lt;project title="ACME"&gt;
-    &lt;person name="Alice"/&gt;
-    &lt;simpletask title="Analysis" dur="3"/&gt;
-    &lt;simpletask title="Design" dur="3"/&gt;
-    &lt;simpletask title="Implementation" dur="6"/&gt;
-  &lt;/project&gt;
-
-  &lt;:template name="simpletask"&gt;
-    &lt;content&gt;
-      &lt;task :start="Task.all.indexOf(self).asVar('index') == 0 ? 1 : Task.all.get(index-1).asVar('previous').start + previous.duration"&gt;
-        &lt;effort :person="Person.all.first()"/&gt;
-      &lt;/task&gt;
-    &lt;/content&gt;
-  &lt;/:template&gt;
-&lt;/_&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="cp">&lt;?nsuri psl?&gt;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nt">&lt;_&gt;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="nt">&lt;simpletask</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Analysis&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;3&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="nt">&lt;simpletask</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Design&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;3&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="nt">&lt;simpletask</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Implementation&quot;</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;6&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">  </span><span class="nt">&lt;/project&gt;</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">  </span><span class="nt">&lt;:template</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;simpletask&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="nt">&lt;content&gt;</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">      </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">:start=</span><span class="s">&quot;Task.all.indexOf(self).asVar(&#39;index&#39;) == 0 ? 1 : Task.all.get(index-1).asVar(&#39;previous&#39;).start + previous.duration&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">        </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">:person=</span><span class="s">&quot;Person.all.first()&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">      </span><span class="nt">&lt;/task&gt;</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="w">    </span><span class="nt">&lt;/content&gt;</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="w">  </span><span class="nt">&lt;/:template&gt;</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="nt">&lt;/_&gt;</span>
+</code></pre></div>
 <h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
 <p>Flexmi templates also support parameters, which can be used to configure the content they produce when they are invoked. An example is shown below:</p>
-<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
-&lt;_&gt;
-  &lt;project title="ACME"&gt;
-    &lt;person name="Alice"/&gt;
-    &lt;design dur="3" person="Alice"/&gt;
-  &lt;/project&gt;
-
-  &lt;:template name="design"&gt;
-    &lt;parameter name="person"/&gt;
-    &lt;content&gt;
-      &lt;task name="Design"&gt;
-        &lt;effort person="${person}"/&gt;
-      &lt;/task&gt;
-    &lt;/content&gt;
-  &lt;/:template&gt;
-&lt;/_&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="cp">&lt;?nsuri psl?&gt;</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nt">&lt;_&gt;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="nt">&lt;design</span><span class="w"> </span><span class="na">dur=</span><span class="s">&quot;3&quot;</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">  </span><span class="nt">&lt;/project&gt;</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">  </span><span class="nt">&lt;:template</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;design&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="nt">&lt;parameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;person&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">    </span><span class="nt">&lt;content&gt;</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">      </span><span class="nt">&lt;task</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Design&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">        </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;${person}&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">      </span><span class="nt">&lt;/task&gt;</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">    </span><span class="nt">&lt;/content&gt;</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">  </span><span class="nt">&lt;/:template&gt;</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="nt">&lt;/_&gt;</span>
+</code></pre></div>
 <h3 id="dynamic-templates-and-slots">Dynamic Templates and Slots<a class="headerlink" href="#dynamic-templates-and-slots" title="Permanent link">&para;</a></h3>
-<p>To further customise the content that Flexmi templates produce, one can use an <a href="../egl">EGL</a> template that produces XML as the value of the <code>&lt;content&gt;</code> element of the template, by setting it's language to EGL as shown below. Also Flexmi supports a <code>&lt;:slot&gt;</code> element in the content of templates, which specifies where any nested elements of the caller should be placed in the produced XML as shown below.</p>
-<pre class="highlight"><code class="language-xml">&lt;?nsuri psl?&gt;
-&lt;_&gt;
-  &lt;project title="ACME"&gt;
-    &lt;person name="Alice"/&gt;
-    &lt;longtask title="Implementation" years="2"&gt;
-      &lt;effort person="Alice"/&gt;
-    &lt;/longtask&gt;
-  &lt;/project&gt;
-
-  &lt;:template name="longtask"&gt;
-    &lt;parameter name="years"/&gt;
-    &lt;content language="EGL"&gt;
-      &lt;![CDATA[
-      &lt;task duration="[%=years.asInteger()*12%]"&gt;
-        &lt;:slot/&gt;
-      &lt;/task&gt;
-      ]]&gt;
-    &lt;/content&gt;
-  &lt;/:template&gt;
-&lt;/_&gt;</code></pre>
+<p>To further customise the content that Flexmi templates produce, one can use an <a href="../egl/">EGL</a> template that produces XML as the value of the <code>&lt;content&gt;</code> element of the template, by setting it's language to EGL as shown below. Also Flexmi supports a <code>&lt;:slot&gt;</code> element in the content of templates, which specifies where any nested elements of the caller should be placed in the produced XML as shown below.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="cp">&lt;?nsuri psl?&gt;</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nt">&lt;_&gt;</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span><span class="nt">&lt;project</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;ACME&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span><span class="nt">&lt;person</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">    </span><span class="nt">&lt;longtask</span><span class="w"> </span><span class="na">title=</span><span class="s">&quot;Implementation&quot;</span><span class="w"> </span><span class="na">years=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">      </span><span class="nt">&lt;effort</span><span class="w"> </span><span class="na">person=</span><span class="s">&quot;Alice&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span><span class="nt">&lt;/longtask&gt;</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">  </span><span class="nt">&lt;/project&gt;</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">  </span><span class="nt">&lt;:template</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;longtask&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">    </span><span class="nt">&lt;parameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;years&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">    </span><span class="nt">&lt;content</span><span class="w"> </span><span class="na">language=</span><span class="s">&quot;EGL&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">      </span><span class="cp">&lt;![CDATA[</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="cp">      &lt;task duration=&quot;[%=years.asInteger()*12%]&quot;&gt;</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="cp">        &lt;:slot/&gt;</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="cp">      &lt;/task&gt;</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="cp">      ]]&gt;</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="w">    </span><span class="nt">&lt;/content&gt;</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="w">  </span><span class="nt">&lt;/:template&gt;</span>
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="nt">&lt;/_&gt;</span>
+</code></pre></div>
 <h3 id="reusing-templates-in-different-flexmi-models">Reusing Templates in Different Flexmi Models<a class="headerlink" href="#reusing-templates-in-different-flexmi-models" title="Permanent link">&para;</a></h3>
 <p>Templates can be stored in separate Flexmi files and be imported from different models using Flexmi's <code>&lt;?include ?&gt;</code> processing instruction.</p>
 <h2 id="use-in-epsilon-and-java">Use in Epsilon and Java<a class="headerlink" href="#use-in-epsilon-and-java" title="Permanent link">&para;</a></h2>
 <p>Flexmi offers and registers an implementation of <a href="http://download.eclipse.org/modeling/emf/emf/javadoc/2.4.3/org/eclipse/emf/ecore/resource/Resource.html">EMF's Resource interface</a> (<code>FlexmiResource</code>), and can be used like any other EMF resource implementation. For example, you can add <code>.flexmi</code> models as regular EMF models to the run configuration of your Epsilon program. An example of using Flexmi from Java follows.</p>
-<pre class="highlight"><code class="language-java">ResourceSet resourceSet = new ResourceSetImpl();
-resourceSet.getResourceFactoryRegistry().
-  getExtensionToFactoryMap().put("flexmi",
-    new FlexmiResourceFactory());
-Resource resource = resourceSet.createResource
-  (URI.createFileURI("/../acme.flexmi"));
-resource.load(null);</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">ResourceSet</span><span class="w"> </span><span class="n">resourceSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ResourceSetImpl</span><span class="p">();</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">resourceSet</span><span class="p">.</span><span class="na">getResourceFactoryRegistry</span><span class="p">().</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">  </span><span class="n">getExtensionToFactoryMap</span><span class="p">().</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;flexmi&quot;</span><span class="p">,</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">FlexmiResourceFactory</span><span class="p">());</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="n">Resource</span><span class="w"> </span><span class="n">resource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">resourceSet</span><span class="p">.</span><span class="na">createResource</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">  </span><span class="p">(</span><span class="n">URI</span><span class="p">.</span><span class="na">createFileURI</span><span class="p">(</span><span class="s">&quot;/../acme.flexmi&quot;</span><span class="p">));</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="n">resource</span><span class="p">.</span><span class="na">load</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</code></pre></div>
 <h2 id="converting-to-xmi">Converting to XMI<a class="headerlink" href="#converting-to-xmi" title="Permanent link">&para;</a></h2>
 <p>You can convert a Flexmi model to standard XMI (with no templates, executable attributes etc.) by right-clicking on it in the Project Explorer view and selecting <code>Generate XMI</code>.</p>
 <p>Converting an XMI model to Flexmi on the other hand is not supported as there's no unique mapping in this direction.</p>
@@ -2559,72 +2567,75 @@ resource.load(null);</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Block style (indentation-based)</label><label for="__tabbed_1_2">Flow style (curly braces and brackets)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-yaml">$nsuri: psl
-project:
-  name: ACME
-  person:
-    - name: Alice
-    - name: Bob
-  task:
-    - title: Analysis
-      start: 1
-      dur: 3
-      effort:
-        person: Alice
-    - title: Design
-      start: 4
-      dur: 6
-      effort:
-        person: Bob
-    - title: Implementation
-      start: 7
-      dur: 3
-      effort:
-        - person: Bob
-          perc: 50
-        - person: Alice
-          perc: 50</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nt">$nsuri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">psl</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nt">project</span><span class="p">:</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ACME</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">  </span><span class="nt">person</span><span class="p">:</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alice</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bob</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">  </span><span class="nt">task</span><span class="p">:</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysis</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">      </span><span class="nt">start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">      </span><span class="nt">dur</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">      </span><span class="nt">effort</span><span class="p">:</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">        </span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alice</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Design</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="w">      </span><span class="nt">start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="w">      </span><span class="nt">dur</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="w">      </span><span class="nt">effort</span><span class="p">:</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="w">        </span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bob</span>
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Implementation</span>
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="w">      </span><span class="nt">start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7</span>
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a><span class="w">      </span><span class="nt">dur</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="w">      </span><span class="nt">effort</span><span class="p">:</span>
+<a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bob</span>
+<a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a><span class="w">          </span><span class="nt">perc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
+<a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alice</span>
+<a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a><span class="w">          </span><span class="nt">perc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-yaml">$nsuri: psl
-project: {
-  name: ACME,
-  person: [{name: Alice}, {name: Bob}],
-  task: [{
-    title: Analysis,
-    start: 1,
-    dur: 3,
-    effort: {person: Alice}
-  },
-  {
-    title: Design,
-    start: 4,
-    dur: 6,
-    effort: {person: Bob}
-  },
-  {
-    title: Implementation,
-    start: 7,
-    dur: 3,
-    effort: [{person: Bob, perc: 50},
-            {person: Alice, perc: 50}]
-  }]
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nt">$nsuri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">psl</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nt">project</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nt">  name</span><span class="p">:</span><span class="w"> </span><span class="nv">ACME</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="nt">  person</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">Alice</span><span class="p p-Indicator">},</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">Bob</span><span class="p p-Indicator">}],</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="nt">  task</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[{</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="nt">    title</span><span class="p">:</span><span class="w"> </span><span class="nv">Analysis</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="nt">    start</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="nt">    dur</span><span class="p">:</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="nt">    effort</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="nv">Alice</span><span class="p p-Indicator">}</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">  </span><span class="p p-Indicator">},</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">  </span><span class="p p-Indicator">{</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="nt">    title</span><span class="p">:</span><span class="w"> </span><span class="nv">Design</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="nt">    start</span><span class="p">:</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="nt">    dur</span><span class="p">:</span><span class="w"> </span><span class="nv">6</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="nt">    effort</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="nv">Bob</span><span class="p p-Indicator">}</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="w">  </span><span class="p p-Indicator">},</span>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="w">  </span><span class="p p-Indicator">{</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="nt">    title</span><span class="p">:</span><span class="w"> </span><span class="nv">Implementation</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="nt">    start</span><span class="p">:</span><span class="w"> </span><span class="nv">7</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="nt">    dur</span><span class="p">:</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="nt">    effort</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="nv">Bob</span><span class="p p-Indicator">,</span><span class="nt"> perc</span><span class="p">:</span><span class="w"> </span><span class="nv">50</span><span class="p p-Indicator">},</span>
+<a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a><span class="w">            </span><span class="p p-Indicator">{</span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="nv">Alice</span><span class="p p-Indicator">,</span><span class="nt"> perc</span><span class="p">:</span><span class="w"> </span><span class="nv">50</span><span class="p p-Indicator">}]</span>
+<a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a><span class="w">  </span><span class="p p-Indicator">}]</span>
+<a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a><span class="p p-Indicator">}</span>
+</code></pre></div>
 </div>
 </div>
 </div>
 <p>For multi-valued attributes and non-containment references, lists of scalars can be used as shown below.</p>
-<pre class="highlight"><code class="language-yaml">$nsuri: psl
-person:
-  - name: Alice 
-    skills: Java
-  - name: Bob
-    skills: # List of scalars
-      - Java
-      - HTML
-skill:
- - name: Java
- - name: HTML</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nt">$nsuri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">psl</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nt">person</span><span class="p">:</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alice</span><span class="w"> </span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="nt">skills</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Java</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bob</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="nt">skills</span><span class="p">:</span><span class="w"> </span><span class="c1"># List of scalars</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Java</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTML</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="nt">skill</span><span class="p">:</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Java</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTML</span>
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tabs vs. Spaces</p>
 <p>If your YAML-flavoured Flexmi model doesn't parse (i.e. the outline view of the Flexmi editor is empty), you may want to check that you have not accidentally used tabs instead of spaces for indentation.</p>
@@ -2632,68 +2643,74 @@ skill:
 <p>The Flexmi parser auto-detects whether a file is XML-based or YAML-based and parses it accordingly. As such, you should be able to edit YAML-flavoured <code>*.flexmi</code> files in the Flexmi editor. Additional examples of YAML-flavoured Flexmi models are available in this <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/tests/org.eclipse.epsilon.flexmi.test/src/org/eclipse/epsilon/flexmi/test/models">test project</a> (look for <code>*.yaml</code> files).</p>
 <h3 id="dynamic-templates-in-yaml">Dynamic Templates in YAML<a class="headerlink" href="#dynamic-templates-in-yaml" title="Permanent link">&para;</a></h3>
 <p>The YAML flavour requires a <code>script</code> attribute in the <code>content</code> of dynamic templates, that holds the EGL script used to dynamically produce the YAML content. The YAML equivalent of the XML-based dynamic template <a href="#dynamic-templates-and-slots">shown above</a> is as follows.</p>
-<pre class="highlight"><code class="language-yaml">$nsuri: psl
-project:
-  title: ACME
-  person:
-    name: Alice
-  longtask:
-    title: Implementation
-    years: 2
-    effort:
-      person: Alice
-:template:
-  name: longtask
-  parameter:
-    name: years
-  content:
-    language: EGL
-    script: |- # Multi-line EGL script
-       task:
-         duration: [%=years.asInteger()*12%]
-         :slot: {}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nt">$nsuri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">psl</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nt">project</span><span class="p">:</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ACME</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">  </span><span class="nt">person</span><span class="p">:</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alice</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">  </span><span class="nt">longtask</span><span class="p">:</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">    </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Implementation</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">    </span><span class="nt">years</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">    </span><span class="nt">effort</span><span class="p">:</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">      </span><span class="nt">person</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alice</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="nt">:template</span><span class="p">:</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">longtask</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="w">  </span><span class="nt">parameter</span><span class="p">:</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">years</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="w">  </span><span class="nt">content</span><span class="p">:</span>
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="w">    </span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EGL</span>
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="w">    </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span><span class="w"> </span><span class="c1"># Multi-line EGL script</span>
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="w">       </span><span class="no">task:</span>
+<a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="w">         </span><span class="no">duration: [%=years.asInteger()*12%]</span>
+<a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a><span class="w">         </span><span class="no">:slot: {}</span>
+</code></pre></div>
 <h3 id="representing-heterogeneous-lists">Representing heterogeneous lists<a class="headerlink" href="#representing-heterogeneous-lists" title="Permanent link">&para;</a></h3>
 <p>There is a specific scenario that requires special attention in the YAML flavour.
 Suppose that we wanted to rewrite this Flexmi XML document using the YAML flavour, keeping exactly this order among the <code>EStructuralFeature</code>s of the <code>EClass</code> (<code>r1</code>, then <code>a1</code>, then <code>r2</code>):</p>
-<pre class="highlight"><code class="language-xml">&lt;?xml version="1.0"?&gt;
-&lt;?nsuri http://www.eclipse.org/emf/2002/Ecore?&gt;
-&lt;class name="c1"&gt;
-  &lt;eref name="r1" /&gt;
-  &lt;eattr name="a1" /&gt;
-  &lt;eref name="r2" /&gt;
-&lt;/class&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="cp">&lt;?nsuri http://www.eclipse.org/emf/2002/Ecore?&gt;</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="nt">&lt;class</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;c1&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">  </span><span class="nt">&lt;eref</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;r1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">  </span><span class="nt">&lt;eattr</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;a1&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">  </span><span class="nt">&lt;eref</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;r2&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="nt">&lt;/class&gt;</span>
+</code></pre></div>
 <p>Unfortunately, YAML does not allow us to repeat keys, so this document would not work as intended - we'd only see <code>r2</code>, and not <code>r1</code>:</p>
-<pre class="highlight"><code class="language-yaml">$nsuri: http://www.eclipse.org/emf/2002/Ecore
-class:
-  name: c1
-  eref: {name: r1} # &lt;-- would be ignored!
-  eattr: {name: a1}
-  eref: {name: r2}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nt">$nsuri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://www.eclipse.org/emf/2002/Ecore</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nt">class</span><span class="p">:</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">c1</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">  </span><span class="nt">eref</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">r1</span><span class="p p-Indicator">}</span><span class="w"> </span><span class="c1"># &lt;-- would be ignored!</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">  </span><span class="nt">eattr</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">a1</span><span class="p p-Indicator">}</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">  </span><span class="nt">eref</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">r2</span><span class="p p-Indicator">}</span>
+</code></pre></div>
 <p>Instead, what we'd need to do is to introduce a key encompassing the heterogeneous list of <code>EReference</code>s and <code>EAttribute</code>s, and use <code>$type</code> to override the XML tag that would be produced for each of its elements:</p>
-<pre class="highlight"><code class="language-yaml">$nsuri: http://www.eclipse.org/emf/2002/Ecore
-class:
-  name: c1
-  features:
-    - {$type: eref, name: r1}
-    - {$type: eattr, name: a1}
-    - {$type: eref, name: r2}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nt">$nsuri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://www.eclipse.org/emf/2002/Ecore</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nt">class</span><span class="p">:</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">c1</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">  </span><span class="nt">features</span><span class="p">:</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">$type</span><span class="p">:</span><span class="w"> </span><span class="nv">eref</span><span class="p p-Indicator">,</span><span class="nt"> name</span><span class="p">:</span><span class="w"> </span><span class="nv">r1</span><span class="p p-Indicator">}</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">$type</span><span class="p">:</span><span class="w"> </span><span class="nv">eattr</span><span class="p p-Indicator">,</span><span class="nt"> name</span><span class="p">:</span><span class="w"> </span><span class="nv">a1</span><span class="p p-Indicator">}</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">$type</span><span class="p">:</span><span class="w"> </span><span class="nv">eref</span><span class="p p-Indicator">,</span><span class="nt"> name</span><span class="p">:</span><span class="w"> </span><span class="nv">r2</span><span class="p p-Indicator">}</span>
+</code></pre></div>
 <p>To save some space, we could use <code>eref</code> instead of <code>features</code>, and avoid using <code>$type</code> for the <code>eref</code>s:</p>
-<pre class="highlight"><code class="language-yaml">$nsuri: http://www.eclipse.org/emf/2002/Ecore
-class:
-  name: c1
-  eref:
-    - {name: r1}
-    - {$type: eattr, name: a1}
-    - {name: r2}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nt">$nsuri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://www.eclipse.org/emf/2002/Ecore</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="nt">class</span><span class="p">:</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">c1</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">  </span><span class="nt">eref</span><span class="p">:</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">r1</span><span class="p p-Indicator">}</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">$type</span><span class="p">:</span><span class="w"> </span><span class="nv">eattr</span><span class="p p-Indicator">,</span><span class="nt"> name</span><span class="p">:</span><span class="w"> </span><span class="nv">a1</span><span class="p p-Indicator">}</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">r2</span><span class="p p-Indicator">}</span>
+</code></pre></div>
 <p>Note that if we do not care about preserving the exact order as in the XML document above, we could have just written:</p>
-<pre class="highlight"><code class="language-yaml">$nsuri: http://www.eclipse.org/emf/2002/Ecore
-class:
-  name: c1
-  eref:
-    - name: r1
-    - name: r2
-  eattr:
-    - name: a1</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nt">$nsuri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://www.eclipse.org/emf/2002/Ecore</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="nt">class</span><span class="p">:</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">c1</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">  </span><span class="nt">eref</span><span class="p">:</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">r1</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">r2</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="w">  </span><span class="nt">eattr</span><span class="p">:</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">a1</span>
+</code></pre></div>
 <h2 id="philosophy">Philosophy<a class="headerlink" href="#philosophy" title="Permanent link">&para;</a></h2>
 <p>Flexmi was originally developed as a quick and dirty way to type in EMF models without having to define an Xtext grammar or adhere to the rigid naming rules of XMI or HUTN. The name is a combination of the word "flexible" and the "XMI" acronym.</p>
 <h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
@@ -2845,8 +2862,6 @@ class:
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

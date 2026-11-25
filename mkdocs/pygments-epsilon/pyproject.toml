@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "epsilon-pygments"
+version = "1.0.0"
+description = "Pygments lexers for the Eclipse Epsilon languages and Emfatic"
+requires-python = ">=3.8"
+dependencies = ["Pygments>=2.4"]
+
+[project.entry-points."pygments.lexers"]
+eol = "epsilon_pygments:EolLexer"
+etl = "epsilon_pygments:EtlLexer"
+evl = "epsilon_pygments:EvlLexer"
+ecl = "epsilon_pygments:EclLexer"
+eml = "epsilon_pygments:EmlLexer"
+epl = "epsilon_pygments:EplLexer"
+egx = "epsilon_pygments:EgxLexer"
+ewl = "epsilon_pygments:EwlLexer"
+flock = "epsilon_pygments:FlockLexer"
+pinset = "epsilon_pygments:PinsetLexer"
+egl = "epsilon_pygments:EglLexer"
+emfatic = "epsilon_pygments:EmfaticLexer"
+
+[tool.setuptools]
+packages = ["epsilon_pygments"]

@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1827,14 +1821,15 @@
 
 <h1 id="working-with-custom-emf-resources">Working with custom EMF resources<a class="headerlink" href="#working-with-custom-emf-resources" title="Permanent link">&para;</a></h1>
 <p>Epsilon's default EMF driver (<a href="http://download.eclipse.org/epsilon/javadoc/org/eclipse/epsilon/emc/emf/EmfModel.html">EmfModel</a>), provides little support for customising the underlying EMF resource loading/persistence process (e.g. using custom resource factories, passing parameters to the resources's load/save methods etc.). If you're invoking an Epsilon program from Java and you need more flexibility in this respect, you can use <a href="http://download.eclipse.org/epsilon/javadoc/org/eclipse/epsilon/emc/emf/InMemoryEmfModel.html">InMemoryEmfModel</a> instead, which is essentially a wrapper for a pre-loaded EMF resource. A skeleton example follows.</p>
-<pre class="highlight"><code class="language-java">Resource resource = ...;
-InMemoryEmfModel model = new InMemoryEmfModel(resource);
-model.setName("M");
-EolModule module = new EolModule();
-module.parse(...);
-module.getContext().getModelRepository().addModel(model);
-module.execute();
-resource.save(...);</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">Resource</span><span class="w"> </span><span class="n">resource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">InMemoryEmfModel</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InMemoryEmfModel</span><span class="p">(</span><span class="n">resource</span><span class="p">);</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">model</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;M&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">EolModule</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EolModule</span><span class="p">();</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">module</span><span class="p">.</span><span class="na">parse</span><span class="p">(...);</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">module</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">getModelRepository</span><span class="p">().</span><span class="na">addModel</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">module</span><span class="p">.</span><span class="na">execute</span><span class="p">();</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">resource</span><span class="p">.</span><span class="na">save</span><span class="p">(...);</span>
+</code></pre></div>
 
 
 
@@ -1930,8 +1925,6 @@ resource.save(...);</code></pre>
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

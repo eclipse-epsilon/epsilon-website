@@ -1,6 +1,6 @@
 # Running Epsilon's Ant Tasks from Command Line
 
-[This example project](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.workflow.standalone) shows how to download, configure and run [Epsilon's Ant tasks](../../workflow) from the command line using Ant, Maven and Gradle.
+[This example project](https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.workflow.standalone) shows how to download, configure and run [Epsilon's Ant tasks](../../workflow.md) from the command line using Ant, Maven and Gradle.
 To debug Epsilon scripts running from these tasks, read [these instructions](../debugger.md#debugging-epsilon-scripts-running-from-ant-workflows).
 
 To run the examples below, you **only** need to have [Ant](https://ant.apache.org), [Maven](https://maven.apache.org/) or [Gradle](https://gradle.org/) installed in your system.
@@ -77,7 +77,7 @@ Since Gradle can also [run Ant tasks](https://docs.gradle.org/current/userguide/
 
 ## Flexmi and Emfatic
 
-You can also use [Flexmi](../../flexmi) instead of XMI (`library.flexmi` instead of `library.model`) for the model, and [Emfatic](https://eclipse.org/emfatic) instead of Ecore (`library.emf` instead of `library.ecore`) by adding the following dependency to your ANT/Maven/Gradle build.
+You can also use [Flexmi](../../flexmi/index.md) instead of XMI (`library.flexmi` instead of `library.model`) for the model, and [Emfatic](https://eclipse.org/emfatic) instead of Ecore (`library.emf` instead of `library.ecore`) by adding the following dependency to your ANT/Maven/Gradle build.
 
 === "Ivy/ANT"
 
@@ -129,7 +129,7 @@ A complete Gradle example that uses `library.flexmi` instead of (the XMI-based) 
 
 ## Excel
 
-The example below demonstrates using the generic `epsilon.loadModel` task to run the same EOL program against an [Excel spreadsheet](../excel).
+The example below demonstrates using the generic `epsilon.loadModel` task to run the same EOL program against an [Excel spreadsheet](../excel/index.md).
 
 === "build.gradle"
 

@@ -10,9 +10,9 @@ EVL contributes model validation capabilities to Epsilon. More specifically, EVL
 In EVL, validation specifications are organized in modules (*EvlModule*). As illustrated in the figure below, *EvlModule* (indirectly) extends *EolModule* which means that it can contain user-defined operations and import other EOL library modules and EVL modules. Apart from operations, an EVL module also contains a set of constraints grouped by the context they apply to, and, by extending *ErlModule*, a number of *pre* and *post* blocks.
 
 !!! info
-    As with most languages in Epsilon, EVL uses [EOL](../eol) as its expression language. This page only documents the additional syntax and semantics that EVL provides on top of EOL.
+    As with most languages in Epsilon, EVL uses [EOL](eol.md) as its expression language. This page only documents the additional syntax and semantics that EVL provides on top of EOL.
 
-```mermaid-80
+```mermaid
 classDiagram
 class Constraint {
     -name: String
@@ -140,7 +140,7 @@ When one of these operations is invoked, if the required *constraints* (either l
 
 The following is an EVL program demonstrating some of the language features, which validates models confirming to the Movies metamodel shown below. Execution begins from the *pre* block, which simply computes the average number of actors per Movie and stores it into a global variable, which can be accessed at any point. The *ValidActors* constraint checks that for every instance of *Movie* which has more than the average number of actors, all of the actors have valid names. This is achieved through a dependency on the *HashValidName* invariant declared in the context of *Person* type. This constraint is marked as lazy, which means it is only executed when invoked by *satisfies*, so avoiding unnecessary or duplicate invocations. The *HasValidName* constraint makes use of a helper operation (*isPlain()*) on Strings. Once all Movie instances have been checked, the execution engine then proceeds to validate all *Person* instances, which consists of only one non-lazy constraint *ValidMovieYears*. This checks that all of the movies the actor has played in were released at least 3 years after the actor was born. Finally, the *post* block is executed, which in this case simply prints some basic information about the model.
 
-```mermaid-30
+```mermaid
 classDiagram
 class Movie {
     -title: String
@@ -195,4 +195,4 @@ post {
 
 ## Additional Resources
 
-Additional resources about EVL are available [here](../articles/#epsilon-validation-language).
+Additional resources about EVL are available [here](articles/index.md#epsilon-validation-language).

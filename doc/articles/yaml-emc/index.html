@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2007,25 +2001,26 @@
 
 <h2 id="querying-a-yaml-document">Querying a YAML document<a class="headerlink" href="#querying-a-yaml-document" title="Permanent link">&para;</a></h2>
 <p>We use the following <code>employees.yaml</code> as a base for demonstrating the EOL syntax for querying YAML documents.</p>
-<pre class="highlight"><code class="language-yaml">- employeeId: 14623
-  address:
-    country: England
-    resident: true
-    postcode: M1 1AG
-  fullname: Michael Davidson
-  role: Consultant
-  industry: [IoT, smart factories, signal analytics]
-  projects:
-    - {name: SmartAutomation, budget: 25000}
-    - {name: FactoryAnalytics, budget: 20000}
-
-- employeeId: 16431
-  address: {country: Germany}
-  fullname: Arnold Wagner
-  role: HR
-  skills:
-    - communication
-    - coaching</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">employeeId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14623</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">address</span><span class="p">:</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">country</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">England</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">resident</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">postcode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">M1 1AG</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">fullname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Michael Davidson</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Consultant</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nt">industry</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">IoT</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">smart factories</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">signal analytics</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">projects</span><span class="p">:</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">SmartAutomation</span><span class="p p-Indicator">,</span><span class="nt"> budget</span><span class="p">:</span><span class="w"> </span><span class="nv">25000</span><span class="p p-Indicator">}</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="nv">FactoryAnalytics</span><span class="p p-Indicator">,</span><span class="nt"> budget</span><span class="p">:</span><span class="w"> </span><span class="nv">20000</span><span class="p p-Indicator">}</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">employeeId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16431</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">country</span><span class="p">:</span><span class="w"> </span><span class="nv">Germany</span><span class="p p-Indicator">}</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span><span class="nt">fullname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Arnold Wagner</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HR</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span><span class="nt">skills</span><span class="p">:</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">communication</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coaching</span>
+</code></pre></div>
 <h2 id="queryingmodifying-yaml-documents-in-eol">Querying/modifying YAML documents in EOL<a class="headerlink" href="#queryingmodifying-yaml-documents-in-eol" title="Permanent link">&para;</a></h2>
 <p>The YAML driver uses predefined naming conventions to allow developers to programmatically access and modify YAML documents in a concise way. A type of YAML node must be specified when accessing YAML nodes via the YAML driver. There are 3 types of nodes in YAML:</p>
 <ul>
@@ -2036,51 +2031,56 @@
 <p>This section outlines the supported conventions in the form of questions and answers followed by relevant examples.</p>
 <h3 id="how-can-i-access-all-node-elements">How can I access all node elements?<a class="headerlink" href="#how-can-i-access-all-node-elements" title="Permanent link">&para;</a></h3>
 <p>Retrieving all nodes, regardless of their type, is performed by using the keyword <code>Node</code>, followed by the property <code>all</code>. One can access all nodes of a specific type, by using the keyword <code>ScalarNode</code> for scalar nodes, <code>MappingNode</code> for mapping nodes, and <code>ListNode</code> for list nodes.</p>
-<pre class="highlight"><code class="language-eol">// Get and print all nodes
-Node.all.println();
-
-// Get and print all scalar nodes
-ScalarNode.all.println();
-
-// Get and print all mapping nodes
-MappingNode.all.println();
-
-// Get and print all list nodes
-ListNode.all.println();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Get and print all nodes</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">Node</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1">// Get and print all scalar nodes</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">ScalarNode</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1">// Get and print all mapping nodes</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">MappingNode</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1">// Get and print all list nodes</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="n">ListNode</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+</code></pre></div>
 <h3 id="how-can-i-access-nodes-by-name">How can I access nodes by name?<a class="headerlink" href="#how-can-i-access-nodes-by-name" title="Permanent link">&para;</a></h3>
 <p>The <code>s_</code> prefix followed by the name of the node is used to access all scalar nodes with the specified name. Similarly, the <code>m_</code> prefix is used for accessing mapping nodes, and the <code>l_</code> prefix for list nodes. For instance, <code>s_role.all</code> can be used to get all scalar nodes named <code>role</code>, <code>m_address.all</code> can be used to get all mapping nodes named <code>address</code>, and <code>l_industry.all</code> can be used to get all list nodes named <code>industry</code>.</p>
-<pre class="highlight"><code class="language-eol">// Get all scalar nodes with the name "role" and print the first one
-s_role.all.first().println();
-
-// Get all mapping nodes with the name "address" and print the first one
-m_address.all.first().println();
-
-// Get all list nodes with the name "industry" and print the first one
-l_industry.all.first().println();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Get all scalar nodes with the name &quot;role&quot; and print the first one</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">s_role</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">// Get all mapping nodes with the name &quot;address&quot; and print the first one</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">m_address</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1">// Get all list nodes with the name &quot;industry&quot; and print the first one</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="n">l_industry</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+</code></pre></div>
 <h3 id="how-can-i-retrieve-nodes-as-a-sequence-of-elements-or-as-a-single-element">How can I retrieve nodes as a sequence of elements or as a single element?<a class="headerlink" href="#how-can-i-retrieve-nodes-as-a-sequence-of-elements-or-as-a-single-element" title="Permanent link">&para;</a></h3>
 <p>One can specify how nodes can be retrieved, either as a sequence or as a single element. After the prefix of the node type (i.e., <code>s</code> for scalar node, <code>m</code> for mapping node, <code>l</code> for list node), one can use an additional prefix <code>c_</code> to specify that nodes should be retrieved as a sequence, or can use <code>e_</code> to specify that a single node should be retrieved. For instance, <code>se_country</code> specifies that a single scalar node named <code>country</code> should be retrieved, whereas <code>sc_country</code> specifies that the node named <code>country</code> should be retrieved in a sequence. Using the additional prefix <code>e_</code> can eliminate the need for using further accessor functions (e.g., <code>first</code>, <code>last</code>, <code>at</code>).</p>
-<pre class="highlight"><code class="language-eol">// Get the first "address" mapping node
-var address = m_address.all.first();
-
-// Get and print the "country" scalar node in a sequence (c_)
-address.sc_country.println();
-
-// Get and print the "country" scalar node as a single element (e_)
-address.se_country.println();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Get the first &quot;address&quot; mapping node</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">var</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_address</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">();</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1">// Get and print the &quot;country&quot; scalar node in a sequence (c_)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">address</span><span class="o">.</span><span class="n">sc_country</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1">// Get and print the &quot;country&quot; scalar node as a single element (e_)</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">address</span><span class="o">.</span><span class="n">se_country</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+</code></pre></div>
 <h3 id="how-can-i-access-the-name-of-a-node">How can I access the name of a node?<a class="headerlink" href="#how-can-i-access-the-name-of-a-node" title="Permanent link">&para;</a></h3>
 <p>One may be interested in verifying the name of a node for debugging programs, and for this purpose, the <code>name</code> property can be used.</p>
-<pre class="highlight"><code class="language-eol">// Get the first "industry" list node
-var industry = l_industry.all.first();
-
-// Get and print the name of the node
-industry.name.println();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// Get the first &quot;industry&quot; list node</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">var</span><span class="w"> </span><span class="n">industry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">l_industry</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">();</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1">// Get and print the name of the node</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">industry</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+</code></pre></div>
 <h3 id="how-can-i-access-the-type-of-a-node">How can I access the type of a node?<a class="headerlink" href="#how-can-i-access-the-type-of-a-node" title="Permanent link">&para;</a></h3>
 <p>One may be interested in verifying the type of a node for debugging programs, and for this purpose, the <code>type</code> property can be used.</p>
-<pre class="highlight"><code class="language-eol">// Get the first "role" scalar node
-var role = s_role.all.first();
-
-// Get and print the type of the node
-role.type.println(); // ScalarNode</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// Get the first &quot;role&quot; scalar node</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">var</span><span class="w"> </span><span class="n">role</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s_role</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">();</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1">// Get and print the type of the node</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">role</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">println</span><span class="p">();</span><span class="w"> </span><span class="c1">// ScalarNode</span>
+</code></pre></div>
 <h3 id="how-can-i-access-the-value-of-a-node">How can I access the value of a node?<a class="headerlink" href="#how-can-i-access-the-value-of-a-node" title="Permanent link">&para;</a></h3>
 <p>The <code>value</code> property can be used for accessing the value of a node. The value of a node can be converted into different types using the following prefixes:</p>
 <ul>
@@ -2090,142 +2090,150 @@ role.type.println(); // ScalarNode</code></pre>
 <li><code>f_</code> for floats</li>
 <li><code>b_</code> for booleans</li>
 </ul>
-<pre class="highlight"><code class="language-eol">var employeeVal = s_employeeId.all.first().value; // 14623
-var s_employeeVal = s_employeeId.all.first().s_value + 1; // 146231
-var i_employeeVal = s_employeeId.all.first().i_value + 1; // 14624
-var d_employeeVal = s_employeeId.all.first().d_value + 1; // 14624.0
-var f_employeeVal = s_employeeId.all.first().f_value + 1; // 14624.0
-var b_residentVal = s_resident.all.first().b_value; // true</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">var</span><span class="w"> </span><span class="n">employeeVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s_employeeId</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="p">;</span><span class="w"> </span><span class="c1">// 14623</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">var</span><span class="w"> </span><span class="n">s_employeeVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s_employeeId</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">s_value</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// 146231</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">var</span><span class="w"> </span><span class="n">i_employeeVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s_employeeId</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">i_value</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// 14624</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">var</span><span class="w"> </span><span class="n">d_employeeVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s_employeeId</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">d_value</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// 14624.0</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">var</span><span class="w"> </span><span class="n">f_employeeVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s_employeeId</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">f_value</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// 14624.0</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="k">var</span><span class="w"> </span><span class="n">b_residentVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s_resident</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">b_value</span><span class="p">;</span><span class="w"> </span><span class="c1">// true</span>
+</code></pre></div>
 <h3 id="how-can-i-create-a-node">How can I create a node?<a class="headerlink" href="#how-can-i-create-a-node" title="Permanent link">&para;</a></h3>
 <p>To create a new node, you can use the <code>new</code> operator followed by the type of node (i.e., <code>ScalarNode</code>, <code>MappingNode</code>, <code>ListNode</code>). Alternatively, the convention for accessing nodes can be used for creating nodes. For instance, one can use the <code>new</code> operator followed by <code>s_role</code> to create a scalar node named <code>role</code>.</p>
-<pre class="highlight"><code class="language-eol">// scalar node named "city" with the value "Berlin"
-var cityNode1 = new ScalarNode("city", "Berlin"); // city=Berlin
-var cityNode2 = new s_city("Berlin"); // city=Berlin
-
-// empty mapping node named "address"; its value must be set later
-var addressNode1 = new MappingNode("address"); // address={}
-var addressNode2 = new m_address; // address={}
-
-// empty list node named "books" that contains 5 entries; its values must be set later
-var booksNode1 = new ListNode("books", 5); // books=[{}, {}, {}, {}, {}]
-var booksNode2 = new l_books(5); // books=[{}, {}, {}, {}, {}]</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// scalar node named &quot;city&quot; with the value &quot;Berlin&quot;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">var</span><span class="w"> </span><span class="n">cityNode1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ScalarNode</span><span class="p">(</span><span class="s2">&quot;city&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Berlin&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// city=Berlin</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">var</span><span class="w"> </span><span class="n">cityNode2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">s_city</span><span class="p">(</span><span class="s2">&quot;Berlin&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// city=Berlin</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="c1">// empty mapping node named &quot;address&quot;; its value must be set later</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="k">var</span><span class="w"> </span><span class="n">addressNode1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MappingNode</span><span class="p">(</span><span class="s2">&quot;address&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// address={}</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="k">var</span><span class="w"> </span><span class="n">addressNode2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">m_address</span><span class="p">;</span><span class="w"> </span><span class="c1">// address={}</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1">// empty list node named &quot;books&quot; that contains 5 entries; its values must be set later</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="k">var</span><span class="w"> </span><span class="n">booksNode1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ListNode</span><span class="p">(</span><span class="s2">&quot;books&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w"> </span><span class="c1">// books=[{}, {}, {}, {}, {}]</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="k">var</span><span class="w"> </span><span class="n">booksNode2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">l_books</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"> </span><span class="c1">// books=[{}, {}, {}, {}, {}]</span>
+</code></pre></div>
 <h3 id="how-do-i-set-the-value-of-a-node">How do I set the value of a node?<a class="headerlink" href="#how-do-i-set-the-value-of-a-node" title="Permanent link">&para;</a></h3>
 <p>For setting or changing the value of a node, the <code>value</code> property can be used, followed by the assignment operator (“=”) and a value or a node. If a node is specified after the assignment operator, then the name of that node will be ignored, and the value of that node will become the new value after the assignment operation. The function <code>set(position, value)</code> can be used for modifying the items of a list node.</p>
-<pre class="highlight"><code class="language-eol">// changes the value of the first "fullname" scalar node to "Jack"
-s_fullname.all.at(0).value = "Jack";
-
-// changes the value of the first "role" scalar node to "Developer"
-s_role.all.first().value = new ScalarNode("newNode", "Developer");
-
-// changes the value of the "country" scalar node to "Turkey"
-m_address.all.first().se_country.value = "Turkey";
-
-// changes the last "address" mapping node into a scalar node with the value "Street Broadway"
-m_address.all.last().value = new s_newNode("Street Broadway");
-
-// changes the last "role" scalar node into an empty mapping node
-s_role.all.last().value = new MappingNode();
-
-// changes the last "employeeId" scalar node into a list node that contains 3 empty entries
-s_employeeId.all.last().value = new ListNode("newNode", 3); 
-
-// changes in the "skills" list node the value of the item at position 1 to "databases"
-l_skills.all.first().value.set(1, "databases");</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">// changes the value of the first &quot;fullname&quot; scalar node to &quot;Jack&quot;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">s_fullname</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Jack&quot;</span><span class="p">;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1">// changes the value of the first &quot;role&quot; scalar node to &quot;Developer&quot;</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">s_role</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ScalarNode</span><span class="p">(</span><span class="s2">&quot;newNode&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Developer&quot;</span><span class="p">);</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1">// changes the value of the &quot;country&quot; scalar node to &quot;Turkey&quot;</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="n">m_address</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">se_country</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Turkey&quot;</span><span class="p">;</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="c1">// changes the last &quot;address&quot; mapping node into a scalar node with the value &quot;Street Broadway&quot;</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="n">m_address</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">last</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">s_newNode</span><span class="p">(</span><span class="s2">&quot;Street Broadway&quot;</span><span class="p">);</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="c1">// changes the last &quot;role&quot; scalar node into an empty mapping node</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="n">s_role</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">last</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MappingNode</span><span class="p">();</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="c1">// changes the last &quot;employeeId&quot; scalar node into a list node that contains 3 empty entries</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="n">s_employeeId</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">last</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ListNode</span><span class="p">(</span><span class="s2">&quot;newNode&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"> </span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="c1">// changes in the &quot;skills&quot; list node the value of the item at position 1 to &quot;databases&quot;</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="n">l_skills</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;databases&quot;</span><span class="p">);</span>
+</code></pre></div>
 <h3 id="how-do-i-add-entries-to-a-list-node">How do I add entries to a list node?<a class="headerlink" href="#how-do-i-add-entries-to-a-list-node" title="Permanent link">&para;</a></h3>
 <p>The function <code>add(value)</code> can be used for adding an item to a list node that contains scalar values. The functions <code>addRow()</code> and <code>addRows(size)</code> can be used for adding empty entries to a list node that contains nodes.</p>
-<pre class="highlight"><code class="language-eol">// add an item to the "skills" list node
-l_skills.all.first().value.add("analytics");
-
-// add 1 empty entry to the "projects" list node
-l_projects.all.first().value.addRow();
-
-// add 3 empty entries to the "projects" list node
-l_projects.all.first().value.addRows(3);</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">// add an item to the &quot;skills&quot; list node</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">l_skills</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;analytics&quot;</span><span class="p">);</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1">// add 1 empty entry to the &quot;projects&quot; list node</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">l_projects</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">addRow</span><span class="p">();</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1">// add 3 empty entries to the &quot;projects&quot; list node</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="n">l_projects</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">addRows</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</code></pre></div>
 <h3 id="how-do-i-add-nodes-to-a-mapping-node">How do I add nodes to a mapping node?<a class="headerlink" href="#how-do-i-add-nodes-to-a-mapping-node" title="Permanent link">&para;</a></h3>
 <p>The <code>appendNode(node)</code> function can be used for adding new nodes into a mapping node.</p>
-<pre class="highlight"><code class="language-eol">var address = m_address.all.last();
-
-// add a new scalar node with the name "city" and value "Berlin"
-address.value.appendNode(new ScalarNode("city", "Berlin"));</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">var</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_address</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">last</span><span class="p">();</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1">// add a new scalar node with the name &quot;city&quot; and value &quot;Berlin&quot;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">address</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">appendNode</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ScalarNode</span><span class="p">(</span><span class="s2">&quot;city&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Berlin&quot;</span><span class="p">));</span>
+</code></pre></div>
 <h3 id="how-do-i-set-the-root-node-of-a-yaml-document">How do I set the root node of a YAML document?<a class="headerlink" href="#how-do-i-set-the-root-node-of-a-yaml-document" title="Permanent link">&para;</a></h3>
 <p>The <code>root</code> property can be used for setting the root node of a YAML document. The root node of a YAML document can either be a mapping node or a list node. The <code>setRootAsMap()</code> function can be used for setting the root node into a mapping node. The <code>setRootAsList()</code> function can be used for setting the root node into a list node.</p>
-<pre class="highlight"><code class="language-eol">// Set the root node into a mapping node
-YAMLDoc.setRootAsMap();
-
-// Set the root node into a list node
-YAMLDoc.setRootAsList();
-
-// Set the root node into a mapping node
-YAMLDoc.root.value = new MappingNode();
-
-// Set the root node into a list node with 3 empty entries
-YAMLDoc.root.value = new ListNode("", 3);</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">// Set the root node into a mapping node</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">YAMLDoc</span><span class="o">.</span><span class="n">setRootAsMap</span><span class="p">();</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1">// Set the root node into a list node</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">YAMLDoc</span><span class="o">.</span><span class="n">setRootAsList</span><span class="p">();</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1">// Set the root node into a mapping node</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="n">YAMLDoc</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MappingNode</span><span class="p">();</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="c1">// Set the root node into a list node with 3 empty entries</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="n">YAMLDoc</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ListNode</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+</code></pre></div>
 <h3 id="how-can-i-create-a-yaml-document-from-scratch">How can I create a YAML document from scratch?<a class="headerlink" href="#how-can-i-create-a-yaml-document-from-scratch" title="Permanent link">&para;</a></h3>
 <p>The following code can be used for creating the <code>employees.yaml</code> file programmatically.</p>
-<pre class="highlight"><code class="language-eol">YAMLDoc.setRootAsList();
-var root = YAMLDoc.getRoot();
-root.value.addRows(2);
-var rootFirstRow = root.value.at(0);
-var rootSecondRow = root.value.at(1);
-
-var addressNode1 = new MappingNode("address");
-var countryNode1 = new ScalarNode("country", "England");
-var residentNode = new ScalarNode("resident", true);
-var postcodeNode = new ScalarNode("postcode", "M1 1AG");
-addressNode1.value.appendNode(countryNode1);
-addressNode1.value.appendNode(residentNode);
-addressNode1.value.appendNode(postcodeNode);
-
-var employeeIdNode1 = new ScalarNode("employeeId", "14623");
-var fullnameNode1 = new ScalarNode("fullname", "Michael Davidson");
-var roleNode1 = new ScalarNode("role", "Consultant");
-
-var industryNode = new ListNode("industry", 3);
-industryNode.value =  Sequence{"IoT", "smart factories", "signal analytics"};
-
-var projectsNode = new ListNode("projects", 2);
-var nameNode1 = new ScalarNode("name", "SmartAutomation");
-var nameNode2 = new ScalarNode("name", "FactoryAnalytics");
-var budgetNode1 = new ScalarNode("budget", 25000);
-var budgetNode2 = new ScalarNode("budget", 20000);
-projectsNode.value.at(0).appendNode(nameNode1);
-projectsNode.value.at(0).appendNode(budgetNode1);
-projectsNode.value.at(1).appendNode(nameNode2);
-projectsNode.value.at(1).appendNode(budgetNode2);
-
-var addressNode2 = new MappingNode("address");
-var countryNode2 = new ScalarNode("country", "Germany");
-addressNode2.value.appendNode(countryNode2);
-
-var employeeIdNode2 = new ScalarNode("employeeId", "16431");
-var fullnameNode2 = new ScalarNode("fullname", "Arnold Wagner");
-var roleNode2 = new ScalarNode("role", "HR");
-
-var skillsNode = new ListNode("skills", 2);
-skillsNode.value =  Sequence{"communication", "coaching"};
-
-rootFirstRow.appendNode(employeeIdNode1);
-rootFirstRow.appendNode(addressNode1);
-rootFirstRow.appendNode(fullnameNode1);
-rootFirstRow.appendNode(roleNode1);
-rootFirstRow.appendNode(industryNode);
-rootFirstRow.appendNode(projectsNode);
-
-rootSecondRow.appendNode(employeeIdNode2);
-rootSecondRow.appendNode(addressNode2);
-rootSecondRow.appendNode(fullnameNode2);
-rootSecondRow.appendNode(roleNode2);
-rootSecondRow.appendNode(skillsNode);</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">YAMLDoc</span><span class="o">.</span><span class="n">setRootAsList</span><span class="p">();</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">var</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">YAMLDoc</span><span class="o">.</span><span class="n">getRoot</span><span class="p">();</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">root</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">addRows</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="k">var</span><span class="w"> </span><span class="n">rootFirstRow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="k">var</span><span class="w"> </span><span class="n">rootSecondRow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="k">var</span><span class="w"> </span><span class="n">addressNode1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MappingNode</span><span class="p">(</span><span class="s2">&quot;address&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="k">var</span><span class="w"> </span><span class="n">countryNode1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ScalarNode</span><span class="p">(</span><span class="s2">&quot;country&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;England&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="k">var</span><span class="w"> </span><span class="n">residentNode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ScalarNode</span><span class="p">(</span><span class="s2">&quot;resident&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="k">var</span><span class="w"> </span><span class="n">postcodeNode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ScalarNode</span><span class="p">(</span><span class="s2">&quot;postcode&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;M1 1AG&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="n">addressNode1</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">appendNode</span><span class="p">(</span><span class="n">countryNode1</span><span class="p">);</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="n">addressNode1</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">appendNode</span><span class="p">(</span><span class="n">residentNode</span><span class="p">);</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="n">addressNode1</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">appendNode</span><span class="p">(</span><span class="n">postcodeNode</span><span class="p">);</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="k">var</span><span class="w"> </span><span class="n">employeeIdNode1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ScalarNode</span><span class="p">(</span><span class="s2">&quot;employeeId&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;14623&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="k">var</span><span class="w"> </span><span class="n">fullnameNode1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ScalarNode</span><span class="p">(</span><span class="s2">&quot;fullname&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Michael Davidson&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="k">var</span><span class="w"> </span><span class="n">roleNode1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ScalarNode</span><span class="p">(</span><span class="s2">&quot;role&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Consultant&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="k">var</span><span class="w"> </span><span class="n">industryNode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ListNode</span><span class="p">(</span><span class="s2">&quot;industry&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="n">industryNode</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="kt">Sequence</span><span class="p">{</span><span class="s2">&quot;IoT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;smart factories&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;signal analytics&quot;</span><span class="p">};</span>
+<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="k">var</span><span class="w"> </span><span class="n">projectsNode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ListNode</span><span class="p">(</span><span class="s2">&quot;projects&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="k">var</span><span class="w"> </span><span class="n">nameNode1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ScalarNode</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;SmartAutomation&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="k">var</span><span class="w"> </span><span class="n">nameNode2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ScalarNode</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;FactoryAnalytics&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="k">var</span><span class="w"> </span><span class="n">budgetNode1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ScalarNode</span><span class="p">(</span><span class="s2">&quot;budget&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">25000</span><span class="p">);</span>
+<a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="k">var</span><span class="w"> </span><span class="n">budgetNode2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ScalarNode</span><span class="p">(</span><span class="s2">&quot;budget&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">20000</span><span class="p">);</span>
+<a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="n">projectsNode</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">appendNode</span><span class="p">(</span><span class="n">nameNode1</span><span class="p">);</span>
+<a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a><span class="n">projectsNode</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">appendNode</span><span class="p">(</span><span class="n">budgetNode1</span><span class="p">);</span>
+<a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="n">projectsNode</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">appendNode</span><span class="p">(</span><span class="n">nameNode2</span><span class="p">);</span>
+<a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a><span class="n">projectsNode</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">appendNode</span><span class="p">(</span><span class="n">budgetNode2</span><span class="p">);</span>
+<a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a>
+<a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a><span class="k">var</span><span class="w"> </span><span class="n">addressNode2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MappingNode</span><span class="p">(</span><span class="s2">&quot;address&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a><span class="k">var</span><span class="w"> </span><span class="n">countryNode2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ScalarNode</span><span class="p">(</span><span class="s2">&quot;country&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Germany&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a><span class="n">addressNode2</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">appendNode</span><span class="p">(</span><span class="n">countryNode2</span><span class="p">);</span>
+<a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a>
+<a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a><span class="k">var</span><span class="w"> </span><span class="n">employeeIdNode2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ScalarNode</span><span class="p">(</span><span class="s2">&quot;employeeId&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;16431&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a><span class="k">var</span><span class="w"> </span><span class="n">fullnameNode2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ScalarNode</span><span class="p">(</span><span class="s2">&quot;fullname&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Arnold Wagner&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a><span class="k">var</span><span class="w"> </span><span class="n">roleNode2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ScalarNode</span><span class="p">(</span><span class="s2">&quot;role&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;HR&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a>
+<a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a><span class="k">var</span><span class="w"> </span><span class="n">skillsNode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ListNode</span><span class="p">(</span><span class="s2">&quot;skills&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a><span class="n">skillsNode</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="kt">Sequence</span><span class="p">{</span><span class="s2">&quot;communication&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;coaching&quot;</span><span class="p">};</span>
+<a id="__codelineno-12-42" name="__codelineno-12-42" href="#__codelineno-12-42"></a>
+<a id="__codelineno-12-43" name="__codelineno-12-43" href="#__codelineno-12-43"></a><span class="n">rootFirstRow</span><span class="o">.</span><span class="n">appendNode</span><span class="p">(</span><span class="n">employeeIdNode1</span><span class="p">);</span>
+<a id="__codelineno-12-44" name="__codelineno-12-44" href="#__codelineno-12-44"></a><span class="n">rootFirstRow</span><span class="o">.</span><span class="n">appendNode</span><span class="p">(</span><span class="n">addressNode1</span><span class="p">);</span>
+<a id="__codelineno-12-45" name="__codelineno-12-45" href="#__codelineno-12-45"></a><span class="n">rootFirstRow</span><span class="o">.</span><span class="n">appendNode</span><span class="p">(</span><span class="n">fullnameNode1</span><span class="p">);</span>
+<a id="__codelineno-12-46" name="__codelineno-12-46" href="#__codelineno-12-46"></a><span class="n">rootFirstRow</span><span class="o">.</span><span class="n">appendNode</span><span class="p">(</span><span class="n">roleNode1</span><span class="p">);</span>
+<a id="__codelineno-12-47" name="__codelineno-12-47" href="#__codelineno-12-47"></a><span class="n">rootFirstRow</span><span class="o">.</span><span class="n">appendNode</span><span class="p">(</span><span class="n">industryNode</span><span class="p">);</span>
+<a id="__codelineno-12-48" name="__codelineno-12-48" href="#__codelineno-12-48"></a><span class="n">rootFirstRow</span><span class="o">.</span><span class="n">appendNode</span><span class="p">(</span><span class="n">projectsNode</span><span class="p">);</span>
+<a id="__codelineno-12-49" name="__codelineno-12-49" href="#__codelineno-12-49"></a>
+<a id="__codelineno-12-50" name="__codelineno-12-50" href="#__codelineno-12-50"></a><span class="n">rootSecondRow</span><span class="o">.</span><span class="n">appendNode</span><span class="p">(</span><span class="n">employeeIdNode2</span><span class="p">);</span>
+<a id="__codelineno-12-51" name="__codelineno-12-51" href="#__codelineno-12-51"></a><span class="n">rootSecondRow</span><span class="o">.</span><span class="n">appendNode</span><span class="p">(</span><span class="n">addressNode2</span><span class="p">);</span>
+<a id="__codelineno-12-52" name="__codelineno-12-52" href="#__codelineno-12-52"></a><span class="n">rootSecondRow</span><span class="o">.</span><span class="n">appendNode</span><span class="p">(</span><span class="n">fullnameNode2</span><span class="p">);</span>
+<a id="__codelineno-12-53" name="__codelineno-12-53" href="#__codelineno-12-53"></a><span class="n">rootSecondRow</span><span class="o">.</span><span class="n">appendNode</span><span class="p">(</span><span class="n">roleNode2</span><span class="p">);</span>
+<a id="__codelineno-12-54" name="__codelineno-12-54" href="#__codelineno-12-54"></a><span class="n">rootSecondRow</span><span class="o">.</span><span class="n">appendNode</span><span class="p">(</span><span class="n">skillsNode</span><span class="p">);</span>
+</code></pre></div>
 <h3 id="how-can-i-delete-nodes">How can I delete nodes?<a class="headerlink" href="#how-can-i-delete-nodes" title="Permanent link">&para;</a></h3>
 <p>To delete nodes, you can use the <code>delete</code> operator followed by the node(s) to be deleted.</p>
-<pre class="highlight"><code class="language-eol">// delete all scalar nodes named "role"
-delete s_role.all;
-
-// delete the first mapping node named "address"
-delete m_address.all.first();
-
-// delete all list nodes named "skills"
-delete l_skills.all;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">// delete all scalar nodes named &quot;role&quot;</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">delete</span><span class="w"> </span><span class="n">s_role</span><span class="o">.</span><span class="n">all</span><span class="p">;</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1">// delete the first mapping node named &quot;address&quot;</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="k">delete</span><span class="w"> </span><span class="n">m_address</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">first</span><span class="p">();</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1">// delete all list nodes named &quot;skills&quot;</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="k">delete</span><span class="w"> </span><span class="n">l_skills</span><span class="o">.</span><span class="n">all</span><span class="p">;</span>
+</code></pre></div>
 <h2 id="adding-a-yaml-document-to-your-launch-configuration">Adding a YAML document to your launch configuration<a class="headerlink" href="#adding-a-yaml-document-to-your-launch-configuration" title="Permanent link">&para;</a></h2>
 <p>To add a YAML document to your Epsilon launch configuration, you need to select "YAML Document" from the list of available model types.</p>
 <p><img alt="" src="select.png" /></p>
@@ -2233,17 +2241,18 @@ delete l_skills.all;</code></pre>
 <p><img alt="" src="configure.png" /></p>
 <h2 id="loading-a-yaml-document-through-java-code">Loading a YAML document through Java code<a class="headerlink" href="#loading-a-yaml-document-through-java-code" title="Permanent link">&para;</a></h2>
 <p>The following excerpt demonstrates using YAML models using Epsilon's Java API.</p>
-<pre class="highlight"><code class="language-java">EolModule module = new EolModule();
-module.parse(new File("..."));
-
-YamlModel model = new YamlModel();
-model.setName("YAMLDoc");
-model.setFile(new File("..."));
-model.load();
-
-module.getContext().getModelRepository().addModel(model);
-module.getContext().setModule(module);
-module.execute();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">EolModule</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EolModule</span><span class="p">();</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">module</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;...&quot;</span><span class="p">));</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="n">YamlModel</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">YamlModel</span><span class="p">();</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="n">model</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;YAMLDoc&quot;</span><span class="p">);</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="n">model</span><span class="p">.</span><span class="na">setFile</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;...&quot;</span><span class="p">));</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="n">model</span><span class="p">.</span><span class="na">load</span><span class="p">();</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="n">module</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">getModelRepository</span><span class="p">().</span><span class="na">addModel</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="n">module</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">setModule</span><span class="p">(</span><span class="n">module</span><span class="p">);</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="n">module</span><span class="p">.</span><span class="na">execute</span><span class="p">();</span>
+</code></pre></div>
 <h2 id="additional-resources">Additional resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://community.mde-network.org/courses/4609253/content">MDENet Community</a>: Additional learning resources about MDE with the Epsilon Framework.</li>
@@ -2343,8 +2352,6 @@ module.execute();</code></pre>
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

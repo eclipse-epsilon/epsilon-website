@@ -48,7 +48,7 @@ Here is an excerpt of the JSON document (omitted parts are in `...`):
 
 The JSON driver implements two types for its models: `JSONObject`s and `JSONArray`s.
 A `JSONObject` is a Java [Map](https://docs.oracle.com/javase/8/docs/api/java/util/Map.html), and a `JSONArray` is a Java [List](https://docs.oracle.com/javase/8/docs/api/java/util/List.html).
-You can use all their methods as usual (e.g. `Map#keySet`, or `List#size`), as well as the [EOL methods for collections and maps](../../eol/#collections-and-maps).
+You can use all their methods as usual (e.g. `Map#keySet`, or `List#size`), as well as the [EOL methods for collections and maps](../../eol.md#collections-and-maps).
 In addition, you can refer to the `x` property of a `JSONObject` object `o` with the usual syntax `o.x`, both for reading and setting it.
 
 A JSON model has one root element, which most of the time will be a `JSONObject` or a `JSONArray` (although it could be a simple scalar, like an integer).
@@ -227,7 +227,7 @@ Since both `M.root.x` and `M.root.y` referenced the same JSON object, the last l
 If this is undesirable, JSON models provide a `deepClone` method which can produce a standalone clone of any `JSONObject` or `JSONArray`.
 As an example, here is an EOL script which sets `M.root.y` to a deep clone of `M.root.x`:
 
-```json
+```eol
 M.root = new JSONObject;
 M.root.x = new JSONObject;
 M.root.y = M.deepClone(M.root.x);

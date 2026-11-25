@@ -3,7 +3,7 @@
 In practice, model management activities are seldom carried out in isolation; instead, they are often combined together to form complex workflows. Therefore, in addition to task-specific languages for individual activities (model-to-text transformation, model validation etc), Epsilon provides a set of Apache ANT tasks for assembling multi-step automated build processes.
 
 !!! tip "Running Epsilon's ANT tasks"
-    Epsilon's ANT tasks can run both [within Eclipse](https://www.vogella.com/tutorials/ApacheAnt/article.html) and [headless](../articles/running-epsilon-ant-tasks-from-command-line), and from [Maven](../articles/running-epsilon-ant-tasks-from-command-line/#maven) and [Gradle](../articles/running-epsilon-ant-tasks-from-command-line/#gradle) builds too. When running an ANT workflow that involves Epsilon tasks in Eclipse, please make sure you select the `Run in the same JRE as the workspace` option under the `JRE` tab of your launch configuration.
+    Epsilon's ANT tasks can run both [within Eclipse](https://www.vogella.com/tutorials/ApacheAnt/article.html) and [headless](articles/running-epsilon-ant-tasks-from-command-line/index.md), and from [Maven](articles/running-epsilon-ant-tasks-from-command-line/index.md#maven) and [Gradle](articles/running-epsilon-ant-tasks-from-command-line/index.md#gradle) builds too. When running an ANT workflow that involves Epsilon tasks in Eclipse, please make sure you select the `Run in the same JRE as the workspace` option under the `JRE` tab of your launch configuration.
 
 ## Motivation
 
@@ -32,7 +32,7 @@ This section provides a brief discussion of the structure and concrete syntax of
 
 In ANT, each workflow is captured as a `project`. A simplified illustration of the structure of an ANT project is displayed in the figure below. Each ANT project consists of a number of `targets`. The one specified as the `default` is executed automatically when the project is executed. Each `target` contains a number of `tasks` and `depends` on other targets that must be executed before it. An ANT task is responsible for a distinct activity and can either succeed or fail. Exemplar activities implemented by ANT tasks include file system management, compiler invocation, version management and remote artefact deployment.
 
-```mermaid-80
+```mermaid
 classDiagram
 class Project {
   -targets: Target[*]
@@ -97,13 +97,13 @@ Since models are typically serialized in the file system, before a task is execu
 
 Another weakness of this primitive approach is limited inter-task communication. In the absence of a communication framework that allows model management tasks to exchange information with each other, it is often the case that many tasks end up performing the same (potentially expensive) queries on models. By contrast, an inter-task communication framework would enable time and resource intensive calculations to be performed once and their results to be communicated to all interested subsequent tasks.
 
-Having discussed ANT, Epsilon and the challenges their integration poses, the following sections presents the design of a solution that enables developers to invoke model management tasks in the context of ANT workflows. The solution consists of a core framework that addresses the challenges discussed above, a set of specific tasks, each of which implements a distinct model management activity, and a set of tasks that enable developers to initiate and manage transactions on models using the respective facilities provided by Epsilon's [model connectivity layer](../emc).
+Having discussed ANT, Epsilon and the challenges their integration poses, the following sections presents the design of a solution that enables developers to invoke model management tasks in the context of ANT workflows. The solution consists of a core framework that addresses the challenges discussed above, a set of specific tasks, each of which implements a distinct model management activity, and a set of tasks that enable developers to initiate and manage transactions on models using the respective facilities provided by Epsilon's [model connectivity layer](emc.md).
 
 ## Framework Design and Core Tasks
 
 The role of the core framework, illustrated below, is to provide model loading and storing facilities as well as runtime communication facilities to the individual model management tasks that build atop it. This section provides a detailed discussion of the components it consists of.
 
-```mermaid-90
+```mermaid
 classDiagram
 class Task {
   -name: String
@@ -194,7 +194,7 @@ To avoid loading models multiple times and to enable on-the-fly management of mo
 
 Also, to support a variable sharing mechanism that enables inter-task communication, the same technique has been employed; a shared context, accessible by all Epsilon tasks via the `getProjectContext()` method, has been added. Through this mechanism, model management tasks can export variables to the project context (e.g. traces or lists containing results of expensive queries) which other tasks can then reuse.
 
-`EpsilonTask` also specifies a `profile` attribute that defines if the execution of the task must be profiled using the [profiling features](../articles/profiling/) provided by Epsilon. Profiling is a particularly important aspect of workflow execution, especially where model management languages are involved. The main reason is that model management languages tend to provide convenient features which can however be computationally expensive (such as the `allInstances()` EOL built-in feature that returns all the instances of a specific metaclass in the model) and when used more often than really needed, can significantly degrade the overall performance.
+`EpsilonTask` also specifies a `profile` attribute that defines if the execution of the task must be profiled using the [profiling features](articles/profiling/index.md) provided by Epsilon. Profiling is a particularly important aspect of workflow execution, especially where model management languages are involved. The main reason is that model management languages tend to provide convenient features which can however be computationally expensive (such as the `allInstances()` EOL built-in feature that returns all the instances of a specific metaclass in the model) and when used more often than really needed, can significantly degrade the overall performance.
 
 The workflow leverages the model-transaction services provided by the model connectivity framework of Epsilon by providing three tasks for managing transactions in the context of workflows.
 
@@ -285,7 +285,7 @@ The example below demonstrates an exemplar usage of the `epsilon.startTransactio
 </epsilon.eol>
 ```
 
-```mermaid-90
+```mermaid
 classDiagram
 class ExecutableModuleTask {
   -src: String
@@ -488,7 +488,7 @@ To support model to text transformations, `EglTask (epsilon.egl)` task is provid
 
 ### Model Migration Task
 
-To support model migration, `FlockTask (epsilon.flock)` is provided for executing an Epsilon [Flock](../flock) module. In addition to the attributes defined by `ExecutableModuleTask`, `FlockTask` also defines the following mandatory attributes:
+To support model migration, `FlockTask (epsilon.flock)` is provided for executing an Epsilon [Flock](flock.md) module. In addition to the attributes defined by `ExecutableModuleTask`, `FlockTask` also defines the following mandatory attributes:
 
 -   `originalModel` : Specifies which of the currently loaded models should be used as the source of the model migration.
 
@@ -509,13 +509,13 @@ The `epsilon.epl` task executes an EPL module, defined using the `src` attribute
 
 ### Model Generation Task
 
-The `epsilon.emg` tasks extends the `epsilon.epl` task and executes an [EMG](../emg) model generator. In addition to EPL's attributes, the task also provides the following attribute.
+The `epsilon.emg` tasks extends the `epsilon.epl` task and executes an [EMG](emg.md) model generator. In addition to EPL's attributes, the task also provides the following attribute.
 
 - `seed` (optional): A long specifying the seed to drive the random number generator that underpins the random aspects of model generation. If a seed is not specified, a random seed will be used and the generator will (likely) produce a different model every time it is executed. Fixing the seed produces repeatable results across executions.
 
 ### Dataset Extraction Task
 
-The `epsilon.pinset` task executes a [Pinset](../pinset) module specified using the `src` attribute to generate CSV datasets from models. It also provides the following attribute.
+The `epsilon.pinset` task executes a [Pinset](pinset/index.md) module specified using the `src` attribute to generate CSV datasets from models. It also provides the following attribute.
 
 - `outputFolder` (optional): A path specifying the folder where the CSV files will be generated. If not provided, the CSVs will be created in the same folder where the `.pinset` source file resides.
 
@@ -535,4 +535,4 @@ The complete source code for this example is in [Epsilon's Git repo](https://git
 
 ## Additional Resources
 
-Additional resources about the Epsilon ANT tasks are available [here](../articles/#workflow-ant-tasks).
+Additional resources about the Epsilon ANT tasks are available [here](articles/index.md#workflow-ant-tasks).

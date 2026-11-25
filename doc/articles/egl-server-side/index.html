@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1924,8 +1918,8 @@
 
 
 <h1 id="using-egl-as-a-server-side-scripting-language-in-tomcat">Using EGL as a server-side scripting language in Tomcat<a class="headerlink" href="#using-egl-as-a-server-side-scripting-language-in-tomcat" title="Permanent link">&para;</a></h1>
-<p>The original purpose of <a href="../../egl">EGL</a> was to enable batch generation of source code and other textual artefacts from EMF models. However, since there is no hard binding between the language and the file system, it is also possible to use EGL in other contexts.</p>
-<p>In this article, we demonstrate using <a href="../../egl">EGL</a> as a server-side scripting language in Tomcat, to produce web pages from EMF models on the fly.</p>
+<p>The original purpose of <a href="../../egl/">EGL</a> was to enable batch generation of source code and other textual artefacts from EMF models. However, since there is no hard binding between the language and the file system, it is also possible to use EGL in other contexts.</p>
+<p>In this article, we demonstrate using <a href="../../egl/">EGL</a> as a server-side scripting language in Tomcat, to produce web pages from EMF models on the fly.</p>
 <h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Download a fresh copy of Tomcat 6.0
@@ -1935,17 +1929,18 @@
 <li>Open <code>web.xml</code> in the <code>conf</code> directory of Tomcat and add the following
 snippet</li>
 </ul>
-<pre class="highlight"><code class="language-xml">&lt;servlet&gt;
-  &lt;servlet-name&gt;egl&lt;/servlet-name&gt;
-  &lt;servlet-class&gt;
-    org.eclipse.epsilon.egl.servlet.EglServlet
-  &lt;/servlet-class&gt;
-  &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
-&lt;/servlet&gt;
-&lt;servlet-mapping&gt;
-  &lt;servlet-name&gt;egl&lt;/servlet-name&gt;
-  &lt;url-pattern&gt;*.egl&lt;/url-pattern&gt;
-&lt;/servlet-mapping&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&lt;servlet&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&lt;servlet-name&gt;</span>egl<span class="nt">&lt;/servlet-name&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&lt;servlet-class&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span>org.eclipse.epsilon.egl.servlet.EglServlet
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">&lt;/servlet-class&gt;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nt">&lt;/servlet&gt;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nt">&lt;servlet-mapping&gt;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">&lt;servlet-name&gt;</span>egl<span class="nt">&lt;/servlet-name&gt;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="nt">&lt;url-pattern&gt;</span>*.egl<span class="nt">&lt;/url-pattern&gt;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nt">&lt;/servlet-mapping&gt;</span>
+</code></pre></div>
 <ul>
 <li>Make sure that there is an environment variable called <code>JRE_HOME</code> and it's pointing to your JRE installation directory (the root, not the <code>bin</code>). In Windows, you can create this variable from <code>System Properties</code> &rarr; <code>Advanced</code> &rarr; <code>Environment Variables</code> &rarr; <code>System Variables</code> &rarr; <code>New...</code></li>
 </ul>
@@ -1959,7 +1954,8 @@ snippet</li>
 <p>Inside <code>helloworld</code>, create a new file called <code>index.egl</code> and add to it the following code</p>
 </li>
 </ul>
-<pre class="highlight"><code class="language-egl">[%="Hello World"%]</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">[%=</span><span class="s2">&quot;Hello World&quot;</span><span class="cp">%]</span>
+</code></pre></div>
 <ul>
 <li>Start Tomcat using <code>bin/startup.bat</code> (or <code>startup.sh</code> in Linux/MacOS)</li>
 <li>Open your browser and go to <a href="http://localhost:8080/helloworld/index.egl">http://localhost:8080/helloworld/index.egl</a></li>
@@ -1967,7 +1963,8 @@ snippet</li>
 </ul>
 <h2 id="accessing-parameters-from-the-url">Accessing parameters from the URL<a class="headerlink" href="#accessing-parameters-from-the-url" title="Permanent link">&para;</a></h2>
 <p>To access parameters from the URL (or fields of a submitted form) you can use the <code>request.getParameter('parameter-name')</code> method. For example, by modifying the source code of <code>index.egl</code> to the following</p>
-<pre class="highlight"><code class="language-egl">[%="Hello "+request.getParameter("visitor")%]</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">[%=</span><span class="s2">&quot;Hello &quot;</span><span class="o">+</span><span class="n">request</span><span class="o">.</span><span class="n">getParameter</span><span class="p">(</span><span class="s2">&quot;visitor&quot;</span><span class="p">)</span><span class="cp">%]</span>
+</code></pre></div>
 <p>and navigating to <a href="http://localhost:8080/helloworld/index.egl?visitor=John">http://localhost:8080/helloworld/index.egl?visitor=John</a>, you should get a page reading <code>Hello John</code> as a result.</p>
 <h2 id="other-built-in-objects">Other built-in objects<a class="headerlink" href="#other-built-in-objects" title="Permanent link">&para;</a></h2>
 <p>EGL provides the following built-in objects which (should) function
@@ -1983,26 +1980,32 @@ exactly like they do in JSP</p>
 <h2 id="caching">Caching<a class="headerlink" href="#caching" title="Permanent link">&para;</a></h2>
 <p>EGL provides the built-in <code>cache</code> object to facilitate two types of caching. Page caching can be used to ensure that repeated requests to the same URL do not result in the execution of EGL templates. Fragment caching can be used to share the text generated by a template between requests for different URLs.</p>
 <p>For example, the following code is used to ensure that repeated requests for pages matching the regular expression <code>index.*</code> are served from the page cache:</p>
-<pre class="highlight"><code class="language-egl">[% cache.pages("index.*"); %]</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cp">[%</span><span class="w"> </span><span class="n">cache</span><span class="o">.</span><span class="n">pages</span><span class="p">(</span><span class="s2">&quot;index.*&quot;</span><span class="p">);</span><span class="w"> </span><span class="cp">%]</span>
+</code></pre></div>
 <p>The page cache can be expired programmatically, as shown below, or by restarting the Tomcat server.</p>
-<pre class="highlight"><code class="language-egl">[% cache.expirePages("index.*"); %]</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cp">[%</span><span class="w"> </span><span class="n">cache</span><span class="o">.</span><span class="n">expirePages</span><span class="p">(</span><span class="s2">&quot;index.*&quot;</span><span class="p">);</span><span class="w"> </span><span class="cp">%]</span>
+</code></pre></div>
 <p>In addition to page caching, EGL supports fragment caching which allows the contents of a sub-template to be cached. For example, the following code processes <code>sidebar.egl</code> only the first time that the template is executed:</p>
-<pre class="highlight"><code class="language-egl">[% var sidebarTemplate = TemplateFactory.load("Sidebar.egl"); %]
-[%=cache.fragment(sidebarTemplate) %]</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cp">[%</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="n">sidebarTemplate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TemplateFactory</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;Sidebar.egl&quot;</span><span class="p">);</span><span class="w"> </span><span class="cp">%]</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="cp">[%=</span><span class="n">cache</span><span class="o">.</span><span class="n">fragment</span><span class="p">(</span><span class="n">sidebarTemplate</span><span class="p">)</span><span class="w"> </span><span class="cp">%]</span>
+</code></pre></div>
 <p>Note that the <code>fragment</code> method should be used in a dynamic output section. Like pages, fragments can be expired programmatically (or by restarting the Tomcat server):</p>
-<pre class="highlight"><code class="language-egl">[% cache.expireFragment(sidebarTemplate); %]</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cp">[%</span><span class="w"> </span><span class="n">cache</span><span class="o">.</span><span class="n">expireFragment</span><span class="p">(</span><span class="n">sidebarTemplate</span><span class="p">);</span><span class="w"> </span><span class="cp">%]</span>
+</code></pre></div>
 <p>A simple caching strategy is to populate the page and fragment caches from your main EGL templates, and to provide a <code>ClearCache.egl</code> template in a sub-directory that only administrators that can access.</p>
 <h2 id="loading-emf-models-in-egl-pages">Loading EMF models in EGL pages<a class="headerlink" href="#loading-emf-models-in-egl-pages" title="Permanent link">&para;</a></h2>
 <p>The main motivation for turning EGL into a server-side scripting language is its ability to work well with EMF models. EGL provides the <code>modelManager</code> built-in object to let you load EMF models that reside in the web application.</p>
 <p>To experiment with <code>modelManager</code>, download the <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/serverside/org.eclipse.epsilon.egl.servlet/Graph.ecore">Graph.ecore</a> and <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/serverside/org.eclipse.epsilon.egl.servlet/Ecore.ecore">Ecore.ecore</a> models and place them in your helloworld directory. Then, change your <code>index.egl</code> to look like this</p>
-<pre class="highlight"><code class="language-egl">[%
-modelManager.registerMetamodel("Ecore.ecore");
-modelManager.loadModel("Sample", "Graph.ecore", "http://www.eclipse.org/emf/2002/Ecore");
-%]
-
-The metamodel has [%=EClass.all.size()%] classes</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="cp">[%</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">modelManager</span><span class="o">.</span><span class="n">registerMetamodel</span><span class="p">(</span><span class="s2">&quot;Ecore.ecore&quot;</span><span class="p">);</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">modelManager</span><span class="o">.</span><span class="n">loadModel</span><span class="p">(</span><span class="s2">&quot;Sample&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Graph.ecore&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;http://www.eclipse.org/emf/2002/Ecore&quot;</span><span class="p">);</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="cp">%]</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>The metamodel has <span class="cp">[%=</span><span class="n">EClass</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="cp">%]</span> classes
+</code></pre></div>
 <p>Refresh the page in your browser and it should now read:</p>
-<pre class="highlight"><code>The metamodel has 3 classes</code></pre>
+<div class="highlight"><pre><span></span><code>The metamodel has 3 classes
+</code></pre></div>
 <h2 id="the-model-manager">The Model Manager<a class="headerlink" href="#the-model-manager" title="Permanent link">&para;</a></h2>
 <p>The <code>modelManager</code> built-in object provides the following methods:</p>
 <ul>
@@ -2015,27 +2018,32 @@ The metamodel has [%=EClass.all.size()%] classes</code></pre>
 </ul>
 <h2 id="sharing-models-between-templates">Sharing models between templates<a class="headerlink" href="#sharing-models-between-templates" title="Permanent link">&para;</a></h2>
 <p>Currently, each model is only loaded once (the first time the <code>loadModel()</code> or <code>loadModelByFile()</code> is called). If multiple pages need to access the same model, add the model loading logic in an operation in a separate <code>models.eol</code> file:</p>
-<pre class="highlight"><code class="language-eol">operation loadModels() {
-  modelManager.registerMetamodel("Ecore.ecore");
-  modelManager.loadModel("Sample", "Graph.ecore", "http://www.eclipse.org/emf/2002/Ecore");
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">operation</span><span class="w"> </span><span class="n">loadModels</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="n">modelManager</span><span class="o">.</span><span class="n">registerMetamodel</span><span class="p">(</span><span class="s2">&quot;Ecore.ecore&quot;</span><span class="p">);</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="n">modelManager</span><span class="o">.</span><span class="n">loadModel</span><span class="p">(</span><span class="s2">&quot;Sample&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Graph.ecore&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;http://www.eclipse.org/emf/2002/Ecore&quot;</span><span class="p">);</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">}</span>
+</code></pre></div>
 <p>and then import and call it from each one of your pages:</p>
-<pre class="highlight"><code class="language-egl">[%
-import "models.eol";
-loadModels();
-%]
-
-// Page code here</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="cp">[%</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">import</span><span class="w"> </span><span class="s2">&quot;models.eol&quot;</span><span class="p">;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">loadModels</span><span class="p">();</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="cp">%]</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>// Page code here
+</code></pre></div>
 <h2 id="running-egl-on-google-app-engine">Running EGL on Google App Engine<a class="headerlink" href="#running-egl-on-google-app-engine" title="Permanent link">&para;</a></h2>
 <p>By default App Engine will treat EGL files as static content and serve their source code instead of executing them. To work around this, add the following snippet under the root element of the <code>appengine-web.xml</code> configuration file of your App Engine application.</p>
-<pre class="highlight"><code class="language-xml">&lt;static-files&gt;
-  &lt;exclude path="*.egl"/&gt;
-&lt;/static-files&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">&lt;static-files&gt;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="nt">&lt;exclude</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;*.egl&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nt">&lt;/static-files&gt;</span>
+</code></pre></div>
 <h2 id="working-with-big-models">Working with big models<a class="headerlink" href="#working-with-big-models" title="Permanent link">&para;</a></h2>
 <p>If you encounter a Java <code>OutOfMemoryError</code> while querying a big model you'll need to start Tomcat with more memory than the default 256 MB. To do this, go to <code>bin/catalina.bat</code> (on Windows -- if you're on Linux you should modify <code>catalina.sh</code> accordingly) and change line</p>
-<pre class="highlight"><code>set JAVA_OPTS=%JAVA_OPTS% %LOGGING_MANAGER%</code></pre>
+<div class="highlight"><pre><span></span><code>set JAVA_OPTS=%JAVA_OPTS% %LOGGING_MANAGER%
+</code></pre></div>
 <p>to</p>
-<pre class="highlight"><code>set JAVA_OPTS=%JAVA_OPTS% %LOGGING_MANAGER% -Xms1024m -Xmx1024m -XX:MaxPermSize=128m</code></pre>
+<div class="highlight"><pre><span></span><code>set JAVA_OPTS=%JAVA_OPTS% %LOGGING_MANAGER% -Xms1024m -Xmx1024m -XX:MaxPermSize=128m
+</code></pre></div>
 <p>If you keep getting out of memory errors, you may find <a href="https://github.com/psi-probe/psi-probe">PSI Probe</a> useful for figuring out what's going wrong.</p>
 
 
@@ -2132,8 +2140,6 @@ loadModels();
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

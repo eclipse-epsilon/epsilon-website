@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1907,35 +1901,40 @@ For example, EMF models require checking the "Thread-safe cache" option:</p>
 <p><img alt="" src="model-conf.png" /></p>
 <h3 id="from-java-programs">From Java programs<a class="headerlink" href="#from-java-programs" title="Permanent link">&para;</a></h3>
 <p>If you are using Epsilon from Java rather than from the Eclipse IDE, you would need to enable the <code>concurrent</code> flag before loading the model:</p>
-<pre class="highlight"><code class="language-java">model.setConcurrent(true);</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">model</span><span class="p">.</span><span class="na">setConcurrent</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</code></pre></div>
 <h3 id="from-ant-tasks">From Ant tasks<a class="headerlink" href="#from-ant-tasks" title="Permanent link">&para;</a></h3>
 <p>The <code>concurrent</code> flag is also exposed from the Ant tasks.
 For EMF models:</p>
-<pre class="highlight"><code class="language-xml">&lt;epsilon.emf.loadModel ... concurrent="true" /&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">&lt;epsilon.emf.loadModel</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="na">concurrent=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</code></pre></div>
 <p>For other models:</p>
-<pre class="highlight"><code class="language-xml">&lt;epsilon.loadModel ...&gt;
-  &lt;parameter name="concurrent" value="true" /&gt;
-&lt;/epsilon.loadModel&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">&lt;epsilon.loadModel</span><span class="w"> </span><span class="err">...</span><span class="nt">&gt;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&lt;parameter</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;concurrent&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">&lt;/epsilon.loadModel&gt;</span>
+</code></pre></div>
 <h2 id="annotation-based-parallelism">Annotation-based parallelism<a class="headerlink" href="#annotation-based-parallelism" title="Permanent link">&para;</a></h2>
 <p>In cases where an "Annotation-based" implementation is available, you can choose which rules are parallelised with the <code>@parallel</code> annotation. For example in EVL:</p>
-<pre class="highlight"><code class="language-evl">context ModelElementType {
-  @parallel
-  constraint Invariant {
-    check {
-      // ...
-    }
-  }</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">context</span><span class="w"> </span><span class="n">ModelElementType</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="cp">@parallel</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="k">constraint</span><span class="w"> </span><span class="n">Invariant</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="k">check</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">      </span><span class="c1">// ...</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="p">}</span>
+</code></pre></div>
 <p>If further control is required, you can also choose whether a rule will be executed in parallel on a per-element basis using an executable annotation. This allows you to write a Boolean EOL expression to determine whether a given model element should be executed in parallel for the annotated rule. You can access the model element in the annotation with <code>self</code> as usual, and also any operations or variables in scope. Any rules not annotated will be executed sequentially.</p>
-<pre class="highlight"><code class="language-evl">pre {
-  var parallelThreshold = 9001;
-}
-context ModelElementType {
-  $parallel self.children.size() &gt; parallelThreshold;
-  constraint Invariant {
-    check {
-      // ...
-    }
-  }</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">pre</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">parallelThreshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9001</span><span class="p">;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">}</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">context</span><span class="w"> </span><span class="n">ModelElementType</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="cp">$parallel self.children.size() &gt; parallelThreshold;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="k">constraint</span><span class="w"> </span><span class="n">Invariant</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="k">check</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">      </span><span class="c1">// ...</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span><span class="p">}</span>
+</code></pre></div>
 <h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
 <p>Currently, Epsilon does not support assignment of extended properties when executing in parallel. Parallel operations cannot be nested, either.</p>
 
@@ -2033,8 +2032,6 @@ context ModelElementType {
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

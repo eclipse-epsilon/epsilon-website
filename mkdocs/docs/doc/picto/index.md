@@ -3,7 +3,7 @@
 Picto is an Eclipse view for **visualising models via model-to-text transformation** to SVG/HTML. Compared to existing graphical modelling frameworks such as [Sirius](https://eclipse.org/sirius) and [GMF/Eugenia](../eugenia/index.md), the main appeal of Picto is that model visualisation takes place in an embedded browser and therefore you can leverage any HTML/SVG/JavaScript-based technology such as [D3.js](https://d3js.org/), [mxGraph](https://github.com/jgraph/mxgraph) and [JointJS](https://www.jointjs.com/). Picto also provides built-in support for the powerful [Graphviz](https://www.graphviz.org/) and [PlantUML](https://plantuml.com/) textual syntaxes (which are transformed to SVG via the respective tools). A distinguishing feature of Picto is that it does not require running multiple Eclipse instances as the metamodels, models and visualisation transformations can all reside in the same workspace.
 
 !!! tip
-	As Picto uses [EGL](../egl) for model-to-text transformation, it is [not limited to EMF-based models](#using-picto-in-standalone-mode-with-many-models) and can be used to visualise the contents of Simulink models, XML documents, spreadsheets, and any other type of artefact supported by an [Epsilon EMC driver](../emc).
+	As Picto uses [EGL](../egl.md) for model-to-text transformation, it is [not limited to EMF-based models](#using-picto-in-standalone-mode-with-many-models) and can be used to visualise the contents of Simulink models, XML documents, spreadsheets, and any other type of artefact supported by an [Epsilon EMC driver](../emc.md).
 
 
 
@@ -33,7 +33,7 @@ class Person {
 ```
 
 ## Model
-Below is a model that conforms to the social network metamodel. The model is defined for convenience in [Flexmi](../flexmi), however Picto also works with XMI-based models (see below).
+Below is a model that conforms to the social network metamodel. The model is defined for convenience in [Flexmi](../flexmi/index.md), however Picto also works with XMI-based models (see below).
 
 ```xml
 <?nsuri socialnetwork?>
@@ -48,7 +48,7 @@ Below is a model that conforms to the social network metamodel. The model is def
 </socialnetwork>
 ```
 
-In line 2 of the model, notice the `render-egx` processing instruction, which specifies a model-to-text transformation written in [EGX/EGL](../egx/), that Picto should use to visualise this model.
+In line 2 of the model, notice the `render-egx` processing instruction, which specifies a model-to-text transformation written in [EGX/EGL](../egx.md), that Picto should use to visualise this model.
 
 ## Model-to-Text Transformation
 The `socialnetwork.egx` EGX model-to-text transformation is as follows:
@@ -267,7 +267,7 @@ On Windows and Linux the `Inspect` and `Inspect Element` right-click menu items 
 
 ## Philosophy
 
-While EMF provides support for [reflective model instantiation](../articles/reflective-emf-tutorial) within the same Eclipse workspace, graphical and textual modelling frameworks that sit on top of it such as GMF, Sirius and Xtext involve code generation and/or contributing to Eclipse extension points and hence require spawning a new Eclipse instance. While this inconvenience can pay off for large DSLs, it feels like an overkill when one needs to throw together a small DSL in situ. The original aim of Picto was to complement Flexmi in this respect by contributing model visualisation capabilities where creating a new dedicated graphical editor is considered to be an overkill.
+While EMF provides support for [reflective model instantiation](../articles/reflective-emf-tutorial/index.md) within the same Eclipse workspace, graphical and textual modelling frameworks that sit on top of it such as GMF, Sirius and Xtext involve code generation and/or contributing to Eclipse extension points and hence require spawning a new Eclipse instance. While this inconvenience can pay off for large DSLs, it feels like an overkill when one needs to throw together a small DSL in situ. The original aim of Picto was to complement Flexmi in this respect by contributing model visualisation capabilities where creating a new dedicated graphical editor is considered to be an overkill.
 
 ## Gallery
 
@@ -283,4 +283,4 @@ While EMF provides support for [reflective model instantiation](../articles/refl
 
 ## Additional Resources
 
-Additional resources about Picto are available [here](../articles/#picto).
+Additional resources about Picto are available [here](../articles/index.md#picto).

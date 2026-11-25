@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1870,32 +1864,33 @@
 
 
 <h1 id="customising-epsilon-hutn-documents-with-configuration">Customising Epsilon HUTN documents with configuration<a class="headerlink" href="#customising-epsilon-hutn-documents-with-configuration" title="Permanent link">&para;</a></h1>
-<p>In this article we demonstrate how you can use the configuration features of Epsilon HUTN to customise your HUTN documents. For an introduction to modelling with HUTN, please refer to <a href="../hutn-basic">this article</a>.</p>
+<p>In this article we demonstrate how you can use the configuration features of Epsilon HUTN to customise your HUTN documents. For an introduction to modelling with HUTN, please refer to <a href="../hutn-basic/">this article</a>.</p>
 <h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <p>Throughout this article, we'll use the following metamodel:</p>
 <p><img alt="" src="families.png" /></p>
 <p>Suppose we've already constructed a Families model using the following HUTN source:</p>
-<pre class="highlight"><code>@Spec {
-  metamodel "families" {
-    nsUri: "families"
+<div class="highlight"><pre><span></span><code>@Spec {
+  metamodel &quot;families&quot; {
+    nsUri: &quot;families&quot;
   }
 }
 families {
   Family {
-    name: "The Smiths"
-    familyFriends: Family "does", Family "bloggs"
+    name: &quot;The Smiths&quot;
+    familyFriends: Family &quot;does&quot;, Family &quot;bloggs&quot;
   }
 
-  Family "does" {
-    name: "The Does"
+  Family &quot;does&quot; {
+    name: &quot;The Does&quot;
     migrant: true
   }
 
-  Family "bloggs" {
-    name: "The Bloggs"
+  Family &quot;bloggs&quot; {
+    name: &quot;The Bloggs&quot;
     migrant: true
   }
-}</code></pre>
+}
+</code></pre></div>
 <p>There is some duplication in the HUTN document above. Firstly, the identifiers used to reference Family objects are very similar to the families' names. Secondly, the migrant property is set to true in two of the three Families.</p>
 <p>A HUTN configuration model can be used to customise the document and reduce the duplication. A HUTN configuration model comprises rules, which customise the HUTN document. The remainder of this article describes how to create and use a configuration model to specify default values for properties and inferred values for identifiers.</p>
 <h2 id="creating-a-hutn-configuration-model">Creating a HUTN configuration model<a class="headerlink" href="#creating-a-hutn-configuration-model" title="Permanent link">&para;</a></h2>
@@ -1909,29 +1904,31 @@ families {
 <p><img alt="" src="identifier_rule_properties.png" /></p>
 <h2 id="using-a-hutn-configuration-model">Using a HUTN configuration model<a class="headerlink" href="#using-a-hutn-configuration-model" title="Permanent link">&para;</a></h2>
 <p>To make use of the configuration model, the preamble of the HUTN document must be changed to the following:</p>
-<pre class="highlight"><code>@Spec {
-  metamodel "families" {
-    nsUri: "families"
-    configFile: "FamiliesConfig.model"
+<div class="highlight"><pre><span></span><code>@Spec {
+  metamodel &quot;families&quot; {
+    nsUri: &quot;families&quot;
+    configFile: &quot;FamiliesConfig.model&quot;
   }
-}</code></pre>
+}
+</code></pre></div>
 <p>Note the extra line that references the configuration model. The value of the configFile attribute is a path relative to the HUTN document.</p>
 <p>The body of the HUTN document shown at the start of the article can now be rewritten as follows:</p>
-<pre class="highlight"><code>families {
+<div class="highlight"><pre><span></span><code>families {
   Family {
-    name: "The Smiths"
-    familyFriends: Family "The Does", Family "The Bloggs"
+    name: &quot;The Smiths&quot;
+    familyFriends: Family &quot;The Does&quot;, Family &quot;The Bloggs&quot;
     migrant: false
   }
 
-  Family "The Does" {}
-  Family "The Bloggs" {}
-}</code></pre>
+  Family &quot;The Does&quot; {}
+  Family &quot;The Bloggs&quot; {}
+}
+</code></pre></div>
 <p>The identifiers specified for the last two families also specify the value of their name attribute, and so there's no need to explicitly set the name attribute in the body of the Family element. Conversely, the first Family specifies a name (The Smiths), and no identifier. A reference to the first family can use The Smiths as an identifier.</p>
 <p>Notice also that the migrant attribute values have been removed from the The Does and The Bloggs, as the default value is now true. However, The Smiths must now explicitly state that its migrant value should be false.</p>
 <h2 id="additional-resources">Additional resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Article: <a href="../hutn-basic">Using HUTN in Epsilon</a></li>
+<li>Article: <a href="../hutn-basic/">Using HUTN in Epsilon</a></li>
 </ul>
 
 
@@ -2028,8 +2025,6 @@ families {
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

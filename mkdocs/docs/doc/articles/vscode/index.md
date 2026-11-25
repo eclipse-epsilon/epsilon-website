@@ -1,6 +1,6 @@
 # Epsilon in VS Code
 
-You can now edit and run Epsilon programs, and edit [Flexmi](../../flexmi) models and [Emfatic](https://eclipse.org/emfatic) metamodels in VS Code as shown below.
+You can now edit and run Epsilon programs, and edit [Flexmi](../../flexmi/index.md) models and [Emfatic](https://eclipse.org/emfatic) metamodels in VS Code as shown below.
 
 ![](vscode.png)
 

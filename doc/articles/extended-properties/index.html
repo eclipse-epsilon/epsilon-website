@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1827,47 +1821,50 @@
 
 <h1 id="extended-properties">Extended Properties<a class="headerlink" href="#extended-properties" title="Permanent link">&para;</a></h1>
 <p>This article demonstrates the extended properties mechanism in EOL (and by inheritance, in all languages in Epsilon). We present the rationale and semantics of extended properties using the following simple metamodel (in Emfatic):</p>
-<pre class="highlight"><code class="language-emf">package SimpleTree;
-
-class Tree {
-  attr String name;
-  ref Tree#children parent;
-  val Tree[*]#parent children;
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">package</span><span class="w"> </span><span class="n">SimpleTree</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">class</span><span class="w"> </span><span class="n">Tree</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="k">ref</span><span class="w"> </span><span class="n">Tree</span><span class="o">#</span><span class="n">children</span><span class="w"> </span><span class="n">parent</span><span class="p">;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="k">val</span><span class="w"> </span><span class="n">Tree</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="o">#</span><span class="n">parent</span><span class="w"> </span><span class="n">children</span><span class="p">;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
+</code></pre></div>
 <p>Now, what we want to do is to traverse a model that conforms to this metamodel and calculate and print the depth of each Tree in it. We can do this using this simple EOL program:</p>
-<pre class="highlight"><code class="language-eol">var depths = new Map;
-
-for (n in Tree.allInstances.select(t|not t.parent.isDefined())) {
-  n.setDepth(0);
-}
-
-for (n in Tree.allInstances) {
-  (n.name + " " + depths.get(n)).println();
-}
-
-operation Tree setDepth(depth : Integer) {
-  depths.put(self,depth);
-  for (c in self.children) {
-    c.setDepth(depth + 1);
-  }
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">var</span><span class="w"> </span><span class="n">depths</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">Map</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">Tree</span><span class="o">.</span><span class="n">allInstances</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">t</span><span class="o">|</span><span class="ow">not</span><span class="w"> </span><span class="n">t</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">isDefined</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="n">n</span><span class="o">.</span><span class="n">setDepth</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">Tree</span><span class="o">.</span><span class="n">allInstances</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">depths</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">}</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="k">operation</span><span class="w"> </span><span class="n">Tree</span><span class="w"> </span><span class="n">setDepth</span><span class="p">(</span><span class="n">depth</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="n">depths</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">depth</span><span class="p">);</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="n">c</span><span class="o">.</span><span class="n">setDepth</span><span class="p">(</span><span class="n">depth</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="p">}</span>
+</code></pre></div>
 <p>Because the <code>Tree</code> <code>EClass</code> doesn't have a depth property, we have to use the <code>depths Map</code> to store the calculated depth of each <code>Tree</code>. Another solution would be to add a depth property to the <code>Tree</code> <code>EClass</code> so that its instances can store such information; but following this approach will soon pollute our metamodel with information of secondary importance.</p>
 <p>We've often come across similar situations where we needed to attach some kind of information (that is not supported by the metamodel) to particular model elements during model management operations (validation, transformation etc.). Until now, we've been using <code>Maps</code> to achieve this (similarly to what we've done above). However, now, EOL (and all languages built atop it) support non-invasive extended properties which provide a more elegant solution to this recurring problem.</p>
 <p>An extended property is a property that starts with the <code>~</code> character. Its semantics are quite straightforward: the first time a value is assigned to an extended property of an object (e.g. <code>x.~a := b;</code>), the property is created and associated to the object and the value is assigned to it. Similarly, <code>x.~a</code> returns the value of the property or undefined if the property has not been set on the particular object yet. Using extended properties, we can rewrite the above code (without needing to use a <code>Map</code>) as follows:</p>
-<pre class="highlight"><code class="language-eol">for (n in Tree.allInstances.select(t|not t.parent.isDefined())) {
-  n.setDepth(0);
-}
-
-for (n in Tree.allInstances) {
-  (n.name + " " + n.~depth).println();
-}
-
-operation Tree setDepth(depth : Integer) {
-  self.~depth = depth;
-  for (c in self.children) {
-    c.setDepth(depth + 1);
-  }
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">Tree</span><span class="o">.</span><span class="n">allInstances</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">t</span><span class="o">|</span><span class="ow">not</span><span class="w"> </span><span class="n">t</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">isDefined</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="n">n</span><span class="o">.</span><span class="n">setDepth</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">}</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">Tree</span><span class="o">.</span><span class="n">allInstances</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n</span><span class="o">.~</span><span class="n">depth</span><span class="p">)</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">}</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">operation</span><span class="w"> </span><span class="n">Tree</span><span class="w"> </span><span class="n">setDepth</span><span class="p">(</span><span class="n">depth</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Integer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="bp">self</span><span class="o">.~</span><span class="n">depth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">depth</span><span class="p">;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="n">c</span><span class="o">.</span><span class="n">setDepth</span><span class="p">(</span><span class="n">depth</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="p">}</span>
+</code></pre></div>
 
 
 
@@ -1963,8 +1960,6 @@ operation Tree setDepth(depth : Integer) {
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

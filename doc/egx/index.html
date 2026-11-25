@@ -46,13 +46,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2005,9 +1999,9 @@
 <h1 id="the-egl-co-ordination-language-egx">The EGL Co-Ordination Language (EGX)<a class="headerlink" href="#the-egl-co-ordination-language-egx" title="Permanent link">&para;</a></h1>
 <p>EGX is a rule-based co-ordination language designed for automating the parametrised execution of model-to-text template transformations. Although built on top of the Epsilon Generation Language (EGL), EGX can in principle work with any template-based model-to-text transformation language. The rationale for this co-ordination language comes from the need to invoke text generation templates multiple times with various parameters, usually derived from input models. To better understand EGX, it is helpful to be familiar with template-based text generation. </p>
 <h2 id="epsilon-generation-language">Epsilon Generation Language<a class="headerlink" href="#epsilon-generation-language" title="Permanent link">&para;</a></h2>
-<p><a href="../egl/">EGL</a> is Epsilon's model-to-text transformation language. EGL in principle is similar in purpose to server-side scripting languages like PHP (and can indeed be used for such purposes, as demonstrated <a href="../articles/egl-server-side/">in this article</a>). To recap, a template is a text file which has both static and dynamic regions. As the name implies, a static region is where text appears as-is in the output, whereas a dynamic region uses code to generate the output, often relying on data which is only available at runtime (hence, "dynamic"). Dynamic regions are expressed using <a href="../eol">EOL</a>. One can think of an EGL template as a regular text file with some EOL embedded in it, or as an EOL program with the added convenience of verbatim text generation. Indeed, it is possible to use EGL without any static regions, relying on the output buffer variable to write the output text. In EGL, the output variable is called "out" and the markers for the start and end of dynamic regions are <code>[%</code> and <code>%]</code> respectively. For convenience, <code>[%=</code> outputs the string value of the expression which follows. EGL has many advanced features, such as recording traceability information, post-process formatting (to ensure consistent style in the final output) and protected regions, which allow certain parts of the text to be preserved if modified by hand, rather than being overwritten on each invocation of the template. EGL can handle merges, and also supports outputting text to any output stream.</p>
+<p><a href="../egl/">EGL</a> is Epsilon's model-to-text transformation language. EGL in principle is similar in purpose to server-side scripting languages like PHP (and can indeed be used for such purposes, as demonstrated <a href="../articles/egl-server-side/">in this article</a>). To recap, a template is a text file which has both static and dynamic regions. As the name implies, a static region is where text appears as-is in the output, whereas a dynamic region uses code to generate the output, often relying on data which is only available at runtime (hence, "dynamic"). Dynamic regions are expressed using <a href="../eol/">EOL</a>. One can think of an EGL template as a regular text file with some EOL embedded in it, or as an EOL program with the added convenience of verbatim text generation. Indeed, it is possible to use EGL without any static regions, relying on the output buffer variable to write the output text. In EGL, the output variable is called "out" and the markers for the start and end of dynamic regions are <code>[%</code> and <code>%]</code> respectively. For convenience, <code>[%=</code> outputs the string value of the expression which follows. EGL has many advanced features, such as recording traceability information, post-process formatting (to ensure consistent style in the final output) and protected regions, which allow certain parts of the text to be preserved if modified by hand, rather than being overwritten on each invocation of the template. EGL can handle merges, and also supports outputting text to any output stream.</p>
 <p>As an example, consider a simple Library metamodel (shown below). Suppose each model may have multiple Libraries, and each Library has a name, multiple Books and Authors. Similarly, each Book has one or more Authors, and each Author has multiple Books, similar to the relation between Actors and Movies in the IMDb metamodel used in previous chapters. Now suppose we have a single monolithic model and want to transform this into multiple structured files, such as web pages (HTML) or XML documents. One possible decomposition of this is to generate a page for each Library in the model.</p>
-<pre class="mermaid mermaid-30"><code>classDiagram
+<pre class="mermaid"><code>classDiagram
 class Library{
     name: EString
     id: ELong
@@ -2028,21 +2022,22 @@ class Author{
 
 Library -- Book: books *
 Book -- Author: books * / authors *</code></pre>
-<pre class="highlight"><code class="language-egl">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;library id=[%=lib.id%] name="[%=name%]"&gt;
-[% for (book in books) {%]
-  &lt;book&gt;
-    &lt;title&gt;[%=book.title%]&lt;/title&gt;
-    &lt;isbn&gt;[%=book.isbn%]&lt;/isbn&gt;
-    &lt;pages&gt;[%=book.pages.asString()%]&lt;/pages&gt;
-    &lt;authors&gt;
-    [% for (author in book.authors) {%]
-      &lt;author name="[%=author.name%]"/&gt;
-    [%}%]
-    &lt;/authors&gt;
-  &lt;/book&gt;
-[%}%]
-&lt;/library&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>&lt;library id=<span class="cp">[%=</span><span class="n">lib</span><span class="o">.</span><span class="n">id</span><span class="cp">%]</span> name=&quot;<span class="cp">[%=</span><span class="n">name</span><span class="cp">%]</span>&quot;&gt;
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cp">[%</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">book</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">books</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="cp">%]</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  &lt;book&gt;
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    &lt;title&gt;<span class="cp">[%=</span><span class="n">book</span><span class="o">.</span><span class="n">title</span><span class="cp">%]</span>&lt;/title&gt;
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    &lt;isbn&gt;<span class="cp">[%=</span><span class="n">book</span><span class="o">.</span><span class="n">isbn</span><span class="cp">%]</span>&lt;/isbn&gt;
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    &lt;pages&gt;<span class="cp">[%=</span><span class="n">book</span><span class="o">.</span><span class="n">pages</span><span class="o">.</span><span class="n">asString</span><span class="p">()</span><span class="cp">%]</span>&lt;/pages&gt;
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    &lt;authors&gt;
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="cp">[%</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">author</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">book</span><span class="o">.</span><span class="n">authors</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="cp">%]</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>      &lt;author name=&quot;<span class="cp">[%=</span><span class="n">author</span><span class="o">.</span><span class="n">name</span><span class="cp">%]</span>&quot;/&gt;
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="cp">[%</span><span class="p">}</span><span class="cp">%]</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    &lt;/authors&gt;
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>  &lt;/book&gt;
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="cp">[%</span><span class="p">}</span><span class="cp">%]</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>&lt;/library&gt;
+</code></pre></div>
 <p>Notice how the template refers to <code>books</code> (which is a collection of Book elements) without deriving them directly from the underlying model (i.e. there are no uses of allInstances). This is because the variables were provided to the template before invocation.</p>
 <h2 id="template-orchestration">Template Orchestration<a class="headerlink" href="#template-orchestration" title="Permanent link">&para;</a></h2>
 <p>In the previous example, we stated that we want to invoke the template for all instances of Library in the model. To do this, we need to loop through all Library instances in the model(s), load the template, populate it with the required variables derived from the current Library instance and execute the template. However since we want each Library's contents to be written to a distinct XML file (perhaps identified by its name or id), we also need to set the output file for each template based on the current instance. In more complex cases, we may also want to have certain rules for whether a Library should be generated at all (e.g. if it does not have a threshold number of Books), and whether we should overwrite an existing file. For example, we may decide that for Libraries with a large number of books, we do not want to overwrite the file. Furthermore, we may want to have a different naming convention for certain libraries based on their name or ID, which may be decided based on an arbitrarily complex function. Also, we may not want to include all of the Books in the output file, but a subset, which requires additional processing logic. We may even have different templates for libraries based on the number of Books they hold – for example, with a large Library, we may want to inline all of the properties of each Book to save disk space, rather than having the title, pages, authors etc. enumerated as children. Or we may want to omit the authors. This can be achieved by modifying the template with conditionals, but this makes the template much less readable and harder to modify, so it can be easier to have a separate template instead.</p>
@@ -2068,77 +2063,79 @@ Book -- Author: books * / authors *</code></pre>
 <p>Owing to its rule-based declarative nature, EGX can execute rules independently, and even if you only have a single rule, it can be invoked on a per-element basis by separate threads. You can declare a rule to be executed in parallel using the <code>@parallel</code> annotation, or by using the automatic parallelisation execution engine.</p>
 <h2 id="example-programs">Example Programs<a class="headerlink" href="#example-programs" title="Permanent link">&para;</a></h2>
 <p>Returning to our example, we can orchestrate the generation of Libraries as shown below, which demonstrates most of the features of EGX. Here we see how it is possible to screen eligible Library instances for generation, populate the template with the necessary parameters, invoke a different version of the template, format the output, and direct the output to the desired file, all based on arbitrary user-defined criteria expressed declaratively using EOL. We can also compute aggregate metadata thanks to the pre and post blocks available both globally and on a per-rule basis. In this example, we simply compute the size of each file and print them once all transformations have taken place. Furthermore, we demonstrate that not all rules need to transform a specific model element: EGX can be used for convenience to invoke EGL templates with parameters, as shown by the <code>AuthorsAndBooks</code> rule. Here we only want to generate a single file from the Authors and Books in the model, where the logic for doing this is in a single EGL template. Although it wouldn't make much sense to use EGX purely for invoking single templates without parameters, the reader can perhaps appreciate that in large and complex models, there may be many different templates - e.g. one for each type - so all of the co-ordination in invoking them can be centralised to a single declarative file. EGX can thus be used as a workflow language in directing model-to-text transformations and is suitable for various use cases of almost any complexity.</p>
-<pre class="highlight"><code class="language-egx">operation Book isValid() : Boolean {
-  return self.isbn.isDefined() and self.isbn.length() == 13;
-}
-
-pre {
-  var outDirLib : String = "../libraries/";
-  var libFileSizes = new Map;
-  var xml = new Native("org.eclipse.epsilon.egl.formatter.language.XmlFormatter");
-}
-
-rule Lib2XML transform lib : Library {
-  guard : lib.name.length() &gt; 3 and lib.books.size() &gt; 10
-  pre {
-    var eligibleBooks = lib.books.select(b | b.isValid());
-    var isBigLibrary = eligibleBooks.size() &gt; 9000;
-  }
-  merge : isBigLibrary
-  overwrite : not isBigLibrary
-  template {
-    var libTemplate = "rel/path/to/Lib2XML";
-    if (isBigLibrary) {
-      libTemplate += "_minified";
-    }
-    return libTemplate + ".egl";
-  }
-  parameters : Map {
-    "name" = lib.name,
-    "id" = lib.id,
-    "books" = lib.books
-  }
-  target {
-    var outFile = outDirLib + lib.name;
-    if (isBigLibrary) {
-      outFile += "_compact";
-    }
-    return outFile + ".xml";
-  }
-  formatter : xml
-  post {
-    libFileSizes.put(generated.getName(), generated.length());
-  }
-}
-
-rule AuthorsAndBooks {
-  parameters : Map {
-    "authors" = Authors.allInstances(),
-    "books" = Book.allInstances()
-  }
-  template : "AuthorsAndBooks.egl"
-  target : "AllAuthorsBooks.txt"
-}
-
-post {
-  libFileSizes.println();
-    ("Total: "+libFileSizes.values().sum()).println();
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">operation</span><span class="w"> </span><span class="n">Book</span><span class="w"> </span><span class="n">isValid</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">isbn</span><span class="o">.</span><span class="n">isDefined</span><span class="p">()</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">isbn</span><span class="o">.</span><span class="n">length</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">13</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">}</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">pre</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">outDirLib</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../libraries/&quot;</span><span class="p">;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">libFileSizes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">Map</span><span class="p">;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">xml</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">Native</span><span class="p">(</span><span class="s2">&quot;org.eclipse.epsilon.egl.formatter.language.XmlFormatter&quot;</span><span class="p">);</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">}</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="k">rule</span><span class="w"> </span><span class="n">Lib2XML</span><span class="w"> </span><span class="k">transform</span><span class="w"> </span><span class="n">lib</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Library</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="k">guard</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">lib</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">length</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">lib</span><span class="o">.</span><span class="n">books</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="k">pre</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">eligibleBooks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lib</span><span class="o">.</span><span class="n">books</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">b</span><span class="o">.</span><span class="n">isValid</span><span class="p">());</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">isBigLibrary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eligibleBooks</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">9000</span><span class="p">;</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">  </span><span class="k">merge</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">isBigLibrary</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">  </span><span class="k">overwrite</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">isBigLibrary</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">libTemplate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;rel/path/to/Lib2XML&quot;</span><span class="p">;</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isBigLibrary</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">      </span><span class="n">libTemplate</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;_minified&quot;</span><span class="p">;</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">libTemplate</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;.egl&quot;</span><span class="p">;</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">  </span><span class="k">parameters</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Map</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">    </span><span class="s2">&quot;name&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lib</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">    </span><span class="s2">&quot;id&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lib</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">    </span><span class="s2">&quot;books&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lib</span><span class="o">.</span><span class="n">books</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">  </span><span class="k">target</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">outFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">outDirLib</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">lib</span><span class="o">.</span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isBigLibrary</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">      </span><span class="n">outFile</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;_compact&quot;</span><span class="p">;</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">outFile</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;.xml&quot;</span><span class="p">;</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">  </span><span class="n">formatter</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">xml</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">  </span><span class="k">post</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">    </span><span class="n">libFileSizes</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">generated</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span><span class="w"> </span><span class="n">generated</span><span class="o">.</span><span class="n">length</span><span class="p">());</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="p">}</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="k">rule</span><span class="w"> </span><span class="n">AuthorsAndBooks</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">  </span><span class="k">parameters</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Map</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">    </span><span class="s2">&quot;authors&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Authors</span><span class="o">.</span><span class="n">allInstances</span><span class="p">(),</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">    </span><span class="s2">&quot;books&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Book</span><span class="o">.</span><span class="n">allInstances</span><span class="p">()</span>
+<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="w">  </span><span class="k">template</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;AuthorsAndBooks.egl&quot;</span>
+<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="w">  </span><span class="k">target</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;AllAuthorsBooks.txt&quot;</span>
+<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a><span class="p">}</span>
+<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a>
+<a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a><span class="k">post</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a><span class="w">  </span><span class="n">libFileSizes</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="w">    </span><span class="p">(</span><span class="s2">&quot;Total: &quot;</span><span class="o">+</span><span class="n">libFileSizes</span><span class="o">.</span><span class="n">values</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">.</span><span class="n">println</span><span class="p">();</span>
+<a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a><span class="p">}</span>
+</code></pre></div>
 <p>The previous example demonstrated the use of model-to-text transformations over Library model elements. However, there may be scenarios in which one would like to use model-to-text transformations over the items of a list. This is particularly useful when the list has been populated by other model-to-text transformations. The following example will generate a text file for each item in the <code>files</code> list, and the content of each file is specified by the <code>data</code> map.</p>
-<pre class="highlight"><code class="language-egx">pre {
-  var files = Sequence{"file1", "file2", "file3"};
-  var data = Map {
-    "file1" = "Content of the first file",
-    "file2" = "Content of the second file",
-    "file3" = "Content of the third file"
-  };
-}
-
-rule ItemToFile transform file: String in: files {
-    parameters : Map {"content" = data.get(file)}
-    target : file + ".txt"
-    template: "file.egl"
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">pre</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Sequence</span><span class="p">{</span><span class="s2">&quot;file1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;file2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;file3&quot;</span><span class="p">};</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Map</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="s2">&quot;file1&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Content of the first file&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="s2">&quot;file2&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Content of the second file&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="s2">&quot;file3&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Content of the third file&quot;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="p">};</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">}</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="k">rule</span><span class="w"> </span><span class="n">ItemToFile</span><span class="w"> </span><span class="k">transform</span><span class="w"> </span><span class="n">file</span><span class="o">:</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="k">in</span><span class="o">:</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="k">parameters</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">Map</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;content&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file</span><span class="p">)}</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="k">target</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;.txt&quot;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="k">template</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;file.egl&quot;</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="p">}</span>
+</code></pre></div>
 <h2 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
 <p>Additional resources about EGL/EGX are available <a href="../articles/#epsilon-generation-language">here</a>.</p>
 
@@ -2274,8 +2271,6 @@ rule ItemToFile transform file: String in: files {
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

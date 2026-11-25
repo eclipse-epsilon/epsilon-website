@@ -2,7 +2,7 @@
 
 Spreadsheets are commonly used in software and systems engineering processes to capture and analyse structured data, and can be sources of valuable information for model-based software engineering activities. 
 
-Epsilon provides built-in support for querying and transforming Excel spreadsheets through an [Apache POI](https://poi.apache.org/)-based [EMC](../../emc) driver. This article discusses how you can configure an Epsilon program to query and modify an Excel spreadsheet, and the video below demonstrates the driver in action.
+Epsilon provides built-in support for querying and transforming Excel spreadsheets through an [Apache POI](https://poi.apache.org/)-based [EMC](../../emc.md) driver. This article discusses how you can configure an Epsilon program to query and modify an Excel spreadsheet, and the video below demonstrates the driver in action.
 
 <iframe width="100%" height="494" src="https://www.youtube.com/embed/tTYGwgzxPMM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -181,7 +181,7 @@ Updating the value of a cell can have side effects to other cells that are linke
 
 ## Validating and Transforming Spreadsheets
 
-Of course, we can also validate spreadsheets using [EVL](../../evl), transform them into other models using [ETL](../../etl), and into text using [EGL](../../egl), generate graphical views using [Picto](../../picto) etc.
+Of course, we can also validate spreadsheets using [EVL](../../evl.md), transform them into other models using [ETL](../../etl.md), and into text using [EGL](../../egl.md), generate graphical views using [Picto](../../picto/index.md) etc.
 
 ```evl
 context Staff {
@@ -294,4 +294,4 @@ The parameters supported for spreadsheets are listed below.
 
 ## Resources
 
-- [This article](../running-epsilon-ant-tasks-from-command-line#excel) shows how to use Excel spreadsheets in standalone ANT/Gradle/Maven builds.
+- [This article](../running-epsilon-ant-tasks-from-command-line/index.md#excel) shows how to use Excel spreadsheets in standalone ANT/Gradle/Maven builds.

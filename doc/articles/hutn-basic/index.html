@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1919,76 +1913,84 @@
 <p>Once we have created your metamodel and registered it with Epsilon, we create a new HUTN document by clicking <strong>File→New→Other...</strong> and selecting <strong>HUTN File</strong>. The metamodel nsuri field should contain the namespace URI of our metamodel: families</p>
 <p><img alt="" src="create.png" /></p>
 <p>Epsilon will initialise a HUTN file for our metamodel (as shown below). We can now specify and then generate our model.</p>
-<pre class="highlight"><code>@Spec {
-  metamodel "families" {
-    nsUri: "families"
+<div class="highlight"><pre><span></span><code>@Spec {
+  metamodel &quot;families&quot; {
+    nsUri: &quot;families&quot;
   }
 }
 
 families {
   // Place your model element specifications here
-}</code></pre>
+}
+</code></pre></div>
 <h2 id="hutn-syntax">HUTN Syntax<a class="headerlink" href="#hutn-syntax" title="Permanent link">&para;</a></h2>
 <p>We now briefly describe the HUTN syntax. We can specify an instance of Family using the following HUTN:</p>
-<pre class="highlight"><code>Family {
-  name: "The Smiths"
+<div class="highlight"><pre><span></span><code>Family {
+  name: &quot;The Smiths&quot;
   lotteryNumbers: 10, 24, 26, 32, 45, 49
-}</code></pre>
+}
+</code></pre></div>
 <p>Note that multi-valued features can be specified using a comma separated list.</p>
 <h3 id="containment-references">Containment references<a class="headerlink" href="#containment-references" title="Permanent link">&para;</a></h3>
 <p>Containment references are specified by nesting model element definitions. For example, the following HUTN specifies two members, John and Jane of the Smiths:</p>
-<pre class="highlight"><code>Family {
-  name: "The Smiths"
+<div class="highlight"><pre><span></span><code>Family {
+  name: &quot;The Smiths&quot;
   lotteryNumbers: 10, 24, 26, 32, 45, 49
   members: Person {
-             name: "John Smith"
+             name: &quot;John Smith&quot;
            }, Person {
-             name: "Jane Smith"
+             name: &quot;Jane Smith&quot;
            }
-}</code></pre>
+}
+</code></pre></div>
 <h3 id="non-containment-references">Non-containment references<a class="headerlink" href="#non-containment-references" title="Permanent link">&para;</a></h3>
 <p>Non-containment references are specified using a HUTN identifier, which is the string appearing in double-quotes as part of an object\'s declaraton. Below, the second Family has the identifier "bloggs." In the following HUTN, The first family references the second family, using the familyFriends reference:</p>
-<pre class="highlight"><code>Family {
-  familyFriends: Family "bloggs"
+<div class="highlight"><pre><span></span><code>Family {
+  familyFriends: Family &quot;bloggs&quot;
 }
 
-Family "bloggs" {}</code></pre>
+Family &quot;bloggs&quot; {}
+</code></pre></div>
 <h3 id="cross-model-references">Cross-model references<a class="headerlink" href="#cross-model-references" title="Permanent link">&para;</a></h3>
 <p>References to model elements stored in another file are using a URI fragment:</p>
-<pre class="highlight"><code>Family {
-  familyFriends: Family "../families/AnotherNeighbourhood.model#/1/"
-  familyFriends: Family "../families/AnotherNeighbourhood.model#_swAAYJX5Ed2TbbKclPHPaA"
-}</code></pre>
+<div class="highlight"><pre><span></span><code>Family {
+  familyFriends: Family &quot;../families/AnotherNeighbourhood.model#/1/&quot;
+  familyFriends: Family &quot;../families/AnotherNeighbourhood.model#_swAAYJX5Ed2TbbKclPHPaA&quot;
+}
+</code></pre></div>
 <p>URI fragments can have either a relative (XPath-like) syntax, or use a unique identifier. For example, the first reference above uses a relative syntax to refer to the second (index of 1) Family in the AnotherNeighbourhood.model file. For more information on URI fragments, see section 13.2.1 of <a href="https://dl.acm.org/doi/10.5555/1197540">the EMF book</a>.</p>
 <h2 id="shortcuts">Shortcuts<a class="headerlink" href="#shortcuts" title="Permanent link">&para;</a></h2>
 <p>There are some syntactic shortcuts in HUTN, which we now demonstrate.</p>
 <p>Objects do not have to specify a body, and can instead be terminated with a semi-colon:</p>
-<pre class="highlight"><code>Family {}
+<div class="highlight"><pre><span></span><code>Family {}
 // is equivalent to:
-Family;</code></pre>
+Family;
+</code></pre></div>
 <p>Although boolean-valued attributes can be specified using true or false values, they can also be specified as a prefix on the model element definition:</p>
-<pre class="highlight"><code>Family {
+<div class="highlight"><pre><span></span><code>Family {
   nuclear: false
   migrant: true
 }
 // is equivalent to:
-~nuclear migrant Family;</code></pre>
+~nuclear migrant Family;
+</code></pre></div>
 <p>Non-containment references can be specified using association blocks or even with an infix notation:</p>
-<pre class="highlight"><code>Family {
-  familyFriends: Family "bloggs"
+<div class="highlight"><pre><span></span><code>Family {
+  familyFriends: Family &quot;bloggs&quot;
 }
-Family "bloggs";
+Family &quot;bloggs&quot;;
 // is equivalent to the following association block
-Family "smiths";
-Family "bloggs";
+Family &quot;smiths&quot;;
+Family &quot;bloggs&quot;;
 familyFriends {
-  "smiths" "bloggs"
+  &quot;smiths&quot; &quot;bloggs&quot;
   // More familyFriends can be specified here
 }
 // is equivalent to the following infix notation:
-Family "smiths";
-Family "bloggs";
-Family "smiths" familyFriends Family "bloggs";</code></pre>
+Family &quot;smiths&quot;;
+Family &quot;bloggs&quot;;
+Family &quot;smiths&quot; familyFriends Family &quot;bloggs&quot;;
+</code></pre></div>
 <h2 id="generating-a-model-from-hutn">Generating a model from HUTN<a class="headerlink" href="#generating-a-model-from-hutn" title="Permanent link">&para;</a></h2>
 <p>When we have finished specifying our HUTN, we can generate a corresponding model. Right-click the HUTN document and select <strong>HUTN→Generate Model</strong>, as shown below</p>
 <p><img alt="" src="generate.png" /></p>
@@ -2094,8 +2096,6 @@ Family "smiths" familyFriends Family "bloggs";</code></pre>
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

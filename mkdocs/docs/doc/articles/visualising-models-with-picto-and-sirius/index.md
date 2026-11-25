@@ -1,6 +1,6 @@
 # Visualising Models with Picto and Sirius
 
-Graphical modelling frameworks such as [Sirius](https://www.eclipse.org/sirius/) allow for models to be visualised and edited as diagrams, tables and trees. Sometimes it may be beneficial to visualise parts of the model in a different format, such as graphs. By combining both Sirius and [Picto](../../picto), you can combine the benefits of graphical editing, with the flexibility of rendering views using HTML/SVG/JavaScript-based technologies. 
+Graphical modelling frameworks such as [Sirius](https://www.eclipse.org/sirius/) allow for models to be visualised and edited as diagrams, tables and trees. Sometimes it may be beneficial to visualise parts of the model in a different format, such as graphs. By combining both Sirius and [Picto](../../picto/index.md), you can combine the benefits of graphical editing, with the flexibility of rendering views using HTML/SVG/JavaScript-based technologies. 
 
 ![Picto Sirius Visualisation](img/img1.PNG)
 

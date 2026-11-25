@@ -6,7 +6,7 @@ The aim of EML is to contribute model merging capabilities to Epsilon. More spec
 
 In EML, merging specifications are organized in modules (*EmlModule*). As displayed below, *EmlModule* inherits from *EtlModule*.
 
-```mermaid-90
+```mermaid
 classDiagram
 class MergeRule {
     -name: String
@@ -95,7 +95,7 @@ As with model transformation, in model merging it is often required to resolve t
 
 Similarly to ETL, the order of the results of the *equivalents()* operation respects the order of the (merge or transform) rules that have produced them. An exception to that occurs if one of the rules has been declared as primary, in which case its results are prepended to the list of elements returned by equivalent.
 
-```mermaid-60
+```mermaid
 classDiagram
 class Merge {
     -left: Object
@@ -234,7 +234,7 @@ and the label of their counterparts in the input models.
 
 Executing the ECL and EML modules on the exemplar models displayed in the following two figures creates the target model of the final figure.
 
-```mermaid-40
+```mermaid
 graph LR
     n1 --> n2
     n1 --> n3
@@ -243,7 +243,7 @@ graph LR
 ```
 Left model
 
-```mermaid-50
+```mermaid
 graph LR
     n1 --> n8
     n1 --> n6
@@ -252,7 +252,7 @@ graph LR
 ```
 Right model
 
-```mermaid-90
+```mermaid
 graph LR
     c_n1 --> g1_n2
     g1_n2 --> c_n4

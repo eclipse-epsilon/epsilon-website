@@ -41,3 +41,8 @@
 .md-typeset pre {
     margin: 0px;
 }
+/* Neutral Mermaid diagrams: reuse Material palette colours so they follow light/dark mode */
+:root, [data-md-color-scheme] {
+  --md-mermaid-node-bg-color: var(--md-code-bg-color);
+  --md-mermaid-node-fg-color: var(--md-default-fg-color--light);
+}

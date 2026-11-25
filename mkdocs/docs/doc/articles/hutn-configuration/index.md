@@ -1,6 +1,6 @@
 # Customising Epsilon HUTN documents with configuration
 
-In this article we demonstrate how you can use the configuration features of Epsilon HUTN to customise your HUTN documents. For an introduction to modelling with HUTN, please refer to [this article](../hutn-basic).
+In this article we demonstrate how you can use the configuration features of Epsilon HUTN to customise your HUTN documents. For an introduction to modelling with HUTN, please refer to [this article](../hutn-basic/index.md).
 
 ## Getting started
 
@@ -87,4 +87,4 @@ Notice also that the migrant attribute values have been removed from the The Doe
 
 ## Additional resources
 
-- Article: [Using HUTN in Epsilon](../hutn-basic)
+- Article: [Using HUTN in Epsilon](../hutn-basic/index.md)

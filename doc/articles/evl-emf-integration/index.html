@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1926,59 +1920,62 @@
 <h3 id="programmatically">Programmatically<a class="headerlink" href="#programmatically" title="Permanent link">&para;</a></h3>
 <p>For this you need to create a new instance of an <code>EvlValidator</code> and then add it to the <code>EValidatorRegistry</code>. Note that if there are existing validators registered for the metamodel, you should not remove/overwrite them; instead you should combine them in a <code>CompositeEValidator</code>.</p>
 <p>The following snippet outlines the general idea (you need to make your own provisions if you need to validate multiple <code>EPackages</code> with the same validator (e.g. use the <code>EvlValidator#addAdditionalPackage</code> method)).</p>
-<pre class="highlight"><code class="language-java">// Assuming you have generated the metamodel code
-EPackage ePackage = YourPackage.eINSTANCE;
-
-// Pass a model name if your script uses it
-// Pass a valid bundle ID as it used for reporting (if not in a plugin use your project name or similar)
-EvlValidator evlValidator = new EvlValidator(
-    evlScriptURI, modelName, ePackage.nsUri(), bundleId);
-
-EValidator existingValidator = EValidator.Registry.INSTANCE.getEValidator(ePackage);
-if (existingValidator instanceof CompositeEValidator) {
-    ((CompositeEValidator) existingValidator).getDelegates().add(evlValidator);
-} else {
-    if (existingValidator == null) {
-        existingValidator = EObjectValidator.INSTANCE;
-    }
-    CompositeEValidator newValidator = new CompositeEValidator();
-    newValidator.getDelegates().add(existingValidator);
-    newValidator.getDelegates().add(evlValidator);
-    EValidator.Registry.INSTANCE.put(ePackage, newValidator);
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Assuming you have generated the metamodel code</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">EPackage</span><span class="w"> </span><span class="n">ePackage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">YourPackage</span><span class="p">.</span><span class="na">eINSTANCE</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">// Pass a model name if your script uses it</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1">// Pass a valid bundle ID as it used for reporting (if not in a plugin use your project name or similar)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">EvlValidator</span><span class="w"> </span><span class="n">evlValidator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EvlValidator</span><span class="p">(</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">evlScriptURI</span><span class="p">,</span><span class="w"> </span><span class="n">modelName</span><span class="p">,</span><span class="w"> </span><span class="n">ePackage</span><span class="p">.</span><span class="na">nsUri</span><span class="p">(),</span><span class="w"> </span><span class="n">bundleId</span><span class="p">);</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">EValidator</span><span class="w"> </span><span class="n">existingValidator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EValidator</span><span class="p">.</span><span class="na">Registry</span><span class="p">.</span><span class="na">INSTANCE</span><span class="p">.</span><span class="na">getEValidator</span><span class="p">(</span><span class="n">ePackage</span><span class="p">);</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">existingValidator</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">CompositeEValidator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="p">((</span><span class="n">CompositeEValidator</span><span class="p">)</span><span class="w"> </span><span class="n">existingValidator</span><span class="p">).</span><span class="na">getDelegates</span><span class="p">().</span><span class="na">add</span><span class="p">(</span><span class="n">evlValidator</span><span class="p">);</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">existingValidator</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="n">existingValidator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EObjectValidator</span><span class="p">.</span><span class="na">INSTANCE</span><span class="p">;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="n">CompositeEValidator</span><span class="w"> </span><span class="n">newValidator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CompositeEValidator</span><span class="p">();</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="n">newValidator</span><span class="p">.</span><span class="na">getDelegates</span><span class="p">().</span><span class="na">add</span><span class="p">(</span><span class="n">existingValidator</span><span class="p">);</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="n">newValidator</span><span class="p">.</span><span class="na">getDelegates</span><span class="p">().</span><span class="na">add</span><span class="p">(</span><span class="n">evlValidator</span><span class="p">);</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="n">EValidator</span><span class="p">.</span><span class="na">Registry</span><span class="p">.</span><span class="na">INSTANCE</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">ePackage</span><span class="p">,</span><span class="w"> </span><span class="n">newValidator</span><span class="p">);</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="p">}</span>
+</code></pre></div>
 <h3 id="via-the-extension-point">Via the Extension Point<a class="headerlink" href="#via-the-extension-point" title="Permanent link">&para;</a></h3>
 <p>Epsilon provides the <code>org.eclipse.epsilon.evl.emf.validation</code> extension point for registering EVL constraints against <code>EPackages</code> in Eclipse. The extension point will handle the <code>EvlValidator</code> instantiation and registration for you.</p>
-<pre class="highlight"><code class="language-xml">&lt;plugin&gt;
-   ...
-   &lt;extension
-         point="org.eclipse.epsilon.evl.emf.validation"&gt;
-      &lt;constraintsBinding
-            compose="true"
-            constraints="src/test.evl"
-            namespaceURI="http://your.package.uri"
-            validator="my.project.evl.EvlExtendedValidator"&gt;
-            &lt;additionalNamespaceURI
-               namespaceURI="http://some.other.pacakge.uri"&gt;
-         &lt;/additionalNamespaceURI&gt;
-      &lt;/constraintsBinding&gt;
-   &lt;/extension&gt;
-&lt;/plugin&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">&lt;plugin&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">   </span>...
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">   </span><span class="nt">&lt;extension</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">         </span><span class="na">point=</span><span class="s">&quot;org.eclipse.epsilon.evl.emf.validation&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">      </span><span class="nt">&lt;constraintsBinding</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">            </span><span class="na">compose=</span><span class="s">&quot;true&quot;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">            </span><span class="na">constraints=</span><span class="s">&quot;src/test.evl&quot;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">            </span><span class="na">namespaceURI=</span><span class="s">&quot;http://your.package.uri&quot;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">            </span><span class="na">validator=</span><span class="s">&quot;my.project.evl.EvlExtendedValidator&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">            </span><span class="nt">&lt;additionalNamespaceURI</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">               </span><span class="na">namespaceURI=</span><span class="s">&quot;http://some.other.pacakge.uri&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">         </span><span class="nt">&lt;/additionalNamespaceURI&gt;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">      </span><span class="nt">&lt;/constraintsBinding&gt;</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">   </span><span class="nt">&lt;/extension&gt;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="nt">&lt;/plugin&gt;</span>
+</code></pre></div>
 <p>We recommend setting the <code>compose</code> attribute to <code>true</code>, else you will overwrite existing validators. You can also specify additional metamodels to be accessed by this validator using the <code>additionalNamespaceURI</code> entries. Note that you can also provide your own validator implementation. If omitted, the default <code>EvlValidator</code> will be used (should be sufficient for most cases).</p>
 <p>In order to display quick fixes, you will also need to make sure that the appropriate marker resolution generator extension has been registered against our <code>EvlMarkerResolutionGenerator</code>.
 For example, for the markers added by the EMF Validation framework and by the EMF <a href="https://eclipse.dev/ecoretools/">EcoreTools</a>.</p>
-<pre class="highlight"><code class="language-xml">&lt;plugin&gt;
-   &lt;extension
-         point="org.eclipse.ui.ide.markerResolution"&gt;
-      &lt;markerResolutionGenerator
-            class="org.eclipse.epsilon.evl.emf.validation.EvlMarkerResolutionGenerator"
-            markerType="org.eclipse.emf.ecore.diagnostic"&gt;
-      &lt;/markerResolutionGenerator&gt;
-      &lt;markerResolutionGenerator
-            class="org.eclipse.epsilon.evl.emf.validation.EvlMarkerResolutionGenerator"
-            markerType="org.eclipse.emf.ecoretools.diagram.diagnostic"&gt;
-      &lt;/markerResolutionGenerator&gt;
-   &lt;/extension&gt;  
-&lt;/plugin&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">&lt;plugin&gt;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">   </span><span class="nt">&lt;extension</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">         </span><span class="na">point=</span><span class="s">&quot;org.eclipse.ui.ide.markerResolution&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">      </span><span class="nt">&lt;markerResolutionGenerator</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">            </span><span class="na">class=</span><span class="s">&quot;org.eclipse.epsilon.evl.emf.validation.EvlMarkerResolutionGenerator&quot;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">            </span><span class="na">markerType=</span><span class="s">&quot;org.eclipse.emf.ecore.diagnostic&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">      </span><span class="nt">&lt;/markerResolutionGenerator&gt;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">      </span><span class="nt">&lt;markerResolutionGenerator</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">            </span><span class="na">class=</span><span class="s">&quot;org.eclipse.epsilon.evl.emf.validation.EvlMarkerResolutionGenerator&quot;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">            </span><span class="na">markerType=</span><span class="s">&quot;org.eclipse.emf.ecoretools.diagram.diagnostic&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">      </span><span class="nt">&lt;/markerResolutionGenerator&gt;</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">   </span><span class="nt">&lt;/extension&gt;</span><span class="w">  </span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="nt">&lt;/plugin&gt;</span>
+</code></pre></div>
 <p>There should be exactly one such extension among the active plugins for each <code>markerType</code>: otherwise, multiple copies of the same fixes would be shown to the user.</p>
 <h2 id="runtime-adjustments">Runtime Adjustments<a class="headerlink" href="#runtime-adjustments" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
@@ -1996,69 +1993,72 @@ For example, for the markers added by the EMF Validation framework and by the EM
 </div>
 <h3 id="validation-progress-and-cancellation">Validation progress and cancellation<a class="headerlink" href="#validation-progress-and-cancellation" title="Permanent link">&para;</a></h3>
 <p>Within Eclipse it is important to allow uses to cancel a running validation. To do so, we need to pass an <code>IProgressMonitor</code> to the EvlValidator. For this, you need to provide your own <a href="https://download.eclipse.org/modeling/emf/emf/javadoc/2.4.3/org/eclipse/emf/ecore/util/Diagnostician.html">Diagnostician</a>.</p>
-<pre class="highlight"><code class="language-java">public class MyDiagnostician extends Diagnostician {
-
-    public Diagnostic validate(EObject eObject, IProgressMonitor monitor) {
-        BasicDiagnostic diagnostics = createDefaultDiagnostic(eObject);
-        validate(eObject, diagnostics, createDefaultContext(monitor), monitor);
-        return diagnostics;
-    }
-
-    // Overload the Diagnostician implementation to inject the monitor into the context
-    public Map&lt;Object, Object&gt; createDefaultContext(IProgressMonitor monitor) {
-        final Map&lt;Object, Object&gt; defaultContext = super.createDefaultContext();
-        defaultContext.put(EvlValidator.VALIDATION_MONITOR, monitor);
-        return defaultContext;
-    }
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyDiagnostician</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Diagnostician</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Diagnostic</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="n">EObject</span><span class="w"> </span><span class="n">eObject</span><span class="p">,</span><span class="w"> </span><span class="n">IProgressMonitor</span><span class="w"> </span><span class="n">monitor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="n">BasicDiagnostic</span><span class="w"> </span><span class="n">diagnostics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createDefaultDiagnostic</span><span class="p">(</span><span class="n">eObject</span><span class="p">);</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="n">validate</span><span class="p">(</span><span class="n">eObject</span><span class="p">,</span><span class="w"> </span><span class="n">diagnostics</span><span class="p">,</span><span class="w"> </span><span class="n">createDefaultContext</span><span class="p">(</span><span class="n">monitor</span><span class="p">),</span><span class="w"> </span><span class="n">monitor</span><span class="p">);</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">diagnostics</span><span class="p">;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="c1">// Overload the Diagnostician implementation to inject the monitor into the context</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Object</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">createDefaultContext</span><span class="p">(</span><span class="n">IProgressMonitor</span><span class="w"> </span><span class="n">monitor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Object</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">defaultContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">super</span><span class="p">.</span><span class="na">createDefaultContext</span><span class="p">();</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="n">defaultContext</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">EvlValidator</span><span class="p">.</span><span class="na">VALIDATION_MONITOR</span><span class="p">,</span><span class="w"> </span><span class="n">monitor</span><span class="p">);</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">defaultContext</span><span class="p">;</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="p">}</span>
+</code></pre></div>
 <p>And then in your code (e.g. command handler):</p>
-<pre class="highlight"><code class="language-java">@Override
-public void run(IProgressMonitor monitor) throws CoreException {
-    myDgnstc = new MyDiagnostician();
-    Diagnostic dgnstc = rnblDgnstc.validate(model.getContents().get(0), monitor);
-    ...</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nd">@Override</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="n">IProgressMonitor</span><span class="w"> </span><span class="n">monitor</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">CoreException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="n">myDgnstc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MyDiagnostician</span><span class="p">();</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="n">Diagnostic</span><span class="w"> </span><span class="n">dgnstc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rnblDgnstc</span><span class="p">.</span><span class="na">validate</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="na">getContents</span><span class="p">().</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">monitor</span><span class="p">);</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="p">...</span>
+</code></pre></div>
 <p>The extended diagnostician can also be used to configure any <code>EvlValidators</code> provided via extension points, e.g. to disable logging or dialogs. In this case we assume that all <code>EvlValidators</code> are within <code>CompositeEValidators</code> (adjust if not using them). This implementation uses a <em>brute force</em> approach; ideally you should search for a specific <code>EPackage</code> instead.</p>
-<pre class="highlight"><code class="language-java">public class MyDiagnostician extends Diagnostician {
-
-    public MyDiagnostician() {
-        super();
-        for(Object validator : eValidatorRegistry.values()) {
-            if (validator instanceof CompositeEValidator) {
-                CompositeEValidator cmpsVal = (CompositeEValidator) validator;
-                findEvlValidators(cmpsVal);
-            }
-        }
-    }
-
-    public Diagnostic validate(EObject eObject, IProgressMonitor monitor) {
-        BasicDiagnostic diagnostics = createDefaultDiagnostic(eObject);
-        validate(eObject, diagnostics, createDefaultContext(monitor), monitor);
-        return diagnostics;
-    }
-
-    // Overload the Diagnostician implementation to inject the monitor into the context
-    public Map&lt;Object, Object&gt; createDefaultContext(IProgressMonitor monitor) {
-        final Map&lt;Object, Object&gt; defaultContext = super.createDefaultContext();
-        defaultContext.put(EvlValidator.VALIDATION_MONITOR, monitor);
-        return defaultContext;
-    }
-
-    /**
-     * Find all {@link EVlValidator}s and configure them.
-     * @param cmpsVal
-     * @return
-     */
-    private void findEvlValidators(CompositeEValidator cmpsVal) {
-        for (EValidator nstdVal : cmpsVal.getDelegates()) {
-            if (nstdVal instanceof EVlValidator) {
-                EVlValidator evlVal = (EVlValidator) nstdVal;
-                evlVal.setShowErrorDialog(false);
-                // Other settings or hook error listeners
-                // evlVal.addValidationProblemListener(this);
-            }
-        }
-    }
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyDiagnostician</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Diagnostician</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">MyDiagnostician</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">        </span><span class="kd">super</span><span class="p">();</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">validator</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">eValidatorRegistry</span><span class="p">.</span><span class="na">values</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">validator</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">CompositeEValidator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">                </span><span class="n">CompositeEValidator</span><span class="w"> </span><span class="n">cmpsVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">CompositeEValidator</span><span class="p">)</span><span class="w"> </span><span class="n">validator</span><span class="p">;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">                </span><span class="n">findEvlValidators</span><span class="p">(</span><span class="n">cmpsVal</span><span class="p">);</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Diagnostic</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="n">EObject</span><span class="w"> </span><span class="n">eObject</span><span class="p">,</span><span class="w"> </span><span class="n">IProgressMonitor</span><span class="w"> </span><span class="n">monitor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">        </span><span class="n">BasicDiagnostic</span><span class="w"> </span><span class="n">diagnostics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createDefaultDiagnostic</span><span class="p">(</span><span class="n">eObject</span><span class="p">);</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">        </span><span class="n">validate</span><span class="p">(</span><span class="n">eObject</span><span class="p">,</span><span class="w"> </span><span class="n">diagnostics</span><span class="p">,</span><span class="w"> </span><span class="n">createDefaultContext</span><span class="p">(</span><span class="n">monitor</span><span class="p">),</span><span class="w"> </span><span class="n">monitor</span><span class="p">);</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">diagnostics</span><span class="p">;</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">    </span><span class="c1">// Overload the Diagnostician implementation to inject the monitor into the context</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Object</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">createDefaultContext</span><span class="p">(</span><span class="n">IProgressMonitor</span><span class="w"> </span><span class="n">monitor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">        </span><span class="kd">final</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Object</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">defaultContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">super</span><span class="p">.</span><span class="na">createDefaultContext</span><span class="p">();</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">        </span><span class="n">defaultContext</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">EvlValidator</span><span class="p">.</span><span class="na">VALIDATION_MONITOR</span><span class="p">,</span><span class="w"> </span><span class="n">monitor</span><span class="p">);</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">defaultContext</span><span class="p">;</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">    </span><span class="cm">/**</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="cm">     * Find all {@link EVlValidator}s and configure them.</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="cm">     * @param cmpsVal</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="cm">     * @return</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="cm">     */</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">findEvlValidators</span><span class="p">(</span><span class="n">CompositeEValidator</span><span class="w"> </span><span class="n">cmpsVal</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">EValidator</span><span class="w"> </span><span class="n">nstdVal</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">cmpsVal</span><span class="p">.</span><span class="na">getDelegates</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nstdVal</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">EVlValidator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="w">                </span><span class="n">EVlValidator</span><span class="w"> </span><span class="n">evlVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EVlValidator</span><span class="p">)</span><span class="w"> </span><span class="n">nstdVal</span><span class="p">;</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="w">                </span><span class="n">evlVal</span><span class="p">.</span><span class="na">setShowErrorDialog</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="w">                </span><span class="c1">// Other settings or hook error listeners</span>
+<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="w">                </span><span class="c1">// evlVal.addValidationProblemListener(this);</span>
+<a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a><span class="p">}</span>
+</code></pre></div>
 
 
 
@@ -2154,8 +2154,6 @@ public void run(IProgressMonitor monitor) throws CoreException {
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

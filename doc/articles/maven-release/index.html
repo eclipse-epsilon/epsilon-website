@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1876,20 +1870,24 @@
 <h2 id="testing-the-plain-maven-build">Testing the Plain Maven build<a class="headerlink" href="#testing-the-plain-maven-build" title="Permanent link">&para;</a></h2>
 <p>Our plain Maven artifacts are built through a parallel hierarchy of <code>pom-plain.xml</code> files, starting from the root of the Epsilon repository.
 To do a plain Maven compilation + test build from scratch, simply run this:</p>
-<pre class="highlight"><code>mvn -f pom-plain.xml clean test</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mvn -f pom-plain.xml clean test
+</code></pre></div>
 <p>Keep in mind that plain Maven builds do not run unit tests, as we already run those in the Tycho build.
 Make sure that all tests pass in the Tycho build first.</p>
 <p>Double check the dependencies in the various <code>pom-plain.xml</code> files, especially those related to external libraries.</p>
 <p>Check the project metadata in the <code>pom-plain.xml</code> file, which lists the current developers, SCM URLs, and other details.</p>
 <h2 id="preparing-a-maven-release">Preparing a Maven release<a class="headerlink" href="#preparing-a-maven-release" title="Permanent link">&para;</a></h2>
 <p>Set the version in the <code>pom-plain.xml</code> files:</p>
-<pre class="highlight"><code class="language-sh">mvn -f pom-plain.xml versions:set</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mvn<span class="w"> </span>-f<span class="w"> </span>pom-plain.xml<span class="w"> </span>versions:set
+</code></pre></div>
 <p>Enter the version number of the release, and create a commit for it:</p>
-<pre class="highlight"><code class="language-sh">git add ...
-git commit -m "Set pom-plain versions to X.Y.Z"</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>add<span class="w"> </span>...
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Set pom-plain versions to X.Y.Z&quot;</span>
+</code></pre></div>
 <p>Update the target platform (both <code>.tpd</code> and <code>.target</code>) to point to the matching version of the Jena uber-JAR, as otherwise the build will break.</p>
 <p>Push the commit to Jenkins:</p>
-<pre class="highlight"><code class="language-sh">git push</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>push
+</code></pre></div>
 <p><a href="https://github.com/eclipse-epsilon/epsilon/commit/8f680d0bb7270e332d57fe24334012d3cfdae73b">Here is an example commit</a>.
 Typically this would be the last thing you do before tagging the release.
 After you've pushed this and tagged the repository with the Epsilon version, remember to bump the version to the next SNAPSHOT.</p>
@@ -1991,8 +1989,6 @@ After a few hours the contents of the repository should be available from <a hre
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

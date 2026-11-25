@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1829,23 +1823,24 @@
 <p><a href="https://mbse-capella.org">Capella</a> is an industrial-grade MBSE workbench for systems, software and harware architects. As Capella is built on EMF and Sirius, Epsilon's <a href="../#epsilon-and-emf-models">EMF driver</a> can be used to query, validate and transform Capella models. To install Epsilon on top of Capella, you can use Epsilon's <a href="../../../download/">update site</a> and install (at least) the features under the <code>Epsilon Core</code> and <code>Epsilon EMF Integration</code> categories, as shown below.</p>
 <p><img alt="" src="installation.png" /></p>
 <p>You can then use Epsilon's languages to write validation constraints, transformations etc. as you would do with any EMF-based model. For example, the following <a href="../../evl/">EVL</a> critique checks that all functions (instances of <code>AbstractFunction</code>) in a Capella model start with an upper-case letter.</p>
-<pre class="highlight"><code class="language-evl">context AbstractFunction {
-
-    critique StartsWithUpperCase {
-
-        check : self.name.ftuc() == self.name
-
-        message : self.eClass().name + " " + self.name + 
-            " should start with an upper-case letter"
-
-        fix {
-            title: "Rename to " + self.name.ftuc()
-            do {
-                self.name = self.name.ftuc();
-            }
-        }
-    }
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">context</span><span class="w"> </span><span class="n">AbstractFunction</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">critique</span><span class="w"> </span><span class="n">StartsWithUpperCase</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="k">check</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">ftuc</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="k">message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">eClass</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">            </span><span class="s2">&quot; should start with an upper-case letter&quot;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="k">fix</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">            </span><span class="k">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Rename to &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">ftuc</span><span class="p">()</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">            </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">                </span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">ftuc</span><span class="p">();</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="p">}</span>
+</code></pre></div>
 <p><img alt="" src="evl-in-capella.png" /></p>
 <p>To be able to run Epsilon programs such as the one above from Capella, you need to turn on the <code>Development</code> capability from the <code>Preferences</code> dialog as shown below.</p>
 <p><img alt="" src="preferences.png" /></p>
@@ -1944,8 +1939,6 @@
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

@@ -1,6 +1,6 @@
 # EOL Interpreter View
 
-Acceleo provides an [extensible interpreter view](https://wiki.eclipse.org/Acceleo/Interpreter) that can be used to evaluate queries on selections of model elements in EMF-based editors. Epsilon extends this view with support for writing and running [Epsilon Object Language](../../eol) scripts. To show the view, click on `Window` --> `Show View` --> `Other` --> `Interpreter`, and to switch to EOL, click on the respective button at the top-right of the view. More detailed instructions on using the different facilities offered by the interpreter view (e.g. variables, live evaluation) are provided [here](https://wiki.eclipse.org/Acceleo/Interpreter).
+Acceleo provides an [extensible interpreter view](https://wiki.eclipse.org/Acceleo/Interpreter) that can be used to evaluate queries on selections of model elements in EMF-based editors. Epsilon extends this view with support for writing and running [Epsilon Object Language](../../eol.md) scripts. To show the view, click on `Window` --> `Show View` --> `Other` --> `Interpreter`, and to switch to EOL, click on the respective button at the top-right of the view. More detailed instructions on using the different facilities offered by the interpreter view (e.g. variables, live evaluation) are provided [here](https://wiki.eclipse.org/Acceleo/Interpreter).
 
 ![](eol-interpreter.gif)
 

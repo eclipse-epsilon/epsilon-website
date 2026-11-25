@@ -2,7 +2,7 @@
 
 If you are a contributor to Epsilon (or you want to build on top of it), and don't already have Eclipse installed or the repository cloned, you can easily set this up automatically in a few clicks.
 
-Head to the [Downloads page](../../../download), download the installer for your platform and launch it.
+Head to the [Downloads page](../../../download/index.md), download the installer for your platform and launch it.
 
 ![](installer-basic.png)
 

@@ -46,13 +46,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2067,150 +2061,149 @@
 <p>The images show the tree view of an OO model with the default EMF reflective editor (left) and Exeed (right).</p>
 <p><img alt="EMF Reflective Editor" src="normaltree.png" /><img alt="Exeed Editor" src="exeedtree.png" /></p>
 <p>Below is the annotated OO metamodel (in Emfatic) that was used to obtain the Exeed result above (the example is available from the <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.exeedoo">examples</a> folder of the Git repository):</p>
-<pre class="highlight"><code class="language-emf">@namespace(uri="OO", prefix="")
-package OO;
-
-@exeed(classIcon="model")
-class Model extends Package {
-}
-
-@exeed(referenceLabel="
-var str : String;
-str = self.closure(pe:PackageableElement|pe.package).collect(p|p.name).invert().concat('.');
-if (self.package.isDefined()){
-    str = str + '.';
-}
-str = str + self.name;
-return str;
-")
-abstract class PackageableElement extends NamedElement {
-  !ordered ref Package[1]#contents ~package;
-}
-
-abstract class AnnotatedElement {
-  !ordered val Annotation[*] annotations;
-}
-
-@exeed(label="return self.key + ' -&gt; ' + self.value;", classIcon="annotation")
-class Annotation {
-  !unique !ordered attr String[1] key;
-  !unique !ordered attr String[1] value;
-}
-
-@exeed(label="return self.name;")
-abstract class NamedElement extends AnnotatedElement {
-  !unique !ordered attr String[1] name;
-}
-
-@exeed(classIcon="platform:/resource/org.eclipse.epsilon.examples.exeedoo/icons/package.gif", label="return self.name;")
-class Package extends PackageableElement {
-  !ordered val PackageableElement[*]#~package contents;
-  ref Package[*] uses;
-}
-
-abstract class Classifier extends PackageableElement {
-}
-
-class ExternalClass extends Class {
-}
-
-@exeed(classIcon="class", label="
-var label : String;
-label = self.name;
-if (self.extends.isDefined()){
-    label = label + ' extends ' + self.extends.name;
-}
-return label;
-")
-class Class extends Classifier {
-  !ordered ref Class[1]#extendedBy ~extends;
-  !ordered ref Class[*]#~extends extendedBy;
-  !ordered val Feature[*]#owner features;
-  !unique !ordered attr Boolean[1] isAbstract;
-}
-
-@exeed(classIcon="datatype")
-class Datatype extends Classifier {
-}
-
-abstract class Feature extends NamedElement {
-  !ordered ref Class[1]#features owner;
-  !ordered ref Classifier[1] type;
-  !unique !ordered attr VisibilityEnum[1] visibility;
-}
-
-@exeed(label="
-var label : String;
-label = self.name;
-if (self.type.isDefined()){
-    if (self.isMany) {
-        label = label + ' [*]';
-    }
-    label = label + '  : ' + self.type.name;
-}
-return label;", 
-icon="
-if (self.visibility = VisibilityEnum#private) {
-    return 'private';
-}
-else {
-    return 'public';
-}
-")
-abstract class StructuralFeature extends Feature {
-  !unique !ordered attr Boolean[1] isMany;
-}
-
-@exeed(label="
-var label : String;
-label = self.name + ' (';
-for (p in self.parameters) {
-    label = label + p.name;
-    if (p.type.isDefined()) {
-        label = label + ' : ' + p.type.name;
-    }
-    if (hasMore) {
-        label = label + ', ';
-    }
-}
-label = label + ')';
-if (self.type.isDefined()) {
-    label = label + ' : ' + self.type.name;
-}
-return label;
-", classIcon="operation")
-class Operation extends Feature {
-  !ordered val Parameter[*]#owner parameters;
-}
-
-@exeed(label="
-var label : String;
-label = self.name;
-if (self.type.isDefined()){
-    label = label + ' : ' + self.type.name;
-}
-return label;
-", classIcon="parameter")
-class Parameter extends NamedElement {
-  !ordered ref Classifier[1] type;
-  !ordered ref Operation[1]#parameters owner;
-}
-
-class Reference extends StructuralFeature {
-}
-
-class Attribute extends StructuralFeature {
-}
-
-enum VisibilityEnum {
-  public = 1;
-  private = 2;
-}
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@namespace</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="s2">&quot;OO&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">package</span><span class="w"> </span><span class="n">OO</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nd">@exeed</span><span class="p">(</span><span class="n">classIcon</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">class</span><span class="w"> </span><span class="n">Model</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Package</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">}</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nd">@exeed</span><span class="p">(</span><span class="n">referenceLabel</span><span class="o">=</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="s2">var str : String;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="s2">str = self.closure(pe:PackageableElement|pe.package).collect(p|p.name).invert().concat(&#39;.&#39;);</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="s2">if (self.package.isDefined()){</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="s2">    str = str + &#39;.&#39;;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="s2">}</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="s2">str = str + self.name;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="s2">return str;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="n">PackageableElement</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">NamedElement</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="o">!</span><span class="k">ordered</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="n">Package</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">#</span><span class="n">contents</span><span class="w"> </span><span class="o">~</span><span class="k">package</span><span class="p">;</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="p">}</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="n">AnnotatedElement</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">  </span><span class="o">!</span><span class="k">ordered</span><span class="w"> </span><span class="k">val</span><span class="w"> </span><span class="n">Annotation</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">annotations</span><span class="p">;</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="p">}</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="nd">@exeed</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;return self.key + &#39; -&gt; &#39; + self.value;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">classIcon</span><span class="o">=</span><span class="s2">&quot;annotation&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="k">class</span><span class="w"> </span><span class="n">Annotation</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span><span class="o">!</span><span class="k">unique</span><span class="w"> </span><span class="o">!</span><span class="k">ordered</span><span class="w"> </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="n">key</span><span class="p">;</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span><span class="o">!</span><span class="k">unique</span><span class="w"> </span><span class="o">!</span><span class="k">ordered</span><span class="w"> </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="p">}</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="nd">@exeed</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;return self.name;&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="n">NamedElement</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">AnnotatedElement</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">  </span><span class="o">!</span><span class="k">unique</span><span class="w"> </span><span class="o">!</span><span class="k">ordered</span><span class="w"> </span><span class="k">attr</span><span class="w"> </span><span class="kt">String</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="p">}</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="nd">@exeed</span><span class="p">(</span><span class="n">classIcon</span><span class="o">=</span><span class="s2">&quot;platform:/resource/org.eclipse.epsilon.examples.exeedoo/icons/package.gif&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;return self.name;&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="k">class</span><span class="w"> </span><span class="n">Package</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">PackageableElement</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">  </span><span class="o">!</span><span class="k">ordered</span><span class="w"> </span><span class="k">val</span><span class="w"> </span><span class="n">PackageableElement</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="o">#~</span><span class="k">package</span><span class="w"> </span><span class="n">contents</span><span class="p">;</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">  </span><span class="k">ref</span><span class="w"> </span><span class="n">Package</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="w"> </span><span class="n">uses</span><span class="p">;</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="p">}</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="n">Classifier</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">PackageableElement</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="p">}</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="k">class</span><span class="w"> </span><span class="n">ExternalClass</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="kt">Class</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="p">}</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="nd">@exeed</span><span class="p">(</span><span class="n">classIcon</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="s2">var label : String;</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="s2">label = self.name;</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="s2">if (self.extends.isDefined()){</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="s2">    label = label + &#39; extends &#39; + self.extends.name;</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="s2">}</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="s2">return label;</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="k">class</span><span class="w"> </span><span class="kt">Class</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Classifier</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="w">  </span><span class="o">!</span><span class="k">ordered</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="kt">Class</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">#</span><span class="n">extendedBy</span><span class="w"> </span><span class="o">~</span><span class="k">extends</span><span class="p">;</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="w">  </span><span class="o">!</span><span class="k">ordered</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="kt">Class</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="o">#~</span><span class="k">extends</span><span class="w"> </span><span class="n">extendedBy</span><span class="p">;</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">  </span><span class="o">!</span><span class="k">ordered</span><span class="w"> </span><span class="k">val</span><span class="w"> </span><span class="n">Feature</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="o">#</span><span class="n">owner</span><span class="w"> </span><span class="n">features</span><span class="p">;</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="w">  </span><span class="o">!</span><span class="k">unique</span><span class="w"> </span><span class="o">!</span><span class="k">ordered</span><span class="w"> </span><span class="k">attr</span><span class="w"> </span><span class="kt">Boolean</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="n">isAbstract</span><span class="p">;</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="p">}</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="nd">@exeed</span><span class="p">(</span><span class="n">classIcon</span><span class="o">=</span><span class="s2">&quot;datatype&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="k">class</span><span class="w"> </span><span class="n">Datatype</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Classifier</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="p">}</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="n">Feature</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">NamedElement</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="w">  </span><span class="o">!</span><span class="k">ordered</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="kt">Class</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">#</span><span class="n">features</span><span class="w"> </span><span class="n">owner</span><span class="p">;</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="w">  </span><span class="o">!</span><span class="k">ordered</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="n">Classifier</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="w">  </span><span class="o">!</span><span class="k">unique</span><span class="w"> </span><span class="o">!</span><span class="k">ordered</span><span class="w"> </span><span class="k">attr</span><span class="w"> </span><span class="n">VisibilityEnum</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="n">visibility</span><span class="p">;</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="p">}</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>
+<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="nd">@exeed</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a><span class="s2">var label : String;</span>
+<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a><span class="s2">label = self.name;</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a><span class="s2">if (self.type.isDefined()){</span>
+<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a><span class="s2">    if (self.isMany) {</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a><span class="s2">        label = label + &#39; [*]&#39;;</span>
+<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="s2">    }</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a><span class="s2">    label = label + &#39;  : &#39; + self.type.name;</span>
+<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a><span class="s2">}</span>
+<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a><span class="s2">return label;&quot;</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a><span class="n">icon</span><span class="o">=</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a><span class="s2">if (self.visibility = VisibilityEnum#private) {</span>
+<a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a><span class="s2">    return &#39;private&#39;;</span>
+<a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a><span class="s2">}</span>
+<a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a><span class="s2">else {</span>
+<a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a><span class="s2">    return &#39;public&#39;;</span>
+<a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a><span class="s2">}</span>
+<a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a><span class="k">abstract</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="n">StructuralFeature</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Feature</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a><span class="w">  </span><span class="o">!</span><span class="k">unique</span><span class="w"> </span><span class="o">!</span><span class="k">ordered</span><span class="w"> </span><span class="k">attr</span><span class="w"> </span><span class="kt">Boolean</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="n">isMany</span><span class="p">;</span>
+<a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a><span class="p">}</span>
+<a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a>
+<a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a><span class="nd">@exeed</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a><span class="s2">var label : String;</span>
+<a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a><span class="s2">label = self.name + &#39; (&#39;;</span>
+<a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a><span class="s2">for (p in self.parameters) {</span>
+<a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a><span class="s2">    label = label + p.name;</span>
+<a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a><span class="s2">    if (p.type.isDefined()) {</span>
+<a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a><span class="s2">        label = label + &#39; : &#39; + p.type.name;</span>
+<a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a><span class="s2">    }</span>
+<a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a><span class="s2">    if (hasMore) {</span>
+<a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a><span class="s2">        label = label + &#39;, &#39;;</span>
+<a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a><span class="s2">    }</span>
+<a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a><span class="s2">}</span>
+<a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a><span class="s2">label = label + &#39;)&#39;;</span>
+<a id="__codelineno-0-108" name="__codelineno-0-108" href="#__codelineno-0-108"></a><span class="s2">if (self.type.isDefined()) {</span>
+<a id="__codelineno-0-109" name="__codelineno-0-109" href="#__codelineno-0-109"></a><span class="s2">    label = label + &#39; : &#39; + self.type.name;</span>
+<a id="__codelineno-0-110" name="__codelineno-0-110" href="#__codelineno-0-110"></a><span class="s2">}</span>
+<a id="__codelineno-0-111" name="__codelineno-0-111" href="#__codelineno-0-111"></a><span class="s2">return label;</span>
+<a id="__codelineno-0-112" name="__codelineno-0-112" href="#__codelineno-0-112"></a><span class="s2">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">classIcon</span><span class="o">=</span><span class="s2">&quot;operation&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-113" name="__codelineno-0-113" href="#__codelineno-0-113"></a><span class="k">class</span><span class="w"> </span><span class="n">Operation</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">Feature</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-114" name="__codelineno-0-114" href="#__codelineno-0-114"></a><span class="w">  </span><span class="o">!</span><span class="k">ordered</span><span class="w"> </span><span class="k">val</span><span class="w"> </span><span class="n">Parameter</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="o">#</span><span class="n">owner</span><span class="w"> </span><span class="n">parameters</span><span class="p">;</span>
+<a id="__codelineno-0-115" name="__codelineno-0-115" href="#__codelineno-0-115"></a><span class="p">}</span>
+<a id="__codelineno-0-116" name="__codelineno-0-116" href="#__codelineno-0-116"></a>
+<a id="__codelineno-0-117" name="__codelineno-0-117" href="#__codelineno-0-117"></a><span class="nd">@exeed</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-118" name="__codelineno-0-118" href="#__codelineno-0-118"></a><span class="s2">var label : String;</span>
+<a id="__codelineno-0-119" name="__codelineno-0-119" href="#__codelineno-0-119"></a><span class="s2">label = self.name;</span>
+<a id="__codelineno-0-120" name="__codelineno-0-120" href="#__codelineno-0-120"></a><span class="s2">if (self.type.isDefined()){</span>
+<a id="__codelineno-0-121" name="__codelineno-0-121" href="#__codelineno-0-121"></a><span class="s2">    label = label + &#39; : &#39; + self.type.name;</span>
+<a id="__codelineno-0-122" name="__codelineno-0-122" href="#__codelineno-0-122"></a><span class="s2">}</span>
+<a id="__codelineno-0-123" name="__codelineno-0-123" href="#__codelineno-0-123"></a><span class="s2">return label;</span>
+<a id="__codelineno-0-124" name="__codelineno-0-124" href="#__codelineno-0-124"></a><span class="s2">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">classIcon</span><span class="o">=</span><span class="s2">&quot;parameter&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-125" name="__codelineno-0-125" href="#__codelineno-0-125"></a><span class="k">class</span><span class="w"> </span><span class="n">Parameter</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">NamedElement</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-126" name="__codelineno-0-126" href="#__codelineno-0-126"></a><span class="w">  </span><span class="o">!</span><span class="k">ordered</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="n">Classifier</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
+<a id="__codelineno-0-127" name="__codelineno-0-127" href="#__codelineno-0-127"></a><span class="w">  </span><span class="o">!</span><span class="k">ordered</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="n">Operation</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">#</span><span class="n">parameters</span><span class="w"> </span><span class="n">owner</span><span class="p">;</span>
+<a id="__codelineno-0-128" name="__codelineno-0-128" href="#__codelineno-0-128"></a><span class="p">}</span>
+<a id="__codelineno-0-129" name="__codelineno-0-129" href="#__codelineno-0-129"></a>
+<a id="__codelineno-0-130" name="__codelineno-0-130" href="#__codelineno-0-130"></a><span class="k">class</span><span class="w"> </span><span class="n">Reference</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StructuralFeature</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-131" name="__codelineno-0-131" href="#__codelineno-0-131"></a><span class="p">}</span>
+<a id="__codelineno-0-132" name="__codelineno-0-132" href="#__codelineno-0-132"></a>
+<a id="__codelineno-0-133" name="__codelineno-0-133" href="#__codelineno-0-133"></a><span class="k">class</span><span class="w"> </span><span class="n">Attribute</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="n">StructuralFeature</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-134" name="__codelineno-0-134" href="#__codelineno-0-134"></a><span class="p">}</span>
+<a id="__codelineno-0-135" name="__codelineno-0-135" href="#__codelineno-0-135"></a>
+<a id="__codelineno-0-136" name="__codelineno-0-136" href="#__codelineno-0-136"></a><span class="k">enum</span><span class="w"> </span><span class="n">VisibilityEnum</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-137" name="__codelineno-0-137" href="#__codelineno-0-137"></a><span class="w">  </span><span class="n">public</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">;</span>
+<a id="__codelineno-0-138" name="__codelineno-0-138" href="#__codelineno-0-138"></a><span class="w">  </span><span class="n">private</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">;</span>
+<a id="__codelineno-0-139" name="__codelineno-0-139" href="#__codelineno-0-139"></a><span class="p">}</span>
+</code></pre></div>
 <h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../articles/inspect-models-exeed">Article: Inspecting EMF Models with Exeed</a></li>
+<li><a href="../articles/inspect-models-exeed/">Article: Inspecting EMF Models with Exeed</a></li>
 </ul>
 
 
@@ -2345,8 +2338,6 @@ enum VisibilityEnum {
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

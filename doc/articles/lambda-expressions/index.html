@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1845,55 +1839,58 @@
 <h1 id="native-lambda-expressions">Native lambda expressions<a class="headerlink" href="#native-lambda-expressions" title="Permanent link">&para;</a></h1>
 <p>Whilst EOL has many useful declarative operations built in, some applications and developers may benefit from using alternative implementations, such as the <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html">Java Streams API</a>.</p>
 <p>Epsilon now allows you to invoke functional interfaces using EOL first-order operation syntax. Provided that the method being invoked takes one or more <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/FunctionalInterface.html">functional interface</a>s as a parameter and the correct number of parameters are supplied to each interface, this integration should work seamlessly as with regular first-order operation call expressions. For lambda expressions which do not require a parameter, you can either omit the parameter, use <code>null</code> or <code>_</code> in place of the parameter, like so:</p>
-<pre class="highlight"><code class="language-eol">  var optional = Native("java.util.stream.IntStream")
-    .range(0, 16)
-    .filter(i | i / 4 &gt;= 2)
-    .findFirst();
-
-  optional.orElse(64/4);  // No lambda - literal value always calculated even if not present.
-  optional.orElseGet(null | someIntensiveCalculation());  // Evaluation only occurs if no value is present.
-  optional.orElseThrow(| new Native("org.eclipse.epsilon.eol.exceptions.EolRuntimeException"));</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">optional</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Native</span><span class="p">(</span><span class="s2">&quot;java.util.stream.IntStream&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">)</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="o">.</span><span class="n">findFirst</span><span class="p">();</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="n">optional</span><span class="o">.</span><span class="n">orElse</span><span class="p">(</span><span class="mi">64</span><span class="o">/</span><span class="mi">4</span><span class="p">);</span><span class="w">  </span><span class="c1">// No lambda - literal value always calculated even if not present.</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="n">optional</span><span class="o">.</span><span class="n">orElseGet</span><span class="p">(</span><span class="kc">null</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">someIntensiveCalculation</span><span class="p">());</span><span class="w">  </span><span class="c1">// Evaluation only occurs if no value is present.</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="n">optional</span><span class="o">.</span><span class="n">orElseThrow</span><span class="p">(</span><span class="o">|</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">Native</span><span class="p">(</span><span class="s2">&quot;org.eclipse.epsilon.eol.exceptions.EolRuntimeException&quot;</span><span class="p">));</span>
+</code></pre></div>
 <p>Here is an example of how one could use Java Streams and the equivalent approach using EOL (i.e. without native delegation):</p>
-<pre class="highlight"><code class="language-eol">  var Collectors = Native("java.util.stream.Collectors");
-
-  var testData = Sequence{-1024..1024};
-
-  var positiveOddsSquaredEol = testData
-    .select(i | i &gt;= 0 and i.mod(2) &gt; 0)
-    .collect(i | i * i)
-    .asSet();
-
-  var positiveOddsSquaredJava = testData.stream()
-    .filter(i | i &gt;= 0 and i.mod(2) &gt; 0)
-    .map(i | i * i)
-    .collect(Collectors.toSet());
-
-  assertEquals(positiveOddsSquaredEol, positiveOddsSquaredJava);</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">Collectors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Native</span><span class="p">(</span><span class="s2">&quot;java.util.stream.Collectors&quot;</span><span class="p">);</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">testData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Sequence</span><span class="p">{</span><span class="o">-</span><span class="mi">1024</span><span class="o">..</span><span class="mi">1024</span><span class="p">};</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">positiveOddsSquaredEol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">testData</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">i</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="o">.</span><span class="n">asSet</span><span class="p">();</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">positiveOddsSquaredJava</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">testData</span><span class="o">.</span><span class="n">stream</span><span class="p">()</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">i</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="o">.</span><span class="n">toSet</span><span class="p">());</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span><span class="n">assertEquals</span><span class="p">(</span><span class="n">positiveOddsSquaredEol</span><span class="p">,</span><span class="w"> </span><span class="n">positiveOddsSquaredJava</span><span class="p">);</span>
+</code></pre></div>
 <p>One benefits of using Streams is lazy evaluation, which allows you to chain a series of operations without executing the entire pipeline on all elements. This can be more efficient since streams are not materialised in intermediate operations, unlike EOL first-order operations which always return a collection and are thus evaluated eagerly. As with built-in EOL operations, Streams also support parallel execution, although this must be explicitly specified with the <code>.parallel()</code> property on the stream.</p>
 <p>Currently EOL does not support operations which require a simple variable and non-functional interface as a parameter, such as the <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#iterate-T-java.util.function.UnaryOperator-">iterate</a> operation. To work around this, you can assign lambda expressions to variables, deriving them by calling a built-in operation to obtain the desired type.</p>
-<pre class="highlight"><code class="language-eol">  // UnaryOperator
-  var doubler = unary(i | i * 2);
-  assertEquals(16, doubler.apply(8));
-
-  // Predicate
-  var isEvenTester = predicate(i | i.mod(2) == 0);
-  assertFalse(predicate.test(3));
-
-  // Function
-  var hasher = func(x | x.hashCode());
-  assertEquals(-1007761232, hasher.apply("a string"));
-
-  // Consumer
-  var printer = consumer(x | x.println());
-  printer.accept("Testing...");
-
-  // Supplier
-  var threadSafeCollectionMaker = supplier( | new Native("java.util.concurrent.ConcurrentLinkedDeque"));
-  var deque = threadSafeCollectionMaker.get();
-
-  // Runnable
-  var sayHi = runnable( | "Hello, World!".println());
-  sayHi.run();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">  </span><span class="c1">// UnaryOperator</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">doubler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unary</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="n">assertEquals</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="n">doubler</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="mi">8</span><span class="p">));</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="c1">// Predicate</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">isEvenTester</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">predicate</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">i</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="n">assertFalse</span><span class="p">(</span><span class="n">predicate</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="c1">// Function</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">hasher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">hashCode</span><span class="p">());</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">  </span><span class="n">assertEquals</span><span class="p">(</span><span class="o">-</span><span class="mi">1007761232</span><span class="p">,</span><span class="w"> </span><span class="n">hasher</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="s2">&quot;a string&quot;</span><span class="p">));</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">  </span><span class="c1">// Consumer</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">printer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">consumer</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">println</span><span class="p">());</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">  </span><span class="n">printer</span><span class="o">.</span><span class="n">accept</span><span class="p">(</span><span class="s2">&quot;Testing...&quot;</span><span class="p">);</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">  </span><span class="c1">// Supplier</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">threadSafeCollectionMaker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">supplier</span><span class="p">(</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">Native</span><span class="p">(</span><span class="s2">&quot;java.util.concurrent.ConcurrentLinkedDeque&quot;</span><span class="p">));</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">deque</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">threadSafeCollectionMaker</span><span class="o">.</span><span class="n">get</span><span class="p">();</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">  </span><span class="c1">// Runnable</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">  </span><span class="k">var</span><span class="w"> </span><span class="n">sayHi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">runnable</span><span class="p">(</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">&quot;Hello, World!&quot;</span><span class="o">.</span><span class="n">println</span><span class="p">());</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">  </span><span class="n">sayHi</span><span class="o">.</span><span class="n">run</span><span class="p">();</span>
+</code></pre></div>
 <h3 id="streams-vs-eol-cheat-sheet">Streams vs EOL cheat sheet<a class="headerlink" href="#streams-vs-eol-cheat-sheet" title="Permanent link">&para;</a></h3>
 <p>Aside from the fact that streams are lazy and Epsilon operations are eager, there is some inevitable overlap in their functionality. This section provides an equivalence mapping from Epsilon to Java Streams to help you migrate from one to the other.</p>
 <ul>
@@ -2024,8 +2021,6 @@
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

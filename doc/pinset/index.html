@@ -46,13 +46,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2097,7 +2091,7 @@
 <h2 id="model-example">Model example<a class="headerlink" href="#model-example" title="Permanent link">&para;</a></h2>
 <p>We use as running example a course model, which contains the enrolled students along with their grades. All models and Pinset scripts shown in this documentation can be found in an <a href="https://github.com/eclipse-epsilon/epsilon/tree/main/examples/org.eclipse.epsilon.examples.pinset.grades">example project</a> in the Epsilon repository.</p>
 <p>All Pinset scripts query the following metamodel:</p>
-<pre class="mermaid mermaid-70"><code>classDiagram
+<pre class="mermaid"><code>classDiagram
 class Course {
     name: String
 }
@@ -2122,72 +2116,74 @@ Course *--&gt; EvaluationItem: items *
 Student *--&gt; ContactDetails: contact
 Student *--&gt; Grade: grades *
 Grade --&gt; EvaluationItem: item</code></pre>
-<p>As for the data shown as a result of the Pinset scripts, we use the following <a href="../flexmi">Flexmi</a> model, which conforms to the metamodel above:</p>
-<pre class="highlight"><code class="language-xml">&lt;?nsuri grades?&gt;
-&lt;course name="Model-Driven Engineering"&gt;
-    &lt;item name="Lab 1" perc="15"/&gt;
-    &lt;item name="Lab 2" perc="15"/&gt;
-    &lt;item name="Partial Test" perc="20"/&gt;
-    &lt;item name="Final Exam" perc="50"/&gt;
-
-    &lt;student id="S1" name="Alice"&gt;
-        &lt;contact email="alice@university.com" phone="+44 101"/&gt;
-        &lt;grade item="Lab 1" points="60"/&gt;
-        &lt;grade item="Lab 2" points="90"/&gt;
-        &lt;grade item="Partial Test" points="80"/&gt;
-        &lt;grade item="Final Exam" points="85"/&gt;
-    &lt;/student&gt;
-    &lt;student id="S2" name="Bob" remote="true"&gt;
-        &lt;contact email="bob@university.com" phone="+44 654"/&gt;
-        &lt;grade item="Lab 1" points="60"/&gt;
-        &lt;grade item="Final Exam" points="100"/&gt;
-    &lt;/student&gt;
-    &lt;student id="S3" name="Charlie" remote="true"&gt;
-        &lt;contact email="charlie@university.com" phone="+44 333"/&gt;
-        &lt;grade item="Lab 1" points="50"/&gt;
-        &lt;grade item="Lab 2" points="35"/&gt;
-        &lt;grade item="Partial Test" points="20"/&gt;
-    &lt;/student&gt;
-    &lt;student id="S4" name="Dana"&gt;
-        &lt;contact email="dana@university.com"/&gt;
-        &lt;grade item="Lab 1" points="100"/&gt;
-        &lt;grade item="Lab 2" points="90"/&gt;
-        &lt;grade item="Partial Test" points="70"/&gt;
-        &lt;grade item="Final Exam" points="95"/&gt;
-    &lt;/student&gt;
-&lt;/course&gt;</code></pre>
+<p>As for the data shown as a result of the Pinset scripts, we use the following <a href="../flexmi/">Flexmi</a> model, which conforms to the metamodel above:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">&lt;?nsuri grades?&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">&lt;course</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Model-Driven Engineering&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&lt;item</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Lab 1&quot;</span><span class="w"> </span><span class="na">perc=</span><span class="s">&quot;15&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">&lt;item</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Lab 2&quot;</span><span class="w"> </span><span class="na">perc=</span><span class="s">&quot;15&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">&lt;item</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Partial Test&quot;</span><span class="w"> </span><span class="na">perc=</span><span class="s">&quot;20&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">&lt;item</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Final Exam&quot;</span><span class="w"> </span><span class="na">perc=</span><span class="s">&quot;50&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nt">&lt;student</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;S1&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Alice&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="nt">&lt;contact</span><span class="w"> </span><span class="na">email=</span><span class="s">&quot;alice@university.com&quot;</span><span class="w"> </span><span class="na">phone=</span><span class="s">&quot;+44 101&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Lab 1&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;60&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Lab 2&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;90&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Partial Test&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;80&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Final Exam&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;85&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="nt">&lt;/student&gt;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="nt">&lt;student</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;S2&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Bob&quot;</span><span class="w"> </span><span class="na">remote=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="nt">&lt;contact</span><span class="w"> </span><span class="na">email=</span><span class="s">&quot;bob@university.com&quot;</span><span class="w"> </span><span class="na">phone=</span><span class="s">&quot;+44 654&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Lab 1&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;60&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Final Exam&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;100&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="nt">&lt;/student&gt;</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="nt">&lt;student</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;S3&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Charlie&quot;</span><span class="w"> </span><span class="na">remote=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">        </span><span class="nt">&lt;contact</span><span class="w"> </span><span class="na">email=</span><span class="s">&quot;charlie@university.com&quot;</span><span class="w"> </span><span class="na">phone=</span><span class="s">&quot;+44 333&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Lab 1&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;50&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Lab 2&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;35&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Partial Test&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;20&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="nt">&lt;/student&gt;</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="nt">&lt;student</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;S4&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Dana&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">        </span><span class="nt">&lt;contact</span><span class="w"> </span><span class="na">email=</span><span class="s">&quot;dana@university.com&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Lab 1&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;100&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Lab 2&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;90&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Partial Test&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;70&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">        </span><span class="nt">&lt;grade</span><span class="w"> </span><span class="na">item=</span><span class="s">&quot;Final Exam&quot;</span><span class="w"> </span><span class="na">points=</span><span class="s">&quot;95&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">    </span><span class="nt">&lt;/student&gt;</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="nt">&lt;/course&gt;</span>
+</code></pre></div>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>This first Pinset example defines a dataset from students data, containing some basic information such as name and student ID, contact details, the number of completed evaluation items, and the final grade for the course:</p>
-<pre class="highlight"><code class="language-pinset">dataset studentsSummary over s : Student {
-    column id: s.ID
-    column name: s.name
-    column phone: s.contact.phone
-
-    column items_completed: s.grades.size
-    column final_grade : s.getFinalGrade()
-
-    column course_outcome {
-        if (final_grade &lt; 50) {
-            return "fail";
-        }
-        else if (final_grade &lt; 70) {
-            return "good";
-        }
-        else if (final_grade &lt; 90) {
-            return "notable";
-        }
-        else {
-            return "excellent";
-        }
-    }
-}
-
-@cached
-operation Student getFinalGrade() {
-    return self.grades
-            .collect(g | g.points * g.item.percentage)
-            .sum() / 100;
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">dataset</span><span class="w"> </span><span class="n">studentsSummary</span><span class="w"> </span><span class="k">over</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">column</span><span class="w"> </span><span class="n">id</span><span class="o">:</span><span class="w"> </span><span class="n">s</span><span class="o">.</span><span class="n">ID</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">column</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="w"> </span><span class="n">s</span><span class="o">.</span><span class="n">name</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">column</span><span class="w"> </span><span class="n">phone</span><span class="o">:</span><span class="w"> </span><span class="n">s</span><span class="o">.</span><span class="n">contact</span><span class="o">.</span><span class="n">phone</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="k">column</span><span class="w"> </span><span class="n">items_completed</span><span class="o">:</span><span class="w"> </span><span class="n">s</span><span class="o">.</span><span class="n">grades</span><span class="o">.</span><span class="n">size</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="k">column</span><span class="w"> </span><span class="n">final_grade</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">s</span><span class="o">.</span><span class="n">getFinalGrade</span><span class="p">()</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="k">column</span><span class="w"> </span><span class="n">course_outcome</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">final_grade</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;fail&quot;</span><span class="p">;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">final_grade</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">70</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;good&quot;</span><span class="p">;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">final_grade</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">90</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;notable&quot;</span><span class="p">;</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;excellent&quot;</span><span class="p">;</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="p">}</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="cp">@cached</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="k">operation</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="n">getFinalGrade</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">grades</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">            </span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">g</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">g</span><span class="o">.</span><span class="n">points</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">g</span><span class="o">.</span><span class="n">item</span><span class="o">.</span><span class="n">percentage</span><span class="p">)</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">            </span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="p">}</span>
+</code></pre></div>
 <p>From that Pinset script, the following dataset is generated:</p>
 <table>
 <thead>
@@ -2248,10 +2244,11 @@ In addition, external operations can be invoked in the column expressions, such 
 <p>After this overview, next sections describe extra column generators, as well as on other functionalities offered by Pinset for an easier dataset extraction specification.</p>
 <h2 id="properties-accessors">Properties accessors<a class="headerlink" href="#properties-accessors" title="Permanent link">&para;</a></h2>
 <p>As a way to facilitate the definition of columns that simply hold element properties, Pinset offers some column generators to access these properties:</p>
-<pre class="highlight"><code class="language-pinset">dataset studentsContact over s : Student {
-    properties [ID as StudentId, name]
-    reference contact[email, phone]
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">dataset</span><span class="w"> </span><span class="n">studentsContact</span><span class="w"> </span><span class="k">over</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">properties</span><span class="w"> </span><span class="p">[</span><span class="n">ID</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">StudentId</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">]</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">reference</span><span class="w"> </span><span class="n">contact</span><span class="p">[</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">phone</span><span class="p">]</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">}</span>
+</code></pre></div>
 <p>The previous dataset rule results in:</p>
 <table>
 <thead>
@@ -2295,18 +2292,19 @@ In addition, external operations can be invoked in the column expressions, such 
 <h2 id="row-filtering">Row filtering<a class="headerlink" href="#row-filtering" title="Permanent link">&para;</a></h2>
 <p>By default, all elements of the selected type are processed into rows.
 As this might sometimes not be desired, Pinset offers some ways to filter out rows from the resulting dataset:</p>
-<pre class="highlight"><code class="language-pinset">dataset remoteStudents over s : Student {
-    guard: s.isRemote
-
-    properties[ID, name]
-}
-
-dataset finalExamAssistants over s : Student
-    from : Student.all.select(s |
-            s.grades.exists(g | g.item.name == "Final Exam")) {
-
-    properties[ID, name]
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">dataset</span><span class="w"> </span><span class="n">remoteStudents</span><span class="w"> </span><span class="k">over</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">guard</span><span class="o">:</span><span class="w"> </span><span class="n">s</span><span class="o">.</span><span class="n">isRemote</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="k">properties</span><span class="p">[</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">]</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">dataset</span><span class="w"> </span><span class="n">finalExamAssistants</span><span class="w"> </span><span class="k">over</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Student</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Student</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">|</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">            </span><span class="n">s</span><span class="o">.</span><span class="n">grades</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">g</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">g</span><span class="o">.</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;Final Exam&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="k">properties</span><span class="p">[</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">]</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="p">}</span>
+</code></pre></div>
 <p>These dataset rules show the two ways that can be used to perform filtering in Pinset:</p>
 <ul>
 <li>
@@ -2378,31 +2376,33 @@ dataset finalExamAssistants over s : Student
 <li><code>body</code>: used to calculate the value of each cell of the column. Generally, both the row element and the grid <code>key</code> intervene here.</li>
 </ul>
 <p>This generator is used in the following dataset rule, which generates the grades table depicted above:</p>
-<pre class="highlight"><code class="language-pinset">dataset studentGrades over s : Student {
-    properties[ID, name]
-
-    grid {
-        keys: EvaluationItem.all
-        header: key.name
-        body: s.grades.selectOne(g | g.item == key)?.points
-    }
-
-    column final_grade : s.getFinalGrade()
-}</code></pre>
-<p>In that grid generator, the course evaluation items are used as <code>keys</code>, which means that each one of these items would be evaluated over the <code>header</code> and <code>body</code> expressions to generate a new column. The <code>header</code> of the columns uses the item name, and the <code>body</code> is calculated by looking for a grade of the student for the evaluation item. The body uses the <code>?.</code> <a href="../eol#safe-navigation-and-elvis-operator">safe null navigation operator</a> in case the student does not have a grade for certain item.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">dataset</span><span class="w"> </span><span class="n">studentGrades</span><span class="w"> </span><span class="k">over</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">properties</span><span class="p">[</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">]</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="k">grid</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="k">keys</span><span class="o">:</span><span class="w"> </span><span class="n">EvaluationItem</span><span class="o">.</span><span class="n">all</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="k">header</span><span class="o">:</span><span class="w"> </span><span class="n">key</span><span class="o">.</span><span class="n">name</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="k">body</span><span class="o">:</span><span class="w"> </span><span class="n">s</span><span class="o">.</span><span class="n">grades</span><span class="o">.</span><span class="n">selectOne</span><span class="p">(</span><span class="n">g</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">g</span><span class="o">.</span><span class="n">item</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="o">?.</span><span class="n">points</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="k">column</span><span class="w"> </span><span class="n">final_grade</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">s</span><span class="o">.</span><span class="n">getFinalGrade</span><span class="p">()</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="p">}</span>
+</code></pre></div>
+<p>In that grid generator, the course evaluation items are used as <code>keys</code>, which means that each one of these items would be evaluated over the <code>header</code> and <code>body</code> expressions to generate a new column. The <code>header</code> of the columns uses the item name, and the <code>body</code> is calculated by looking for a grade of the student for the evaluation item. The body uses the <code>?.</code> <a href="../eol/#safe-navigation-and-elvis-operator">safe null navigation operator</a> in case the student does not have a grade for certain item.</p>
 <h2 id="typeless-dataset-rules">Typeless dataset rules<a class="headerlink" href="#typeless-dataset-rules" title="Permanent link">&para;</a></h2>
 <p>The <code>from</code> expression presented above to filter rows during the generation can be also used to define datasets where the row elements are not instances coming from an input model. This can be useful to perform data aggregations, or to generate synthetic tables starting from a custom collection of values.</p>
 <p>The following dataset rule generates a basic table using a sequence of numbers as row elements and different column generators:</p>
-<pre class="highlight"><code class="language-pinset">dataset numbers over n from : 1.to(5) {
-    column number : n
-    column squared : n * n
-
-    grid {
-        keys: 2.to(5)
-        header: "times_" + key
-        body: n * key
-    }
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">dataset</span><span class="w"> </span><span class="n">numbers</span><span class="w"> </span><span class="k">over</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="k">column</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">n</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="k">column</span><span class="w"> </span><span class="n">squared</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">n</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="k">grid</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">        </span><span class="k">keys</span><span class="o">:</span><span class="w"> </span><span class="mi">2</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="k">header</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;times_&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">key</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="k">body</span><span class="o">:</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">key</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="p">}</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2459,15 +2459,16 @@ dataset finalExamAssistants over s : Student
 </table>
 <h2 id="nested-column-generators">Nested column generators<a class="headerlink" href="#nested-column-generators" title="Permanent link">&para;</a></h2>
 <p>When certain intermediate value has to be used in several column calculations, Pinset offers a nested, composite column generator. This generator is defined by a <code>from</code> expression that calculates a value, followed by a block containing column generators that can use that value:</p>
-<pre class="highlight"><code class="language-pinset">dataset gradesDetails over g : Grade {
-    properties[points]
-    reference item[name]
-    from student : g.eContainer {
-        column id : student.ID
-        column final_grade : student.getFinalGrade()
-        column grade_lowerthan_final : g.points &lt; final_grade
-    }
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">dataset</span><span class="w"> </span><span class="n">gradesDetails</span><span class="w"> </span><span class="k">over</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Grade</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="k">properties</span><span class="p">[</span><span class="n">points</span><span class="p">]</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="k">reference</span><span class="w"> </span><span class="n">item</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">g</span><span class="o">.</span><span class="n">eContainer</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="k">column</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">student</span><span class="o">.</span><span class="n">ID</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">        </span><span class="k">column</span><span class="w"> </span><span class="n">final_grade</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">student</span><span class="o">.</span><span class="n">getFinalGrade</span><span class="p">()</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">        </span><span class="k">column</span><span class="w"> </span><span class="n">grade_lowerthan_final</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">g</span><span class="o">.</span><span class="n">points</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">final_grade</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="p">}</span>
+</code></pre></div>
 <p>The rule above generates a dataset with one row per grade in the course. The rule includes a <code>from</code> expression, which obtains the student that obtained the grade through the containment reference. Then, it is used to obtain the student id and final grade, and an extra column that determines whether a grade contributed negatively to the final grade of the student, by checking if it has less points than the final grade.</p>
 <p>The names of the nested column generators are prefixed with the name given to the object calculated by the <code>from</code> expression:</p>
 <table>
@@ -2577,20 +2578,21 @@ dataset finalExamAssistants over s : Student
 <h2 id="column-post-processing">Column post-processing<a class="headerlink" href="#column-post-processing" title="Permanent link">&para;</a></h2>
 <p>Pinset offers some column post-processing operations that are frequently used to prepare a dataset for an analysis.
 These operations are invoked by annotating the column generators.</p>
-<pre class="highlight"><code class="language-pinset">dataset studentGradesPostProcessed over s : Student {
-    properties[ID]
-
-    @fillNulls 0
-    grid {
-        keys: EvaluationItem.all
-        header: key.name
-        body: s.grades.selectOne(g | g.item == key)?.points
-    }
-
-    column final_grade : s.getFinalGrade()
-    @normalize 100
-    column final_grade_normalized : final_grade
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">dataset</span><span class="w"> </span><span class="n">studentGradesPostProcessed</span><span class="w"> </span><span class="k">over</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="k">properties</span><span class="p">[</span><span class="n">ID</span><span class="p">]</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="cp">@fillNulls 0</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="k">grid</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">        </span><span class="k">keys</span><span class="o">:</span><span class="w"> </span><span class="n">EvaluationItem</span><span class="o">.</span><span class="n">all</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="k">header</span><span class="o">:</span><span class="w"> </span><span class="n">key</span><span class="o">.</span><span class="n">name</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="k">body</span><span class="o">:</span><span class="w"> </span><span class="n">s</span><span class="o">.</span><span class="n">grades</span><span class="o">.</span><span class="n">selectOne</span><span class="p">(</span><span class="n">g</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">g</span><span class="o">.</span><span class="n">item</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="o">?.</span><span class="n">points</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="k">column</span><span class="w"> </span><span class="n">final_grade</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">s</span><span class="o">.</span><span class="n">getFinalGrade</span><span class="p">()</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="cp">@normalize 100</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="k">column</span><span class="w"> </span><span class="n">final_grade_normalized</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">final_grade</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="p">}</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2649,7 +2651,7 @@ These operations are invoked by annotating the column generators.</p>
 <p>We can <code>@normalize</code> data columns between the [0,1] interval (useful when applying distance-based algorithms with numeric columns in different scales). A value can be provided to the annotation to perform the normalisation. If no value is given, the maximum value encountered in the column is used instead.</p>
 <p>The dataset rule above contains a column with the normalised final grade of the course.</p>
 <h2 id="picto-integration">Picto Integration<a class="headerlink" href="#picto-integration" title="Permanent link">&para;</a></h2>
-<p>Check out <a href="../articles/picto-tables">this article</a> to learn how Pinset can be used to generate <a href="../picto">Picto</a> table visualisations.</p>
+<p>Check out <a href="../articles/picto-tables/">this article</a> to learn how Pinset can be used to generate <a href="../picto/">Picto</a> table visualisations.</p>
 
 
 
@@ -2783,8 +2785,6 @@ These operations are invoked by annotating the column generators.</p>
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../assets/dist/bundle.js"></script>
       
     
   </body>

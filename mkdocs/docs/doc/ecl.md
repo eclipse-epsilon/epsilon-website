@@ -11,7 +11,7 @@ In ECL, comparison specifications are organized in modules (*EcLModule*). As ill
 
 *MatchRules* enable users to perform comparison of model elements at a high level of abstraction. Each match-rule declares a name, and two parameters (*leftParameter* and *rightParameter*) that specify the types of elements it can compare. It also optionally defines a number of rules it inherits (*extends*) and if it is *abstract*, *lazy* and/or *greedy*. The semantics of the latter are discussed shortly.
 
-```mermaid-90
+```mermaid
 classDiagram
 class MatchRule {
     -name: String
@@ -92,7 +92,7 @@ An ECL module can import a number of other ECL modules. In such a case, the impo
 
 As illustrated below, the result of comparing two models with ECL is a trace (*MatchTrace*) that consists of a number of matches (*Match*). Each match holds a reference to the objects from the two models that have been compared (*left* and *right*), a boolean value that indicates if they have been found to be *matching* or not, a reference to the *rule* that has made the decision, and a Map (*info*) that is used to hold any additional information required by the user (accessible at runtime through the *matchInfo* implicit variable). During the matching process, a second, temporary, match trace is also used to detect and resolve cyclic invocation of match-rules as discussed in the sequel.
 
-```mermaid-80
+```mermaid
 classDiagram
 class Match {
     -left: Object
@@ -134,7 +134,7 @@ Providing the built-in *matches* operation significantly simplifies comparison s
 
 On the other hand, it is possible - and quite common indeed - for two rules to implicitly invoke each other. For example consider the match rule below that attempts to match nodes of the simple Tree metamodel.
 
-```mermaid-40
+```mermaid
 classDiagram
 class Tree {
     +label: String

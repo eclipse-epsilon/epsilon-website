@@ -4,7 +4,7 @@ The aim of Epsilon Flock is to contribute *model migration* capabilities to Epsi
 
 To illustrate the challenges of model migration, we use the example of metamodel evolution below. In the top figure, a `Component` comprises other `Component`s, `Connector`s and `Port`s. A `Connector` joins two `Port`s. `Connector`s are unidirectional, and hence define `to` and `from` references to `Port`. The original metamodel allows a `Connector` to start and end at the same `Port`, and the metamodel was evolved to prevent this, as shown in the bottom figure. `Port` was made abstract, and split into two subtypes, `InputPort` and `OutputPort`. The references between `Connector` and (the subtypes of) `Port` were renamed for consistency with the names of the subtypes.
 
-```mermaid-50
+```mermaid
 classDiagram
 class Component {
     +subcomponents: Component[*]
@@ -27,7 +27,7 @@ Connector -- Port: from
 Port -- Connector: to
 ```
 
-```mermaid-80
+```mermaid
 classDiagram
 class Component {
     +subcomponents: Component[*]
@@ -247,7 +247,7 @@ Secondly, Flock does not provide language constructs for controlling the order i
 
 Thirdly, Flock is tailored for applying migration to a single original and a single migrated model. Although further models can be accessed by a Flock migration strategy, they cannot be used as the source or target of the conservative copy algorithm. By contrast, some general-purpose model transformation languages can access and manipulate any number of models.
 
-Fourthly, Flock can only operate on models loaded with [EMC drivers](../emc) that implement the [IReflectiveModel](https://github.com/eclipse-epsilon/epsilon/blob/874e5c435742e94faed95b42d06d43b8efecf242/plugins/org.eclipse.epsilon.eol.engine/src/org/eclipse/epsilon/eol/models/IReflectiveModel.java) interface  (such as the [EMF driver](../emc/#eclipse-modeling-framework)), as its conservative copy algorithm needs additional information to what Epsilon's [IModel](../emc/#the-imodel-interface) interface provides. 
+Fourthly, Flock can only operate on models loaded with [EMC drivers](emc.md) that implement the [IReflectiveModel](https://github.com/eclipse-epsilon/epsilon/blob/874e5c435742e94faed95b42d06d43b8efecf242/plugins/org.eclipse.epsilon.eol.engine/src/org/eclipse/epsilon/eol/models/IReflectiveModel.java) interface  (such as the [EMF driver](emc.md#eclipse-modeling-framework)), as its conservative copy algorithm needs additional information to what Epsilon's [IModel](emc.md#the-imodel-interface) interface provides. 
 
 Finally, Flock has been tailored to the model migration problem. In other words, we believe that Flock is well-suited to specifying model transformations between two metamodels that are very similar. For metamodel evolution in which the original metamodel undergoes significant and large-scale revision, a general-purpose transformation might be more suitable than Flock for specifying model migration.
 

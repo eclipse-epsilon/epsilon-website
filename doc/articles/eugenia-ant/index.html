@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1865,14 +1859,15 @@
 <p>In this article, we will show how to invoke the Eugenia Ant task and offer some recommendations on how to adopt it.</p>
 <h2 id="basic-usage">Basic usage<a class="headerlink" href="#basic-usage" title="Permanent link">&para;</a></h2>
 <p>The Eugenia Ant task only requires specifying the source Emfatic description or Ecore model through the <code>src</code> attribute:</p>
-<pre class="highlight"><code class="language-xml">&lt;!-- Generate myfile.ecore from myfile.emf and then proceed --&gt;
-&lt;epsilon.eugenia src="myfile.emf"/&gt;
-
-&lt;!-- Start directly from the Ecore model --&gt;
-&lt;epsilon.eugenia src="myfile.ecore"/&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cm">&lt;!-- Generate myfile.ecore from myfile.emf and then proceed --&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">&lt;epsilon.eugenia</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;myfile.emf&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cm">&lt;!-- Start directly from the Ecore model --&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">&lt;epsilon.eugenia</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;myfile.ecore&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
 <div class="admonition warning important">
 <p class="admonition-title">Warning</p>
-<p>The Eugenia Ant task requires that the Ant buildfile is run from the same JRE as the workspace. Please check the <a href="../../../doc/workflow">Workflow</a> documentation for instructions on how to do it.</p>
+<p>The Eugenia Ant task requires that the Ant buildfile is run from the same JRE as the workspace. Please check the <a href="../../workflow/">Workflow</a> documentation for instructions on how to do it.</p>
 </div>
 <h2 id="limiting-the-steps-to-be-run">Limiting the steps to be run<a class="headerlink" href="#limiting-the-steps-to-be-run" title="Permanent link">&para;</a></h2>
 <p>Normally, Eugenia runs all these steps:</p>
@@ -1886,14 +1881,15 @@
 <li>Generate the GMF code from the GMFGen model (<code>gmfcode</code>)
 Optionally, the Ant task can run only some of these steps. The <code>firstStep</code> attribute can be used to specify the first step to be run, and the <code>lastStep</code> can be used to specify the last step to be run. For example:</li>
 </ul>
-<pre class="highlight"><code class="language-xml">&lt;!-- Skips the clean, ecore and genmodel steps --&gt;
-&lt;epsilon.eugenia src="myfile.ecore" firstStep="gmf"/&gt;
-
-&lt;!-- Does not run the emfcode and gmfcode steps --&gt;
-&lt;epsilon.eugenia src="myfile.emf" lastStep="gmfgen"/&gt;
-
-&lt;!-- Only runs the gmf and gmfgen steps --&gt;
-&lt;epsilon.eugenia src="myfile.ecore" firstStep="gmf" lastStep="gmfgen"/&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cm">&lt;!-- Skips the clean, ecore and genmodel steps --&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">&lt;epsilon.eugenia</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;myfile.ecore&quot;</span><span class="w"> </span><span class="na">firstStep=</span><span class="s">&quot;gmf&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="cm">&lt;!-- Does not run the emfcode and gmfcode steps --&gt;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nt">&lt;epsilon.eugenia</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;myfile.emf&quot;</span><span class="w"> </span><span class="na">lastStep=</span><span class="s">&quot;gmfgen&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="cm">&lt;!-- Only runs the gmf and gmfgen steps --&gt;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nt">&lt;epsilon.eugenia</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;myfile.ecore&quot;</span><span class="w"> </span><span class="na">firstStep=</span><span class="s">&quot;gmf&quot;</span><span class="w"> </span><span class="na">lastStep=</span><span class="s">&quot;gmfgen&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
 <h2 id="using-extra-models-for-polishing">Using extra models for polishing<a class="headerlink" href="#using-extra-models-for-polishing" title="Permanent link">&para;</a></h2>
 <p>Additional models to be used in a polishing transformation can be specified through the <code>&lt;model&gt;</code> nested element. <code>&lt;model&gt;</code> has three attributes:</p>
 <ul>
@@ -1902,13 +1898,14 @@ Optionally, the Ant task can run only some of these steps. The <code>firstStep</
 <li><code>step</code> (mandatory) is the identifier of the Eugenia step to which we will add the model reference.
 As an example, consider the following fragment:</li>
 </ul>
-<pre class="highlight"><code class="language-xml">&lt;epsilon.emf.loadModel name="Labels"
-  modelfile="my.model" metamodeluri="mymetamodelURI"
-  read="true" store="false"/&gt;
-
-&lt;epsilon.eugenia src="myfile.emf"&gt;
-  &lt;model ref="Labels" step="gmf"/&gt;
-&lt;/epsilon.eugenia&gt;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">&lt;epsilon.emf.loadModel</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Labels&quot;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="na">modelfile=</span><span class="s">&quot;my.model&quot;</span><span class="w"> </span><span class="na">metamodeluri=</span><span class="s">&quot;mymetamodelURI&quot;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="na">read=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="na">store=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nt">&lt;epsilon.eugenia</span><span class="w"> </span><span class="na">src=</span><span class="s">&quot;myfile.emf&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="nt">&lt;model</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;Labels&quot;</span><span class="w"> </span><span class="na">step=</span><span class="s">&quot;gmf&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nt">&lt;/epsilon.eugenia&gt;</span>
+</code></pre></div>
 <p>This example will make the Labels model available to the <code>Ecore2GMF.eol</code> polishing transformation, which is part of the <code>gmf</code> step.</p>
 
 
@@ -2005,8 +2002,6 @@ As an example, consider the following fragment:</li>
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>

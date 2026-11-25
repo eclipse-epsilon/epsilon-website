@@ -45,7 +45,7 @@ Of course, the properties for the new version should be changed to match (e.g. t
 
 ### Build and release to Maven Central
 
-See [this article](../maven-release).
+See [this article](../maven-release/index.md).
 
 ### Tagging the release
 

@@ -1,7 +1,7 @@
 # Examples 
 
 !!! tip "Looking for in-depth articles?"
-	This page contains links to a selection of example projects in Epsilon's Git repository. If you are looking for more in-depth articles describing different features of Epsilon, please visit the [articles](../doc/articles) section of the website.
+	This page contains links to a selection of example projects in Epsilon's Git repository. If you are looking for more in-depth articles describing different features of Epsilon, please visit the [articles](doc/articles/index.md) section of the website.
 
 !!! info "Online Playground"
 

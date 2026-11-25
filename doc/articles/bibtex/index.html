@@ -42,13 +42,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/mermaid.css">
-    
       <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-light.css">
-    
-      <link rel="stylesheet" href="../../../assets/stylesheets/nnfx-dark.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1892,60 +1886,65 @@
 <h2 id="querying-a-bibtex-file">Querying a BibTeX file<a class="headerlink" href="#querying-a-bibtex-file" title="Permanent link">&para;</a></h2>
 <p>We use the following <code>eclipse.bib</code> as a base for demonstrating the EOL
 syntax for querying BibTeX files.</p>
-<pre class="highlight"><code class="language-bibtex">@book{steinberg09emf,
-  author    = {Steinberg, D. and Budinsky, F. and Paternostro, M. and Merks, E.},
-  title     = {{EMF}: {E}clipse {M}odeling {F}ramework},
-  year      = {2008},
-  publisher = {Addison-Wesley Professional},
-  address   = {Boston, Massachusetts}
-}
-
-@inproceedings{gronback06gmf,
-  author    = {Gronback, R.},
-  title     = {Introduction to the {Eclipse Graphical Modeling Framework}},
-  booktitle = {Proc. EclipseCon},
-  year      = {2006},
-  address   = {Santa Clara, California}
-}
-
-@article{brooks86nosilverbullet,
-  author    = {Brooks Jr., F.P.},
-  title     = {No Silver Bullet - Essence and Accidents of Software Engineering},
-  journal   = {IEEE Computer},
-  volume    = {20},
-  number    = {4},
-  year      = {1987},
-  pages     = {10-19},
-}</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nc">@book</span><span class="p">{</span><span class="nl">steinberg09emf</span><span class="p">,</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="na">author</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="s">{Steinberg, D. and Budinsky, F. and Paternostro, M. and Merks, E.}</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="na">title</span><span class="w">     </span><span class="p">=</span><span class="w"> </span><span class="s">{{EMF}: {E}clipse {M}odeling {F}ramework}</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="na">year</span><span class="w">      </span><span class="p">=</span><span class="w"> </span><span class="s">{2008}</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="na">publisher</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Addison-Wesley Professional}</span><span class="p">,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="na">address</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">{Boston, Massachusetts}</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nc">@inproceedings</span><span class="p">{</span><span class="nl">gronback06gmf</span><span class="p">,</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="na">author</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="s">{Gronback, R.}</span><span class="p">,</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="na">title</span><span class="w">     </span><span class="p">=</span><span class="w"> </span><span class="s">{Introduction to the {Eclipse Graphical Modeling Framework}}</span><span class="p">,</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="na">booktitle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">{Proc. EclipseCon}</span><span class="p">,</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="na">year</span><span class="w">      </span><span class="p">=</span><span class="w"> </span><span class="s">{2006}</span><span class="p">,</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="na">address</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">{Santa Clara, California}</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="p">}</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="nc">@article</span><span class="p">{</span><span class="nl">brooks86nosilverbullet</span><span class="p">,</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="na">author</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="s">{Brooks Jr., F.P.}</span><span class="p">,</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="na">title</span><span class="w">     </span><span class="p">=</span><span class="w"> </span><span class="s">{No Silver Bullet - Essence and Accidents of Software Engineering}</span><span class="p">,</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="na">journal</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">{IEEE Computer}</span><span class="p">,</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span><span class="na">volume</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="s">{20}</span><span class="p">,</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">  </span><span class="na">number</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="s">{4}</span><span class="p">,</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">  </span><span class="na">year</span><span class="w">      </span><span class="p">=</span><span class="w"> </span><span class="s">{1987}</span><span class="p">,</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">  </span><span class="na">pages</span><span class="w">     </span><span class="p">=</span><span class="w"> </span><span class="s">{10-19}</span><span class="p">,</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="p">}</span>
+</code></pre></div>
 <h2 id="how-can-i-access-all-publications">How can I access all publications?<a class="headerlink" href="#how-can-i-access-all-publications" title="Permanent link">&para;</a></h2>
 <p>Presuming that we have specified the name <code>MyPubs</code> when loading the BibTeX file as a model, the <code>allContents</code> method can be used to access all of the entries in the BibTeX file:</p>
-<pre class="highlight"><code class="language-eol">// Get all publications
-var publications = MyPubs.allContents();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Get all publications</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">var</span><span class="w"> </span><span class="n">publications</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MyPubs</span><span class="o">.</span><span class="n">allContents</span><span class="p">();</span>
+</code></pre></div>
 <h2 id="how-can-i-access-a-publication">How can I access a publication?<a class="headerlink" href="#how-can-i-access-a-publication" title="Permanent link">&para;</a></h2>
 <p>Publications (entries) in a BibTeX file can be accessed by type:</p>
-<pre class="highlight"><code class="language-eol">// Get all @book elements
-var books = Book.all;
-
-// Get a random book
-var b = Book.all.random();</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Get all @book elements</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">var</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Book</span><span class="o">.</span><span class="n">all</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">// Get a random book</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">var</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Book</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">random</span><span class="p">();</span>
+</code></pre></div>
 <p>Note that the BibTeX driver recognises only those types defined in your BibTeX file. For example, attempting to call <code>Phdthesis.all</code> will result in an error for the BibTeX file shown above, as that BibTeX file contains no <code>@phdthesis</code> entries.</p>
 <h2 id="how-can-i-access-and-change-the-properties-of-a-particular-publication">How can I access and change the properties of a particular publication?<a class="headerlink" href="#how-can-i-access-and-change-the-properties-of-a-particular-publication" title="Permanent link">&para;</a></h2>
 <p>Properties are accessed via the dot notation:</p>
-<pre class="highlight"><code class="language-eol">// Get a random book
-var b = Book.all.random();
-
-// Get the title of the random book
-var t = b.title;
-
-// Get the Amazon rating of the random book
-var a = b.amazonRating;</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Get a random book</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">var</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Book</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">random</span><span class="p">();</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1">// Get the title of the random book</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">var</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="o">.</span><span class="n">title</span><span class="p">;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1">// Get the Amazon rating of the random book</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">var</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="o">.</span><span class="n">amazonRating</span><span class="p">;</span>
+</code></pre></div>
 <p>Note that the empty string is returned when accessing a property that does not exist (such as the amazonRating property in the example above).</p>
 <p>Properties can be changed using an assignment statement:</p>
-<pre class="highlight"><code class="language-eol">// Get a random book
-var b = Book.all.random();
-
-// Get the title of the random book
-b.title = "On the Criteria To Be Used in Decomposing Systems into Modules"</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// Get a random book</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">var</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Book</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">random</span><span class="p">();</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1">// Get the title of the random book</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">b</span><span class="o">.</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;On the Criteria To Be Used in Decomposing Systems into Modules&quot;</span>
+</code></pre></div>
 <p>Note that the current version of the BibTeX driver does not support saving changes to disk. Any changes made to properties are volatile (and persist only during the duration of the Epsilon program's execution).</p>
 <h2 id="adding-a-bibtex-file-to-your-launch-configuration">Adding a BibTeX file to your launch configuration<a class="headerlink" href="#adding-a-bibtex-file-to-your-launch-configuration" title="Permanent link">&para;</a></h2>
 <p>To add a BibTeX file to your Epsilon launch configuration, you need to select "Show all model types" and then choose "BibTeX model" from the list of available model types.</p>
@@ -2055,8 +2054,6 @@ if you require -- or can provide a patch for -- these features.</p>
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
-      
-        <script src="../../../assets/dist/bundle.js"></script>
       
     
   </body>
